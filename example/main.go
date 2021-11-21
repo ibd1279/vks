@@ -1,27 +1,3 @@
-# vks
-vks is a Vulkan bridge for Go. The header generator folder contains the code that
-is used to generate the vulkan bindings. It woks similar to c-for-go, but it uses
-the vulkan specification published as XML to generate the output bindings.
-
-## Memory management
-Unlike c-for-go, this wrapper does very little memory management for you. Most of
-the logic is for converting from Cgo types into go types, but ensuring that C
-memory is allocated and released is up to the program, not to this binding.
-
-## Completeness
-Currently, the header is only generating implementatations for the features in
-the "vulkan" API for 1.0, 1.1, and 1.2.
-
-Nothing is done to "fix" the names of functions or types. That means
-typing "vks.Vk" frequently. There are a couple of functions where I've taken a first
-stab at providing a more go-friendly wrapper ontop of the function, but for the
-most part, everything is working directly with the vulkan API.
-
-it also currently depends on the vulkan prototypes and linking with the vulkan library
-when building.
-
-## Example application
-```go
 package main
 
 import (
@@ -97,4 +73,3 @@ func main() {
 
 	vks.VkDestroyInstance(instance, nil)
 }
-```
