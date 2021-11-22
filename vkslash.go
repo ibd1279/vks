@@ -307,6 +307,9 @@ const (
 	VK_STRUCTURE_TYPE_DISPLAY_MODE_CREATE_INFO_KHR                            VkStructureType = 1000002000
 	VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR                         VkStructureType = 1000002001
 	VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR                                VkStructureType = 1000003000
+	VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SURFACE_INFO_2_KHR                      VkStructureType = 1000119000
+	VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_KHR                              VkStructureType = 1000119001
+	VK_STRUCTURE_TYPE_SURFACE_FORMAT_2_KHR                                    VkStructureType = 1000119002
 )
 
 var (
@@ -486,6 +489,9 @@ var (
 		VK_STRUCTURE_TYPE_DISPLAY_MODE_CREATE_INFO_KHR:                            "VK_STRUCTURE_TYPE_DISPLAY_MODE_CREATE_INFO_KHR",
 		VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR:                         "VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR",
 		VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR:                                "VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR",
+		VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SURFACE_INFO_2_KHR:                      "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SURFACE_INFO_2_KHR",
+		VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_KHR:                              "VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_KHR",
+		VK_STRUCTURE_TYPE_SURFACE_FORMAT_2_KHR:                                    "VK_STRUCTURE_TYPE_SURFACE_FORMAT_2_KHR",
 	}
 )
 
@@ -35005,6 +35011,260 @@ func VkCreateSharedSwapchainsKHR(device VkDevice, swapchainCount uint32, pCreate
 		return (**C.VkSwapchainKHR)(unsafe.Pointer((&ptr)))
 	}(&pSwapchains)
 	ret := C.vkCreateSharedSwapchainsKHR(*p0, *p1, *p2, *p3, *p4)
+	retPtr := /* Identifier */ (*VkResult)(&ret)
+	return *retPtr
+}
+
+//VkPhysicalDeviceSurfaceInfo2KHR provides a go interface for VkPhysicalDeviceSurfaceInfo2KHR.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPhysicalDeviceSurfaceInfo2KHR.html
+type VkPhysicalDeviceSurfaceInfo2KHR C.struct_VkPhysicalDeviceSurfaceInfo2KHR
+
+// NewVkPhysicalDeviceSurfaceInfo2KHR allocates an instance of this struct in the C memory instead
+// of the Go memory.
+func newVkPhysicalDeviceSurfaceInfo2KHR() *VkPhysicalDeviceSurfaceInfo2KHR {
+	sz := unsafe.Sizeof(VkPhysicalDeviceSurfaceInfo2KHR{})
+	ptr := C.malloc(C.ulong(sz))
+	C.memset(ptr, 0, C.ulong(sz))
+	return (*VkPhysicalDeviceSurfaceInfo2KHR)(ptr)
+}
+
+// Free releases the memory allocated by the NewVkPhysicalDeviceSurfaceInfo2KHR method.
+// It does not free pointers stored in the structure. It should only
+// be used on CPtr instances.
+func (x *VkPhysicalDeviceSurfaceInfo2KHR) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsPtr returns the object as a pointer.
+func (x VkPhysicalDeviceSurfaceInfo2KHR) AsPtr() *VkPhysicalDeviceSurfaceInfo2KHR { return &x }
+
+// AsCPtr copies the object to C memory and returns the pointer.
+func (x VkPhysicalDeviceSurfaceInfo2KHR) AsCPtr() *VkPhysicalDeviceSurfaceInfo2KHR {
+	clone := newVkPhysicalDeviceSurfaceInfo2KHR()
+	*clone = x
+	return clone
+}
+
+// SType returns the value of sType from VkPhysicalDeviceSurfaceInfo2KHR
+func (x VkPhysicalDeviceSurfaceInfo2KHR) SType() VkStructureType {
+	ptr := /* Identifier */ (*VkStructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification if there is only a single value in the specification.
+func (x VkPhysicalDeviceSurfaceInfo2KHR) WithDefaultSType() VkPhysicalDeviceSurfaceInfo2KHR {
+	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SURFACE_INFO_2_KHR)
+}
+
+// WithSType copies the provided value into C space and stores it
+// at sType on VkPhysicalDeviceSurfaceInfo2KHR
+func (x VkPhysicalDeviceSurfaceInfo2KHR) WithSType(y VkStructureType) VkPhysicalDeviceSurfaceInfo2KHR {
+	ptr := /* Identifier */ (*C.VkStructureType)(&y)
+	x.sType = *ptr
+	return x
+}
+
+// PNext returns the value of pNext from VkPhysicalDeviceSurfaceInfo2KHR
+func (x VkPhysicalDeviceSurfaceInfo2KHR) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext copies the provided value into C space and stores it
+// at pNext on VkPhysicalDeviceSurfaceInfo2KHR
+func (x VkPhysicalDeviceSurfaceInfo2KHR) WithPNext(y unsafe.Pointer) VkPhysicalDeviceSurfaceInfo2KHR {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
+	x.pNext = *ptr
+	return x
+}
+
+// Surface returns the value of surface from VkPhysicalDeviceSurfaceInfo2KHR
+func (x VkPhysicalDeviceSurfaceInfo2KHR) Surface() VkSurfaceKHR {
+	ptr := func(x *C.VkSurfaceKHR) *VkSurfaceKHR { /* Handle */ return (*VkSurfaceKHR)(unsafe.Pointer(x)) }(&x.surface)
+	return *ptr
+}
+
+// WithSurface copies the provided value into C space and stores it
+// at surface on VkPhysicalDeviceSurfaceInfo2KHR
+func (x VkPhysicalDeviceSurfaceInfo2KHR) WithSurface(y VkSurfaceKHR) VkPhysicalDeviceSurfaceInfo2KHR {
+	ptr := func(x *VkSurfaceKHR) *C.VkSurfaceKHR { /* Handle */ return (*C.VkSurfaceKHR)(unsafe.Pointer(x)) }(&y)
+	x.surface = *ptr
+	return x
+}
+
+//VkSurfaceCapabilities2KHR provides a go interface for VkSurfaceCapabilities2KHR.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSurfaceCapabilities2KHR.html
+type VkSurfaceCapabilities2KHR C.struct_VkSurfaceCapabilities2KHR
+
+// NewVkSurfaceCapabilities2KHR allocates an instance of this struct in the C memory instead
+// of the Go memory.
+func newVkSurfaceCapabilities2KHR() *VkSurfaceCapabilities2KHR {
+	sz := unsafe.Sizeof(VkSurfaceCapabilities2KHR{})
+	ptr := C.malloc(C.ulong(sz))
+	C.memset(ptr, 0, C.ulong(sz))
+	return (*VkSurfaceCapabilities2KHR)(ptr)
+}
+
+// Free releases the memory allocated by the NewVkSurfaceCapabilities2KHR method.
+// It does not free pointers stored in the structure. It should only
+// be used on CPtr instances.
+func (x *VkSurfaceCapabilities2KHR) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsPtr returns the object as a pointer.
+func (x VkSurfaceCapabilities2KHR) AsPtr() *VkSurfaceCapabilities2KHR { return &x }
+
+// AsCPtr copies the object to C memory and returns the pointer.
+func (x VkSurfaceCapabilities2KHR) AsCPtr() *VkSurfaceCapabilities2KHR {
+	clone := newVkSurfaceCapabilities2KHR()
+	*clone = x
+	return clone
+}
+
+// SType returns the value of sType from VkSurfaceCapabilities2KHR
+func (x VkSurfaceCapabilities2KHR) SType() VkStructureType {
+	ptr := /* Identifier */ (*VkStructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification if there is only a single value in the specification.
+func (x VkSurfaceCapabilities2KHR) WithDefaultSType() VkSurfaceCapabilities2KHR {
+	return x.WithSType(VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_KHR)
+}
+
+// WithSType copies the provided value into C space and stores it
+// at sType on VkSurfaceCapabilities2KHR
+func (x VkSurfaceCapabilities2KHR) WithSType(y VkStructureType) VkSurfaceCapabilities2KHR {
+	ptr := /* Identifier */ (*C.VkStructureType)(&y)
+	x.sType = *ptr
+	return x
+}
+
+// PNext returns the value of pNext from VkSurfaceCapabilities2KHR
+func (x VkSurfaceCapabilities2KHR) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext copies the provided value into C space and stores it
+// at pNext on VkSurfaceCapabilities2KHR
+func (x VkSurfaceCapabilities2KHR) WithPNext(y unsafe.Pointer) VkSurfaceCapabilities2KHR {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
+	x.pNext = *ptr
+	return x
+}
+
+// SurfaceCapabilities returns the value of surfaceCapabilities from VkSurfaceCapabilities2KHR
+func (x VkSurfaceCapabilities2KHR) SurfaceCapabilities() VkSurfaceCapabilitiesKHR {
+	ptr := /* Identifier */ (*VkSurfaceCapabilitiesKHR)(&x.surfaceCapabilities)
+	return *ptr
+}
+
+//VkSurfaceFormat2KHR provides a go interface for VkSurfaceFormat2KHR.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSurfaceFormat2KHR.html
+type VkSurfaceFormat2KHR C.struct_VkSurfaceFormat2KHR
+
+// NewVkSurfaceFormat2KHR allocates an instance of this struct in the C memory instead
+// of the Go memory.
+func newVkSurfaceFormat2KHR() *VkSurfaceFormat2KHR {
+	sz := unsafe.Sizeof(VkSurfaceFormat2KHR{})
+	ptr := C.malloc(C.ulong(sz))
+	C.memset(ptr, 0, C.ulong(sz))
+	return (*VkSurfaceFormat2KHR)(ptr)
+}
+
+// Free releases the memory allocated by the NewVkSurfaceFormat2KHR method.
+// It does not free pointers stored in the structure. It should only
+// be used on CPtr instances.
+func (x *VkSurfaceFormat2KHR) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsPtr returns the object as a pointer.
+func (x VkSurfaceFormat2KHR) AsPtr() *VkSurfaceFormat2KHR { return &x }
+
+// AsCPtr copies the object to C memory and returns the pointer.
+func (x VkSurfaceFormat2KHR) AsCPtr() *VkSurfaceFormat2KHR {
+	clone := newVkSurfaceFormat2KHR()
+	*clone = x
+	return clone
+}
+
+// SType returns the value of sType from VkSurfaceFormat2KHR
+func (x VkSurfaceFormat2KHR) SType() VkStructureType {
+	ptr := /* Identifier */ (*VkStructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification if there is only a single value in the specification.
+func (x VkSurfaceFormat2KHR) WithDefaultSType() VkSurfaceFormat2KHR {
+	return x.WithSType(VK_STRUCTURE_TYPE_SURFACE_FORMAT_2_KHR)
+}
+
+// WithSType copies the provided value into C space and stores it
+// at sType on VkSurfaceFormat2KHR
+func (x VkSurfaceFormat2KHR) WithSType(y VkStructureType) VkSurfaceFormat2KHR {
+	ptr := /* Identifier */ (*C.VkStructureType)(&y)
+	x.sType = *ptr
+	return x
+}
+
+// PNext returns the value of pNext from VkSurfaceFormat2KHR
+func (x VkSurfaceFormat2KHR) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext copies the provided value into C space and stores it
+// at pNext on VkSurfaceFormat2KHR
+func (x VkSurfaceFormat2KHR) WithPNext(y unsafe.Pointer) VkSurfaceFormat2KHR {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
+	x.pNext = *ptr
+	return x
+}
+
+// SurfaceFormat returns the value of surfaceFormat from VkSurfaceFormat2KHR
+func (x VkSurfaceFormat2KHR) SurfaceFormat() VkSurfaceFormatKHR {
+	ptr := /* Identifier */ (*VkSurfaceFormatKHR)(&x.surfaceFormat)
+	return *ptr
+}
+
+func VkGetPhysicalDeviceSurfaceCapabilities2KHR(physicalDevice VkPhysicalDevice, pSurfaceInfo *VkPhysicalDeviceSurfaceInfo2KHR, pSurfaceCapabilities *VkSurfaceCapabilities2KHR) VkResult {
+	p0 := func(x *VkPhysicalDevice) *C.VkPhysicalDevice { /* Handle */
+		return (*C.VkPhysicalDevice)(unsafe.Pointer(x))
+	}(&physicalDevice)
+	p1 := func(x **VkPhysicalDeviceSurfaceInfo2KHR) **C.VkPhysicalDeviceSurfaceInfo2KHR { /* Pointer */
+		return (**C.VkPhysicalDeviceSurfaceInfo2KHR)(unsafe.Pointer(x))
+	}(&pSurfaceInfo)
+	p2 := func(x **VkSurfaceCapabilities2KHR) **C.VkSurfaceCapabilities2KHR { /* Pointer */
+		return (**C.VkSurfaceCapabilities2KHR)(unsafe.Pointer(x))
+	}(&pSurfaceCapabilities)
+	ret := C.vkGetPhysicalDeviceSurfaceCapabilities2KHR(*p0, *p1, *p2)
+	retPtr := /* Identifier */ (*VkResult)(&ret)
+	return *retPtr
+}
+
+func VkGetPhysicalDeviceSurfaceFormats2KHR(physicalDevice VkPhysicalDevice, pSurfaceInfo *VkPhysicalDeviceSurfaceInfo2KHR, pSurfaceFormatCount *uint32, pSurfaceFormats []VkSurfaceFormat2KHR) VkResult {
+	p0 := func(x *VkPhysicalDevice) *C.VkPhysicalDevice { /* Handle */
+		return (*C.VkPhysicalDevice)(unsafe.Pointer(x))
+	}(&physicalDevice)
+	p1 := func(x **VkPhysicalDeviceSurfaceInfo2KHR) **C.VkPhysicalDeviceSurfaceInfo2KHR { /* Pointer */
+		return (**C.VkPhysicalDeviceSurfaceInfo2KHR)(unsafe.Pointer(x))
+	}(&pSurfaceInfo)
+	p2 := func(x **uint32) **C.uint { /* Pointer */ return (**C.uint)(unsafe.Pointer(x)) }(&pSurfaceFormatCount)
+	p3 := func(x *[]VkSurfaceFormat2KHR) **C.VkSurfaceFormat2KHR { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.VkSurfaceFormat2KHR)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.VkSurfaceFormat2KHR)(unsafe.Pointer((&ptr)))
+	}(&pSurfaceFormats)
+	ret := C.vkGetPhysicalDeviceSurfaceFormats2KHR(*p0, *p1, *p2, *p3)
 	retPtr := /* Identifier */ (*VkResult)(&ret)
 	return *retPtr
 }

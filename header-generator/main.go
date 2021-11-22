@@ -25,6 +25,7 @@ var (
 		"VK_KHR_swapchain",
 		"VK_KHR_display",
 		"VK_KHR_display_swapchain",
+		"VK_KHR_get_surface_capabilities2",
 	}
 )
 
