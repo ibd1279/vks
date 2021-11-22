@@ -319,6 +319,7 @@ type StructData struct {
 	Name     Translator // e.g. VkOffset2D
 	Members  []StructMemberData
 	ReadOnly bool
+	Alias    Translator
 }
 
 // x int32

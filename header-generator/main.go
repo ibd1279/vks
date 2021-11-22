@@ -152,12 +152,12 @@ func (x *{{$struct.Name.Go}}) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *{{$struct.Name.Go}}) AsPtr() *{{$struct.Name.Go}} { return x }
+func (x {{$struct.Name.Go}}) AsPtr() *{{$struct.Name.Go}} { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *{{$struct.Name.Go}}) AsCPtr() *{{$struct.Name.Go}} {
+func (x {{$struct.Name.Go}}) AsCPtr() *{{$struct.Name.Go}} {
 	clone := new{{$struct.Name.Go}}()
-	*clone = *x
+	*clone = x
 	return clone
 }{{range .Members}}
 
@@ -169,18 +169,24 @@ func (x {{$struct.Name.Go}}) {{.Name.Go}}() {{.Type.Go}} {
 
 // WithDefault{{.Name.Go}} sets the value of {{.Name.Go}} to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *{{$struct.Name.Go}}) WithDefault{{.Name.Go}}() *{{$struct.Name.Go}} {
+func (x {{$struct.Name.Go}}) WithDefault{{.Name.Go}}() {{$struct.Name.Go}} {
 	return x.With{{.Name.Go}}({{.Value.Go}})
 }{{end}}{{if or (eq $struct.ReadOnly false) (or (eq .Name.Go "PNext") (eq .Name.Go "SType"))}}
 
 // With{{.Name.Go}} copies the provided value into C space and stores it
 // at {{.Name.C}} on {{$struct.Name.C}}
-func (x *{{$struct.Name.Go}}) With{{.Name.Go}}(y {{.Type.Go}}) *{{$struct.Name.Go}} {
+func (x {{$struct.Name.Go}}) With{{.Name.Go}}(y {{.Type.Go}}) {{$struct.Name.Go}} {
 	ptr := {{.Type.GoToC}}(&y)
 	{{if .Copy}}copy(x.{{.Name.CGo}}[:], unsafe.Slice(*ptr, len(y))){{else}}x.{{.Name.CGo}} = *ptr{{end}}
 	return x
 }{{end}}{{end}}
-{{end}}{{end}}`
+{{end}}{{end}}{{define "structalias"}}//{{.Name.Go}} is an alias to {{.Alias.Go}}.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{{.Name.C}}.html
+//
+// Deprecated: Most Aliases in the Vulkan spec are for compatibility purposes as extensions get
+// promoted to features. If possible, update code to use the promoted name: {{.Alias.Go}}.
+type {{.Name.Go}} = {{.Alias.Go}}{{end}}
+`
 const unionTemplate = `{{define "union"}}type {{.Name.Go}} {{.Name.CGo}}
 {{with $root := .}}{{range .Members}}
 func (x {{$root.Name.Go}}) {{.Name.Go}}() {{.Type.Go}} {
@@ -217,6 +223,7 @@ import (
 {{else if eq .Template "bitmask"}}{{block "bitmask" .Data}}{{.}}{{end}}
 {{else if eq .Template "func"}}{{block "func" .Data}}{{.}}{{end}}
 {{else if eq .Template "struct"}}{{block "struct" .Data}}{{.}}{{end}}
+{{else if eq .Template "structalias"}}{{block "structalias" .Data}}{{.}}{{end}}
 {{else if eq .Template "union"}}{{block "union" .Data}}{{.}}{{end}}
 {{else if eq .Template "command"}}{{block "command" .Data}}{{.}}{{end}}
 {{end}}{{end}}
@@ -396,6 +403,14 @@ func structTypeToData(node *RegistryNode, tiepuh TypeElement) *struct {
 		Name:     &StructTranslator{tiepuh.Name()},
 		ReadOnly: tiepuh.ReturnedOnly,
 	}
+	if len(tiepuh.Alias) > 0 {
+		data.Alias = &StructTranslator{tiepuh.Alias}
+		return &struct {
+			Template string
+			Data     StructData
+		}{"structalias", data}
+	}
+
 	for _, v := range tiepuh.StructMembers {
 		subData := StructMemberData{
 			Name: &NameTranslator{&ExportTranslator{&LiteralTranslator{v.Name}}},

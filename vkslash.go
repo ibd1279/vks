@@ -3116,12 +3116,12 @@ func (x *VkCommandBufferBeginInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkCommandBufferBeginInfo) AsPtr() *VkCommandBufferBeginInfo { return x }
+func (x VkCommandBufferBeginInfo) AsPtr() *VkCommandBufferBeginInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkCommandBufferBeginInfo) AsCPtr() *VkCommandBufferBeginInfo {
+func (x VkCommandBufferBeginInfo) AsCPtr() *VkCommandBufferBeginInfo {
 	clone := newVkCommandBufferBeginInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -3133,13 +3133,13 @@ func (x VkCommandBufferBeginInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkCommandBufferBeginInfo) WithDefaultSType() *VkCommandBufferBeginInfo {
+func (x VkCommandBufferBeginInfo) WithDefaultSType() VkCommandBufferBeginInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkCommandBufferBeginInfo
-func (x *VkCommandBufferBeginInfo) WithSType(y VkStructureType) *VkCommandBufferBeginInfo {
+func (x VkCommandBufferBeginInfo) WithSType(y VkStructureType) VkCommandBufferBeginInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -3153,7 +3153,7 @@ func (x VkCommandBufferBeginInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkCommandBufferBeginInfo
-func (x *VkCommandBufferBeginInfo) WithPNext(y unsafe.Pointer) *VkCommandBufferBeginInfo {
+func (x VkCommandBufferBeginInfo) WithPNext(y unsafe.Pointer) VkCommandBufferBeginInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -3167,7 +3167,7 @@ func (x VkCommandBufferBeginInfo) Flags() VkCommandBufferUsageFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkCommandBufferBeginInfo
-func (x *VkCommandBufferBeginInfo) WithFlags(y VkCommandBufferUsageFlags) *VkCommandBufferBeginInfo {
+func (x VkCommandBufferBeginInfo) WithFlags(y VkCommandBufferUsageFlags) VkCommandBufferBeginInfo {
 	ptr := /* Identifier */ (*C.VkCommandBufferUsageFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -3183,7 +3183,7 @@ func (x VkCommandBufferBeginInfo) PInheritanceInfo() *VkCommandBufferInheritance
 
 // WithPInheritanceInfo copies the provided value into C space and stores it
 // at pInheritanceInfo on VkCommandBufferBeginInfo
-func (x *VkCommandBufferBeginInfo) WithPInheritanceInfo(y *VkCommandBufferInheritanceInfo) *VkCommandBufferBeginInfo {
+func (x VkCommandBufferBeginInfo) WithPInheritanceInfo(y *VkCommandBufferInheritanceInfo) VkCommandBufferBeginInfo {
 	ptr := func(x **VkCommandBufferInheritanceInfo) **C.VkCommandBufferInheritanceInfo { /* Pointer */
 		return (**C.VkCommandBufferInheritanceInfo)(unsafe.Pointer(x))
 	}(&y)
@@ -3212,12 +3212,12 @@ func (x *VkQueryPoolCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkQueryPoolCreateInfo) AsPtr() *VkQueryPoolCreateInfo { return x }
+func (x VkQueryPoolCreateInfo) AsPtr() *VkQueryPoolCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkQueryPoolCreateInfo) AsCPtr() *VkQueryPoolCreateInfo {
+func (x VkQueryPoolCreateInfo) AsCPtr() *VkQueryPoolCreateInfo {
 	clone := newVkQueryPoolCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -3229,13 +3229,13 @@ func (x VkQueryPoolCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkQueryPoolCreateInfo) WithDefaultSType() *VkQueryPoolCreateInfo {
+func (x VkQueryPoolCreateInfo) WithDefaultSType() VkQueryPoolCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_QUERY_POOL_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkQueryPoolCreateInfo
-func (x *VkQueryPoolCreateInfo) WithSType(y VkStructureType) *VkQueryPoolCreateInfo {
+func (x VkQueryPoolCreateInfo) WithSType(y VkStructureType) VkQueryPoolCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -3249,7 +3249,7 @@ func (x VkQueryPoolCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkQueryPoolCreateInfo
-func (x *VkQueryPoolCreateInfo) WithPNext(y unsafe.Pointer) *VkQueryPoolCreateInfo {
+func (x VkQueryPoolCreateInfo) WithPNext(y unsafe.Pointer) VkQueryPoolCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -3263,7 +3263,7 @@ func (x VkQueryPoolCreateInfo) Flags() VkQueryPoolCreateFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkQueryPoolCreateInfo
-func (x *VkQueryPoolCreateInfo) WithFlags(y VkQueryPoolCreateFlags) *VkQueryPoolCreateInfo {
+func (x VkQueryPoolCreateInfo) WithFlags(y VkQueryPoolCreateFlags) VkQueryPoolCreateInfo {
 	ptr := /* Identifier */ (*C.VkQueryPoolCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -3277,7 +3277,7 @@ func (x VkQueryPoolCreateInfo) QueryType() VkQueryType {
 
 // WithQueryType copies the provided value into C space and stores it
 // at queryType on VkQueryPoolCreateInfo
-func (x *VkQueryPoolCreateInfo) WithQueryType(y VkQueryType) *VkQueryPoolCreateInfo {
+func (x VkQueryPoolCreateInfo) WithQueryType(y VkQueryType) VkQueryPoolCreateInfo {
 	ptr := /* Identifier */ (*C.VkQueryType)(&y)
 	x.queryType = *ptr
 	return x
@@ -3291,7 +3291,7 @@ func (x VkQueryPoolCreateInfo) QueryCount() uint32 {
 
 // WithQueryCount copies the provided value into C space and stores it
 // at queryCount on VkQueryPoolCreateInfo
-func (x *VkQueryPoolCreateInfo) WithQueryCount(y uint32) *VkQueryPoolCreateInfo {
+func (x VkQueryPoolCreateInfo) WithQueryCount(y uint32) VkQueryPoolCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.queryCount = *ptr
 	return x
@@ -3305,7 +3305,7 @@ func (x VkQueryPoolCreateInfo) PipelineStatistics() VkQueryPipelineStatisticFlag
 
 // WithPipelineStatistics copies the provided value into C space and stores it
 // at pipelineStatistics on VkQueryPoolCreateInfo
-func (x *VkQueryPoolCreateInfo) WithPipelineStatistics(y VkQueryPipelineStatisticFlags) *VkQueryPoolCreateInfo {
+func (x VkQueryPoolCreateInfo) WithPipelineStatistics(y VkQueryPipelineStatisticFlags) VkQueryPoolCreateInfo {
 	ptr := /* Identifier */ (*C.VkQueryPipelineStatisticFlags)(&y)
 	x.pipelineStatistics = *ptr
 	return x
@@ -3332,12 +3332,12 @@ func (x *VkSparseBufferMemoryBindInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkSparseBufferMemoryBindInfo) AsPtr() *VkSparseBufferMemoryBindInfo { return x }
+func (x VkSparseBufferMemoryBindInfo) AsPtr() *VkSparseBufferMemoryBindInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkSparseBufferMemoryBindInfo) AsCPtr() *VkSparseBufferMemoryBindInfo {
+func (x VkSparseBufferMemoryBindInfo) AsCPtr() *VkSparseBufferMemoryBindInfo {
 	clone := newVkSparseBufferMemoryBindInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -3349,7 +3349,7 @@ func (x VkSparseBufferMemoryBindInfo) Buffer() VkBuffer {
 
 // WithBuffer copies the provided value into C space and stores it
 // at buffer on VkSparseBufferMemoryBindInfo
-func (x *VkSparseBufferMemoryBindInfo) WithBuffer(y VkBuffer) *VkSparseBufferMemoryBindInfo {
+func (x VkSparseBufferMemoryBindInfo) WithBuffer(y VkBuffer) VkSparseBufferMemoryBindInfo {
 	ptr := func(x *VkBuffer) *C.VkBuffer { /* Handle */ return (*C.VkBuffer)(unsafe.Pointer(x)) }(&y)
 	x.buffer = *ptr
 	return x
@@ -3363,7 +3363,7 @@ func (x VkSparseBufferMemoryBindInfo) BindCount() uint32 {
 
 // WithBindCount copies the provided value into C space and stores it
 // at bindCount on VkSparseBufferMemoryBindInfo
-func (x *VkSparseBufferMemoryBindInfo) WithBindCount(y uint32) *VkSparseBufferMemoryBindInfo {
+func (x VkSparseBufferMemoryBindInfo) WithBindCount(y uint32) VkSparseBufferMemoryBindInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.bindCount = *ptr
 	return x
@@ -3380,7 +3380,7 @@ func (x VkSparseBufferMemoryBindInfo) PBinds() []VkSparseMemoryBind {
 
 // WithPBinds copies the provided value into C space and stores it
 // at pBinds on VkSparseBufferMemoryBindInfo
-func (x *VkSparseBufferMemoryBindInfo) WithPBinds(y []VkSparseMemoryBind) *VkSparseBufferMemoryBindInfo {
+func (x VkSparseBufferMemoryBindInfo) WithPBinds(y []VkSparseMemoryBind) VkSparseBufferMemoryBindInfo {
 	ptr := func(x *[]VkSparseMemoryBind) **C.VkSparseMemoryBind { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkSparseMemoryBind)(unsafe.Pointer(&((*x)[0])))
@@ -3414,12 +3414,12 @@ func (x *VkDescriptorSetLayoutCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDescriptorSetLayoutCreateInfo) AsPtr() *VkDescriptorSetLayoutCreateInfo { return x }
+func (x VkDescriptorSetLayoutCreateInfo) AsPtr() *VkDescriptorSetLayoutCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDescriptorSetLayoutCreateInfo) AsCPtr() *VkDescriptorSetLayoutCreateInfo {
+func (x VkDescriptorSetLayoutCreateInfo) AsCPtr() *VkDescriptorSetLayoutCreateInfo {
 	clone := newVkDescriptorSetLayoutCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -3431,13 +3431,13 @@ func (x VkDescriptorSetLayoutCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkDescriptorSetLayoutCreateInfo) WithDefaultSType() *VkDescriptorSetLayoutCreateInfo {
+func (x VkDescriptorSetLayoutCreateInfo) WithDefaultSType() VkDescriptorSetLayoutCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkDescriptorSetLayoutCreateInfo
-func (x *VkDescriptorSetLayoutCreateInfo) WithSType(y VkStructureType) *VkDescriptorSetLayoutCreateInfo {
+func (x VkDescriptorSetLayoutCreateInfo) WithSType(y VkStructureType) VkDescriptorSetLayoutCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -3451,7 +3451,7 @@ func (x VkDescriptorSetLayoutCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkDescriptorSetLayoutCreateInfo
-func (x *VkDescriptorSetLayoutCreateInfo) WithPNext(y unsafe.Pointer) *VkDescriptorSetLayoutCreateInfo {
+func (x VkDescriptorSetLayoutCreateInfo) WithPNext(y unsafe.Pointer) VkDescriptorSetLayoutCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -3465,7 +3465,7 @@ func (x VkDescriptorSetLayoutCreateInfo) Flags() VkDescriptorSetLayoutCreateFlag
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkDescriptorSetLayoutCreateInfo
-func (x *VkDescriptorSetLayoutCreateInfo) WithFlags(y VkDescriptorSetLayoutCreateFlags) *VkDescriptorSetLayoutCreateInfo {
+func (x VkDescriptorSetLayoutCreateInfo) WithFlags(y VkDescriptorSetLayoutCreateFlags) VkDescriptorSetLayoutCreateInfo {
 	ptr := /* Identifier */ (*C.VkDescriptorSetLayoutCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -3479,7 +3479,7 @@ func (x VkDescriptorSetLayoutCreateInfo) BindingCount() uint32 {
 
 // WithBindingCount copies the provided value into C space and stores it
 // at bindingCount on VkDescriptorSetLayoutCreateInfo
-func (x *VkDescriptorSetLayoutCreateInfo) WithBindingCount(y uint32) *VkDescriptorSetLayoutCreateInfo {
+func (x VkDescriptorSetLayoutCreateInfo) WithBindingCount(y uint32) VkDescriptorSetLayoutCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.bindingCount = *ptr
 	return x
@@ -3496,7 +3496,7 @@ func (x VkDescriptorSetLayoutCreateInfo) PBindings() []VkDescriptorSetLayoutBind
 
 // WithPBindings copies the provided value into C space and stores it
 // at pBindings on VkDescriptorSetLayoutCreateInfo
-func (x *VkDescriptorSetLayoutCreateInfo) WithPBindings(y []VkDescriptorSetLayoutBinding) *VkDescriptorSetLayoutCreateInfo {
+func (x VkDescriptorSetLayoutCreateInfo) WithPBindings(y []VkDescriptorSetLayoutBinding) VkDescriptorSetLayoutCreateInfo {
 	ptr := func(x *[]VkDescriptorSetLayoutBinding) **C.VkDescriptorSetLayoutBinding { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkDescriptorSetLayoutBinding)(unsafe.Pointer(&((*x)[0])))
@@ -3530,12 +3530,12 @@ func (x *VkDescriptorSetLayoutBinding) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDescriptorSetLayoutBinding) AsPtr() *VkDescriptorSetLayoutBinding { return x }
+func (x VkDescriptorSetLayoutBinding) AsPtr() *VkDescriptorSetLayoutBinding { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDescriptorSetLayoutBinding) AsCPtr() *VkDescriptorSetLayoutBinding {
+func (x VkDescriptorSetLayoutBinding) AsCPtr() *VkDescriptorSetLayoutBinding {
 	clone := newVkDescriptorSetLayoutBinding()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -3547,7 +3547,7 @@ func (x VkDescriptorSetLayoutBinding) Binding() uint32 {
 
 // WithBinding copies the provided value into C space and stores it
 // at binding on VkDescriptorSetLayoutBinding
-func (x *VkDescriptorSetLayoutBinding) WithBinding(y uint32) *VkDescriptorSetLayoutBinding {
+func (x VkDescriptorSetLayoutBinding) WithBinding(y uint32) VkDescriptorSetLayoutBinding {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.binding = *ptr
 	return x
@@ -3561,7 +3561,7 @@ func (x VkDescriptorSetLayoutBinding) DescriptorType() VkDescriptorType {
 
 // WithDescriptorType copies the provided value into C space and stores it
 // at descriptorType on VkDescriptorSetLayoutBinding
-func (x *VkDescriptorSetLayoutBinding) WithDescriptorType(y VkDescriptorType) *VkDescriptorSetLayoutBinding {
+func (x VkDescriptorSetLayoutBinding) WithDescriptorType(y VkDescriptorType) VkDescriptorSetLayoutBinding {
 	ptr := /* Identifier */ (*C.VkDescriptorType)(&y)
 	x.descriptorType = *ptr
 	return x
@@ -3575,7 +3575,7 @@ func (x VkDescriptorSetLayoutBinding) DescriptorCount() uint32 {
 
 // WithDescriptorCount copies the provided value into C space and stores it
 // at descriptorCount on VkDescriptorSetLayoutBinding
-func (x *VkDescriptorSetLayoutBinding) WithDescriptorCount(y uint32) *VkDescriptorSetLayoutBinding {
+func (x VkDescriptorSetLayoutBinding) WithDescriptorCount(y uint32) VkDescriptorSetLayoutBinding {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.descriptorCount = *ptr
 	return x
@@ -3589,7 +3589,7 @@ func (x VkDescriptorSetLayoutBinding) StageFlags() VkShaderStageFlags {
 
 // WithStageFlags copies the provided value into C space and stores it
 // at stageFlags on VkDescriptorSetLayoutBinding
-func (x *VkDescriptorSetLayoutBinding) WithStageFlags(y VkShaderStageFlags) *VkDescriptorSetLayoutBinding {
+func (x VkDescriptorSetLayoutBinding) WithStageFlags(y VkShaderStageFlags) VkDescriptorSetLayoutBinding {
 	ptr := /* Identifier */ (*C.VkShaderStageFlags)(&y)
 	x.stageFlags = *ptr
 	return x
@@ -3606,7 +3606,7 @@ func (x VkDescriptorSetLayoutBinding) PImmutableSamplers() []VkSampler {
 
 // WithPImmutableSamplers copies the provided value into C space and stores it
 // at pImmutableSamplers on VkDescriptorSetLayoutBinding
-func (x *VkDescriptorSetLayoutBinding) WithPImmutableSamplers(y []VkSampler) *VkDescriptorSetLayoutBinding {
+func (x VkDescriptorSetLayoutBinding) WithPImmutableSamplers(y []VkSampler) VkDescriptorSetLayoutBinding {
 	ptr := func(x *[]VkSampler) **C.VkSampler { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkSampler)(unsafe.Pointer(&((*x)[0])))
@@ -3640,12 +3640,12 @@ func (x *VkEventCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkEventCreateInfo) AsPtr() *VkEventCreateInfo { return x }
+func (x VkEventCreateInfo) AsPtr() *VkEventCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkEventCreateInfo) AsCPtr() *VkEventCreateInfo {
+func (x VkEventCreateInfo) AsCPtr() *VkEventCreateInfo {
 	clone := newVkEventCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -3657,13 +3657,13 @@ func (x VkEventCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkEventCreateInfo) WithDefaultSType() *VkEventCreateInfo {
+func (x VkEventCreateInfo) WithDefaultSType() VkEventCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_EVENT_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkEventCreateInfo
-func (x *VkEventCreateInfo) WithSType(y VkStructureType) *VkEventCreateInfo {
+func (x VkEventCreateInfo) WithSType(y VkStructureType) VkEventCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -3677,7 +3677,7 @@ func (x VkEventCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkEventCreateInfo
-func (x *VkEventCreateInfo) WithPNext(y unsafe.Pointer) *VkEventCreateInfo {
+func (x VkEventCreateInfo) WithPNext(y unsafe.Pointer) VkEventCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -3691,7 +3691,7 @@ func (x VkEventCreateInfo) Flags() VkEventCreateFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkEventCreateInfo
-func (x *VkEventCreateInfo) WithFlags(y VkEventCreateFlags) *VkEventCreateInfo {
+func (x VkEventCreateInfo) WithFlags(y VkEventCreateFlags) VkEventCreateInfo {
 	ptr := /* Identifier */ (*C.VkEventCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -3718,12 +3718,12 @@ func (x *VkWriteDescriptorSet) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkWriteDescriptorSet) AsPtr() *VkWriteDescriptorSet { return x }
+func (x VkWriteDescriptorSet) AsPtr() *VkWriteDescriptorSet { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkWriteDescriptorSet) AsCPtr() *VkWriteDescriptorSet {
+func (x VkWriteDescriptorSet) AsCPtr() *VkWriteDescriptorSet {
 	clone := newVkWriteDescriptorSet()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -3735,13 +3735,13 @@ func (x VkWriteDescriptorSet) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkWriteDescriptorSet) WithDefaultSType() *VkWriteDescriptorSet {
+func (x VkWriteDescriptorSet) WithDefaultSType() VkWriteDescriptorSet {
 	return x.WithSType(VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkWriteDescriptorSet
-func (x *VkWriteDescriptorSet) WithSType(y VkStructureType) *VkWriteDescriptorSet {
+func (x VkWriteDescriptorSet) WithSType(y VkStructureType) VkWriteDescriptorSet {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -3755,7 +3755,7 @@ func (x VkWriteDescriptorSet) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkWriteDescriptorSet
-func (x *VkWriteDescriptorSet) WithPNext(y unsafe.Pointer) *VkWriteDescriptorSet {
+func (x VkWriteDescriptorSet) WithPNext(y unsafe.Pointer) VkWriteDescriptorSet {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -3769,7 +3769,7 @@ func (x VkWriteDescriptorSet) DstSet() VkDescriptorSet {
 
 // WithDstSet copies the provided value into C space and stores it
 // at dstSet on VkWriteDescriptorSet
-func (x *VkWriteDescriptorSet) WithDstSet(y VkDescriptorSet) *VkWriteDescriptorSet {
+func (x VkWriteDescriptorSet) WithDstSet(y VkDescriptorSet) VkWriteDescriptorSet {
 	ptr := func(x *VkDescriptorSet) *C.VkDescriptorSet { /* Handle */
 		return (*C.VkDescriptorSet)(unsafe.Pointer(x))
 	}(&y)
@@ -3785,7 +3785,7 @@ func (x VkWriteDescriptorSet) DstBinding() uint32 {
 
 // WithDstBinding copies the provided value into C space and stores it
 // at dstBinding on VkWriteDescriptorSet
-func (x *VkWriteDescriptorSet) WithDstBinding(y uint32) *VkWriteDescriptorSet {
+func (x VkWriteDescriptorSet) WithDstBinding(y uint32) VkWriteDescriptorSet {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.dstBinding = *ptr
 	return x
@@ -3799,7 +3799,7 @@ func (x VkWriteDescriptorSet) DstArrayElement() uint32 {
 
 // WithDstArrayElement copies the provided value into C space and stores it
 // at dstArrayElement on VkWriteDescriptorSet
-func (x *VkWriteDescriptorSet) WithDstArrayElement(y uint32) *VkWriteDescriptorSet {
+func (x VkWriteDescriptorSet) WithDstArrayElement(y uint32) VkWriteDescriptorSet {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.dstArrayElement = *ptr
 	return x
@@ -3813,7 +3813,7 @@ func (x VkWriteDescriptorSet) DescriptorCount() uint32 {
 
 // WithDescriptorCount copies the provided value into C space and stores it
 // at descriptorCount on VkWriteDescriptorSet
-func (x *VkWriteDescriptorSet) WithDescriptorCount(y uint32) *VkWriteDescriptorSet {
+func (x VkWriteDescriptorSet) WithDescriptorCount(y uint32) VkWriteDescriptorSet {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.descriptorCount = *ptr
 	return x
@@ -3827,7 +3827,7 @@ func (x VkWriteDescriptorSet) DescriptorType() VkDescriptorType {
 
 // WithDescriptorType copies the provided value into C space and stores it
 // at descriptorType on VkWriteDescriptorSet
-func (x *VkWriteDescriptorSet) WithDescriptorType(y VkDescriptorType) *VkWriteDescriptorSet {
+func (x VkWriteDescriptorSet) WithDescriptorType(y VkDescriptorType) VkWriteDescriptorSet {
 	ptr := /* Identifier */ (*C.VkDescriptorType)(&y)
 	x.descriptorType = *ptr
 	return x
@@ -3844,7 +3844,7 @@ func (x VkWriteDescriptorSet) PImageInfo() []VkDescriptorImageInfo {
 
 // WithPImageInfo copies the provided value into C space and stores it
 // at pImageInfo on VkWriteDescriptorSet
-func (x *VkWriteDescriptorSet) WithPImageInfo(y []VkDescriptorImageInfo) *VkWriteDescriptorSet {
+func (x VkWriteDescriptorSet) WithPImageInfo(y []VkDescriptorImageInfo) VkWriteDescriptorSet {
 	ptr := func(x *[]VkDescriptorImageInfo) **C.VkDescriptorImageInfo { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkDescriptorImageInfo)(unsafe.Pointer(&((*x)[0])))
@@ -3868,7 +3868,7 @@ func (x VkWriteDescriptorSet) PBufferInfo() []VkDescriptorBufferInfo {
 
 // WithPBufferInfo copies the provided value into C space and stores it
 // at pBufferInfo on VkWriteDescriptorSet
-func (x *VkWriteDescriptorSet) WithPBufferInfo(y []VkDescriptorBufferInfo) *VkWriteDescriptorSet {
+func (x VkWriteDescriptorSet) WithPBufferInfo(y []VkDescriptorBufferInfo) VkWriteDescriptorSet {
 	ptr := func(x *[]VkDescriptorBufferInfo) **C.VkDescriptorBufferInfo { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkDescriptorBufferInfo)(unsafe.Pointer(&((*x)[0])))
@@ -3892,7 +3892,7 @@ func (x VkWriteDescriptorSet) PTexelBufferView() []VkBufferView {
 
 // WithPTexelBufferView copies the provided value into C space and stores it
 // at pTexelBufferView on VkWriteDescriptorSet
-func (x *VkWriteDescriptorSet) WithPTexelBufferView(y []VkBufferView) *VkWriteDescriptorSet {
+func (x VkWriteDescriptorSet) WithPTexelBufferView(y []VkBufferView) VkWriteDescriptorSet {
 	ptr := func(x *[]VkBufferView) **C.VkBufferView { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkBufferView)(unsafe.Pointer(&((*x)[0])))
@@ -3926,12 +3926,12 @@ func (x *VkAttachmentDescription) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkAttachmentDescription) AsPtr() *VkAttachmentDescription { return x }
+func (x VkAttachmentDescription) AsPtr() *VkAttachmentDescription { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkAttachmentDescription) AsCPtr() *VkAttachmentDescription {
+func (x VkAttachmentDescription) AsCPtr() *VkAttachmentDescription {
 	clone := newVkAttachmentDescription()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -3943,7 +3943,7 @@ func (x VkAttachmentDescription) Flags() VkAttachmentDescriptionFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkAttachmentDescription
-func (x *VkAttachmentDescription) WithFlags(y VkAttachmentDescriptionFlags) *VkAttachmentDescription {
+func (x VkAttachmentDescription) WithFlags(y VkAttachmentDescriptionFlags) VkAttachmentDescription {
 	ptr := /* Identifier */ (*C.VkAttachmentDescriptionFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -3957,7 +3957,7 @@ func (x VkAttachmentDescription) Format() VkFormat {
 
 // WithFormat copies the provided value into C space and stores it
 // at format on VkAttachmentDescription
-func (x *VkAttachmentDescription) WithFormat(y VkFormat) *VkAttachmentDescription {
+func (x VkAttachmentDescription) WithFormat(y VkFormat) VkAttachmentDescription {
 	ptr := /* Identifier */ (*C.VkFormat)(&y)
 	x.format = *ptr
 	return x
@@ -3971,7 +3971,7 @@ func (x VkAttachmentDescription) Samples() VkSampleCountFlagBits {
 
 // WithSamples copies the provided value into C space and stores it
 // at samples on VkAttachmentDescription
-func (x *VkAttachmentDescription) WithSamples(y VkSampleCountFlagBits) *VkAttachmentDescription {
+func (x VkAttachmentDescription) WithSamples(y VkSampleCountFlagBits) VkAttachmentDescription {
 	ptr := /* Identifier */ (*C.VkSampleCountFlagBits)(&y)
 	x.samples = *ptr
 	return x
@@ -3985,7 +3985,7 @@ func (x VkAttachmentDescription) LoadOp() VkAttachmentLoadOp {
 
 // WithLoadOp copies the provided value into C space and stores it
 // at loadOp on VkAttachmentDescription
-func (x *VkAttachmentDescription) WithLoadOp(y VkAttachmentLoadOp) *VkAttachmentDescription {
+func (x VkAttachmentDescription) WithLoadOp(y VkAttachmentLoadOp) VkAttachmentDescription {
 	ptr := /* Identifier */ (*C.VkAttachmentLoadOp)(&y)
 	x.loadOp = *ptr
 	return x
@@ -3999,7 +3999,7 @@ func (x VkAttachmentDescription) StoreOp() VkAttachmentStoreOp {
 
 // WithStoreOp copies the provided value into C space and stores it
 // at storeOp on VkAttachmentDescription
-func (x *VkAttachmentDescription) WithStoreOp(y VkAttachmentStoreOp) *VkAttachmentDescription {
+func (x VkAttachmentDescription) WithStoreOp(y VkAttachmentStoreOp) VkAttachmentDescription {
 	ptr := /* Identifier */ (*C.VkAttachmentStoreOp)(&y)
 	x.storeOp = *ptr
 	return x
@@ -4013,7 +4013,7 @@ func (x VkAttachmentDescription) StencilLoadOp() VkAttachmentLoadOp {
 
 // WithStencilLoadOp copies the provided value into C space and stores it
 // at stencilLoadOp on VkAttachmentDescription
-func (x *VkAttachmentDescription) WithStencilLoadOp(y VkAttachmentLoadOp) *VkAttachmentDescription {
+func (x VkAttachmentDescription) WithStencilLoadOp(y VkAttachmentLoadOp) VkAttachmentDescription {
 	ptr := /* Identifier */ (*C.VkAttachmentLoadOp)(&y)
 	x.stencilLoadOp = *ptr
 	return x
@@ -4027,7 +4027,7 @@ func (x VkAttachmentDescription) StencilStoreOp() VkAttachmentStoreOp {
 
 // WithStencilStoreOp copies the provided value into C space and stores it
 // at stencilStoreOp on VkAttachmentDescription
-func (x *VkAttachmentDescription) WithStencilStoreOp(y VkAttachmentStoreOp) *VkAttachmentDescription {
+func (x VkAttachmentDescription) WithStencilStoreOp(y VkAttachmentStoreOp) VkAttachmentDescription {
 	ptr := /* Identifier */ (*C.VkAttachmentStoreOp)(&y)
 	x.stencilStoreOp = *ptr
 	return x
@@ -4041,7 +4041,7 @@ func (x VkAttachmentDescription) InitialLayout() VkImageLayout {
 
 // WithInitialLayout copies the provided value into C space and stores it
 // at initialLayout on VkAttachmentDescription
-func (x *VkAttachmentDescription) WithInitialLayout(y VkImageLayout) *VkAttachmentDescription {
+func (x VkAttachmentDescription) WithInitialLayout(y VkImageLayout) VkAttachmentDescription {
 	ptr := /* Identifier */ (*C.VkImageLayout)(&y)
 	x.initialLayout = *ptr
 	return x
@@ -4055,7 +4055,7 @@ func (x VkAttachmentDescription) FinalLayout() VkImageLayout {
 
 // WithFinalLayout copies the provided value into C space and stores it
 // at finalLayout on VkAttachmentDescription
-func (x *VkAttachmentDescription) WithFinalLayout(y VkImageLayout) *VkAttachmentDescription {
+func (x VkAttachmentDescription) WithFinalLayout(y VkImageLayout) VkAttachmentDescription {
 	ptr := /* Identifier */ (*C.VkImageLayout)(&y)
 	x.finalLayout = *ptr
 	return x
@@ -4082,12 +4082,12 @@ func (x *VkBufferCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkBufferCreateInfo) AsPtr() *VkBufferCreateInfo { return x }
+func (x VkBufferCreateInfo) AsPtr() *VkBufferCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkBufferCreateInfo) AsCPtr() *VkBufferCreateInfo {
+func (x VkBufferCreateInfo) AsCPtr() *VkBufferCreateInfo {
 	clone := newVkBufferCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -4099,13 +4099,13 @@ func (x VkBufferCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkBufferCreateInfo) WithDefaultSType() *VkBufferCreateInfo {
+func (x VkBufferCreateInfo) WithDefaultSType() VkBufferCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkBufferCreateInfo
-func (x *VkBufferCreateInfo) WithSType(y VkStructureType) *VkBufferCreateInfo {
+func (x VkBufferCreateInfo) WithSType(y VkStructureType) VkBufferCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -4119,7 +4119,7 @@ func (x VkBufferCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkBufferCreateInfo
-func (x *VkBufferCreateInfo) WithPNext(y unsafe.Pointer) *VkBufferCreateInfo {
+func (x VkBufferCreateInfo) WithPNext(y unsafe.Pointer) VkBufferCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -4133,7 +4133,7 @@ func (x VkBufferCreateInfo) Flags() VkBufferCreateFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkBufferCreateInfo
-func (x *VkBufferCreateInfo) WithFlags(y VkBufferCreateFlags) *VkBufferCreateInfo {
+func (x VkBufferCreateInfo) WithFlags(y VkBufferCreateFlags) VkBufferCreateInfo {
 	ptr := /* Identifier */ (*C.VkBufferCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -4147,7 +4147,7 @@ func (x VkBufferCreateInfo) Size() VkDeviceSize {
 
 // WithSize copies the provided value into C space and stores it
 // at size on VkBufferCreateInfo
-func (x *VkBufferCreateInfo) WithSize(y VkDeviceSize) *VkBufferCreateInfo {
+func (x VkBufferCreateInfo) WithSize(y VkDeviceSize) VkBufferCreateInfo {
 	ptr := /* Identifier */ (*C.VkDeviceSize)(&y)
 	x.size = *ptr
 	return x
@@ -4161,7 +4161,7 @@ func (x VkBufferCreateInfo) Usage() VkBufferUsageFlags {
 
 // WithUsage copies the provided value into C space and stores it
 // at usage on VkBufferCreateInfo
-func (x *VkBufferCreateInfo) WithUsage(y VkBufferUsageFlags) *VkBufferCreateInfo {
+func (x VkBufferCreateInfo) WithUsage(y VkBufferUsageFlags) VkBufferCreateInfo {
 	ptr := /* Identifier */ (*C.VkBufferUsageFlags)(&y)
 	x.usage = *ptr
 	return x
@@ -4175,7 +4175,7 @@ func (x VkBufferCreateInfo) SharingMode() VkSharingMode {
 
 // WithSharingMode copies the provided value into C space and stores it
 // at sharingMode on VkBufferCreateInfo
-func (x *VkBufferCreateInfo) WithSharingMode(y VkSharingMode) *VkBufferCreateInfo {
+func (x VkBufferCreateInfo) WithSharingMode(y VkSharingMode) VkBufferCreateInfo {
 	ptr := /* Identifier */ (*C.VkSharingMode)(&y)
 	x.sharingMode = *ptr
 	return x
@@ -4189,7 +4189,7 @@ func (x VkBufferCreateInfo) QueueFamilyIndexCount() uint32 {
 
 // WithQueueFamilyIndexCount copies the provided value into C space and stores it
 // at queueFamilyIndexCount on VkBufferCreateInfo
-func (x *VkBufferCreateInfo) WithQueueFamilyIndexCount(y uint32) *VkBufferCreateInfo {
+func (x VkBufferCreateInfo) WithQueueFamilyIndexCount(y uint32) VkBufferCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.queueFamilyIndexCount = *ptr
 	return x
@@ -4206,7 +4206,7 @@ func (x VkBufferCreateInfo) PQueueFamilyIndices() []uint32 {
 
 // WithPQueueFamilyIndices copies the provided value into C space and stores it
 // at pQueueFamilyIndices on VkBufferCreateInfo
-func (x *VkBufferCreateInfo) WithPQueueFamilyIndices(y []uint32) *VkBufferCreateInfo {
+func (x VkBufferCreateInfo) WithPQueueFamilyIndices(y []uint32) VkBufferCreateInfo {
 	ptr := func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
@@ -4240,12 +4240,12 @@ func (x *VkSemaphoreCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkSemaphoreCreateInfo) AsPtr() *VkSemaphoreCreateInfo { return x }
+func (x VkSemaphoreCreateInfo) AsPtr() *VkSemaphoreCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkSemaphoreCreateInfo) AsCPtr() *VkSemaphoreCreateInfo {
+func (x VkSemaphoreCreateInfo) AsCPtr() *VkSemaphoreCreateInfo {
 	clone := newVkSemaphoreCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -4257,13 +4257,13 @@ func (x VkSemaphoreCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkSemaphoreCreateInfo) WithDefaultSType() *VkSemaphoreCreateInfo {
+func (x VkSemaphoreCreateInfo) WithDefaultSType() VkSemaphoreCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkSemaphoreCreateInfo
-func (x *VkSemaphoreCreateInfo) WithSType(y VkStructureType) *VkSemaphoreCreateInfo {
+func (x VkSemaphoreCreateInfo) WithSType(y VkStructureType) VkSemaphoreCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -4277,7 +4277,7 @@ func (x VkSemaphoreCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkSemaphoreCreateInfo
-func (x *VkSemaphoreCreateInfo) WithPNext(y unsafe.Pointer) *VkSemaphoreCreateInfo {
+func (x VkSemaphoreCreateInfo) WithPNext(y unsafe.Pointer) VkSemaphoreCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -4291,7 +4291,7 @@ func (x VkSemaphoreCreateInfo) Flags() VkSemaphoreCreateFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkSemaphoreCreateInfo
-func (x *VkSemaphoreCreateInfo) WithFlags(y VkSemaphoreCreateFlags) *VkSemaphoreCreateInfo {
+func (x VkSemaphoreCreateInfo) WithFlags(y VkSemaphoreCreateFlags) VkSemaphoreCreateInfo {
 	ptr := /* Identifier */ (*C.VkSemaphoreCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -4318,12 +4318,12 @@ func (x *VkFenceCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkFenceCreateInfo) AsPtr() *VkFenceCreateInfo { return x }
+func (x VkFenceCreateInfo) AsPtr() *VkFenceCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkFenceCreateInfo) AsCPtr() *VkFenceCreateInfo {
+func (x VkFenceCreateInfo) AsCPtr() *VkFenceCreateInfo {
 	clone := newVkFenceCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -4335,13 +4335,13 @@ func (x VkFenceCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkFenceCreateInfo) WithDefaultSType() *VkFenceCreateInfo {
+func (x VkFenceCreateInfo) WithDefaultSType() VkFenceCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_FENCE_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkFenceCreateInfo
-func (x *VkFenceCreateInfo) WithSType(y VkStructureType) *VkFenceCreateInfo {
+func (x VkFenceCreateInfo) WithSType(y VkStructureType) VkFenceCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -4355,7 +4355,7 @@ func (x VkFenceCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkFenceCreateInfo
-func (x *VkFenceCreateInfo) WithPNext(y unsafe.Pointer) *VkFenceCreateInfo {
+func (x VkFenceCreateInfo) WithPNext(y unsafe.Pointer) VkFenceCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -4369,7 +4369,7 @@ func (x VkFenceCreateInfo) Flags() VkFenceCreateFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkFenceCreateInfo
-func (x *VkFenceCreateInfo) WithFlags(y VkFenceCreateFlags) *VkFenceCreateInfo {
+func (x VkFenceCreateInfo) WithFlags(y VkFenceCreateFlags) VkFenceCreateInfo {
 	ptr := /* Identifier */ (*C.VkFenceCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -4396,12 +4396,12 @@ func (x *VkAttachmentReference) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkAttachmentReference) AsPtr() *VkAttachmentReference { return x }
+func (x VkAttachmentReference) AsPtr() *VkAttachmentReference { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkAttachmentReference) AsCPtr() *VkAttachmentReference {
+func (x VkAttachmentReference) AsCPtr() *VkAttachmentReference {
 	clone := newVkAttachmentReference()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -4413,7 +4413,7 @@ func (x VkAttachmentReference) Attachment() uint32 {
 
 // WithAttachment copies the provided value into C space and stores it
 // at attachment on VkAttachmentReference
-func (x *VkAttachmentReference) WithAttachment(y uint32) *VkAttachmentReference {
+func (x VkAttachmentReference) WithAttachment(y uint32) VkAttachmentReference {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.attachment = *ptr
 	return x
@@ -4427,7 +4427,7 @@ func (x VkAttachmentReference) Layout() VkImageLayout {
 
 // WithLayout copies the provided value into C space and stores it
 // at layout on VkAttachmentReference
-func (x *VkAttachmentReference) WithLayout(y VkImageLayout) *VkAttachmentReference {
+func (x VkAttachmentReference) WithLayout(y VkImageLayout) VkAttachmentReference {
 	ptr := /* Identifier */ (*C.VkImageLayout)(&y)
 	x.layout = *ptr
 	return x
@@ -4454,12 +4454,12 @@ func (x *VkSparseMemoryBind) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkSparseMemoryBind) AsPtr() *VkSparseMemoryBind { return x }
+func (x VkSparseMemoryBind) AsPtr() *VkSparseMemoryBind { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkSparseMemoryBind) AsCPtr() *VkSparseMemoryBind {
+func (x VkSparseMemoryBind) AsCPtr() *VkSparseMemoryBind {
 	clone := newVkSparseMemoryBind()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -4471,7 +4471,7 @@ func (x VkSparseMemoryBind) ResourceOffset() VkDeviceSize {
 
 // WithResourceOffset copies the provided value into C space and stores it
 // at resourceOffset on VkSparseMemoryBind
-func (x *VkSparseMemoryBind) WithResourceOffset(y VkDeviceSize) *VkSparseMemoryBind {
+func (x VkSparseMemoryBind) WithResourceOffset(y VkDeviceSize) VkSparseMemoryBind {
 	ptr := /* Identifier */ (*C.VkDeviceSize)(&y)
 	x.resourceOffset = *ptr
 	return x
@@ -4485,7 +4485,7 @@ func (x VkSparseMemoryBind) Size() VkDeviceSize {
 
 // WithSize copies the provided value into C space and stores it
 // at size on VkSparseMemoryBind
-func (x *VkSparseMemoryBind) WithSize(y VkDeviceSize) *VkSparseMemoryBind {
+func (x VkSparseMemoryBind) WithSize(y VkDeviceSize) VkSparseMemoryBind {
 	ptr := /* Identifier */ (*C.VkDeviceSize)(&y)
 	x.size = *ptr
 	return x
@@ -4499,7 +4499,7 @@ func (x VkSparseMemoryBind) Memory() VkDeviceMemory {
 
 // WithMemory copies the provided value into C space and stores it
 // at memory on VkSparseMemoryBind
-func (x *VkSparseMemoryBind) WithMemory(y VkDeviceMemory) *VkSparseMemoryBind {
+func (x VkSparseMemoryBind) WithMemory(y VkDeviceMemory) VkSparseMemoryBind {
 	ptr := func(x *VkDeviceMemory) *C.VkDeviceMemory { /* Handle */ return (*C.VkDeviceMemory)(unsafe.Pointer(x)) }(&y)
 	x.memory = *ptr
 	return x
@@ -4513,7 +4513,7 @@ func (x VkSparseMemoryBind) MemoryOffset() VkDeviceSize {
 
 // WithMemoryOffset copies the provided value into C space and stores it
 // at memoryOffset on VkSparseMemoryBind
-func (x *VkSparseMemoryBind) WithMemoryOffset(y VkDeviceSize) *VkSparseMemoryBind {
+func (x VkSparseMemoryBind) WithMemoryOffset(y VkDeviceSize) VkSparseMemoryBind {
 	ptr := /* Identifier */ (*C.VkDeviceSize)(&y)
 	x.memoryOffset = *ptr
 	return x
@@ -4527,7 +4527,7 @@ func (x VkSparseMemoryBind) Flags() VkSparseMemoryBindFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkSparseMemoryBind
-func (x *VkSparseMemoryBind) WithFlags(y VkSparseMemoryBindFlags) *VkSparseMemoryBind {
+func (x VkSparseMemoryBind) WithFlags(y VkSparseMemoryBindFlags) VkSparseMemoryBind {
 	ptr := /* Identifier */ (*C.VkSparseMemoryBindFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -4554,12 +4554,12 @@ func (x *VkDescriptorSetAllocateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDescriptorSetAllocateInfo) AsPtr() *VkDescriptorSetAllocateInfo { return x }
+func (x VkDescriptorSetAllocateInfo) AsPtr() *VkDescriptorSetAllocateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDescriptorSetAllocateInfo) AsCPtr() *VkDescriptorSetAllocateInfo {
+func (x VkDescriptorSetAllocateInfo) AsCPtr() *VkDescriptorSetAllocateInfo {
 	clone := newVkDescriptorSetAllocateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -4571,13 +4571,13 @@ func (x VkDescriptorSetAllocateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkDescriptorSetAllocateInfo) WithDefaultSType() *VkDescriptorSetAllocateInfo {
+func (x VkDescriptorSetAllocateInfo) WithDefaultSType() VkDescriptorSetAllocateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkDescriptorSetAllocateInfo
-func (x *VkDescriptorSetAllocateInfo) WithSType(y VkStructureType) *VkDescriptorSetAllocateInfo {
+func (x VkDescriptorSetAllocateInfo) WithSType(y VkStructureType) VkDescriptorSetAllocateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -4591,7 +4591,7 @@ func (x VkDescriptorSetAllocateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkDescriptorSetAllocateInfo
-func (x *VkDescriptorSetAllocateInfo) WithPNext(y unsafe.Pointer) *VkDescriptorSetAllocateInfo {
+func (x VkDescriptorSetAllocateInfo) WithPNext(y unsafe.Pointer) VkDescriptorSetAllocateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -4607,7 +4607,7 @@ func (x VkDescriptorSetAllocateInfo) DescriptorPool() VkDescriptorPool {
 
 // WithDescriptorPool copies the provided value into C space and stores it
 // at descriptorPool on VkDescriptorSetAllocateInfo
-func (x *VkDescriptorSetAllocateInfo) WithDescriptorPool(y VkDescriptorPool) *VkDescriptorSetAllocateInfo {
+func (x VkDescriptorSetAllocateInfo) WithDescriptorPool(y VkDescriptorPool) VkDescriptorSetAllocateInfo {
 	ptr := func(x *VkDescriptorPool) *C.VkDescriptorPool { /* Handle */
 		return (*C.VkDescriptorPool)(unsafe.Pointer(x))
 	}(&y)
@@ -4623,7 +4623,7 @@ func (x VkDescriptorSetAllocateInfo) DescriptorSetCount() uint32 {
 
 // WithDescriptorSetCount copies the provided value into C space and stores it
 // at descriptorSetCount on VkDescriptorSetAllocateInfo
-func (x *VkDescriptorSetAllocateInfo) WithDescriptorSetCount(y uint32) *VkDescriptorSetAllocateInfo {
+func (x VkDescriptorSetAllocateInfo) WithDescriptorSetCount(y uint32) VkDescriptorSetAllocateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.descriptorSetCount = *ptr
 	return x
@@ -4640,7 +4640,7 @@ func (x VkDescriptorSetAllocateInfo) PSetLayouts() []VkDescriptorSetLayout {
 
 // WithPSetLayouts copies the provided value into C space and stores it
 // at pSetLayouts on VkDescriptorSetAllocateInfo
-func (x *VkDescriptorSetAllocateInfo) WithPSetLayouts(y []VkDescriptorSetLayout) *VkDescriptorSetAllocateInfo {
+func (x VkDescriptorSetAllocateInfo) WithPSetLayouts(y []VkDescriptorSetLayout) VkDescriptorSetAllocateInfo {
 	ptr := func(x *[]VkDescriptorSetLayout) **C.VkDescriptorSetLayout { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkDescriptorSetLayout)(unsafe.Pointer(&((*x)[0])))
@@ -4674,12 +4674,12 @@ func (x *VkSparseImageOpaqueMemoryBindInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkSparseImageOpaqueMemoryBindInfo) AsPtr() *VkSparseImageOpaqueMemoryBindInfo { return x }
+func (x VkSparseImageOpaqueMemoryBindInfo) AsPtr() *VkSparseImageOpaqueMemoryBindInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkSparseImageOpaqueMemoryBindInfo) AsCPtr() *VkSparseImageOpaqueMemoryBindInfo {
+func (x VkSparseImageOpaqueMemoryBindInfo) AsCPtr() *VkSparseImageOpaqueMemoryBindInfo {
 	clone := newVkSparseImageOpaqueMemoryBindInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -4691,7 +4691,7 @@ func (x VkSparseImageOpaqueMemoryBindInfo) Image() VkImage {
 
 // WithImage copies the provided value into C space and stores it
 // at image on VkSparseImageOpaqueMemoryBindInfo
-func (x *VkSparseImageOpaqueMemoryBindInfo) WithImage(y VkImage) *VkSparseImageOpaqueMemoryBindInfo {
+func (x VkSparseImageOpaqueMemoryBindInfo) WithImage(y VkImage) VkSparseImageOpaqueMemoryBindInfo {
 	ptr := func(x *VkImage) *C.VkImage { /* Handle */ return (*C.VkImage)(unsafe.Pointer(x)) }(&y)
 	x.image = *ptr
 	return x
@@ -4705,7 +4705,7 @@ func (x VkSparseImageOpaqueMemoryBindInfo) BindCount() uint32 {
 
 // WithBindCount copies the provided value into C space and stores it
 // at bindCount on VkSparseImageOpaqueMemoryBindInfo
-func (x *VkSparseImageOpaqueMemoryBindInfo) WithBindCount(y uint32) *VkSparseImageOpaqueMemoryBindInfo {
+func (x VkSparseImageOpaqueMemoryBindInfo) WithBindCount(y uint32) VkSparseImageOpaqueMemoryBindInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.bindCount = *ptr
 	return x
@@ -4722,7 +4722,7 @@ func (x VkSparseImageOpaqueMemoryBindInfo) PBinds() []VkSparseMemoryBind {
 
 // WithPBinds copies the provided value into C space and stores it
 // at pBinds on VkSparseImageOpaqueMemoryBindInfo
-func (x *VkSparseImageOpaqueMemoryBindInfo) WithPBinds(y []VkSparseMemoryBind) *VkSparseImageOpaqueMemoryBindInfo {
+func (x VkSparseImageOpaqueMemoryBindInfo) WithPBinds(y []VkSparseMemoryBind) VkSparseImageOpaqueMemoryBindInfo {
 	ptr := func(x *[]VkSparseMemoryBind) **C.VkSparseMemoryBind { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkSparseMemoryBind)(unsafe.Pointer(&((*x)[0])))
@@ -4756,12 +4756,12 @@ func (x *VkSparseImageMemoryRequirements) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkSparseImageMemoryRequirements) AsPtr() *VkSparseImageMemoryRequirements { return x }
+func (x VkSparseImageMemoryRequirements) AsPtr() *VkSparseImageMemoryRequirements { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkSparseImageMemoryRequirements) AsCPtr() *VkSparseImageMemoryRequirements {
+func (x VkSparseImageMemoryRequirements) AsCPtr() *VkSparseImageMemoryRequirements {
 	clone := newVkSparseImageMemoryRequirements()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -4816,12 +4816,12 @@ func (x *VkBufferViewCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkBufferViewCreateInfo) AsPtr() *VkBufferViewCreateInfo { return x }
+func (x VkBufferViewCreateInfo) AsPtr() *VkBufferViewCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkBufferViewCreateInfo) AsCPtr() *VkBufferViewCreateInfo {
+func (x VkBufferViewCreateInfo) AsCPtr() *VkBufferViewCreateInfo {
 	clone := newVkBufferViewCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -4833,13 +4833,13 @@ func (x VkBufferViewCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkBufferViewCreateInfo) WithDefaultSType() *VkBufferViewCreateInfo {
+func (x VkBufferViewCreateInfo) WithDefaultSType() VkBufferViewCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_BUFFER_VIEW_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkBufferViewCreateInfo
-func (x *VkBufferViewCreateInfo) WithSType(y VkStructureType) *VkBufferViewCreateInfo {
+func (x VkBufferViewCreateInfo) WithSType(y VkStructureType) VkBufferViewCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -4853,7 +4853,7 @@ func (x VkBufferViewCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkBufferViewCreateInfo
-func (x *VkBufferViewCreateInfo) WithPNext(y unsafe.Pointer) *VkBufferViewCreateInfo {
+func (x VkBufferViewCreateInfo) WithPNext(y unsafe.Pointer) VkBufferViewCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -4867,7 +4867,7 @@ func (x VkBufferViewCreateInfo) Flags() VkBufferViewCreateFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkBufferViewCreateInfo
-func (x *VkBufferViewCreateInfo) WithFlags(y VkBufferViewCreateFlags) *VkBufferViewCreateInfo {
+func (x VkBufferViewCreateInfo) WithFlags(y VkBufferViewCreateFlags) VkBufferViewCreateInfo {
 	ptr := /* Identifier */ (*C.VkBufferViewCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -4881,7 +4881,7 @@ func (x VkBufferViewCreateInfo) Buffer() VkBuffer {
 
 // WithBuffer copies the provided value into C space and stores it
 // at buffer on VkBufferViewCreateInfo
-func (x *VkBufferViewCreateInfo) WithBuffer(y VkBuffer) *VkBufferViewCreateInfo {
+func (x VkBufferViewCreateInfo) WithBuffer(y VkBuffer) VkBufferViewCreateInfo {
 	ptr := func(x *VkBuffer) *C.VkBuffer { /* Handle */ return (*C.VkBuffer)(unsafe.Pointer(x)) }(&y)
 	x.buffer = *ptr
 	return x
@@ -4895,7 +4895,7 @@ func (x VkBufferViewCreateInfo) Format() VkFormat {
 
 // WithFormat copies the provided value into C space and stores it
 // at format on VkBufferViewCreateInfo
-func (x *VkBufferViewCreateInfo) WithFormat(y VkFormat) *VkBufferViewCreateInfo {
+func (x VkBufferViewCreateInfo) WithFormat(y VkFormat) VkBufferViewCreateInfo {
 	ptr := /* Identifier */ (*C.VkFormat)(&y)
 	x.format = *ptr
 	return x
@@ -4909,7 +4909,7 @@ func (x VkBufferViewCreateInfo) Offset() VkDeviceSize {
 
 // WithOffset copies the provided value into C space and stores it
 // at offset on VkBufferViewCreateInfo
-func (x *VkBufferViewCreateInfo) WithOffset(y VkDeviceSize) *VkBufferViewCreateInfo {
+func (x VkBufferViewCreateInfo) WithOffset(y VkDeviceSize) VkBufferViewCreateInfo {
 	ptr := /* Identifier */ (*C.VkDeviceSize)(&y)
 	x.offset = *ptr
 	return x
@@ -4923,7 +4923,7 @@ func (x VkBufferViewCreateInfo) Range() VkDeviceSize {
 
 // WithRange copies the provided value into C space and stores it
 // at range on VkBufferViewCreateInfo
-func (x *VkBufferViewCreateInfo) WithRange(y VkDeviceSize) *VkBufferViewCreateInfo {
+func (x VkBufferViewCreateInfo) WithRange(y VkDeviceSize) VkBufferViewCreateInfo {
 	ptr := /* Identifier */ (*C.VkDeviceSize)(&y)
 	x._range = *ptr
 	return x
@@ -4950,12 +4950,12 @@ func (x *VkSparseImageMemoryBindInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkSparseImageMemoryBindInfo) AsPtr() *VkSparseImageMemoryBindInfo { return x }
+func (x VkSparseImageMemoryBindInfo) AsPtr() *VkSparseImageMemoryBindInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkSparseImageMemoryBindInfo) AsCPtr() *VkSparseImageMemoryBindInfo {
+func (x VkSparseImageMemoryBindInfo) AsCPtr() *VkSparseImageMemoryBindInfo {
 	clone := newVkSparseImageMemoryBindInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -4967,7 +4967,7 @@ func (x VkSparseImageMemoryBindInfo) Image() VkImage {
 
 // WithImage copies the provided value into C space and stores it
 // at image on VkSparseImageMemoryBindInfo
-func (x *VkSparseImageMemoryBindInfo) WithImage(y VkImage) *VkSparseImageMemoryBindInfo {
+func (x VkSparseImageMemoryBindInfo) WithImage(y VkImage) VkSparseImageMemoryBindInfo {
 	ptr := func(x *VkImage) *C.VkImage { /* Handle */ return (*C.VkImage)(unsafe.Pointer(x)) }(&y)
 	x.image = *ptr
 	return x
@@ -4981,7 +4981,7 @@ func (x VkSparseImageMemoryBindInfo) BindCount() uint32 {
 
 // WithBindCount copies the provided value into C space and stores it
 // at bindCount on VkSparseImageMemoryBindInfo
-func (x *VkSparseImageMemoryBindInfo) WithBindCount(y uint32) *VkSparseImageMemoryBindInfo {
+func (x VkSparseImageMemoryBindInfo) WithBindCount(y uint32) VkSparseImageMemoryBindInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.bindCount = *ptr
 	return x
@@ -4998,7 +4998,7 @@ func (x VkSparseImageMemoryBindInfo) PBinds() []VkSparseImageMemoryBind {
 
 // WithPBinds copies the provided value into C space and stores it
 // at pBinds on VkSparseImageMemoryBindInfo
-func (x *VkSparseImageMemoryBindInfo) WithPBinds(y []VkSparseImageMemoryBind) *VkSparseImageMemoryBindInfo {
+func (x VkSparseImageMemoryBindInfo) WithPBinds(y []VkSparseImageMemoryBind) VkSparseImageMemoryBindInfo {
 	ptr := func(x *[]VkSparseImageMemoryBind) **C.VkSparseImageMemoryBind { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkSparseImageMemoryBind)(unsafe.Pointer(&((*x)[0])))
@@ -5032,12 +5032,12 @@ func (x *VkDescriptorPoolSize) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDescriptorPoolSize) AsPtr() *VkDescriptorPoolSize { return x }
+func (x VkDescriptorPoolSize) AsPtr() *VkDescriptorPoolSize { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDescriptorPoolSize) AsCPtr() *VkDescriptorPoolSize {
+func (x VkDescriptorPoolSize) AsCPtr() *VkDescriptorPoolSize {
 	clone := newVkDescriptorPoolSize()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -5049,7 +5049,7 @@ func (x VkDescriptorPoolSize) Type() VkDescriptorType {
 
 // WithType copies the provided value into C space and stores it
 // at type on VkDescriptorPoolSize
-func (x *VkDescriptorPoolSize) WithType(y VkDescriptorType) *VkDescriptorPoolSize {
+func (x VkDescriptorPoolSize) WithType(y VkDescriptorType) VkDescriptorPoolSize {
 	ptr := /* Identifier */ (*C.VkDescriptorType)(&y)
 	x._type = *ptr
 	return x
@@ -5063,7 +5063,7 @@ func (x VkDescriptorPoolSize) DescriptorCount() uint32 {
 
 // WithDescriptorCount copies the provided value into C space and stores it
 // at descriptorCount on VkDescriptorPoolSize
-func (x *VkDescriptorPoolSize) WithDescriptorCount(y uint32) *VkDescriptorPoolSize {
+func (x VkDescriptorPoolSize) WithDescriptorCount(y uint32) VkDescriptorPoolSize {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.descriptorCount = *ptr
 	return x
@@ -5090,12 +5090,12 @@ func (x *VkSparseImageMemoryBind) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkSparseImageMemoryBind) AsPtr() *VkSparseImageMemoryBind { return x }
+func (x VkSparseImageMemoryBind) AsPtr() *VkSparseImageMemoryBind { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkSparseImageMemoryBind) AsCPtr() *VkSparseImageMemoryBind {
+func (x VkSparseImageMemoryBind) AsCPtr() *VkSparseImageMemoryBind {
 	clone := newVkSparseImageMemoryBind()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -5107,7 +5107,7 @@ func (x VkSparseImageMemoryBind) Subresource() VkImageSubresource {
 
 // WithSubresource copies the provided value into C space and stores it
 // at subresource on VkSparseImageMemoryBind
-func (x *VkSparseImageMemoryBind) WithSubresource(y VkImageSubresource) *VkSparseImageMemoryBind {
+func (x VkSparseImageMemoryBind) WithSubresource(y VkImageSubresource) VkSparseImageMemoryBind {
 	ptr := /* Identifier */ (*C.VkImageSubresource)(&y)
 	x.subresource = *ptr
 	return x
@@ -5121,7 +5121,7 @@ func (x VkSparseImageMemoryBind) Offset() VkOffset3D {
 
 // WithOffset copies the provided value into C space and stores it
 // at offset on VkSparseImageMemoryBind
-func (x *VkSparseImageMemoryBind) WithOffset(y VkOffset3D) *VkSparseImageMemoryBind {
+func (x VkSparseImageMemoryBind) WithOffset(y VkOffset3D) VkSparseImageMemoryBind {
 	ptr := /* Identifier */ (*C.VkOffset3D)(&y)
 	x.offset = *ptr
 	return x
@@ -5135,7 +5135,7 @@ func (x VkSparseImageMemoryBind) Extent() VkExtent3D {
 
 // WithExtent copies the provided value into C space and stores it
 // at extent on VkSparseImageMemoryBind
-func (x *VkSparseImageMemoryBind) WithExtent(y VkExtent3D) *VkSparseImageMemoryBind {
+func (x VkSparseImageMemoryBind) WithExtent(y VkExtent3D) VkSparseImageMemoryBind {
 	ptr := /* Identifier */ (*C.VkExtent3D)(&y)
 	x.extent = *ptr
 	return x
@@ -5149,7 +5149,7 @@ func (x VkSparseImageMemoryBind) Memory() VkDeviceMemory {
 
 // WithMemory copies the provided value into C space and stores it
 // at memory on VkSparseImageMemoryBind
-func (x *VkSparseImageMemoryBind) WithMemory(y VkDeviceMemory) *VkSparseImageMemoryBind {
+func (x VkSparseImageMemoryBind) WithMemory(y VkDeviceMemory) VkSparseImageMemoryBind {
 	ptr := func(x *VkDeviceMemory) *C.VkDeviceMemory { /* Handle */ return (*C.VkDeviceMemory)(unsafe.Pointer(x)) }(&y)
 	x.memory = *ptr
 	return x
@@ -5163,7 +5163,7 @@ func (x VkSparseImageMemoryBind) MemoryOffset() VkDeviceSize {
 
 // WithMemoryOffset copies the provided value into C space and stores it
 // at memoryOffset on VkSparseImageMemoryBind
-func (x *VkSparseImageMemoryBind) WithMemoryOffset(y VkDeviceSize) *VkSparseImageMemoryBind {
+func (x VkSparseImageMemoryBind) WithMemoryOffset(y VkDeviceSize) VkSparseImageMemoryBind {
 	ptr := /* Identifier */ (*C.VkDeviceSize)(&y)
 	x.memoryOffset = *ptr
 	return x
@@ -5177,7 +5177,7 @@ func (x VkSparseImageMemoryBind) Flags() VkSparseMemoryBindFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkSparseImageMemoryBind
-func (x *VkSparseImageMemoryBind) WithFlags(y VkSparseMemoryBindFlags) *VkSparseImageMemoryBind {
+func (x VkSparseImageMemoryBind) WithFlags(y VkSparseMemoryBindFlags) VkSparseImageMemoryBind {
 	ptr := /* Identifier */ (*C.VkSparseMemoryBindFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -5204,12 +5204,12 @@ func (x *VkSparseImageFormatProperties) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkSparseImageFormatProperties) AsPtr() *VkSparseImageFormatProperties { return x }
+func (x VkSparseImageFormatProperties) AsPtr() *VkSparseImageFormatProperties { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkSparseImageFormatProperties) AsCPtr() *VkSparseImageFormatProperties {
+func (x VkSparseImageFormatProperties) AsCPtr() *VkSparseImageFormatProperties {
 	clone := newVkSparseImageFormatProperties()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -5252,12 +5252,12 @@ func (x *VkImageCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkImageCreateInfo) AsPtr() *VkImageCreateInfo { return x }
+func (x VkImageCreateInfo) AsPtr() *VkImageCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkImageCreateInfo) AsCPtr() *VkImageCreateInfo {
+func (x VkImageCreateInfo) AsCPtr() *VkImageCreateInfo {
 	clone := newVkImageCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -5269,13 +5269,13 @@ func (x VkImageCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkImageCreateInfo) WithDefaultSType() *VkImageCreateInfo {
+func (x VkImageCreateInfo) WithDefaultSType() VkImageCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkImageCreateInfo
-func (x *VkImageCreateInfo) WithSType(y VkStructureType) *VkImageCreateInfo {
+func (x VkImageCreateInfo) WithSType(y VkStructureType) VkImageCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -5289,7 +5289,7 @@ func (x VkImageCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkImageCreateInfo
-func (x *VkImageCreateInfo) WithPNext(y unsafe.Pointer) *VkImageCreateInfo {
+func (x VkImageCreateInfo) WithPNext(y unsafe.Pointer) VkImageCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -5303,7 +5303,7 @@ func (x VkImageCreateInfo) Flags() VkImageCreateFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkImageCreateInfo
-func (x *VkImageCreateInfo) WithFlags(y VkImageCreateFlags) *VkImageCreateInfo {
+func (x VkImageCreateInfo) WithFlags(y VkImageCreateFlags) VkImageCreateInfo {
 	ptr := /* Identifier */ (*C.VkImageCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -5317,7 +5317,7 @@ func (x VkImageCreateInfo) ImageType() VkImageType {
 
 // WithImageType copies the provided value into C space and stores it
 // at imageType on VkImageCreateInfo
-func (x *VkImageCreateInfo) WithImageType(y VkImageType) *VkImageCreateInfo {
+func (x VkImageCreateInfo) WithImageType(y VkImageType) VkImageCreateInfo {
 	ptr := /* Identifier */ (*C.VkImageType)(&y)
 	x.imageType = *ptr
 	return x
@@ -5331,7 +5331,7 @@ func (x VkImageCreateInfo) Format() VkFormat {
 
 // WithFormat copies the provided value into C space and stores it
 // at format on VkImageCreateInfo
-func (x *VkImageCreateInfo) WithFormat(y VkFormat) *VkImageCreateInfo {
+func (x VkImageCreateInfo) WithFormat(y VkFormat) VkImageCreateInfo {
 	ptr := /* Identifier */ (*C.VkFormat)(&y)
 	x.format = *ptr
 	return x
@@ -5345,7 +5345,7 @@ func (x VkImageCreateInfo) Extent() VkExtent3D {
 
 // WithExtent copies the provided value into C space and stores it
 // at extent on VkImageCreateInfo
-func (x *VkImageCreateInfo) WithExtent(y VkExtent3D) *VkImageCreateInfo {
+func (x VkImageCreateInfo) WithExtent(y VkExtent3D) VkImageCreateInfo {
 	ptr := /* Identifier */ (*C.VkExtent3D)(&y)
 	x.extent = *ptr
 	return x
@@ -5359,7 +5359,7 @@ func (x VkImageCreateInfo) MipLevels() uint32 {
 
 // WithMipLevels copies the provided value into C space and stores it
 // at mipLevels on VkImageCreateInfo
-func (x *VkImageCreateInfo) WithMipLevels(y uint32) *VkImageCreateInfo {
+func (x VkImageCreateInfo) WithMipLevels(y uint32) VkImageCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.mipLevels = *ptr
 	return x
@@ -5373,7 +5373,7 @@ func (x VkImageCreateInfo) ArrayLayers() uint32 {
 
 // WithArrayLayers copies the provided value into C space and stores it
 // at arrayLayers on VkImageCreateInfo
-func (x *VkImageCreateInfo) WithArrayLayers(y uint32) *VkImageCreateInfo {
+func (x VkImageCreateInfo) WithArrayLayers(y uint32) VkImageCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.arrayLayers = *ptr
 	return x
@@ -5387,7 +5387,7 @@ func (x VkImageCreateInfo) Samples() VkSampleCountFlagBits {
 
 // WithSamples copies the provided value into C space and stores it
 // at samples on VkImageCreateInfo
-func (x *VkImageCreateInfo) WithSamples(y VkSampleCountFlagBits) *VkImageCreateInfo {
+func (x VkImageCreateInfo) WithSamples(y VkSampleCountFlagBits) VkImageCreateInfo {
 	ptr := /* Identifier */ (*C.VkSampleCountFlagBits)(&y)
 	x.samples = *ptr
 	return x
@@ -5401,7 +5401,7 @@ func (x VkImageCreateInfo) Tiling() VkImageTiling {
 
 // WithTiling copies the provided value into C space and stores it
 // at tiling on VkImageCreateInfo
-func (x *VkImageCreateInfo) WithTiling(y VkImageTiling) *VkImageCreateInfo {
+func (x VkImageCreateInfo) WithTiling(y VkImageTiling) VkImageCreateInfo {
 	ptr := /* Identifier */ (*C.VkImageTiling)(&y)
 	x.tiling = *ptr
 	return x
@@ -5415,7 +5415,7 @@ func (x VkImageCreateInfo) Usage() VkImageUsageFlags {
 
 // WithUsage copies the provided value into C space and stores it
 // at usage on VkImageCreateInfo
-func (x *VkImageCreateInfo) WithUsage(y VkImageUsageFlags) *VkImageCreateInfo {
+func (x VkImageCreateInfo) WithUsage(y VkImageUsageFlags) VkImageCreateInfo {
 	ptr := /* Identifier */ (*C.VkImageUsageFlags)(&y)
 	x.usage = *ptr
 	return x
@@ -5429,7 +5429,7 @@ func (x VkImageCreateInfo) SharingMode() VkSharingMode {
 
 // WithSharingMode copies the provided value into C space and stores it
 // at sharingMode on VkImageCreateInfo
-func (x *VkImageCreateInfo) WithSharingMode(y VkSharingMode) *VkImageCreateInfo {
+func (x VkImageCreateInfo) WithSharingMode(y VkSharingMode) VkImageCreateInfo {
 	ptr := /* Identifier */ (*C.VkSharingMode)(&y)
 	x.sharingMode = *ptr
 	return x
@@ -5443,7 +5443,7 @@ func (x VkImageCreateInfo) QueueFamilyIndexCount() uint32 {
 
 // WithQueueFamilyIndexCount copies the provided value into C space and stores it
 // at queueFamilyIndexCount on VkImageCreateInfo
-func (x *VkImageCreateInfo) WithQueueFamilyIndexCount(y uint32) *VkImageCreateInfo {
+func (x VkImageCreateInfo) WithQueueFamilyIndexCount(y uint32) VkImageCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.queueFamilyIndexCount = *ptr
 	return x
@@ -5460,7 +5460,7 @@ func (x VkImageCreateInfo) PQueueFamilyIndices() []uint32 {
 
 // WithPQueueFamilyIndices copies the provided value into C space and stores it
 // at pQueueFamilyIndices on VkImageCreateInfo
-func (x *VkImageCreateInfo) WithPQueueFamilyIndices(y []uint32) *VkImageCreateInfo {
+func (x VkImageCreateInfo) WithPQueueFamilyIndices(y []uint32) VkImageCreateInfo {
 	ptr := func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
@@ -5481,7 +5481,7 @@ func (x VkImageCreateInfo) InitialLayout() VkImageLayout {
 
 // WithInitialLayout copies the provided value into C space and stores it
 // at initialLayout on VkImageCreateInfo
-func (x *VkImageCreateInfo) WithInitialLayout(y VkImageLayout) *VkImageCreateInfo {
+func (x VkImageCreateInfo) WithInitialLayout(y VkImageLayout) VkImageCreateInfo {
 	ptr := /* Identifier */ (*C.VkImageLayout)(&y)
 	x.initialLayout = *ptr
 	return x
@@ -5508,12 +5508,12 @@ func (x *VkImageSubresource) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkImageSubresource) AsPtr() *VkImageSubresource { return x }
+func (x VkImageSubresource) AsPtr() *VkImageSubresource { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkImageSubresource) AsCPtr() *VkImageSubresource {
+func (x VkImageSubresource) AsCPtr() *VkImageSubresource {
 	clone := newVkImageSubresource()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -5525,7 +5525,7 @@ func (x VkImageSubresource) AspectMask() VkImageAspectFlags {
 
 // WithAspectMask copies the provided value into C space and stores it
 // at aspectMask on VkImageSubresource
-func (x *VkImageSubresource) WithAspectMask(y VkImageAspectFlags) *VkImageSubresource {
+func (x VkImageSubresource) WithAspectMask(y VkImageAspectFlags) VkImageSubresource {
 	ptr := /* Identifier */ (*C.VkImageAspectFlags)(&y)
 	x.aspectMask = *ptr
 	return x
@@ -5539,7 +5539,7 @@ func (x VkImageSubresource) MipLevel() uint32 {
 
 // WithMipLevel copies the provided value into C space and stores it
 // at mipLevel on VkImageSubresource
-func (x *VkImageSubresource) WithMipLevel(y uint32) *VkImageSubresource {
+func (x VkImageSubresource) WithMipLevel(y uint32) VkImageSubresource {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.mipLevel = *ptr
 	return x
@@ -5553,7 +5553,7 @@ func (x VkImageSubresource) ArrayLayer() uint32 {
 
 // WithArrayLayer copies the provided value into C space and stores it
 // at arrayLayer on VkImageSubresource
-func (x *VkImageSubresource) WithArrayLayer(y uint32) *VkImageSubresource {
+func (x VkImageSubresource) WithArrayLayer(y uint32) VkImageSubresource {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.arrayLayer = *ptr
 	return x
@@ -5580,12 +5580,12 @@ func (x *VkSubresourceLayout) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkSubresourceLayout) AsPtr() *VkSubresourceLayout { return x }
+func (x VkSubresourceLayout) AsPtr() *VkSubresourceLayout { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkSubresourceLayout) AsCPtr() *VkSubresourceLayout {
+func (x VkSubresourceLayout) AsCPtr() *VkSubresourceLayout {
 	clone := newVkSubresourceLayout()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -5640,12 +5640,12 @@ func (x *VkDescriptorPoolCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDescriptorPoolCreateInfo) AsPtr() *VkDescriptorPoolCreateInfo { return x }
+func (x VkDescriptorPoolCreateInfo) AsPtr() *VkDescriptorPoolCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDescriptorPoolCreateInfo) AsCPtr() *VkDescriptorPoolCreateInfo {
+func (x VkDescriptorPoolCreateInfo) AsCPtr() *VkDescriptorPoolCreateInfo {
 	clone := newVkDescriptorPoolCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -5657,13 +5657,13 @@ func (x VkDescriptorPoolCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkDescriptorPoolCreateInfo) WithDefaultSType() *VkDescriptorPoolCreateInfo {
+func (x VkDescriptorPoolCreateInfo) WithDefaultSType() VkDescriptorPoolCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkDescriptorPoolCreateInfo
-func (x *VkDescriptorPoolCreateInfo) WithSType(y VkStructureType) *VkDescriptorPoolCreateInfo {
+func (x VkDescriptorPoolCreateInfo) WithSType(y VkStructureType) VkDescriptorPoolCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -5677,7 +5677,7 @@ func (x VkDescriptorPoolCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkDescriptorPoolCreateInfo
-func (x *VkDescriptorPoolCreateInfo) WithPNext(y unsafe.Pointer) *VkDescriptorPoolCreateInfo {
+func (x VkDescriptorPoolCreateInfo) WithPNext(y unsafe.Pointer) VkDescriptorPoolCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -5691,7 +5691,7 @@ func (x VkDescriptorPoolCreateInfo) Flags() VkDescriptorPoolCreateFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkDescriptorPoolCreateInfo
-func (x *VkDescriptorPoolCreateInfo) WithFlags(y VkDescriptorPoolCreateFlags) *VkDescriptorPoolCreateInfo {
+func (x VkDescriptorPoolCreateInfo) WithFlags(y VkDescriptorPoolCreateFlags) VkDescriptorPoolCreateInfo {
 	ptr := /* Identifier */ (*C.VkDescriptorPoolCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -5705,7 +5705,7 @@ func (x VkDescriptorPoolCreateInfo) MaxSets() uint32 {
 
 // WithMaxSets copies the provided value into C space and stores it
 // at maxSets on VkDescriptorPoolCreateInfo
-func (x *VkDescriptorPoolCreateInfo) WithMaxSets(y uint32) *VkDescriptorPoolCreateInfo {
+func (x VkDescriptorPoolCreateInfo) WithMaxSets(y uint32) VkDescriptorPoolCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.maxSets = *ptr
 	return x
@@ -5719,7 +5719,7 @@ func (x VkDescriptorPoolCreateInfo) PoolSizeCount() uint32 {
 
 // WithPoolSizeCount copies the provided value into C space and stores it
 // at poolSizeCount on VkDescriptorPoolCreateInfo
-func (x *VkDescriptorPoolCreateInfo) WithPoolSizeCount(y uint32) *VkDescriptorPoolCreateInfo {
+func (x VkDescriptorPoolCreateInfo) WithPoolSizeCount(y uint32) VkDescriptorPoolCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.poolSizeCount = *ptr
 	return x
@@ -5736,7 +5736,7 @@ func (x VkDescriptorPoolCreateInfo) PPoolSizes() []VkDescriptorPoolSize {
 
 // WithPPoolSizes copies the provided value into C space and stores it
 // at pPoolSizes on VkDescriptorPoolCreateInfo
-func (x *VkDescriptorPoolCreateInfo) WithPPoolSizes(y []VkDescriptorPoolSize) *VkDescriptorPoolCreateInfo {
+func (x VkDescriptorPoolCreateInfo) WithPPoolSizes(y []VkDescriptorPoolSize) VkDescriptorPoolCreateInfo {
 	ptr := func(x *[]VkDescriptorPoolSize) **C.VkDescriptorPoolSize { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkDescriptorPoolSize)(unsafe.Pointer(&((*x)[0])))
@@ -5770,12 +5770,12 @@ func (x *VkBindSparseInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkBindSparseInfo) AsPtr() *VkBindSparseInfo { return x }
+func (x VkBindSparseInfo) AsPtr() *VkBindSparseInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkBindSparseInfo) AsCPtr() *VkBindSparseInfo {
+func (x VkBindSparseInfo) AsCPtr() *VkBindSparseInfo {
 	clone := newVkBindSparseInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -5787,13 +5787,13 @@ func (x VkBindSparseInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkBindSparseInfo) WithDefaultSType() *VkBindSparseInfo {
+func (x VkBindSparseInfo) WithDefaultSType() VkBindSparseInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_BIND_SPARSE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkBindSparseInfo
-func (x *VkBindSparseInfo) WithSType(y VkStructureType) *VkBindSparseInfo {
+func (x VkBindSparseInfo) WithSType(y VkStructureType) VkBindSparseInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -5807,7 +5807,7 @@ func (x VkBindSparseInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkBindSparseInfo
-func (x *VkBindSparseInfo) WithPNext(y unsafe.Pointer) *VkBindSparseInfo {
+func (x VkBindSparseInfo) WithPNext(y unsafe.Pointer) VkBindSparseInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -5821,7 +5821,7 @@ func (x VkBindSparseInfo) WaitSemaphoreCount() uint32 {
 
 // WithWaitSemaphoreCount copies the provided value into C space and stores it
 // at waitSemaphoreCount on VkBindSparseInfo
-func (x *VkBindSparseInfo) WithWaitSemaphoreCount(y uint32) *VkBindSparseInfo {
+func (x VkBindSparseInfo) WithWaitSemaphoreCount(y uint32) VkBindSparseInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.waitSemaphoreCount = *ptr
 	return x
@@ -5838,7 +5838,7 @@ func (x VkBindSparseInfo) PWaitSemaphores() []VkSemaphore {
 
 // WithPWaitSemaphores copies the provided value into C space and stores it
 // at pWaitSemaphores on VkBindSparseInfo
-func (x *VkBindSparseInfo) WithPWaitSemaphores(y []VkSemaphore) *VkBindSparseInfo {
+func (x VkBindSparseInfo) WithPWaitSemaphores(y []VkSemaphore) VkBindSparseInfo {
 	ptr := func(x *[]VkSemaphore) **C.VkSemaphore { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkSemaphore)(unsafe.Pointer(&((*x)[0])))
@@ -5859,7 +5859,7 @@ func (x VkBindSparseInfo) BufferBindCount() uint32 {
 
 // WithBufferBindCount copies the provided value into C space and stores it
 // at bufferBindCount on VkBindSparseInfo
-func (x *VkBindSparseInfo) WithBufferBindCount(y uint32) *VkBindSparseInfo {
+func (x VkBindSparseInfo) WithBufferBindCount(y uint32) VkBindSparseInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.bufferBindCount = *ptr
 	return x
@@ -5876,7 +5876,7 @@ func (x VkBindSparseInfo) PBufferBinds() []VkSparseBufferMemoryBindInfo {
 
 // WithPBufferBinds copies the provided value into C space and stores it
 // at pBufferBinds on VkBindSparseInfo
-func (x *VkBindSparseInfo) WithPBufferBinds(y []VkSparseBufferMemoryBindInfo) *VkBindSparseInfo {
+func (x VkBindSparseInfo) WithPBufferBinds(y []VkSparseBufferMemoryBindInfo) VkBindSparseInfo {
 	ptr := func(x *[]VkSparseBufferMemoryBindInfo) **C.VkSparseBufferMemoryBindInfo { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkSparseBufferMemoryBindInfo)(unsafe.Pointer(&((*x)[0])))
@@ -5897,7 +5897,7 @@ func (x VkBindSparseInfo) ImageOpaqueBindCount() uint32 {
 
 // WithImageOpaqueBindCount copies the provided value into C space and stores it
 // at imageOpaqueBindCount on VkBindSparseInfo
-func (x *VkBindSparseInfo) WithImageOpaqueBindCount(y uint32) *VkBindSparseInfo {
+func (x VkBindSparseInfo) WithImageOpaqueBindCount(y uint32) VkBindSparseInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.imageOpaqueBindCount = *ptr
 	return x
@@ -5914,7 +5914,7 @@ func (x VkBindSparseInfo) PImageOpaqueBinds() []VkSparseImageOpaqueMemoryBindInf
 
 // WithPImageOpaqueBinds copies the provided value into C space and stores it
 // at pImageOpaqueBinds on VkBindSparseInfo
-func (x *VkBindSparseInfo) WithPImageOpaqueBinds(y []VkSparseImageOpaqueMemoryBindInfo) *VkBindSparseInfo {
+func (x VkBindSparseInfo) WithPImageOpaqueBinds(y []VkSparseImageOpaqueMemoryBindInfo) VkBindSparseInfo {
 	ptr := func(x *[]VkSparseImageOpaqueMemoryBindInfo) **C.VkSparseImageOpaqueMemoryBindInfo { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkSparseImageOpaqueMemoryBindInfo)(unsafe.Pointer(&((*x)[0])))
@@ -5935,7 +5935,7 @@ func (x VkBindSparseInfo) ImageBindCount() uint32 {
 
 // WithImageBindCount copies the provided value into C space and stores it
 // at imageBindCount on VkBindSparseInfo
-func (x *VkBindSparseInfo) WithImageBindCount(y uint32) *VkBindSparseInfo {
+func (x VkBindSparseInfo) WithImageBindCount(y uint32) VkBindSparseInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.imageBindCount = *ptr
 	return x
@@ -5952,7 +5952,7 @@ func (x VkBindSparseInfo) PImageBinds() []VkSparseImageMemoryBindInfo {
 
 // WithPImageBinds copies the provided value into C space and stores it
 // at pImageBinds on VkBindSparseInfo
-func (x *VkBindSparseInfo) WithPImageBinds(y []VkSparseImageMemoryBindInfo) *VkBindSparseInfo {
+func (x VkBindSparseInfo) WithPImageBinds(y []VkSparseImageMemoryBindInfo) VkBindSparseInfo {
 	ptr := func(x *[]VkSparseImageMemoryBindInfo) **C.VkSparseImageMemoryBindInfo { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkSparseImageMemoryBindInfo)(unsafe.Pointer(&((*x)[0])))
@@ -5973,7 +5973,7 @@ func (x VkBindSparseInfo) SignalSemaphoreCount() uint32 {
 
 // WithSignalSemaphoreCount copies the provided value into C space and stores it
 // at signalSemaphoreCount on VkBindSparseInfo
-func (x *VkBindSparseInfo) WithSignalSemaphoreCount(y uint32) *VkBindSparseInfo {
+func (x VkBindSparseInfo) WithSignalSemaphoreCount(y uint32) VkBindSparseInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.signalSemaphoreCount = *ptr
 	return x
@@ -5990,7 +5990,7 @@ func (x VkBindSparseInfo) PSignalSemaphores() []VkSemaphore {
 
 // WithPSignalSemaphores copies the provided value into C space and stores it
 // at pSignalSemaphores on VkBindSparseInfo
-func (x *VkBindSparseInfo) WithPSignalSemaphores(y []VkSemaphore) *VkBindSparseInfo {
+func (x VkBindSparseInfo) WithPSignalSemaphores(y []VkSemaphore) VkBindSparseInfo {
 	ptr := func(x *[]VkSemaphore) **C.VkSemaphore { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkSemaphore)(unsafe.Pointer(&((*x)[0])))
@@ -6024,12 +6024,12 @@ func (x *VkComponentMapping) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkComponentMapping) AsPtr() *VkComponentMapping { return x }
+func (x VkComponentMapping) AsPtr() *VkComponentMapping { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkComponentMapping) AsCPtr() *VkComponentMapping {
+func (x VkComponentMapping) AsCPtr() *VkComponentMapping {
 	clone := newVkComponentMapping()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -6041,7 +6041,7 @@ func (x VkComponentMapping) R() VkComponentSwizzle {
 
 // WithR copies the provided value into C space and stores it
 // at r on VkComponentMapping
-func (x *VkComponentMapping) WithR(y VkComponentSwizzle) *VkComponentMapping {
+func (x VkComponentMapping) WithR(y VkComponentSwizzle) VkComponentMapping {
 	ptr := /* Identifier */ (*C.VkComponentSwizzle)(&y)
 	x.r = *ptr
 	return x
@@ -6055,7 +6055,7 @@ func (x VkComponentMapping) G() VkComponentSwizzle {
 
 // WithG copies the provided value into C space and stores it
 // at g on VkComponentMapping
-func (x *VkComponentMapping) WithG(y VkComponentSwizzle) *VkComponentMapping {
+func (x VkComponentMapping) WithG(y VkComponentSwizzle) VkComponentMapping {
 	ptr := /* Identifier */ (*C.VkComponentSwizzle)(&y)
 	x.g = *ptr
 	return x
@@ -6069,7 +6069,7 @@ func (x VkComponentMapping) B() VkComponentSwizzle {
 
 // WithB copies the provided value into C space and stores it
 // at b on VkComponentMapping
-func (x *VkComponentMapping) WithB(y VkComponentSwizzle) *VkComponentMapping {
+func (x VkComponentMapping) WithB(y VkComponentSwizzle) VkComponentMapping {
 	ptr := /* Identifier */ (*C.VkComponentSwizzle)(&y)
 	x.b = *ptr
 	return x
@@ -6083,7 +6083,7 @@ func (x VkComponentMapping) A() VkComponentSwizzle {
 
 // WithA copies the provided value into C space and stores it
 // at a on VkComponentMapping
-func (x *VkComponentMapping) WithA(y VkComponentSwizzle) *VkComponentMapping {
+func (x VkComponentMapping) WithA(y VkComponentSwizzle) VkComponentMapping {
 	ptr := /* Identifier */ (*C.VkComponentSwizzle)(&y)
 	x.a = *ptr
 	return x
@@ -6110,12 +6110,12 @@ func (x *VkMemoryRequirements) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkMemoryRequirements) AsPtr() *VkMemoryRequirements { return x }
+func (x VkMemoryRequirements) AsPtr() *VkMemoryRequirements { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkMemoryRequirements) AsCPtr() *VkMemoryRequirements {
+func (x VkMemoryRequirements) AsCPtr() *VkMemoryRequirements {
 	clone := newVkMemoryRequirements()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -6158,12 +6158,12 @@ func (x *VkImageSubresourceRange) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkImageSubresourceRange) AsPtr() *VkImageSubresourceRange { return x }
+func (x VkImageSubresourceRange) AsPtr() *VkImageSubresourceRange { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkImageSubresourceRange) AsCPtr() *VkImageSubresourceRange {
+func (x VkImageSubresourceRange) AsCPtr() *VkImageSubresourceRange {
 	clone := newVkImageSubresourceRange()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -6175,7 +6175,7 @@ func (x VkImageSubresourceRange) AspectMask() VkImageAspectFlags {
 
 // WithAspectMask copies the provided value into C space and stores it
 // at aspectMask on VkImageSubresourceRange
-func (x *VkImageSubresourceRange) WithAspectMask(y VkImageAspectFlags) *VkImageSubresourceRange {
+func (x VkImageSubresourceRange) WithAspectMask(y VkImageAspectFlags) VkImageSubresourceRange {
 	ptr := /* Identifier */ (*C.VkImageAspectFlags)(&y)
 	x.aspectMask = *ptr
 	return x
@@ -6189,7 +6189,7 @@ func (x VkImageSubresourceRange) BaseMipLevel() uint32 {
 
 // WithBaseMipLevel copies the provided value into C space and stores it
 // at baseMipLevel on VkImageSubresourceRange
-func (x *VkImageSubresourceRange) WithBaseMipLevel(y uint32) *VkImageSubresourceRange {
+func (x VkImageSubresourceRange) WithBaseMipLevel(y uint32) VkImageSubresourceRange {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.baseMipLevel = *ptr
 	return x
@@ -6203,7 +6203,7 @@ func (x VkImageSubresourceRange) LevelCount() uint32 {
 
 // WithLevelCount copies the provided value into C space and stores it
 // at levelCount on VkImageSubresourceRange
-func (x *VkImageSubresourceRange) WithLevelCount(y uint32) *VkImageSubresourceRange {
+func (x VkImageSubresourceRange) WithLevelCount(y uint32) VkImageSubresourceRange {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.levelCount = *ptr
 	return x
@@ -6217,7 +6217,7 @@ func (x VkImageSubresourceRange) BaseArrayLayer() uint32 {
 
 // WithBaseArrayLayer copies the provided value into C space and stores it
 // at baseArrayLayer on VkImageSubresourceRange
-func (x *VkImageSubresourceRange) WithBaseArrayLayer(y uint32) *VkImageSubresourceRange {
+func (x VkImageSubresourceRange) WithBaseArrayLayer(y uint32) VkImageSubresourceRange {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.baseArrayLayer = *ptr
 	return x
@@ -6231,7 +6231,7 @@ func (x VkImageSubresourceRange) LayerCount() uint32 {
 
 // WithLayerCount copies the provided value into C space and stores it
 // at layerCount on VkImageSubresourceRange
-func (x *VkImageSubresourceRange) WithLayerCount(y uint32) *VkImageSubresourceRange {
+func (x VkImageSubresourceRange) WithLayerCount(y uint32) VkImageSubresourceRange {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.layerCount = *ptr
 	return x
@@ -6258,12 +6258,12 @@ func (x *VkFramebufferCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkFramebufferCreateInfo) AsPtr() *VkFramebufferCreateInfo { return x }
+func (x VkFramebufferCreateInfo) AsPtr() *VkFramebufferCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkFramebufferCreateInfo) AsCPtr() *VkFramebufferCreateInfo {
+func (x VkFramebufferCreateInfo) AsCPtr() *VkFramebufferCreateInfo {
 	clone := newVkFramebufferCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -6275,13 +6275,13 @@ func (x VkFramebufferCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkFramebufferCreateInfo) WithDefaultSType() *VkFramebufferCreateInfo {
+func (x VkFramebufferCreateInfo) WithDefaultSType() VkFramebufferCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkFramebufferCreateInfo
-func (x *VkFramebufferCreateInfo) WithSType(y VkStructureType) *VkFramebufferCreateInfo {
+func (x VkFramebufferCreateInfo) WithSType(y VkStructureType) VkFramebufferCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -6295,7 +6295,7 @@ func (x VkFramebufferCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkFramebufferCreateInfo
-func (x *VkFramebufferCreateInfo) WithPNext(y unsafe.Pointer) *VkFramebufferCreateInfo {
+func (x VkFramebufferCreateInfo) WithPNext(y unsafe.Pointer) VkFramebufferCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -6309,7 +6309,7 @@ func (x VkFramebufferCreateInfo) Flags() VkFramebufferCreateFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkFramebufferCreateInfo
-func (x *VkFramebufferCreateInfo) WithFlags(y VkFramebufferCreateFlags) *VkFramebufferCreateInfo {
+func (x VkFramebufferCreateInfo) WithFlags(y VkFramebufferCreateFlags) VkFramebufferCreateInfo {
 	ptr := /* Identifier */ (*C.VkFramebufferCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -6323,7 +6323,7 @@ func (x VkFramebufferCreateInfo) RenderPass() VkRenderPass {
 
 // WithRenderPass copies the provided value into C space and stores it
 // at renderPass on VkFramebufferCreateInfo
-func (x *VkFramebufferCreateInfo) WithRenderPass(y VkRenderPass) *VkFramebufferCreateInfo {
+func (x VkFramebufferCreateInfo) WithRenderPass(y VkRenderPass) VkFramebufferCreateInfo {
 	ptr := func(x *VkRenderPass) *C.VkRenderPass { /* Handle */ return (*C.VkRenderPass)(unsafe.Pointer(x)) }(&y)
 	x.renderPass = *ptr
 	return x
@@ -6337,7 +6337,7 @@ func (x VkFramebufferCreateInfo) AttachmentCount() uint32 {
 
 // WithAttachmentCount copies the provided value into C space and stores it
 // at attachmentCount on VkFramebufferCreateInfo
-func (x *VkFramebufferCreateInfo) WithAttachmentCount(y uint32) *VkFramebufferCreateInfo {
+func (x VkFramebufferCreateInfo) WithAttachmentCount(y uint32) VkFramebufferCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.attachmentCount = *ptr
 	return x
@@ -6354,7 +6354,7 @@ func (x VkFramebufferCreateInfo) PAttachments() []VkImageView {
 
 // WithPAttachments copies the provided value into C space and stores it
 // at pAttachments on VkFramebufferCreateInfo
-func (x *VkFramebufferCreateInfo) WithPAttachments(y []VkImageView) *VkFramebufferCreateInfo {
+func (x VkFramebufferCreateInfo) WithPAttachments(y []VkImageView) VkFramebufferCreateInfo {
 	ptr := func(x *[]VkImageView) **C.VkImageView { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkImageView)(unsafe.Pointer(&((*x)[0])))
@@ -6375,7 +6375,7 @@ func (x VkFramebufferCreateInfo) Width() uint32 {
 
 // WithWidth copies the provided value into C space and stores it
 // at width on VkFramebufferCreateInfo
-func (x *VkFramebufferCreateInfo) WithWidth(y uint32) *VkFramebufferCreateInfo {
+func (x VkFramebufferCreateInfo) WithWidth(y uint32) VkFramebufferCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.width = *ptr
 	return x
@@ -6389,7 +6389,7 @@ func (x VkFramebufferCreateInfo) Height() uint32 {
 
 // WithHeight copies the provided value into C space and stores it
 // at height on VkFramebufferCreateInfo
-func (x *VkFramebufferCreateInfo) WithHeight(y uint32) *VkFramebufferCreateInfo {
+func (x VkFramebufferCreateInfo) WithHeight(y uint32) VkFramebufferCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.height = *ptr
 	return x
@@ -6403,7 +6403,7 @@ func (x VkFramebufferCreateInfo) Layers() uint32 {
 
 // WithLayers copies the provided value into C space and stores it
 // at layers on VkFramebufferCreateInfo
-func (x *VkFramebufferCreateInfo) WithLayers(y uint32) *VkFramebufferCreateInfo {
+func (x VkFramebufferCreateInfo) WithLayers(y uint32) VkFramebufferCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.layers = *ptr
 	return x
@@ -6430,12 +6430,12 @@ func (x *VkMemoryAllocateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkMemoryAllocateInfo) AsPtr() *VkMemoryAllocateInfo { return x }
+func (x VkMemoryAllocateInfo) AsPtr() *VkMemoryAllocateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkMemoryAllocateInfo) AsCPtr() *VkMemoryAllocateInfo {
+func (x VkMemoryAllocateInfo) AsCPtr() *VkMemoryAllocateInfo {
 	clone := newVkMemoryAllocateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -6447,13 +6447,13 @@ func (x VkMemoryAllocateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkMemoryAllocateInfo) WithDefaultSType() *VkMemoryAllocateInfo {
+func (x VkMemoryAllocateInfo) WithDefaultSType() VkMemoryAllocateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkMemoryAllocateInfo
-func (x *VkMemoryAllocateInfo) WithSType(y VkStructureType) *VkMemoryAllocateInfo {
+func (x VkMemoryAllocateInfo) WithSType(y VkStructureType) VkMemoryAllocateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -6467,7 +6467,7 @@ func (x VkMemoryAllocateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkMemoryAllocateInfo
-func (x *VkMemoryAllocateInfo) WithPNext(y unsafe.Pointer) *VkMemoryAllocateInfo {
+func (x VkMemoryAllocateInfo) WithPNext(y unsafe.Pointer) VkMemoryAllocateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -6481,7 +6481,7 @@ func (x VkMemoryAllocateInfo) AllocationSize() VkDeviceSize {
 
 // WithAllocationSize copies the provided value into C space and stores it
 // at allocationSize on VkMemoryAllocateInfo
-func (x *VkMemoryAllocateInfo) WithAllocationSize(y VkDeviceSize) *VkMemoryAllocateInfo {
+func (x VkMemoryAllocateInfo) WithAllocationSize(y VkDeviceSize) VkMemoryAllocateInfo {
 	ptr := /* Identifier */ (*C.VkDeviceSize)(&y)
 	x.allocationSize = *ptr
 	return x
@@ -6495,7 +6495,7 @@ func (x VkMemoryAllocateInfo) MemoryTypeIndex() uint32 {
 
 // WithMemoryTypeIndex copies the provided value into C space and stores it
 // at memoryTypeIndex on VkMemoryAllocateInfo
-func (x *VkMemoryAllocateInfo) WithMemoryTypeIndex(y uint32) *VkMemoryAllocateInfo {
+func (x VkMemoryAllocateInfo) WithMemoryTypeIndex(y uint32) VkMemoryAllocateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.memoryTypeIndex = *ptr
 	return x
@@ -6522,12 +6522,12 @@ func (x *VkMappedMemoryRange) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkMappedMemoryRange) AsPtr() *VkMappedMemoryRange { return x }
+func (x VkMappedMemoryRange) AsPtr() *VkMappedMemoryRange { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkMappedMemoryRange) AsCPtr() *VkMappedMemoryRange {
+func (x VkMappedMemoryRange) AsCPtr() *VkMappedMemoryRange {
 	clone := newVkMappedMemoryRange()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -6539,13 +6539,13 @@ func (x VkMappedMemoryRange) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkMappedMemoryRange) WithDefaultSType() *VkMappedMemoryRange {
+func (x VkMappedMemoryRange) WithDefaultSType() VkMappedMemoryRange {
 	return x.WithSType(VK_STRUCTURE_TYPE_MAPPED_MEMORY_RANGE)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkMappedMemoryRange
-func (x *VkMappedMemoryRange) WithSType(y VkStructureType) *VkMappedMemoryRange {
+func (x VkMappedMemoryRange) WithSType(y VkStructureType) VkMappedMemoryRange {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -6559,7 +6559,7 @@ func (x VkMappedMemoryRange) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkMappedMemoryRange
-func (x *VkMappedMemoryRange) WithPNext(y unsafe.Pointer) *VkMappedMemoryRange {
+func (x VkMappedMemoryRange) WithPNext(y unsafe.Pointer) VkMappedMemoryRange {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -6573,7 +6573,7 @@ func (x VkMappedMemoryRange) Memory() VkDeviceMemory {
 
 // WithMemory copies the provided value into C space and stores it
 // at memory on VkMappedMemoryRange
-func (x *VkMappedMemoryRange) WithMemory(y VkDeviceMemory) *VkMappedMemoryRange {
+func (x VkMappedMemoryRange) WithMemory(y VkDeviceMemory) VkMappedMemoryRange {
 	ptr := func(x *VkDeviceMemory) *C.VkDeviceMemory { /* Handle */ return (*C.VkDeviceMemory)(unsafe.Pointer(x)) }(&y)
 	x.memory = *ptr
 	return x
@@ -6587,7 +6587,7 @@ func (x VkMappedMemoryRange) Offset() VkDeviceSize {
 
 // WithOffset copies the provided value into C space and stores it
 // at offset on VkMappedMemoryRange
-func (x *VkMappedMemoryRange) WithOffset(y VkDeviceSize) *VkMappedMemoryRange {
+func (x VkMappedMemoryRange) WithOffset(y VkDeviceSize) VkMappedMemoryRange {
 	ptr := /* Identifier */ (*C.VkDeviceSize)(&y)
 	x.offset = *ptr
 	return x
@@ -6601,7 +6601,7 @@ func (x VkMappedMemoryRange) Size() VkDeviceSize {
 
 // WithSize copies the provided value into C space and stores it
 // at size on VkMappedMemoryRange
-func (x *VkMappedMemoryRange) WithSize(y VkDeviceSize) *VkMappedMemoryRange {
+func (x VkMappedMemoryRange) WithSize(y VkDeviceSize) VkMappedMemoryRange {
 	ptr := /* Identifier */ (*C.VkDeviceSize)(&y)
 	x.size = *ptr
 	return x
@@ -6628,12 +6628,12 @@ func (x *VkImageViewCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkImageViewCreateInfo) AsPtr() *VkImageViewCreateInfo { return x }
+func (x VkImageViewCreateInfo) AsPtr() *VkImageViewCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkImageViewCreateInfo) AsCPtr() *VkImageViewCreateInfo {
+func (x VkImageViewCreateInfo) AsCPtr() *VkImageViewCreateInfo {
 	clone := newVkImageViewCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -6645,13 +6645,13 @@ func (x VkImageViewCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkImageViewCreateInfo) WithDefaultSType() *VkImageViewCreateInfo {
+func (x VkImageViewCreateInfo) WithDefaultSType() VkImageViewCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkImageViewCreateInfo
-func (x *VkImageViewCreateInfo) WithSType(y VkStructureType) *VkImageViewCreateInfo {
+func (x VkImageViewCreateInfo) WithSType(y VkStructureType) VkImageViewCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -6665,7 +6665,7 @@ func (x VkImageViewCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkImageViewCreateInfo
-func (x *VkImageViewCreateInfo) WithPNext(y unsafe.Pointer) *VkImageViewCreateInfo {
+func (x VkImageViewCreateInfo) WithPNext(y unsafe.Pointer) VkImageViewCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -6679,7 +6679,7 @@ func (x VkImageViewCreateInfo) Flags() VkImageViewCreateFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkImageViewCreateInfo
-func (x *VkImageViewCreateInfo) WithFlags(y VkImageViewCreateFlags) *VkImageViewCreateInfo {
+func (x VkImageViewCreateInfo) WithFlags(y VkImageViewCreateFlags) VkImageViewCreateInfo {
 	ptr := /* Identifier */ (*C.VkImageViewCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -6693,7 +6693,7 @@ func (x VkImageViewCreateInfo) Image() VkImage {
 
 // WithImage copies the provided value into C space and stores it
 // at image on VkImageViewCreateInfo
-func (x *VkImageViewCreateInfo) WithImage(y VkImage) *VkImageViewCreateInfo {
+func (x VkImageViewCreateInfo) WithImage(y VkImage) VkImageViewCreateInfo {
 	ptr := func(x *VkImage) *C.VkImage { /* Handle */ return (*C.VkImage)(unsafe.Pointer(x)) }(&y)
 	x.image = *ptr
 	return x
@@ -6707,7 +6707,7 @@ func (x VkImageViewCreateInfo) ViewType() VkImageViewType {
 
 // WithViewType copies the provided value into C space and stores it
 // at viewType on VkImageViewCreateInfo
-func (x *VkImageViewCreateInfo) WithViewType(y VkImageViewType) *VkImageViewCreateInfo {
+func (x VkImageViewCreateInfo) WithViewType(y VkImageViewType) VkImageViewCreateInfo {
 	ptr := /* Identifier */ (*C.VkImageViewType)(&y)
 	x.viewType = *ptr
 	return x
@@ -6721,7 +6721,7 @@ func (x VkImageViewCreateInfo) Format() VkFormat {
 
 // WithFormat copies the provided value into C space and stores it
 // at format on VkImageViewCreateInfo
-func (x *VkImageViewCreateInfo) WithFormat(y VkFormat) *VkImageViewCreateInfo {
+func (x VkImageViewCreateInfo) WithFormat(y VkFormat) VkImageViewCreateInfo {
 	ptr := /* Identifier */ (*C.VkFormat)(&y)
 	x.format = *ptr
 	return x
@@ -6735,7 +6735,7 @@ func (x VkImageViewCreateInfo) Components() VkComponentMapping {
 
 // WithComponents copies the provided value into C space and stores it
 // at components on VkImageViewCreateInfo
-func (x *VkImageViewCreateInfo) WithComponents(y VkComponentMapping) *VkImageViewCreateInfo {
+func (x VkImageViewCreateInfo) WithComponents(y VkComponentMapping) VkImageViewCreateInfo {
 	ptr := /* Identifier */ (*C.VkComponentMapping)(&y)
 	x.components = *ptr
 	return x
@@ -6749,7 +6749,7 @@ func (x VkImageViewCreateInfo) SubresourceRange() VkImageSubresourceRange {
 
 // WithSubresourceRange copies the provided value into C space and stores it
 // at subresourceRange on VkImageViewCreateInfo
-func (x *VkImageViewCreateInfo) WithSubresourceRange(y VkImageSubresourceRange) *VkImageViewCreateInfo {
+func (x VkImageViewCreateInfo) WithSubresourceRange(y VkImageSubresourceRange) VkImageViewCreateInfo {
 	ptr := /* Identifier */ (*C.VkImageSubresourceRange)(&y)
 	x.subresourceRange = *ptr
 	return x
@@ -6776,12 +6776,12 @@ func (x *VkPipelineViewportStateCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPipelineViewportStateCreateInfo) AsPtr() *VkPipelineViewportStateCreateInfo { return x }
+func (x VkPipelineViewportStateCreateInfo) AsPtr() *VkPipelineViewportStateCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPipelineViewportStateCreateInfo) AsCPtr() *VkPipelineViewportStateCreateInfo {
+func (x VkPipelineViewportStateCreateInfo) AsCPtr() *VkPipelineViewportStateCreateInfo {
 	clone := newVkPipelineViewportStateCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -6793,13 +6793,13 @@ func (x VkPipelineViewportStateCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPipelineViewportStateCreateInfo) WithDefaultSType() *VkPipelineViewportStateCreateInfo {
+func (x VkPipelineViewportStateCreateInfo) WithDefaultSType() VkPipelineViewportStateCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPipelineViewportStateCreateInfo
-func (x *VkPipelineViewportStateCreateInfo) WithSType(y VkStructureType) *VkPipelineViewportStateCreateInfo {
+func (x VkPipelineViewportStateCreateInfo) WithSType(y VkStructureType) VkPipelineViewportStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -6813,7 +6813,7 @@ func (x VkPipelineViewportStateCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPipelineViewportStateCreateInfo
-func (x *VkPipelineViewportStateCreateInfo) WithPNext(y unsafe.Pointer) *VkPipelineViewportStateCreateInfo {
+func (x VkPipelineViewportStateCreateInfo) WithPNext(y unsafe.Pointer) VkPipelineViewportStateCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -6827,7 +6827,7 @@ func (x VkPipelineViewportStateCreateInfo) Flags() VkPipelineViewportStateCreate
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkPipelineViewportStateCreateInfo
-func (x *VkPipelineViewportStateCreateInfo) WithFlags(y VkPipelineViewportStateCreateFlags) *VkPipelineViewportStateCreateInfo {
+func (x VkPipelineViewportStateCreateInfo) WithFlags(y VkPipelineViewportStateCreateFlags) VkPipelineViewportStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkPipelineViewportStateCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -6841,7 +6841,7 @@ func (x VkPipelineViewportStateCreateInfo) ViewportCount() uint32 {
 
 // WithViewportCount copies the provided value into C space and stores it
 // at viewportCount on VkPipelineViewportStateCreateInfo
-func (x *VkPipelineViewportStateCreateInfo) WithViewportCount(y uint32) *VkPipelineViewportStateCreateInfo {
+func (x VkPipelineViewportStateCreateInfo) WithViewportCount(y uint32) VkPipelineViewportStateCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.viewportCount = *ptr
 	return x
@@ -6858,7 +6858,7 @@ func (x VkPipelineViewportStateCreateInfo) PViewports() []VkViewport {
 
 // WithPViewports copies the provided value into C space and stores it
 // at pViewports on VkPipelineViewportStateCreateInfo
-func (x *VkPipelineViewportStateCreateInfo) WithPViewports(y []VkViewport) *VkPipelineViewportStateCreateInfo {
+func (x VkPipelineViewportStateCreateInfo) WithPViewports(y []VkViewport) VkPipelineViewportStateCreateInfo {
 	ptr := func(x *[]VkViewport) **C.VkViewport { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkViewport)(unsafe.Pointer(&((*x)[0])))
@@ -6879,7 +6879,7 @@ func (x VkPipelineViewportStateCreateInfo) ScissorCount() uint32 {
 
 // WithScissorCount copies the provided value into C space and stores it
 // at scissorCount on VkPipelineViewportStateCreateInfo
-func (x *VkPipelineViewportStateCreateInfo) WithScissorCount(y uint32) *VkPipelineViewportStateCreateInfo {
+func (x VkPipelineViewportStateCreateInfo) WithScissorCount(y uint32) VkPipelineViewportStateCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.scissorCount = *ptr
 	return x
@@ -6896,7 +6896,7 @@ func (x VkPipelineViewportStateCreateInfo) PScissors() []VkRect2D {
 
 // WithPScissors copies the provided value into C space and stores it
 // at pScissors on VkPipelineViewportStateCreateInfo
-func (x *VkPipelineViewportStateCreateInfo) WithPScissors(y []VkRect2D) *VkPipelineViewportStateCreateInfo {
+func (x VkPipelineViewportStateCreateInfo) WithPScissors(y []VkRect2D) VkPipelineViewportStateCreateInfo {
 	ptr := func(x *[]VkRect2D) **C.VkRect2D { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkRect2D)(unsafe.Pointer(&((*x)[0])))
@@ -6930,12 +6930,12 @@ func (x *VkRenderPassCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkRenderPassCreateInfo) AsPtr() *VkRenderPassCreateInfo { return x }
+func (x VkRenderPassCreateInfo) AsPtr() *VkRenderPassCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkRenderPassCreateInfo) AsCPtr() *VkRenderPassCreateInfo {
+func (x VkRenderPassCreateInfo) AsCPtr() *VkRenderPassCreateInfo {
 	clone := newVkRenderPassCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -6947,13 +6947,13 @@ func (x VkRenderPassCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkRenderPassCreateInfo) WithDefaultSType() *VkRenderPassCreateInfo {
+func (x VkRenderPassCreateInfo) WithDefaultSType() VkRenderPassCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkRenderPassCreateInfo
-func (x *VkRenderPassCreateInfo) WithSType(y VkStructureType) *VkRenderPassCreateInfo {
+func (x VkRenderPassCreateInfo) WithSType(y VkStructureType) VkRenderPassCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -6967,7 +6967,7 @@ func (x VkRenderPassCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkRenderPassCreateInfo
-func (x *VkRenderPassCreateInfo) WithPNext(y unsafe.Pointer) *VkRenderPassCreateInfo {
+func (x VkRenderPassCreateInfo) WithPNext(y unsafe.Pointer) VkRenderPassCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -6981,7 +6981,7 @@ func (x VkRenderPassCreateInfo) Flags() VkRenderPassCreateFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkRenderPassCreateInfo
-func (x *VkRenderPassCreateInfo) WithFlags(y VkRenderPassCreateFlags) *VkRenderPassCreateInfo {
+func (x VkRenderPassCreateInfo) WithFlags(y VkRenderPassCreateFlags) VkRenderPassCreateInfo {
 	ptr := /* Identifier */ (*C.VkRenderPassCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -6995,7 +6995,7 @@ func (x VkRenderPassCreateInfo) AttachmentCount() uint32 {
 
 // WithAttachmentCount copies the provided value into C space and stores it
 // at attachmentCount on VkRenderPassCreateInfo
-func (x *VkRenderPassCreateInfo) WithAttachmentCount(y uint32) *VkRenderPassCreateInfo {
+func (x VkRenderPassCreateInfo) WithAttachmentCount(y uint32) VkRenderPassCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.attachmentCount = *ptr
 	return x
@@ -7012,7 +7012,7 @@ func (x VkRenderPassCreateInfo) PAttachments() []VkAttachmentDescription {
 
 // WithPAttachments copies the provided value into C space and stores it
 // at pAttachments on VkRenderPassCreateInfo
-func (x *VkRenderPassCreateInfo) WithPAttachments(y []VkAttachmentDescription) *VkRenderPassCreateInfo {
+func (x VkRenderPassCreateInfo) WithPAttachments(y []VkAttachmentDescription) VkRenderPassCreateInfo {
 	ptr := func(x *[]VkAttachmentDescription) **C.VkAttachmentDescription { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkAttachmentDescription)(unsafe.Pointer(&((*x)[0])))
@@ -7033,7 +7033,7 @@ func (x VkRenderPassCreateInfo) SubpassCount() uint32 {
 
 // WithSubpassCount copies the provided value into C space and stores it
 // at subpassCount on VkRenderPassCreateInfo
-func (x *VkRenderPassCreateInfo) WithSubpassCount(y uint32) *VkRenderPassCreateInfo {
+func (x VkRenderPassCreateInfo) WithSubpassCount(y uint32) VkRenderPassCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.subpassCount = *ptr
 	return x
@@ -7050,7 +7050,7 @@ func (x VkRenderPassCreateInfo) PSubpasses() []VkSubpassDescription {
 
 // WithPSubpasses copies the provided value into C space and stores it
 // at pSubpasses on VkRenderPassCreateInfo
-func (x *VkRenderPassCreateInfo) WithPSubpasses(y []VkSubpassDescription) *VkRenderPassCreateInfo {
+func (x VkRenderPassCreateInfo) WithPSubpasses(y []VkSubpassDescription) VkRenderPassCreateInfo {
 	ptr := func(x *[]VkSubpassDescription) **C.VkSubpassDescription { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkSubpassDescription)(unsafe.Pointer(&((*x)[0])))
@@ -7071,7 +7071,7 @@ func (x VkRenderPassCreateInfo) DependencyCount() uint32 {
 
 // WithDependencyCount copies the provided value into C space and stores it
 // at dependencyCount on VkRenderPassCreateInfo
-func (x *VkRenderPassCreateInfo) WithDependencyCount(y uint32) *VkRenderPassCreateInfo {
+func (x VkRenderPassCreateInfo) WithDependencyCount(y uint32) VkRenderPassCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.dependencyCount = *ptr
 	return x
@@ -7088,7 +7088,7 @@ func (x VkRenderPassCreateInfo) PDependencies() []VkSubpassDependency {
 
 // WithPDependencies copies the provided value into C space and stores it
 // at pDependencies on VkRenderPassCreateInfo
-func (x *VkRenderPassCreateInfo) WithPDependencies(y []VkSubpassDependency) *VkRenderPassCreateInfo {
+func (x VkRenderPassCreateInfo) WithPDependencies(y []VkSubpassDependency) VkRenderPassCreateInfo {
 	ptr := func(x *[]VkSubpassDependency) **C.VkSubpassDependency { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkSubpassDependency)(unsafe.Pointer(&((*x)[0])))
@@ -7122,12 +7122,12 @@ func (x *VkSubpassDependency) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkSubpassDependency) AsPtr() *VkSubpassDependency { return x }
+func (x VkSubpassDependency) AsPtr() *VkSubpassDependency { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkSubpassDependency) AsCPtr() *VkSubpassDependency {
+func (x VkSubpassDependency) AsCPtr() *VkSubpassDependency {
 	clone := newVkSubpassDependency()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -7139,7 +7139,7 @@ func (x VkSubpassDependency) SrcSubpass() uint32 {
 
 // WithSrcSubpass copies the provided value into C space and stores it
 // at srcSubpass on VkSubpassDependency
-func (x *VkSubpassDependency) WithSrcSubpass(y uint32) *VkSubpassDependency {
+func (x VkSubpassDependency) WithSrcSubpass(y uint32) VkSubpassDependency {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.srcSubpass = *ptr
 	return x
@@ -7153,7 +7153,7 @@ func (x VkSubpassDependency) DstSubpass() uint32 {
 
 // WithDstSubpass copies the provided value into C space and stores it
 // at dstSubpass on VkSubpassDependency
-func (x *VkSubpassDependency) WithDstSubpass(y uint32) *VkSubpassDependency {
+func (x VkSubpassDependency) WithDstSubpass(y uint32) VkSubpassDependency {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.dstSubpass = *ptr
 	return x
@@ -7167,7 +7167,7 @@ func (x VkSubpassDependency) SrcStageMask() VkPipelineStageFlags {
 
 // WithSrcStageMask copies the provided value into C space and stores it
 // at srcStageMask on VkSubpassDependency
-func (x *VkSubpassDependency) WithSrcStageMask(y VkPipelineStageFlags) *VkSubpassDependency {
+func (x VkSubpassDependency) WithSrcStageMask(y VkPipelineStageFlags) VkSubpassDependency {
 	ptr := /* Identifier */ (*C.VkPipelineStageFlags)(&y)
 	x.srcStageMask = *ptr
 	return x
@@ -7181,7 +7181,7 @@ func (x VkSubpassDependency) DstStageMask() VkPipelineStageFlags {
 
 // WithDstStageMask copies the provided value into C space and stores it
 // at dstStageMask on VkSubpassDependency
-func (x *VkSubpassDependency) WithDstStageMask(y VkPipelineStageFlags) *VkSubpassDependency {
+func (x VkSubpassDependency) WithDstStageMask(y VkPipelineStageFlags) VkSubpassDependency {
 	ptr := /* Identifier */ (*C.VkPipelineStageFlags)(&y)
 	x.dstStageMask = *ptr
 	return x
@@ -7195,7 +7195,7 @@ func (x VkSubpassDependency) SrcAccessMask() VkAccessFlags {
 
 // WithSrcAccessMask copies the provided value into C space and stores it
 // at srcAccessMask on VkSubpassDependency
-func (x *VkSubpassDependency) WithSrcAccessMask(y VkAccessFlags) *VkSubpassDependency {
+func (x VkSubpassDependency) WithSrcAccessMask(y VkAccessFlags) VkSubpassDependency {
 	ptr := /* Identifier */ (*C.VkAccessFlags)(&y)
 	x.srcAccessMask = *ptr
 	return x
@@ -7209,7 +7209,7 @@ func (x VkSubpassDependency) DstAccessMask() VkAccessFlags {
 
 // WithDstAccessMask copies the provided value into C space and stores it
 // at dstAccessMask on VkSubpassDependency
-func (x *VkSubpassDependency) WithDstAccessMask(y VkAccessFlags) *VkSubpassDependency {
+func (x VkSubpassDependency) WithDstAccessMask(y VkAccessFlags) VkSubpassDependency {
 	ptr := /* Identifier */ (*C.VkAccessFlags)(&y)
 	x.dstAccessMask = *ptr
 	return x
@@ -7223,7 +7223,7 @@ func (x VkSubpassDependency) DependencyFlags() VkDependencyFlags {
 
 // WithDependencyFlags copies the provided value into C space and stores it
 // at dependencyFlags on VkSubpassDependency
-func (x *VkSubpassDependency) WithDependencyFlags(y VkDependencyFlags) *VkSubpassDependency {
+func (x VkSubpassDependency) WithDependencyFlags(y VkDependencyFlags) VkSubpassDependency {
 	ptr := /* Identifier */ (*C.VkDependencyFlags)(&y)
 	x.dependencyFlags = *ptr
 	return x
@@ -7250,12 +7250,12 @@ func (x *VkSubpassDescription) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkSubpassDescription) AsPtr() *VkSubpassDescription { return x }
+func (x VkSubpassDescription) AsPtr() *VkSubpassDescription { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkSubpassDescription) AsCPtr() *VkSubpassDescription {
+func (x VkSubpassDescription) AsCPtr() *VkSubpassDescription {
 	clone := newVkSubpassDescription()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -7267,7 +7267,7 @@ func (x VkSubpassDescription) Flags() VkSubpassDescriptionFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkSubpassDescription
-func (x *VkSubpassDescription) WithFlags(y VkSubpassDescriptionFlags) *VkSubpassDescription {
+func (x VkSubpassDescription) WithFlags(y VkSubpassDescriptionFlags) VkSubpassDescription {
 	ptr := /* Identifier */ (*C.VkSubpassDescriptionFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -7281,7 +7281,7 @@ func (x VkSubpassDescription) PipelineBindPoint() VkPipelineBindPoint {
 
 // WithPipelineBindPoint copies the provided value into C space and stores it
 // at pipelineBindPoint on VkSubpassDescription
-func (x *VkSubpassDescription) WithPipelineBindPoint(y VkPipelineBindPoint) *VkSubpassDescription {
+func (x VkSubpassDescription) WithPipelineBindPoint(y VkPipelineBindPoint) VkSubpassDescription {
 	ptr := /* Identifier */ (*C.VkPipelineBindPoint)(&y)
 	x.pipelineBindPoint = *ptr
 	return x
@@ -7295,7 +7295,7 @@ func (x VkSubpassDescription) InputAttachmentCount() uint32 {
 
 // WithInputAttachmentCount copies the provided value into C space and stores it
 // at inputAttachmentCount on VkSubpassDescription
-func (x *VkSubpassDescription) WithInputAttachmentCount(y uint32) *VkSubpassDescription {
+func (x VkSubpassDescription) WithInputAttachmentCount(y uint32) VkSubpassDescription {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.inputAttachmentCount = *ptr
 	return x
@@ -7312,7 +7312,7 @@ func (x VkSubpassDescription) PInputAttachments() []VkAttachmentReference {
 
 // WithPInputAttachments copies the provided value into C space and stores it
 // at pInputAttachments on VkSubpassDescription
-func (x *VkSubpassDescription) WithPInputAttachments(y []VkAttachmentReference) *VkSubpassDescription {
+func (x VkSubpassDescription) WithPInputAttachments(y []VkAttachmentReference) VkSubpassDescription {
 	ptr := func(x *[]VkAttachmentReference) **C.VkAttachmentReference { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkAttachmentReference)(unsafe.Pointer(&((*x)[0])))
@@ -7333,7 +7333,7 @@ func (x VkSubpassDescription) ColorAttachmentCount() uint32 {
 
 // WithColorAttachmentCount copies the provided value into C space and stores it
 // at colorAttachmentCount on VkSubpassDescription
-func (x *VkSubpassDescription) WithColorAttachmentCount(y uint32) *VkSubpassDescription {
+func (x VkSubpassDescription) WithColorAttachmentCount(y uint32) VkSubpassDescription {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.colorAttachmentCount = *ptr
 	return x
@@ -7350,7 +7350,7 @@ func (x VkSubpassDescription) PColorAttachments() []VkAttachmentReference {
 
 // WithPColorAttachments copies the provided value into C space and stores it
 // at pColorAttachments on VkSubpassDescription
-func (x *VkSubpassDescription) WithPColorAttachments(y []VkAttachmentReference) *VkSubpassDescription {
+func (x VkSubpassDescription) WithPColorAttachments(y []VkAttachmentReference) VkSubpassDescription {
 	ptr := func(x *[]VkAttachmentReference) **C.VkAttachmentReference { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkAttachmentReference)(unsafe.Pointer(&((*x)[0])))
@@ -7374,7 +7374,7 @@ func (x VkSubpassDescription) PResolveAttachments() []VkAttachmentReference {
 
 // WithPResolveAttachments copies the provided value into C space and stores it
 // at pResolveAttachments on VkSubpassDescription
-func (x *VkSubpassDescription) WithPResolveAttachments(y []VkAttachmentReference) *VkSubpassDescription {
+func (x VkSubpassDescription) WithPResolveAttachments(y []VkAttachmentReference) VkSubpassDescription {
 	ptr := func(x *[]VkAttachmentReference) **C.VkAttachmentReference { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkAttachmentReference)(unsafe.Pointer(&((*x)[0])))
@@ -7397,7 +7397,7 @@ func (x VkSubpassDescription) PDepthStencilAttachment() *VkAttachmentReference {
 
 // WithPDepthStencilAttachment copies the provided value into C space and stores it
 // at pDepthStencilAttachment on VkSubpassDescription
-func (x *VkSubpassDescription) WithPDepthStencilAttachment(y *VkAttachmentReference) *VkSubpassDescription {
+func (x VkSubpassDescription) WithPDepthStencilAttachment(y *VkAttachmentReference) VkSubpassDescription {
 	ptr := func(x **VkAttachmentReference) **C.VkAttachmentReference { /* Pointer */
 		return (**C.VkAttachmentReference)(unsafe.Pointer(x))
 	}(&y)
@@ -7413,7 +7413,7 @@ func (x VkSubpassDescription) PreserveAttachmentCount() uint32 {
 
 // WithPreserveAttachmentCount copies the provided value into C space and stores it
 // at preserveAttachmentCount on VkSubpassDescription
-func (x *VkSubpassDescription) WithPreserveAttachmentCount(y uint32) *VkSubpassDescription {
+func (x VkSubpassDescription) WithPreserveAttachmentCount(y uint32) VkSubpassDescription {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.preserveAttachmentCount = *ptr
 	return x
@@ -7430,7 +7430,7 @@ func (x VkSubpassDescription) PPreserveAttachments() []uint32 {
 
 // WithPPreserveAttachments copies the provided value into C space and stores it
 // at pPreserveAttachments on VkSubpassDescription
-func (x *VkSubpassDescription) WithPPreserveAttachments(y []uint32) *VkSubpassDescription {
+func (x VkSubpassDescription) WithPPreserveAttachments(y []uint32) VkSubpassDescription {
 	ptr := func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
@@ -7464,12 +7464,12 @@ func (x *VkSubmitInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkSubmitInfo) AsPtr() *VkSubmitInfo { return x }
+func (x VkSubmitInfo) AsPtr() *VkSubmitInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkSubmitInfo) AsCPtr() *VkSubmitInfo {
+func (x VkSubmitInfo) AsCPtr() *VkSubmitInfo {
 	clone := newVkSubmitInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -7481,13 +7481,13 @@ func (x VkSubmitInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkSubmitInfo) WithDefaultSType() *VkSubmitInfo {
+func (x VkSubmitInfo) WithDefaultSType() VkSubmitInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_SUBMIT_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkSubmitInfo
-func (x *VkSubmitInfo) WithSType(y VkStructureType) *VkSubmitInfo {
+func (x VkSubmitInfo) WithSType(y VkStructureType) VkSubmitInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -7501,7 +7501,7 @@ func (x VkSubmitInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkSubmitInfo
-func (x *VkSubmitInfo) WithPNext(y unsafe.Pointer) *VkSubmitInfo {
+func (x VkSubmitInfo) WithPNext(y unsafe.Pointer) VkSubmitInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -7515,7 +7515,7 @@ func (x VkSubmitInfo) WaitSemaphoreCount() uint32 {
 
 // WithWaitSemaphoreCount copies the provided value into C space and stores it
 // at waitSemaphoreCount on VkSubmitInfo
-func (x *VkSubmitInfo) WithWaitSemaphoreCount(y uint32) *VkSubmitInfo {
+func (x VkSubmitInfo) WithWaitSemaphoreCount(y uint32) VkSubmitInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.waitSemaphoreCount = *ptr
 	return x
@@ -7532,7 +7532,7 @@ func (x VkSubmitInfo) PWaitSemaphores() []VkSemaphore {
 
 // WithPWaitSemaphores copies the provided value into C space and stores it
 // at pWaitSemaphores on VkSubmitInfo
-func (x *VkSubmitInfo) WithPWaitSemaphores(y []VkSemaphore) *VkSubmitInfo {
+func (x VkSubmitInfo) WithPWaitSemaphores(y []VkSemaphore) VkSubmitInfo {
 	ptr := func(x *[]VkSemaphore) **C.VkSemaphore { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkSemaphore)(unsafe.Pointer(&((*x)[0])))
@@ -7556,7 +7556,7 @@ func (x VkSubmitInfo) PWaitDstStageMask() []VkPipelineStageFlags {
 
 // WithPWaitDstStageMask copies the provided value into C space and stores it
 // at pWaitDstStageMask on VkSubmitInfo
-func (x *VkSubmitInfo) WithPWaitDstStageMask(y []VkPipelineStageFlags) *VkSubmitInfo {
+func (x VkSubmitInfo) WithPWaitDstStageMask(y []VkPipelineStageFlags) VkSubmitInfo {
 	ptr := func(x *[]VkPipelineStageFlags) **C.VkPipelineStageFlags { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkPipelineStageFlags)(unsafe.Pointer(&((*x)[0])))
@@ -7577,7 +7577,7 @@ func (x VkSubmitInfo) CommandBufferCount() uint32 {
 
 // WithCommandBufferCount copies the provided value into C space and stores it
 // at commandBufferCount on VkSubmitInfo
-func (x *VkSubmitInfo) WithCommandBufferCount(y uint32) *VkSubmitInfo {
+func (x VkSubmitInfo) WithCommandBufferCount(y uint32) VkSubmitInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.commandBufferCount = *ptr
 	return x
@@ -7594,7 +7594,7 @@ func (x VkSubmitInfo) PCommandBuffers() []VkCommandBuffer {
 
 // WithPCommandBuffers copies the provided value into C space and stores it
 // at pCommandBuffers on VkSubmitInfo
-func (x *VkSubmitInfo) WithPCommandBuffers(y []VkCommandBuffer) *VkSubmitInfo {
+func (x VkSubmitInfo) WithPCommandBuffers(y []VkCommandBuffer) VkSubmitInfo {
 	ptr := func(x *[]VkCommandBuffer) **C.VkCommandBuffer { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkCommandBuffer)(unsafe.Pointer(&((*x)[0])))
@@ -7615,7 +7615,7 @@ func (x VkSubmitInfo) SignalSemaphoreCount() uint32 {
 
 // WithSignalSemaphoreCount copies the provided value into C space and stores it
 // at signalSemaphoreCount on VkSubmitInfo
-func (x *VkSubmitInfo) WithSignalSemaphoreCount(y uint32) *VkSubmitInfo {
+func (x VkSubmitInfo) WithSignalSemaphoreCount(y uint32) VkSubmitInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.signalSemaphoreCount = *ptr
 	return x
@@ -7632,7 +7632,7 @@ func (x VkSubmitInfo) PSignalSemaphores() []VkSemaphore {
 
 // WithPSignalSemaphores copies the provided value into C space and stores it
 // at pSignalSemaphores on VkSubmitInfo
-func (x *VkSubmitInfo) WithPSignalSemaphores(y []VkSemaphore) *VkSubmitInfo {
+func (x VkSubmitInfo) WithPSignalSemaphores(y []VkSemaphore) VkSubmitInfo {
 	ptr := func(x *[]VkSemaphore) **C.VkSemaphore { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkSemaphore)(unsafe.Pointer(&((*x)[0])))
@@ -7666,12 +7666,12 @@ func (x *VkCommandPoolCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkCommandPoolCreateInfo) AsPtr() *VkCommandPoolCreateInfo { return x }
+func (x VkCommandPoolCreateInfo) AsPtr() *VkCommandPoolCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkCommandPoolCreateInfo) AsCPtr() *VkCommandPoolCreateInfo {
+func (x VkCommandPoolCreateInfo) AsCPtr() *VkCommandPoolCreateInfo {
 	clone := newVkCommandPoolCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -7683,13 +7683,13 @@ func (x VkCommandPoolCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkCommandPoolCreateInfo) WithDefaultSType() *VkCommandPoolCreateInfo {
+func (x VkCommandPoolCreateInfo) WithDefaultSType() VkCommandPoolCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkCommandPoolCreateInfo
-func (x *VkCommandPoolCreateInfo) WithSType(y VkStructureType) *VkCommandPoolCreateInfo {
+func (x VkCommandPoolCreateInfo) WithSType(y VkStructureType) VkCommandPoolCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -7703,7 +7703,7 @@ func (x VkCommandPoolCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkCommandPoolCreateInfo
-func (x *VkCommandPoolCreateInfo) WithPNext(y unsafe.Pointer) *VkCommandPoolCreateInfo {
+func (x VkCommandPoolCreateInfo) WithPNext(y unsafe.Pointer) VkCommandPoolCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -7717,7 +7717,7 @@ func (x VkCommandPoolCreateInfo) Flags() VkCommandPoolCreateFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkCommandPoolCreateInfo
-func (x *VkCommandPoolCreateInfo) WithFlags(y VkCommandPoolCreateFlags) *VkCommandPoolCreateInfo {
+func (x VkCommandPoolCreateInfo) WithFlags(y VkCommandPoolCreateFlags) VkCommandPoolCreateInfo {
 	ptr := /* Identifier */ (*C.VkCommandPoolCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -7731,7 +7731,7 @@ func (x VkCommandPoolCreateInfo) QueueFamilyIndex() uint32 {
 
 // WithQueueFamilyIndex copies the provided value into C space and stores it
 // at queueFamilyIndex on VkCommandPoolCreateInfo
-func (x *VkCommandPoolCreateInfo) WithQueueFamilyIndex(y uint32) *VkCommandPoolCreateInfo {
+func (x VkCommandPoolCreateInfo) WithQueueFamilyIndex(y uint32) VkCommandPoolCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.queueFamilyIndex = *ptr
 	return x
@@ -7758,12 +7758,12 @@ func (x *VkShaderModuleCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkShaderModuleCreateInfo) AsPtr() *VkShaderModuleCreateInfo { return x }
+func (x VkShaderModuleCreateInfo) AsPtr() *VkShaderModuleCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkShaderModuleCreateInfo) AsCPtr() *VkShaderModuleCreateInfo {
+func (x VkShaderModuleCreateInfo) AsCPtr() *VkShaderModuleCreateInfo {
 	clone := newVkShaderModuleCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -7775,13 +7775,13 @@ func (x VkShaderModuleCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkShaderModuleCreateInfo) WithDefaultSType() *VkShaderModuleCreateInfo {
+func (x VkShaderModuleCreateInfo) WithDefaultSType() VkShaderModuleCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkShaderModuleCreateInfo
-func (x *VkShaderModuleCreateInfo) WithSType(y VkStructureType) *VkShaderModuleCreateInfo {
+func (x VkShaderModuleCreateInfo) WithSType(y VkStructureType) VkShaderModuleCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -7795,7 +7795,7 @@ func (x VkShaderModuleCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkShaderModuleCreateInfo
-func (x *VkShaderModuleCreateInfo) WithPNext(y unsafe.Pointer) *VkShaderModuleCreateInfo {
+func (x VkShaderModuleCreateInfo) WithPNext(y unsafe.Pointer) VkShaderModuleCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -7809,7 +7809,7 @@ func (x VkShaderModuleCreateInfo) Flags() VkShaderModuleCreateFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkShaderModuleCreateInfo
-func (x *VkShaderModuleCreateInfo) WithFlags(y VkShaderModuleCreateFlags) *VkShaderModuleCreateInfo {
+func (x VkShaderModuleCreateInfo) WithFlags(y VkShaderModuleCreateFlags) VkShaderModuleCreateInfo {
 	ptr := /* Identifier */ (*C.VkShaderModuleCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -7823,7 +7823,7 @@ func (x VkShaderModuleCreateInfo) CodeSize() uint32 {
 
 // WithCodeSize copies the provided value into C space and stores it
 // at codeSize on VkShaderModuleCreateInfo
-func (x *VkShaderModuleCreateInfo) WithCodeSize(y uint32) *VkShaderModuleCreateInfo {
+func (x VkShaderModuleCreateInfo) WithCodeSize(y uint32) VkShaderModuleCreateInfo {
 	ptr := func(x *uint32) *C.ulong { /* Scalar */ return (*C.ulong)(unsafe.Pointer(x)) }(&y)
 	x.codeSize = *ptr
 	return x
@@ -7840,7 +7840,7 @@ func (x VkShaderModuleCreateInfo) PCode() []uint32 {
 
 // WithPCode copies the provided value into C space and stores it
 // at pCode on VkShaderModuleCreateInfo
-func (x *VkShaderModuleCreateInfo) WithPCode(y []uint32) *VkShaderModuleCreateInfo {
+func (x VkShaderModuleCreateInfo) WithPCode(y []uint32) VkShaderModuleCreateInfo {
 	ptr := func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
@@ -7874,12 +7874,12 @@ func (x *VkDescriptorImageInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDescriptorImageInfo) AsPtr() *VkDescriptorImageInfo { return x }
+func (x VkDescriptorImageInfo) AsPtr() *VkDescriptorImageInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDescriptorImageInfo) AsCPtr() *VkDescriptorImageInfo {
+func (x VkDescriptorImageInfo) AsCPtr() *VkDescriptorImageInfo {
 	clone := newVkDescriptorImageInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -7891,7 +7891,7 @@ func (x VkDescriptorImageInfo) Sampler() VkSampler {
 
 // WithSampler copies the provided value into C space and stores it
 // at sampler on VkDescriptorImageInfo
-func (x *VkDescriptorImageInfo) WithSampler(y VkSampler) *VkDescriptorImageInfo {
+func (x VkDescriptorImageInfo) WithSampler(y VkSampler) VkDescriptorImageInfo {
 	ptr := func(x *VkSampler) *C.VkSampler { /* Handle */ return (*C.VkSampler)(unsafe.Pointer(x)) }(&y)
 	x.sampler = *ptr
 	return x
@@ -7905,7 +7905,7 @@ func (x VkDescriptorImageInfo) ImageView() VkImageView {
 
 // WithImageView copies the provided value into C space and stores it
 // at imageView on VkDescriptorImageInfo
-func (x *VkDescriptorImageInfo) WithImageView(y VkImageView) *VkDescriptorImageInfo {
+func (x VkDescriptorImageInfo) WithImageView(y VkImageView) VkDescriptorImageInfo {
 	ptr := func(x *VkImageView) *C.VkImageView { /* Handle */ return (*C.VkImageView)(unsafe.Pointer(x)) }(&y)
 	x.imageView = *ptr
 	return x
@@ -7919,7 +7919,7 @@ func (x VkDescriptorImageInfo) ImageLayout() VkImageLayout {
 
 // WithImageLayout copies the provided value into C space and stores it
 // at imageLayout on VkDescriptorImageInfo
-func (x *VkDescriptorImageInfo) WithImageLayout(y VkImageLayout) *VkDescriptorImageInfo {
+func (x VkDescriptorImageInfo) WithImageLayout(y VkImageLayout) VkDescriptorImageInfo {
 	ptr := /* Identifier */ (*C.VkImageLayout)(&y)
 	x.imageLayout = *ptr
 	return x
@@ -7946,12 +7946,12 @@ func (x *VkDescriptorBufferInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDescriptorBufferInfo) AsPtr() *VkDescriptorBufferInfo { return x }
+func (x VkDescriptorBufferInfo) AsPtr() *VkDescriptorBufferInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDescriptorBufferInfo) AsCPtr() *VkDescriptorBufferInfo {
+func (x VkDescriptorBufferInfo) AsCPtr() *VkDescriptorBufferInfo {
 	clone := newVkDescriptorBufferInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -7963,7 +7963,7 @@ func (x VkDescriptorBufferInfo) Buffer() VkBuffer {
 
 // WithBuffer copies the provided value into C space and stores it
 // at buffer on VkDescriptorBufferInfo
-func (x *VkDescriptorBufferInfo) WithBuffer(y VkBuffer) *VkDescriptorBufferInfo {
+func (x VkDescriptorBufferInfo) WithBuffer(y VkBuffer) VkDescriptorBufferInfo {
 	ptr := func(x *VkBuffer) *C.VkBuffer { /* Handle */ return (*C.VkBuffer)(unsafe.Pointer(x)) }(&y)
 	x.buffer = *ptr
 	return x
@@ -7977,7 +7977,7 @@ func (x VkDescriptorBufferInfo) Offset() VkDeviceSize {
 
 // WithOffset copies the provided value into C space and stores it
 // at offset on VkDescriptorBufferInfo
-func (x *VkDescriptorBufferInfo) WithOffset(y VkDeviceSize) *VkDescriptorBufferInfo {
+func (x VkDescriptorBufferInfo) WithOffset(y VkDeviceSize) VkDescriptorBufferInfo {
 	ptr := /* Identifier */ (*C.VkDeviceSize)(&y)
 	x.offset = *ptr
 	return x
@@ -7991,7 +7991,7 @@ func (x VkDescriptorBufferInfo) Range() VkDeviceSize {
 
 // WithRange copies the provided value into C space and stores it
 // at range on VkDescriptorBufferInfo
-func (x *VkDescriptorBufferInfo) WithRange(y VkDeviceSize) *VkDescriptorBufferInfo {
+func (x VkDescriptorBufferInfo) WithRange(y VkDeviceSize) VkDescriptorBufferInfo {
 	ptr := /* Identifier */ (*C.VkDeviceSize)(&y)
 	x._range = *ptr
 	return x
@@ -8018,12 +8018,12 @@ func (x *VkCopyDescriptorSet) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkCopyDescriptorSet) AsPtr() *VkCopyDescriptorSet { return x }
+func (x VkCopyDescriptorSet) AsPtr() *VkCopyDescriptorSet { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkCopyDescriptorSet) AsCPtr() *VkCopyDescriptorSet {
+func (x VkCopyDescriptorSet) AsCPtr() *VkCopyDescriptorSet {
 	clone := newVkCopyDescriptorSet()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -8035,13 +8035,13 @@ func (x VkCopyDescriptorSet) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkCopyDescriptorSet) WithDefaultSType() *VkCopyDescriptorSet {
+func (x VkCopyDescriptorSet) WithDefaultSType() VkCopyDescriptorSet {
 	return x.WithSType(VK_STRUCTURE_TYPE_COPY_DESCRIPTOR_SET)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkCopyDescriptorSet
-func (x *VkCopyDescriptorSet) WithSType(y VkStructureType) *VkCopyDescriptorSet {
+func (x VkCopyDescriptorSet) WithSType(y VkStructureType) VkCopyDescriptorSet {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -8055,7 +8055,7 @@ func (x VkCopyDescriptorSet) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkCopyDescriptorSet
-func (x *VkCopyDescriptorSet) WithPNext(y unsafe.Pointer) *VkCopyDescriptorSet {
+func (x VkCopyDescriptorSet) WithPNext(y unsafe.Pointer) VkCopyDescriptorSet {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -8069,7 +8069,7 @@ func (x VkCopyDescriptorSet) SrcSet() VkDescriptorSet {
 
 // WithSrcSet copies the provided value into C space and stores it
 // at srcSet on VkCopyDescriptorSet
-func (x *VkCopyDescriptorSet) WithSrcSet(y VkDescriptorSet) *VkCopyDescriptorSet {
+func (x VkCopyDescriptorSet) WithSrcSet(y VkDescriptorSet) VkCopyDescriptorSet {
 	ptr := func(x *VkDescriptorSet) *C.VkDescriptorSet { /* Handle */
 		return (*C.VkDescriptorSet)(unsafe.Pointer(x))
 	}(&y)
@@ -8085,7 +8085,7 @@ func (x VkCopyDescriptorSet) SrcBinding() uint32 {
 
 // WithSrcBinding copies the provided value into C space and stores it
 // at srcBinding on VkCopyDescriptorSet
-func (x *VkCopyDescriptorSet) WithSrcBinding(y uint32) *VkCopyDescriptorSet {
+func (x VkCopyDescriptorSet) WithSrcBinding(y uint32) VkCopyDescriptorSet {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.srcBinding = *ptr
 	return x
@@ -8099,7 +8099,7 @@ func (x VkCopyDescriptorSet) SrcArrayElement() uint32 {
 
 // WithSrcArrayElement copies the provided value into C space and stores it
 // at srcArrayElement on VkCopyDescriptorSet
-func (x *VkCopyDescriptorSet) WithSrcArrayElement(y uint32) *VkCopyDescriptorSet {
+func (x VkCopyDescriptorSet) WithSrcArrayElement(y uint32) VkCopyDescriptorSet {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.srcArrayElement = *ptr
 	return x
@@ -8113,7 +8113,7 @@ func (x VkCopyDescriptorSet) DstSet() VkDescriptorSet {
 
 // WithDstSet copies the provided value into C space and stores it
 // at dstSet on VkCopyDescriptorSet
-func (x *VkCopyDescriptorSet) WithDstSet(y VkDescriptorSet) *VkCopyDescriptorSet {
+func (x VkCopyDescriptorSet) WithDstSet(y VkDescriptorSet) VkCopyDescriptorSet {
 	ptr := func(x *VkDescriptorSet) *C.VkDescriptorSet { /* Handle */
 		return (*C.VkDescriptorSet)(unsafe.Pointer(x))
 	}(&y)
@@ -8129,7 +8129,7 @@ func (x VkCopyDescriptorSet) DstBinding() uint32 {
 
 // WithDstBinding copies the provided value into C space and stores it
 // at dstBinding on VkCopyDescriptorSet
-func (x *VkCopyDescriptorSet) WithDstBinding(y uint32) *VkCopyDescriptorSet {
+func (x VkCopyDescriptorSet) WithDstBinding(y uint32) VkCopyDescriptorSet {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.dstBinding = *ptr
 	return x
@@ -8143,7 +8143,7 @@ func (x VkCopyDescriptorSet) DstArrayElement() uint32 {
 
 // WithDstArrayElement copies the provided value into C space and stores it
 // at dstArrayElement on VkCopyDescriptorSet
-func (x *VkCopyDescriptorSet) WithDstArrayElement(y uint32) *VkCopyDescriptorSet {
+func (x VkCopyDescriptorSet) WithDstArrayElement(y uint32) VkCopyDescriptorSet {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.dstArrayElement = *ptr
 	return x
@@ -8157,7 +8157,7 @@ func (x VkCopyDescriptorSet) DescriptorCount() uint32 {
 
 // WithDescriptorCount copies the provided value into C space and stores it
 // at descriptorCount on VkCopyDescriptorSet
-func (x *VkCopyDescriptorSet) WithDescriptorCount(y uint32) *VkCopyDescriptorSet {
+func (x VkCopyDescriptorSet) WithDescriptorCount(y uint32) VkCopyDescriptorSet {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.descriptorCount = *ptr
 	return x
@@ -8184,12 +8184,12 @@ func (x *VkLayerProperties) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkLayerProperties) AsPtr() *VkLayerProperties { return x }
+func (x VkLayerProperties) AsPtr() *VkLayerProperties { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkLayerProperties) AsCPtr() *VkLayerProperties {
+func (x VkLayerProperties) AsCPtr() *VkLayerProperties {
 	clone := newVkLayerProperties()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -8244,12 +8244,12 @@ func (x *VkExtensionProperties) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkExtensionProperties) AsPtr() *VkExtensionProperties { return x }
+func (x VkExtensionProperties) AsPtr() *VkExtensionProperties { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkExtensionProperties) AsCPtr() *VkExtensionProperties {
+func (x VkExtensionProperties) AsCPtr() *VkExtensionProperties {
 	clone := newVkExtensionProperties()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -8289,12 +8289,12 @@ func (x *VkCommandBufferAllocateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkCommandBufferAllocateInfo) AsPtr() *VkCommandBufferAllocateInfo { return x }
+func (x VkCommandBufferAllocateInfo) AsPtr() *VkCommandBufferAllocateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkCommandBufferAllocateInfo) AsCPtr() *VkCommandBufferAllocateInfo {
+func (x VkCommandBufferAllocateInfo) AsCPtr() *VkCommandBufferAllocateInfo {
 	clone := newVkCommandBufferAllocateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -8306,13 +8306,13 @@ func (x VkCommandBufferAllocateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkCommandBufferAllocateInfo) WithDefaultSType() *VkCommandBufferAllocateInfo {
+func (x VkCommandBufferAllocateInfo) WithDefaultSType() VkCommandBufferAllocateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkCommandBufferAllocateInfo
-func (x *VkCommandBufferAllocateInfo) WithSType(y VkStructureType) *VkCommandBufferAllocateInfo {
+func (x VkCommandBufferAllocateInfo) WithSType(y VkStructureType) VkCommandBufferAllocateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -8326,7 +8326,7 @@ func (x VkCommandBufferAllocateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkCommandBufferAllocateInfo
-func (x *VkCommandBufferAllocateInfo) WithPNext(y unsafe.Pointer) *VkCommandBufferAllocateInfo {
+func (x VkCommandBufferAllocateInfo) WithPNext(y unsafe.Pointer) VkCommandBufferAllocateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -8340,7 +8340,7 @@ func (x VkCommandBufferAllocateInfo) CommandPool() VkCommandPool {
 
 // WithCommandPool copies the provided value into C space and stores it
 // at commandPool on VkCommandBufferAllocateInfo
-func (x *VkCommandBufferAllocateInfo) WithCommandPool(y VkCommandPool) *VkCommandBufferAllocateInfo {
+func (x VkCommandBufferAllocateInfo) WithCommandPool(y VkCommandPool) VkCommandBufferAllocateInfo {
 	ptr := func(x *VkCommandPool) *C.VkCommandPool { /* Handle */ return (*C.VkCommandPool)(unsafe.Pointer(x)) }(&y)
 	x.commandPool = *ptr
 	return x
@@ -8354,7 +8354,7 @@ func (x VkCommandBufferAllocateInfo) Level() VkCommandBufferLevel {
 
 // WithLevel copies the provided value into C space and stores it
 // at level on VkCommandBufferAllocateInfo
-func (x *VkCommandBufferAllocateInfo) WithLevel(y VkCommandBufferLevel) *VkCommandBufferAllocateInfo {
+func (x VkCommandBufferAllocateInfo) WithLevel(y VkCommandBufferLevel) VkCommandBufferAllocateInfo {
 	ptr := /* Identifier */ (*C.VkCommandBufferLevel)(&y)
 	x.level = *ptr
 	return x
@@ -8368,7 +8368,7 @@ func (x VkCommandBufferAllocateInfo) CommandBufferCount() uint32 {
 
 // WithCommandBufferCount copies the provided value into C space and stores it
 // at commandBufferCount on VkCommandBufferAllocateInfo
-func (x *VkCommandBufferAllocateInfo) WithCommandBufferCount(y uint32) *VkCommandBufferAllocateInfo {
+func (x VkCommandBufferAllocateInfo) WithCommandBufferCount(y uint32) VkCommandBufferAllocateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.commandBufferCount = *ptr
 	return x
@@ -8395,12 +8395,12 @@ func (x *VkCommandBufferInheritanceInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkCommandBufferInheritanceInfo) AsPtr() *VkCommandBufferInheritanceInfo { return x }
+func (x VkCommandBufferInheritanceInfo) AsPtr() *VkCommandBufferInheritanceInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkCommandBufferInheritanceInfo) AsCPtr() *VkCommandBufferInheritanceInfo {
+func (x VkCommandBufferInheritanceInfo) AsCPtr() *VkCommandBufferInheritanceInfo {
 	clone := newVkCommandBufferInheritanceInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -8412,13 +8412,13 @@ func (x VkCommandBufferInheritanceInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkCommandBufferInheritanceInfo) WithDefaultSType() *VkCommandBufferInheritanceInfo {
+func (x VkCommandBufferInheritanceInfo) WithDefaultSType() VkCommandBufferInheritanceInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkCommandBufferInheritanceInfo
-func (x *VkCommandBufferInheritanceInfo) WithSType(y VkStructureType) *VkCommandBufferInheritanceInfo {
+func (x VkCommandBufferInheritanceInfo) WithSType(y VkStructureType) VkCommandBufferInheritanceInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -8432,7 +8432,7 @@ func (x VkCommandBufferInheritanceInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkCommandBufferInheritanceInfo
-func (x *VkCommandBufferInheritanceInfo) WithPNext(y unsafe.Pointer) *VkCommandBufferInheritanceInfo {
+func (x VkCommandBufferInheritanceInfo) WithPNext(y unsafe.Pointer) VkCommandBufferInheritanceInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -8446,7 +8446,7 @@ func (x VkCommandBufferInheritanceInfo) RenderPass() VkRenderPass {
 
 // WithRenderPass copies the provided value into C space and stores it
 // at renderPass on VkCommandBufferInheritanceInfo
-func (x *VkCommandBufferInheritanceInfo) WithRenderPass(y VkRenderPass) *VkCommandBufferInheritanceInfo {
+func (x VkCommandBufferInheritanceInfo) WithRenderPass(y VkRenderPass) VkCommandBufferInheritanceInfo {
 	ptr := func(x *VkRenderPass) *C.VkRenderPass { /* Handle */ return (*C.VkRenderPass)(unsafe.Pointer(x)) }(&y)
 	x.renderPass = *ptr
 	return x
@@ -8460,7 +8460,7 @@ func (x VkCommandBufferInheritanceInfo) Subpass() uint32 {
 
 // WithSubpass copies the provided value into C space and stores it
 // at subpass on VkCommandBufferInheritanceInfo
-func (x *VkCommandBufferInheritanceInfo) WithSubpass(y uint32) *VkCommandBufferInheritanceInfo {
+func (x VkCommandBufferInheritanceInfo) WithSubpass(y uint32) VkCommandBufferInheritanceInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.subpass = *ptr
 	return x
@@ -8474,7 +8474,7 @@ func (x VkCommandBufferInheritanceInfo) Framebuffer() VkFramebuffer {
 
 // WithFramebuffer copies the provided value into C space and stores it
 // at framebuffer on VkCommandBufferInheritanceInfo
-func (x *VkCommandBufferInheritanceInfo) WithFramebuffer(y VkFramebuffer) *VkCommandBufferInheritanceInfo {
+func (x VkCommandBufferInheritanceInfo) WithFramebuffer(y VkFramebuffer) VkCommandBufferInheritanceInfo {
 	ptr := func(x *VkFramebuffer) *C.VkFramebuffer { /* Handle */ return (*C.VkFramebuffer)(unsafe.Pointer(x)) }(&y)
 	x.framebuffer = *ptr
 	return x
@@ -8488,7 +8488,7 @@ func (x VkCommandBufferInheritanceInfo) OcclusionQueryEnable() VkBool32 {
 
 // WithOcclusionQueryEnable copies the provided value into C space and stores it
 // at occlusionQueryEnable on VkCommandBufferInheritanceInfo
-func (x *VkCommandBufferInheritanceInfo) WithOcclusionQueryEnable(y VkBool32) *VkCommandBufferInheritanceInfo {
+func (x VkCommandBufferInheritanceInfo) WithOcclusionQueryEnable(y VkBool32) VkCommandBufferInheritanceInfo {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.occlusionQueryEnable = *ptr
 	return x
@@ -8502,7 +8502,7 @@ func (x VkCommandBufferInheritanceInfo) QueryFlags() VkQueryControlFlags {
 
 // WithQueryFlags copies the provided value into C space and stores it
 // at queryFlags on VkCommandBufferInheritanceInfo
-func (x *VkCommandBufferInheritanceInfo) WithQueryFlags(y VkQueryControlFlags) *VkCommandBufferInheritanceInfo {
+func (x VkCommandBufferInheritanceInfo) WithQueryFlags(y VkQueryControlFlags) VkCommandBufferInheritanceInfo {
 	ptr := /* Identifier */ (*C.VkQueryControlFlags)(&y)
 	x.queryFlags = *ptr
 	return x
@@ -8516,7 +8516,7 @@ func (x VkCommandBufferInheritanceInfo) PipelineStatistics() VkQueryPipelineStat
 
 // WithPipelineStatistics copies the provided value into C space and stores it
 // at pipelineStatistics on VkCommandBufferInheritanceInfo
-func (x *VkCommandBufferInheritanceInfo) WithPipelineStatistics(y VkQueryPipelineStatisticFlags) *VkCommandBufferInheritanceInfo {
+func (x VkCommandBufferInheritanceInfo) WithPipelineStatistics(y VkQueryPipelineStatisticFlags) VkCommandBufferInheritanceInfo {
 	ptr := /* Identifier */ (*C.VkQueryPipelineStatisticFlags)(&y)
 	x.pipelineStatistics = *ptr
 	return x
@@ -8543,12 +8543,12 @@ func (x *VkPipelineCacheCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPipelineCacheCreateInfo) AsPtr() *VkPipelineCacheCreateInfo { return x }
+func (x VkPipelineCacheCreateInfo) AsPtr() *VkPipelineCacheCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPipelineCacheCreateInfo) AsCPtr() *VkPipelineCacheCreateInfo {
+func (x VkPipelineCacheCreateInfo) AsCPtr() *VkPipelineCacheCreateInfo {
 	clone := newVkPipelineCacheCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -8560,13 +8560,13 @@ func (x VkPipelineCacheCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPipelineCacheCreateInfo) WithDefaultSType() *VkPipelineCacheCreateInfo {
+func (x VkPipelineCacheCreateInfo) WithDefaultSType() VkPipelineCacheCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_PIPELINE_CACHE_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPipelineCacheCreateInfo
-func (x *VkPipelineCacheCreateInfo) WithSType(y VkStructureType) *VkPipelineCacheCreateInfo {
+func (x VkPipelineCacheCreateInfo) WithSType(y VkStructureType) VkPipelineCacheCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -8580,7 +8580,7 @@ func (x VkPipelineCacheCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPipelineCacheCreateInfo
-func (x *VkPipelineCacheCreateInfo) WithPNext(y unsafe.Pointer) *VkPipelineCacheCreateInfo {
+func (x VkPipelineCacheCreateInfo) WithPNext(y unsafe.Pointer) VkPipelineCacheCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -8594,7 +8594,7 @@ func (x VkPipelineCacheCreateInfo) Flags() VkPipelineCacheCreateFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkPipelineCacheCreateInfo
-func (x *VkPipelineCacheCreateInfo) WithFlags(y VkPipelineCacheCreateFlags) *VkPipelineCacheCreateInfo {
+func (x VkPipelineCacheCreateInfo) WithFlags(y VkPipelineCacheCreateFlags) VkPipelineCacheCreateInfo {
 	ptr := /* Identifier */ (*C.VkPipelineCacheCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -8608,7 +8608,7 @@ func (x VkPipelineCacheCreateInfo) InitialDataSize() uint32 {
 
 // WithInitialDataSize copies the provided value into C space and stores it
 // at initialDataSize on VkPipelineCacheCreateInfo
-func (x *VkPipelineCacheCreateInfo) WithInitialDataSize(y uint32) *VkPipelineCacheCreateInfo {
+func (x VkPipelineCacheCreateInfo) WithInitialDataSize(y uint32) VkPipelineCacheCreateInfo {
 	ptr := func(x *uint32) *C.ulong { /* Scalar */ return (*C.ulong)(unsafe.Pointer(x)) }(&y)
 	x.initialDataSize = *ptr
 	return x
@@ -8622,7 +8622,7 @@ func (x VkPipelineCacheCreateInfo) PInitialData() unsafe.Pointer {
 
 // WithPInitialData copies the provided value into C space and stores it
 // at pInitialData on VkPipelineCacheCreateInfo
-func (x *VkPipelineCacheCreateInfo) WithPInitialData(y unsafe.Pointer) *VkPipelineCacheCreateInfo {
+func (x VkPipelineCacheCreateInfo) WithPInitialData(y unsafe.Pointer) VkPipelineCacheCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pInitialData = *ptr
 	return x
@@ -8649,12 +8649,12 @@ func (x *VkSamplerCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkSamplerCreateInfo) AsPtr() *VkSamplerCreateInfo { return x }
+func (x VkSamplerCreateInfo) AsPtr() *VkSamplerCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkSamplerCreateInfo) AsCPtr() *VkSamplerCreateInfo {
+func (x VkSamplerCreateInfo) AsCPtr() *VkSamplerCreateInfo {
 	clone := newVkSamplerCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -8666,13 +8666,13 @@ func (x VkSamplerCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkSamplerCreateInfo) WithDefaultSType() *VkSamplerCreateInfo {
+func (x VkSamplerCreateInfo) WithDefaultSType() VkSamplerCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkSamplerCreateInfo
-func (x *VkSamplerCreateInfo) WithSType(y VkStructureType) *VkSamplerCreateInfo {
+func (x VkSamplerCreateInfo) WithSType(y VkStructureType) VkSamplerCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -8686,7 +8686,7 @@ func (x VkSamplerCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkSamplerCreateInfo
-func (x *VkSamplerCreateInfo) WithPNext(y unsafe.Pointer) *VkSamplerCreateInfo {
+func (x VkSamplerCreateInfo) WithPNext(y unsafe.Pointer) VkSamplerCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -8700,7 +8700,7 @@ func (x VkSamplerCreateInfo) Flags() VkSamplerCreateFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkSamplerCreateInfo
-func (x *VkSamplerCreateInfo) WithFlags(y VkSamplerCreateFlags) *VkSamplerCreateInfo {
+func (x VkSamplerCreateInfo) WithFlags(y VkSamplerCreateFlags) VkSamplerCreateInfo {
 	ptr := /* Identifier */ (*C.VkSamplerCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -8714,7 +8714,7 @@ func (x VkSamplerCreateInfo) MagFilter() VkFilter {
 
 // WithMagFilter copies the provided value into C space and stores it
 // at magFilter on VkSamplerCreateInfo
-func (x *VkSamplerCreateInfo) WithMagFilter(y VkFilter) *VkSamplerCreateInfo {
+func (x VkSamplerCreateInfo) WithMagFilter(y VkFilter) VkSamplerCreateInfo {
 	ptr := /* Identifier */ (*C.VkFilter)(&y)
 	x.magFilter = *ptr
 	return x
@@ -8728,7 +8728,7 @@ func (x VkSamplerCreateInfo) MinFilter() VkFilter {
 
 // WithMinFilter copies the provided value into C space and stores it
 // at minFilter on VkSamplerCreateInfo
-func (x *VkSamplerCreateInfo) WithMinFilter(y VkFilter) *VkSamplerCreateInfo {
+func (x VkSamplerCreateInfo) WithMinFilter(y VkFilter) VkSamplerCreateInfo {
 	ptr := /* Identifier */ (*C.VkFilter)(&y)
 	x.minFilter = *ptr
 	return x
@@ -8742,7 +8742,7 @@ func (x VkSamplerCreateInfo) MipmapMode() VkSamplerMipmapMode {
 
 // WithMipmapMode copies the provided value into C space and stores it
 // at mipmapMode on VkSamplerCreateInfo
-func (x *VkSamplerCreateInfo) WithMipmapMode(y VkSamplerMipmapMode) *VkSamplerCreateInfo {
+func (x VkSamplerCreateInfo) WithMipmapMode(y VkSamplerMipmapMode) VkSamplerCreateInfo {
 	ptr := /* Identifier */ (*C.VkSamplerMipmapMode)(&y)
 	x.mipmapMode = *ptr
 	return x
@@ -8756,7 +8756,7 @@ func (x VkSamplerCreateInfo) AddressModeU() VkSamplerAddressMode {
 
 // WithAddressModeU copies the provided value into C space and stores it
 // at addressModeU on VkSamplerCreateInfo
-func (x *VkSamplerCreateInfo) WithAddressModeU(y VkSamplerAddressMode) *VkSamplerCreateInfo {
+func (x VkSamplerCreateInfo) WithAddressModeU(y VkSamplerAddressMode) VkSamplerCreateInfo {
 	ptr := /* Identifier */ (*C.VkSamplerAddressMode)(&y)
 	x.addressModeU = *ptr
 	return x
@@ -8770,7 +8770,7 @@ func (x VkSamplerCreateInfo) AddressModeV() VkSamplerAddressMode {
 
 // WithAddressModeV copies the provided value into C space and stores it
 // at addressModeV on VkSamplerCreateInfo
-func (x *VkSamplerCreateInfo) WithAddressModeV(y VkSamplerAddressMode) *VkSamplerCreateInfo {
+func (x VkSamplerCreateInfo) WithAddressModeV(y VkSamplerAddressMode) VkSamplerCreateInfo {
 	ptr := /* Identifier */ (*C.VkSamplerAddressMode)(&y)
 	x.addressModeV = *ptr
 	return x
@@ -8784,7 +8784,7 @@ func (x VkSamplerCreateInfo) AddressModeW() VkSamplerAddressMode {
 
 // WithAddressModeW copies the provided value into C space and stores it
 // at addressModeW on VkSamplerCreateInfo
-func (x *VkSamplerCreateInfo) WithAddressModeW(y VkSamplerAddressMode) *VkSamplerCreateInfo {
+func (x VkSamplerCreateInfo) WithAddressModeW(y VkSamplerAddressMode) VkSamplerCreateInfo {
 	ptr := /* Identifier */ (*C.VkSamplerAddressMode)(&y)
 	x.addressModeW = *ptr
 	return x
@@ -8798,7 +8798,7 @@ func (x VkSamplerCreateInfo) MipLodBias() float32 {
 
 // WithMipLodBias copies the provided value into C space and stores it
 // at mipLodBias on VkSamplerCreateInfo
-func (x *VkSamplerCreateInfo) WithMipLodBias(y float32) *VkSamplerCreateInfo {
+func (x VkSamplerCreateInfo) WithMipLodBias(y float32) VkSamplerCreateInfo {
 	ptr := func(x *float32) *C.float { /* Scalar */ return (*C.float)(unsafe.Pointer(x)) }(&y)
 	x.mipLodBias = *ptr
 	return x
@@ -8812,7 +8812,7 @@ func (x VkSamplerCreateInfo) AnisotropyEnable() VkBool32 {
 
 // WithAnisotropyEnable copies the provided value into C space and stores it
 // at anisotropyEnable on VkSamplerCreateInfo
-func (x *VkSamplerCreateInfo) WithAnisotropyEnable(y VkBool32) *VkSamplerCreateInfo {
+func (x VkSamplerCreateInfo) WithAnisotropyEnable(y VkBool32) VkSamplerCreateInfo {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.anisotropyEnable = *ptr
 	return x
@@ -8826,7 +8826,7 @@ func (x VkSamplerCreateInfo) MaxAnisotropy() float32 {
 
 // WithMaxAnisotropy copies the provided value into C space and stores it
 // at maxAnisotropy on VkSamplerCreateInfo
-func (x *VkSamplerCreateInfo) WithMaxAnisotropy(y float32) *VkSamplerCreateInfo {
+func (x VkSamplerCreateInfo) WithMaxAnisotropy(y float32) VkSamplerCreateInfo {
 	ptr := func(x *float32) *C.float { /* Scalar */ return (*C.float)(unsafe.Pointer(x)) }(&y)
 	x.maxAnisotropy = *ptr
 	return x
@@ -8840,7 +8840,7 @@ func (x VkSamplerCreateInfo) CompareEnable() VkBool32 {
 
 // WithCompareEnable copies the provided value into C space and stores it
 // at compareEnable on VkSamplerCreateInfo
-func (x *VkSamplerCreateInfo) WithCompareEnable(y VkBool32) *VkSamplerCreateInfo {
+func (x VkSamplerCreateInfo) WithCompareEnable(y VkBool32) VkSamplerCreateInfo {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.compareEnable = *ptr
 	return x
@@ -8854,7 +8854,7 @@ func (x VkSamplerCreateInfo) CompareOp() VkCompareOp {
 
 // WithCompareOp copies the provided value into C space and stores it
 // at compareOp on VkSamplerCreateInfo
-func (x *VkSamplerCreateInfo) WithCompareOp(y VkCompareOp) *VkSamplerCreateInfo {
+func (x VkSamplerCreateInfo) WithCompareOp(y VkCompareOp) VkSamplerCreateInfo {
 	ptr := /* Identifier */ (*C.VkCompareOp)(&y)
 	x.compareOp = *ptr
 	return x
@@ -8868,7 +8868,7 @@ func (x VkSamplerCreateInfo) MinLod() float32 {
 
 // WithMinLod copies the provided value into C space and stores it
 // at minLod on VkSamplerCreateInfo
-func (x *VkSamplerCreateInfo) WithMinLod(y float32) *VkSamplerCreateInfo {
+func (x VkSamplerCreateInfo) WithMinLod(y float32) VkSamplerCreateInfo {
 	ptr := func(x *float32) *C.float { /* Scalar */ return (*C.float)(unsafe.Pointer(x)) }(&y)
 	x.minLod = *ptr
 	return x
@@ -8882,7 +8882,7 @@ func (x VkSamplerCreateInfo) MaxLod() float32 {
 
 // WithMaxLod copies the provided value into C space and stores it
 // at maxLod on VkSamplerCreateInfo
-func (x *VkSamplerCreateInfo) WithMaxLod(y float32) *VkSamplerCreateInfo {
+func (x VkSamplerCreateInfo) WithMaxLod(y float32) VkSamplerCreateInfo {
 	ptr := func(x *float32) *C.float { /* Scalar */ return (*C.float)(unsafe.Pointer(x)) }(&y)
 	x.maxLod = *ptr
 	return x
@@ -8896,7 +8896,7 @@ func (x VkSamplerCreateInfo) BorderColor() VkBorderColor {
 
 // WithBorderColor copies the provided value into C space and stores it
 // at borderColor on VkSamplerCreateInfo
-func (x *VkSamplerCreateInfo) WithBorderColor(y VkBorderColor) *VkSamplerCreateInfo {
+func (x VkSamplerCreateInfo) WithBorderColor(y VkBorderColor) VkSamplerCreateInfo {
 	ptr := /* Identifier */ (*C.VkBorderColor)(&y)
 	x.borderColor = *ptr
 	return x
@@ -8910,7 +8910,7 @@ func (x VkSamplerCreateInfo) UnnormalizedCoordinates() VkBool32 {
 
 // WithUnnormalizedCoordinates copies the provided value into C space and stores it
 // at unnormalizedCoordinates on VkSamplerCreateInfo
-func (x *VkSamplerCreateInfo) WithUnnormalizedCoordinates(y VkBool32) *VkSamplerCreateInfo {
+func (x VkSamplerCreateInfo) WithUnnormalizedCoordinates(y VkBool32) VkSamplerCreateInfo {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.unnormalizedCoordinates = *ptr
 	return x
@@ -8937,12 +8937,12 @@ func (x *VkDeviceCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDeviceCreateInfo) AsPtr() *VkDeviceCreateInfo { return x }
+func (x VkDeviceCreateInfo) AsPtr() *VkDeviceCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDeviceCreateInfo) AsCPtr() *VkDeviceCreateInfo {
+func (x VkDeviceCreateInfo) AsCPtr() *VkDeviceCreateInfo {
 	clone := newVkDeviceCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -8954,13 +8954,13 @@ func (x VkDeviceCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkDeviceCreateInfo) WithDefaultSType() *VkDeviceCreateInfo {
+func (x VkDeviceCreateInfo) WithDefaultSType() VkDeviceCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkDeviceCreateInfo
-func (x *VkDeviceCreateInfo) WithSType(y VkStructureType) *VkDeviceCreateInfo {
+func (x VkDeviceCreateInfo) WithSType(y VkStructureType) VkDeviceCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -8974,7 +8974,7 @@ func (x VkDeviceCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkDeviceCreateInfo
-func (x *VkDeviceCreateInfo) WithPNext(y unsafe.Pointer) *VkDeviceCreateInfo {
+func (x VkDeviceCreateInfo) WithPNext(y unsafe.Pointer) VkDeviceCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -8988,7 +8988,7 @@ func (x VkDeviceCreateInfo) Flags() VkDeviceCreateFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkDeviceCreateInfo
-func (x *VkDeviceCreateInfo) WithFlags(y VkDeviceCreateFlags) *VkDeviceCreateInfo {
+func (x VkDeviceCreateInfo) WithFlags(y VkDeviceCreateFlags) VkDeviceCreateInfo {
 	ptr := /* Identifier */ (*C.VkDeviceCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -9002,7 +9002,7 @@ func (x VkDeviceCreateInfo) QueueCreateInfoCount() uint32 {
 
 // WithQueueCreateInfoCount copies the provided value into C space and stores it
 // at queueCreateInfoCount on VkDeviceCreateInfo
-func (x *VkDeviceCreateInfo) WithQueueCreateInfoCount(y uint32) *VkDeviceCreateInfo {
+func (x VkDeviceCreateInfo) WithQueueCreateInfoCount(y uint32) VkDeviceCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.queueCreateInfoCount = *ptr
 	return x
@@ -9019,7 +9019,7 @@ func (x VkDeviceCreateInfo) PQueueCreateInfos() []VkDeviceQueueCreateInfo {
 
 // WithPQueueCreateInfos copies the provided value into C space and stores it
 // at pQueueCreateInfos on VkDeviceCreateInfo
-func (x *VkDeviceCreateInfo) WithPQueueCreateInfos(y []VkDeviceQueueCreateInfo) *VkDeviceCreateInfo {
+func (x VkDeviceCreateInfo) WithPQueueCreateInfos(y []VkDeviceQueueCreateInfo) VkDeviceCreateInfo {
 	ptr := func(x *[]VkDeviceQueueCreateInfo) **C.VkDeviceQueueCreateInfo { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkDeviceQueueCreateInfo)(unsafe.Pointer(&((*x)[0])))
@@ -9040,7 +9040,7 @@ func (x VkDeviceCreateInfo) EnabledLayerCount() uint32 {
 
 // WithEnabledLayerCount copies the provided value into C space and stores it
 // at enabledLayerCount on VkDeviceCreateInfo
-func (x *VkDeviceCreateInfo) WithEnabledLayerCount(y uint32) *VkDeviceCreateInfo {
+func (x VkDeviceCreateInfo) WithEnabledLayerCount(y uint32) VkDeviceCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.enabledLayerCount = *ptr
 	return x
@@ -9057,7 +9057,7 @@ func (x VkDeviceCreateInfo) PpEnabledLayerNames() []*byte {
 
 // WithPpEnabledLayerNames copies the provided value into C space and stores it
 // at ppEnabledLayerNames on VkDeviceCreateInfo
-func (x *VkDeviceCreateInfo) WithPpEnabledLayerNames(y []*byte) *VkDeviceCreateInfo {
+func (x VkDeviceCreateInfo) WithPpEnabledLayerNames(y []*byte) VkDeviceCreateInfo {
 	ptr := func(x *[]*byte) ***C.char { /* Slice */
 		if len(*x) > 0 {
 			slc := (**C.char)(unsafe.Pointer(&((*x)[0])))
@@ -9078,7 +9078,7 @@ func (x VkDeviceCreateInfo) EnabledExtensionCount() uint32 {
 
 // WithEnabledExtensionCount copies the provided value into C space and stores it
 // at enabledExtensionCount on VkDeviceCreateInfo
-func (x *VkDeviceCreateInfo) WithEnabledExtensionCount(y uint32) *VkDeviceCreateInfo {
+func (x VkDeviceCreateInfo) WithEnabledExtensionCount(y uint32) VkDeviceCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.enabledExtensionCount = *ptr
 	return x
@@ -9095,7 +9095,7 @@ func (x VkDeviceCreateInfo) PpEnabledExtensionNames() []*byte {
 
 // WithPpEnabledExtensionNames copies the provided value into C space and stores it
 // at ppEnabledExtensionNames on VkDeviceCreateInfo
-func (x *VkDeviceCreateInfo) WithPpEnabledExtensionNames(y []*byte) *VkDeviceCreateInfo {
+func (x VkDeviceCreateInfo) WithPpEnabledExtensionNames(y []*byte) VkDeviceCreateInfo {
 	ptr := func(x *[]*byte) ***C.char { /* Slice */
 		if len(*x) > 0 {
 			slc := (**C.char)(unsafe.Pointer(&((*x)[0])))
@@ -9118,7 +9118,7 @@ func (x VkDeviceCreateInfo) PEnabledFeatures() *VkPhysicalDeviceFeatures {
 
 // WithPEnabledFeatures copies the provided value into C space and stores it
 // at pEnabledFeatures on VkDeviceCreateInfo
-func (x *VkDeviceCreateInfo) WithPEnabledFeatures(y *VkPhysicalDeviceFeatures) *VkDeviceCreateInfo {
+func (x VkDeviceCreateInfo) WithPEnabledFeatures(y *VkPhysicalDeviceFeatures) VkDeviceCreateInfo {
 	ptr := func(x **VkPhysicalDeviceFeatures) **C.VkPhysicalDeviceFeatures { /* Pointer */
 		return (**C.VkPhysicalDeviceFeatures)(unsafe.Pointer(x))
 	}(&y)
@@ -9147,12 +9147,12 @@ func (x *VkQueueFamilyProperties) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkQueueFamilyProperties) AsPtr() *VkQueueFamilyProperties { return x }
+func (x VkQueueFamilyProperties) AsPtr() *VkQueueFamilyProperties { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkQueueFamilyProperties) AsCPtr() *VkQueueFamilyProperties {
+func (x VkQueueFamilyProperties) AsCPtr() *VkQueueFamilyProperties {
 	clone := newVkQueueFamilyProperties()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -9201,12 +9201,12 @@ func (x *VkPhysicalDeviceSparseProperties) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceSparseProperties) AsPtr() *VkPhysicalDeviceSparseProperties { return x }
+func (x VkPhysicalDeviceSparseProperties) AsPtr() *VkPhysicalDeviceSparseProperties { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceSparseProperties) AsCPtr() *VkPhysicalDeviceSparseProperties {
+func (x VkPhysicalDeviceSparseProperties) AsCPtr() *VkPhysicalDeviceSparseProperties {
 	clone := newVkPhysicalDeviceSparseProperties()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -9261,12 +9261,12 @@ func (x *VkPhysicalDeviceProperties) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceProperties) AsPtr() *VkPhysicalDeviceProperties { return x }
+func (x VkPhysicalDeviceProperties) AsPtr() *VkPhysicalDeviceProperties { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceProperties) AsCPtr() *VkPhysicalDeviceProperties {
+func (x VkPhysicalDeviceProperties) AsCPtr() *VkPhysicalDeviceProperties {
 	clone := newVkPhysicalDeviceProperties()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -9351,12 +9351,12 @@ func (x *VkPhysicalDeviceMemoryProperties) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceMemoryProperties) AsPtr() *VkPhysicalDeviceMemoryProperties { return x }
+func (x VkPhysicalDeviceMemoryProperties) AsPtr() *VkPhysicalDeviceMemoryProperties { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceMemoryProperties) AsCPtr() *VkPhysicalDeviceMemoryProperties {
+func (x VkPhysicalDeviceMemoryProperties) AsCPtr() *VkPhysicalDeviceMemoryProperties {
 	clone := newVkPhysicalDeviceMemoryProperties()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -9411,12 +9411,12 @@ func (x *VkPhysicalDeviceLimits) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceLimits) AsPtr() *VkPhysicalDeviceLimits { return x }
+func (x VkPhysicalDeviceLimits) AsPtr() *VkPhysicalDeviceLimits { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceLimits) AsCPtr() *VkPhysicalDeviceLimits {
+func (x VkPhysicalDeviceLimits) AsCPtr() *VkPhysicalDeviceLimits {
 	clone := newVkPhysicalDeviceLimits()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -10095,12 +10095,12 @@ func (x *VkPhysicalDeviceFeatures) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceFeatures) AsPtr() *VkPhysicalDeviceFeatures { return x }
+func (x VkPhysicalDeviceFeatures) AsPtr() *VkPhysicalDeviceFeatures { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceFeatures) AsCPtr() *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) AsCPtr() *VkPhysicalDeviceFeatures {
 	clone := newVkPhysicalDeviceFeatures()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -10112,7 +10112,7 @@ func (x VkPhysicalDeviceFeatures) RobustBufferAccess() VkBool32 {
 
 // WithRobustBufferAccess copies the provided value into C space and stores it
 // at robustBufferAccess on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithRobustBufferAccess(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithRobustBufferAccess(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.robustBufferAccess = *ptr
 	return x
@@ -10126,7 +10126,7 @@ func (x VkPhysicalDeviceFeatures) FullDrawIndexUint32() VkBool32 {
 
 // WithFullDrawIndexUint32 copies the provided value into C space and stores it
 // at fullDrawIndexUint32 on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithFullDrawIndexUint32(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithFullDrawIndexUint32(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.fullDrawIndexUint32 = *ptr
 	return x
@@ -10140,7 +10140,7 @@ func (x VkPhysicalDeviceFeatures) ImageCubeArray() VkBool32 {
 
 // WithImageCubeArray copies the provided value into C space and stores it
 // at imageCubeArray on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithImageCubeArray(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithImageCubeArray(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.imageCubeArray = *ptr
 	return x
@@ -10154,7 +10154,7 @@ func (x VkPhysicalDeviceFeatures) IndependentBlend() VkBool32 {
 
 // WithIndependentBlend copies the provided value into C space and stores it
 // at independentBlend on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithIndependentBlend(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithIndependentBlend(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.independentBlend = *ptr
 	return x
@@ -10168,7 +10168,7 @@ func (x VkPhysicalDeviceFeatures) GeometryShader() VkBool32 {
 
 // WithGeometryShader copies the provided value into C space and stores it
 // at geometryShader on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithGeometryShader(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithGeometryShader(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.geometryShader = *ptr
 	return x
@@ -10182,7 +10182,7 @@ func (x VkPhysicalDeviceFeatures) TessellationShader() VkBool32 {
 
 // WithTessellationShader copies the provided value into C space and stores it
 // at tessellationShader on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithTessellationShader(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithTessellationShader(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.tessellationShader = *ptr
 	return x
@@ -10196,7 +10196,7 @@ func (x VkPhysicalDeviceFeatures) SampleRateShading() VkBool32 {
 
 // WithSampleRateShading copies the provided value into C space and stores it
 // at sampleRateShading on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithSampleRateShading(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithSampleRateShading(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.sampleRateShading = *ptr
 	return x
@@ -10210,7 +10210,7 @@ func (x VkPhysicalDeviceFeatures) DualSrcBlend() VkBool32 {
 
 // WithDualSrcBlend copies the provided value into C space and stores it
 // at dualSrcBlend on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithDualSrcBlend(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithDualSrcBlend(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.dualSrcBlend = *ptr
 	return x
@@ -10224,7 +10224,7 @@ func (x VkPhysicalDeviceFeatures) LogicOp() VkBool32 {
 
 // WithLogicOp copies the provided value into C space and stores it
 // at logicOp on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithLogicOp(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithLogicOp(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.logicOp = *ptr
 	return x
@@ -10238,7 +10238,7 @@ func (x VkPhysicalDeviceFeatures) MultiDrawIndirect() VkBool32 {
 
 // WithMultiDrawIndirect copies the provided value into C space and stores it
 // at multiDrawIndirect on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithMultiDrawIndirect(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithMultiDrawIndirect(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.multiDrawIndirect = *ptr
 	return x
@@ -10252,7 +10252,7 @@ func (x VkPhysicalDeviceFeatures) DrawIndirectFirstInstance() VkBool32 {
 
 // WithDrawIndirectFirstInstance copies the provided value into C space and stores it
 // at drawIndirectFirstInstance on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithDrawIndirectFirstInstance(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithDrawIndirectFirstInstance(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.drawIndirectFirstInstance = *ptr
 	return x
@@ -10266,7 +10266,7 @@ func (x VkPhysicalDeviceFeatures) DepthClamp() VkBool32 {
 
 // WithDepthClamp copies the provided value into C space and stores it
 // at depthClamp on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithDepthClamp(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithDepthClamp(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.depthClamp = *ptr
 	return x
@@ -10280,7 +10280,7 @@ func (x VkPhysicalDeviceFeatures) DepthBiasClamp() VkBool32 {
 
 // WithDepthBiasClamp copies the provided value into C space and stores it
 // at depthBiasClamp on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithDepthBiasClamp(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithDepthBiasClamp(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.depthBiasClamp = *ptr
 	return x
@@ -10294,7 +10294,7 @@ func (x VkPhysicalDeviceFeatures) FillModeNonSolid() VkBool32 {
 
 // WithFillModeNonSolid copies the provided value into C space and stores it
 // at fillModeNonSolid on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithFillModeNonSolid(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithFillModeNonSolid(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.fillModeNonSolid = *ptr
 	return x
@@ -10308,7 +10308,7 @@ func (x VkPhysicalDeviceFeatures) DepthBounds() VkBool32 {
 
 // WithDepthBounds copies the provided value into C space and stores it
 // at depthBounds on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithDepthBounds(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithDepthBounds(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.depthBounds = *ptr
 	return x
@@ -10322,7 +10322,7 @@ func (x VkPhysicalDeviceFeatures) WideLines() VkBool32 {
 
 // WithWideLines copies the provided value into C space and stores it
 // at wideLines on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithWideLines(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithWideLines(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.wideLines = *ptr
 	return x
@@ -10336,7 +10336,7 @@ func (x VkPhysicalDeviceFeatures) LargePoints() VkBool32 {
 
 // WithLargePoints copies the provided value into C space and stores it
 // at largePoints on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithLargePoints(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithLargePoints(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.largePoints = *ptr
 	return x
@@ -10350,7 +10350,7 @@ func (x VkPhysicalDeviceFeatures) AlphaToOne() VkBool32 {
 
 // WithAlphaToOne copies the provided value into C space and stores it
 // at alphaToOne on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithAlphaToOne(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithAlphaToOne(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.alphaToOne = *ptr
 	return x
@@ -10364,7 +10364,7 @@ func (x VkPhysicalDeviceFeatures) MultiViewport() VkBool32 {
 
 // WithMultiViewport copies the provided value into C space and stores it
 // at multiViewport on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithMultiViewport(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithMultiViewport(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.multiViewport = *ptr
 	return x
@@ -10378,7 +10378,7 @@ func (x VkPhysicalDeviceFeatures) SamplerAnisotropy() VkBool32 {
 
 // WithSamplerAnisotropy copies the provided value into C space and stores it
 // at samplerAnisotropy on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithSamplerAnisotropy(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithSamplerAnisotropy(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.samplerAnisotropy = *ptr
 	return x
@@ -10392,7 +10392,7 @@ func (x VkPhysicalDeviceFeatures) TextureCompressionETC2() VkBool32 {
 
 // WithTextureCompressionETC2 copies the provided value into C space and stores it
 // at textureCompressionETC2 on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithTextureCompressionETC2(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithTextureCompressionETC2(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.textureCompressionETC2 = *ptr
 	return x
@@ -10406,7 +10406,7 @@ func (x VkPhysicalDeviceFeatures) TextureCompressionASTC_LDR() VkBool32 {
 
 // WithTextureCompressionASTC_LDR copies the provided value into C space and stores it
 // at textureCompressionASTC_LDR on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithTextureCompressionASTC_LDR(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithTextureCompressionASTC_LDR(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.textureCompressionASTC_LDR = *ptr
 	return x
@@ -10420,7 +10420,7 @@ func (x VkPhysicalDeviceFeatures) TextureCompressionBC() VkBool32 {
 
 // WithTextureCompressionBC copies the provided value into C space and stores it
 // at textureCompressionBC on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithTextureCompressionBC(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithTextureCompressionBC(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.textureCompressionBC = *ptr
 	return x
@@ -10434,7 +10434,7 @@ func (x VkPhysicalDeviceFeatures) OcclusionQueryPrecise() VkBool32 {
 
 // WithOcclusionQueryPrecise copies the provided value into C space and stores it
 // at occlusionQueryPrecise on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithOcclusionQueryPrecise(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithOcclusionQueryPrecise(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.occlusionQueryPrecise = *ptr
 	return x
@@ -10448,7 +10448,7 @@ func (x VkPhysicalDeviceFeatures) PipelineStatisticsQuery() VkBool32 {
 
 // WithPipelineStatisticsQuery copies the provided value into C space and stores it
 // at pipelineStatisticsQuery on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithPipelineStatisticsQuery(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithPipelineStatisticsQuery(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.pipelineStatisticsQuery = *ptr
 	return x
@@ -10462,7 +10462,7 @@ func (x VkPhysicalDeviceFeatures) VertexPipelineStoresAndAtomics() VkBool32 {
 
 // WithVertexPipelineStoresAndAtomics copies the provided value into C space and stores it
 // at vertexPipelineStoresAndAtomics on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithVertexPipelineStoresAndAtomics(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithVertexPipelineStoresAndAtomics(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.vertexPipelineStoresAndAtomics = *ptr
 	return x
@@ -10476,7 +10476,7 @@ func (x VkPhysicalDeviceFeatures) FragmentStoresAndAtomics() VkBool32 {
 
 // WithFragmentStoresAndAtomics copies the provided value into C space and stores it
 // at fragmentStoresAndAtomics on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithFragmentStoresAndAtomics(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithFragmentStoresAndAtomics(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.fragmentStoresAndAtomics = *ptr
 	return x
@@ -10490,7 +10490,7 @@ func (x VkPhysicalDeviceFeatures) ShaderTessellationAndGeometryPointSize() VkBoo
 
 // WithShaderTessellationAndGeometryPointSize copies the provided value into C space and stores it
 // at shaderTessellationAndGeometryPointSize on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithShaderTessellationAndGeometryPointSize(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithShaderTessellationAndGeometryPointSize(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderTessellationAndGeometryPointSize = *ptr
 	return x
@@ -10504,7 +10504,7 @@ func (x VkPhysicalDeviceFeatures) ShaderImageGatherExtended() VkBool32 {
 
 // WithShaderImageGatherExtended copies the provided value into C space and stores it
 // at shaderImageGatherExtended on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithShaderImageGatherExtended(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithShaderImageGatherExtended(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderImageGatherExtended = *ptr
 	return x
@@ -10518,7 +10518,7 @@ func (x VkPhysicalDeviceFeatures) ShaderStorageImageExtendedFormats() VkBool32 {
 
 // WithShaderStorageImageExtendedFormats copies the provided value into C space and stores it
 // at shaderStorageImageExtendedFormats on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithShaderStorageImageExtendedFormats(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithShaderStorageImageExtendedFormats(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderStorageImageExtendedFormats = *ptr
 	return x
@@ -10532,7 +10532,7 @@ func (x VkPhysicalDeviceFeatures) ShaderStorageImageMultisample() VkBool32 {
 
 // WithShaderStorageImageMultisample copies the provided value into C space and stores it
 // at shaderStorageImageMultisample on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithShaderStorageImageMultisample(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithShaderStorageImageMultisample(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderStorageImageMultisample = *ptr
 	return x
@@ -10546,7 +10546,7 @@ func (x VkPhysicalDeviceFeatures) ShaderStorageImageReadWithoutFormat() VkBool32
 
 // WithShaderStorageImageReadWithoutFormat copies the provided value into C space and stores it
 // at shaderStorageImageReadWithoutFormat on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithShaderStorageImageReadWithoutFormat(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithShaderStorageImageReadWithoutFormat(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderStorageImageReadWithoutFormat = *ptr
 	return x
@@ -10560,7 +10560,7 @@ func (x VkPhysicalDeviceFeatures) ShaderStorageImageWriteWithoutFormat() VkBool3
 
 // WithShaderStorageImageWriteWithoutFormat copies the provided value into C space and stores it
 // at shaderStorageImageWriteWithoutFormat on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithShaderStorageImageWriteWithoutFormat(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithShaderStorageImageWriteWithoutFormat(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderStorageImageWriteWithoutFormat = *ptr
 	return x
@@ -10574,7 +10574,7 @@ func (x VkPhysicalDeviceFeatures) ShaderUniformBufferArrayDynamicIndexing() VkBo
 
 // WithShaderUniformBufferArrayDynamicIndexing copies the provided value into C space and stores it
 // at shaderUniformBufferArrayDynamicIndexing on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithShaderUniformBufferArrayDynamicIndexing(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithShaderUniformBufferArrayDynamicIndexing(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderUniformBufferArrayDynamicIndexing = *ptr
 	return x
@@ -10588,7 +10588,7 @@ func (x VkPhysicalDeviceFeatures) ShaderSampledImageArrayDynamicIndexing() VkBoo
 
 // WithShaderSampledImageArrayDynamicIndexing copies the provided value into C space and stores it
 // at shaderSampledImageArrayDynamicIndexing on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithShaderSampledImageArrayDynamicIndexing(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithShaderSampledImageArrayDynamicIndexing(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderSampledImageArrayDynamicIndexing = *ptr
 	return x
@@ -10602,7 +10602,7 @@ func (x VkPhysicalDeviceFeatures) ShaderStorageBufferArrayDynamicIndexing() VkBo
 
 // WithShaderStorageBufferArrayDynamicIndexing copies the provided value into C space and stores it
 // at shaderStorageBufferArrayDynamicIndexing on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithShaderStorageBufferArrayDynamicIndexing(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithShaderStorageBufferArrayDynamicIndexing(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderStorageBufferArrayDynamicIndexing = *ptr
 	return x
@@ -10616,7 +10616,7 @@ func (x VkPhysicalDeviceFeatures) ShaderStorageImageArrayDynamicIndexing() VkBoo
 
 // WithShaderStorageImageArrayDynamicIndexing copies the provided value into C space and stores it
 // at shaderStorageImageArrayDynamicIndexing on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithShaderStorageImageArrayDynamicIndexing(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithShaderStorageImageArrayDynamicIndexing(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderStorageImageArrayDynamicIndexing = *ptr
 	return x
@@ -10630,7 +10630,7 @@ func (x VkPhysicalDeviceFeatures) ShaderClipDistance() VkBool32 {
 
 // WithShaderClipDistance copies the provided value into C space and stores it
 // at shaderClipDistance on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithShaderClipDistance(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithShaderClipDistance(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderClipDistance = *ptr
 	return x
@@ -10644,7 +10644,7 @@ func (x VkPhysicalDeviceFeatures) ShaderCullDistance() VkBool32 {
 
 // WithShaderCullDistance copies the provided value into C space and stores it
 // at shaderCullDistance on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithShaderCullDistance(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithShaderCullDistance(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderCullDistance = *ptr
 	return x
@@ -10658,7 +10658,7 @@ func (x VkPhysicalDeviceFeatures) ShaderFloat64() VkBool32 {
 
 // WithShaderFloat64 copies the provided value into C space and stores it
 // at shaderFloat64 on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithShaderFloat64(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithShaderFloat64(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderFloat64 = *ptr
 	return x
@@ -10672,7 +10672,7 @@ func (x VkPhysicalDeviceFeatures) ShaderInt64() VkBool32 {
 
 // WithShaderInt64 copies the provided value into C space and stores it
 // at shaderInt64 on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithShaderInt64(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithShaderInt64(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderInt64 = *ptr
 	return x
@@ -10686,7 +10686,7 @@ func (x VkPhysicalDeviceFeatures) ShaderInt16() VkBool32 {
 
 // WithShaderInt16 copies the provided value into C space and stores it
 // at shaderInt16 on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithShaderInt16(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithShaderInt16(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderInt16 = *ptr
 	return x
@@ -10700,7 +10700,7 @@ func (x VkPhysicalDeviceFeatures) ShaderResourceResidency() VkBool32 {
 
 // WithShaderResourceResidency copies the provided value into C space and stores it
 // at shaderResourceResidency on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithShaderResourceResidency(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithShaderResourceResidency(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderResourceResidency = *ptr
 	return x
@@ -10714,7 +10714,7 @@ func (x VkPhysicalDeviceFeatures) ShaderResourceMinLod() VkBool32 {
 
 // WithShaderResourceMinLod copies the provided value into C space and stores it
 // at shaderResourceMinLod on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithShaderResourceMinLod(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithShaderResourceMinLod(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderResourceMinLod = *ptr
 	return x
@@ -10728,7 +10728,7 @@ func (x VkPhysicalDeviceFeatures) SparseBinding() VkBool32 {
 
 // WithSparseBinding copies the provided value into C space and stores it
 // at sparseBinding on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithSparseBinding(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithSparseBinding(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.sparseBinding = *ptr
 	return x
@@ -10742,7 +10742,7 @@ func (x VkPhysicalDeviceFeatures) SparseResidencyBuffer() VkBool32 {
 
 // WithSparseResidencyBuffer copies the provided value into C space and stores it
 // at sparseResidencyBuffer on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithSparseResidencyBuffer(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithSparseResidencyBuffer(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.sparseResidencyBuffer = *ptr
 	return x
@@ -10756,7 +10756,7 @@ func (x VkPhysicalDeviceFeatures) SparseResidencyImage2D() VkBool32 {
 
 // WithSparseResidencyImage2D copies the provided value into C space and stores it
 // at sparseResidencyImage2D on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithSparseResidencyImage2D(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithSparseResidencyImage2D(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.sparseResidencyImage2D = *ptr
 	return x
@@ -10770,7 +10770,7 @@ func (x VkPhysicalDeviceFeatures) SparseResidencyImage3D() VkBool32 {
 
 // WithSparseResidencyImage3D copies the provided value into C space and stores it
 // at sparseResidencyImage3D on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithSparseResidencyImage3D(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithSparseResidencyImage3D(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.sparseResidencyImage3D = *ptr
 	return x
@@ -10784,7 +10784,7 @@ func (x VkPhysicalDeviceFeatures) SparseResidency2Samples() VkBool32 {
 
 // WithSparseResidency2Samples copies the provided value into C space and stores it
 // at sparseResidency2Samples on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithSparseResidency2Samples(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithSparseResidency2Samples(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.sparseResidency2Samples = *ptr
 	return x
@@ -10798,7 +10798,7 @@ func (x VkPhysicalDeviceFeatures) SparseResidency4Samples() VkBool32 {
 
 // WithSparseResidency4Samples copies the provided value into C space and stores it
 // at sparseResidency4Samples on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithSparseResidency4Samples(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithSparseResidency4Samples(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.sparseResidency4Samples = *ptr
 	return x
@@ -10812,7 +10812,7 @@ func (x VkPhysicalDeviceFeatures) SparseResidency8Samples() VkBool32 {
 
 // WithSparseResidency8Samples copies the provided value into C space and stores it
 // at sparseResidency8Samples on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithSparseResidency8Samples(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithSparseResidency8Samples(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.sparseResidency8Samples = *ptr
 	return x
@@ -10826,7 +10826,7 @@ func (x VkPhysicalDeviceFeatures) SparseResidency16Samples() VkBool32 {
 
 // WithSparseResidency16Samples copies the provided value into C space and stores it
 // at sparseResidency16Samples on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithSparseResidency16Samples(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithSparseResidency16Samples(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.sparseResidency16Samples = *ptr
 	return x
@@ -10840,7 +10840,7 @@ func (x VkPhysicalDeviceFeatures) SparseResidencyAliased() VkBool32 {
 
 // WithSparseResidencyAliased copies the provided value into C space and stores it
 // at sparseResidencyAliased on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithSparseResidencyAliased(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithSparseResidencyAliased(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.sparseResidencyAliased = *ptr
 	return x
@@ -10854,7 +10854,7 @@ func (x VkPhysicalDeviceFeatures) VariableMultisampleRate() VkBool32 {
 
 // WithVariableMultisampleRate copies the provided value into C space and stores it
 // at variableMultisampleRate on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithVariableMultisampleRate(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithVariableMultisampleRate(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.variableMultisampleRate = *ptr
 	return x
@@ -10868,7 +10868,7 @@ func (x VkPhysicalDeviceFeatures) InheritedQueries() VkBool32 {
 
 // WithInheritedQueries copies the provided value into C space and stores it
 // at inheritedQueries on VkPhysicalDeviceFeatures
-func (x *VkPhysicalDeviceFeatures) WithInheritedQueries(y VkBool32) *VkPhysicalDeviceFeatures {
+func (x VkPhysicalDeviceFeatures) WithInheritedQueries(y VkBool32) VkPhysicalDeviceFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.inheritedQueries = *ptr
 	return x
@@ -10895,12 +10895,12 @@ func (x *VkComputePipelineCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkComputePipelineCreateInfo) AsPtr() *VkComputePipelineCreateInfo { return x }
+func (x VkComputePipelineCreateInfo) AsPtr() *VkComputePipelineCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkComputePipelineCreateInfo) AsCPtr() *VkComputePipelineCreateInfo {
+func (x VkComputePipelineCreateInfo) AsCPtr() *VkComputePipelineCreateInfo {
 	clone := newVkComputePipelineCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -10912,13 +10912,13 @@ func (x VkComputePipelineCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkComputePipelineCreateInfo) WithDefaultSType() *VkComputePipelineCreateInfo {
+func (x VkComputePipelineCreateInfo) WithDefaultSType() VkComputePipelineCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkComputePipelineCreateInfo
-func (x *VkComputePipelineCreateInfo) WithSType(y VkStructureType) *VkComputePipelineCreateInfo {
+func (x VkComputePipelineCreateInfo) WithSType(y VkStructureType) VkComputePipelineCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -10932,7 +10932,7 @@ func (x VkComputePipelineCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkComputePipelineCreateInfo
-func (x *VkComputePipelineCreateInfo) WithPNext(y unsafe.Pointer) *VkComputePipelineCreateInfo {
+func (x VkComputePipelineCreateInfo) WithPNext(y unsafe.Pointer) VkComputePipelineCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -10946,7 +10946,7 @@ func (x VkComputePipelineCreateInfo) Flags() VkPipelineCreateFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkComputePipelineCreateInfo
-func (x *VkComputePipelineCreateInfo) WithFlags(y VkPipelineCreateFlags) *VkComputePipelineCreateInfo {
+func (x VkComputePipelineCreateInfo) WithFlags(y VkPipelineCreateFlags) VkComputePipelineCreateInfo {
 	ptr := /* Identifier */ (*C.VkPipelineCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -10960,7 +10960,7 @@ func (x VkComputePipelineCreateInfo) Stage() VkPipelineShaderStageCreateInfo {
 
 // WithStage copies the provided value into C space and stores it
 // at stage on VkComputePipelineCreateInfo
-func (x *VkComputePipelineCreateInfo) WithStage(y VkPipelineShaderStageCreateInfo) *VkComputePipelineCreateInfo {
+func (x VkComputePipelineCreateInfo) WithStage(y VkPipelineShaderStageCreateInfo) VkComputePipelineCreateInfo {
 	ptr := /* Identifier */ (*C.VkPipelineShaderStageCreateInfo)(&y)
 	x.stage = *ptr
 	return x
@@ -10976,7 +10976,7 @@ func (x VkComputePipelineCreateInfo) Layout() VkPipelineLayout {
 
 // WithLayout copies the provided value into C space and stores it
 // at layout on VkComputePipelineCreateInfo
-func (x *VkComputePipelineCreateInfo) WithLayout(y VkPipelineLayout) *VkComputePipelineCreateInfo {
+func (x VkComputePipelineCreateInfo) WithLayout(y VkPipelineLayout) VkComputePipelineCreateInfo {
 	ptr := func(x *VkPipelineLayout) *C.VkPipelineLayout { /* Handle */
 		return (*C.VkPipelineLayout)(unsafe.Pointer(x))
 	}(&y)
@@ -10992,7 +10992,7 @@ func (x VkComputePipelineCreateInfo) BasePipelineHandle() VkPipeline {
 
 // WithBasePipelineHandle copies the provided value into C space and stores it
 // at basePipelineHandle on VkComputePipelineCreateInfo
-func (x *VkComputePipelineCreateInfo) WithBasePipelineHandle(y VkPipeline) *VkComputePipelineCreateInfo {
+func (x VkComputePipelineCreateInfo) WithBasePipelineHandle(y VkPipeline) VkComputePipelineCreateInfo {
 	ptr := func(x *VkPipeline) *C.VkPipeline { /* Handle */ return (*C.VkPipeline)(unsafe.Pointer(x)) }(&y)
 	x.basePipelineHandle = *ptr
 	return x
@@ -11006,7 +11006,7 @@ func (x VkComputePipelineCreateInfo) BasePipelineIndex() int32 {
 
 // WithBasePipelineIndex copies the provided value into C space and stores it
 // at basePipelineIndex on VkComputePipelineCreateInfo
-func (x *VkComputePipelineCreateInfo) WithBasePipelineIndex(y int32) *VkComputePipelineCreateInfo {
+func (x VkComputePipelineCreateInfo) WithBasePipelineIndex(y int32) VkComputePipelineCreateInfo {
 	ptr := func(x *int32) *C.int { /* Scalar */ return (*C.int)(unsafe.Pointer(x)) }(&y)
 	x.basePipelineIndex = *ptr
 	return x
@@ -11033,12 +11033,12 @@ func (x *VkMemoryType) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkMemoryType) AsPtr() *VkMemoryType { return x }
+func (x VkMemoryType) AsPtr() *VkMemoryType { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkMemoryType) AsCPtr() *VkMemoryType {
+func (x VkMemoryType) AsCPtr() *VkMemoryType {
 	clone := newVkMemoryType()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -11075,12 +11075,12 @@ func (x *VkMemoryHeap) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkMemoryHeap) AsPtr() *VkMemoryHeap { return x }
+func (x VkMemoryHeap) AsPtr() *VkMemoryHeap { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkMemoryHeap) AsCPtr() *VkMemoryHeap {
+func (x VkMemoryHeap) AsCPtr() *VkMemoryHeap {
 	clone := newVkMemoryHeap()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -11117,12 +11117,12 @@ func (x *VkInstanceCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkInstanceCreateInfo) AsPtr() *VkInstanceCreateInfo { return x }
+func (x VkInstanceCreateInfo) AsPtr() *VkInstanceCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkInstanceCreateInfo) AsCPtr() *VkInstanceCreateInfo {
+func (x VkInstanceCreateInfo) AsCPtr() *VkInstanceCreateInfo {
 	clone := newVkInstanceCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -11134,13 +11134,13 @@ func (x VkInstanceCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkInstanceCreateInfo) WithDefaultSType() *VkInstanceCreateInfo {
+func (x VkInstanceCreateInfo) WithDefaultSType() VkInstanceCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkInstanceCreateInfo
-func (x *VkInstanceCreateInfo) WithSType(y VkStructureType) *VkInstanceCreateInfo {
+func (x VkInstanceCreateInfo) WithSType(y VkStructureType) VkInstanceCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -11154,7 +11154,7 @@ func (x VkInstanceCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkInstanceCreateInfo
-func (x *VkInstanceCreateInfo) WithPNext(y unsafe.Pointer) *VkInstanceCreateInfo {
+func (x VkInstanceCreateInfo) WithPNext(y unsafe.Pointer) VkInstanceCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -11168,7 +11168,7 @@ func (x VkInstanceCreateInfo) Flags() VkInstanceCreateFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkInstanceCreateInfo
-func (x *VkInstanceCreateInfo) WithFlags(y VkInstanceCreateFlags) *VkInstanceCreateInfo {
+func (x VkInstanceCreateInfo) WithFlags(y VkInstanceCreateFlags) VkInstanceCreateInfo {
 	ptr := /* Identifier */ (*C.VkInstanceCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -11184,7 +11184,7 @@ func (x VkInstanceCreateInfo) PApplicationInfo() *VkApplicationInfo {
 
 // WithPApplicationInfo copies the provided value into C space and stores it
 // at pApplicationInfo on VkInstanceCreateInfo
-func (x *VkInstanceCreateInfo) WithPApplicationInfo(y *VkApplicationInfo) *VkInstanceCreateInfo {
+func (x VkInstanceCreateInfo) WithPApplicationInfo(y *VkApplicationInfo) VkInstanceCreateInfo {
 	ptr := func(x **VkApplicationInfo) **C.VkApplicationInfo { /* Pointer */
 		return (**C.VkApplicationInfo)(unsafe.Pointer(x))
 	}(&y)
@@ -11200,7 +11200,7 @@ func (x VkInstanceCreateInfo) EnabledLayerCount() uint32 {
 
 // WithEnabledLayerCount copies the provided value into C space and stores it
 // at enabledLayerCount on VkInstanceCreateInfo
-func (x *VkInstanceCreateInfo) WithEnabledLayerCount(y uint32) *VkInstanceCreateInfo {
+func (x VkInstanceCreateInfo) WithEnabledLayerCount(y uint32) VkInstanceCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.enabledLayerCount = *ptr
 	return x
@@ -11217,7 +11217,7 @@ func (x VkInstanceCreateInfo) PpEnabledLayerNames() []*byte {
 
 // WithPpEnabledLayerNames copies the provided value into C space and stores it
 // at ppEnabledLayerNames on VkInstanceCreateInfo
-func (x *VkInstanceCreateInfo) WithPpEnabledLayerNames(y []*byte) *VkInstanceCreateInfo {
+func (x VkInstanceCreateInfo) WithPpEnabledLayerNames(y []*byte) VkInstanceCreateInfo {
 	ptr := func(x *[]*byte) ***C.char { /* Slice */
 		if len(*x) > 0 {
 			slc := (**C.char)(unsafe.Pointer(&((*x)[0])))
@@ -11238,7 +11238,7 @@ func (x VkInstanceCreateInfo) EnabledExtensionCount() uint32 {
 
 // WithEnabledExtensionCount copies the provided value into C space and stores it
 // at enabledExtensionCount on VkInstanceCreateInfo
-func (x *VkInstanceCreateInfo) WithEnabledExtensionCount(y uint32) *VkInstanceCreateInfo {
+func (x VkInstanceCreateInfo) WithEnabledExtensionCount(y uint32) VkInstanceCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.enabledExtensionCount = *ptr
 	return x
@@ -11255,7 +11255,7 @@ func (x VkInstanceCreateInfo) PpEnabledExtensionNames() []*byte {
 
 // WithPpEnabledExtensionNames copies the provided value into C space and stores it
 // at ppEnabledExtensionNames on VkInstanceCreateInfo
-func (x *VkInstanceCreateInfo) WithPpEnabledExtensionNames(y []*byte) *VkInstanceCreateInfo {
+func (x VkInstanceCreateInfo) WithPpEnabledExtensionNames(y []*byte) VkInstanceCreateInfo {
 	ptr := func(x *[]*byte) ***C.char { /* Slice */
 		if len(*x) > 0 {
 			slc := (**C.char)(unsafe.Pointer(&((*x)[0])))
@@ -11289,12 +11289,12 @@ func (x *VkImageFormatProperties) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkImageFormatProperties) AsPtr() *VkImageFormatProperties { return x }
+func (x VkImageFormatProperties) AsPtr() *VkImageFormatProperties { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkImageFormatProperties) AsCPtr() *VkImageFormatProperties {
+func (x VkImageFormatProperties) AsCPtr() *VkImageFormatProperties {
 	clone := newVkImageFormatProperties()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -11349,12 +11349,12 @@ func (x *VkGraphicsPipelineCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkGraphicsPipelineCreateInfo) AsPtr() *VkGraphicsPipelineCreateInfo { return x }
+func (x VkGraphicsPipelineCreateInfo) AsPtr() *VkGraphicsPipelineCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkGraphicsPipelineCreateInfo) AsCPtr() *VkGraphicsPipelineCreateInfo {
+func (x VkGraphicsPipelineCreateInfo) AsCPtr() *VkGraphicsPipelineCreateInfo {
 	clone := newVkGraphicsPipelineCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -11366,13 +11366,13 @@ func (x VkGraphicsPipelineCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkGraphicsPipelineCreateInfo) WithDefaultSType() *VkGraphicsPipelineCreateInfo {
+func (x VkGraphicsPipelineCreateInfo) WithDefaultSType() VkGraphicsPipelineCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkGraphicsPipelineCreateInfo
-func (x *VkGraphicsPipelineCreateInfo) WithSType(y VkStructureType) *VkGraphicsPipelineCreateInfo {
+func (x VkGraphicsPipelineCreateInfo) WithSType(y VkStructureType) VkGraphicsPipelineCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -11386,7 +11386,7 @@ func (x VkGraphicsPipelineCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkGraphicsPipelineCreateInfo
-func (x *VkGraphicsPipelineCreateInfo) WithPNext(y unsafe.Pointer) *VkGraphicsPipelineCreateInfo {
+func (x VkGraphicsPipelineCreateInfo) WithPNext(y unsafe.Pointer) VkGraphicsPipelineCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -11400,7 +11400,7 @@ func (x VkGraphicsPipelineCreateInfo) Flags() VkPipelineCreateFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkGraphicsPipelineCreateInfo
-func (x *VkGraphicsPipelineCreateInfo) WithFlags(y VkPipelineCreateFlags) *VkGraphicsPipelineCreateInfo {
+func (x VkGraphicsPipelineCreateInfo) WithFlags(y VkPipelineCreateFlags) VkGraphicsPipelineCreateInfo {
 	ptr := /* Identifier */ (*C.VkPipelineCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -11414,7 +11414,7 @@ func (x VkGraphicsPipelineCreateInfo) StageCount() uint32 {
 
 // WithStageCount copies the provided value into C space and stores it
 // at stageCount on VkGraphicsPipelineCreateInfo
-func (x *VkGraphicsPipelineCreateInfo) WithStageCount(y uint32) *VkGraphicsPipelineCreateInfo {
+func (x VkGraphicsPipelineCreateInfo) WithStageCount(y uint32) VkGraphicsPipelineCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.stageCount = *ptr
 	return x
@@ -11431,7 +11431,7 @@ func (x VkGraphicsPipelineCreateInfo) PStages() []VkPipelineShaderStageCreateInf
 
 // WithPStages copies the provided value into C space and stores it
 // at pStages on VkGraphicsPipelineCreateInfo
-func (x *VkGraphicsPipelineCreateInfo) WithPStages(y []VkPipelineShaderStageCreateInfo) *VkGraphicsPipelineCreateInfo {
+func (x VkGraphicsPipelineCreateInfo) WithPStages(y []VkPipelineShaderStageCreateInfo) VkGraphicsPipelineCreateInfo {
 	ptr := func(x *[]VkPipelineShaderStageCreateInfo) **C.VkPipelineShaderStageCreateInfo { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkPipelineShaderStageCreateInfo)(unsafe.Pointer(&((*x)[0])))
@@ -11454,7 +11454,7 @@ func (x VkGraphicsPipelineCreateInfo) PVertexInputState() *VkPipelineVertexInput
 
 // WithPVertexInputState copies the provided value into C space and stores it
 // at pVertexInputState on VkGraphicsPipelineCreateInfo
-func (x *VkGraphicsPipelineCreateInfo) WithPVertexInputState(y *VkPipelineVertexInputStateCreateInfo) *VkGraphicsPipelineCreateInfo {
+func (x VkGraphicsPipelineCreateInfo) WithPVertexInputState(y *VkPipelineVertexInputStateCreateInfo) VkGraphicsPipelineCreateInfo {
 	ptr := func(x **VkPipelineVertexInputStateCreateInfo) **C.VkPipelineVertexInputStateCreateInfo { /* Pointer */
 		return (**C.VkPipelineVertexInputStateCreateInfo)(unsafe.Pointer(x))
 	}(&y)
@@ -11472,7 +11472,7 @@ func (x VkGraphicsPipelineCreateInfo) PInputAssemblyState() *VkPipelineInputAsse
 
 // WithPInputAssemblyState copies the provided value into C space and stores it
 // at pInputAssemblyState on VkGraphicsPipelineCreateInfo
-func (x *VkGraphicsPipelineCreateInfo) WithPInputAssemblyState(y *VkPipelineInputAssemblyStateCreateInfo) *VkGraphicsPipelineCreateInfo {
+func (x VkGraphicsPipelineCreateInfo) WithPInputAssemblyState(y *VkPipelineInputAssemblyStateCreateInfo) VkGraphicsPipelineCreateInfo {
 	ptr := func(x **VkPipelineInputAssemblyStateCreateInfo) **C.VkPipelineInputAssemblyStateCreateInfo { /* Pointer */
 		return (**C.VkPipelineInputAssemblyStateCreateInfo)(unsafe.Pointer(x))
 	}(&y)
@@ -11490,7 +11490,7 @@ func (x VkGraphicsPipelineCreateInfo) PTessellationState() *VkPipelineTessellati
 
 // WithPTessellationState copies the provided value into C space and stores it
 // at pTessellationState on VkGraphicsPipelineCreateInfo
-func (x *VkGraphicsPipelineCreateInfo) WithPTessellationState(y *VkPipelineTessellationStateCreateInfo) *VkGraphicsPipelineCreateInfo {
+func (x VkGraphicsPipelineCreateInfo) WithPTessellationState(y *VkPipelineTessellationStateCreateInfo) VkGraphicsPipelineCreateInfo {
 	ptr := func(x **VkPipelineTessellationStateCreateInfo) **C.VkPipelineTessellationStateCreateInfo { /* Pointer */
 		return (**C.VkPipelineTessellationStateCreateInfo)(unsafe.Pointer(x))
 	}(&y)
@@ -11508,7 +11508,7 @@ func (x VkGraphicsPipelineCreateInfo) PViewportState() *VkPipelineViewportStateC
 
 // WithPViewportState copies the provided value into C space and stores it
 // at pViewportState on VkGraphicsPipelineCreateInfo
-func (x *VkGraphicsPipelineCreateInfo) WithPViewportState(y *VkPipelineViewportStateCreateInfo) *VkGraphicsPipelineCreateInfo {
+func (x VkGraphicsPipelineCreateInfo) WithPViewportState(y *VkPipelineViewportStateCreateInfo) VkGraphicsPipelineCreateInfo {
 	ptr := func(x **VkPipelineViewportStateCreateInfo) **C.VkPipelineViewportStateCreateInfo { /* Pointer */
 		return (**C.VkPipelineViewportStateCreateInfo)(unsafe.Pointer(x))
 	}(&y)
@@ -11526,7 +11526,7 @@ func (x VkGraphicsPipelineCreateInfo) PRasterizationState() *VkPipelineRasteriza
 
 // WithPRasterizationState copies the provided value into C space and stores it
 // at pRasterizationState on VkGraphicsPipelineCreateInfo
-func (x *VkGraphicsPipelineCreateInfo) WithPRasterizationState(y *VkPipelineRasterizationStateCreateInfo) *VkGraphicsPipelineCreateInfo {
+func (x VkGraphicsPipelineCreateInfo) WithPRasterizationState(y *VkPipelineRasterizationStateCreateInfo) VkGraphicsPipelineCreateInfo {
 	ptr := func(x **VkPipelineRasterizationStateCreateInfo) **C.VkPipelineRasterizationStateCreateInfo { /* Pointer */
 		return (**C.VkPipelineRasterizationStateCreateInfo)(unsafe.Pointer(x))
 	}(&y)
@@ -11544,7 +11544,7 @@ func (x VkGraphicsPipelineCreateInfo) PMultisampleState() *VkPipelineMultisample
 
 // WithPMultisampleState copies the provided value into C space and stores it
 // at pMultisampleState on VkGraphicsPipelineCreateInfo
-func (x *VkGraphicsPipelineCreateInfo) WithPMultisampleState(y *VkPipelineMultisampleStateCreateInfo) *VkGraphicsPipelineCreateInfo {
+func (x VkGraphicsPipelineCreateInfo) WithPMultisampleState(y *VkPipelineMultisampleStateCreateInfo) VkGraphicsPipelineCreateInfo {
 	ptr := func(x **VkPipelineMultisampleStateCreateInfo) **C.VkPipelineMultisampleStateCreateInfo { /* Pointer */
 		return (**C.VkPipelineMultisampleStateCreateInfo)(unsafe.Pointer(x))
 	}(&y)
@@ -11562,7 +11562,7 @@ func (x VkGraphicsPipelineCreateInfo) PDepthStencilState() *VkPipelineDepthStenc
 
 // WithPDepthStencilState copies the provided value into C space and stores it
 // at pDepthStencilState on VkGraphicsPipelineCreateInfo
-func (x *VkGraphicsPipelineCreateInfo) WithPDepthStencilState(y *VkPipelineDepthStencilStateCreateInfo) *VkGraphicsPipelineCreateInfo {
+func (x VkGraphicsPipelineCreateInfo) WithPDepthStencilState(y *VkPipelineDepthStencilStateCreateInfo) VkGraphicsPipelineCreateInfo {
 	ptr := func(x **VkPipelineDepthStencilStateCreateInfo) **C.VkPipelineDepthStencilStateCreateInfo { /* Pointer */
 		return (**C.VkPipelineDepthStencilStateCreateInfo)(unsafe.Pointer(x))
 	}(&y)
@@ -11580,7 +11580,7 @@ func (x VkGraphicsPipelineCreateInfo) PColorBlendState() *VkPipelineColorBlendSt
 
 // WithPColorBlendState copies the provided value into C space and stores it
 // at pColorBlendState on VkGraphicsPipelineCreateInfo
-func (x *VkGraphicsPipelineCreateInfo) WithPColorBlendState(y *VkPipelineColorBlendStateCreateInfo) *VkGraphicsPipelineCreateInfo {
+func (x VkGraphicsPipelineCreateInfo) WithPColorBlendState(y *VkPipelineColorBlendStateCreateInfo) VkGraphicsPipelineCreateInfo {
 	ptr := func(x **VkPipelineColorBlendStateCreateInfo) **C.VkPipelineColorBlendStateCreateInfo { /* Pointer */
 		return (**C.VkPipelineColorBlendStateCreateInfo)(unsafe.Pointer(x))
 	}(&y)
@@ -11598,7 +11598,7 @@ func (x VkGraphicsPipelineCreateInfo) PDynamicState() *VkPipelineDynamicStateCre
 
 // WithPDynamicState copies the provided value into C space and stores it
 // at pDynamicState on VkGraphicsPipelineCreateInfo
-func (x *VkGraphicsPipelineCreateInfo) WithPDynamicState(y *VkPipelineDynamicStateCreateInfo) *VkGraphicsPipelineCreateInfo {
+func (x VkGraphicsPipelineCreateInfo) WithPDynamicState(y *VkPipelineDynamicStateCreateInfo) VkGraphicsPipelineCreateInfo {
 	ptr := func(x **VkPipelineDynamicStateCreateInfo) **C.VkPipelineDynamicStateCreateInfo { /* Pointer */
 		return (**C.VkPipelineDynamicStateCreateInfo)(unsafe.Pointer(x))
 	}(&y)
@@ -11616,7 +11616,7 @@ func (x VkGraphicsPipelineCreateInfo) Layout() VkPipelineLayout {
 
 // WithLayout copies the provided value into C space and stores it
 // at layout on VkGraphicsPipelineCreateInfo
-func (x *VkGraphicsPipelineCreateInfo) WithLayout(y VkPipelineLayout) *VkGraphicsPipelineCreateInfo {
+func (x VkGraphicsPipelineCreateInfo) WithLayout(y VkPipelineLayout) VkGraphicsPipelineCreateInfo {
 	ptr := func(x *VkPipelineLayout) *C.VkPipelineLayout { /* Handle */
 		return (*C.VkPipelineLayout)(unsafe.Pointer(x))
 	}(&y)
@@ -11632,7 +11632,7 @@ func (x VkGraphicsPipelineCreateInfo) RenderPass() VkRenderPass {
 
 // WithRenderPass copies the provided value into C space and stores it
 // at renderPass on VkGraphicsPipelineCreateInfo
-func (x *VkGraphicsPipelineCreateInfo) WithRenderPass(y VkRenderPass) *VkGraphicsPipelineCreateInfo {
+func (x VkGraphicsPipelineCreateInfo) WithRenderPass(y VkRenderPass) VkGraphicsPipelineCreateInfo {
 	ptr := func(x *VkRenderPass) *C.VkRenderPass { /* Handle */ return (*C.VkRenderPass)(unsafe.Pointer(x)) }(&y)
 	x.renderPass = *ptr
 	return x
@@ -11646,7 +11646,7 @@ func (x VkGraphicsPipelineCreateInfo) Subpass() uint32 {
 
 // WithSubpass copies the provided value into C space and stores it
 // at subpass on VkGraphicsPipelineCreateInfo
-func (x *VkGraphicsPipelineCreateInfo) WithSubpass(y uint32) *VkGraphicsPipelineCreateInfo {
+func (x VkGraphicsPipelineCreateInfo) WithSubpass(y uint32) VkGraphicsPipelineCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.subpass = *ptr
 	return x
@@ -11660,7 +11660,7 @@ func (x VkGraphicsPipelineCreateInfo) BasePipelineHandle() VkPipeline {
 
 // WithBasePipelineHandle copies the provided value into C space and stores it
 // at basePipelineHandle on VkGraphicsPipelineCreateInfo
-func (x *VkGraphicsPipelineCreateInfo) WithBasePipelineHandle(y VkPipeline) *VkGraphicsPipelineCreateInfo {
+func (x VkGraphicsPipelineCreateInfo) WithBasePipelineHandle(y VkPipeline) VkGraphicsPipelineCreateInfo {
 	ptr := func(x *VkPipeline) *C.VkPipeline { /* Handle */ return (*C.VkPipeline)(unsafe.Pointer(x)) }(&y)
 	x.basePipelineHandle = *ptr
 	return x
@@ -11674,7 +11674,7 @@ func (x VkGraphicsPipelineCreateInfo) BasePipelineIndex() int32 {
 
 // WithBasePipelineIndex copies the provided value into C space and stores it
 // at basePipelineIndex on VkGraphicsPipelineCreateInfo
-func (x *VkGraphicsPipelineCreateInfo) WithBasePipelineIndex(y int32) *VkGraphicsPipelineCreateInfo {
+func (x VkGraphicsPipelineCreateInfo) WithBasePipelineIndex(y int32) VkGraphicsPipelineCreateInfo {
 	ptr := func(x *int32) *C.int { /* Scalar */ return (*C.int)(unsafe.Pointer(x)) }(&y)
 	x.basePipelineIndex = *ptr
 	return x
@@ -11701,12 +11701,12 @@ func (x *VkFormatProperties) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkFormatProperties) AsPtr() *VkFormatProperties { return x }
+func (x VkFormatProperties) AsPtr() *VkFormatProperties { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkFormatProperties) AsCPtr() *VkFormatProperties {
+func (x VkFormatProperties) AsCPtr() *VkFormatProperties {
 	clone := newVkFormatProperties()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -11749,12 +11749,12 @@ func (x *VkApplicationInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkApplicationInfo) AsPtr() *VkApplicationInfo { return x }
+func (x VkApplicationInfo) AsPtr() *VkApplicationInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkApplicationInfo) AsCPtr() *VkApplicationInfo {
+func (x VkApplicationInfo) AsCPtr() *VkApplicationInfo {
 	clone := newVkApplicationInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -11766,13 +11766,13 @@ func (x VkApplicationInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkApplicationInfo) WithDefaultSType() *VkApplicationInfo {
+func (x VkApplicationInfo) WithDefaultSType() VkApplicationInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_APPLICATION_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkApplicationInfo
-func (x *VkApplicationInfo) WithSType(y VkStructureType) *VkApplicationInfo {
+func (x VkApplicationInfo) WithSType(y VkStructureType) VkApplicationInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -11786,7 +11786,7 @@ func (x VkApplicationInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkApplicationInfo
-func (x *VkApplicationInfo) WithPNext(y unsafe.Pointer) *VkApplicationInfo {
+func (x VkApplicationInfo) WithPNext(y unsafe.Pointer) VkApplicationInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -11800,7 +11800,7 @@ func (x VkApplicationInfo) PApplicationName() *byte {
 
 // WithPApplicationName copies the provided value into C space and stores it
 // at pApplicationName on VkApplicationInfo
-func (x *VkApplicationInfo) WithPApplicationName(y *byte) *VkApplicationInfo {
+func (x VkApplicationInfo) WithPApplicationName(y *byte) VkApplicationInfo {
 	ptr := func(x **byte) **C.char { /* Pointer */ return (**C.char)(unsafe.Pointer(x)) }(&y)
 	x.pApplicationName = *ptr
 	return x
@@ -11814,7 +11814,7 @@ func (x VkApplicationInfo) ApplicationVersion() uint32 {
 
 // WithApplicationVersion copies the provided value into C space and stores it
 // at applicationVersion on VkApplicationInfo
-func (x *VkApplicationInfo) WithApplicationVersion(y uint32) *VkApplicationInfo {
+func (x VkApplicationInfo) WithApplicationVersion(y uint32) VkApplicationInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.applicationVersion = *ptr
 	return x
@@ -11828,7 +11828,7 @@ func (x VkApplicationInfo) PEngineName() *byte {
 
 // WithPEngineName copies the provided value into C space and stores it
 // at pEngineName on VkApplicationInfo
-func (x *VkApplicationInfo) WithPEngineName(y *byte) *VkApplicationInfo {
+func (x VkApplicationInfo) WithPEngineName(y *byte) VkApplicationInfo {
 	ptr := func(x **byte) **C.char { /* Pointer */ return (**C.char)(unsafe.Pointer(x)) }(&y)
 	x.pEngineName = *ptr
 	return x
@@ -11842,7 +11842,7 @@ func (x VkApplicationInfo) EngineVersion() uint32 {
 
 // WithEngineVersion copies the provided value into C space and stores it
 // at engineVersion on VkApplicationInfo
-func (x *VkApplicationInfo) WithEngineVersion(y uint32) *VkApplicationInfo {
+func (x VkApplicationInfo) WithEngineVersion(y uint32) VkApplicationInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.engineVersion = *ptr
 	return x
@@ -11856,7 +11856,7 @@ func (x VkApplicationInfo) ApiVersion() uint32 {
 
 // WithApiVersion copies the provided value into C space and stores it
 // at apiVersion on VkApplicationInfo
-func (x *VkApplicationInfo) WithApiVersion(y uint32) *VkApplicationInfo {
+func (x VkApplicationInfo) WithApiVersion(y uint32) VkApplicationInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.apiVersion = *ptr
 	return x
@@ -11883,12 +11883,12 @@ func (x *VkPipelineColorBlendAttachmentState) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPipelineColorBlendAttachmentState) AsPtr() *VkPipelineColorBlendAttachmentState { return x }
+func (x VkPipelineColorBlendAttachmentState) AsPtr() *VkPipelineColorBlendAttachmentState { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPipelineColorBlendAttachmentState) AsCPtr() *VkPipelineColorBlendAttachmentState {
+func (x VkPipelineColorBlendAttachmentState) AsCPtr() *VkPipelineColorBlendAttachmentState {
 	clone := newVkPipelineColorBlendAttachmentState()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -11900,7 +11900,7 @@ func (x VkPipelineColorBlendAttachmentState) BlendEnable() VkBool32 {
 
 // WithBlendEnable copies the provided value into C space and stores it
 // at blendEnable on VkPipelineColorBlendAttachmentState
-func (x *VkPipelineColorBlendAttachmentState) WithBlendEnable(y VkBool32) *VkPipelineColorBlendAttachmentState {
+func (x VkPipelineColorBlendAttachmentState) WithBlendEnable(y VkBool32) VkPipelineColorBlendAttachmentState {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.blendEnable = *ptr
 	return x
@@ -11914,7 +11914,7 @@ func (x VkPipelineColorBlendAttachmentState) SrcColorBlendFactor() VkBlendFactor
 
 // WithSrcColorBlendFactor copies the provided value into C space and stores it
 // at srcColorBlendFactor on VkPipelineColorBlendAttachmentState
-func (x *VkPipelineColorBlendAttachmentState) WithSrcColorBlendFactor(y VkBlendFactor) *VkPipelineColorBlendAttachmentState {
+func (x VkPipelineColorBlendAttachmentState) WithSrcColorBlendFactor(y VkBlendFactor) VkPipelineColorBlendAttachmentState {
 	ptr := /* Identifier */ (*C.VkBlendFactor)(&y)
 	x.srcColorBlendFactor = *ptr
 	return x
@@ -11928,7 +11928,7 @@ func (x VkPipelineColorBlendAttachmentState) DstColorBlendFactor() VkBlendFactor
 
 // WithDstColorBlendFactor copies the provided value into C space and stores it
 // at dstColorBlendFactor on VkPipelineColorBlendAttachmentState
-func (x *VkPipelineColorBlendAttachmentState) WithDstColorBlendFactor(y VkBlendFactor) *VkPipelineColorBlendAttachmentState {
+func (x VkPipelineColorBlendAttachmentState) WithDstColorBlendFactor(y VkBlendFactor) VkPipelineColorBlendAttachmentState {
 	ptr := /* Identifier */ (*C.VkBlendFactor)(&y)
 	x.dstColorBlendFactor = *ptr
 	return x
@@ -11942,7 +11942,7 @@ func (x VkPipelineColorBlendAttachmentState) ColorBlendOp() VkBlendOp {
 
 // WithColorBlendOp copies the provided value into C space and stores it
 // at colorBlendOp on VkPipelineColorBlendAttachmentState
-func (x *VkPipelineColorBlendAttachmentState) WithColorBlendOp(y VkBlendOp) *VkPipelineColorBlendAttachmentState {
+func (x VkPipelineColorBlendAttachmentState) WithColorBlendOp(y VkBlendOp) VkPipelineColorBlendAttachmentState {
 	ptr := /* Identifier */ (*C.VkBlendOp)(&y)
 	x.colorBlendOp = *ptr
 	return x
@@ -11956,7 +11956,7 @@ func (x VkPipelineColorBlendAttachmentState) SrcAlphaBlendFactor() VkBlendFactor
 
 // WithSrcAlphaBlendFactor copies the provided value into C space and stores it
 // at srcAlphaBlendFactor on VkPipelineColorBlendAttachmentState
-func (x *VkPipelineColorBlendAttachmentState) WithSrcAlphaBlendFactor(y VkBlendFactor) *VkPipelineColorBlendAttachmentState {
+func (x VkPipelineColorBlendAttachmentState) WithSrcAlphaBlendFactor(y VkBlendFactor) VkPipelineColorBlendAttachmentState {
 	ptr := /* Identifier */ (*C.VkBlendFactor)(&y)
 	x.srcAlphaBlendFactor = *ptr
 	return x
@@ -11970,7 +11970,7 @@ func (x VkPipelineColorBlendAttachmentState) DstAlphaBlendFactor() VkBlendFactor
 
 // WithDstAlphaBlendFactor copies the provided value into C space and stores it
 // at dstAlphaBlendFactor on VkPipelineColorBlendAttachmentState
-func (x *VkPipelineColorBlendAttachmentState) WithDstAlphaBlendFactor(y VkBlendFactor) *VkPipelineColorBlendAttachmentState {
+func (x VkPipelineColorBlendAttachmentState) WithDstAlphaBlendFactor(y VkBlendFactor) VkPipelineColorBlendAttachmentState {
 	ptr := /* Identifier */ (*C.VkBlendFactor)(&y)
 	x.dstAlphaBlendFactor = *ptr
 	return x
@@ -11984,7 +11984,7 @@ func (x VkPipelineColorBlendAttachmentState) AlphaBlendOp() VkBlendOp {
 
 // WithAlphaBlendOp copies the provided value into C space and stores it
 // at alphaBlendOp on VkPipelineColorBlendAttachmentState
-func (x *VkPipelineColorBlendAttachmentState) WithAlphaBlendOp(y VkBlendOp) *VkPipelineColorBlendAttachmentState {
+func (x VkPipelineColorBlendAttachmentState) WithAlphaBlendOp(y VkBlendOp) VkPipelineColorBlendAttachmentState {
 	ptr := /* Identifier */ (*C.VkBlendOp)(&y)
 	x.alphaBlendOp = *ptr
 	return x
@@ -11998,7 +11998,7 @@ func (x VkPipelineColorBlendAttachmentState) ColorWriteMask() VkColorComponentFl
 
 // WithColorWriteMask copies the provided value into C space and stores it
 // at colorWriteMask on VkPipelineColorBlendAttachmentState
-func (x *VkPipelineColorBlendAttachmentState) WithColorWriteMask(y VkColorComponentFlags) *VkPipelineColorBlendAttachmentState {
+func (x VkPipelineColorBlendAttachmentState) WithColorWriteMask(y VkColorComponentFlags) VkPipelineColorBlendAttachmentState {
 	ptr := /* Identifier */ (*C.VkColorComponentFlags)(&y)
 	x.colorWriteMask = *ptr
 	return x
@@ -12025,12 +12025,12 @@ func (x *VkAllocationCallbacks) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkAllocationCallbacks) AsPtr() *VkAllocationCallbacks { return x }
+func (x VkAllocationCallbacks) AsPtr() *VkAllocationCallbacks { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkAllocationCallbacks) AsCPtr() *VkAllocationCallbacks {
+func (x VkAllocationCallbacks) AsCPtr() *VkAllocationCallbacks {
 	clone := newVkAllocationCallbacks()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -12042,7 +12042,7 @@ func (x VkAllocationCallbacks) PUserData() unsafe.Pointer {
 
 // WithPUserData copies the provided value into C space and stores it
 // at pUserData on VkAllocationCallbacks
-func (x *VkAllocationCallbacks) WithPUserData(y unsafe.Pointer) *VkAllocationCallbacks {
+func (x VkAllocationCallbacks) WithPUserData(y unsafe.Pointer) VkAllocationCallbacks {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pUserData = *ptr
 	return x
@@ -12056,7 +12056,7 @@ func (x VkAllocationCallbacks) PfnAllocation() PFN_vkAllocationFunction {
 
 // WithPfnAllocation copies the provided value into C space and stores it
 // at pfnAllocation on VkAllocationCallbacks
-func (x *VkAllocationCallbacks) WithPfnAllocation(y PFN_vkAllocationFunction) *VkAllocationCallbacks {
+func (x VkAllocationCallbacks) WithPfnAllocation(y PFN_vkAllocationFunction) VkAllocationCallbacks {
 	ptr := /* Identifier */ (*C.PFN_vkAllocationFunction)(&y)
 	x.pfnAllocation = *ptr
 	return x
@@ -12070,7 +12070,7 @@ func (x VkAllocationCallbacks) PfnReallocation() PFN_vkReallocationFunction {
 
 // WithPfnReallocation copies the provided value into C space and stores it
 // at pfnReallocation on VkAllocationCallbacks
-func (x *VkAllocationCallbacks) WithPfnReallocation(y PFN_vkReallocationFunction) *VkAllocationCallbacks {
+func (x VkAllocationCallbacks) WithPfnReallocation(y PFN_vkReallocationFunction) VkAllocationCallbacks {
 	ptr := /* Identifier */ (*C.PFN_vkReallocationFunction)(&y)
 	x.pfnReallocation = *ptr
 	return x
@@ -12084,7 +12084,7 @@ func (x VkAllocationCallbacks) PfnFree() PFN_vkFreeFunction {
 
 // WithPfnFree copies the provided value into C space and stores it
 // at pfnFree on VkAllocationCallbacks
-func (x *VkAllocationCallbacks) WithPfnFree(y PFN_vkFreeFunction) *VkAllocationCallbacks {
+func (x VkAllocationCallbacks) WithPfnFree(y PFN_vkFreeFunction) VkAllocationCallbacks {
 	ptr := /* Identifier */ (*C.PFN_vkFreeFunction)(&y)
 	x.pfnFree = *ptr
 	return x
@@ -12098,7 +12098,7 @@ func (x VkAllocationCallbacks) PfnInternalAllocation() PFN_vkInternalAllocationN
 
 // WithPfnInternalAllocation copies the provided value into C space and stores it
 // at pfnInternalAllocation on VkAllocationCallbacks
-func (x *VkAllocationCallbacks) WithPfnInternalAllocation(y PFN_vkInternalAllocationNotification) *VkAllocationCallbacks {
+func (x VkAllocationCallbacks) WithPfnInternalAllocation(y PFN_vkInternalAllocationNotification) VkAllocationCallbacks {
 	ptr := /* Identifier */ (*C.PFN_vkInternalAllocationNotification)(&y)
 	x.pfnInternalAllocation = *ptr
 	return x
@@ -12112,7 +12112,7 @@ func (x VkAllocationCallbacks) PfnInternalFree() PFN_vkInternalFreeNotification 
 
 // WithPfnInternalFree copies the provided value into C space and stores it
 // at pfnInternalFree on VkAllocationCallbacks
-func (x *VkAllocationCallbacks) WithPfnInternalFree(y PFN_vkInternalFreeNotification) *VkAllocationCallbacks {
+func (x VkAllocationCallbacks) WithPfnInternalFree(y PFN_vkInternalFreeNotification) VkAllocationCallbacks {
 	ptr := /* Identifier */ (*C.PFN_vkInternalFreeNotification)(&y)
 	x.pfnInternalFree = *ptr
 	return x
@@ -12139,12 +12139,12 @@ func (x *VkPipelineColorBlendStateCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPipelineColorBlendStateCreateInfo) AsPtr() *VkPipelineColorBlendStateCreateInfo { return x }
+func (x VkPipelineColorBlendStateCreateInfo) AsPtr() *VkPipelineColorBlendStateCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPipelineColorBlendStateCreateInfo) AsCPtr() *VkPipelineColorBlendStateCreateInfo {
+func (x VkPipelineColorBlendStateCreateInfo) AsCPtr() *VkPipelineColorBlendStateCreateInfo {
 	clone := newVkPipelineColorBlendStateCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -12156,13 +12156,13 @@ func (x VkPipelineColorBlendStateCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPipelineColorBlendStateCreateInfo) WithDefaultSType() *VkPipelineColorBlendStateCreateInfo {
+func (x VkPipelineColorBlendStateCreateInfo) WithDefaultSType() VkPipelineColorBlendStateCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPipelineColorBlendStateCreateInfo
-func (x *VkPipelineColorBlendStateCreateInfo) WithSType(y VkStructureType) *VkPipelineColorBlendStateCreateInfo {
+func (x VkPipelineColorBlendStateCreateInfo) WithSType(y VkStructureType) VkPipelineColorBlendStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -12176,7 +12176,7 @@ func (x VkPipelineColorBlendStateCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPipelineColorBlendStateCreateInfo
-func (x *VkPipelineColorBlendStateCreateInfo) WithPNext(y unsafe.Pointer) *VkPipelineColorBlendStateCreateInfo {
+func (x VkPipelineColorBlendStateCreateInfo) WithPNext(y unsafe.Pointer) VkPipelineColorBlendStateCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -12190,7 +12190,7 @@ func (x VkPipelineColorBlendStateCreateInfo) Flags() VkPipelineColorBlendStateCr
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkPipelineColorBlendStateCreateInfo
-func (x *VkPipelineColorBlendStateCreateInfo) WithFlags(y VkPipelineColorBlendStateCreateFlags) *VkPipelineColorBlendStateCreateInfo {
+func (x VkPipelineColorBlendStateCreateInfo) WithFlags(y VkPipelineColorBlendStateCreateFlags) VkPipelineColorBlendStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkPipelineColorBlendStateCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -12204,7 +12204,7 @@ func (x VkPipelineColorBlendStateCreateInfo) LogicOpEnable() VkBool32 {
 
 // WithLogicOpEnable copies the provided value into C space and stores it
 // at logicOpEnable on VkPipelineColorBlendStateCreateInfo
-func (x *VkPipelineColorBlendStateCreateInfo) WithLogicOpEnable(y VkBool32) *VkPipelineColorBlendStateCreateInfo {
+func (x VkPipelineColorBlendStateCreateInfo) WithLogicOpEnable(y VkBool32) VkPipelineColorBlendStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.logicOpEnable = *ptr
 	return x
@@ -12218,7 +12218,7 @@ func (x VkPipelineColorBlendStateCreateInfo) LogicOp() VkLogicOp {
 
 // WithLogicOp copies the provided value into C space and stores it
 // at logicOp on VkPipelineColorBlendStateCreateInfo
-func (x *VkPipelineColorBlendStateCreateInfo) WithLogicOp(y VkLogicOp) *VkPipelineColorBlendStateCreateInfo {
+func (x VkPipelineColorBlendStateCreateInfo) WithLogicOp(y VkLogicOp) VkPipelineColorBlendStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkLogicOp)(&y)
 	x.logicOp = *ptr
 	return x
@@ -12232,7 +12232,7 @@ func (x VkPipelineColorBlendStateCreateInfo) AttachmentCount() uint32 {
 
 // WithAttachmentCount copies the provided value into C space and stores it
 // at attachmentCount on VkPipelineColorBlendStateCreateInfo
-func (x *VkPipelineColorBlendStateCreateInfo) WithAttachmentCount(y uint32) *VkPipelineColorBlendStateCreateInfo {
+func (x VkPipelineColorBlendStateCreateInfo) WithAttachmentCount(y uint32) VkPipelineColorBlendStateCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.attachmentCount = *ptr
 	return x
@@ -12249,7 +12249,7 @@ func (x VkPipelineColorBlendStateCreateInfo) PAttachments() []VkPipelineColorBle
 
 // WithPAttachments copies the provided value into C space and stores it
 // at pAttachments on VkPipelineColorBlendStateCreateInfo
-func (x *VkPipelineColorBlendStateCreateInfo) WithPAttachments(y []VkPipelineColorBlendAttachmentState) *VkPipelineColorBlendStateCreateInfo {
+func (x VkPipelineColorBlendStateCreateInfo) WithPAttachments(y []VkPipelineColorBlendAttachmentState) VkPipelineColorBlendStateCreateInfo {
 	ptr := func(x *[]VkPipelineColorBlendAttachmentState) **C.VkPipelineColorBlendAttachmentState { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkPipelineColorBlendAttachmentState)(unsafe.Pointer(&((*x)[0])))
@@ -12273,7 +12273,7 @@ func (x VkPipelineColorBlendStateCreateInfo) BlendConstants() []float32 {
 
 // WithBlendConstants copies the provided value into C space and stores it
 // at blendConstants on VkPipelineColorBlendStateCreateInfo
-func (x *VkPipelineColorBlendStateCreateInfo) WithBlendConstants(y []float32) *VkPipelineColorBlendStateCreateInfo {
+func (x VkPipelineColorBlendStateCreateInfo) WithBlendConstants(y []float32) VkPipelineColorBlendStateCreateInfo {
 	ptr := func(x *[]float32) **C.float { /* Array */
 		if *x != nil {
 			slc := (*C.float)(unsafe.Pointer(&((*x)[0])))
@@ -12307,12 +12307,12 @@ func (x *VkBufferCopy) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkBufferCopy) AsPtr() *VkBufferCopy { return x }
+func (x VkBufferCopy) AsPtr() *VkBufferCopy { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkBufferCopy) AsCPtr() *VkBufferCopy {
+func (x VkBufferCopy) AsCPtr() *VkBufferCopy {
 	clone := newVkBufferCopy()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -12324,7 +12324,7 @@ func (x VkBufferCopy) SrcOffset() VkDeviceSize {
 
 // WithSrcOffset copies the provided value into C space and stores it
 // at srcOffset on VkBufferCopy
-func (x *VkBufferCopy) WithSrcOffset(y VkDeviceSize) *VkBufferCopy {
+func (x VkBufferCopy) WithSrcOffset(y VkDeviceSize) VkBufferCopy {
 	ptr := /* Identifier */ (*C.VkDeviceSize)(&y)
 	x.srcOffset = *ptr
 	return x
@@ -12338,7 +12338,7 @@ func (x VkBufferCopy) DstOffset() VkDeviceSize {
 
 // WithDstOffset copies the provided value into C space and stores it
 // at dstOffset on VkBufferCopy
-func (x *VkBufferCopy) WithDstOffset(y VkDeviceSize) *VkBufferCopy {
+func (x VkBufferCopy) WithDstOffset(y VkDeviceSize) VkBufferCopy {
 	ptr := /* Identifier */ (*C.VkDeviceSize)(&y)
 	x.dstOffset = *ptr
 	return x
@@ -12352,7 +12352,7 @@ func (x VkBufferCopy) Size() VkDeviceSize {
 
 // WithSize copies the provided value into C space and stores it
 // at size on VkBufferCopy
-func (x *VkBufferCopy) WithSize(y VkDeviceSize) *VkBufferCopy {
+func (x VkBufferCopy) WithSize(y VkDeviceSize) VkBufferCopy {
 	ptr := /* Identifier */ (*C.VkDeviceSize)(&y)
 	x.size = *ptr
 	return x
@@ -12379,12 +12379,12 @@ func (x *VkBufferImageCopy) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkBufferImageCopy) AsPtr() *VkBufferImageCopy { return x }
+func (x VkBufferImageCopy) AsPtr() *VkBufferImageCopy { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkBufferImageCopy) AsCPtr() *VkBufferImageCopy {
+func (x VkBufferImageCopy) AsCPtr() *VkBufferImageCopy {
 	clone := newVkBufferImageCopy()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -12396,7 +12396,7 @@ func (x VkBufferImageCopy) BufferOffset() VkDeviceSize {
 
 // WithBufferOffset copies the provided value into C space and stores it
 // at bufferOffset on VkBufferImageCopy
-func (x *VkBufferImageCopy) WithBufferOffset(y VkDeviceSize) *VkBufferImageCopy {
+func (x VkBufferImageCopy) WithBufferOffset(y VkDeviceSize) VkBufferImageCopy {
 	ptr := /* Identifier */ (*C.VkDeviceSize)(&y)
 	x.bufferOffset = *ptr
 	return x
@@ -12410,7 +12410,7 @@ func (x VkBufferImageCopy) BufferRowLength() uint32 {
 
 // WithBufferRowLength copies the provided value into C space and stores it
 // at bufferRowLength on VkBufferImageCopy
-func (x *VkBufferImageCopy) WithBufferRowLength(y uint32) *VkBufferImageCopy {
+func (x VkBufferImageCopy) WithBufferRowLength(y uint32) VkBufferImageCopy {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.bufferRowLength = *ptr
 	return x
@@ -12424,7 +12424,7 @@ func (x VkBufferImageCopy) BufferImageHeight() uint32 {
 
 // WithBufferImageHeight copies the provided value into C space and stores it
 // at bufferImageHeight on VkBufferImageCopy
-func (x *VkBufferImageCopy) WithBufferImageHeight(y uint32) *VkBufferImageCopy {
+func (x VkBufferImageCopy) WithBufferImageHeight(y uint32) VkBufferImageCopy {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.bufferImageHeight = *ptr
 	return x
@@ -12438,7 +12438,7 @@ func (x VkBufferImageCopy) ImageSubresource() VkImageSubresourceLayers {
 
 // WithImageSubresource copies the provided value into C space and stores it
 // at imageSubresource on VkBufferImageCopy
-func (x *VkBufferImageCopy) WithImageSubresource(y VkImageSubresourceLayers) *VkBufferImageCopy {
+func (x VkBufferImageCopy) WithImageSubresource(y VkImageSubresourceLayers) VkBufferImageCopy {
 	ptr := /* Identifier */ (*C.VkImageSubresourceLayers)(&y)
 	x.imageSubresource = *ptr
 	return x
@@ -12452,7 +12452,7 @@ func (x VkBufferImageCopy) ImageOffset() VkOffset3D {
 
 // WithImageOffset copies the provided value into C space and stores it
 // at imageOffset on VkBufferImageCopy
-func (x *VkBufferImageCopy) WithImageOffset(y VkOffset3D) *VkBufferImageCopy {
+func (x VkBufferImageCopy) WithImageOffset(y VkOffset3D) VkBufferImageCopy {
 	ptr := /* Identifier */ (*C.VkOffset3D)(&y)
 	x.imageOffset = *ptr
 	return x
@@ -12466,7 +12466,7 @@ func (x VkBufferImageCopy) ImageExtent() VkExtent3D {
 
 // WithImageExtent copies the provided value into C space and stores it
 // at imageExtent on VkBufferImageCopy
-func (x *VkBufferImageCopy) WithImageExtent(y VkExtent3D) *VkBufferImageCopy {
+func (x VkBufferImageCopy) WithImageExtent(y VkExtent3D) VkBufferImageCopy {
 	ptr := /* Identifier */ (*C.VkExtent3D)(&y)
 	x.imageExtent = *ptr
 	return x
@@ -12493,12 +12493,12 @@ func (x *VkClearAttachment) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkClearAttachment) AsPtr() *VkClearAttachment { return x }
+func (x VkClearAttachment) AsPtr() *VkClearAttachment { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkClearAttachment) AsCPtr() *VkClearAttachment {
+func (x VkClearAttachment) AsCPtr() *VkClearAttachment {
 	clone := newVkClearAttachment()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -12510,7 +12510,7 @@ func (x VkClearAttachment) AspectMask() VkImageAspectFlags {
 
 // WithAspectMask copies the provided value into C space and stores it
 // at aspectMask on VkClearAttachment
-func (x *VkClearAttachment) WithAspectMask(y VkImageAspectFlags) *VkClearAttachment {
+func (x VkClearAttachment) WithAspectMask(y VkImageAspectFlags) VkClearAttachment {
 	ptr := /* Identifier */ (*C.VkImageAspectFlags)(&y)
 	x.aspectMask = *ptr
 	return x
@@ -12524,7 +12524,7 @@ func (x VkClearAttachment) ColorAttachment() uint32 {
 
 // WithColorAttachment copies the provided value into C space and stores it
 // at colorAttachment on VkClearAttachment
-func (x *VkClearAttachment) WithColorAttachment(y uint32) *VkClearAttachment {
+func (x VkClearAttachment) WithColorAttachment(y uint32) VkClearAttachment {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.colorAttachment = *ptr
 	return x
@@ -12538,7 +12538,7 @@ func (x VkClearAttachment) ClearValue() VkClearValue {
 
 // WithClearValue copies the provided value into C space and stores it
 // at clearValue on VkClearAttachment
-func (x *VkClearAttachment) WithClearValue(y VkClearValue) *VkClearAttachment {
+func (x VkClearAttachment) WithClearValue(y VkClearValue) VkClearAttachment {
 	ptr := /* Identifier */ (*C.VkClearValue)(&y)
 	x.clearValue = *ptr
 	return x
@@ -12565,14 +12565,14 @@ func (x *VkPipelineDepthStencilStateCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPipelineDepthStencilStateCreateInfo) AsPtr() *VkPipelineDepthStencilStateCreateInfo {
-	return x
+func (x VkPipelineDepthStencilStateCreateInfo) AsPtr() *VkPipelineDepthStencilStateCreateInfo {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPipelineDepthStencilStateCreateInfo) AsCPtr() *VkPipelineDepthStencilStateCreateInfo {
+func (x VkPipelineDepthStencilStateCreateInfo) AsCPtr() *VkPipelineDepthStencilStateCreateInfo {
 	clone := newVkPipelineDepthStencilStateCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -12584,13 +12584,13 @@ func (x VkPipelineDepthStencilStateCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPipelineDepthStencilStateCreateInfo) WithDefaultSType() *VkPipelineDepthStencilStateCreateInfo {
+func (x VkPipelineDepthStencilStateCreateInfo) WithDefaultSType() VkPipelineDepthStencilStateCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPipelineDepthStencilStateCreateInfo
-func (x *VkPipelineDepthStencilStateCreateInfo) WithSType(y VkStructureType) *VkPipelineDepthStencilStateCreateInfo {
+func (x VkPipelineDepthStencilStateCreateInfo) WithSType(y VkStructureType) VkPipelineDepthStencilStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -12604,7 +12604,7 @@ func (x VkPipelineDepthStencilStateCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPipelineDepthStencilStateCreateInfo
-func (x *VkPipelineDepthStencilStateCreateInfo) WithPNext(y unsafe.Pointer) *VkPipelineDepthStencilStateCreateInfo {
+func (x VkPipelineDepthStencilStateCreateInfo) WithPNext(y unsafe.Pointer) VkPipelineDepthStencilStateCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -12618,7 +12618,7 @@ func (x VkPipelineDepthStencilStateCreateInfo) Flags() VkPipelineDepthStencilSta
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkPipelineDepthStencilStateCreateInfo
-func (x *VkPipelineDepthStencilStateCreateInfo) WithFlags(y VkPipelineDepthStencilStateCreateFlags) *VkPipelineDepthStencilStateCreateInfo {
+func (x VkPipelineDepthStencilStateCreateInfo) WithFlags(y VkPipelineDepthStencilStateCreateFlags) VkPipelineDepthStencilStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkPipelineDepthStencilStateCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -12632,7 +12632,7 @@ func (x VkPipelineDepthStencilStateCreateInfo) DepthTestEnable() VkBool32 {
 
 // WithDepthTestEnable copies the provided value into C space and stores it
 // at depthTestEnable on VkPipelineDepthStencilStateCreateInfo
-func (x *VkPipelineDepthStencilStateCreateInfo) WithDepthTestEnable(y VkBool32) *VkPipelineDepthStencilStateCreateInfo {
+func (x VkPipelineDepthStencilStateCreateInfo) WithDepthTestEnable(y VkBool32) VkPipelineDepthStencilStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.depthTestEnable = *ptr
 	return x
@@ -12646,7 +12646,7 @@ func (x VkPipelineDepthStencilStateCreateInfo) DepthWriteEnable() VkBool32 {
 
 // WithDepthWriteEnable copies the provided value into C space and stores it
 // at depthWriteEnable on VkPipelineDepthStencilStateCreateInfo
-func (x *VkPipelineDepthStencilStateCreateInfo) WithDepthWriteEnable(y VkBool32) *VkPipelineDepthStencilStateCreateInfo {
+func (x VkPipelineDepthStencilStateCreateInfo) WithDepthWriteEnable(y VkBool32) VkPipelineDepthStencilStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.depthWriteEnable = *ptr
 	return x
@@ -12660,7 +12660,7 @@ func (x VkPipelineDepthStencilStateCreateInfo) DepthCompareOp() VkCompareOp {
 
 // WithDepthCompareOp copies the provided value into C space and stores it
 // at depthCompareOp on VkPipelineDepthStencilStateCreateInfo
-func (x *VkPipelineDepthStencilStateCreateInfo) WithDepthCompareOp(y VkCompareOp) *VkPipelineDepthStencilStateCreateInfo {
+func (x VkPipelineDepthStencilStateCreateInfo) WithDepthCompareOp(y VkCompareOp) VkPipelineDepthStencilStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkCompareOp)(&y)
 	x.depthCompareOp = *ptr
 	return x
@@ -12674,7 +12674,7 @@ func (x VkPipelineDepthStencilStateCreateInfo) DepthBoundsTestEnable() VkBool32 
 
 // WithDepthBoundsTestEnable copies the provided value into C space and stores it
 // at depthBoundsTestEnable on VkPipelineDepthStencilStateCreateInfo
-func (x *VkPipelineDepthStencilStateCreateInfo) WithDepthBoundsTestEnable(y VkBool32) *VkPipelineDepthStencilStateCreateInfo {
+func (x VkPipelineDepthStencilStateCreateInfo) WithDepthBoundsTestEnable(y VkBool32) VkPipelineDepthStencilStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.depthBoundsTestEnable = *ptr
 	return x
@@ -12688,7 +12688,7 @@ func (x VkPipelineDepthStencilStateCreateInfo) StencilTestEnable() VkBool32 {
 
 // WithStencilTestEnable copies the provided value into C space and stores it
 // at stencilTestEnable on VkPipelineDepthStencilStateCreateInfo
-func (x *VkPipelineDepthStencilStateCreateInfo) WithStencilTestEnable(y VkBool32) *VkPipelineDepthStencilStateCreateInfo {
+func (x VkPipelineDepthStencilStateCreateInfo) WithStencilTestEnable(y VkBool32) VkPipelineDepthStencilStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.stencilTestEnable = *ptr
 	return x
@@ -12702,7 +12702,7 @@ func (x VkPipelineDepthStencilStateCreateInfo) Front() VkStencilOpState {
 
 // WithFront copies the provided value into C space and stores it
 // at front on VkPipelineDepthStencilStateCreateInfo
-func (x *VkPipelineDepthStencilStateCreateInfo) WithFront(y VkStencilOpState) *VkPipelineDepthStencilStateCreateInfo {
+func (x VkPipelineDepthStencilStateCreateInfo) WithFront(y VkStencilOpState) VkPipelineDepthStencilStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkStencilOpState)(&y)
 	x.front = *ptr
 	return x
@@ -12716,7 +12716,7 @@ func (x VkPipelineDepthStencilStateCreateInfo) Back() VkStencilOpState {
 
 // WithBack copies the provided value into C space and stores it
 // at back on VkPipelineDepthStencilStateCreateInfo
-func (x *VkPipelineDepthStencilStateCreateInfo) WithBack(y VkStencilOpState) *VkPipelineDepthStencilStateCreateInfo {
+func (x VkPipelineDepthStencilStateCreateInfo) WithBack(y VkStencilOpState) VkPipelineDepthStencilStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkStencilOpState)(&y)
 	x.back = *ptr
 	return x
@@ -12730,7 +12730,7 @@ func (x VkPipelineDepthStencilStateCreateInfo) MinDepthBounds() float32 {
 
 // WithMinDepthBounds copies the provided value into C space and stores it
 // at minDepthBounds on VkPipelineDepthStencilStateCreateInfo
-func (x *VkPipelineDepthStencilStateCreateInfo) WithMinDepthBounds(y float32) *VkPipelineDepthStencilStateCreateInfo {
+func (x VkPipelineDepthStencilStateCreateInfo) WithMinDepthBounds(y float32) VkPipelineDepthStencilStateCreateInfo {
 	ptr := func(x *float32) *C.float { /* Scalar */ return (*C.float)(unsafe.Pointer(x)) }(&y)
 	x.minDepthBounds = *ptr
 	return x
@@ -12744,7 +12744,7 @@ func (x VkPipelineDepthStencilStateCreateInfo) MaxDepthBounds() float32 {
 
 // WithMaxDepthBounds copies the provided value into C space and stores it
 // at maxDepthBounds on VkPipelineDepthStencilStateCreateInfo
-func (x *VkPipelineDepthStencilStateCreateInfo) WithMaxDepthBounds(y float32) *VkPipelineDepthStencilStateCreateInfo {
+func (x VkPipelineDepthStencilStateCreateInfo) WithMaxDepthBounds(y float32) VkPipelineDepthStencilStateCreateInfo {
 	ptr := func(x *float32) *C.float { /* Scalar */ return (*C.float)(unsafe.Pointer(x)) }(&y)
 	x.maxDepthBounds = *ptr
 	return x
@@ -12771,12 +12771,12 @@ func (x *VkClearDepthStencilValue) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkClearDepthStencilValue) AsPtr() *VkClearDepthStencilValue { return x }
+func (x VkClearDepthStencilValue) AsPtr() *VkClearDepthStencilValue { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkClearDepthStencilValue) AsCPtr() *VkClearDepthStencilValue {
+func (x VkClearDepthStencilValue) AsCPtr() *VkClearDepthStencilValue {
 	clone := newVkClearDepthStencilValue()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -12788,7 +12788,7 @@ func (x VkClearDepthStencilValue) Depth() float32 {
 
 // WithDepth copies the provided value into C space and stores it
 // at depth on VkClearDepthStencilValue
-func (x *VkClearDepthStencilValue) WithDepth(y float32) *VkClearDepthStencilValue {
+func (x VkClearDepthStencilValue) WithDepth(y float32) VkClearDepthStencilValue {
 	ptr := func(x *float32) *C.float { /* Scalar */ return (*C.float)(unsafe.Pointer(x)) }(&y)
 	x.depth = *ptr
 	return x
@@ -12802,7 +12802,7 @@ func (x VkClearDepthStencilValue) Stencil() uint32 {
 
 // WithStencil copies the provided value into C space and stores it
 // at stencil on VkClearDepthStencilValue
-func (x *VkClearDepthStencilValue) WithStencil(y uint32) *VkClearDepthStencilValue {
+func (x VkClearDepthStencilValue) WithStencil(y uint32) VkClearDepthStencilValue {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.stencil = *ptr
 	return x
@@ -12829,12 +12829,12 @@ func (x *VkPipelineDynamicStateCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPipelineDynamicStateCreateInfo) AsPtr() *VkPipelineDynamicStateCreateInfo { return x }
+func (x VkPipelineDynamicStateCreateInfo) AsPtr() *VkPipelineDynamicStateCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPipelineDynamicStateCreateInfo) AsCPtr() *VkPipelineDynamicStateCreateInfo {
+func (x VkPipelineDynamicStateCreateInfo) AsCPtr() *VkPipelineDynamicStateCreateInfo {
 	clone := newVkPipelineDynamicStateCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -12846,13 +12846,13 @@ func (x VkPipelineDynamicStateCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPipelineDynamicStateCreateInfo) WithDefaultSType() *VkPipelineDynamicStateCreateInfo {
+func (x VkPipelineDynamicStateCreateInfo) WithDefaultSType() VkPipelineDynamicStateCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPipelineDynamicStateCreateInfo
-func (x *VkPipelineDynamicStateCreateInfo) WithSType(y VkStructureType) *VkPipelineDynamicStateCreateInfo {
+func (x VkPipelineDynamicStateCreateInfo) WithSType(y VkStructureType) VkPipelineDynamicStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -12866,7 +12866,7 @@ func (x VkPipelineDynamicStateCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPipelineDynamicStateCreateInfo
-func (x *VkPipelineDynamicStateCreateInfo) WithPNext(y unsafe.Pointer) *VkPipelineDynamicStateCreateInfo {
+func (x VkPipelineDynamicStateCreateInfo) WithPNext(y unsafe.Pointer) VkPipelineDynamicStateCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -12880,7 +12880,7 @@ func (x VkPipelineDynamicStateCreateInfo) Flags() VkPipelineDynamicStateCreateFl
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkPipelineDynamicStateCreateInfo
-func (x *VkPipelineDynamicStateCreateInfo) WithFlags(y VkPipelineDynamicStateCreateFlags) *VkPipelineDynamicStateCreateInfo {
+func (x VkPipelineDynamicStateCreateInfo) WithFlags(y VkPipelineDynamicStateCreateFlags) VkPipelineDynamicStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkPipelineDynamicStateCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -12894,7 +12894,7 @@ func (x VkPipelineDynamicStateCreateInfo) DynamicStateCount() uint32 {
 
 // WithDynamicStateCount copies the provided value into C space and stores it
 // at dynamicStateCount on VkPipelineDynamicStateCreateInfo
-func (x *VkPipelineDynamicStateCreateInfo) WithDynamicStateCount(y uint32) *VkPipelineDynamicStateCreateInfo {
+func (x VkPipelineDynamicStateCreateInfo) WithDynamicStateCount(y uint32) VkPipelineDynamicStateCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.dynamicStateCount = *ptr
 	return x
@@ -12911,7 +12911,7 @@ func (x VkPipelineDynamicStateCreateInfo) PDynamicStates() []VkDynamicState {
 
 // WithPDynamicStates copies the provided value into C space and stores it
 // at pDynamicStates on VkPipelineDynamicStateCreateInfo
-func (x *VkPipelineDynamicStateCreateInfo) WithPDynamicStates(y []VkDynamicState) *VkPipelineDynamicStateCreateInfo {
+func (x VkPipelineDynamicStateCreateInfo) WithPDynamicStates(y []VkDynamicState) VkPipelineDynamicStateCreateInfo {
 	ptr := func(x *[]VkDynamicState) **C.VkDynamicState { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkDynamicState)(unsafe.Pointer(&((*x)[0])))
@@ -12945,12 +12945,12 @@ func (x *VkClearRect) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkClearRect) AsPtr() *VkClearRect { return x }
+func (x VkClearRect) AsPtr() *VkClearRect { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkClearRect) AsCPtr() *VkClearRect {
+func (x VkClearRect) AsCPtr() *VkClearRect {
 	clone := newVkClearRect()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -12962,7 +12962,7 @@ func (x VkClearRect) Rect() VkRect2D {
 
 // WithRect copies the provided value into C space and stores it
 // at rect on VkClearRect
-func (x *VkClearRect) WithRect(y VkRect2D) *VkClearRect {
+func (x VkClearRect) WithRect(y VkRect2D) VkClearRect {
 	ptr := /* Identifier */ (*C.VkRect2D)(&y)
 	x.rect = *ptr
 	return x
@@ -12976,7 +12976,7 @@ func (x VkClearRect) BaseArrayLayer() uint32 {
 
 // WithBaseArrayLayer copies the provided value into C space and stores it
 // at baseArrayLayer on VkClearRect
-func (x *VkClearRect) WithBaseArrayLayer(y uint32) *VkClearRect {
+func (x VkClearRect) WithBaseArrayLayer(y uint32) VkClearRect {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.baseArrayLayer = *ptr
 	return x
@@ -12990,7 +12990,7 @@ func (x VkClearRect) LayerCount() uint32 {
 
 // WithLayerCount copies the provided value into C space and stores it
 // at layerCount on VkClearRect
-func (x *VkClearRect) WithLayerCount(y uint32) *VkClearRect {
+func (x VkClearRect) WithLayerCount(y uint32) VkClearRect {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.layerCount = *ptr
 	return x
@@ -13017,14 +13017,14 @@ func (x *VkPipelineInputAssemblyStateCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPipelineInputAssemblyStateCreateInfo) AsPtr() *VkPipelineInputAssemblyStateCreateInfo {
-	return x
+func (x VkPipelineInputAssemblyStateCreateInfo) AsPtr() *VkPipelineInputAssemblyStateCreateInfo {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPipelineInputAssemblyStateCreateInfo) AsCPtr() *VkPipelineInputAssemblyStateCreateInfo {
+func (x VkPipelineInputAssemblyStateCreateInfo) AsCPtr() *VkPipelineInputAssemblyStateCreateInfo {
 	clone := newVkPipelineInputAssemblyStateCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -13036,13 +13036,13 @@ func (x VkPipelineInputAssemblyStateCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPipelineInputAssemblyStateCreateInfo) WithDefaultSType() *VkPipelineInputAssemblyStateCreateInfo {
+func (x VkPipelineInputAssemblyStateCreateInfo) WithDefaultSType() VkPipelineInputAssemblyStateCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPipelineInputAssemblyStateCreateInfo
-func (x *VkPipelineInputAssemblyStateCreateInfo) WithSType(y VkStructureType) *VkPipelineInputAssemblyStateCreateInfo {
+func (x VkPipelineInputAssemblyStateCreateInfo) WithSType(y VkStructureType) VkPipelineInputAssemblyStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -13056,7 +13056,7 @@ func (x VkPipelineInputAssemblyStateCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPipelineInputAssemblyStateCreateInfo
-func (x *VkPipelineInputAssemblyStateCreateInfo) WithPNext(y unsafe.Pointer) *VkPipelineInputAssemblyStateCreateInfo {
+func (x VkPipelineInputAssemblyStateCreateInfo) WithPNext(y unsafe.Pointer) VkPipelineInputAssemblyStateCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -13070,7 +13070,7 @@ func (x VkPipelineInputAssemblyStateCreateInfo) Flags() VkPipelineInputAssemblyS
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkPipelineInputAssemblyStateCreateInfo
-func (x *VkPipelineInputAssemblyStateCreateInfo) WithFlags(y VkPipelineInputAssemblyStateCreateFlags) *VkPipelineInputAssemblyStateCreateInfo {
+func (x VkPipelineInputAssemblyStateCreateInfo) WithFlags(y VkPipelineInputAssemblyStateCreateFlags) VkPipelineInputAssemblyStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkPipelineInputAssemblyStateCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -13084,7 +13084,7 @@ func (x VkPipelineInputAssemblyStateCreateInfo) Topology() VkPrimitiveTopology {
 
 // WithTopology copies the provided value into C space and stores it
 // at topology on VkPipelineInputAssemblyStateCreateInfo
-func (x *VkPipelineInputAssemblyStateCreateInfo) WithTopology(y VkPrimitiveTopology) *VkPipelineInputAssemblyStateCreateInfo {
+func (x VkPipelineInputAssemblyStateCreateInfo) WithTopology(y VkPrimitiveTopology) VkPipelineInputAssemblyStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkPrimitiveTopology)(&y)
 	x.topology = *ptr
 	return x
@@ -13098,7 +13098,7 @@ func (x VkPipelineInputAssemblyStateCreateInfo) PrimitiveRestartEnable() VkBool3
 
 // WithPrimitiveRestartEnable copies the provided value into C space and stores it
 // at primitiveRestartEnable on VkPipelineInputAssemblyStateCreateInfo
-func (x *VkPipelineInputAssemblyStateCreateInfo) WithPrimitiveRestartEnable(y VkBool32) *VkPipelineInputAssemblyStateCreateInfo {
+func (x VkPipelineInputAssemblyStateCreateInfo) WithPrimitiveRestartEnable(y VkBool32) VkPipelineInputAssemblyStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.primitiveRestartEnable = *ptr
 	return x
@@ -13125,12 +13125,12 @@ func (x *VkImageBlit) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkImageBlit) AsPtr() *VkImageBlit { return x }
+func (x VkImageBlit) AsPtr() *VkImageBlit { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkImageBlit) AsCPtr() *VkImageBlit {
+func (x VkImageBlit) AsCPtr() *VkImageBlit {
 	clone := newVkImageBlit()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -13142,7 +13142,7 @@ func (x VkImageBlit) SrcSubresource() VkImageSubresourceLayers {
 
 // WithSrcSubresource copies the provided value into C space and stores it
 // at srcSubresource on VkImageBlit
-func (x *VkImageBlit) WithSrcSubresource(y VkImageSubresourceLayers) *VkImageBlit {
+func (x VkImageBlit) WithSrcSubresource(y VkImageSubresourceLayers) VkImageBlit {
 	ptr := /* Identifier */ (*C.VkImageSubresourceLayers)(&y)
 	x.srcSubresource = *ptr
 	return x
@@ -13159,7 +13159,7 @@ func (x VkImageBlit) SrcOffsets() []VkOffset3D {
 
 // WithSrcOffsets copies the provided value into C space and stores it
 // at srcOffsets on VkImageBlit
-func (x *VkImageBlit) WithSrcOffsets(y []VkOffset3D) *VkImageBlit {
+func (x VkImageBlit) WithSrcOffsets(y []VkOffset3D) VkImageBlit {
 	ptr := func(x *[]VkOffset3D) **C.VkOffset3D { /* Array */
 		if *x != nil {
 			slc := (*C.VkOffset3D)(unsafe.Pointer(&((*x)[0])))
@@ -13180,7 +13180,7 @@ func (x VkImageBlit) DstSubresource() VkImageSubresourceLayers {
 
 // WithDstSubresource copies the provided value into C space and stores it
 // at dstSubresource on VkImageBlit
-func (x *VkImageBlit) WithDstSubresource(y VkImageSubresourceLayers) *VkImageBlit {
+func (x VkImageBlit) WithDstSubresource(y VkImageSubresourceLayers) VkImageBlit {
 	ptr := /* Identifier */ (*C.VkImageSubresourceLayers)(&y)
 	x.dstSubresource = *ptr
 	return x
@@ -13197,7 +13197,7 @@ func (x VkImageBlit) DstOffsets() []VkOffset3D {
 
 // WithDstOffsets copies the provided value into C space and stores it
 // at dstOffsets on VkImageBlit
-func (x *VkImageBlit) WithDstOffsets(y []VkOffset3D) *VkImageBlit {
+func (x VkImageBlit) WithDstOffsets(y []VkOffset3D) VkImageBlit {
 	ptr := func(x *[]VkOffset3D) **C.VkOffset3D { /* Array */
 		if *x != nil {
 			slc := (*C.VkOffset3D)(unsafe.Pointer(&((*x)[0])))
@@ -13231,12 +13231,12 @@ func (x *VkImageCopy) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkImageCopy) AsPtr() *VkImageCopy { return x }
+func (x VkImageCopy) AsPtr() *VkImageCopy { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkImageCopy) AsCPtr() *VkImageCopy {
+func (x VkImageCopy) AsCPtr() *VkImageCopy {
 	clone := newVkImageCopy()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -13248,7 +13248,7 @@ func (x VkImageCopy) SrcSubresource() VkImageSubresourceLayers {
 
 // WithSrcSubresource copies the provided value into C space and stores it
 // at srcSubresource on VkImageCopy
-func (x *VkImageCopy) WithSrcSubresource(y VkImageSubresourceLayers) *VkImageCopy {
+func (x VkImageCopy) WithSrcSubresource(y VkImageSubresourceLayers) VkImageCopy {
 	ptr := /* Identifier */ (*C.VkImageSubresourceLayers)(&y)
 	x.srcSubresource = *ptr
 	return x
@@ -13262,7 +13262,7 @@ func (x VkImageCopy) SrcOffset() VkOffset3D {
 
 // WithSrcOffset copies the provided value into C space and stores it
 // at srcOffset on VkImageCopy
-func (x *VkImageCopy) WithSrcOffset(y VkOffset3D) *VkImageCopy {
+func (x VkImageCopy) WithSrcOffset(y VkOffset3D) VkImageCopy {
 	ptr := /* Identifier */ (*C.VkOffset3D)(&y)
 	x.srcOffset = *ptr
 	return x
@@ -13276,7 +13276,7 @@ func (x VkImageCopy) DstSubresource() VkImageSubresourceLayers {
 
 // WithDstSubresource copies the provided value into C space and stores it
 // at dstSubresource on VkImageCopy
-func (x *VkImageCopy) WithDstSubresource(y VkImageSubresourceLayers) *VkImageCopy {
+func (x VkImageCopy) WithDstSubresource(y VkImageSubresourceLayers) VkImageCopy {
 	ptr := /* Identifier */ (*C.VkImageSubresourceLayers)(&y)
 	x.dstSubresource = *ptr
 	return x
@@ -13290,7 +13290,7 @@ func (x VkImageCopy) DstOffset() VkOffset3D {
 
 // WithDstOffset copies the provided value into C space and stores it
 // at dstOffset on VkImageCopy
-func (x *VkImageCopy) WithDstOffset(y VkOffset3D) *VkImageCopy {
+func (x VkImageCopy) WithDstOffset(y VkOffset3D) VkImageCopy {
 	ptr := /* Identifier */ (*C.VkOffset3D)(&y)
 	x.dstOffset = *ptr
 	return x
@@ -13304,7 +13304,7 @@ func (x VkImageCopy) Extent() VkExtent3D {
 
 // WithExtent copies the provided value into C space and stores it
 // at extent on VkImageCopy
-func (x *VkImageCopy) WithExtent(y VkExtent3D) *VkImageCopy {
+func (x VkImageCopy) WithExtent(y VkExtent3D) VkImageCopy {
 	ptr := /* Identifier */ (*C.VkExtent3D)(&y)
 	x.extent = *ptr
 	return x
@@ -13331,14 +13331,14 @@ func (x *VkPipelineMultisampleStateCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPipelineMultisampleStateCreateInfo) AsPtr() *VkPipelineMultisampleStateCreateInfo {
-	return x
+func (x VkPipelineMultisampleStateCreateInfo) AsPtr() *VkPipelineMultisampleStateCreateInfo {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPipelineMultisampleStateCreateInfo) AsCPtr() *VkPipelineMultisampleStateCreateInfo {
+func (x VkPipelineMultisampleStateCreateInfo) AsCPtr() *VkPipelineMultisampleStateCreateInfo {
 	clone := newVkPipelineMultisampleStateCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -13350,13 +13350,13 @@ func (x VkPipelineMultisampleStateCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPipelineMultisampleStateCreateInfo) WithDefaultSType() *VkPipelineMultisampleStateCreateInfo {
+func (x VkPipelineMultisampleStateCreateInfo) WithDefaultSType() VkPipelineMultisampleStateCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPipelineMultisampleStateCreateInfo
-func (x *VkPipelineMultisampleStateCreateInfo) WithSType(y VkStructureType) *VkPipelineMultisampleStateCreateInfo {
+func (x VkPipelineMultisampleStateCreateInfo) WithSType(y VkStructureType) VkPipelineMultisampleStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -13370,7 +13370,7 @@ func (x VkPipelineMultisampleStateCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPipelineMultisampleStateCreateInfo
-func (x *VkPipelineMultisampleStateCreateInfo) WithPNext(y unsafe.Pointer) *VkPipelineMultisampleStateCreateInfo {
+func (x VkPipelineMultisampleStateCreateInfo) WithPNext(y unsafe.Pointer) VkPipelineMultisampleStateCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -13384,7 +13384,7 @@ func (x VkPipelineMultisampleStateCreateInfo) Flags() VkPipelineMultisampleState
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkPipelineMultisampleStateCreateInfo
-func (x *VkPipelineMultisampleStateCreateInfo) WithFlags(y VkPipelineMultisampleStateCreateFlags) *VkPipelineMultisampleStateCreateInfo {
+func (x VkPipelineMultisampleStateCreateInfo) WithFlags(y VkPipelineMultisampleStateCreateFlags) VkPipelineMultisampleStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkPipelineMultisampleStateCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -13398,7 +13398,7 @@ func (x VkPipelineMultisampleStateCreateInfo) RasterizationSamples() VkSampleCou
 
 // WithRasterizationSamples copies the provided value into C space and stores it
 // at rasterizationSamples on VkPipelineMultisampleStateCreateInfo
-func (x *VkPipelineMultisampleStateCreateInfo) WithRasterizationSamples(y VkSampleCountFlagBits) *VkPipelineMultisampleStateCreateInfo {
+func (x VkPipelineMultisampleStateCreateInfo) WithRasterizationSamples(y VkSampleCountFlagBits) VkPipelineMultisampleStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkSampleCountFlagBits)(&y)
 	x.rasterizationSamples = *ptr
 	return x
@@ -13412,7 +13412,7 @@ func (x VkPipelineMultisampleStateCreateInfo) SampleShadingEnable() VkBool32 {
 
 // WithSampleShadingEnable copies the provided value into C space and stores it
 // at sampleShadingEnable on VkPipelineMultisampleStateCreateInfo
-func (x *VkPipelineMultisampleStateCreateInfo) WithSampleShadingEnable(y VkBool32) *VkPipelineMultisampleStateCreateInfo {
+func (x VkPipelineMultisampleStateCreateInfo) WithSampleShadingEnable(y VkBool32) VkPipelineMultisampleStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.sampleShadingEnable = *ptr
 	return x
@@ -13426,7 +13426,7 @@ func (x VkPipelineMultisampleStateCreateInfo) MinSampleShading() float32 {
 
 // WithMinSampleShading copies the provided value into C space and stores it
 // at minSampleShading on VkPipelineMultisampleStateCreateInfo
-func (x *VkPipelineMultisampleStateCreateInfo) WithMinSampleShading(y float32) *VkPipelineMultisampleStateCreateInfo {
+func (x VkPipelineMultisampleStateCreateInfo) WithMinSampleShading(y float32) VkPipelineMultisampleStateCreateInfo {
 	ptr := func(x *float32) *C.float { /* Scalar */ return (*C.float)(unsafe.Pointer(x)) }(&y)
 	x.minSampleShading = *ptr
 	return x
@@ -13443,7 +13443,7 @@ func (x VkPipelineMultisampleStateCreateInfo) PSampleMask() []VkSampleMask {
 
 // WithPSampleMask copies the provided value into C space and stores it
 // at pSampleMask on VkPipelineMultisampleStateCreateInfo
-func (x *VkPipelineMultisampleStateCreateInfo) WithPSampleMask(y []VkSampleMask) *VkPipelineMultisampleStateCreateInfo {
+func (x VkPipelineMultisampleStateCreateInfo) WithPSampleMask(y []VkSampleMask) VkPipelineMultisampleStateCreateInfo {
 	ptr := func(x *[]VkSampleMask) **C.VkSampleMask { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkSampleMask)(unsafe.Pointer(&((*x)[0])))
@@ -13464,7 +13464,7 @@ func (x VkPipelineMultisampleStateCreateInfo) AlphaToCoverageEnable() VkBool32 {
 
 // WithAlphaToCoverageEnable copies the provided value into C space and stores it
 // at alphaToCoverageEnable on VkPipelineMultisampleStateCreateInfo
-func (x *VkPipelineMultisampleStateCreateInfo) WithAlphaToCoverageEnable(y VkBool32) *VkPipelineMultisampleStateCreateInfo {
+func (x VkPipelineMultisampleStateCreateInfo) WithAlphaToCoverageEnable(y VkBool32) VkPipelineMultisampleStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.alphaToCoverageEnable = *ptr
 	return x
@@ -13478,7 +13478,7 @@ func (x VkPipelineMultisampleStateCreateInfo) AlphaToOneEnable() VkBool32 {
 
 // WithAlphaToOneEnable copies the provided value into C space and stores it
 // at alphaToOneEnable on VkPipelineMultisampleStateCreateInfo
-func (x *VkPipelineMultisampleStateCreateInfo) WithAlphaToOneEnable(y VkBool32) *VkPipelineMultisampleStateCreateInfo {
+func (x VkPipelineMultisampleStateCreateInfo) WithAlphaToOneEnable(y VkBool32) VkPipelineMultisampleStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.alphaToOneEnable = *ptr
 	return x
@@ -13505,12 +13505,12 @@ func (x *VkImageResolve) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkImageResolve) AsPtr() *VkImageResolve { return x }
+func (x VkImageResolve) AsPtr() *VkImageResolve { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkImageResolve) AsCPtr() *VkImageResolve {
+func (x VkImageResolve) AsCPtr() *VkImageResolve {
 	clone := newVkImageResolve()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -13522,7 +13522,7 @@ func (x VkImageResolve) SrcSubresource() VkImageSubresourceLayers {
 
 // WithSrcSubresource copies the provided value into C space and stores it
 // at srcSubresource on VkImageResolve
-func (x *VkImageResolve) WithSrcSubresource(y VkImageSubresourceLayers) *VkImageResolve {
+func (x VkImageResolve) WithSrcSubresource(y VkImageSubresourceLayers) VkImageResolve {
 	ptr := /* Identifier */ (*C.VkImageSubresourceLayers)(&y)
 	x.srcSubresource = *ptr
 	return x
@@ -13536,7 +13536,7 @@ func (x VkImageResolve) SrcOffset() VkOffset3D {
 
 // WithSrcOffset copies the provided value into C space and stores it
 // at srcOffset on VkImageResolve
-func (x *VkImageResolve) WithSrcOffset(y VkOffset3D) *VkImageResolve {
+func (x VkImageResolve) WithSrcOffset(y VkOffset3D) VkImageResolve {
 	ptr := /* Identifier */ (*C.VkOffset3D)(&y)
 	x.srcOffset = *ptr
 	return x
@@ -13550,7 +13550,7 @@ func (x VkImageResolve) DstSubresource() VkImageSubresourceLayers {
 
 // WithDstSubresource copies the provided value into C space and stores it
 // at dstSubresource on VkImageResolve
-func (x *VkImageResolve) WithDstSubresource(y VkImageSubresourceLayers) *VkImageResolve {
+func (x VkImageResolve) WithDstSubresource(y VkImageSubresourceLayers) VkImageResolve {
 	ptr := /* Identifier */ (*C.VkImageSubresourceLayers)(&y)
 	x.dstSubresource = *ptr
 	return x
@@ -13564,7 +13564,7 @@ func (x VkImageResolve) DstOffset() VkOffset3D {
 
 // WithDstOffset copies the provided value into C space and stores it
 // at dstOffset on VkImageResolve
-func (x *VkImageResolve) WithDstOffset(y VkOffset3D) *VkImageResolve {
+func (x VkImageResolve) WithDstOffset(y VkOffset3D) VkImageResolve {
 	ptr := /* Identifier */ (*C.VkOffset3D)(&y)
 	x.dstOffset = *ptr
 	return x
@@ -13578,7 +13578,7 @@ func (x VkImageResolve) Extent() VkExtent3D {
 
 // WithExtent copies the provided value into C space and stores it
 // at extent on VkImageResolve
-func (x *VkImageResolve) WithExtent(y VkExtent3D) *VkImageResolve {
+func (x VkImageResolve) WithExtent(y VkExtent3D) VkImageResolve {
 	ptr := /* Identifier */ (*C.VkExtent3D)(&y)
 	x.extent = *ptr
 	return x
@@ -13605,14 +13605,14 @@ func (x *VkPipelineRasterizationStateCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPipelineRasterizationStateCreateInfo) AsPtr() *VkPipelineRasterizationStateCreateInfo {
-	return x
+func (x VkPipelineRasterizationStateCreateInfo) AsPtr() *VkPipelineRasterizationStateCreateInfo {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPipelineRasterizationStateCreateInfo) AsCPtr() *VkPipelineRasterizationStateCreateInfo {
+func (x VkPipelineRasterizationStateCreateInfo) AsCPtr() *VkPipelineRasterizationStateCreateInfo {
 	clone := newVkPipelineRasterizationStateCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -13624,13 +13624,13 @@ func (x VkPipelineRasterizationStateCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPipelineRasterizationStateCreateInfo) WithDefaultSType() *VkPipelineRasterizationStateCreateInfo {
+func (x VkPipelineRasterizationStateCreateInfo) WithDefaultSType() VkPipelineRasterizationStateCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPipelineRasterizationStateCreateInfo
-func (x *VkPipelineRasterizationStateCreateInfo) WithSType(y VkStructureType) *VkPipelineRasterizationStateCreateInfo {
+func (x VkPipelineRasterizationStateCreateInfo) WithSType(y VkStructureType) VkPipelineRasterizationStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -13644,7 +13644,7 @@ func (x VkPipelineRasterizationStateCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPipelineRasterizationStateCreateInfo
-func (x *VkPipelineRasterizationStateCreateInfo) WithPNext(y unsafe.Pointer) *VkPipelineRasterizationStateCreateInfo {
+func (x VkPipelineRasterizationStateCreateInfo) WithPNext(y unsafe.Pointer) VkPipelineRasterizationStateCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -13658,7 +13658,7 @@ func (x VkPipelineRasterizationStateCreateInfo) Flags() VkPipelineRasterizationS
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkPipelineRasterizationStateCreateInfo
-func (x *VkPipelineRasterizationStateCreateInfo) WithFlags(y VkPipelineRasterizationStateCreateFlags) *VkPipelineRasterizationStateCreateInfo {
+func (x VkPipelineRasterizationStateCreateInfo) WithFlags(y VkPipelineRasterizationStateCreateFlags) VkPipelineRasterizationStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkPipelineRasterizationStateCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -13672,7 +13672,7 @@ func (x VkPipelineRasterizationStateCreateInfo) DepthClampEnable() VkBool32 {
 
 // WithDepthClampEnable copies the provided value into C space and stores it
 // at depthClampEnable on VkPipelineRasterizationStateCreateInfo
-func (x *VkPipelineRasterizationStateCreateInfo) WithDepthClampEnable(y VkBool32) *VkPipelineRasterizationStateCreateInfo {
+func (x VkPipelineRasterizationStateCreateInfo) WithDepthClampEnable(y VkBool32) VkPipelineRasterizationStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.depthClampEnable = *ptr
 	return x
@@ -13686,7 +13686,7 @@ func (x VkPipelineRasterizationStateCreateInfo) RasterizerDiscardEnable() VkBool
 
 // WithRasterizerDiscardEnable copies the provided value into C space and stores it
 // at rasterizerDiscardEnable on VkPipelineRasterizationStateCreateInfo
-func (x *VkPipelineRasterizationStateCreateInfo) WithRasterizerDiscardEnable(y VkBool32) *VkPipelineRasterizationStateCreateInfo {
+func (x VkPipelineRasterizationStateCreateInfo) WithRasterizerDiscardEnable(y VkBool32) VkPipelineRasterizationStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.rasterizerDiscardEnable = *ptr
 	return x
@@ -13700,7 +13700,7 @@ func (x VkPipelineRasterizationStateCreateInfo) PolygonMode() VkPolygonMode {
 
 // WithPolygonMode copies the provided value into C space and stores it
 // at polygonMode on VkPipelineRasterizationStateCreateInfo
-func (x *VkPipelineRasterizationStateCreateInfo) WithPolygonMode(y VkPolygonMode) *VkPipelineRasterizationStateCreateInfo {
+func (x VkPipelineRasterizationStateCreateInfo) WithPolygonMode(y VkPolygonMode) VkPipelineRasterizationStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkPolygonMode)(&y)
 	x.polygonMode = *ptr
 	return x
@@ -13714,7 +13714,7 @@ func (x VkPipelineRasterizationStateCreateInfo) CullMode() VkCullModeFlags {
 
 // WithCullMode copies the provided value into C space and stores it
 // at cullMode on VkPipelineRasterizationStateCreateInfo
-func (x *VkPipelineRasterizationStateCreateInfo) WithCullMode(y VkCullModeFlags) *VkPipelineRasterizationStateCreateInfo {
+func (x VkPipelineRasterizationStateCreateInfo) WithCullMode(y VkCullModeFlags) VkPipelineRasterizationStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkCullModeFlags)(&y)
 	x.cullMode = *ptr
 	return x
@@ -13728,7 +13728,7 @@ func (x VkPipelineRasterizationStateCreateInfo) FrontFace() VkFrontFace {
 
 // WithFrontFace copies the provided value into C space and stores it
 // at frontFace on VkPipelineRasterizationStateCreateInfo
-func (x *VkPipelineRasterizationStateCreateInfo) WithFrontFace(y VkFrontFace) *VkPipelineRasterizationStateCreateInfo {
+func (x VkPipelineRasterizationStateCreateInfo) WithFrontFace(y VkFrontFace) VkPipelineRasterizationStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkFrontFace)(&y)
 	x.frontFace = *ptr
 	return x
@@ -13742,7 +13742,7 @@ func (x VkPipelineRasterizationStateCreateInfo) DepthBiasEnable() VkBool32 {
 
 // WithDepthBiasEnable copies the provided value into C space and stores it
 // at depthBiasEnable on VkPipelineRasterizationStateCreateInfo
-func (x *VkPipelineRasterizationStateCreateInfo) WithDepthBiasEnable(y VkBool32) *VkPipelineRasterizationStateCreateInfo {
+func (x VkPipelineRasterizationStateCreateInfo) WithDepthBiasEnable(y VkBool32) VkPipelineRasterizationStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.depthBiasEnable = *ptr
 	return x
@@ -13756,7 +13756,7 @@ func (x VkPipelineRasterizationStateCreateInfo) DepthBiasConstantFactor() float3
 
 // WithDepthBiasConstantFactor copies the provided value into C space and stores it
 // at depthBiasConstantFactor on VkPipelineRasterizationStateCreateInfo
-func (x *VkPipelineRasterizationStateCreateInfo) WithDepthBiasConstantFactor(y float32) *VkPipelineRasterizationStateCreateInfo {
+func (x VkPipelineRasterizationStateCreateInfo) WithDepthBiasConstantFactor(y float32) VkPipelineRasterizationStateCreateInfo {
 	ptr := func(x *float32) *C.float { /* Scalar */ return (*C.float)(unsafe.Pointer(x)) }(&y)
 	x.depthBiasConstantFactor = *ptr
 	return x
@@ -13770,7 +13770,7 @@ func (x VkPipelineRasterizationStateCreateInfo) DepthBiasClamp() float32 {
 
 // WithDepthBiasClamp copies the provided value into C space and stores it
 // at depthBiasClamp on VkPipelineRasterizationStateCreateInfo
-func (x *VkPipelineRasterizationStateCreateInfo) WithDepthBiasClamp(y float32) *VkPipelineRasterizationStateCreateInfo {
+func (x VkPipelineRasterizationStateCreateInfo) WithDepthBiasClamp(y float32) VkPipelineRasterizationStateCreateInfo {
 	ptr := func(x *float32) *C.float { /* Scalar */ return (*C.float)(unsafe.Pointer(x)) }(&y)
 	x.depthBiasClamp = *ptr
 	return x
@@ -13784,7 +13784,7 @@ func (x VkPipelineRasterizationStateCreateInfo) DepthBiasSlopeFactor() float32 {
 
 // WithDepthBiasSlopeFactor copies the provided value into C space and stores it
 // at depthBiasSlopeFactor on VkPipelineRasterizationStateCreateInfo
-func (x *VkPipelineRasterizationStateCreateInfo) WithDepthBiasSlopeFactor(y float32) *VkPipelineRasterizationStateCreateInfo {
+func (x VkPipelineRasterizationStateCreateInfo) WithDepthBiasSlopeFactor(y float32) VkPipelineRasterizationStateCreateInfo {
 	ptr := func(x *float32) *C.float { /* Scalar */ return (*C.float)(unsafe.Pointer(x)) }(&y)
 	x.depthBiasSlopeFactor = *ptr
 	return x
@@ -13798,7 +13798,7 @@ func (x VkPipelineRasterizationStateCreateInfo) LineWidth() float32 {
 
 // WithLineWidth copies the provided value into C space and stores it
 // at lineWidth on VkPipelineRasterizationStateCreateInfo
-func (x *VkPipelineRasterizationStateCreateInfo) WithLineWidth(y float32) *VkPipelineRasterizationStateCreateInfo {
+func (x VkPipelineRasterizationStateCreateInfo) WithLineWidth(y float32) VkPipelineRasterizationStateCreateInfo {
 	ptr := func(x *float32) *C.float { /* Scalar */ return (*C.float)(unsafe.Pointer(x)) }(&y)
 	x.lineWidth = *ptr
 	return x
@@ -13825,12 +13825,12 @@ func (x *VkImageSubresourceLayers) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkImageSubresourceLayers) AsPtr() *VkImageSubresourceLayers { return x }
+func (x VkImageSubresourceLayers) AsPtr() *VkImageSubresourceLayers { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkImageSubresourceLayers) AsCPtr() *VkImageSubresourceLayers {
+func (x VkImageSubresourceLayers) AsCPtr() *VkImageSubresourceLayers {
 	clone := newVkImageSubresourceLayers()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -13842,7 +13842,7 @@ func (x VkImageSubresourceLayers) AspectMask() VkImageAspectFlags {
 
 // WithAspectMask copies the provided value into C space and stores it
 // at aspectMask on VkImageSubresourceLayers
-func (x *VkImageSubresourceLayers) WithAspectMask(y VkImageAspectFlags) *VkImageSubresourceLayers {
+func (x VkImageSubresourceLayers) WithAspectMask(y VkImageAspectFlags) VkImageSubresourceLayers {
 	ptr := /* Identifier */ (*C.VkImageAspectFlags)(&y)
 	x.aspectMask = *ptr
 	return x
@@ -13856,7 +13856,7 @@ func (x VkImageSubresourceLayers) MipLevel() uint32 {
 
 // WithMipLevel copies the provided value into C space and stores it
 // at mipLevel on VkImageSubresourceLayers
-func (x *VkImageSubresourceLayers) WithMipLevel(y uint32) *VkImageSubresourceLayers {
+func (x VkImageSubresourceLayers) WithMipLevel(y uint32) VkImageSubresourceLayers {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.mipLevel = *ptr
 	return x
@@ -13870,7 +13870,7 @@ func (x VkImageSubresourceLayers) BaseArrayLayer() uint32 {
 
 // WithBaseArrayLayer copies the provided value into C space and stores it
 // at baseArrayLayer on VkImageSubresourceLayers
-func (x *VkImageSubresourceLayers) WithBaseArrayLayer(y uint32) *VkImageSubresourceLayers {
+func (x VkImageSubresourceLayers) WithBaseArrayLayer(y uint32) VkImageSubresourceLayers {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.baseArrayLayer = *ptr
 	return x
@@ -13884,7 +13884,7 @@ func (x VkImageSubresourceLayers) LayerCount() uint32 {
 
 // WithLayerCount copies the provided value into C space and stores it
 // at layerCount on VkImageSubresourceLayers
-func (x *VkImageSubresourceLayers) WithLayerCount(y uint32) *VkImageSubresourceLayers {
+func (x VkImageSubresourceLayers) WithLayerCount(y uint32) VkImageSubresourceLayers {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.layerCount = *ptr
 	return x
@@ -13911,12 +13911,12 @@ func (x *VkRenderPassBeginInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkRenderPassBeginInfo) AsPtr() *VkRenderPassBeginInfo { return x }
+func (x VkRenderPassBeginInfo) AsPtr() *VkRenderPassBeginInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkRenderPassBeginInfo) AsCPtr() *VkRenderPassBeginInfo {
+func (x VkRenderPassBeginInfo) AsCPtr() *VkRenderPassBeginInfo {
 	clone := newVkRenderPassBeginInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -13928,13 +13928,13 @@ func (x VkRenderPassBeginInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkRenderPassBeginInfo) WithDefaultSType() *VkRenderPassBeginInfo {
+func (x VkRenderPassBeginInfo) WithDefaultSType() VkRenderPassBeginInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkRenderPassBeginInfo
-func (x *VkRenderPassBeginInfo) WithSType(y VkStructureType) *VkRenderPassBeginInfo {
+func (x VkRenderPassBeginInfo) WithSType(y VkStructureType) VkRenderPassBeginInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -13948,7 +13948,7 @@ func (x VkRenderPassBeginInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkRenderPassBeginInfo
-func (x *VkRenderPassBeginInfo) WithPNext(y unsafe.Pointer) *VkRenderPassBeginInfo {
+func (x VkRenderPassBeginInfo) WithPNext(y unsafe.Pointer) VkRenderPassBeginInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -13962,7 +13962,7 @@ func (x VkRenderPassBeginInfo) RenderPass() VkRenderPass {
 
 // WithRenderPass copies the provided value into C space and stores it
 // at renderPass on VkRenderPassBeginInfo
-func (x *VkRenderPassBeginInfo) WithRenderPass(y VkRenderPass) *VkRenderPassBeginInfo {
+func (x VkRenderPassBeginInfo) WithRenderPass(y VkRenderPass) VkRenderPassBeginInfo {
 	ptr := func(x *VkRenderPass) *C.VkRenderPass { /* Handle */ return (*C.VkRenderPass)(unsafe.Pointer(x)) }(&y)
 	x.renderPass = *ptr
 	return x
@@ -13976,7 +13976,7 @@ func (x VkRenderPassBeginInfo) Framebuffer() VkFramebuffer {
 
 // WithFramebuffer copies the provided value into C space and stores it
 // at framebuffer on VkRenderPassBeginInfo
-func (x *VkRenderPassBeginInfo) WithFramebuffer(y VkFramebuffer) *VkRenderPassBeginInfo {
+func (x VkRenderPassBeginInfo) WithFramebuffer(y VkFramebuffer) VkRenderPassBeginInfo {
 	ptr := func(x *VkFramebuffer) *C.VkFramebuffer { /* Handle */ return (*C.VkFramebuffer)(unsafe.Pointer(x)) }(&y)
 	x.framebuffer = *ptr
 	return x
@@ -13990,7 +13990,7 @@ func (x VkRenderPassBeginInfo) RenderArea() VkRect2D {
 
 // WithRenderArea copies the provided value into C space and stores it
 // at renderArea on VkRenderPassBeginInfo
-func (x *VkRenderPassBeginInfo) WithRenderArea(y VkRect2D) *VkRenderPassBeginInfo {
+func (x VkRenderPassBeginInfo) WithRenderArea(y VkRect2D) VkRenderPassBeginInfo {
 	ptr := /* Identifier */ (*C.VkRect2D)(&y)
 	x.renderArea = *ptr
 	return x
@@ -14004,7 +14004,7 @@ func (x VkRenderPassBeginInfo) ClearValueCount() uint32 {
 
 // WithClearValueCount copies the provided value into C space and stores it
 // at clearValueCount on VkRenderPassBeginInfo
-func (x *VkRenderPassBeginInfo) WithClearValueCount(y uint32) *VkRenderPassBeginInfo {
+func (x VkRenderPassBeginInfo) WithClearValueCount(y uint32) VkRenderPassBeginInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.clearValueCount = *ptr
 	return x
@@ -14021,7 +14021,7 @@ func (x VkRenderPassBeginInfo) PClearValues() []VkClearValue {
 
 // WithPClearValues copies the provided value into C space and stores it
 // at pClearValues on VkRenderPassBeginInfo
-func (x *VkRenderPassBeginInfo) WithPClearValues(y []VkClearValue) *VkRenderPassBeginInfo {
+func (x VkRenderPassBeginInfo) WithPClearValues(y []VkClearValue) VkRenderPassBeginInfo {
 	ptr := func(x *[]VkClearValue) **C.VkClearValue { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkClearValue)(unsafe.Pointer(&((*x)[0])))
@@ -14055,12 +14055,12 @@ func (x *VkPipelineShaderStageCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPipelineShaderStageCreateInfo) AsPtr() *VkPipelineShaderStageCreateInfo { return x }
+func (x VkPipelineShaderStageCreateInfo) AsPtr() *VkPipelineShaderStageCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPipelineShaderStageCreateInfo) AsCPtr() *VkPipelineShaderStageCreateInfo {
+func (x VkPipelineShaderStageCreateInfo) AsCPtr() *VkPipelineShaderStageCreateInfo {
 	clone := newVkPipelineShaderStageCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -14072,13 +14072,13 @@ func (x VkPipelineShaderStageCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPipelineShaderStageCreateInfo) WithDefaultSType() *VkPipelineShaderStageCreateInfo {
+func (x VkPipelineShaderStageCreateInfo) WithDefaultSType() VkPipelineShaderStageCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPipelineShaderStageCreateInfo
-func (x *VkPipelineShaderStageCreateInfo) WithSType(y VkStructureType) *VkPipelineShaderStageCreateInfo {
+func (x VkPipelineShaderStageCreateInfo) WithSType(y VkStructureType) VkPipelineShaderStageCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -14092,7 +14092,7 @@ func (x VkPipelineShaderStageCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPipelineShaderStageCreateInfo
-func (x *VkPipelineShaderStageCreateInfo) WithPNext(y unsafe.Pointer) *VkPipelineShaderStageCreateInfo {
+func (x VkPipelineShaderStageCreateInfo) WithPNext(y unsafe.Pointer) VkPipelineShaderStageCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -14106,7 +14106,7 @@ func (x VkPipelineShaderStageCreateInfo) Flags() VkPipelineShaderStageCreateFlag
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkPipelineShaderStageCreateInfo
-func (x *VkPipelineShaderStageCreateInfo) WithFlags(y VkPipelineShaderStageCreateFlags) *VkPipelineShaderStageCreateInfo {
+func (x VkPipelineShaderStageCreateInfo) WithFlags(y VkPipelineShaderStageCreateFlags) VkPipelineShaderStageCreateInfo {
 	ptr := /* Identifier */ (*C.VkPipelineShaderStageCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -14120,7 +14120,7 @@ func (x VkPipelineShaderStageCreateInfo) Stage() VkShaderStageFlagBits {
 
 // WithStage copies the provided value into C space and stores it
 // at stage on VkPipelineShaderStageCreateInfo
-func (x *VkPipelineShaderStageCreateInfo) WithStage(y VkShaderStageFlagBits) *VkPipelineShaderStageCreateInfo {
+func (x VkPipelineShaderStageCreateInfo) WithStage(y VkShaderStageFlagBits) VkPipelineShaderStageCreateInfo {
 	ptr := /* Identifier */ (*C.VkShaderStageFlagBits)(&y)
 	x.stage = *ptr
 	return x
@@ -14134,7 +14134,7 @@ func (x VkPipelineShaderStageCreateInfo) Module() VkShaderModule {
 
 // WithModule copies the provided value into C space and stores it
 // at module on VkPipelineShaderStageCreateInfo
-func (x *VkPipelineShaderStageCreateInfo) WithModule(y VkShaderModule) *VkPipelineShaderStageCreateInfo {
+func (x VkPipelineShaderStageCreateInfo) WithModule(y VkShaderModule) VkPipelineShaderStageCreateInfo {
 	ptr := func(x *VkShaderModule) *C.VkShaderModule { /* Handle */ return (*C.VkShaderModule)(unsafe.Pointer(x)) }(&y)
 	x.module = *ptr
 	return x
@@ -14148,7 +14148,7 @@ func (x VkPipelineShaderStageCreateInfo) PName() *byte {
 
 // WithPName copies the provided value into C space and stores it
 // at pName on VkPipelineShaderStageCreateInfo
-func (x *VkPipelineShaderStageCreateInfo) WithPName(y *byte) *VkPipelineShaderStageCreateInfo {
+func (x VkPipelineShaderStageCreateInfo) WithPName(y *byte) VkPipelineShaderStageCreateInfo {
 	ptr := func(x **byte) **C.char { /* Pointer */ return (**C.char)(unsafe.Pointer(x)) }(&y)
 	x.pName = *ptr
 	return x
@@ -14164,7 +14164,7 @@ func (x VkPipelineShaderStageCreateInfo) PSpecializationInfo() *VkSpecialization
 
 // WithPSpecializationInfo copies the provided value into C space and stores it
 // at pSpecializationInfo on VkPipelineShaderStageCreateInfo
-func (x *VkPipelineShaderStageCreateInfo) WithPSpecializationInfo(y *VkSpecializationInfo) *VkPipelineShaderStageCreateInfo {
+func (x VkPipelineShaderStageCreateInfo) WithPSpecializationInfo(y *VkSpecializationInfo) VkPipelineShaderStageCreateInfo {
 	ptr := func(x **VkSpecializationInfo) **C.VkSpecializationInfo { /* Pointer */
 		return (**C.VkSpecializationInfo)(unsafe.Pointer(x))
 	}(&y)
@@ -14193,12 +14193,12 @@ func (x *VkPipelineCacheHeaderVersionOne) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPipelineCacheHeaderVersionOne) AsPtr() *VkPipelineCacheHeaderVersionOne { return x }
+func (x VkPipelineCacheHeaderVersionOne) AsPtr() *VkPipelineCacheHeaderVersionOne { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPipelineCacheHeaderVersionOne) AsCPtr() *VkPipelineCacheHeaderVersionOne {
+func (x VkPipelineCacheHeaderVersionOne) AsCPtr() *VkPipelineCacheHeaderVersionOne {
 	clone := newVkPipelineCacheHeaderVersionOne()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -14210,7 +14210,7 @@ func (x VkPipelineCacheHeaderVersionOne) HeaderSize() uint32 {
 
 // WithHeaderSize copies the provided value into C space and stores it
 // at headerSize on VkPipelineCacheHeaderVersionOne
-func (x *VkPipelineCacheHeaderVersionOne) WithHeaderSize(y uint32) *VkPipelineCacheHeaderVersionOne {
+func (x VkPipelineCacheHeaderVersionOne) WithHeaderSize(y uint32) VkPipelineCacheHeaderVersionOne {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.headerSize = *ptr
 	return x
@@ -14224,7 +14224,7 @@ func (x VkPipelineCacheHeaderVersionOne) HeaderVersion() VkPipelineCacheHeaderVe
 
 // WithHeaderVersion copies the provided value into C space and stores it
 // at headerVersion on VkPipelineCacheHeaderVersionOne
-func (x *VkPipelineCacheHeaderVersionOne) WithHeaderVersion(y VkPipelineCacheHeaderVersion) *VkPipelineCacheHeaderVersionOne {
+func (x VkPipelineCacheHeaderVersionOne) WithHeaderVersion(y VkPipelineCacheHeaderVersion) VkPipelineCacheHeaderVersionOne {
 	ptr := /* Identifier */ (*C.VkPipelineCacheHeaderVersion)(&y)
 	x.headerVersion = *ptr
 	return x
@@ -14238,7 +14238,7 @@ func (x VkPipelineCacheHeaderVersionOne) VendorID() uint32 {
 
 // WithVendorID copies the provided value into C space and stores it
 // at vendorID on VkPipelineCacheHeaderVersionOne
-func (x *VkPipelineCacheHeaderVersionOne) WithVendorID(y uint32) *VkPipelineCacheHeaderVersionOne {
+func (x VkPipelineCacheHeaderVersionOne) WithVendorID(y uint32) VkPipelineCacheHeaderVersionOne {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.vendorID = *ptr
 	return x
@@ -14252,7 +14252,7 @@ func (x VkPipelineCacheHeaderVersionOne) DeviceID() uint32 {
 
 // WithDeviceID copies the provided value into C space and stores it
 // at deviceID on VkPipelineCacheHeaderVersionOne
-func (x *VkPipelineCacheHeaderVersionOne) WithDeviceID(y uint32) *VkPipelineCacheHeaderVersionOne {
+func (x VkPipelineCacheHeaderVersionOne) WithDeviceID(y uint32) VkPipelineCacheHeaderVersionOne {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.deviceID = *ptr
 	return x
@@ -14269,7 +14269,7 @@ func (x VkPipelineCacheHeaderVersionOne) PipelineCacheUUID() []byte {
 
 // WithPipelineCacheUUID copies the provided value into C space and stores it
 // at pipelineCacheUUID on VkPipelineCacheHeaderVersionOne
-func (x *VkPipelineCacheHeaderVersionOne) WithPipelineCacheUUID(y []byte) *VkPipelineCacheHeaderVersionOne {
+func (x VkPipelineCacheHeaderVersionOne) WithPipelineCacheUUID(y []byte) VkPipelineCacheHeaderVersionOne {
 	ptr := func(x *[]byte) **C.uchar { /* Array */
 		if *x != nil {
 			slc := (*C.uchar)(unsafe.Pointer(&((*x)[0])))
@@ -14303,14 +14303,14 @@ func (x *VkPipelineTessellationStateCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPipelineTessellationStateCreateInfo) AsPtr() *VkPipelineTessellationStateCreateInfo {
-	return x
+func (x VkPipelineTessellationStateCreateInfo) AsPtr() *VkPipelineTessellationStateCreateInfo {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPipelineTessellationStateCreateInfo) AsCPtr() *VkPipelineTessellationStateCreateInfo {
+func (x VkPipelineTessellationStateCreateInfo) AsCPtr() *VkPipelineTessellationStateCreateInfo {
 	clone := newVkPipelineTessellationStateCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -14322,13 +14322,13 @@ func (x VkPipelineTessellationStateCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPipelineTessellationStateCreateInfo) WithDefaultSType() *VkPipelineTessellationStateCreateInfo {
+func (x VkPipelineTessellationStateCreateInfo) WithDefaultSType() VkPipelineTessellationStateCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_STATE_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPipelineTessellationStateCreateInfo
-func (x *VkPipelineTessellationStateCreateInfo) WithSType(y VkStructureType) *VkPipelineTessellationStateCreateInfo {
+func (x VkPipelineTessellationStateCreateInfo) WithSType(y VkStructureType) VkPipelineTessellationStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -14342,7 +14342,7 @@ func (x VkPipelineTessellationStateCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPipelineTessellationStateCreateInfo
-func (x *VkPipelineTessellationStateCreateInfo) WithPNext(y unsafe.Pointer) *VkPipelineTessellationStateCreateInfo {
+func (x VkPipelineTessellationStateCreateInfo) WithPNext(y unsafe.Pointer) VkPipelineTessellationStateCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -14356,7 +14356,7 @@ func (x VkPipelineTessellationStateCreateInfo) Flags() VkPipelineTessellationSta
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkPipelineTessellationStateCreateInfo
-func (x *VkPipelineTessellationStateCreateInfo) WithFlags(y VkPipelineTessellationStateCreateFlags) *VkPipelineTessellationStateCreateInfo {
+func (x VkPipelineTessellationStateCreateInfo) WithFlags(y VkPipelineTessellationStateCreateFlags) VkPipelineTessellationStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkPipelineTessellationStateCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -14370,7 +14370,7 @@ func (x VkPipelineTessellationStateCreateInfo) PatchControlPoints() uint32 {
 
 // WithPatchControlPoints copies the provided value into C space and stores it
 // at patchControlPoints on VkPipelineTessellationStateCreateInfo
-func (x *VkPipelineTessellationStateCreateInfo) WithPatchControlPoints(y uint32) *VkPipelineTessellationStateCreateInfo {
+func (x VkPipelineTessellationStateCreateInfo) WithPatchControlPoints(y uint32) VkPipelineTessellationStateCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.patchControlPoints = *ptr
 	return x
@@ -14397,12 +14397,12 @@ func (x *VkMemoryBarrier) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkMemoryBarrier) AsPtr() *VkMemoryBarrier { return x }
+func (x VkMemoryBarrier) AsPtr() *VkMemoryBarrier { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkMemoryBarrier) AsCPtr() *VkMemoryBarrier {
+func (x VkMemoryBarrier) AsCPtr() *VkMemoryBarrier {
 	clone := newVkMemoryBarrier()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -14414,13 +14414,13 @@ func (x VkMemoryBarrier) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkMemoryBarrier) WithDefaultSType() *VkMemoryBarrier {
+func (x VkMemoryBarrier) WithDefaultSType() VkMemoryBarrier {
 	return x.WithSType(VK_STRUCTURE_TYPE_MEMORY_BARRIER)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkMemoryBarrier
-func (x *VkMemoryBarrier) WithSType(y VkStructureType) *VkMemoryBarrier {
+func (x VkMemoryBarrier) WithSType(y VkStructureType) VkMemoryBarrier {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -14434,7 +14434,7 @@ func (x VkMemoryBarrier) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkMemoryBarrier
-func (x *VkMemoryBarrier) WithPNext(y unsafe.Pointer) *VkMemoryBarrier {
+func (x VkMemoryBarrier) WithPNext(y unsafe.Pointer) VkMemoryBarrier {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -14448,7 +14448,7 @@ func (x VkMemoryBarrier) SrcAccessMask() VkAccessFlags {
 
 // WithSrcAccessMask copies the provided value into C space and stores it
 // at srcAccessMask on VkMemoryBarrier
-func (x *VkMemoryBarrier) WithSrcAccessMask(y VkAccessFlags) *VkMemoryBarrier {
+func (x VkMemoryBarrier) WithSrcAccessMask(y VkAccessFlags) VkMemoryBarrier {
 	ptr := /* Identifier */ (*C.VkAccessFlags)(&y)
 	x.srcAccessMask = *ptr
 	return x
@@ -14462,7 +14462,7 @@ func (x VkMemoryBarrier) DstAccessMask() VkAccessFlags {
 
 // WithDstAccessMask copies the provided value into C space and stores it
 // at dstAccessMask on VkMemoryBarrier
-func (x *VkMemoryBarrier) WithDstAccessMask(y VkAccessFlags) *VkMemoryBarrier {
+func (x VkMemoryBarrier) WithDstAccessMask(y VkAccessFlags) VkMemoryBarrier {
 	ptr := /* Identifier */ (*C.VkAccessFlags)(&y)
 	x.dstAccessMask = *ptr
 	return x
@@ -14489,14 +14489,14 @@ func (x *VkPipelineVertexInputStateCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPipelineVertexInputStateCreateInfo) AsPtr() *VkPipelineVertexInputStateCreateInfo {
-	return x
+func (x VkPipelineVertexInputStateCreateInfo) AsPtr() *VkPipelineVertexInputStateCreateInfo {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPipelineVertexInputStateCreateInfo) AsCPtr() *VkPipelineVertexInputStateCreateInfo {
+func (x VkPipelineVertexInputStateCreateInfo) AsCPtr() *VkPipelineVertexInputStateCreateInfo {
 	clone := newVkPipelineVertexInputStateCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -14508,13 +14508,13 @@ func (x VkPipelineVertexInputStateCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPipelineVertexInputStateCreateInfo) WithDefaultSType() *VkPipelineVertexInputStateCreateInfo {
+func (x VkPipelineVertexInputStateCreateInfo) WithDefaultSType() VkPipelineVertexInputStateCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPipelineVertexInputStateCreateInfo
-func (x *VkPipelineVertexInputStateCreateInfo) WithSType(y VkStructureType) *VkPipelineVertexInputStateCreateInfo {
+func (x VkPipelineVertexInputStateCreateInfo) WithSType(y VkStructureType) VkPipelineVertexInputStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -14528,7 +14528,7 @@ func (x VkPipelineVertexInputStateCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPipelineVertexInputStateCreateInfo
-func (x *VkPipelineVertexInputStateCreateInfo) WithPNext(y unsafe.Pointer) *VkPipelineVertexInputStateCreateInfo {
+func (x VkPipelineVertexInputStateCreateInfo) WithPNext(y unsafe.Pointer) VkPipelineVertexInputStateCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -14542,7 +14542,7 @@ func (x VkPipelineVertexInputStateCreateInfo) Flags() VkPipelineVertexInputState
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkPipelineVertexInputStateCreateInfo
-func (x *VkPipelineVertexInputStateCreateInfo) WithFlags(y VkPipelineVertexInputStateCreateFlags) *VkPipelineVertexInputStateCreateInfo {
+func (x VkPipelineVertexInputStateCreateInfo) WithFlags(y VkPipelineVertexInputStateCreateFlags) VkPipelineVertexInputStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkPipelineVertexInputStateCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -14556,7 +14556,7 @@ func (x VkPipelineVertexInputStateCreateInfo) VertexBindingDescriptionCount() ui
 
 // WithVertexBindingDescriptionCount copies the provided value into C space and stores it
 // at vertexBindingDescriptionCount on VkPipelineVertexInputStateCreateInfo
-func (x *VkPipelineVertexInputStateCreateInfo) WithVertexBindingDescriptionCount(y uint32) *VkPipelineVertexInputStateCreateInfo {
+func (x VkPipelineVertexInputStateCreateInfo) WithVertexBindingDescriptionCount(y uint32) VkPipelineVertexInputStateCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.vertexBindingDescriptionCount = *ptr
 	return x
@@ -14573,7 +14573,7 @@ func (x VkPipelineVertexInputStateCreateInfo) PVertexBindingDescriptions() []VkV
 
 // WithPVertexBindingDescriptions copies the provided value into C space and stores it
 // at pVertexBindingDescriptions on VkPipelineVertexInputStateCreateInfo
-func (x *VkPipelineVertexInputStateCreateInfo) WithPVertexBindingDescriptions(y []VkVertexInputBindingDescription) *VkPipelineVertexInputStateCreateInfo {
+func (x VkPipelineVertexInputStateCreateInfo) WithPVertexBindingDescriptions(y []VkVertexInputBindingDescription) VkPipelineVertexInputStateCreateInfo {
 	ptr := func(x *[]VkVertexInputBindingDescription) **C.VkVertexInputBindingDescription { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkVertexInputBindingDescription)(unsafe.Pointer(&((*x)[0])))
@@ -14594,7 +14594,7 @@ func (x VkPipelineVertexInputStateCreateInfo) VertexAttributeDescriptionCount() 
 
 // WithVertexAttributeDescriptionCount copies the provided value into C space and stores it
 // at vertexAttributeDescriptionCount on VkPipelineVertexInputStateCreateInfo
-func (x *VkPipelineVertexInputStateCreateInfo) WithVertexAttributeDescriptionCount(y uint32) *VkPipelineVertexInputStateCreateInfo {
+func (x VkPipelineVertexInputStateCreateInfo) WithVertexAttributeDescriptionCount(y uint32) VkPipelineVertexInputStateCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.vertexAttributeDescriptionCount = *ptr
 	return x
@@ -14611,7 +14611,7 @@ func (x VkPipelineVertexInputStateCreateInfo) PVertexAttributeDescriptions() []V
 
 // WithPVertexAttributeDescriptions copies the provided value into C space and stores it
 // at pVertexAttributeDescriptions on VkPipelineVertexInputStateCreateInfo
-func (x *VkPipelineVertexInputStateCreateInfo) WithPVertexAttributeDescriptions(y []VkVertexInputAttributeDescription) *VkPipelineVertexInputStateCreateInfo {
+func (x VkPipelineVertexInputStateCreateInfo) WithPVertexAttributeDescriptions(y []VkVertexInputAttributeDescription) VkPipelineVertexInputStateCreateInfo {
 	ptr := func(x *[]VkVertexInputAttributeDescription) **C.VkVertexInputAttributeDescription { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkVertexInputAttributeDescription)(unsafe.Pointer(&((*x)[0])))
@@ -14645,12 +14645,12 @@ func (x *VkImageMemoryBarrier) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkImageMemoryBarrier) AsPtr() *VkImageMemoryBarrier { return x }
+func (x VkImageMemoryBarrier) AsPtr() *VkImageMemoryBarrier { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkImageMemoryBarrier) AsCPtr() *VkImageMemoryBarrier {
+func (x VkImageMemoryBarrier) AsCPtr() *VkImageMemoryBarrier {
 	clone := newVkImageMemoryBarrier()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -14662,13 +14662,13 @@ func (x VkImageMemoryBarrier) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkImageMemoryBarrier) WithDefaultSType() *VkImageMemoryBarrier {
+func (x VkImageMemoryBarrier) WithDefaultSType() VkImageMemoryBarrier {
 	return x.WithSType(VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkImageMemoryBarrier
-func (x *VkImageMemoryBarrier) WithSType(y VkStructureType) *VkImageMemoryBarrier {
+func (x VkImageMemoryBarrier) WithSType(y VkStructureType) VkImageMemoryBarrier {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -14682,7 +14682,7 @@ func (x VkImageMemoryBarrier) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkImageMemoryBarrier
-func (x *VkImageMemoryBarrier) WithPNext(y unsafe.Pointer) *VkImageMemoryBarrier {
+func (x VkImageMemoryBarrier) WithPNext(y unsafe.Pointer) VkImageMemoryBarrier {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -14696,7 +14696,7 @@ func (x VkImageMemoryBarrier) SrcAccessMask() VkAccessFlags {
 
 // WithSrcAccessMask copies the provided value into C space and stores it
 // at srcAccessMask on VkImageMemoryBarrier
-func (x *VkImageMemoryBarrier) WithSrcAccessMask(y VkAccessFlags) *VkImageMemoryBarrier {
+func (x VkImageMemoryBarrier) WithSrcAccessMask(y VkAccessFlags) VkImageMemoryBarrier {
 	ptr := /* Identifier */ (*C.VkAccessFlags)(&y)
 	x.srcAccessMask = *ptr
 	return x
@@ -14710,7 +14710,7 @@ func (x VkImageMemoryBarrier) DstAccessMask() VkAccessFlags {
 
 // WithDstAccessMask copies the provided value into C space and stores it
 // at dstAccessMask on VkImageMemoryBarrier
-func (x *VkImageMemoryBarrier) WithDstAccessMask(y VkAccessFlags) *VkImageMemoryBarrier {
+func (x VkImageMemoryBarrier) WithDstAccessMask(y VkAccessFlags) VkImageMemoryBarrier {
 	ptr := /* Identifier */ (*C.VkAccessFlags)(&y)
 	x.dstAccessMask = *ptr
 	return x
@@ -14724,7 +14724,7 @@ func (x VkImageMemoryBarrier) OldLayout() VkImageLayout {
 
 // WithOldLayout copies the provided value into C space and stores it
 // at oldLayout on VkImageMemoryBarrier
-func (x *VkImageMemoryBarrier) WithOldLayout(y VkImageLayout) *VkImageMemoryBarrier {
+func (x VkImageMemoryBarrier) WithOldLayout(y VkImageLayout) VkImageMemoryBarrier {
 	ptr := /* Identifier */ (*C.VkImageLayout)(&y)
 	x.oldLayout = *ptr
 	return x
@@ -14738,7 +14738,7 @@ func (x VkImageMemoryBarrier) NewLayout() VkImageLayout {
 
 // WithNewLayout copies the provided value into C space and stores it
 // at newLayout on VkImageMemoryBarrier
-func (x *VkImageMemoryBarrier) WithNewLayout(y VkImageLayout) *VkImageMemoryBarrier {
+func (x VkImageMemoryBarrier) WithNewLayout(y VkImageLayout) VkImageMemoryBarrier {
 	ptr := /* Identifier */ (*C.VkImageLayout)(&y)
 	x.newLayout = *ptr
 	return x
@@ -14752,7 +14752,7 @@ func (x VkImageMemoryBarrier) SrcQueueFamilyIndex() uint32 {
 
 // WithSrcQueueFamilyIndex copies the provided value into C space and stores it
 // at srcQueueFamilyIndex on VkImageMemoryBarrier
-func (x *VkImageMemoryBarrier) WithSrcQueueFamilyIndex(y uint32) *VkImageMemoryBarrier {
+func (x VkImageMemoryBarrier) WithSrcQueueFamilyIndex(y uint32) VkImageMemoryBarrier {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.srcQueueFamilyIndex = *ptr
 	return x
@@ -14766,7 +14766,7 @@ func (x VkImageMemoryBarrier) DstQueueFamilyIndex() uint32 {
 
 // WithDstQueueFamilyIndex copies the provided value into C space and stores it
 // at dstQueueFamilyIndex on VkImageMemoryBarrier
-func (x *VkImageMemoryBarrier) WithDstQueueFamilyIndex(y uint32) *VkImageMemoryBarrier {
+func (x VkImageMemoryBarrier) WithDstQueueFamilyIndex(y uint32) VkImageMemoryBarrier {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.dstQueueFamilyIndex = *ptr
 	return x
@@ -14780,7 +14780,7 @@ func (x VkImageMemoryBarrier) Image() VkImage {
 
 // WithImage copies the provided value into C space and stores it
 // at image on VkImageMemoryBarrier
-func (x *VkImageMemoryBarrier) WithImage(y VkImage) *VkImageMemoryBarrier {
+func (x VkImageMemoryBarrier) WithImage(y VkImage) VkImageMemoryBarrier {
 	ptr := func(x *VkImage) *C.VkImage { /* Handle */ return (*C.VkImage)(unsafe.Pointer(x)) }(&y)
 	x.image = *ptr
 	return x
@@ -14794,7 +14794,7 @@ func (x VkImageMemoryBarrier) SubresourceRange() VkImageSubresourceRange {
 
 // WithSubresourceRange copies the provided value into C space and stores it
 // at subresourceRange on VkImageMemoryBarrier
-func (x *VkImageMemoryBarrier) WithSubresourceRange(y VkImageSubresourceRange) *VkImageMemoryBarrier {
+func (x VkImageMemoryBarrier) WithSubresourceRange(y VkImageSubresourceRange) VkImageMemoryBarrier {
 	ptr := /* Identifier */ (*C.VkImageSubresourceRange)(&y)
 	x.subresourceRange = *ptr
 	return x
@@ -14821,12 +14821,12 @@ func (x *VkDrawIndirectCommand) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDrawIndirectCommand) AsPtr() *VkDrawIndirectCommand { return x }
+func (x VkDrawIndirectCommand) AsPtr() *VkDrawIndirectCommand { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDrawIndirectCommand) AsCPtr() *VkDrawIndirectCommand {
+func (x VkDrawIndirectCommand) AsCPtr() *VkDrawIndirectCommand {
 	clone := newVkDrawIndirectCommand()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -14838,7 +14838,7 @@ func (x VkDrawIndirectCommand) VertexCount() uint32 {
 
 // WithVertexCount copies the provided value into C space and stores it
 // at vertexCount on VkDrawIndirectCommand
-func (x *VkDrawIndirectCommand) WithVertexCount(y uint32) *VkDrawIndirectCommand {
+func (x VkDrawIndirectCommand) WithVertexCount(y uint32) VkDrawIndirectCommand {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.vertexCount = *ptr
 	return x
@@ -14852,7 +14852,7 @@ func (x VkDrawIndirectCommand) InstanceCount() uint32 {
 
 // WithInstanceCount copies the provided value into C space and stores it
 // at instanceCount on VkDrawIndirectCommand
-func (x *VkDrawIndirectCommand) WithInstanceCount(y uint32) *VkDrawIndirectCommand {
+func (x VkDrawIndirectCommand) WithInstanceCount(y uint32) VkDrawIndirectCommand {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.instanceCount = *ptr
 	return x
@@ -14866,7 +14866,7 @@ func (x VkDrawIndirectCommand) FirstVertex() uint32 {
 
 // WithFirstVertex copies the provided value into C space and stores it
 // at firstVertex on VkDrawIndirectCommand
-func (x *VkDrawIndirectCommand) WithFirstVertex(y uint32) *VkDrawIndirectCommand {
+func (x VkDrawIndirectCommand) WithFirstVertex(y uint32) VkDrawIndirectCommand {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.firstVertex = *ptr
 	return x
@@ -14880,7 +14880,7 @@ func (x VkDrawIndirectCommand) FirstInstance() uint32 {
 
 // WithFirstInstance copies the provided value into C space and stores it
 // at firstInstance on VkDrawIndirectCommand
-func (x *VkDrawIndirectCommand) WithFirstInstance(y uint32) *VkDrawIndirectCommand {
+func (x VkDrawIndirectCommand) WithFirstInstance(y uint32) VkDrawIndirectCommand {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.firstInstance = *ptr
 	return x
@@ -14907,12 +14907,12 @@ func (x *VkDrawIndexedIndirectCommand) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDrawIndexedIndirectCommand) AsPtr() *VkDrawIndexedIndirectCommand { return x }
+func (x VkDrawIndexedIndirectCommand) AsPtr() *VkDrawIndexedIndirectCommand { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDrawIndexedIndirectCommand) AsCPtr() *VkDrawIndexedIndirectCommand {
+func (x VkDrawIndexedIndirectCommand) AsCPtr() *VkDrawIndexedIndirectCommand {
 	clone := newVkDrawIndexedIndirectCommand()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -14924,7 +14924,7 @@ func (x VkDrawIndexedIndirectCommand) IndexCount() uint32 {
 
 // WithIndexCount copies the provided value into C space and stores it
 // at indexCount on VkDrawIndexedIndirectCommand
-func (x *VkDrawIndexedIndirectCommand) WithIndexCount(y uint32) *VkDrawIndexedIndirectCommand {
+func (x VkDrawIndexedIndirectCommand) WithIndexCount(y uint32) VkDrawIndexedIndirectCommand {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.indexCount = *ptr
 	return x
@@ -14938,7 +14938,7 @@ func (x VkDrawIndexedIndirectCommand) InstanceCount() uint32 {
 
 // WithInstanceCount copies the provided value into C space and stores it
 // at instanceCount on VkDrawIndexedIndirectCommand
-func (x *VkDrawIndexedIndirectCommand) WithInstanceCount(y uint32) *VkDrawIndexedIndirectCommand {
+func (x VkDrawIndexedIndirectCommand) WithInstanceCount(y uint32) VkDrawIndexedIndirectCommand {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.instanceCount = *ptr
 	return x
@@ -14952,7 +14952,7 @@ func (x VkDrawIndexedIndirectCommand) FirstIndex() uint32 {
 
 // WithFirstIndex copies the provided value into C space and stores it
 // at firstIndex on VkDrawIndexedIndirectCommand
-func (x *VkDrawIndexedIndirectCommand) WithFirstIndex(y uint32) *VkDrawIndexedIndirectCommand {
+func (x VkDrawIndexedIndirectCommand) WithFirstIndex(y uint32) VkDrawIndexedIndirectCommand {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.firstIndex = *ptr
 	return x
@@ -14966,7 +14966,7 @@ func (x VkDrawIndexedIndirectCommand) VertexOffset() int32 {
 
 // WithVertexOffset copies the provided value into C space and stores it
 // at vertexOffset on VkDrawIndexedIndirectCommand
-func (x *VkDrawIndexedIndirectCommand) WithVertexOffset(y int32) *VkDrawIndexedIndirectCommand {
+func (x VkDrawIndexedIndirectCommand) WithVertexOffset(y int32) VkDrawIndexedIndirectCommand {
 	ptr := func(x *int32) *C.int { /* Scalar */ return (*C.int)(unsafe.Pointer(x)) }(&y)
 	x.vertexOffset = *ptr
 	return x
@@ -14980,7 +14980,7 @@ func (x VkDrawIndexedIndirectCommand) FirstInstance() uint32 {
 
 // WithFirstInstance copies the provided value into C space and stores it
 // at firstInstance on VkDrawIndexedIndirectCommand
-func (x *VkDrawIndexedIndirectCommand) WithFirstInstance(y uint32) *VkDrawIndexedIndirectCommand {
+func (x VkDrawIndexedIndirectCommand) WithFirstInstance(y uint32) VkDrawIndexedIndirectCommand {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.firstInstance = *ptr
 	return x
@@ -15007,12 +15007,12 @@ func (x *VkDispatchIndirectCommand) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDispatchIndirectCommand) AsPtr() *VkDispatchIndirectCommand { return x }
+func (x VkDispatchIndirectCommand) AsPtr() *VkDispatchIndirectCommand { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDispatchIndirectCommand) AsCPtr() *VkDispatchIndirectCommand {
+func (x VkDispatchIndirectCommand) AsCPtr() *VkDispatchIndirectCommand {
 	clone := newVkDispatchIndirectCommand()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -15024,7 +15024,7 @@ func (x VkDispatchIndirectCommand) X() uint32 {
 
 // WithX copies the provided value into C space and stores it
 // at x on VkDispatchIndirectCommand
-func (x *VkDispatchIndirectCommand) WithX(y uint32) *VkDispatchIndirectCommand {
+func (x VkDispatchIndirectCommand) WithX(y uint32) VkDispatchIndirectCommand {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.x = *ptr
 	return x
@@ -15038,7 +15038,7 @@ func (x VkDispatchIndirectCommand) Y() uint32 {
 
 // WithY copies the provided value into C space and stores it
 // at y on VkDispatchIndirectCommand
-func (x *VkDispatchIndirectCommand) WithY(y uint32) *VkDispatchIndirectCommand {
+func (x VkDispatchIndirectCommand) WithY(y uint32) VkDispatchIndirectCommand {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.y = *ptr
 	return x
@@ -15052,7 +15052,7 @@ func (x VkDispatchIndirectCommand) Z() uint32 {
 
 // WithZ copies the provided value into C space and stores it
 // at z on VkDispatchIndirectCommand
-func (x *VkDispatchIndirectCommand) WithZ(y uint32) *VkDispatchIndirectCommand {
+func (x VkDispatchIndirectCommand) WithZ(y uint32) VkDispatchIndirectCommand {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.z = *ptr
 	return x
@@ -15079,12 +15079,12 @@ func (x *VkBufferMemoryBarrier) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkBufferMemoryBarrier) AsPtr() *VkBufferMemoryBarrier { return x }
+func (x VkBufferMemoryBarrier) AsPtr() *VkBufferMemoryBarrier { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkBufferMemoryBarrier) AsCPtr() *VkBufferMemoryBarrier {
+func (x VkBufferMemoryBarrier) AsCPtr() *VkBufferMemoryBarrier {
 	clone := newVkBufferMemoryBarrier()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -15096,13 +15096,13 @@ func (x VkBufferMemoryBarrier) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkBufferMemoryBarrier) WithDefaultSType() *VkBufferMemoryBarrier {
+func (x VkBufferMemoryBarrier) WithDefaultSType() VkBufferMemoryBarrier {
 	return x.WithSType(VK_STRUCTURE_TYPE_BUFFER_MEMORY_BARRIER)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkBufferMemoryBarrier
-func (x *VkBufferMemoryBarrier) WithSType(y VkStructureType) *VkBufferMemoryBarrier {
+func (x VkBufferMemoryBarrier) WithSType(y VkStructureType) VkBufferMemoryBarrier {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -15116,7 +15116,7 @@ func (x VkBufferMemoryBarrier) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkBufferMemoryBarrier
-func (x *VkBufferMemoryBarrier) WithPNext(y unsafe.Pointer) *VkBufferMemoryBarrier {
+func (x VkBufferMemoryBarrier) WithPNext(y unsafe.Pointer) VkBufferMemoryBarrier {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -15130,7 +15130,7 @@ func (x VkBufferMemoryBarrier) SrcAccessMask() VkAccessFlags {
 
 // WithSrcAccessMask copies the provided value into C space and stores it
 // at srcAccessMask on VkBufferMemoryBarrier
-func (x *VkBufferMemoryBarrier) WithSrcAccessMask(y VkAccessFlags) *VkBufferMemoryBarrier {
+func (x VkBufferMemoryBarrier) WithSrcAccessMask(y VkAccessFlags) VkBufferMemoryBarrier {
 	ptr := /* Identifier */ (*C.VkAccessFlags)(&y)
 	x.srcAccessMask = *ptr
 	return x
@@ -15144,7 +15144,7 @@ func (x VkBufferMemoryBarrier) DstAccessMask() VkAccessFlags {
 
 // WithDstAccessMask copies the provided value into C space and stores it
 // at dstAccessMask on VkBufferMemoryBarrier
-func (x *VkBufferMemoryBarrier) WithDstAccessMask(y VkAccessFlags) *VkBufferMemoryBarrier {
+func (x VkBufferMemoryBarrier) WithDstAccessMask(y VkAccessFlags) VkBufferMemoryBarrier {
 	ptr := /* Identifier */ (*C.VkAccessFlags)(&y)
 	x.dstAccessMask = *ptr
 	return x
@@ -15158,7 +15158,7 @@ func (x VkBufferMemoryBarrier) SrcQueueFamilyIndex() uint32 {
 
 // WithSrcQueueFamilyIndex copies the provided value into C space and stores it
 // at srcQueueFamilyIndex on VkBufferMemoryBarrier
-func (x *VkBufferMemoryBarrier) WithSrcQueueFamilyIndex(y uint32) *VkBufferMemoryBarrier {
+func (x VkBufferMemoryBarrier) WithSrcQueueFamilyIndex(y uint32) VkBufferMemoryBarrier {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.srcQueueFamilyIndex = *ptr
 	return x
@@ -15172,7 +15172,7 @@ func (x VkBufferMemoryBarrier) DstQueueFamilyIndex() uint32 {
 
 // WithDstQueueFamilyIndex copies the provided value into C space and stores it
 // at dstQueueFamilyIndex on VkBufferMemoryBarrier
-func (x *VkBufferMemoryBarrier) WithDstQueueFamilyIndex(y uint32) *VkBufferMemoryBarrier {
+func (x VkBufferMemoryBarrier) WithDstQueueFamilyIndex(y uint32) VkBufferMemoryBarrier {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.dstQueueFamilyIndex = *ptr
 	return x
@@ -15186,7 +15186,7 @@ func (x VkBufferMemoryBarrier) Buffer() VkBuffer {
 
 // WithBuffer copies the provided value into C space and stores it
 // at buffer on VkBufferMemoryBarrier
-func (x *VkBufferMemoryBarrier) WithBuffer(y VkBuffer) *VkBufferMemoryBarrier {
+func (x VkBufferMemoryBarrier) WithBuffer(y VkBuffer) VkBufferMemoryBarrier {
 	ptr := func(x *VkBuffer) *C.VkBuffer { /* Handle */ return (*C.VkBuffer)(unsafe.Pointer(x)) }(&y)
 	x.buffer = *ptr
 	return x
@@ -15200,7 +15200,7 @@ func (x VkBufferMemoryBarrier) Offset() VkDeviceSize {
 
 // WithOffset copies the provided value into C space and stores it
 // at offset on VkBufferMemoryBarrier
-func (x *VkBufferMemoryBarrier) WithOffset(y VkDeviceSize) *VkBufferMemoryBarrier {
+func (x VkBufferMemoryBarrier) WithOffset(y VkDeviceSize) VkBufferMemoryBarrier {
 	ptr := /* Identifier */ (*C.VkDeviceSize)(&y)
 	x.offset = *ptr
 	return x
@@ -15214,7 +15214,7 @@ func (x VkBufferMemoryBarrier) Size() VkDeviceSize {
 
 // WithSize copies the provided value into C space and stores it
 // at size on VkBufferMemoryBarrier
-func (x *VkBufferMemoryBarrier) WithSize(y VkDeviceSize) *VkBufferMemoryBarrier {
+func (x VkBufferMemoryBarrier) WithSize(y VkDeviceSize) VkBufferMemoryBarrier {
 	ptr := /* Identifier */ (*C.VkDeviceSize)(&y)
 	x.size = *ptr
 	return x
@@ -15241,12 +15241,12 @@ func (x *VkBaseOutStructure) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkBaseOutStructure) AsPtr() *VkBaseOutStructure { return x }
+func (x VkBaseOutStructure) AsPtr() *VkBaseOutStructure { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkBaseOutStructure) AsCPtr() *VkBaseOutStructure {
+func (x VkBaseOutStructure) AsCPtr() *VkBaseOutStructure {
 	clone := newVkBaseOutStructure()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -15258,7 +15258,7 @@ func (x VkBaseOutStructure) SType() VkStructureType {
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkBaseOutStructure
-func (x *VkBaseOutStructure) WithSType(y VkStructureType) *VkBaseOutStructure {
+func (x VkBaseOutStructure) WithSType(y VkStructureType) VkBaseOutStructure {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -15274,7 +15274,7 @@ func (x VkBaseOutStructure) PNext() *VkBaseOutStructure {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkBaseOutStructure
-func (x *VkBaseOutStructure) WithPNext(y *VkBaseOutStructure) *VkBaseOutStructure {
+func (x VkBaseOutStructure) WithPNext(y *VkBaseOutStructure) VkBaseOutStructure {
 	ptr := func(x **VkBaseOutStructure) **C.VkBaseOutStructure { /* Pointer */
 		return (**C.VkBaseOutStructure)(unsafe.Pointer(x))
 	}(&y)
@@ -15303,12 +15303,12 @@ func (x *VkBaseInStructure) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkBaseInStructure) AsPtr() *VkBaseInStructure { return x }
+func (x VkBaseInStructure) AsPtr() *VkBaseInStructure { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkBaseInStructure) AsCPtr() *VkBaseInStructure {
+func (x VkBaseInStructure) AsCPtr() *VkBaseInStructure {
 	clone := newVkBaseInStructure()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -15320,7 +15320,7 @@ func (x VkBaseInStructure) SType() VkStructureType {
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkBaseInStructure
-func (x *VkBaseInStructure) WithSType(y VkStructureType) *VkBaseInStructure {
+func (x VkBaseInStructure) WithSType(y VkStructureType) VkBaseInStructure {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -15336,7 +15336,7 @@ func (x VkBaseInStructure) PNext() *VkBaseInStructure {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkBaseInStructure
-func (x *VkBaseInStructure) WithPNext(y *VkBaseInStructure) *VkBaseInStructure {
+func (x VkBaseInStructure) WithPNext(y *VkBaseInStructure) VkBaseInStructure {
 	ptr := func(x **VkBaseInStructure) **C.VkBaseInStructure { /* Pointer */
 		return (**C.VkBaseInStructure)(unsafe.Pointer(x))
 	}(&y)
@@ -15365,12 +15365,12 @@ func (x *VkSpecializationInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkSpecializationInfo) AsPtr() *VkSpecializationInfo { return x }
+func (x VkSpecializationInfo) AsPtr() *VkSpecializationInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkSpecializationInfo) AsCPtr() *VkSpecializationInfo {
+func (x VkSpecializationInfo) AsCPtr() *VkSpecializationInfo {
 	clone := newVkSpecializationInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -15382,7 +15382,7 @@ func (x VkSpecializationInfo) MapEntryCount() uint32 {
 
 // WithMapEntryCount copies the provided value into C space and stores it
 // at mapEntryCount on VkSpecializationInfo
-func (x *VkSpecializationInfo) WithMapEntryCount(y uint32) *VkSpecializationInfo {
+func (x VkSpecializationInfo) WithMapEntryCount(y uint32) VkSpecializationInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.mapEntryCount = *ptr
 	return x
@@ -15399,7 +15399,7 @@ func (x VkSpecializationInfo) PMapEntries() []VkSpecializationMapEntry {
 
 // WithPMapEntries copies the provided value into C space and stores it
 // at pMapEntries on VkSpecializationInfo
-func (x *VkSpecializationInfo) WithPMapEntries(y []VkSpecializationMapEntry) *VkSpecializationInfo {
+func (x VkSpecializationInfo) WithPMapEntries(y []VkSpecializationMapEntry) VkSpecializationInfo {
 	ptr := func(x *[]VkSpecializationMapEntry) **C.VkSpecializationMapEntry { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkSpecializationMapEntry)(unsafe.Pointer(&((*x)[0])))
@@ -15420,7 +15420,7 @@ func (x VkSpecializationInfo) DataSize() uint32 {
 
 // WithDataSize copies the provided value into C space and stores it
 // at dataSize on VkSpecializationInfo
-func (x *VkSpecializationInfo) WithDataSize(y uint32) *VkSpecializationInfo {
+func (x VkSpecializationInfo) WithDataSize(y uint32) VkSpecializationInfo {
 	ptr := func(x *uint32) *C.ulong { /* Scalar */ return (*C.ulong)(unsafe.Pointer(x)) }(&y)
 	x.dataSize = *ptr
 	return x
@@ -15434,7 +15434,7 @@ func (x VkSpecializationInfo) PData() unsafe.Pointer {
 
 // WithPData copies the provided value into C space and stores it
 // at pData on VkSpecializationInfo
-func (x *VkSpecializationInfo) WithPData(y unsafe.Pointer) *VkSpecializationInfo {
+func (x VkSpecializationInfo) WithPData(y unsafe.Pointer) VkSpecializationInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pData = *ptr
 	return x
@@ -15461,12 +15461,12 @@ func (x *VkSpecializationMapEntry) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkSpecializationMapEntry) AsPtr() *VkSpecializationMapEntry { return x }
+func (x VkSpecializationMapEntry) AsPtr() *VkSpecializationMapEntry { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkSpecializationMapEntry) AsCPtr() *VkSpecializationMapEntry {
+func (x VkSpecializationMapEntry) AsCPtr() *VkSpecializationMapEntry {
 	clone := newVkSpecializationMapEntry()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -15478,7 +15478,7 @@ func (x VkSpecializationMapEntry) ConstantID() uint32 {
 
 // WithConstantID copies the provided value into C space and stores it
 // at constantID on VkSpecializationMapEntry
-func (x *VkSpecializationMapEntry) WithConstantID(y uint32) *VkSpecializationMapEntry {
+func (x VkSpecializationMapEntry) WithConstantID(y uint32) VkSpecializationMapEntry {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.constantID = *ptr
 	return x
@@ -15492,7 +15492,7 @@ func (x VkSpecializationMapEntry) Offset() uint32 {
 
 // WithOffset copies the provided value into C space and stores it
 // at offset on VkSpecializationMapEntry
-func (x *VkSpecializationMapEntry) WithOffset(y uint32) *VkSpecializationMapEntry {
+func (x VkSpecializationMapEntry) WithOffset(y uint32) VkSpecializationMapEntry {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.offset = *ptr
 	return x
@@ -15506,7 +15506,7 @@ func (x VkSpecializationMapEntry) Size() uint32 {
 
 // WithSize copies the provided value into C space and stores it
 // at size on VkSpecializationMapEntry
-func (x *VkSpecializationMapEntry) WithSize(y uint32) *VkSpecializationMapEntry {
+func (x VkSpecializationMapEntry) WithSize(y uint32) VkSpecializationMapEntry {
 	ptr := func(x *uint32) *C.ulong { /* Scalar */ return (*C.ulong)(unsafe.Pointer(x)) }(&y)
 	x.size = *ptr
 	return x
@@ -15533,12 +15533,12 @@ func (x *VkRect2D) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkRect2D) AsPtr() *VkRect2D { return x }
+func (x VkRect2D) AsPtr() *VkRect2D { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkRect2D) AsCPtr() *VkRect2D {
+func (x VkRect2D) AsCPtr() *VkRect2D {
 	clone := newVkRect2D()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -15550,7 +15550,7 @@ func (x VkRect2D) Offset() VkOffset2D {
 
 // WithOffset copies the provided value into C space and stores it
 // at offset on VkRect2D
-func (x *VkRect2D) WithOffset(y VkOffset2D) *VkRect2D {
+func (x VkRect2D) WithOffset(y VkOffset2D) VkRect2D {
 	ptr := /* Identifier */ (*C.VkOffset2D)(&y)
 	x.offset = *ptr
 	return x
@@ -15564,7 +15564,7 @@ func (x VkRect2D) Extent() VkExtent2D {
 
 // WithExtent copies the provided value into C space and stores it
 // at extent on VkRect2D
-func (x *VkRect2D) WithExtent(y VkExtent2D) *VkRect2D {
+func (x VkRect2D) WithExtent(y VkExtent2D) VkRect2D {
 	ptr := /* Identifier */ (*C.VkExtent2D)(&y)
 	x.extent = *ptr
 	return x
@@ -15591,12 +15591,12 @@ func (x *VkStencilOpState) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkStencilOpState) AsPtr() *VkStencilOpState { return x }
+func (x VkStencilOpState) AsPtr() *VkStencilOpState { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkStencilOpState) AsCPtr() *VkStencilOpState {
+func (x VkStencilOpState) AsCPtr() *VkStencilOpState {
 	clone := newVkStencilOpState()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -15608,7 +15608,7 @@ func (x VkStencilOpState) FailOp() VkStencilOp {
 
 // WithFailOp copies the provided value into C space and stores it
 // at failOp on VkStencilOpState
-func (x *VkStencilOpState) WithFailOp(y VkStencilOp) *VkStencilOpState {
+func (x VkStencilOpState) WithFailOp(y VkStencilOp) VkStencilOpState {
 	ptr := /* Identifier */ (*C.VkStencilOp)(&y)
 	x.failOp = *ptr
 	return x
@@ -15622,7 +15622,7 @@ func (x VkStencilOpState) PassOp() VkStencilOp {
 
 // WithPassOp copies the provided value into C space and stores it
 // at passOp on VkStencilOpState
-func (x *VkStencilOpState) WithPassOp(y VkStencilOp) *VkStencilOpState {
+func (x VkStencilOpState) WithPassOp(y VkStencilOp) VkStencilOpState {
 	ptr := /* Identifier */ (*C.VkStencilOp)(&y)
 	x.passOp = *ptr
 	return x
@@ -15636,7 +15636,7 @@ func (x VkStencilOpState) DepthFailOp() VkStencilOp {
 
 // WithDepthFailOp copies the provided value into C space and stores it
 // at depthFailOp on VkStencilOpState
-func (x *VkStencilOpState) WithDepthFailOp(y VkStencilOp) *VkStencilOpState {
+func (x VkStencilOpState) WithDepthFailOp(y VkStencilOp) VkStencilOpState {
 	ptr := /* Identifier */ (*C.VkStencilOp)(&y)
 	x.depthFailOp = *ptr
 	return x
@@ -15650,7 +15650,7 @@ func (x VkStencilOpState) CompareOp() VkCompareOp {
 
 // WithCompareOp copies the provided value into C space and stores it
 // at compareOp on VkStencilOpState
-func (x *VkStencilOpState) WithCompareOp(y VkCompareOp) *VkStencilOpState {
+func (x VkStencilOpState) WithCompareOp(y VkCompareOp) VkStencilOpState {
 	ptr := /* Identifier */ (*C.VkCompareOp)(&y)
 	x.compareOp = *ptr
 	return x
@@ -15664,7 +15664,7 @@ func (x VkStencilOpState) CompareMask() uint32 {
 
 // WithCompareMask copies the provided value into C space and stores it
 // at compareMask on VkStencilOpState
-func (x *VkStencilOpState) WithCompareMask(y uint32) *VkStencilOpState {
+func (x VkStencilOpState) WithCompareMask(y uint32) VkStencilOpState {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.compareMask = *ptr
 	return x
@@ -15678,7 +15678,7 @@ func (x VkStencilOpState) WriteMask() uint32 {
 
 // WithWriteMask copies the provided value into C space and stores it
 // at writeMask on VkStencilOpState
-func (x *VkStencilOpState) WithWriteMask(y uint32) *VkStencilOpState {
+func (x VkStencilOpState) WithWriteMask(y uint32) VkStencilOpState {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.writeMask = *ptr
 	return x
@@ -15692,7 +15692,7 @@ func (x VkStencilOpState) Reference() uint32 {
 
 // WithReference copies the provided value into C space and stores it
 // at reference on VkStencilOpState
-func (x *VkStencilOpState) WithReference(y uint32) *VkStencilOpState {
+func (x VkStencilOpState) WithReference(y uint32) VkStencilOpState {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.reference = *ptr
 	return x
@@ -15719,12 +15719,12 @@ func (x *VkVertexInputAttributeDescription) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkVertexInputAttributeDescription) AsPtr() *VkVertexInputAttributeDescription { return x }
+func (x VkVertexInputAttributeDescription) AsPtr() *VkVertexInputAttributeDescription { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkVertexInputAttributeDescription) AsCPtr() *VkVertexInputAttributeDescription {
+func (x VkVertexInputAttributeDescription) AsCPtr() *VkVertexInputAttributeDescription {
 	clone := newVkVertexInputAttributeDescription()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -15736,7 +15736,7 @@ func (x VkVertexInputAttributeDescription) Location() uint32 {
 
 // WithLocation copies the provided value into C space and stores it
 // at location on VkVertexInputAttributeDescription
-func (x *VkVertexInputAttributeDescription) WithLocation(y uint32) *VkVertexInputAttributeDescription {
+func (x VkVertexInputAttributeDescription) WithLocation(y uint32) VkVertexInputAttributeDescription {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.location = *ptr
 	return x
@@ -15750,7 +15750,7 @@ func (x VkVertexInputAttributeDescription) Binding() uint32 {
 
 // WithBinding copies the provided value into C space and stores it
 // at binding on VkVertexInputAttributeDescription
-func (x *VkVertexInputAttributeDescription) WithBinding(y uint32) *VkVertexInputAttributeDescription {
+func (x VkVertexInputAttributeDescription) WithBinding(y uint32) VkVertexInputAttributeDescription {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.binding = *ptr
 	return x
@@ -15764,7 +15764,7 @@ func (x VkVertexInputAttributeDescription) Format() VkFormat {
 
 // WithFormat copies the provided value into C space and stores it
 // at format on VkVertexInputAttributeDescription
-func (x *VkVertexInputAttributeDescription) WithFormat(y VkFormat) *VkVertexInputAttributeDescription {
+func (x VkVertexInputAttributeDescription) WithFormat(y VkFormat) VkVertexInputAttributeDescription {
 	ptr := /* Identifier */ (*C.VkFormat)(&y)
 	x.format = *ptr
 	return x
@@ -15778,7 +15778,7 @@ func (x VkVertexInputAttributeDescription) Offset() uint32 {
 
 // WithOffset copies the provided value into C space and stores it
 // at offset on VkVertexInputAttributeDescription
-func (x *VkVertexInputAttributeDescription) WithOffset(y uint32) *VkVertexInputAttributeDescription {
+func (x VkVertexInputAttributeDescription) WithOffset(y uint32) VkVertexInputAttributeDescription {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.offset = *ptr
 	return x
@@ -15805,12 +15805,12 @@ func (x *VkVertexInputBindingDescription) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkVertexInputBindingDescription) AsPtr() *VkVertexInputBindingDescription { return x }
+func (x VkVertexInputBindingDescription) AsPtr() *VkVertexInputBindingDescription { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkVertexInputBindingDescription) AsCPtr() *VkVertexInputBindingDescription {
+func (x VkVertexInputBindingDescription) AsCPtr() *VkVertexInputBindingDescription {
 	clone := newVkVertexInputBindingDescription()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -15822,7 +15822,7 @@ func (x VkVertexInputBindingDescription) Binding() uint32 {
 
 // WithBinding copies the provided value into C space and stores it
 // at binding on VkVertexInputBindingDescription
-func (x *VkVertexInputBindingDescription) WithBinding(y uint32) *VkVertexInputBindingDescription {
+func (x VkVertexInputBindingDescription) WithBinding(y uint32) VkVertexInputBindingDescription {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.binding = *ptr
 	return x
@@ -15836,7 +15836,7 @@ func (x VkVertexInputBindingDescription) Stride() uint32 {
 
 // WithStride copies the provided value into C space and stores it
 // at stride on VkVertexInputBindingDescription
-func (x *VkVertexInputBindingDescription) WithStride(y uint32) *VkVertexInputBindingDescription {
+func (x VkVertexInputBindingDescription) WithStride(y uint32) VkVertexInputBindingDescription {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.stride = *ptr
 	return x
@@ -15850,7 +15850,7 @@ func (x VkVertexInputBindingDescription) InputRate() VkVertexInputRate {
 
 // WithInputRate copies the provided value into C space and stores it
 // at inputRate on VkVertexInputBindingDescription
-func (x *VkVertexInputBindingDescription) WithInputRate(y VkVertexInputRate) *VkVertexInputBindingDescription {
+func (x VkVertexInputBindingDescription) WithInputRate(y VkVertexInputRate) VkVertexInputBindingDescription {
 	ptr := /* Identifier */ (*C.VkVertexInputRate)(&y)
 	x.inputRate = *ptr
 	return x
@@ -15877,12 +15877,12 @@ func (x *VkOffset3D) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkOffset3D) AsPtr() *VkOffset3D { return x }
+func (x VkOffset3D) AsPtr() *VkOffset3D { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkOffset3D) AsCPtr() *VkOffset3D {
+func (x VkOffset3D) AsCPtr() *VkOffset3D {
 	clone := newVkOffset3D()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -15894,7 +15894,7 @@ func (x VkOffset3D) X() int32 {
 
 // WithX copies the provided value into C space and stores it
 // at x on VkOffset3D
-func (x *VkOffset3D) WithX(y int32) *VkOffset3D {
+func (x VkOffset3D) WithX(y int32) VkOffset3D {
 	ptr := func(x *int32) *C.int { /* Scalar */ return (*C.int)(unsafe.Pointer(x)) }(&y)
 	x.x = *ptr
 	return x
@@ -15908,7 +15908,7 @@ func (x VkOffset3D) Y() int32 {
 
 // WithY copies the provided value into C space and stores it
 // at y on VkOffset3D
-func (x *VkOffset3D) WithY(y int32) *VkOffset3D {
+func (x VkOffset3D) WithY(y int32) VkOffset3D {
 	ptr := func(x *int32) *C.int { /* Scalar */ return (*C.int)(unsafe.Pointer(x)) }(&y)
 	x.y = *ptr
 	return x
@@ -15922,7 +15922,7 @@ func (x VkOffset3D) Z() int32 {
 
 // WithZ copies the provided value into C space and stores it
 // at z on VkOffset3D
-func (x *VkOffset3D) WithZ(y int32) *VkOffset3D {
+func (x VkOffset3D) WithZ(y int32) VkOffset3D {
 	ptr := func(x *int32) *C.int { /* Scalar */ return (*C.int)(unsafe.Pointer(x)) }(&y)
 	x.z = *ptr
 	return x
@@ -15949,12 +15949,12 @@ func (x *VkViewport) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkViewport) AsPtr() *VkViewport { return x }
+func (x VkViewport) AsPtr() *VkViewport { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkViewport) AsCPtr() *VkViewport {
+func (x VkViewport) AsCPtr() *VkViewport {
 	clone := newVkViewport()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -15966,7 +15966,7 @@ func (x VkViewport) X() float32 {
 
 // WithX copies the provided value into C space and stores it
 // at x on VkViewport
-func (x *VkViewport) WithX(y float32) *VkViewport {
+func (x VkViewport) WithX(y float32) VkViewport {
 	ptr := func(x *float32) *C.float { /* Scalar */ return (*C.float)(unsafe.Pointer(x)) }(&y)
 	x.x = *ptr
 	return x
@@ -15980,7 +15980,7 @@ func (x VkViewport) Y() float32 {
 
 // WithY copies the provided value into C space and stores it
 // at y on VkViewport
-func (x *VkViewport) WithY(y float32) *VkViewport {
+func (x VkViewport) WithY(y float32) VkViewport {
 	ptr := func(x *float32) *C.float { /* Scalar */ return (*C.float)(unsafe.Pointer(x)) }(&y)
 	x.y = *ptr
 	return x
@@ -15994,7 +15994,7 @@ func (x VkViewport) Width() float32 {
 
 // WithWidth copies the provided value into C space and stores it
 // at width on VkViewport
-func (x *VkViewport) WithWidth(y float32) *VkViewport {
+func (x VkViewport) WithWidth(y float32) VkViewport {
 	ptr := func(x *float32) *C.float { /* Scalar */ return (*C.float)(unsafe.Pointer(x)) }(&y)
 	x.width = *ptr
 	return x
@@ -16008,7 +16008,7 @@ func (x VkViewport) Height() float32 {
 
 // WithHeight copies the provided value into C space and stores it
 // at height on VkViewport
-func (x *VkViewport) WithHeight(y float32) *VkViewport {
+func (x VkViewport) WithHeight(y float32) VkViewport {
 	ptr := func(x *float32) *C.float { /* Scalar */ return (*C.float)(unsafe.Pointer(x)) }(&y)
 	x.height = *ptr
 	return x
@@ -16022,7 +16022,7 @@ func (x VkViewport) MinDepth() float32 {
 
 // WithMinDepth copies the provided value into C space and stores it
 // at minDepth on VkViewport
-func (x *VkViewport) WithMinDepth(y float32) *VkViewport {
+func (x VkViewport) WithMinDepth(y float32) VkViewport {
 	ptr := func(x *float32) *C.float { /* Scalar */ return (*C.float)(unsafe.Pointer(x)) }(&y)
 	x.minDepth = *ptr
 	return x
@@ -16036,7 +16036,7 @@ func (x VkViewport) MaxDepth() float32 {
 
 // WithMaxDepth copies the provided value into C space and stores it
 // at maxDepth on VkViewport
-func (x *VkViewport) WithMaxDepth(y float32) *VkViewport {
+func (x VkViewport) WithMaxDepth(y float32) VkViewport {
 	ptr := func(x *float32) *C.float { /* Scalar */ return (*C.float)(unsafe.Pointer(x)) }(&y)
 	x.maxDepth = *ptr
 	return x
@@ -16063,12 +16063,12 @@ func (x *VkOffset2D) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkOffset2D) AsPtr() *VkOffset2D { return x }
+func (x VkOffset2D) AsPtr() *VkOffset2D { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkOffset2D) AsCPtr() *VkOffset2D {
+func (x VkOffset2D) AsCPtr() *VkOffset2D {
 	clone := newVkOffset2D()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -16080,7 +16080,7 @@ func (x VkOffset2D) X() int32 {
 
 // WithX copies the provided value into C space and stores it
 // at x on VkOffset2D
-func (x *VkOffset2D) WithX(y int32) *VkOffset2D {
+func (x VkOffset2D) WithX(y int32) VkOffset2D {
 	ptr := func(x *int32) *C.int { /* Scalar */ return (*C.int)(unsafe.Pointer(x)) }(&y)
 	x.x = *ptr
 	return x
@@ -16094,7 +16094,7 @@ func (x VkOffset2D) Y() int32 {
 
 // WithY copies the provided value into C space and stores it
 // at y on VkOffset2D
-func (x *VkOffset2D) WithY(y int32) *VkOffset2D {
+func (x VkOffset2D) WithY(y int32) VkOffset2D {
 	ptr := func(x *int32) *C.int { /* Scalar */ return (*C.int)(unsafe.Pointer(x)) }(&y)
 	x.y = *ptr
 	return x
@@ -16121,12 +16121,12 @@ func (x *VkExtent3D) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkExtent3D) AsPtr() *VkExtent3D { return x }
+func (x VkExtent3D) AsPtr() *VkExtent3D { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkExtent3D) AsCPtr() *VkExtent3D {
+func (x VkExtent3D) AsCPtr() *VkExtent3D {
 	clone := newVkExtent3D()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -16138,7 +16138,7 @@ func (x VkExtent3D) Width() uint32 {
 
 // WithWidth copies the provided value into C space and stores it
 // at width on VkExtent3D
-func (x *VkExtent3D) WithWidth(y uint32) *VkExtent3D {
+func (x VkExtent3D) WithWidth(y uint32) VkExtent3D {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.width = *ptr
 	return x
@@ -16152,7 +16152,7 @@ func (x VkExtent3D) Height() uint32 {
 
 // WithHeight copies the provided value into C space and stores it
 // at height on VkExtent3D
-func (x *VkExtent3D) WithHeight(y uint32) *VkExtent3D {
+func (x VkExtent3D) WithHeight(y uint32) VkExtent3D {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.height = *ptr
 	return x
@@ -16166,7 +16166,7 @@ func (x VkExtent3D) Depth() uint32 {
 
 // WithDepth copies the provided value into C space and stores it
 // at depth on VkExtent3D
-func (x *VkExtent3D) WithDepth(y uint32) *VkExtent3D {
+func (x VkExtent3D) WithDepth(y uint32) VkExtent3D {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.depth = *ptr
 	return x
@@ -16193,12 +16193,12 @@ func (x *VkExtent2D) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkExtent2D) AsPtr() *VkExtent2D { return x }
+func (x VkExtent2D) AsPtr() *VkExtent2D { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkExtent2D) AsCPtr() *VkExtent2D {
+func (x VkExtent2D) AsCPtr() *VkExtent2D {
 	clone := newVkExtent2D()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -16210,7 +16210,7 @@ func (x VkExtent2D) Width() uint32 {
 
 // WithWidth copies the provided value into C space and stores it
 // at width on VkExtent2D
-func (x *VkExtent2D) WithWidth(y uint32) *VkExtent2D {
+func (x VkExtent2D) WithWidth(y uint32) VkExtent2D {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.width = *ptr
 	return x
@@ -16224,7 +16224,7 @@ func (x VkExtent2D) Height() uint32 {
 
 // WithHeight copies the provided value into C space and stores it
 // at height on VkExtent2D
-func (x *VkExtent2D) WithHeight(y uint32) *VkExtent2D {
+func (x VkExtent2D) WithHeight(y uint32) VkExtent2D {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.height = *ptr
 	return x
@@ -16251,12 +16251,12 @@ func (x *VkPipelineLayoutCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPipelineLayoutCreateInfo) AsPtr() *VkPipelineLayoutCreateInfo { return x }
+func (x VkPipelineLayoutCreateInfo) AsPtr() *VkPipelineLayoutCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPipelineLayoutCreateInfo) AsCPtr() *VkPipelineLayoutCreateInfo {
+func (x VkPipelineLayoutCreateInfo) AsCPtr() *VkPipelineLayoutCreateInfo {
 	clone := newVkPipelineLayoutCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -16268,13 +16268,13 @@ func (x VkPipelineLayoutCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPipelineLayoutCreateInfo) WithDefaultSType() *VkPipelineLayoutCreateInfo {
+func (x VkPipelineLayoutCreateInfo) WithDefaultSType() VkPipelineLayoutCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPipelineLayoutCreateInfo
-func (x *VkPipelineLayoutCreateInfo) WithSType(y VkStructureType) *VkPipelineLayoutCreateInfo {
+func (x VkPipelineLayoutCreateInfo) WithSType(y VkStructureType) VkPipelineLayoutCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -16288,7 +16288,7 @@ func (x VkPipelineLayoutCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPipelineLayoutCreateInfo
-func (x *VkPipelineLayoutCreateInfo) WithPNext(y unsafe.Pointer) *VkPipelineLayoutCreateInfo {
+func (x VkPipelineLayoutCreateInfo) WithPNext(y unsafe.Pointer) VkPipelineLayoutCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -16302,7 +16302,7 @@ func (x VkPipelineLayoutCreateInfo) Flags() VkPipelineLayoutCreateFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkPipelineLayoutCreateInfo
-func (x *VkPipelineLayoutCreateInfo) WithFlags(y VkPipelineLayoutCreateFlags) *VkPipelineLayoutCreateInfo {
+func (x VkPipelineLayoutCreateInfo) WithFlags(y VkPipelineLayoutCreateFlags) VkPipelineLayoutCreateInfo {
 	ptr := /* Identifier */ (*C.VkPipelineLayoutCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -16316,7 +16316,7 @@ func (x VkPipelineLayoutCreateInfo) SetLayoutCount() uint32 {
 
 // WithSetLayoutCount copies the provided value into C space and stores it
 // at setLayoutCount on VkPipelineLayoutCreateInfo
-func (x *VkPipelineLayoutCreateInfo) WithSetLayoutCount(y uint32) *VkPipelineLayoutCreateInfo {
+func (x VkPipelineLayoutCreateInfo) WithSetLayoutCount(y uint32) VkPipelineLayoutCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.setLayoutCount = *ptr
 	return x
@@ -16333,7 +16333,7 @@ func (x VkPipelineLayoutCreateInfo) PSetLayouts() []VkDescriptorSetLayout {
 
 // WithPSetLayouts copies the provided value into C space and stores it
 // at pSetLayouts on VkPipelineLayoutCreateInfo
-func (x *VkPipelineLayoutCreateInfo) WithPSetLayouts(y []VkDescriptorSetLayout) *VkPipelineLayoutCreateInfo {
+func (x VkPipelineLayoutCreateInfo) WithPSetLayouts(y []VkDescriptorSetLayout) VkPipelineLayoutCreateInfo {
 	ptr := func(x *[]VkDescriptorSetLayout) **C.VkDescriptorSetLayout { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkDescriptorSetLayout)(unsafe.Pointer(&((*x)[0])))
@@ -16354,7 +16354,7 @@ func (x VkPipelineLayoutCreateInfo) PushConstantRangeCount() uint32 {
 
 // WithPushConstantRangeCount copies the provided value into C space and stores it
 // at pushConstantRangeCount on VkPipelineLayoutCreateInfo
-func (x *VkPipelineLayoutCreateInfo) WithPushConstantRangeCount(y uint32) *VkPipelineLayoutCreateInfo {
+func (x VkPipelineLayoutCreateInfo) WithPushConstantRangeCount(y uint32) VkPipelineLayoutCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.pushConstantRangeCount = *ptr
 	return x
@@ -16371,7 +16371,7 @@ func (x VkPipelineLayoutCreateInfo) PPushConstantRanges() []VkPushConstantRange 
 
 // WithPPushConstantRanges copies the provided value into C space and stores it
 // at pPushConstantRanges on VkPipelineLayoutCreateInfo
-func (x *VkPipelineLayoutCreateInfo) WithPPushConstantRanges(y []VkPushConstantRange) *VkPipelineLayoutCreateInfo {
+func (x VkPipelineLayoutCreateInfo) WithPPushConstantRanges(y []VkPushConstantRange) VkPipelineLayoutCreateInfo {
 	ptr := func(x *[]VkPushConstantRange) **C.VkPushConstantRange { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkPushConstantRange)(unsafe.Pointer(&((*x)[0])))
@@ -16405,12 +16405,12 @@ func (x *VkPushConstantRange) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPushConstantRange) AsPtr() *VkPushConstantRange { return x }
+func (x VkPushConstantRange) AsPtr() *VkPushConstantRange { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPushConstantRange) AsCPtr() *VkPushConstantRange {
+func (x VkPushConstantRange) AsCPtr() *VkPushConstantRange {
 	clone := newVkPushConstantRange()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -16422,7 +16422,7 @@ func (x VkPushConstantRange) StageFlags() VkShaderStageFlags {
 
 // WithStageFlags copies the provided value into C space and stores it
 // at stageFlags on VkPushConstantRange
-func (x *VkPushConstantRange) WithStageFlags(y VkShaderStageFlags) *VkPushConstantRange {
+func (x VkPushConstantRange) WithStageFlags(y VkShaderStageFlags) VkPushConstantRange {
 	ptr := /* Identifier */ (*C.VkShaderStageFlags)(&y)
 	x.stageFlags = *ptr
 	return x
@@ -16436,7 +16436,7 @@ func (x VkPushConstantRange) Offset() uint32 {
 
 // WithOffset copies the provided value into C space and stores it
 // at offset on VkPushConstantRange
-func (x *VkPushConstantRange) WithOffset(y uint32) *VkPushConstantRange {
+func (x VkPushConstantRange) WithOffset(y uint32) VkPushConstantRange {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.offset = *ptr
 	return x
@@ -16450,7 +16450,7 @@ func (x VkPushConstantRange) Size() uint32 {
 
 // WithSize copies the provided value into C space and stores it
 // at size on VkPushConstantRange
-func (x *VkPushConstantRange) WithSize(y uint32) *VkPushConstantRange {
+func (x VkPushConstantRange) WithSize(y uint32) VkPushConstantRange {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.size = *ptr
 	return x
@@ -16477,12 +16477,12 @@ func (x *VkDeviceQueueCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDeviceQueueCreateInfo) AsPtr() *VkDeviceQueueCreateInfo { return x }
+func (x VkDeviceQueueCreateInfo) AsPtr() *VkDeviceQueueCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDeviceQueueCreateInfo) AsCPtr() *VkDeviceQueueCreateInfo {
+func (x VkDeviceQueueCreateInfo) AsCPtr() *VkDeviceQueueCreateInfo {
 	clone := newVkDeviceQueueCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -16494,13 +16494,13 @@ func (x VkDeviceQueueCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkDeviceQueueCreateInfo) WithDefaultSType() *VkDeviceQueueCreateInfo {
+func (x VkDeviceQueueCreateInfo) WithDefaultSType() VkDeviceQueueCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkDeviceQueueCreateInfo
-func (x *VkDeviceQueueCreateInfo) WithSType(y VkStructureType) *VkDeviceQueueCreateInfo {
+func (x VkDeviceQueueCreateInfo) WithSType(y VkStructureType) VkDeviceQueueCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -16514,7 +16514,7 @@ func (x VkDeviceQueueCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkDeviceQueueCreateInfo
-func (x *VkDeviceQueueCreateInfo) WithPNext(y unsafe.Pointer) *VkDeviceQueueCreateInfo {
+func (x VkDeviceQueueCreateInfo) WithPNext(y unsafe.Pointer) VkDeviceQueueCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -16528,7 +16528,7 @@ func (x VkDeviceQueueCreateInfo) Flags() VkDeviceQueueCreateFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkDeviceQueueCreateInfo
-func (x *VkDeviceQueueCreateInfo) WithFlags(y VkDeviceQueueCreateFlags) *VkDeviceQueueCreateInfo {
+func (x VkDeviceQueueCreateInfo) WithFlags(y VkDeviceQueueCreateFlags) VkDeviceQueueCreateInfo {
 	ptr := /* Identifier */ (*C.VkDeviceQueueCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -16542,7 +16542,7 @@ func (x VkDeviceQueueCreateInfo) QueueFamilyIndex() uint32 {
 
 // WithQueueFamilyIndex copies the provided value into C space and stores it
 // at queueFamilyIndex on VkDeviceQueueCreateInfo
-func (x *VkDeviceQueueCreateInfo) WithQueueFamilyIndex(y uint32) *VkDeviceQueueCreateInfo {
+func (x VkDeviceQueueCreateInfo) WithQueueFamilyIndex(y uint32) VkDeviceQueueCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.queueFamilyIndex = *ptr
 	return x
@@ -16556,7 +16556,7 @@ func (x VkDeviceQueueCreateInfo) QueueCount() uint32 {
 
 // WithQueueCount copies the provided value into C space and stores it
 // at queueCount on VkDeviceQueueCreateInfo
-func (x *VkDeviceQueueCreateInfo) WithQueueCount(y uint32) *VkDeviceQueueCreateInfo {
+func (x VkDeviceQueueCreateInfo) WithQueueCount(y uint32) VkDeviceQueueCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.queueCount = *ptr
 	return x
@@ -16573,7 +16573,7 @@ func (x VkDeviceQueueCreateInfo) PQueuePriorities() []float32 {
 
 // WithPQueuePriorities copies the provided value into C space and stores it
 // at pQueuePriorities on VkDeviceQueueCreateInfo
-func (x *VkDeviceQueueCreateInfo) WithPQueuePriorities(y []float32) *VkDeviceQueueCreateInfo {
+func (x VkDeviceQueueCreateInfo) WithPQueuePriorities(y []float32) VkDeviceQueueCreateInfo {
 	ptr := func(x *[]float32) **C.float { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.float)(unsafe.Pointer(&((*x)[0])))
@@ -18915,12 +18915,12 @@ func (x *VkPhysicalDeviceMemoryProperties2) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceMemoryProperties2) AsPtr() *VkPhysicalDeviceMemoryProperties2 { return x }
+func (x VkPhysicalDeviceMemoryProperties2) AsPtr() *VkPhysicalDeviceMemoryProperties2 { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceMemoryProperties2) AsCPtr() *VkPhysicalDeviceMemoryProperties2 {
+func (x VkPhysicalDeviceMemoryProperties2) AsCPtr() *VkPhysicalDeviceMemoryProperties2 {
 	clone := newVkPhysicalDeviceMemoryProperties2()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -18932,13 +18932,13 @@ func (x VkPhysicalDeviceMemoryProperties2) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceMemoryProperties2) WithDefaultSType() *VkPhysicalDeviceMemoryProperties2 {
+func (x VkPhysicalDeviceMemoryProperties2) WithDefaultSType() VkPhysicalDeviceMemoryProperties2 {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_PROPERTIES_2)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceMemoryProperties2
-func (x *VkPhysicalDeviceMemoryProperties2) WithSType(y VkStructureType) *VkPhysicalDeviceMemoryProperties2 {
+func (x VkPhysicalDeviceMemoryProperties2) WithSType(y VkStructureType) VkPhysicalDeviceMemoryProperties2 {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -18952,7 +18952,7 @@ func (x VkPhysicalDeviceMemoryProperties2) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceMemoryProperties2
-func (x *VkPhysicalDeviceMemoryProperties2) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceMemoryProperties2 {
+func (x VkPhysicalDeviceMemoryProperties2) WithPNext(y unsafe.Pointer) VkPhysicalDeviceMemoryProperties2 {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -18985,12 +18985,12 @@ func (x *VkImageMemoryRequirementsInfo2) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkImageMemoryRequirementsInfo2) AsPtr() *VkImageMemoryRequirementsInfo2 { return x }
+func (x VkImageMemoryRequirementsInfo2) AsPtr() *VkImageMemoryRequirementsInfo2 { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkImageMemoryRequirementsInfo2) AsCPtr() *VkImageMemoryRequirementsInfo2 {
+func (x VkImageMemoryRequirementsInfo2) AsCPtr() *VkImageMemoryRequirementsInfo2 {
 	clone := newVkImageMemoryRequirementsInfo2()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -19002,13 +19002,13 @@ func (x VkImageMemoryRequirementsInfo2) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkImageMemoryRequirementsInfo2) WithDefaultSType() *VkImageMemoryRequirementsInfo2 {
+func (x VkImageMemoryRequirementsInfo2) WithDefaultSType() VkImageMemoryRequirementsInfo2 {
 	return x.WithSType(VK_STRUCTURE_TYPE_IMAGE_MEMORY_REQUIREMENTS_INFO_2)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkImageMemoryRequirementsInfo2
-func (x *VkImageMemoryRequirementsInfo2) WithSType(y VkStructureType) *VkImageMemoryRequirementsInfo2 {
+func (x VkImageMemoryRequirementsInfo2) WithSType(y VkStructureType) VkImageMemoryRequirementsInfo2 {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -19022,7 +19022,7 @@ func (x VkImageMemoryRequirementsInfo2) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkImageMemoryRequirementsInfo2
-func (x *VkImageMemoryRequirementsInfo2) WithPNext(y unsafe.Pointer) *VkImageMemoryRequirementsInfo2 {
+func (x VkImageMemoryRequirementsInfo2) WithPNext(y unsafe.Pointer) VkImageMemoryRequirementsInfo2 {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -19036,7 +19036,7 @@ func (x VkImageMemoryRequirementsInfo2) Image() VkImage {
 
 // WithImage copies the provided value into C space and stores it
 // at image on VkImageMemoryRequirementsInfo2
-func (x *VkImageMemoryRequirementsInfo2) WithImage(y VkImage) *VkImageMemoryRequirementsInfo2 {
+func (x VkImageMemoryRequirementsInfo2) WithImage(y VkImage) VkImageMemoryRequirementsInfo2 {
 	ptr := func(x *VkImage) *C.VkImage { /* Handle */ return (*C.VkImage)(unsafe.Pointer(x)) }(&y)
 	x.image = *ptr
 	return x
@@ -19063,14 +19063,14 @@ func (x *VkImageSparseMemoryRequirementsInfo2) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkImageSparseMemoryRequirementsInfo2) AsPtr() *VkImageSparseMemoryRequirementsInfo2 {
-	return x
+func (x VkImageSparseMemoryRequirementsInfo2) AsPtr() *VkImageSparseMemoryRequirementsInfo2 {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkImageSparseMemoryRequirementsInfo2) AsCPtr() *VkImageSparseMemoryRequirementsInfo2 {
+func (x VkImageSparseMemoryRequirementsInfo2) AsCPtr() *VkImageSparseMemoryRequirementsInfo2 {
 	clone := newVkImageSparseMemoryRequirementsInfo2()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -19082,13 +19082,13 @@ func (x VkImageSparseMemoryRequirementsInfo2) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkImageSparseMemoryRequirementsInfo2) WithDefaultSType() *VkImageSparseMemoryRequirementsInfo2 {
+func (x VkImageSparseMemoryRequirementsInfo2) WithDefaultSType() VkImageSparseMemoryRequirementsInfo2 {
 	return x.WithSType(VK_STRUCTURE_TYPE_IMAGE_SPARSE_MEMORY_REQUIREMENTS_INFO_2)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkImageSparseMemoryRequirementsInfo2
-func (x *VkImageSparseMemoryRequirementsInfo2) WithSType(y VkStructureType) *VkImageSparseMemoryRequirementsInfo2 {
+func (x VkImageSparseMemoryRequirementsInfo2) WithSType(y VkStructureType) VkImageSparseMemoryRequirementsInfo2 {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -19102,7 +19102,7 @@ func (x VkImageSparseMemoryRequirementsInfo2) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkImageSparseMemoryRequirementsInfo2
-func (x *VkImageSparseMemoryRequirementsInfo2) WithPNext(y unsafe.Pointer) *VkImageSparseMemoryRequirementsInfo2 {
+func (x VkImageSparseMemoryRequirementsInfo2) WithPNext(y unsafe.Pointer) VkImageSparseMemoryRequirementsInfo2 {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -19116,7 +19116,7 @@ func (x VkImageSparseMemoryRequirementsInfo2) Image() VkImage {
 
 // WithImage copies the provided value into C space and stores it
 // at image on VkImageSparseMemoryRequirementsInfo2
-func (x *VkImageSparseMemoryRequirementsInfo2) WithImage(y VkImage) *VkImageSparseMemoryRequirementsInfo2 {
+func (x VkImageSparseMemoryRequirementsInfo2) WithImage(y VkImage) VkImageSparseMemoryRequirementsInfo2 {
 	ptr := func(x *VkImage) *C.VkImage { /* Handle */ return (*C.VkImage)(unsafe.Pointer(x)) }(&y)
 	x.image = *ptr
 	return x
@@ -19143,12 +19143,12 @@ func (x *VkMemoryRequirements2) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkMemoryRequirements2) AsPtr() *VkMemoryRequirements2 { return x }
+func (x VkMemoryRequirements2) AsPtr() *VkMemoryRequirements2 { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkMemoryRequirements2) AsCPtr() *VkMemoryRequirements2 {
+func (x VkMemoryRequirements2) AsCPtr() *VkMemoryRequirements2 {
 	clone := newVkMemoryRequirements2()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -19160,13 +19160,13 @@ func (x VkMemoryRequirements2) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkMemoryRequirements2) WithDefaultSType() *VkMemoryRequirements2 {
+func (x VkMemoryRequirements2) WithDefaultSType() VkMemoryRequirements2 {
 	return x.WithSType(VK_STRUCTURE_TYPE_MEMORY_REQUIREMENTS_2)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkMemoryRequirements2
-func (x *VkMemoryRequirements2) WithSType(y VkStructureType) *VkMemoryRequirements2 {
+func (x VkMemoryRequirements2) WithSType(y VkStructureType) VkMemoryRequirements2 {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -19180,7 +19180,7 @@ func (x VkMemoryRequirements2) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkMemoryRequirements2
-func (x *VkMemoryRequirements2) WithPNext(y unsafe.Pointer) *VkMemoryRequirements2 {
+func (x VkMemoryRequirements2) WithPNext(y unsafe.Pointer) VkMemoryRequirements2 {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -19213,12 +19213,12 @@ func (x *VkSparseImageMemoryRequirements2) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkSparseImageMemoryRequirements2) AsPtr() *VkSparseImageMemoryRequirements2 { return x }
+func (x VkSparseImageMemoryRequirements2) AsPtr() *VkSparseImageMemoryRequirements2 { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkSparseImageMemoryRequirements2) AsCPtr() *VkSparseImageMemoryRequirements2 {
+func (x VkSparseImageMemoryRequirements2) AsCPtr() *VkSparseImageMemoryRequirements2 {
 	clone := newVkSparseImageMemoryRequirements2()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -19230,13 +19230,13 @@ func (x VkSparseImageMemoryRequirements2) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkSparseImageMemoryRequirements2) WithDefaultSType() *VkSparseImageMemoryRequirements2 {
+func (x VkSparseImageMemoryRequirements2) WithDefaultSType() VkSparseImageMemoryRequirements2 {
 	return x.WithSType(VK_STRUCTURE_TYPE_SPARSE_IMAGE_MEMORY_REQUIREMENTS_2)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkSparseImageMemoryRequirements2
-func (x *VkSparseImageMemoryRequirements2) WithSType(y VkStructureType) *VkSparseImageMemoryRequirements2 {
+func (x VkSparseImageMemoryRequirements2) WithSType(y VkStructureType) VkSparseImageMemoryRequirements2 {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -19250,7 +19250,7 @@ func (x VkSparseImageMemoryRequirements2) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkSparseImageMemoryRequirements2
-func (x *VkSparseImageMemoryRequirements2) WithPNext(y unsafe.Pointer) *VkSparseImageMemoryRequirements2 {
+func (x VkSparseImageMemoryRequirements2) WithPNext(y unsafe.Pointer) VkSparseImageMemoryRequirements2 {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -19283,12 +19283,12 @@ func (x *VkBufferMemoryRequirementsInfo2) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkBufferMemoryRequirementsInfo2) AsPtr() *VkBufferMemoryRequirementsInfo2 { return x }
+func (x VkBufferMemoryRequirementsInfo2) AsPtr() *VkBufferMemoryRequirementsInfo2 { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkBufferMemoryRequirementsInfo2) AsCPtr() *VkBufferMemoryRequirementsInfo2 {
+func (x VkBufferMemoryRequirementsInfo2) AsCPtr() *VkBufferMemoryRequirementsInfo2 {
 	clone := newVkBufferMemoryRequirementsInfo2()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -19300,13 +19300,13 @@ func (x VkBufferMemoryRequirementsInfo2) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkBufferMemoryRequirementsInfo2) WithDefaultSType() *VkBufferMemoryRequirementsInfo2 {
+func (x VkBufferMemoryRequirementsInfo2) WithDefaultSType() VkBufferMemoryRequirementsInfo2 {
 	return x.WithSType(VK_STRUCTURE_TYPE_BUFFER_MEMORY_REQUIREMENTS_INFO_2)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkBufferMemoryRequirementsInfo2
-func (x *VkBufferMemoryRequirementsInfo2) WithSType(y VkStructureType) *VkBufferMemoryRequirementsInfo2 {
+func (x VkBufferMemoryRequirementsInfo2) WithSType(y VkStructureType) VkBufferMemoryRequirementsInfo2 {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -19320,7 +19320,7 @@ func (x VkBufferMemoryRequirementsInfo2) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkBufferMemoryRequirementsInfo2
-func (x *VkBufferMemoryRequirementsInfo2) WithPNext(y unsafe.Pointer) *VkBufferMemoryRequirementsInfo2 {
+func (x VkBufferMemoryRequirementsInfo2) WithPNext(y unsafe.Pointer) VkBufferMemoryRequirementsInfo2 {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -19334,7 +19334,7 @@ func (x VkBufferMemoryRequirementsInfo2) Buffer() VkBuffer {
 
 // WithBuffer copies the provided value into C space and stores it
 // at buffer on VkBufferMemoryRequirementsInfo2
-func (x *VkBufferMemoryRequirementsInfo2) WithBuffer(y VkBuffer) *VkBufferMemoryRequirementsInfo2 {
+func (x VkBufferMemoryRequirementsInfo2) WithBuffer(y VkBuffer) VkBufferMemoryRequirementsInfo2 {
 	ptr := func(x *VkBuffer) *C.VkBuffer { /* Handle */ return (*C.VkBuffer)(unsafe.Pointer(x)) }(&y)
 	x.buffer = *ptr
 	return x
@@ -19361,12 +19361,12 @@ func (x *VkExportFenceCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkExportFenceCreateInfo) AsPtr() *VkExportFenceCreateInfo { return x }
+func (x VkExportFenceCreateInfo) AsPtr() *VkExportFenceCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkExportFenceCreateInfo) AsCPtr() *VkExportFenceCreateInfo {
+func (x VkExportFenceCreateInfo) AsCPtr() *VkExportFenceCreateInfo {
 	clone := newVkExportFenceCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -19378,13 +19378,13 @@ func (x VkExportFenceCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkExportFenceCreateInfo) WithDefaultSType() *VkExportFenceCreateInfo {
+func (x VkExportFenceCreateInfo) WithDefaultSType() VkExportFenceCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_EXPORT_FENCE_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkExportFenceCreateInfo
-func (x *VkExportFenceCreateInfo) WithSType(y VkStructureType) *VkExportFenceCreateInfo {
+func (x VkExportFenceCreateInfo) WithSType(y VkStructureType) VkExportFenceCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -19398,7 +19398,7 @@ func (x VkExportFenceCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkExportFenceCreateInfo
-func (x *VkExportFenceCreateInfo) WithPNext(y unsafe.Pointer) *VkExportFenceCreateInfo {
+func (x VkExportFenceCreateInfo) WithPNext(y unsafe.Pointer) VkExportFenceCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -19412,7 +19412,7 @@ func (x VkExportFenceCreateInfo) HandleTypes() VkExternalFenceHandleTypeFlags {
 
 // WithHandleTypes copies the provided value into C space and stores it
 // at handleTypes on VkExportFenceCreateInfo
-func (x *VkExportFenceCreateInfo) WithHandleTypes(y VkExternalFenceHandleTypeFlags) *VkExportFenceCreateInfo {
+func (x VkExportFenceCreateInfo) WithHandleTypes(y VkExternalFenceHandleTypeFlags) VkExportFenceCreateInfo {
 	ptr := /* Identifier */ (*C.VkExternalFenceHandleTypeFlags)(&y)
 	x.handleTypes = *ptr
 	return x
@@ -19439,12 +19439,12 @@ func (x *VkExportSemaphoreCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkExportSemaphoreCreateInfo) AsPtr() *VkExportSemaphoreCreateInfo { return x }
+func (x VkExportSemaphoreCreateInfo) AsPtr() *VkExportSemaphoreCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkExportSemaphoreCreateInfo) AsCPtr() *VkExportSemaphoreCreateInfo {
+func (x VkExportSemaphoreCreateInfo) AsCPtr() *VkExportSemaphoreCreateInfo {
 	clone := newVkExportSemaphoreCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -19456,13 +19456,13 @@ func (x VkExportSemaphoreCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkExportSemaphoreCreateInfo) WithDefaultSType() *VkExportSemaphoreCreateInfo {
+func (x VkExportSemaphoreCreateInfo) WithDefaultSType() VkExportSemaphoreCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkExportSemaphoreCreateInfo
-func (x *VkExportSemaphoreCreateInfo) WithSType(y VkStructureType) *VkExportSemaphoreCreateInfo {
+func (x VkExportSemaphoreCreateInfo) WithSType(y VkStructureType) VkExportSemaphoreCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -19476,7 +19476,7 @@ func (x VkExportSemaphoreCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkExportSemaphoreCreateInfo
-func (x *VkExportSemaphoreCreateInfo) WithPNext(y unsafe.Pointer) *VkExportSemaphoreCreateInfo {
+func (x VkExportSemaphoreCreateInfo) WithPNext(y unsafe.Pointer) VkExportSemaphoreCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -19490,7 +19490,7 @@ func (x VkExportSemaphoreCreateInfo) HandleTypes() VkExternalSemaphoreHandleType
 
 // WithHandleTypes copies the provided value into C space and stores it
 // at handleTypes on VkExportSemaphoreCreateInfo
-func (x *VkExportSemaphoreCreateInfo) WithHandleTypes(y VkExternalSemaphoreHandleTypeFlags) *VkExportSemaphoreCreateInfo {
+func (x VkExportSemaphoreCreateInfo) WithHandleTypes(y VkExternalSemaphoreHandleTypeFlags) VkExportSemaphoreCreateInfo {
 	ptr := /* Identifier */ (*C.VkExternalSemaphoreHandleTypeFlags)(&y)
 	x.handleTypes = *ptr
 	return x
@@ -19517,12 +19517,12 @@ func (x *VkDeviceGroupDeviceCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDeviceGroupDeviceCreateInfo) AsPtr() *VkDeviceGroupDeviceCreateInfo { return x }
+func (x VkDeviceGroupDeviceCreateInfo) AsPtr() *VkDeviceGroupDeviceCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDeviceGroupDeviceCreateInfo) AsCPtr() *VkDeviceGroupDeviceCreateInfo {
+func (x VkDeviceGroupDeviceCreateInfo) AsCPtr() *VkDeviceGroupDeviceCreateInfo {
 	clone := newVkDeviceGroupDeviceCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -19534,13 +19534,13 @@ func (x VkDeviceGroupDeviceCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkDeviceGroupDeviceCreateInfo) WithDefaultSType() *VkDeviceGroupDeviceCreateInfo {
+func (x VkDeviceGroupDeviceCreateInfo) WithDefaultSType() VkDeviceGroupDeviceCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_DEVICE_GROUP_DEVICE_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkDeviceGroupDeviceCreateInfo
-func (x *VkDeviceGroupDeviceCreateInfo) WithSType(y VkStructureType) *VkDeviceGroupDeviceCreateInfo {
+func (x VkDeviceGroupDeviceCreateInfo) WithSType(y VkStructureType) VkDeviceGroupDeviceCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -19554,7 +19554,7 @@ func (x VkDeviceGroupDeviceCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkDeviceGroupDeviceCreateInfo
-func (x *VkDeviceGroupDeviceCreateInfo) WithPNext(y unsafe.Pointer) *VkDeviceGroupDeviceCreateInfo {
+func (x VkDeviceGroupDeviceCreateInfo) WithPNext(y unsafe.Pointer) VkDeviceGroupDeviceCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -19568,7 +19568,7 @@ func (x VkDeviceGroupDeviceCreateInfo) PhysicalDeviceCount() uint32 {
 
 // WithPhysicalDeviceCount copies the provided value into C space and stores it
 // at physicalDeviceCount on VkDeviceGroupDeviceCreateInfo
-func (x *VkDeviceGroupDeviceCreateInfo) WithPhysicalDeviceCount(y uint32) *VkDeviceGroupDeviceCreateInfo {
+func (x VkDeviceGroupDeviceCreateInfo) WithPhysicalDeviceCount(y uint32) VkDeviceGroupDeviceCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.physicalDeviceCount = *ptr
 	return x
@@ -19585,7 +19585,7 @@ func (x VkDeviceGroupDeviceCreateInfo) PPhysicalDevices() []VkPhysicalDevice {
 
 // WithPPhysicalDevices copies the provided value into C space and stores it
 // at pPhysicalDevices on VkDeviceGroupDeviceCreateInfo
-func (x *VkDeviceGroupDeviceCreateInfo) WithPPhysicalDevices(y []VkPhysicalDevice) *VkDeviceGroupDeviceCreateInfo {
+func (x VkDeviceGroupDeviceCreateInfo) WithPPhysicalDevices(y []VkPhysicalDevice) VkDeviceGroupDeviceCreateInfo {
 	ptr := func(x *[]VkPhysicalDevice) **C.VkPhysicalDevice { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkPhysicalDevice)(unsafe.Pointer(&((*x)[0])))
@@ -19619,12 +19619,12 @@ func (x *VkExternalFenceProperties) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkExternalFenceProperties) AsPtr() *VkExternalFenceProperties { return x }
+func (x VkExternalFenceProperties) AsPtr() *VkExternalFenceProperties { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkExternalFenceProperties) AsCPtr() *VkExternalFenceProperties {
+func (x VkExternalFenceProperties) AsCPtr() *VkExternalFenceProperties {
 	clone := newVkExternalFenceProperties()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -19636,13 +19636,13 @@ func (x VkExternalFenceProperties) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkExternalFenceProperties) WithDefaultSType() *VkExternalFenceProperties {
+func (x VkExternalFenceProperties) WithDefaultSType() VkExternalFenceProperties {
 	return x.WithSType(VK_STRUCTURE_TYPE_EXTERNAL_FENCE_PROPERTIES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkExternalFenceProperties
-func (x *VkExternalFenceProperties) WithSType(y VkStructureType) *VkExternalFenceProperties {
+func (x VkExternalFenceProperties) WithSType(y VkStructureType) VkExternalFenceProperties {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -19656,7 +19656,7 @@ func (x VkExternalFenceProperties) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkExternalFenceProperties
-func (x *VkExternalFenceProperties) WithPNext(y unsafe.Pointer) *VkExternalFenceProperties {
+func (x VkExternalFenceProperties) WithPNext(y unsafe.Pointer) VkExternalFenceProperties {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -19701,12 +19701,12 @@ func (x *VkPhysicalDeviceExternalFenceInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceExternalFenceInfo) AsPtr() *VkPhysicalDeviceExternalFenceInfo { return x }
+func (x VkPhysicalDeviceExternalFenceInfo) AsPtr() *VkPhysicalDeviceExternalFenceInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceExternalFenceInfo) AsCPtr() *VkPhysicalDeviceExternalFenceInfo {
+func (x VkPhysicalDeviceExternalFenceInfo) AsCPtr() *VkPhysicalDeviceExternalFenceInfo {
 	clone := newVkPhysicalDeviceExternalFenceInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -19718,13 +19718,13 @@ func (x VkPhysicalDeviceExternalFenceInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceExternalFenceInfo) WithDefaultSType() *VkPhysicalDeviceExternalFenceInfo {
+func (x VkPhysicalDeviceExternalFenceInfo) WithDefaultSType() VkPhysicalDeviceExternalFenceInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_FENCE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceExternalFenceInfo
-func (x *VkPhysicalDeviceExternalFenceInfo) WithSType(y VkStructureType) *VkPhysicalDeviceExternalFenceInfo {
+func (x VkPhysicalDeviceExternalFenceInfo) WithSType(y VkStructureType) VkPhysicalDeviceExternalFenceInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -19738,7 +19738,7 @@ func (x VkPhysicalDeviceExternalFenceInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceExternalFenceInfo
-func (x *VkPhysicalDeviceExternalFenceInfo) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceExternalFenceInfo {
+func (x VkPhysicalDeviceExternalFenceInfo) WithPNext(y unsafe.Pointer) VkPhysicalDeviceExternalFenceInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -19752,7 +19752,7 @@ func (x VkPhysicalDeviceExternalFenceInfo) HandleType() VkExternalFenceHandleTyp
 
 // WithHandleType copies the provided value into C space and stores it
 // at handleType on VkPhysicalDeviceExternalFenceInfo
-func (x *VkPhysicalDeviceExternalFenceInfo) WithHandleType(y VkExternalFenceHandleTypeFlagBits) *VkPhysicalDeviceExternalFenceInfo {
+func (x VkPhysicalDeviceExternalFenceInfo) WithHandleType(y VkExternalFenceHandleTypeFlagBits) VkPhysicalDeviceExternalFenceInfo {
 	ptr := /* Identifier */ (*C.VkExternalFenceHandleTypeFlagBits)(&y)
 	x.handleType = *ptr
 	return x
@@ -19779,12 +19779,12 @@ func (x *VkPhysicalDeviceGroupProperties) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceGroupProperties) AsPtr() *VkPhysicalDeviceGroupProperties { return x }
+func (x VkPhysicalDeviceGroupProperties) AsPtr() *VkPhysicalDeviceGroupProperties { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceGroupProperties) AsCPtr() *VkPhysicalDeviceGroupProperties {
+func (x VkPhysicalDeviceGroupProperties) AsCPtr() *VkPhysicalDeviceGroupProperties {
 	clone := newVkPhysicalDeviceGroupProperties()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -19796,13 +19796,13 @@ func (x VkPhysicalDeviceGroupProperties) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceGroupProperties) WithDefaultSType() *VkPhysicalDeviceGroupProperties {
+func (x VkPhysicalDeviceGroupProperties) WithDefaultSType() VkPhysicalDeviceGroupProperties {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_GROUP_PROPERTIES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceGroupProperties
-func (x *VkPhysicalDeviceGroupProperties) WithSType(y VkStructureType) *VkPhysicalDeviceGroupProperties {
+func (x VkPhysicalDeviceGroupProperties) WithSType(y VkStructureType) VkPhysicalDeviceGroupProperties {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -19816,7 +19816,7 @@ func (x VkPhysicalDeviceGroupProperties) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceGroupProperties
-func (x *VkPhysicalDeviceGroupProperties) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceGroupProperties {
+func (x VkPhysicalDeviceGroupProperties) WithPNext(y unsafe.Pointer) VkPhysicalDeviceGroupProperties {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -19864,12 +19864,12 @@ func (x *VkPhysicalDeviceFeatures2) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceFeatures2) AsPtr() *VkPhysicalDeviceFeatures2 { return x }
+func (x VkPhysicalDeviceFeatures2) AsPtr() *VkPhysicalDeviceFeatures2 { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceFeatures2) AsCPtr() *VkPhysicalDeviceFeatures2 {
+func (x VkPhysicalDeviceFeatures2) AsCPtr() *VkPhysicalDeviceFeatures2 {
 	clone := newVkPhysicalDeviceFeatures2()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -19881,13 +19881,13 @@ func (x VkPhysicalDeviceFeatures2) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceFeatures2) WithDefaultSType() *VkPhysicalDeviceFeatures2 {
+func (x VkPhysicalDeviceFeatures2) WithDefaultSType() VkPhysicalDeviceFeatures2 {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceFeatures2
-func (x *VkPhysicalDeviceFeatures2) WithSType(y VkStructureType) *VkPhysicalDeviceFeatures2 {
+func (x VkPhysicalDeviceFeatures2) WithSType(y VkStructureType) VkPhysicalDeviceFeatures2 {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -19901,7 +19901,7 @@ func (x VkPhysicalDeviceFeatures2) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceFeatures2
-func (x *VkPhysicalDeviceFeatures2) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceFeatures2 {
+func (x VkPhysicalDeviceFeatures2) WithPNext(y unsafe.Pointer) VkPhysicalDeviceFeatures2 {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -19915,7 +19915,7 @@ func (x VkPhysicalDeviceFeatures2) Features() VkPhysicalDeviceFeatures {
 
 // WithFeatures copies the provided value into C space and stores it
 // at features on VkPhysicalDeviceFeatures2
-func (x *VkPhysicalDeviceFeatures2) WithFeatures(y VkPhysicalDeviceFeatures) *VkPhysicalDeviceFeatures2 {
+func (x VkPhysicalDeviceFeatures2) WithFeatures(y VkPhysicalDeviceFeatures) VkPhysicalDeviceFeatures2 {
 	ptr := /* Identifier */ (*C.VkPhysicalDeviceFeatures)(&y)
 	x.features = *ptr
 	return x
@@ -19942,12 +19942,12 @@ func (x *VkPhysicalDeviceProperties2) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceProperties2) AsPtr() *VkPhysicalDeviceProperties2 { return x }
+func (x VkPhysicalDeviceProperties2) AsPtr() *VkPhysicalDeviceProperties2 { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceProperties2) AsCPtr() *VkPhysicalDeviceProperties2 {
+func (x VkPhysicalDeviceProperties2) AsCPtr() *VkPhysicalDeviceProperties2 {
 	clone := newVkPhysicalDeviceProperties2()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -19959,13 +19959,13 @@ func (x VkPhysicalDeviceProperties2) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceProperties2) WithDefaultSType() *VkPhysicalDeviceProperties2 {
+func (x VkPhysicalDeviceProperties2) WithDefaultSType() VkPhysicalDeviceProperties2 {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROPERTIES_2)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceProperties2
-func (x *VkPhysicalDeviceProperties2) WithSType(y VkStructureType) *VkPhysicalDeviceProperties2 {
+func (x VkPhysicalDeviceProperties2) WithSType(y VkStructureType) VkPhysicalDeviceProperties2 {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -19979,7 +19979,7 @@ func (x VkPhysicalDeviceProperties2) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceProperties2
-func (x *VkPhysicalDeviceProperties2) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceProperties2 {
+func (x VkPhysicalDeviceProperties2) WithPNext(y unsafe.Pointer) VkPhysicalDeviceProperties2 {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -20012,12 +20012,12 @@ func (x *VkFormatProperties2) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkFormatProperties2) AsPtr() *VkFormatProperties2 { return x }
+func (x VkFormatProperties2) AsPtr() *VkFormatProperties2 { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkFormatProperties2) AsCPtr() *VkFormatProperties2 {
+func (x VkFormatProperties2) AsCPtr() *VkFormatProperties2 {
 	clone := newVkFormatProperties2()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -20029,13 +20029,13 @@ func (x VkFormatProperties2) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkFormatProperties2) WithDefaultSType() *VkFormatProperties2 {
+func (x VkFormatProperties2) WithDefaultSType() VkFormatProperties2 {
 	return x.WithSType(VK_STRUCTURE_TYPE_FORMAT_PROPERTIES_2)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkFormatProperties2
-func (x *VkFormatProperties2) WithSType(y VkStructureType) *VkFormatProperties2 {
+func (x VkFormatProperties2) WithSType(y VkStructureType) VkFormatProperties2 {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -20049,7 +20049,7 @@ func (x VkFormatProperties2) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkFormatProperties2
-func (x *VkFormatProperties2) WithPNext(y unsafe.Pointer) *VkFormatProperties2 {
+func (x VkFormatProperties2) WithPNext(y unsafe.Pointer) VkFormatProperties2 {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -20082,12 +20082,12 @@ func (x *VkImageFormatProperties2) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkImageFormatProperties2) AsPtr() *VkImageFormatProperties2 { return x }
+func (x VkImageFormatProperties2) AsPtr() *VkImageFormatProperties2 { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkImageFormatProperties2) AsCPtr() *VkImageFormatProperties2 {
+func (x VkImageFormatProperties2) AsCPtr() *VkImageFormatProperties2 {
 	clone := newVkImageFormatProperties2()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -20099,13 +20099,13 @@ func (x VkImageFormatProperties2) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkImageFormatProperties2) WithDefaultSType() *VkImageFormatProperties2 {
+func (x VkImageFormatProperties2) WithDefaultSType() VkImageFormatProperties2 {
 	return x.WithSType(VK_STRUCTURE_TYPE_IMAGE_FORMAT_PROPERTIES_2)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkImageFormatProperties2
-func (x *VkImageFormatProperties2) WithSType(y VkStructureType) *VkImageFormatProperties2 {
+func (x VkImageFormatProperties2) WithSType(y VkStructureType) VkImageFormatProperties2 {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -20119,7 +20119,7 @@ func (x VkImageFormatProperties2) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkImageFormatProperties2
-func (x *VkImageFormatProperties2) WithPNext(y unsafe.Pointer) *VkImageFormatProperties2 {
+func (x VkImageFormatProperties2) WithPNext(y unsafe.Pointer) VkImageFormatProperties2 {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -20152,12 +20152,12 @@ func (x *VkPhysicalDeviceImageFormatInfo2) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceImageFormatInfo2) AsPtr() *VkPhysicalDeviceImageFormatInfo2 { return x }
+func (x VkPhysicalDeviceImageFormatInfo2) AsPtr() *VkPhysicalDeviceImageFormatInfo2 { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceImageFormatInfo2) AsCPtr() *VkPhysicalDeviceImageFormatInfo2 {
+func (x VkPhysicalDeviceImageFormatInfo2) AsCPtr() *VkPhysicalDeviceImageFormatInfo2 {
 	clone := newVkPhysicalDeviceImageFormatInfo2()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -20169,13 +20169,13 @@ func (x VkPhysicalDeviceImageFormatInfo2) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceImageFormatInfo2) WithDefaultSType() *VkPhysicalDeviceImageFormatInfo2 {
+func (x VkPhysicalDeviceImageFormatInfo2) WithDefaultSType() VkPhysicalDeviceImageFormatInfo2 {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_FORMAT_INFO_2)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceImageFormatInfo2
-func (x *VkPhysicalDeviceImageFormatInfo2) WithSType(y VkStructureType) *VkPhysicalDeviceImageFormatInfo2 {
+func (x VkPhysicalDeviceImageFormatInfo2) WithSType(y VkStructureType) VkPhysicalDeviceImageFormatInfo2 {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -20189,7 +20189,7 @@ func (x VkPhysicalDeviceImageFormatInfo2) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceImageFormatInfo2
-func (x *VkPhysicalDeviceImageFormatInfo2) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceImageFormatInfo2 {
+func (x VkPhysicalDeviceImageFormatInfo2) WithPNext(y unsafe.Pointer) VkPhysicalDeviceImageFormatInfo2 {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -20203,7 +20203,7 @@ func (x VkPhysicalDeviceImageFormatInfo2) Format() VkFormat {
 
 // WithFormat copies the provided value into C space and stores it
 // at format on VkPhysicalDeviceImageFormatInfo2
-func (x *VkPhysicalDeviceImageFormatInfo2) WithFormat(y VkFormat) *VkPhysicalDeviceImageFormatInfo2 {
+func (x VkPhysicalDeviceImageFormatInfo2) WithFormat(y VkFormat) VkPhysicalDeviceImageFormatInfo2 {
 	ptr := /* Identifier */ (*C.VkFormat)(&y)
 	x.format = *ptr
 	return x
@@ -20217,7 +20217,7 @@ func (x VkPhysicalDeviceImageFormatInfo2) Type() VkImageType {
 
 // WithType copies the provided value into C space and stores it
 // at type on VkPhysicalDeviceImageFormatInfo2
-func (x *VkPhysicalDeviceImageFormatInfo2) WithType(y VkImageType) *VkPhysicalDeviceImageFormatInfo2 {
+func (x VkPhysicalDeviceImageFormatInfo2) WithType(y VkImageType) VkPhysicalDeviceImageFormatInfo2 {
 	ptr := /* Identifier */ (*C.VkImageType)(&y)
 	x._type = *ptr
 	return x
@@ -20231,7 +20231,7 @@ func (x VkPhysicalDeviceImageFormatInfo2) Tiling() VkImageTiling {
 
 // WithTiling copies the provided value into C space and stores it
 // at tiling on VkPhysicalDeviceImageFormatInfo2
-func (x *VkPhysicalDeviceImageFormatInfo2) WithTiling(y VkImageTiling) *VkPhysicalDeviceImageFormatInfo2 {
+func (x VkPhysicalDeviceImageFormatInfo2) WithTiling(y VkImageTiling) VkPhysicalDeviceImageFormatInfo2 {
 	ptr := /* Identifier */ (*C.VkImageTiling)(&y)
 	x.tiling = *ptr
 	return x
@@ -20245,7 +20245,7 @@ func (x VkPhysicalDeviceImageFormatInfo2) Usage() VkImageUsageFlags {
 
 // WithUsage copies the provided value into C space and stores it
 // at usage on VkPhysicalDeviceImageFormatInfo2
-func (x *VkPhysicalDeviceImageFormatInfo2) WithUsage(y VkImageUsageFlags) *VkPhysicalDeviceImageFormatInfo2 {
+func (x VkPhysicalDeviceImageFormatInfo2) WithUsage(y VkImageUsageFlags) VkPhysicalDeviceImageFormatInfo2 {
 	ptr := /* Identifier */ (*C.VkImageUsageFlags)(&y)
 	x.usage = *ptr
 	return x
@@ -20259,7 +20259,7 @@ func (x VkPhysicalDeviceImageFormatInfo2) Flags() VkImageCreateFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkPhysicalDeviceImageFormatInfo2
-func (x *VkPhysicalDeviceImageFormatInfo2) WithFlags(y VkImageCreateFlags) *VkPhysicalDeviceImageFormatInfo2 {
+func (x VkPhysicalDeviceImageFormatInfo2) WithFlags(y VkImageCreateFlags) VkPhysicalDeviceImageFormatInfo2 {
 	ptr := /* Identifier */ (*C.VkImageCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -20286,12 +20286,12 @@ func (x *VkQueueFamilyProperties2) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkQueueFamilyProperties2) AsPtr() *VkQueueFamilyProperties2 { return x }
+func (x VkQueueFamilyProperties2) AsPtr() *VkQueueFamilyProperties2 { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkQueueFamilyProperties2) AsCPtr() *VkQueueFamilyProperties2 {
+func (x VkQueueFamilyProperties2) AsCPtr() *VkQueueFamilyProperties2 {
 	clone := newVkQueueFamilyProperties2()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -20303,13 +20303,13 @@ func (x VkQueueFamilyProperties2) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkQueueFamilyProperties2) WithDefaultSType() *VkQueueFamilyProperties2 {
+func (x VkQueueFamilyProperties2) WithDefaultSType() VkQueueFamilyProperties2 {
 	return x.WithSType(VK_STRUCTURE_TYPE_QUEUE_FAMILY_PROPERTIES_2)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkQueueFamilyProperties2
-func (x *VkQueueFamilyProperties2) WithSType(y VkStructureType) *VkQueueFamilyProperties2 {
+func (x VkQueueFamilyProperties2) WithSType(y VkStructureType) VkQueueFamilyProperties2 {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -20323,7 +20323,7 @@ func (x VkQueueFamilyProperties2) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkQueueFamilyProperties2
-func (x *VkQueueFamilyProperties2) WithPNext(y unsafe.Pointer) *VkQueueFamilyProperties2 {
+func (x VkQueueFamilyProperties2) WithPNext(y unsafe.Pointer) VkQueueFamilyProperties2 {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -20356,12 +20356,12 @@ func (x *VkBindImageMemoryDeviceGroupInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkBindImageMemoryDeviceGroupInfo) AsPtr() *VkBindImageMemoryDeviceGroupInfo { return x }
+func (x VkBindImageMemoryDeviceGroupInfo) AsPtr() *VkBindImageMemoryDeviceGroupInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkBindImageMemoryDeviceGroupInfo) AsCPtr() *VkBindImageMemoryDeviceGroupInfo {
+func (x VkBindImageMemoryDeviceGroupInfo) AsCPtr() *VkBindImageMemoryDeviceGroupInfo {
 	clone := newVkBindImageMemoryDeviceGroupInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -20373,13 +20373,13 @@ func (x VkBindImageMemoryDeviceGroupInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkBindImageMemoryDeviceGroupInfo) WithDefaultSType() *VkBindImageMemoryDeviceGroupInfo {
+func (x VkBindImageMemoryDeviceGroupInfo) WithDefaultSType() VkBindImageMemoryDeviceGroupInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_DEVICE_GROUP_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkBindImageMemoryDeviceGroupInfo
-func (x *VkBindImageMemoryDeviceGroupInfo) WithSType(y VkStructureType) *VkBindImageMemoryDeviceGroupInfo {
+func (x VkBindImageMemoryDeviceGroupInfo) WithSType(y VkStructureType) VkBindImageMemoryDeviceGroupInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -20393,7 +20393,7 @@ func (x VkBindImageMemoryDeviceGroupInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkBindImageMemoryDeviceGroupInfo
-func (x *VkBindImageMemoryDeviceGroupInfo) WithPNext(y unsafe.Pointer) *VkBindImageMemoryDeviceGroupInfo {
+func (x VkBindImageMemoryDeviceGroupInfo) WithPNext(y unsafe.Pointer) VkBindImageMemoryDeviceGroupInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -20407,7 +20407,7 @@ func (x VkBindImageMemoryDeviceGroupInfo) DeviceIndexCount() uint32 {
 
 // WithDeviceIndexCount copies the provided value into C space and stores it
 // at deviceIndexCount on VkBindImageMemoryDeviceGroupInfo
-func (x *VkBindImageMemoryDeviceGroupInfo) WithDeviceIndexCount(y uint32) *VkBindImageMemoryDeviceGroupInfo {
+func (x VkBindImageMemoryDeviceGroupInfo) WithDeviceIndexCount(y uint32) VkBindImageMemoryDeviceGroupInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.deviceIndexCount = *ptr
 	return x
@@ -20424,7 +20424,7 @@ func (x VkBindImageMemoryDeviceGroupInfo) PDeviceIndices() []uint32 {
 
 // WithPDeviceIndices copies the provided value into C space and stores it
 // at pDeviceIndices on VkBindImageMemoryDeviceGroupInfo
-func (x *VkBindImageMemoryDeviceGroupInfo) WithPDeviceIndices(y []uint32) *VkBindImageMemoryDeviceGroupInfo {
+func (x VkBindImageMemoryDeviceGroupInfo) WithPDeviceIndices(y []uint32) VkBindImageMemoryDeviceGroupInfo {
 	ptr := func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
@@ -20445,7 +20445,7 @@ func (x VkBindImageMemoryDeviceGroupInfo) SplitInstanceBindRegionCount() uint32 
 
 // WithSplitInstanceBindRegionCount copies the provided value into C space and stores it
 // at splitInstanceBindRegionCount on VkBindImageMemoryDeviceGroupInfo
-func (x *VkBindImageMemoryDeviceGroupInfo) WithSplitInstanceBindRegionCount(y uint32) *VkBindImageMemoryDeviceGroupInfo {
+func (x VkBindImageMemoryDeviceGroupInfo) WithSplitInstanceBindRegionCount(y uint32) VkBindImageMemoryDeviceGroupInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.splitInstanceBindRegionCount = *ptr
 	return x
@@ -20462,7 +20462,7 @@ func (x VkBindImageMemoryDeviceGroupInfo) PSplitInstanceBindRegions() []VkRect2D
 
 // WithPSplitInstanceBindRegions copies the provided value into C space and stores it
 // at pSplitInstanceBindRegions on VkBindImageMemoryDeviceGroupInfo
-func (x *VkBindImageMemoryDeviceGroupInfo) WithPSplitInstanceBindRegions(y []VkRect2D) *VkBindImageMemoryDeviceGroupInfo {
+func (x VkBindImageMemoryDeviceGroupInfo) WithPSplitInstanceBindRegions(y []VkRect2D) VkBindImageMemoryDeviceGroupInfo {
 	ptr := func(x *[]VkRect2D) **C.VkRect2D { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkRect2D)(unsafe.Pointer(&((*x)[0])))
@@ -20496,12 +20496,12 @@ func (x *VkSparseImageFormatProperties2) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkSparseImageFormatProperties2) AsPtr() *VkSparseImageFormatProperties2 { return x }
+func (x VkSparseImageFormatProperties2) AsPtr() *VkSparseImageFormatProperties2 { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkSparseImageFormatProperties2) AsCPtr() *VkSparseImageFormatProperties2 {
+func (x VkSparseImageFormatProperties2) AsCPtr() *VkSparseImageFormatProperties2 {
 	clone := newVkSparseImageFormatProperties2()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -20513,13 +20513,13 @@ func (x VkSparseImageFormatProperties2) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkSparseImageFormatProperties2) WithDefaultSType() *VkSparseImageFormatProperties2 {
+func (x VkSparseImageFormatProperties2) WithDefaultSType() VkSparseImageFormatProperties2 {
 	return x.WithSType(VK_STRUCTURE_TYPE_SPARSE_IMAGE_FORMAT_PROPERTIES_2)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkSparseImageFormatProperties2
-func (x *VkSparseImageFormatProperties2) WithSType(y VkStructureType) *VkSparseImageFormatProperties2 {
+func (x VkSparseImageFormatProperties2) WithSType(y VkStructureType) VkSparseImageFormatProperties2 {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -20533,7 +20533,7 @@ func (x VkSparseImageFormatProperties2) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkSparseImageFormatProperties2
-func (x *VkSparseImageFormatProperties2) WithPNext(y unsafe.Pointer) *VkSparseImageFormatProperties2 {
+func (x VkSparseImageFormatProperties2) WithPNext(y unsafe.Pointer) VkSparseImageFormatProperties2 {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -20566,14 +20566,14 @@ func (x *VkPhysicalDeviceSparseImageFormatInfo2) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceSparseImageFormatInfo2) AsPtr() *VkPhysicalDeviceSparseImageFormatInfo2 {
-	return x
+func (x VkPhysicalDeviceSparseImageFormatInfo2) AsPtr() *VkPhysicalDeviceSparseImageFormatInfo2 {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceSparseImageFormatInfo2) AsCPtr() *VkPhysicalDeviceSparseImageFormatInfo2 {
+func (x VkPhysicalDeviceSparseImageFormatInfo2) AsCPtr() *VkPhysicalDeviceSparseImageFormatInfo2 {
 	clone := newVkPhysicalDeviceSparseImageFormatInfo2()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -20585,13 +20585,13 @@ func (x VkPhysicalDeviceSparseImageFormatInfo2) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceSparseImageFormatInfo2) WithDefaultSType() *VkPhysicalDeviceSparseImageFormatInfo2 {
+func (x VkPhysicalDeviceSparseImageFormatInfo2) WithDefaultSType() VkPhysicalDeviceSparseImageFormatInfo2 {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SPARSE_IMAGE_FORMAT_INFO_2)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceSparseImageFormatInfo2
-func (x *VkPhysicalDeviceSparseImageFormatInfo2) WithSType(y VkStructureType) *VkPhysicalDeviceSparseImageFormatInfo2 {
+func (x VkPhysicalDeviceSparseImageFormatInfo2) WithSType(y VkStructureType) VkPhysicalDeviceSparseImageFormatInfo2 {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -20605,7 +20605,7 @@ func (x VkPhysicalDeviceSparseImageFormatInfo2) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceSparseImageFormatInfo2
-func (x *VkPhysicalDeviceSparseImageFormatInfo2) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceSparseImageFormatInfo2 {
+func (x VkPhysicalDeviceSparseImageFormatInfo2) WithPNext(y unsafe.Pointer) VkPhysicalDeviceSparseImageFormatInfo2 {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -20619,7 +20619,7 @@ func (x VkPhysicalDeviceSparseImageFormatInfo2) Format() VkFormat {
 
 // WithFormat copies the provided value into C space and stores it
 // at format on VkPhysicalDeviceSparseImageFormatInfo2
-func (x *VkPhysicalDeviceSparseImageFormatInfo2) WithFormat(y VkFormat) *VkPhysicalDeviceSparseImageFormatInfo2 {
+func (x VkPhysicalDeviceSparseImageFormatInfo2) WithFormat(y VkFormat) VkPhysicalDeviceSparseImageFormatInfo2 {
 	ptr := /* Identifier */ (*C.VkFormat)(&y)
 	x.format = *ptr
 	return x
@@ -20633,7 +20633,7 @@ func (x VkPhysicalDeviceSparseImageFormatInfo2) Type() VkImageType {
 
 // WithType copies the provided value into C space and stores it
 // at type on VkPhysicalDeviceSparseImageFormatInfo2
-func (x *VkPhysicalDeviceSparseImageFormatInfo2) WithType(y VkImageType) *VkPhysicalDeviceSparseImageFormatInfo2 {
+func (x VkPhysicalDeviceSparseImageFormatInfo2) WithType(y VkImageType) VkPhysicalDeviceSparseImageFormatInfo2 {
 	ptr := /* Identifier */ (*C.VkImageType)(&y)
 	x._type = *ptr
 	return x
@@ -20647,7 +20647,7 @@ func (x VkPhysicalDeviceSparseImageFormatInfo2) Samples() VkSampleCountFlagBits 
 
 // WithSamples copies the provided value into C space and stores it
 // at samples on VkPhysicalDeviceSparseImageFormatInfo2
-func (x *VkPhysicalDeviceSparseImageFormatInfo2) WithSamples(y VkSampleCountFlagBits) *VkPhysicalDeviceSparseImageFormatInfo2 {
+func (x VkPhysicalDeviceSparseImageFormatInfo2) WithSamples(y VkSampleCountFlagBits) VkPhysicalDeviceSparseImageFormatInfo2 {
 	ptr := /* Identifier */ (*C.VkSampleCountFlagBits)(&y)
 	x.samples = *ptr
 	return x
@@ -20661,7 +20661,7 @@ func (x VkPhysicalDeviceSparseImageFormatInfo2) Usage() VkImageUsageFlags {
 
 // WithUsage copies the provided value into C space and stores it
 // at usage on VkPhysicalDeviceSparseImageFormatInfo2
-func (x *VkPhysicalDeviceSparseImageFormatInfo2) WithUsage(y VkImageUsageFlags) *VkPhysicalDeviceSparseImageFormatInfo2 {
+func (x VkPhysicalDeviceSparseImageFormatInfo2) WithUsage(y VkImageUsageFlags) VkPhysicalDeviceSparseImageFormatInfo2 {
 	ptr := /* Identifier */ (*C.VkImageUsageFlags)(&y)
 	x.usage = *ptr
 	return x
@@ -20675,7 +20675,7 @@ func (x VkPhysicalDeviceSparseImageFormatInfo2) Tiling() VkImageTiling {
 
 // WithTiling copies the provided value into C space and stores it
 // at tiling on VkPhysicalDeviceSparseImageFormatInfo2
-func (x *VkPhysicalDeviceSparseImageFormatInfo2) WithTiling(y VkImageTiling) *VkPhysicalDeviceSparseImageFormatInfo2 {
+func (x VkPhysicalDeviceSparseImageFormatInfo2) WithTiling(y VkImageTiling) VkPhysicalDeviceSparseImageFormatInfo2 {
 	ptr := /* Identifier */ (*C.VkImageTiling)(&y)
 	x.tiling = *ptr
 	return x
@@ -20702,12 +20702,12 @@ func (x *VkBindBufferMemoryDeviceGroupInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkBindBufferMemoryDeviceGroupInfo) AsPtr() *VkBindBufferMemoryDeviceGroupInfo { return x }
+func (x VkBindBufferMemoryDeviceGroupInfo) AsPtr() *VkBindBufferMemoryDeviceGroupInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkBindBufferMemoryDeviceGroupInfo) AsCPtr() *VkBindBufferMemoryDeviceGroupInfo {
+func (x VkBindBufferMemoryDeviceGroupInfo) AsCPtr() *VkBindBufferMemoryDeviceGroupInfo {
 	clone := newVkBindBufferMemoryDeviceGroupInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -20719,13 +20719,13 @@ func (x VkBindBufferMemoryDeviceGroupInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkBindBufferMemoryDeviceGroupInfo) WithDefaultSType() *VkBindBufferMemoryDeviceGroupInfo {
+func (x VkBindBufferMemoryDeviceGroupInfo) WithDefaultSType() VkBindBufferMemoryDeviceGroupInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_DEVICE_GROUP_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkBindBufferMemoryDeviceGroupInfo
-func (x *VkBindBufferMemoryDeviceGroupInfo) WithSType(y VkStructureType) *VkBindBufferMemoryDeviceGroupInfo {
+func (x VkBindBufferMemoryDeviceGroupInfo) WithSType(y VkStructureType) VkBindBufferMemoryDeviceGroupInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -20739,7 +20739,7 @@ func (x VkBindBufferMemoryDeviceGroupInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkBindBufferMemoryDeviceGroupInfo
-func (x *VkBindBufferMemoryDeviceGroupInfo) WithPNext(y unsafe.Pointer) *VkBindBufferMemoryDeviceGroupInfo {
+func (x VkBindBufferMemoryDeviceGroupInfo) WithPNext(y unsafe.Pointer) VkBindBufferMemoryDeviceGroupInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -20753,7 +20753,7 @@ func (x VkBindBufferMemoryDeviceGroupInfo) DeviceIndexCount() uint32 {
 
 // WithDeviceIndexCount copies the provided value into C space and stores it
 // at deviceIndexCount on VkBindBufferMemoryDeviceGroupInfo
-func (x *VkBindBufferMemoryDeviceGroupInfo) WithDeviceIndexCount(y uint32) *VkBindBufferMemoryDeviceGroupInfo {
+func (x VkBindBufferMemoryDeviceGroupInfo) WithDeviceIndexCount(y uint32) VkBindBufferMemoryDeviceGroupInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.deviceIndexCount = *ptr
 	return x
@@ -20770,7 +20770,7 @@ func (x VkBindBufferMemoryDeviceGroupInfo) PDeviceIndices() []uint32 {
 
 // WithPDeviceIndices copies the provided value into C space and stores it
 // at pDeviceIndices on VkBindBufferMemoryDeviceGroupInfo
-func (x *VkBindBufferMemoryDeviceGroupInfo) WithPDeviceIndices(y []uint32) *VkBindBufferMemoryDeviceGroupInfo {
+func (x VkBindBufferMemoryDeviceGroupInfo) WithPDeviceIndices(y []uint32) VkBindBufferMemoryDeviceGroupInfo {
 	ptr := func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
@@ -20804,12 +20804,12 @@ func (x *VkDeviceGroupBindSparseInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDeviceGroupBindSparseInfo) AsPtr() *VkDeviceGroupBindSparseInfo { return x }
+func (x VkDeviceGroupBindSparseInfo) AsPtr() *VkDeviceGroupBindSparseInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDeviceGroupBindSparseInfo) AsCPtr() *VkDeviceGroupBindSparseInfo {
+func (x VkDeviceGroupBindSparseInfo) AsCPtr() *VkDeviceGroupBindSparseInfo {
 	clone := newVkDeviceGroupBindSparseInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -20821,13 +20821,13 @@ func (x VkDeviceGroupBindSparseInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkDeviceGroupBindSparseInfo) WithDefaultSType() *VkDeviceGroupBindSparseInfo {
+func (x VkDeviceGroupBindSparseInfo) WithDefaultSType() VkDeviceGroupBindSparseInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_DEVICE_GROUP_BIND_SPARSE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkDeviceGroupBindSparseInfo
-func (x *VkDeviceGroupBindSparseInfo) WithSType(y VkStructureType) *VkDeviceGroupBindSparseInfo {
+func (x VkDeviceGroupBindSparseInfo) WithSType(y VkStructureType) VkDeviceGroupBindSparseInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -20841,7 +20841,7 @@ func (x VkDeviceGroupBindSparseInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkDeviceGroupBindSparseInfo
-func (x *VkDeviceGroupBindSparseInfo) WithPNext(y unsafe.Pointer) *VkDeviceGroupBindSparseInfo {
+func (x VkDeviceGroupBindSparseInfo) WithPNext(y unsafe.Pointer) VkDeviceGroupBindSparseInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -20855,7 +20855,7 @@ func (x VkDeviceGroupBindSparseInfo) ResourceDeviceIndex() uint32 {
 
 // WithResourceDeviceIndex copies the provided value into C space and stores it
 // at resourceDeviceIndex on VkDeviceGroupBindSparseInfo
-func (x *VkDeviceGroupBindSparseInfo) WithResourceDeviceIndex(y uint32) *VkDeviceGroupBindSparseInfo {
+func (x VkDeviceGroupBindSparseInfo) WithResourceDeviceIndex(y uint32) VkDeviceGroupBindSparseInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.resourceDeviceIndex = *ptr
 	return x
@@ -20869,7 +20869,7 @@ func (x VkDeviceGroupBindSparseInfo) MemoryDeviceIndex() uint32 {
 
 // WithMemoryDeviceIndex copies the provided value into C space and stores it
 // at memoryDeviceIndex on VkDeviceGroupBindSparseInfo
-func (x *VkDeviceGroupBindSparseInfo) WithMemoryDeviceIndex(y uint32) *VkDeviceGroupBindSparseInfo {
+func (x VkDeviceGroupBindSparseInfo) WithMemoryDeviceIndex(y uint32) VkDeviceGroupBindSparseInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.memoryDeviceIndex = *ptr
 	return x
@@ -20896,14 +20896,14 @@ func (x *VkPhysicalDevicePointClippingProperties) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDevicePointClippingProperties) AsPtr() *VkPhysicalDevicePointClippingProperties {
-	return x
+func (x VkPhysicalDevicePointClippingProperties) AsPtr() *VkPhysicalDevicePointClippingProperties {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDevicePointClippingProperties) AsCPtr() *VkPhysicalDevicePointClippingProperties {
+func (x VkPhysicalDevicePointClippingProperties) AsCPtr() *VkPhysicalDevicePointClippingProperties {
 	clone := newVkPhysicalDevicePointClippingProperties()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -20915,13 +20915,13 @@ func (x VkPhysicalDevicePointClippingProperties) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDevicePointClippingProperties) WithDefaultSType() *VkPhysicalDevicePointClippingProperties {
+func (x VkPhysicalDevicePointClippingProperties) WithDefaultSType() VkPhysicalDevicePointClippingProperties {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_POINT_CLIPPING_PROPERTIES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDevicePointClippingProperties
-func (x *VkPhysicalDevicePointClippingProperties) WithSType(y VkStructureType) *VkPhysicalDevicePointClippingProperties {
+func (x VkPhysicalDevicePointClippingProperties) WithSType(y VkStructureType) VkPhysicalDevicePointClippingProperties {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -20935,7 +20935,7 @@ func (x VkPhysicalDevicePointClippingProperties) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDevicePointClippingProperties
-func (x *VkPhysicalDevicePointClippingProperties) WithPNext(y unsafe.Pointer) *VkPhysicalDevicePointClippingProperties {
+func (x VkPhysicalDevicePointClippingProperties) WithPNext(y unsafe.Pointer) VkPhysicalDevicePointClippingProperties {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -20968,12 +20968,12 @@ func (x *VkDeviceGroupSubmitInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDeviceGroupSubmitInfo) AsPtr() *VkDeviceGroupSubmitInfo { return x }
+func (x VkDeviceGroupSubmitInfo) AsPtr() *VkDeviceGroupSubmitInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDeviceGroupSubmitInfo) AsCPtr() *VkDeviceGroupSubmitInfo {
+func (x VkDeviceGroupSubmitInfo) AsCPtr() *VkDeviceGroupSubmitInfo {
 	clone := newVkDeviceGroupSubmitInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -20985,13 +20985,13 @@ func (x VkDeviceGroupSubmitInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkDeviceGroupSubmitInfo) WithDefaultSType() *VkDeviceGroupSubmitInfo {
+func (x VkDeviceGroupSubmitInfo) WithDefaultSType() VkDeviceGroupSubmitInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_DEVICE_GROUP_SUBMIT_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkDeviceGroupSubmitInfo
-func (x *VkDeviceGroupSubmitInfo) WithSType(y VkStructureType) *VkDeviceGroupSubmitInfo {
+func (x VkDeviceGroupSubmitInfo) WithSType(y VkStructureType) VkDeviceGroupSubmitInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -21005,7 +21005,7 @@ func (x VkDeviceGroupSubmitInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkDeviceGroupSubmitInfo
-func (x *VkDeviceGroupSubmitInfo) WithPNext(y unsafe.Pointer) *VkDeviceGroupSubmitInfo {
+func (x VkDeviceGroupSubmitInfo) WithPNext(y unsafe.Pointer) VkDeviceGroupSubmitInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -21019,7 +21019,7 @@ func (x VkDeviceGroupSubmitInfo) WaitSemaphoreCount() uint32 {
 
 // WithWaitSemaphoreCount copies the provided value into C space and stores it
 // at waitSemaphoreCount on VkDeviceGroupSubmitInfo
-func (x *VkDeviceGroupSubmitInfo) WithWaitSemaphoreCount(y uint32) *VkDeviceGroupSubmitInfo {
+func (x VkDeviceGroupSubmitInfo) WithWaitSemaphoreCount(y uint32) VkDeviceGroupSubmitInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.waitSemaphoreCount = *ptr
 	return x
@@ -21036,7 +21036,7 @@ func (x VkDeviceGroupSubmitInfo) PWaitSemaphoreDeviceIndices() []uint32 {
 
 // WithPWaitSemaphoreDeviceIndices copies the provided value into C space and stores it
 // at pWaitSemaphoreDeviceIndices on VkDeviceGroupSubmitInfo
-func (x *VkDeviceGroupSubmitInfo) WithPWaitSemaphoreDeviceIndices(y []uint32) *VkDeviceGroupSubmitInfo {
+func (x VkDeviceGroupSubmitInfo) WithPWaitSemaphoreDeviceIndices(y []uint32) VkDeviceGroupSubmitInfo {
 	ptr := func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
@@ -21057,7 +21057,7 @@ func (x VkDeviceGroupSubmitInfo) CommandBufferCount() uint32 {
 
 // WithCommandBufferCount copies the provided value into C space and stores it
 // at commandBufferCount on VkDeviceGroupSubmitInfo
-func (x *VkDeviceGroupSubmitInfo) WithCommandBufferCount(y uint32) *VkDeviceGroupSubmitInfo {
+func (x VkDeviceGroupSubmitInfo) WithCommandBufferCount(y uint32) VkDeviceGroupSubmitInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.commandBufferCount = *ptr
 	return x
@@ -21074,7 +21074,7 @@ func (x VkDeviceGroupSubmitInfo) PCommandBufferDeviceMasks() []uint32 {
 
 // WithPCommandBufferDeviceMasks copies the provided value into C space and stores it
 // at pCommandBufferDeviceMasks on VkDeviceGroupSubmitInfo
-func (x *VkDeviceGroupSubmitInfo) WithPCommandBufferDeviceMasks(y []uint32) *VkDeviceGroupSubmitInfo {
+func (x VkDeviceGroupSubmitInfo) WithPCommandBufferDeviceMasks(y []uint32) VkDeviceGroupSubmitInfo {
 	ptr := func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
@@ -21095,7 +21095,7 @@ func (x VkDeviceGroupSubmitInfo) SignalSemaphoreCount() uint32 {
 
 // WithSignalSemaphoreCount copies the provided value into C space and stores it
 // at signalSemaphoreCount on VkDeviceGroupSubmitInfo
-func (x *VkDeviceGroupSubmitInfo) WithSignalSemaphoreCount(y uint32) *VkDeviceGroupSubmitInfo {
+func (x VkDeviceGroupSubmitInfo) WithSignalSemaphoreCount(y uint32) VkDeviceGroupSubmitInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.signalSemaphoreCount = *ptr
 	return x
@@ -21112,7 +21112,7 @@ func (x VkDeviceGroupSubmitInfo) PSignalSemaphoreDeviceIndices() []uint32 {
 
 // WithPSignalSemaphoreDeviceIndices copies the provided value into C space and stores it
 // at pSignalSemaphoreDeviceIndices on VkDeviceGroupSubmitInfo
-func (x *VkDeviceGroupSubmitInfo) WithPSignalSemaphoreDeviceIndices(y []uint32) *VkDeviceGroupSubmitInfo {
+func (x VkDeviceGroupSubmitInfo) WithPSignalSemaphoreDeviceIndices(y []uint32) VkDeviceGroupSubmitInfo {
 	ptr := func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
@@ -21146,14 +21146,14 @@ func (x *VkRenderPassInputAttachmentAspectCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkRenderPassInputAttachmentAspectCreateInfo) AsPtr() *VkRenderPassInputAttachmentAspectCreateInfo {
-	return x
+func (x VkRenderPassInputAttachmentAspectCreateInfo) AsPtr() *VkRenderPassInputAttachmentAspectCreateInfo {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkRenderPassInputAttachmentAspectCreateInfo) AsCPtr() *VkRenderPassInputAttachmentAspectCreateInfo {
+func (x VkRenderPassInputAttachmentAspectCreateInfo) AsCPtr() *VkRenderPassInputAttachmentAspectCreateInfo {
 	clone := newVkRenderPassInputAttachmentAspectCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -21165,13 +21165,13 @@ func (x VkRenderPassInputAttachmentAspectCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkRenderPassInputAttachmentAspectCreateInfo) WithDefaultSType() *VkRenderPassInputAttachmentAspectCreateInfo {
+func (x VkRenderPassInputAttachmentAspectCreateInfo) WithDefaultSType() VkRenderPassInputAttachmentAspectCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_RENDER_PASS_INPUT_ATTACHMENT_ASPECT_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkRenderPassInputAttachmentAspectCreateInfo
-func (x *VkRenderPassInputAttachmentAspectCreateInfo) WithSType(y VkStructureType) *VkRenderPassInputAttachmentAspectCreateInfo {
+func (x VkRenderPassInputAttachmentAspectCreateInfo) WithSType(y VkStructureType) VkRenderPassInputAttachmentAspectCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -21185,7 +21185,7 @@ func (x VkRenderPassInputAttachmentAspectCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkRenderPassInputAttachmentAspectCreateInfo
-func (x *VkRenderPassInputAttachmentAspectCreateInfo) WithPNext(y unsafe.Pointer) *VkRenderPassInputAttachmentAspectCreateInfo {
+func (x VkRenderPassInputAttachmentAspectCreateInfo) WithPNext(y unsafe.Pointer) VkRenderPassInputAttachmentAspectCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -21199,7 +21199,7 @@ func (x VkRenderPassInputAttachmentAspectCreateInfo) AspectReferenceCount() uint
 
 // WithAspectReferenceCount copies the provided value into C space and stores it
 // at aspectReferenceCount on VkRenderPassInputAttachmentAspectCreateInfo
-func (x *VkRenderPassInputAttachmentAspectCreateInfo) WithAspectReferenceCount(y uint32) *VkRenderPassInputAttachmentAspectCreateInfo {
+func (x VkRenderPassInputAttachmentAspectCreateInfo) WithAspectReferenceCount(y uint32) VkRenderPassInputAttachmentAspectCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.aspectReferenceCount = *ptr
 	return x
@@ -21216,7 +21216,7 @@ func (x VkRenderPassInputAttachmentAspectCreateInfo) PAspectReferences() []VkInp
 
 // WithPAspectReferences copies the provided value into C space and stores it
 // at pAspectReferences on VkRenderPassInputAttachmentAspectCreateInfo
-func (x *VkRenderPassInputAttachmentAspectCreateInfo) WithPAspectReferences(y []VkInputAttachmentAspectReference) *VkRenderPassInputAttachmentAspectCreateInfo {
+func (x VkRenderPassInputAttachmentAspectCreateInfo) WithPAspectReferences(y []VkInputAttachmentAspectReference) VkRenderPassInputAttachmentAspectCreateInfo {
 	ptr := func(x *[]VkInputAttachmentAspectReference) **C.VkInputAttachmentAspectReference { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkInputAttachmentAspectReference)(unsafe.Pointer(&((*x)[0])))
@@ -21250,12 +21250,12 @@ func (x *VkInputAttachmentAspectReference) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkInputAttachmentAspectReference) AsPtr() *VkInputAttachmentAspectReference { return x }
+func (x VkInputAttachmentAspectReference) AsPtr() *VkInputAttachmentAspectReference { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkInputAttachmentAspectReference) AsCPtr() *VkInputAttachmentAspectReference {
+func (x VkInputAttachmentAspectReference) AsCPtr() *VkInputAttachmentAspectReference {
 	clone := newVkInputAttachmentAspectReference()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -21267,7 +21267,7 @@ func (x VkInputAttachmentAspectReference) Subpass() uint32 {
 
 // WithSubpass copies the provided value into C space and stores it
 // at subpass on VkInputAttachmentAspectReference
-func (x *VkInputAttachmentAspectReference) WithSubpass(y uint32) *VkInputAttachmentAspectReference {
+func (x VkInputAttachmentAspectReference) WithSubpass(y uint32) VkInputAttachmentAspectReference {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.subpass = *ptr
 	return x
@@ -21281,7 +21281,7 @@ func (x VkInputAttachmentAspectReference) InputAttachmentIndex() uint32 {
 
 // WithInputAttachmentIndex copies the provided value into C space and stores it
 // at inputAttachmentIndex on VkInputAttachmentAspectReference
-func (x *VkInputAttachmentAspectReference) WithInputAttachmentIndex(y uint32) *VkInputAttachmentAspectReference {
+func (x VkInputAttachmentAspectReference) WithInputAttachmentIndex(y uint32) VkInputAttachmentAspectReference {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.inputAttachmentIndex = *ptr
 	return x
@@ -21295,7 +21295,7 @@ func (x VkInputAttachmentAspectReference) AspectMask() VkImageAspectFlags {
 
 // WithAspectMask copies the provided value into C space and stores it
 // at aspectMask on VkInputAttachmentAspectReference
-func (x *VkInputAttachmentAspectReference) WithAspectMask(y VkImageAspectFlags) *VkInputAttachmentAspectReference {
+func (x VkInputAttachmentAspectReference) WithAspectMask(y VkImageAspectFlags) VkInputAttachmentAspectReference {
 	ptr := /* Identifier */ (*C.VkImageAspectFlags)(&y)
 	x.aspectMask = *ptr
 	return x
@@ -21322,12 +21322,12 @@ func (x *VkImageViewUsageCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkImageViewUsageCreateInfo) AsPtr() *VkImageViewUsageCreateInfo { return x }
+func (x VkImageViewUsageCreateInfo) AsPtr() *VkImageViewUsageCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkImageViewUsageCreateInfo) AsCPtr() *VkImageViewUsageCreateInfo {
+func (x VkImageViewUsageCreateInfo) AsCPtr() *VkImageViewUsageCreateInfo {
 	clone := newVkImageViewUsageCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -21339,13 +21339,13 @@ func (x VkImageViewUsageCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkImageViewUsageCreateInfo) WithDefaultSType() *VkImageViewUsageCreateInfo {
+func (x VkImageViewUsageCreateInfo) WithDefaultSType() VkImageViewUsageCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_IMAGE_VIEW_USAGE_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkImageViewUsageCreateInfo
-func (x *VkImageViewUsageCreateInfo) WithSType(y VkStructureType) *VkImageViewUsageCreateInfo {
+func (x VkImageViewUsageCreateInfo) WithSType(y VkStructureType) VkImageViewUsageCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -21359,7 +21359,7 @@ func (x VkImageViewUsageCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkImageViewUsageCreateInfo
-func (x *VkImageViewUsageCreateInfo) WithPNext(y unsafe.Pointer) *VkImageViewUsageCreateInfo {
+func (x VkImageViewUsageCreateInfo) WithPNext(y unsafe.Pointer) VkImageViewUsageCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -21373,7 +21373,7 @@ func (x VkImageViewUsageCreateInfo) Usage() VkImageUsageFlags {
 
 // WithUsage copies the provided value into C space and stores it
 // at usage on VkImageViewUsageCreateInfo
-func (x *VkImageViewUsageCreateInfo) WithUsage(y VkImageUsageFlags) *VkImageViewUsageCreateInfo {
+func (x VkImageViewUsageCreateInfo) WithUsage(y VkImageUsageFlags) VkImageViewUsageCreateInfo {
 	ptr := /* Identifier */ (*C.VkImageUsageFlags)(&y)
 	x.usage = *ptr
 	return x
@@ -21400,12 +21400,12 @@ func (x *VkDeviceGroupCommandBufferBeginInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDeviceGroupCommandBufferBeginInfo) AsPtr() *VkDeviceGroupCommandBufferBeginInfo { return x }
+func (x VkDeviceGroupCommandBufferBeginInfo) AsPtr() *VkDeviceGroupCommandBufferBeginInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDeviceGroupCommandBufferBeginInfo) AsCPtr() *VkDeviceGroupCommandBufferBeginInfo {
+func (x VkDeviceGroupCommandBufferBeginInfo) AsCPtr() *VkDeviceGroupCommandBufferBeginInfo {
 	clone := newVkDeviceGroupCommandBufferBeginInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -21417,13 +21417,13 @@ func (x VkDeviceGroupCommandBufferBeginInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkDeviceGroupCommandBufferBeginInfo) WithDefaultSType() *VkDeviceGroupCommandBufferBeginInfo {
+func (x VkDeviceGroupCommandBufferBeginInfo) WithDefaultSType() VkDeviceGroupCommandBufferBeginInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_DEVICE_GROUP_COMMAND_BUFFER_BEGIN_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkDeviceGroupCommandBufferBeginInfo
-func (x *VkDeviceGroupCommandBufferBeginInfo) WithSType(y VkStructureType) *VkDeviceGroupCommandBufferBeginInfo {
+func (x VkDeviceGroupCommandBufferBeginInfo) WithSType(y VkStructureType) VkDeviceGroupCommandBufferBeginInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -21437,7 +21437,7 @@ func (x VkDeviceGroupCommandBufferBeginInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkDeviceGroupCommandBufferBeginInfo
-func (x *VkDeviceGroupCommandBufferBeginInfo) WithPNext(y unsafe.Pointer) *VkDeviceGroupCommandBufferBeginInfo {
+func (x VkDeviceGroupCommandBufferBeginInfo) WithPNext(y unsafe.Pointer) VkDeviceGroupCommandBufferBeginInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -21451,7 +21451,7 @@ func (x VkDeviceGroupCommandBufferBeginInfo) DeviceMask() uint32 {
 
 // WithDeviceMask copies the provided value into C space and stores it
 // at deviceMask on VkDeviceGroupCommandBufferBeginInfo
-func (x *VkDeviceGroupCommandBufferBeginInfo) WithDeviceMask(y uint32) *VkDeviceGroupCommandBufferBeginInfo {
+func (x VkDeviceGroupCommandBufferBeginInfo) WithDeviceMask(y uint32) VkDeviceGroupCommandBufferBeginInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.deviceMask = *ptr
 	return x
@@ -21478,14 +21478,14 @@ func (x *VkPipelineTessellationDomainOriginStateCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPipelineTessellationDomainOriginStateCreateInfo) AsPtr() *VkPipelineTessellationDomainOriginStateCreateInfo {
-	return x
+func (x VkPipelineTessellationDomainOriginStateCreateInfo) AsPtr() *VkPipelineTessellationDomainOriginStateCreateInfo {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPipelineTessellationDomainOriginStateCreateInfo) AsCPtr() *VkPipelineTessellationDomainOriginStateCreateInfo {
+func (x VkPipelineTessellationDomainOriginStateCreateInfo) AsCPtr() *VkPipelineTessellationDomainOriginStateCreateInfo {
 	clone := newVkPipelineTessellationDomainOriginStateCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -21497,13 +21497,13 @@ func (x VkPipelineTessellationDomainOriginStateCreateInfo) SType() VkStructureTy
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPipelineTessellationDomainOriginStateCreateInfo) WithDefaultSType() *VkPipelineTessellationDomainOriginStateCreateInfo {
+func (x VkPipelineTessellationDomainOriginStateCreateInfo) WithDefaultSType() VkPipelineTessellationDomainOriginStateCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPipelineTessellationDomainOriginStateCreateInfo
-func (x *VkPipelineTessellationDomainOriginStateCreateInfo) WithSType(y VkStructureType) *VkPipelineTessellationDomainOriginStateCreateInfo {
+func (x VkPipelineTessellationDomainOriginStateCreateInfo) WithSType(y VkStructureType) VkPipelineTessellationDomainOriginStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -21517,7 +21517,7 @@ func (x VkPipelineTessellationDomainOriginStateCreateInfo) PNext() unsafe.Pointe
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPipelineTessellationDomainOriginStateCreateInfo
-func (x *VkPipelineTessellationDomainOriginStateCreateInfo) WithPNext(y unsafe.Pointer) *VkPipelineTessellationDomainOriginStateCreateInfo {
+func (x VkPipelineTessellationDomainOriginStateCreateInfo) WithPNext(y unsafe.Pointer) VkPipelineTessellationDomainOriginStateCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -21531,7 +21531,7 @@ func (x VkPipelineTessellationDomainOriginStateCreateInfo) DomainOrigin() VkTess
 
 // WithDomainOrigin copies the provided value into C space and stores it
 // at domainOrigin on VkPipelineTessellationDomainOriginStateCreateInfo
-func (x *VkPipelineTessellationDomainOriginStateCreateInfo) WithDomainOrigin(y VkTessellationDomainOrigin) *VkPipelineTessellationDomainOriginStateCreateInfo {
+func (x VkPipelineTessellationDomainOriginStateCreateInfo) WithDomainOrigin(y VkTessellationDomainOrigin) VkPipelineTessellationDomainOriginStateCreateInfo {
 	ptr := /* Identifier */ (*C.VkTessellationDomainOrigin)(&y)
 	x.domainOrigin = *ptr
 	return x
@@ -21558,12 +21558,12 @@ func (x *VkRenderPassMultiviewCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkRenderPassMultiviewCreateInfo) AsPtr() *VkRenderPassMultiviewCreateInfo { return x }
+func (x VkRenderPassMultiviewCreateInfo) AsPtr() *VkRenderPassMultiviewCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkRenderPassMultiviewCreateInfo) AsCPtr() *VkRenderPassMultiviewCreateInfo {
+func (x VkRenderPassMultiviewCreateInfo) AsCPtr() *VkRenderPassMultiviewCreateInfo {
 	clone := newVkRenderPassMultiviewCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -21575,13 +21575,13 @@ func (x VkRenderPassMultiviewCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkRenderPassMultiviewCreateInfo) WithDefaultSType() *VkRenderPassMultiviewCreateInfo {
+func (x VkRenderPassMultiviewCreateInfo) WithDefaultSType() VkRenderPassMultiviewCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_RENDER_PASS_MULTIVIEW_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkRenderPassMultiviewCreateInfo
-func (x *VkRenderPassMultiviewCreateInfo) WithSType(y VkStructureType) *VkRenderPassMultiviewCreateInfo {
+func (x VkRenderPassMultiviewCreateInfo) WithSType(y VkStructureType) VkRenderPassMultiviewCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -21595,7 +21595,7 @@ func (x VkRenderPassMultiviewCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkRenderPassMultiviewCreateInfo
-func (x *VkRenderPassMultiviewCreateInfo) WithPNext(y unsafe.Pointer) *VkRenderPassMultiviewCreateInfo {
+func (x VkRenderPassMultiviewCreateInfo) WithPNext(y unsafe.Pointer) VkRenderPassMultiviewCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -21609,7 +21609,7 @@ func (x VkRenderPassMultiviewCreateInfo) SubpassCount() uint32 {
 
 // WithSubpassCount copies the provided value into C space and stores it
 // at subpassCount on VkRenderPassMultiviewCreateInfo
-func (x *VkRenderPassMultiviewCreateInfo) WithSubpassCount(y uint32) *VkRenderPassMultiviewCreateInfo {
+func (x VkRenderPassMultiviewCreateInfo) WithSubpassCount(y uint32) VkRenderPassMultiviewCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.subpassCount = *ptr
 	return x
@@ -21626,7 +21626,7 @@ func (x VkRenderPassMultiviewCreateInfo) PViewMasks() []uint32 {
 
 // WithPViewMasks copies the provided value into C space and stores it
 // at pViewMasks on VkRenderPassMultiviewCreateInfo
-func (x *VkRenderPassMultiviewCreateInfo) WithPViewMasks(y []uint32) *VkRenderPassMultiviewCreateInfo {
+func (x VkRenderPassMultiviewCreateInfo) WithPViewMasks(y []uint32) VkRenderPassMultiviewCreateInfo {
 	ptr := func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
@@ -21647,7 +21647,7 @@ func (x VkRenderPassMultiviewCreateInfo) DependencyCount() uint32 {
 
 // WithDependencyCount copies the provided value into C space and stores it
 // at dependencyCount on VkRenderPassMultiviewCreateInfo
-func (x *VkRenderPassMultiviewCreateInfo) WithDependencyCount(y uint32) *VkRenderPassMultiviewCreateInfo {
+func (x VkRenderPassMultiviewCreateInfo) WithDependencyCount(y uint32) VkRenderPassMultiviewCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.dependencyCount = *ptr
 	return x
@@ -21664,7 +21664,7 @@ func (x VkRenderPassMultiviewCreateInfo) PViewOffsets() []int32 {
 
 // WithPViewOffsets copies the provided value into C space and stores it
 // at pViewOffsets on VkRenderPassMultiviewCreateInfo
-func (x *VkRenderPassMultiviewCreateInfo) WithPViewOffsets(y []int32) *VkRenderPassMultiviewCreateInfo {
+func (x VkRenderPassMultiviewCreateInfo) WithPViewOffsets(y []int32) VkRenderPassMultiviewCreateInfo {
 	ptr := func(x *[]int32) **C.int { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.int)(unsafe.Pointer(&((*x)[0])))
@@ -21685,7 +21685,7 @@ func (x VkRenderPassMultiviewCreateInfo) CorrelationMaskCount() uint32 {
 
 // WithCorrelationMaskCount copies the provided value into C space and stores it
 // at correlationMaskCount on VkRenderPassMultiviewCreateInfo
-func (x *VkRenderPassMultiviewCreateInfo) WithCorrelationMaskCount(y uint32) *VkRenderPassMultiviewCreateInfo {
+func (x VkRenderPassMultiviewCreateInfo) WithCorrelationMaskCount(y uint32) VkRenderPassMultiviewCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.correlationMaskCount = *ptr
 	return x
@@ -21702,7 +21702,7 @@ func (x VkRenderPassMultiviewCreateInfo) PCorrelationMasks() []uint32 {
 
 // WithPCorrelationMasks copies the provided value into C space and stores it
 // at pCorrelationMasks on VkRenderPassMultiviewCreateInfo
-func (x *VkRenderPassMultiviewCreateInfo) WithPCorrelationMasks(y []uint32) *VkRenderPassMultiviewCreateInfo {
+func (x VkRenderPassMultiviewCreateInfo) WithPCorrelationMasks(y []uint32) VkRenderPassMultiviewCreateInfo {
 	ptr := func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
@@ -21736,12 +21736,12 @@ func (x *VkPhysicalDeviceMultiviewFeatures) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceMultiviewFeatures) AsPtr() *VkPhysicalDeviceMultiviewFeatures { return x }
+func (x VkPhysicalDeviceMultiviewFeatures) AsPtr() *VkPhysicalDeviceMultiviewFeatures { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceMultiviewFeatures) AsCPtr() *VkPhysicalDeviceMultiviewFeatures {
+func (x VkPhysicalDeviceMultiviewFeatures) AsCPtr() *VkPhysicalDeviceMultiviewFeatures {
 	clone := newVkPhysicalDeviceMultiviewFeatures()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -21753,13 +21753,13 @@ func (x VkPhysicalDeviceMultiviewFeatures) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceMultiviewFeatures) WithDefaultSType() *VkPhysicalDeviceMultiviewFeatures {
+func (x VkPhysicalDeviceMultiviewFeatures) WithDefaultSType() VkPhysicalDeviceMultiviewFeatures {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_FEATURES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceMultiviewFeatures
-func (x *VkPhysicalDeviceMultiviewFeatures) WithSType(y VkStructureType) *VkPhysicalDeviceMultiviewFeatures {
+func (x VkPhysicalDeviceMultiviewFeatures) WithSType(y VkStructureType) VkPhysicalDeviceMultiviewFeatures {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -21773,7 +21773,7 @@ func (x VkPhysicalDeviceMultiviewFeatures) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceMultiviewFeatures
-func (x *VkPhysicalDeviceMultiviewFeatures) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceMultiviewFeatures {
+func (x VkPhysicalDeviceMultiviewFeatures) WithPNext(y unsafe.Pointer) VkPhysicalDeviceMultiviewFeatures {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -21787,7 +21787,7 @@ func (x VkPhysicalDeviceMultiviewFeatures) Multiview() VkBool32 {
 
 // WithMultiview copies the provided value into C space and stores it
 // at multiview on VkPhysicalDeviceMultiviewFeatures
-func (x *VkPhysicalDeviceMultiviewFeatures) WithMultiview(y VkBool32) *VkPhysicalDeviceMultiviewFeatures {
+func (x VkPhysicalDeviceMultiviewFeatures) WithMultiview(y VkBool32) VkPhysicalDeviceMultiviewFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.multiview = *ptr
 	return x
@@ -21801,7 +21801,7 @@ func (x VkPhysicalDeviceMultiviewFeatures) MultiviewGeometryShader() VkBool32 {
 
 // WithMultiviewGeometryShader copies the provided value into C space and stores it
 // at multiviewGeometryShader on VkPhysicalDeviceMultiviewFeatures
-func (x *VkPhysicalDeviceMultiviewFeatures) WithMultiviewGeometryShader(y VkBool32) *VkPhysicalDeviceMultiviewFeatures {
+func (x VkPhysicalDeviceMultiviewFeatures) WithMultiviewGeometryShader(y VkBool32) VkPhysicalDeviceMultiviewFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.multiviewGeometryShader = *ptr
 	return x
@@ -21815,7 +21815,7 @@ func (x VkPhysicalDeviceMultiviewFeatures) MultiviewTessellationShader() VkBool3
 
 // WithMultiviewTessellationShader copies the provided value into C space and stores it
 // at multiviewTessellationShader on VkPhysicalDeviceMultiviewFeatures
-func (x *VkPhysicalDeviceMultiviewFeatures) WithMultiviewTessellationShader(y VkBool32) *VkPhysicalDeviceMultiviewFeatures {
+func (x VkPhysicalDeviceMultiviewFeatures) WithMultiviewTessellationShader(y VkBool32) VkPhysicalDeviceMultiviewFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.multiviewTessellationShader = *ptr
 	return x
@@ -21842,12 +21842,12 @@ func (x *VkPhysicalDeviceMultiviewProperties) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceMultiviewProperties) AsPtr() *VkPhysicalDeviceMultiviewProperties { return x }
+func (x VkPhysicalDeviceMultiviewProperties) AsPtr() *VkPhysicalDeviceMultiviewProperties { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceMultiviewProperties) AsCPtr() *VkPhysicalDeviceMultiviewProperties {
+func (x VkPhysicalDeviceMultiviewProperties) AsCPtr() *VkPhysicalDeviceMultiviewProperties {
 	clone := newVkPhysicalDeviceMultiviewProperties()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -21859,13 +21859,13 @@ func (x VkPhysicalDeviceMultiviewProperties) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceMultiviewProperties) WithDefaultSType() *VkPhysicalDeviceMultiviewProperties {
+func (x VkPhysicalDeviceMultiviewProperties) WithDefaultSType() VkPhysicalDeviceMultiviewProperties {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PROPERTIES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceMultiviewProperties
-func (x *VkPhysicalDeviceMultiviewProperties) WithSType(y VkStructureType) *VkPhysicalDeviceMultiviewProperties {
+func (x VkPhysicalDeviceMultiviewProperties) WithSType(y VkStructureType) VkPhysicalDeviceMultiviewProperties {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -21879,7 +21879,7 @@ func (x VkPhysicalDeviceMultiviewProperties) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceMultiviewProperties
-func (x *VkPhysicalDeviceMultiviewProperties) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceMultiviewProperties {
+func (x VkPhysicalDeviceMultiviewProperties) WithPNext(y unsafe.Pointer) VkPhysicalDeviceMultiviewProperties {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -21897,37 +21897,12 @@ func (x VkPhysicalDeviceMultiviewProperties) MaxMultiviewInstanceIndex() uint32 
 	return *ptr
 }
 
-//VkPhysicalDeviceVariablePointerFeatures provides a go interface for VkPhysicalDeviceVariablePointerFeatures.
+//VkPhysicalDeviceVariablePointerFeatures is an alias to VkPhysicalDeviceVariablePointersFeatures.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPhysicalDeviceVariablePointerFeatures.html
-type VkPhysicalDeviceVariablePointerFeatures C.struct_VkPhysicalDeviceVariablePointerFeatures
-
-// NewVkPhysicalDeviceVariablePointerFeatures allocates an instance of this struct in the C memory instead
-// of the Go memory.
-func newVkPhysicalDeviceVariablePointerFeatures() *VkPhysicalDeviceVariablePointerFeatures {
-	sz := unsafe.Sizeof(VkPhysicalDeviceVariablePointerFeatures{})
-	ptr := C.malloc(C.ulong(sz))
-	C.memset(ptr, 0, C.ulong(sz))
-	return (*VkPhysicalDeviceVariablePointerFeatures)(ptr)
-}
-
-// Free releases the memory allocated by the NewVkPhysicalDeviceVariablePointerFeatures method.
-// It does not free pointers stored in the structure. It should only
-// be used on CPtr instances.
-func (x *VkPhysicalDeviceVariablePointerFeatures) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceVariablePointerFeatures) AsPtr() *VkPhysicalDeviceVariablePointerFeatures {
-	return x
-}
-
-// AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceVariablePointerFeatures) AsCPtr() *VkPhysicalDeviceVariablePointerFeatures {
-	clone := newVkPhysicalDeviceVariablePointerFeatures()
-	*clone = *x
-	return clone
-}
+//
+// Deprecated: Most Aliases in the Vulkan spec are for compatibility purposes as extensions get
+// promoted to features. If possible, update code to use the promoted name: VkPhysicalDeviceVariablePointersFeatures.
+type VkPhysicalDeviceVariablePointerFeatures = VkPhysicalDeviceVariablePointersFeatures
 
 //VkDeviceGroupRenderPassBeginInfo provides a go interface for VkDeviceGroupRenderPassBeginInfo.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceGroupRenderPassBeginInfo.html
@@ -21950,12 +21925,12 @@ func (x *VkDeviceGroupRenderPassBeginInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDeviceGroupRenderPassBeginInfo) AsPtr() *VkDeviceGroupRenderPassBeginInfo { return x }
+func (x VkDeviceGroupRenderPassBeginInfo) AsPtr() *VkDeviceGroupRenderPassBeginInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDeviceGroupRenderPassBeginInfo) AsCPtr() *VkDeviceGroupRenderPassBeginInfo {
+func (x VkDeviceGroupRenderPassBeginInfo) AsCPtr() *VkDeviceGroupRenderPassBeginInfo {
 	clone := newVkDeviceGroupRenderPassBeginInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -21967,13 +21942,13 @@ func (x VkDeviceGroupRenderPassBeginInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkDeviceGroupRenderPassBeginInfo) WithDefaultSType() *VkDeviceGroupRenderPassBeginInfo {
+func (x VkDeviceGroupRenderPassBeginInfo) WithDefaultSType() VkDeviceGroupRenderPassBeginInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_DEVICE_GROUP_RENDER_PASS_BEGIN_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkDeviceGroupRenderPassBeginInfo
-func (x *VkDeviceGroupRenderPassBeginInfo) WithSType(y VkStructureType) *VkDeviceGroupRenderPassBeginInfo {
+func (x VkDeviceGroupRenderPassBeginInfo) WithSType(y VkStructureType) VkDeviceGroupRenderPassBeginInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -21987,7 +21962,7 @@ func (x VkDeviceGroupRenderPassBeginInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkDeviceGroupRenderPassBeginInfo
-func (x *VkDeviceGroupRenderPassBeginInfo) WithPNext(y unsafe.Pointer) *VkDeviceGroupRenderPassBeginInfo {
+func (x VkDeviceGroupRenderPassBeginInfo) WithPNext(y unsafe.Pointer) VkDeviceGroupRenderPassBeginInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -22001,7 +21976,7 @@ func (x VkDeviceGroupRenderPassBeginInfo) DeviceMask() uint32 {
 
 // WithDeviceMask copies the provided value into C space and stores it
 // at deviceMask on VkDeviceGroupRenderPassBeginInfo
-func (x *VkDeviceGroupRenderPassBeginInfo) WithDeviceMask(y uint32) *VkDeviceGroupRenderPassBeginInfo {
+func (x VkDeviceGroupRenderPassBeginInfo) WithDeviceMask(y uint32) VkDeviceGroupRenderPassBeginInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.deviceMask = *ptr
 	return x
@@ -22015,7 +21990,7 @@ func (x VkDeviceGroupRenderPassBeginInfo) DeviceRenderAreaCount() uint32 {
 
 // WithDeviceRenderAreaCount copies the provided value into C space and stores it
 // at deviceRenderAreaCount on VkDeviceGroupRenderPassBeginInfo
-func (x *VkDeviceGroupRenderPassBeginInfo) WithDeviceRenderAreaCount(y uint32) *VkDeviceGroupRenderPassBeginInfo {
+func (x VkDeviceGroupRenderPassBeginInfo) WithDeviceRenderAreaCount(y uint32) VkDeviceGroupRenderPassBeginInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.deviceRenderAreaCount = *ptr
 	return x
@@ -22032,7 +22007,7 @@ func (x VkDeviceGroupRenderPassBeginInfo) PDeviceRenderAreas() []VkRect2D {
 
 // WithPDeviceRenderAreas copies the provided value into C space and stores it
 // at pDeviceRenderAreas on VkDeviceGroupRenderPassBeginInfo
-func (x *VkDeviceGroupRenderPassBeginInfo) WithPDeviceRenderAreas(y []VkRect2D) *VkDeviceGroupRenderPassBeginInfo {
+func (x VkDeviceGroupRenderPassBeginInfo) WithPDeviceRenderAreas(y []VkRect2D) VkDeviceGroupRenderPassBeginInfo {
 	ptr := func(x *[]VkRect2D) **C.VkRect2D { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkRect2D)(unsafe.Pointer(&((*x)[0])))
@@ -22066,12 +22041,12 @@ func (x *VkMemoryAllocateFlagsInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkMemoryAllocateFlagsInfo) AsPtr() *VkMemoryAllocateFlagsInfo { return x }
+func (x VkMemoryAllocateFlagsInfo) AsPtr() *VkMemoryAllocateFlagsInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkMemoryAllocateFlagsInfo) AsCPtr() *VkMemoryAllocateFlagsInfo {
+func (x VkMemoryAllocateFlagsInfo) AsCPtr() *VkMemoryAllocateFlagsInfo {
 	clone := newVkMemoryAllocateFlagsInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -22083,13 +22058,13 @@ func (x VkMemoryAllocateFlagsInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkMemoryAllocateFlagsInfo) WithDefaultSType() *VkMemoryAllocateFlagsInfo {
+func (x VkMemoryAllocateFlagsInfo) WithDefaultSType() VkMemoryAllocateFlagsInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_FLAGS_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkMemoryAllocateFlagsInfo
-func (x *VkMemoryAllocateFlagsInfo) WithSType(y VkStructureType) *VkMemoryAllocateFlagsInfo {
+func (x VkMemoryAllocateFlagsInfo) WithSType(y VkStructureType) VkMemoryAllocateFlagsInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -22103,7 +22078,7 @@ func (x VkMemoryAllocateFlagsInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkMemoryAllocateFlagsInfo
-func (x *VkMemoryAllocateFlagsInfo) WithPNext(y unsafe.Pointer) *VkMemoryAllocateFlagsInfo {
+func (x VkMemoryAllocateFlagsInfo) WithPNext(y unsafe.Pointer) VkMemoryAllocateFlagsInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -22117,7 +22092,7 @@ func (x VkMemoryAllocateFlagsInfo) Flags() VkMemoryAllocateFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkMemoryAllocateFlagsInfo
-func (x *VkMemoryAllocateFlagsInfo) WithFlags(y VkMemoryAllocateFlags) *VkMemoryAllocateFlagsInfo {
+func (x VkMemoryAllocateFlagsInfo) WithFlags(y VkMemoryAllocateFlags) VkMemoryAllocateFlagsInfo {
 	ptr := /* Identifier */ (*C.VkMemoryAllocateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -22131,7 +22106,7 @@ func (x VkMemoryAllocateFlagsInfo) DeviceMask() uint32 {
 
 // WithDeviceMask copies the provided value into C space and stores it
 // at deviceMask on VkMemoryAllocateFlagsInfo
-func (x *VkMemoryAllocateFlagsInfo) WithDeviceMask(y uint32) *VkMemoryAllocateFlagsInfo {
+func (x VkMemoryAllocateFlagsInfo) WithDeviceMask(y uint32) VkMemoryAllocateFlagsInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.deviceMask = *ptr
 	return x
@@ -22158,14 +22133,14 @@ func (x *VkPhysicalDeviceProtectedMemoryFeatures) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceProtectedMemoryFeatures) AsPtr() *VkPhysicalDeviceProtectedMemoryFeatures {
-	return x
+func (x VkPhysicalDeviceProtectedMemoryFeatures) AsPtr() *VkPhysicalDeviceProtectedMemoryFeatures {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceProtectedMemoryFeatures) AsCPtr() *VkPhysicalDeviceProtectedMemoryFeatures {
+func (x VkPhysicalDeviceProtectedMemoryFeatures) AsCPtr() *VkPhysicalDeviceProtectedMemoryFeatures {
 	clone := newVkPhysicalDeviceProtectedMemoryFeatures()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -22177,13 +22152,13 @@ func (x VkPhysicalDeviceProtectedMemoryFeatures) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceProtectedMemoryFeatures) WithDefaultSType() *VkPhysicalDeviceProtectedMemoryFeatures {
+func (x VkPhysicalDeviceProtectedMemoryFeatures) WithDefaultSType() VkPhysicalDeviceProtectedMemoryFeatures {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_FEATURES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceProtectedMemoryFeatures
-func (x *VkPhysicalDeviceProtectedMemoryFeatures) WithSType(y VkStructureType) *VkPhysicalDeviceProtectedMemoryFeatures {
+func (x VkPhysicalDeviceProtectedMemoryFeatures) WithSType(y VkStructureType) VkPhysicalDeviceProtectedMemoryFeatures {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -22197,7 +22172,7 @@ func (x VkPhysicalDeviceProtectedMemoryFeatures) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceProtectedMemoryFeatures
-func (x *VkPhysicalDeviceProtectedMemoryFeatures) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceProtectedMemoryFeatures {
+func (x VkPhysicalDeviceProtectedMemoryFeatures) WithPNext(y unsafe.Pointer) VkPhysicalDeviceProtectedMemoryFeatures {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -22211,7 +22186,7 @@ func (x VkPhysicalDeviceProtectedMemoryFeatures) ProtectedMemory() VkBool32 {
 
 // WithProtectedMemory copies the provided value into C space and stores it
 // at protectedMemory on VkPhysicalDeviceProtectedMemoryFeatures
-func (x *VkPhysicalDeviceProtectedMemoryFeatures) WithProtectedMemory(y VkBool32) *VkPhysicalDeviceProtectedMemoryFeatures {
+func (x VkPhysicalDeviceProtectedMemoryFeatures) WithProtectedMemory(y VkBool32) VkPhysicalDeviceProtectedMemoryFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.protectedMemory = *ptr
 	return x
@@ -22238,14 +22213,14 @@ func (x *VkPhysicalDeviceProtectedMemoryProperties) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceProtectedMemoryProperties) AsPtr() *VkPhysicalDeviceProtectedMemoryProperties {
-	return x
+func (x VkPhysicalDeviceProtectedMemoryProperties) AsPtr() *VkPhysicalDeviceProtectedMemoryProperties {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceProtectedMemoryProperties) AsCPtr() *VkPhysicalDeviceProtectedMemoryProperties {
+func (x VkPhysicalDeviceProtectedMemoryProperties) AsCPtr() *VkPhysicalDeviceProtectedMemoryProperties {
 	clone := newVkPhysicalDeviceProtectedMemoryProperties()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -22257,13 +22232,13 @@ func (x VkPhysicalDeviceProtectedMemoryProperties) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceProtectedMemoryProperties) WithDefaultSType() *VkPhysicalDeviceProtectedMemoryProperties {
+func (x VkPhysicalDeviceProtectedMemoryProperties) WithDefaultSType() VkPhysicalDeviceProtectedMemoryProperties {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_PROPERTIES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceProtectedMemoryProperties
-func (x *VkPhysicalDeviceProtectedMemoryProperties) WithSType(y VkStructureType) *VkPhysicalDeviceProtectedMemoryProperties {
+func (x VkPhysicalDeviceProtectedMemoryProperties) WithSType(y VkStructureType) VkPhysicalDeviceProtectedMemoryProperties {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -22277,7 +22252,7 @@ func (x VkPhysicalDeviceProtectedMemoryProperties) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceProtectedMemoryProperties
-func (x *VkPhysicalDeviceProtectedMemoryProperties) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceProtectedMemoryProperties {
+func (x VkPhysicalDeviceProtectedMemoryProperties) WithPNext(y unsafe.Pointer) VkPhysicalDeviceProtectedMemoryProperties {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -22310,12 +22285,12 @@ func (x *VkDeviceQueueInfo2) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDeviceQueueInfo2) AsPtr() *VkDeviceQueueInfo2 { return x }
+func (x VkDeviceQueueInfo2) AsPtr() *VkDeviceQueueInfo2 { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDeviceQueueInfo2) AsCPtr() *VkDeviceQueueInfo2 {
+func (x VkDeviceQueueInfo2) AsCPtr() *VkDeviceQueueInfo2 {
 	clone := newVkDeviceQueueInfo2()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -22327,13 +22302,13 @@ func (x VkDeviceQueueInfo2) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkDeviceQueueInfo2) WithDefaultSType() *VkDeviceQueueInfo2 {
+func (x VkDeviceQueueInfo2) WithDefaultSType() VkDeviceQueueInfo2 {
 	return x.WithSType(VK_STRUCTURE_TYPE_DEVICE_QUEUE_INFO_2)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkDeviceQueueInfo2
-func (x *VkDeviceQueueInfo2) WithSType(y VkStructureType) *VkDeviceQueueInfo2 {
+func (x VkDeviceQueueInfo2) WithSType(y VkStructureType) VkDeviceQueueInfo2 {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -22347,7 +22322,7 @@ func (x VkDeviceQueueInfo2) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkDeviceQueueInfo2
-func (x *VkDeviceQueueInfo2) WithPNext(y unsafe.Pointer) *VkDeviceQueueInfo2 {
+func (x VkDeviceQueueInfo2) WithPNext(y unsafe.Pointer) VkDeviceQueueInfo2 {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -22361,7 +22336,7 @@ func (x VkDeviceQueueInfo2) Flags() VkDeviceQueueCreateFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkDeviceQueueInfo2
-func (x *VkDeviceQueueInfo2) WithFlags(y VkDeviceQueueCreateFlags) *VkDeviceQueueInfo2 {
+func (x VkDeviceQueueInfo2) WithFlags(y VkDeviceQueueCreateFlags) VkDeviceQueueInfo2 {
 	ptr := /* Identifier */ (*C.VkDeviceQueueCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -22375,7 +22350,7 @@ func (x VkDeviceQueueInfo2) QueueFamilyIndex() uint32 {
 
 // WithQueueFamilyIndex copies the provided value into C space and stores it
 // at queueFamilyIndex on VkDeviceQueueInfo2
-func (x *VkDeviceQueueInfo2) WithQueueFamilyIndex(y uint32) *VkDeviceQueueInfo2 {
+func (x VkDeviceQueueInfo2) WithQueueFamilyIndex(y uint32) VkDeviceQueueInfo2 {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.queueFamilyIndex = *ptr
 	return x
@@ -22389,7 +22364,7 @@ func (x VkDeviceQueueInfo2) QueueIndex() uint32 {
 
 // WithQueueIndex copies the provided value into C space and stores it
 // at queueIndex on VkDeviceQueueInfo2
-func (x *VkDeviceQueueInfo2) WithQueueIndex(y uint32) *VkDeviceQueueInfo2 {
+func (x VkDeviceQueueInfo2) WithQueueIndex(y uint32) VkDeviceQueueInfo2 {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.queueIndex = *ptr
 	return x
@@ -22416,12 +22391,12 @@ func (x *VkProtectedSubmitInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkProtectedSubmitInfo) AsPtr() *VkProtectedSubmitInfo { return x }
+func (x VkProtectedSubmitInfo) AsPtr() *VkProtectedSubmitInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkProtectedSubmitInfo) AsCPtr() *VkProtectedSubmitInfo {
+func (x VkProtectedSubmitInfo) AsCPtr() *VkProtectedSubmitInfo {
 	clone := newVkProtectedSubmitInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -22433,13 +22408,13 @@ func (x VkProtectedSubmitInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkProtectedSubmitInfo) WithDefaultSType() *VkProtectedSubmitInfo {
+func (x VkProtectedSubmitInfo) WithDefaultSType() VkProtectedSubmitInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_PROTECTED_SUBMIT_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkProtectedSubmitInfo
-func (x *VkProtectedSubmitInfo) WithSType(y VkStructureType) *VkProtectedSubmitInfo {
+func (x VkProtectedSubmitInfo) WithSType(y VkStructureType) VkProtectedSubmitInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -22453,7 +22428,7 @@ func (x VkProtectedSubmitInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkProtectedSubmitInfo
-func (x *VkProtectedSubmitInfo) WithPNext(y unsafe.Pointer) *VkProtectedSubmitInfo {
+func (x VkProtectedSubmitInfo) WithPNext(y unsafe.Pointer) VkProtectedSubmitInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -22467,7 +22442,7 @@ func (x VkProtectedSubmitInfo) ProtectedSubmit() VkBool32 {
 
 // WithProtectedSubmit copies the provided value into C space and stores it
 // at protectedSubmit on VkProtectedSubmitInfo
-func (x *VkProtectedSubmitInfo) WithProtectedSubmit(y VkBool32) *VkProtectedSubmitInfo {
+func (x VkProtectedSubmitInfo) WithProtectedSubmit(y VkBool32) VkProtectedSubmitInfo {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.protectedSubmit = *ptr
 	return x
@@ -22494,14 +22469,14 @@ func (x *VkPhysicalDeviceExternalSemaphoreInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceExternalSemaphoreInfo) AsPtr() *VkPhysicalDeviceExternalSemaphoreInfo {
-	return x
+func (x VkPhysicalDeviceExternalSemaphoreInfo) AsPtr() *VkPhysicalDeviceExternalSemaphoreInfo {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceExternalSemaphoreInfo) AsCPtr() *VkPhysicalDeviceExternalSemaphoreInfo {
+func (x VkPhysicalDeviceExternalSemaphoreInfo) AsCPtr() *VkPhysicalDeviceExternalSemaphoreInfo {
 	clone := newVkPhysicalDeviceExternalSemaphoreInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -22513,13 +22488,13 @@ func (x VkPhysicalDeviceExternalSemaphoreInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceExternalSemaphoreInfo) WithDefaultSType() *VkPhysicalDeviceExternalSemaphoreInfo {
+func (x VkPhysicalDeviceExternalSemaphoreInfo) WithDefaultSType() VkPhysicalDeviceExternalSemaphoreInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_SEMAPHORE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceExternalSemaphoreInfo
-func (x *VkPhysicalDeviceExternalSemaphoreInfo) WithSType(y VkStructureType) *VkPhysicalDeviceExternalSemaphoreInfo {
+func (x VkPhysicalDeviceExternalSemaphoreInfo) WithSType(y VkStructureType) VkPhysicalDeviceExternalSemaphoreInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -22533,7 +22508,7 @@ func (x VkPhysicalDeviceExternalSemaphoreInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceExternalSemaphoreInfo
-func (x *VkPhysicalDeviceExternalSemaphoreInfo) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceExternalSemaphoreInfo {
+func (x VkPhysicalDeviceExternalSemaphoreInfo) WithPNext(y unsafe.Pointer) VkPhysicalDeviceExternalSemaphoreInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -22547,7 +22522,7 @@ func (x VkPhysicalDeviceExternalSemaphoreInfo) HandleType() VkExternalSemaphoreH
 
 // WithHandleType copies the provided value into C space and stores it
 // at handleType on VkPhysicalDeviceExternalSemaphoreInfo
-func (x *VkPhysicalDeviceExternalSemaphoreInfo) WithHandleType(y VkExternalSemaphoreHandleTypeFlagBits) *VkPhysicalDeviceExternalSemaphoreInfo {
+func (x VkPhysicalDeviceExternalSemaphoreInfo) WithHandleType(y VkExternalSemaphoreHandleTypeFlagBits) VkPhysicalDeviceExternalSemaphoreInfo {
 	ptr := /* Identifier */ (*C.VkExternalSemaphoreHandleTypeFlagBits)(&y)
 	x.handleType = *ptr
 	return x
@@ -22574,12 +22549,12 @@ func (x *VkExportMemoryAllocateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkExportMemoryAllocateInfo) AsPtr() *VkExportMemoryAllocateInfo { return x }
+func (x VkExportMemoryAllocateInfo) AsPtr() *VkExportMemoryAllocateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkExportMemoryAllocateInfo) AsCPtr() *VkExportMemoryAllocateInfo {
+func (x VkExportMemoryAllocateInfo) AsCPtr() *VkExportMemoryAllocateInfo {
 	clone := newVkExportMemoryAllocateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -22591,13 +22566,13 @@ func (x VkExportMemoryAllocateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkExportMemoryAllocateInfo) WithDefaultSType() *VkExportMemoryAllocateInfo {
+func (x VkExportMemoryAllocateInfo) WithDefaultSType() VkExportMemoryAllocateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkExportMemoryAllocateInfo
-func (x *VkExportMemoryAllocateInfo) WithSType(y VkStructureType) *VkExportMemoryAllocateInfo {
+func (x VkExportMemoryAllocateInfo) WithSType(y VkStructureType) VkExportMemoryAllocateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -22611,7 +22586,7 @@ func (x VkExportMemoryAllocateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkExportMemoryAllocateInfo
-func (x *VkExportMemoryAllocateInfo) WithPNext(y unsafe.Pointer) *VkExportMemoryAllocateInfo {
+func (x VkExportMemoryAllocateInfo) WithPNext(y unsafe.Pointer) VkExportMemoryAllocateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -22625,7 +22600,7 @@ func (x VkExportMemoryAllocateInfo) HandleTypes() VkExternalMemoryHandleTypeFlag
 
 // WithHandleTypes copies the provided value into C space and stores it
 // at handleTypes on VkExportMemoryAllocateInfo
-func (x *VkExportMemoryAllocateInfo) WithHandleTypes(y VkExternalMemoryHandleTypeFlags) *VkExportMemoryAllocateInfo {
+func (x VkExportMemoryAllocateInfo) WithHandleTypes(y VkExternalMemoryHandleTypeFlags) VkExportMemoryAllocateInfo {
 	ptr := /* Identifier */ (*C.VkExternalMemoryHandleTypeFlags)(&y)
 	x.handleTypes = *ptr
 	return x
@@ -22652,12 +22627,12 @@ func (x *VkSamplerYcbcrConversionCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkSamplerYcbcrConversionCreateInfo) AsPtr() *VkSamplerYcbcrConversionCreateInfo { return x }
+func (x VkSamplerYcbcrConversionCreateInfo) AsPtr() *VkSamplerYcbcrConversionCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkSamplerYcbcrConversionCreateInfo) AsCPtr() *VkSamplerYcbcrConversionCreateInfo {
+func (x VkSamplerYcbcrConversionCreateInfo) AsCPtr() *VkSamplerYcbcrConversionCreateInfo {
 	clone := newVkSamplerYcbcrConversionCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -22669,13 +22644,13 @@ func (x VkSamplerYcbcrConversionCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkSamplerYcbcrConversionCreateInfo) WithDefaultSType() *VkSamplerYcbcrConversionCreateInfo {
+func (x VkSamplerYcbcrConversionCreateInfo) WithDefaultSType() VkSamplerYcbcrConversionCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkSamplerYcbcrConversionCreateInfo
-func (x *VkSamplerYcbcrConversionCreateInfo) WithSType(y VkStructureType) *VkSamplerYcbcrConversionCreateInfo {
+func (x VkSamplerYcbcrConversionCreateInfo) WithSType(y VkStructureType) VkSamplerYcbcrConversionCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -22689,7 +22664,7 @@ func (x VkSamplerYcbcrConversionCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkSamplerYcbcrConversionCreateInfo
-func (x *VkSamplerYcbcrConversionCreateInfo) WithPNext(y unsafe.Pointer) *VkSamplerYcbcrConversionCreateInfo {
+func (x VkSamplerYcbcrConversionCreateInfo) WithPNext(y unsafe.Pointer) VkSamplerYcbcrConversionCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -22703,7 +22678,7 @@ func (x VkSamplerYcbcrConversionCreateInfo) Format() VkFormat {
 
 // WithFormat copies the provided value into C space and stores it
 // at format on VkSamplerYcbcrConversionCreateInfo
-func (x *VkSamplerYcbcrConversionCreateInfo) WithFormat(y VkFormat) *VkSamplerYcbcrConversionCreateInfo {
+func (x VkSamplerYcbcrConversionCreateInfo) WithFormat(y VkFormat) VkSamplerYcbcrConversionCreateInfo {
 	ptr := /* Identifier */ (*C.VkFormat)(&y)
 	x.format = *ptr
 	return x
@@ -22717,7 +22692,7 @@ func (x VkSamplerYcbcrConversionCreateInfo) YcbcrModel() VkSamplerYcbcrModelConv
 
 // WithYcbcrModel copies the provided value into C space and stores it
 // at ycbcrModel on VkSamplerYcbcrConversionCreateInfo
-func (x *VkSamplerYcbcrConversionCreateInfo) WithYcbcrModel(y VkSamplerYcbcrModelConversion) *VkSamplerYcbcrConversionCreateInfo {
+func (x VkSamplerYcbcrConversionCreateInfo) WithYcbcrModel(y VkSamplerYcbcrModelConversion) VkSamplerYcbcrConversionCreateInfo {
 	ptr := /* Identifier */ (*C.VkSamplerYcbcrModelConversion)(&y)
 	x.ycbcrModel = *ptr
 	return x
@@ -22731,7 +22706,7 @@ func (x VkSamplerYcbcrConversionCreateInfo) YcbcrRange() VkSamplerYcbcrRange {
 
 // WithYcbcrRange copies the provided value into C space and stores it
 // at ycbcrRange on VkSamplerYcbcrConversionCreateInfo
-func (x *VkSamplerYcbcrConversionCreateInfo) WithYcbcrRange(y VkSamplerYcbcrRange) *VkSamplerYcbcrConversionCreateInfo {
+func (x VkSamplerYcbcrConversionCreateInfo) WithYcbcrRange(y VkSamplerYcbcrRange) VkSamplerYcbcrConversionCreateInfo {
 	ptr := /* Identifier */ (*C.VkSamplerYcbcrRange)(&y)
 	x.ycbcrRange = *ptr
 	return x
@@ -22745,7 +22720,7 @@ func (x VkSamplerYcbcrConversionCreateInfo) Components() VkComponentMapping {
 
 // WithComponents copies the provided value into C space and stores it
 // at components on VkSamplerYcbcrConversionCreateInfo
-func (x *VkSamplerYcbcrConversionCreateInfo) WithComponents(y VkComponentMapping) *VkSamplerYcbcrConversionCreateInfo {
+func (x VkSamplerYcbcrConversionCreateInfo) WithComponents(y VkComponentMapping) VkSamplerYcbcrConversionCreateInfo {
 	ptr := /* Identifier */ (*C.VkComponentMapping)(&y)
 	x.components = *ptr
 	return x
@@ -22759,7 +22734,7 @@ func (x VkSamplerYcbcrConversionCreateInfo) XChromaOffset() VkChromaLocation {
 
 // WithXChromaOffset copies the provided value into C space and stores it
 // at xChromaOffset on VkSamplerYcbcrConversionCreateInfo
-func (x *VkSamplerYcbcrConversionCreateInfo) WithXChromaOffset(y VkChromaLocation) *VkSamplerYcbcrConversionCreateInfo {
+func (x VkSamplerYcbcrConversionCreateInfo) WithXChromaOffset(y VkChromaLocation) VkSamplerYcbcrConversionCreateInfo {
 	ptr := /* Identifier */ (*C.VkChromaLocation)(&y)
 	x.xChromaOffset = *ptr
 	return x
@@ -22773,7 +22748,7 @@ func (x VkSamplerYcbcrConversionCreateInfo) YChromaOffset() VkChromaLocation {
 
 // WithYChromaOffset copies the provided value into C space and stores it
 // at yChromaOffset on VkSamplerYcbcrConversionCreateInfo
-func (x *VkSamplerYcbcrConversionCreateInfo) WithYChromaOffset(y VkChromaLocation) *VkSamplerYcbcrConversionCreateInfo {
+func (x VkSamplerYcbcrConversionCreateInfo) WithYChromaOffset(y VkChromaLocation) VkSamplerYcbcrConversionCreateInfo {
 	ptr := /* Identifier */ (*C.VkChromaLocation)(&y)
 	x.yChromaOffset = *ptr
 	return x
@@ -22787,7 +22762,7 @@ func (x VkSamplerYcbcrConversionCreateInfo) ChromaFilter() VkFilter {
 
 // WithChromaFilter copies the provided value into C space and stores it
 // at chromaFilter on VkSamplerYcbcrConversionCreateInfo
-func (x *VkSamplerYcbcrConversionCreateInfo) WithChromaFilter(y VkFilter) *VkSamplerYcbcrConversionCreateInfo {
+func (x VkSamplerYcbcrConversionCreateInfo) WithChromaFilter(y VkFilter) VkSamplerYcbcrConversionCreateInfo {
 	ptr := /* Identifier */ (*C.VkFilter)(&y)
 	x.chromaFilter = *ptr
 	return x
@@ -22801,7 +22776,7 @@ func (x VkSamplerYcbcrConversionCreateInfo) ForceExplicitReconstruction() VkBool
 
 // WithForceExplicitReconstruction copies the provided value into C space and stores it
 // at forceExplicitReconstruction on VkSamplerYcbcrConversionCreateInfo
-func (x *VkSamplerYcbcrConversionCreateInfo) WithForceExplicitReconstruction(y VkBool32) *VkSamplerYcbcrConversionCreateInfo {
+func (x VkSamplerYcbcrConversionCreateInfo) WithForceExplicitReconstruction(y VkBool32) VkSamplerYcbcrConversionCreateInfo {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.forceExplicitReconstruction = *ptr
 	return x
@@ -22828,12 +22803,12 @@ func (x *VkSamplerYcbcrConversionInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkSamplerYcbcrConversionInfo) AsPtr() *VkSamplerYcbcrConversionInfo { return x }
+func (x VkSamplerYcbcrConversionInfo) AsPtr() *VkSamplerYcbcrConversionInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkSamplerYcbcrConversionInfo) AsCPtr() *VkSamplerYcbcrConversionInfo {
+func (x VkSamplerYcbcrConversionInfo) AsCPtr() *VkSamplerYcbcrConversionInfo {
 	clone := newVkSamplerYcbcrConversionInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -22845,13 +22820,13 @@ func (x VkSamplerYcbcrConversionInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkSamplerYcbcrConversionInfo) WithDefaultSType() *VkSamplerYcbcrConversionInfo {
+func (x VkSamplerYcbcrConversionInfo) WithDefaultSType() VkSamplerYcbcrConversionInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkSamplerYcbcrConversionInfo
-func (x *VkSamplerYcbcrConversionInfo) WithSType(y VkStructureType) *VkSamplerYcbcrConversionInfo {
+func (x VkSamplerYcbcrConversionInfo) WithSType(y VkStructureType) VkSamplerYcbcrConversionInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -22865,7 +22840,7 @@ func (x VkSamplerYcbcrConversionInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkSamplerYcbcrConversionInfo
-func (x *VkSamplerYcbcrConversionInfo) WithPNext(y unsafe.Pointer) *VkSamplerYcbcrConversionInfo {
+func (x VkSamplerYcbcrConversionInfo) WithPNext(y unsafe.Pointer) VkSamplerYcbcrConversionInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -22881,7 +22856,7 @@ func (x VkSamplerYcbcrConversionInfo) Conversion() VkSamplerYcbcrConversion {
 
 // WithConversion copies the provided value into C space and stores it
 // at conversion on VkSamplerYcbcrConversionInfo
-func (x *VkSamplerYcbcrConversionInfo) WithConversion(y VkSamplerYcbcrConversion) *VkSamplerYcbcrConversionInfo {
+func (x VkSamplerYcbcrConversionInfo) WithConversion(y VkSamplerYcbcrConversion) VkSamplerYcbcrConversionInfo {
 	ptr := func(x *VkSamplerYcbcrConversion) *C.VkSamplerYcbcrConversion { /* Handle */
 		return (*C.VkSamplerYcbcrConversion)(unsafe.Pointer(x))
 	}(&y)
@@ -22910,12 +22885,12 @@ func (x *VkBindImagePlaneMemoryInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkBindImagePlaneMemoryInfo) AsPtr() *VkBindImagePlaneMemoryInfo { return x }
+func (x VkBindImagePlaneMemoryInfo) AsPtr() *VkBindImagePlaneMemoryInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkBindImagePlaneMemoryInfo) AsCPtr() *VkBindImagePlaneMemoryInfo {
+func (x VkBindImagePlaneMemoryInfo) AsCPtr() *VkBindImagePlaneMemoryInfo {
 	clone := newVkBindImagePlaneMemoryInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -22927,13 +22902,13 @@ func (x VkBindImagePlaneMemoryInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkBindImagePlaneMemoryInfo) WithDefaultSType() *VkBindImagePlaneMemoryInfo {
+func (x VkBindImagePlaneMemoryInfo) WithDefaultSType() VkBindImagePlaneMemoryInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_BIND_IMAGE_PLANE_MEMORY_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkBindImagePlaneMemoryInfo
-func (x *VkBindImagePlaneMemoryInfo) WithSType(y VkStructureType) *VkBindImagePlaneMemoryInfo {
+func (x VkBindImagePlaneMemoryInfo) WithSType(y VkStructureType) VkBindImagePlaneMemoryInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -22947,7 +22922,7 @@ func (x VkBindImagePlaneMemoryInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkBindImagePlaneMemoryInfo
-func (x *VkBindImagePlaneMemoryInfo) WithPNext(y unsafe.Pointer) *VkBindImagePlaneMemoryInfo {
+func (x VkBindImagePlaneMemoryInfo) WithPNext(y unsafe.Pointer) VkBindImagePlaneMemoryInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -22961,7 +22936,7 @@ func (x VkBindImagePlaneMemoryInfo) PlaneAspect() VkImageAspectFlagBits {
 
 // WithPlaneAspect copies the provided value into C space and stores it
 // at planeAspect on VkBindImagePlaneMemoryInfo
-func (x *VkBindImagePlaneMemoryInfo) WithPlaneAspect(y VkImageAspectFlagBits) *VkBindImagePlaneMemoryInfo {
+func (x VkBindImagePlaneMemoryInfo) WithPlaneAspect(y VkImageAspectFlagBits) VkBindImagePlaneMemoryInfo {
 	ptr := /* Identifier */ (*C.VkImageAspectFlagBits)(&y)
 	x.planeAspect = *ptr
 	return x
@@ -22988,12 +22963,12 @@ func (x *VkImagePlaneMemoryRequirementsInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkImagePlaneMemoryRequirementsInfo) AsPtr() *VkImagePlaneMemoryRequirementsInfo { return x }
+func (x VkImagePlaneMemoryRequirementsInfo) AsPtr() *VkImagePlaneMemoryRequirementsInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkImagePlaneMemoryRequirementsInfo) AsCPtr() *VkImagePlaneMemoryRequirementsInfo {
+func (x VkImagePlaneMemoryRequirementsInfo) AsCPtr() *VkImagePlaneMemoryRequirementsInfo {
 	clone := newVkImagePlaneMemoryRequirementsInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -23005,13 +22980,13 @@ func (x VkImagePlaneMemoryRequirementsInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkImagePlaneMemoryRequirementsInfo) WithDefaultSType() *VkImagePlaneMemoryRequirementsInfo {
+func (x VkImagePlaneMemoryRequirementsInfo) WithDefaultSType() VkImagePlaneMemoryRequirementsInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_IMAGE_PLANE_MEMORY_REQUIREMENTS_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkImagePlaneMemoryRequirementsInfo
-func (x *VkImagePlaneMemoryRequirementsInfo) WithSType(y VkStructureType) *VkImagePlaneMemoryRequirementsInfo {
+func (x VkImagePlaneMemoryRequirementsInfo) WithSType(y VkStructureType) VkImagePlaneMemoryRequirementsInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -23025,7 +23000,7 @@ func (x VkImagePlaneMemoryRequirementsInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkImagePlaneMemoryRequirementsInfo
-func (x *VkImagePlaneMemoryRequirementsInfo) WithPNext(y unsafe.Pointer) *VkImagePlaneMemoryRequirementsInfo {
+func (x VkImagePlaneMemoryRequirementsInfo) WithPNext(y unsafe.Pointer) VkImagePlaneMemoryRequirementsInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -23039,7 +23014,7 @@ func (x VkImagePlaneMemoryRequirementsInfo) PlaneAspect() VkImageAspectFlagBits 
 
 // WithPlaneAspect copies the provided value into C space and stores it
 // at planeAspect on VkImagePlaneMemoryRequirementsInfo
-func (x *VkImagePlaneMemoryRequirementsInfo) WithPlaneAspect(y VkImageAspectFlagBits) *VkImagePlaneMemoryRequirementsInfo {
+func (x VkImagePlaneMemoryRequirementsInfo) WithPlaneAspect(y VkImageAspectFlagBits) VkImagePlaneMemoryRequirementsInfo {
 	ptr := /* Identifier */ (*C.VkImageAspectFlagBits)(&y)
 	x.planeAspect = *ptr
 	return x
@@ -23066,14 +23041,14 @@ func (x *VkPhysicalDeviceSamplerYcbcrConversionFeatures) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceSamplerYcbcrConversionFeatures) AsPtr() *VkPhysicalDeviceSamplerYcbcrConversionFeatures {
-	return x
+func (x VkPhysicalDeviceSamplerYcbcrConversionFeatures) AsPtr() *VkPhysicalDeviceSamplerYcbcrConversionFeatures {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceSamplerYcbcrConversionFeatures) AsCPtr() *VkPhysicalDeviceSamplerYcbcrConversionFeatures {
+func (x VkPhysicalDeviceSamplerYcbcrConversionFeatures) AsCPtr() *VkPhysicalDeviceSamplerYcbcrConversionFeatures {
 	clone := newVkPhysicalDeviceSamplerYcbcrConversionFeatures()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -23085,13 +23060,13 @@ func (x VkPhysicalDeviceSamplerYcbcrConversionFeatures) SType() VkStructureType 
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceSamplerYcbcrConversionFeatures) WithDefaultSType() *VkPhysicalDeviceSamplerYcbcrConversionFeatures {
+func (x VkPhysicalDeviceSamplerYcbcrConversionFeatures) WithDefaultSType() VkPhysicalDeviceSamplerYcbcrConversionFeatures {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_YCBCR_CONVERSION_FEATURES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceSamplerYcbcrConversionFeatures
-func (x *VkPhysicalDeviceSamplerYcbcrConversionFeatures) WithSType(y VkStructureType) *VkPhysicalDeviceSamplerYcbcrConversionFeatures {
+func (x VkPhysicalDeviceSamplerYcbcrConversionFeatures) WithSType(y VkStructureType) VkPhysicalDeviceSamplerYcbcrConversionFeatures {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -23105,7 +23080,7 @@ func (x VkPhysicalDeviceSamplerYcbcrConversionFeatures) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceSamplerYcbcrConversionFeatures
-func (x *VkPhysicalDeviceSamplerYcbcrConversionFeatures) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceSamplerYcbcrConversionFeatures {
+func (x VkPhysicalDeviceSamplerYcbcrConversionFeatures) WithPNext(y unsafe.Pointer) VkPhysicalDeviceSamplerYcbcrConversionFeatures {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -23119,7 +23094,7 @@ func (x VkPhysicalDeviceSamplerYcbcrConversionFeatures) SamplerYcbcrConversion()
 
 // WithSamplerYcbcrConversion copies the provided value into C space and stores it
 // at samplerYcbcrConversion on VkPhysicalDeviceSamplerYcbcrConversionFeatures
-func (x *VkPhysicalDeviceSamplerYcbcrConversionFeatures) WithSamplerYcbcrConversion(y VkBool32) *VkPhysicalDeviceSamplerYcbcrConversionFeatures {
+func (x VkPhysicalDeviceSamplerYcbcrConversionFeatures) WithSamplerYcbcrConversion(y VkBool32) VkPhysicalDeviceSamplerYcbcrConversionFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.samplerYcbcrConversion = *ptr
 	return x
@@ -23146,14 +23121,14 @@ func (x *VkSamplerYcbcrConversionImageFormatProperties) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkSamplerYcbcrConversionImageFormatProperties) AsPtr() *VkSamplerYcbcrConversionImageFormatProperties {
-	return x
+func (x VkSamplerYcbcrConversionImageFormatProperties) AsPtr() *VkSamplerYcbcrConversionImageFormatProperties {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkSamplerYcbcrConversionImageFormatProperties) AsCPtr() *VkSamplerYcbcrConversionImageFormatProperties {
+func (x VkSamplerYcbcrConversionImageFormatProperties) AsCPtr() *VkSamplerYcbcrConversionImageFormatProperties {
 	clone := newVkSamplerYcbcrConversionImageFormatProperties()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -23165,13 +23140,13 @@ func (x VkSamplerYcbcrConversionImageFormatProperties) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkSamplerYcbcrConversionImageFormatProperties) WithDefaultSType() *VkSamplerYcbcrConversionImageFormatProperties {
+func (x VkSamplerYcbcrConversionImageFormatProperties) WithDefaultSType() VkSamplerYcbcrConversionImageFormatProperties {
 	return x.WithSType(VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_IMAGE_FORMAT_PROPERTIES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkSamplerYcbcrConversionImageFormatProperties
-func (x *VkSamplerYcbcrConversionImageFormatProperties) WithSType(y VkStructureType) *VkSamplerYcbcrConversionImageFormatProperties {
+func (x VkSamplerYcbcrConversionImageFormatProperties) WithSType(y VkStructureType) VkSamplerYcbcrConversionImageFormatProperties {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -23185,7 +23160,7 @@ func (x VkSamplerYcbcrConversionImageFormatProperties) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkSamplerYcbcrConversionImageFormatProperties
-func (x *VkSamplerYcbcrConversionImageFormatProperties) WithPNext(y unsafe.Pointer) *VkSamplerYcbcrConversionImageFormatProperties {
+func (x VkSamplerYcbcrConversionImageFormatProperties) WithPNext(y unsafe.Pointer) VkSamplerYcbcrConversionImageFormatProperties {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -23218,12 +23193,12 @@ func (x *VkExternalSemaphoreProperties) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkExternalSemaphoreProperties) AsPtr() *VkExternalSemaphoreProperties { return x }
+func (x VkExternalSemaphoreProperties) AsPtr() *VkExternalSemaphoreProperties { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkExternalSemaphoreProperties) AsCPtr() *VkExternalSemaphoreProperties {
+func (x VkExternalSemaphoreProperties) AsCPtr() *VkExternalSemaphoreProperties {
 	clone := newVkExternalSemaphoreProperties()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -23235,13 +23210,13 @@ func (x VkExternalSemaphoreProperties) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkExternalSemaphoreProperties) WithDefaultSType() *VkExternalSemaphoreProperties {
+func (x VkExternalSemaphoreProperties) WithDefaultSType() VkExternalSemaphoreProperties {
 	return x.WithSType(VK_STRUCTURE_TYPE_EXTERNAL_SEMAPHORE_PROPERTIES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkExternalSemaphoreProperties
-func (x *VkExternalSemaphoreProperties) WithSType(y VkStructureType) *VkExternalSemaphoreProperties {
+func (x VkExternalSemaphoreProperties) WithSType(y VkStructureType) VkExternalSemaphoreProperties {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -23255,7 +23230,7 @@ func (x VkExternalSemaphoreProperties) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkExternalSemaphoreProperties
-func (x *VkExternalSemaphoreProperties) WithPNext(y unsafe.Pointer) *VkExternalSemaphoreProperties {
+func (x VkExternalSemaphoreProperties) WithPNext(y unsafe.Pointer) VkExternalSemaphoreProperties {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -23300,12 +23275,12 @@ func (x *VkMemoryDedicatedAllocateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkMemoryDedicatedAllocateInfo) AsPtr() *VkMemoryDedicatedAllocateInfo { return x }
+func (x VkMemoryDedicatedAllocateInfo) AsPtr() *VkMemoryDedicatedAllocateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkMemoryDedicatedAllocateInfo) AsCPtr() *VkMemoryDedicatedAllocateInfo {
+func (x VkMemoryDedicatedAllocateInfo) AsCPtr() *VkMemoryDedicatedAllocateInfo {
 	clone := newVkMemoryDedicatedAllocateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -23317,13 +23292,13 @@ func (x VkMemoryDedicatedAllocateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkMemoryDedicatedAllocateInfo) WithDefaultSType() *VkMemoryDedicatedAllocateInfo {
+func (x VkMemoryDedicatedAllocateInfo) WithDefaultSType() VkMemoryDedicatedAllocateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_MEMORY_DEDICATED_ALLOCATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkMemoryDedicatedAllocateInfo
-func (x *VkMemoryDedicatedAllocateInfo) WithSType(y VkStructureType) *VkMemoryDedicatedAllocateInfo {
+func (x VkMemoryDedicatedAllocateInfo) WithSType(y VkStructureType) VkMemoryDedicatedAllocateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -23337,7 +23312,7 @@ func (x VkMemoryDedicatedAllocateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkMemoryDedicatedAllocateInfo
-func (x *VkMemoryDedicatedAllocateInfo) WithPNext(y unsafe.Pointer) *VkMemoryDedicatedAllocateInfo {
+func (x VkMemoryDedicatedAllocateInfo) WithPNext(y unsafe.Pointer) VkMemoryDedicatedAllocateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -23351,7 +23326,7 @@ func (x VkMemoryDedicatedAllocateInfo) Image() VkImage {
 
 // WithImage copies the provided value into C space and stores it
 // at image on VkMemoryDedicatedAllocateInfo
-func (x *VkMemoryDedicatedAllocateInfo) WithImage(y VkImage) *VkMemoryDedicatedAllocateInfo {
+func (x VkMemoryDedicatedAllocateInfo) WithImage(y VkImage) VkMemoryDedicatedAllocateInfo {
 	ptr := func(x *VkImage) *C.VkImage { /* Handle */ return (*C.VkImage)(unsafe.Pointer(x)) }(&y)
 	x.image = *ptr
 	return x
@@ -23365,7 +23340,7 @@ func (x VkMemoryDedicatedAllocateInfo) Buffer() VkBuffer {
 
 // WithBuffer copies the provided value into C space and stores it
 // at buffer on VkMemoryDedicatedAllocateInfo
-func (x *VkMemoryDedicatedAllocateInfo) WithBuffer(y VkBuffer) *VkMemoryDedicatedAllocateInfo {
+func (x VkMemoryDedicatedAllocateInfo) WithBuffer(y VkBuffer) VkMemoryDedicatedAllocateInfo {
 	ptr := func(x *VkBuffer) *C.VkBuffer { /* Handle */ return (*C.VkBuffer)(unsafe.Pointer(x)) }(&y)
 	x.buffer = *ptr
 	return x
@@ -23392,14 +23367,14 @@ func (x *VkPhysicalDeviceVariablePointersFeatures) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceVariablePointersFeatures) AsPtr() *VkPhysicalDeviceVariablePointersFeatures {
-	return x
+func (x VkPhysicalDeviceVariablePointersFeatures) AsPtr() *VkPhysicalDeviceVariablePointersFeatures {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceVariablePointersFeatures) AsCPtr() *VkPhysicalDeviceVariablePointersFeatures {
+func (x VkPhysicalDeviceVariablePointersFeatures) AsCPtr() *VkPhysicalDeviceVariablePointersFeatures {
 	clone := newVkPhysicalDeviceVariablePointersFeatures()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -23411,13 +23386,13 @@ func (x VkPhysicalDeviceVariablePointersFeatures) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceVariablePointersFeatures) WithDefaultSType() *VkPhysicalDeviceVariablePointersFeatures {
+func (x VkPhysicalDeviceVariablePointersFeatures) WithDefaultSType() VkPhysicalDeviceVariablePointersFeatures {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceVariablePointersFeatures
-func (x *VkPhysicalDeviceVariablePointersFeatures) WithSType(y VkStructureType) *VkPhysicalDeviceVariablePointersFeatures {
+func (x VkPhysicalDeviceVariablePointersFeatures) WithSType(y VkStructureType) VkPhysicalDeviceVariablePointersFeatures {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -23431,7 +23406,7 @@ func (x VkPhysicalDeviceVariablePointersFeatures) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceVariablePointersFeatures
-func (x *VkPhysicalDeviceVariablePointersFeatures) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceVariablePointersFeatures {
+func (x VkPhysicalDeviceVariablePointersFeatures) WithPNext(y unsafe.Pointer) VkPhysicalDeviceVariablePointersFeatures {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -23445,7 +23420,7 @@ func (x VkPhysicalDeviceVariablePointersFeatures) VariablePointersStorageBuffer(
 
 // WithVariablePointersStorageBuffer copies the provided value into C space and stores it
 // at variablePointersStorageBuffer on VkPhysicalDeviceVariablePointersFeatures
-func (x *VkPhysicalDeviceVariablePointersFeatures) WithVariablePointersStorageBuffer(y VkBool32) *VkPhysicalDeviceVariablePointersFeatures {
+func (x VkPhysicalDeviceVariablePointersFeatures) WithVariablePointersStorageBuffer(y VkBool32) VkPhysicalDeviceVariablePointersFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.variablePointersStorageBuffer = *ptr
 	return x
@@ -23459,7 +23434,7 @@ func (x VkPhysicalDeviceVariablePointersFeatures) VariablePointers() VkBool32 {
 
 // WithVariablePointers copies the provided value into C space and stores it
 // at variablePointers on VkPhysicalDeviceVariablePointersFeatures
-func (x *VkPhysicalDeviceVariablePointersFeatures) WithVariablePointers(y VkBool32) *VkPhysicalDeviceVariablePointersFeatures {
+func (x VkPhysicalDeviceVariablePointersFeatures) WithVariablePointers(y VkBool32) VkPhysicalDeviceVariablePointersFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.variablePointers = *ptr
 	return x
@@ -23486,12 +23461,12 @@ func (x *VkMemoryDedicatedRequirements) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkMemoryDedicatedRequirements) AsPtr() *VkMemoryDedicatedRequirements { return x }
+func (x VkMemoryDedicatedRequirements) AsPtr() *VkMemoryDedicatedRequirements { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkMemoryDedicatedRequirements) AsCPtr() *VkMemoryDedicatedRequirements {
+func (x VkMemoryDedicatedRequirements) AsCPtr() *VkMemoryDedicatedRequirements {
 	clone := newVkMemoryDedicatedRequirements()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -23503,13 +23478,13 @@ func (x VkMemoryDedicatedRequirements) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkMemoryDedicatedRequirements) WithDefaultSType() *VkMemoryDedicatedRequirements {
+func (x VkMemoryDedicatedRequirements) WithDefaultSType() VkMemoryDedicatedRequirements {
 	return x.WithSType(VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkMemoryDedicatedRequirements
-func (x *VkMemoryDedicatedRequirements) WithSType(y VkStructureType) *VkMemoryDedicatedRequirements {
+func (x VkMemoryDedicatedRequirements) WithSType(y VkStructureType) VkMemoryDedicatedRequirements {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -23523,7 +23498,7 @@ func (x VkMemoryDedicatedRequirements) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkMemoryDedicatedRequirements
-func (x *VkMemoryDedicatedRequirements) WithPNext(y unsafe.Pointer) *VkMemoryDedicatedRequirements {
+func (x VkMemoryDedicatedRequirements) WithPNext(y unsafe.Pointer) VkMemoryDedicatedRequirements {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -23562,12 +23537,12 @@ func (x *VkExternalMemoryBufferCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkExternalMemoryBufferCreateInfo) AsPtr() *VkExternalMemoryBufferCreateInfo { return x }
+func (x VkExternalMemoryBufferCreateInfo) AsPtr() *VkExternalMemoryBufferCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkExternalMemoryBufferCreateInfo) AsCPtr() *VkExternalMemoryBufferCreateInfo {
+func (x VkExternalMemoryBufferCreateInfo) AsCPtr() *VkExternalMemoryBufferCreateInfo {
 	clone := newVkExternalMemoryBufferCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -23579,13 +23554,13 @@ func (x VkExternalMemoryBufferCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkExternalMemoryBufferCreateInfo) WithDefaultSType() *VkExternalMemoryBufferCreateInfo {
+func (x VkExternalMemoryBufferCreateInfo) WithDefaultSType() VkExternalMemoryBufferCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_BUFFER_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkExternalMemoryBufferCreateInfo
-func (x *VkExternalMemoryBufferCreateInfo) WithSType(y VkStructureType) *VkExternalMemoryBufferCreateInfo {
+func (x VkExternalMemoryBufferCreateInfo) WithSType(y VkStructureType) VkExternalMemoryBufferCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -23599,7 +23574,7 @@ func (x VkExternalMemoryBufferCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkExternalMemoryBufferCreateInfo
-func (x *VkExternalMemoryBufferCreateInfo) WithPNext(y unsafe.Pointer) *VkExternalMemoryBufferCreateInfo {
+func (x VkExternalMemoryBufferCreateInfo) WithPNext(y unsafe.Pointer) VkExternalMemoryBufferCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -23613,7 +23588,7 @@ func (x VkExternalMemoryBufferCreateInfo) HandleTypes() VkExternalMemoryHandleTy
 
 // WithHandleTypes copies the provided value into C space and stores it
 // at handleTypes on VkExternalMemoryBufferCreateInfo
-func (x *VkExternalMemoryBufferCreateInfo) WithHandleTypes(y VkExternalMemoryHandleTypeFlags) *VkExternalMemoryBufferCreateInfo {
+func (x VkExternalMemoryBufferCreateInfo) WithHandleTypes(y VkExternalMemoryHandleTypeFlags) VkExternalMemoryBufferCreateInfo {
 	ptr := /* Identifier */ (*C.VkExternalMemoryHandleTypeFlags)(&y)
 	x.handleTypes = *ptr
 	return x
@@ -23640,12 +23615,12 @@ func (x *VkExternalMemoryImageCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkExternalMemoryImageCreateInfo) AsPtr() *VkExternalMemoryImageCreateInfo { return x }
+func (x VkExternalMemoryImageCreateInfo) AsPtr() *VkExternalMemoryImageCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkExternalMemoryImageCreateInfo) AsCPtr() *VkExternalMemoryImageCreateInfo {
+func (x VkExternalMemoryImageCreateInfo) AsCPtr() *VkExternalMemoryImageCreateInfo {
 	clone := newVkExternalMemoryImageCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -23657,13 +23632,13 @@ func (x VkExternalMemoryImageCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkExternalMemoryImageCreateInfo) WithDefaultSType() *VkExternalMemoryImageCreateInfo {
+func (x VkExternalMemoryImageCreateInfo) WithDefaultSType() VkExternalMemoryImageCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkExternalMemoryImageCreateInfo
-func (x *VkExternalMemoryImageCreateInfo) WithSType(y VkStructureType) *VkExternalMemoryImageCreateInfo {
+func (x VkExternalMemoryImageCreateInfo) WithSType(y VkStructureType) VkExternalMemoryImageCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -23677,7 +23652,7 @@ func (x VkExternalMemoryImageCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkExternalMemoryImageCreateInfo
-func (x *VkExternalMemoryImageCreateInfo) WithPNext(y unsafe.Pointer) *VkExternalMemoryImageCreateInfo {
+func (x VkExternalMemoryImageCreateInfo) WithPNext(y unsafe.Pointer) VkExternalMemoryImageCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -23691,7 +23666,7 @@ func (x VkExternalMemoryImageCreateInfo) HandleTypes() VkExternalMemoryHandleTyp
 
 // WithHandleTypes copies the provided value into C space and stores it
 // at handleTypes on VkExternalMemoryImageCreateInfo
-func (x *VkExternalMemoryImageCreateInfo) WithHandleTypes(y VkExternalMemoryHandleTypeFlags) *VkExternalMemoryImageCreateInfo {
+func (x VkExternalMemoryImageCreateInfo) WithHandleTypes(y VkExternalMemoryHandleTypeFlags) VkExternalMemoryImageCreateInfo {
 	ptr := /* Identifier */ (*C.VkExternalMemoryHandleTypeFlags)(&y)
 	x.handleTypes = *ptr
 	return x
@@ -23718,12 +23693,12 @@ func (x *VkPhysicalDeviceIDProperties) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceIDProperties) AsPtr() *VkPhysicalDeviceIDProperties { return x }
+func (x VkPhysicalDeviceIDProperties) AsPtr() *VkPhysicalDeviceIDProperties { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceIDProperties) AsCPtr() *VkPhysicalDeviceIDProperties {
+func (x VkPhysicalDeviceIDProperties) AsCPtr() *VkPhysicalDeviceIDProperties {
 	clone := newVkPhysicalDeviceIDProperties()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -23735,13 +23710,13 @@ func (x VkPhysicalDeviceIDProperties) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceIDProperties) WithDefaultSType() *VkPhysicalDeviceIDProperties {
+func (x VkPhysicalDeviceIDProperties) WithDefaultSType() VkPhysicalDeviceIDProperties {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ID_PROPERTIES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceIDProperties
-func (x *VkPhysicalDeviceIDProperties) WithSType(y VkStructureType) *VkPhysicalDeviceIDProperties {
+func (x VkPhysicalDeviceIDProperties) WithSType(y VkStructureType) VkPhysicalDeviceIDProperties {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -23755,7 +23730,7 @@ func (x VkPhysicalDeviceIDProperties) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceIDProperties
-func (x *VkPhysicalDeviceIDProperties) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceIDProperties {
+func (x VkPhysicalDeviceIDProperties) WithPNext(y unsafe.Pointer) VkPhysicalDeviceIDProperties {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -23821,14 +23796,14 @@ func (x *VkPhysicalDevice16BitStorageFeatures) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDevice16BitStorageFeatures) AsPtr() *VkPhysicalDevice16BitStorageFeatures {
-	return x
+func (x VkPhysicalDevice16BitStorageFeatures) AsPtr() *VkPhysicalDevice16BitStorageFeatures {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDevice16BitStorageFeatures) AsCPtr() *VkPhysicalDevice16BitStorageFeatures {
+func (x VkPhysicalDevice16BitStorageFeatures) AsCPtr() *VkPhysicalDevice16BitStorageFeatures {
 	clone := newVkPhysicalDevice16BitStorageFeatures()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -23840,13 +23815,13 @@ func (x VkPhysicalDevice16BitStorageFeatures) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDevice16BitStorageFeatures) WithDefaultSType() *VkPhysicalDevice16BitStorageFeatures {
+func (x VkPhysicalDevice16BitStorageFeatures) WithDefaultSType() VkPhysicalDevice16BitStorageFeatures {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_16BIT_STORAGE_FEATURES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDevice16BitStorageFeatures
-func (x *VkPhysicalDevice16BitStorageFeatures) WithSType(y VkStructureType) *VkPhysicalDevice16BitStorageFeatures {
+func (x VkPhysicalDevice16BitStorageFeatures) WithSType(y VkStructureType) VkPhysicalDevice16BitStorageFeatures {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -23860,7 +23835,7 @@ func (x VkPhysicalDevice16BitStorageFeatures) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDevice16BitStorageFeatures
-func (x *VkPhysicalDevice16BitStorageFeatures) WithPNext(y unsafe.Pointer) *VkPhysicalDevice16BitStorageFeatures {
+func (x VkPhysicalDevice16BitStorageFeatures) WithPNext(y unsafe.Pointer) VkPhysicalDevice16BitStorageFeatures {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -23874,7 +23849,7 @@ func (x VkPhysicalDevice16BitStorageFeatures) StorageBuffer16BitAccess() VkBool3
 
 // WithStorageBuffer16BitAccess copies the provided value into C space and stores it
 // at storageBuffer16BitAccess on VkPhysicalDevice16BitStorageFeatures
-func (x *VkPhysicalDevice16BitStorageFeatures) WithStorageBuffer16BitAccess(y VkBool32) *VkPhysicalDevice16BitStorageFeatures {
+func (x VkPhysicalDevice16BitStorageFeatures) WithStorageBuffer16BitAccess(y VkBool32) VkPhysicalDevice16BitStorageFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.storageBuffer16BitAccess = *ptr
 	return x
@@ -23888,7 +23863,7 @@ func (x VkPhysicalDevice16BitStorageFeatures) UniformAndStorageBuffer16BitAccess
 
 // WithUniformAndStorageBuffer16BitAccess copies the provided value into C space and stores it
 // at uniformAndStorageBuffer16BitAccess on VkPhysicalDevice16BitStorageFeatures
-func (x *VkPhysicalDevice16BitStorageFeatures) WithUniformAndStorageBuffer16BitAccess(y VkBool32) *VkPhysicalDevice16BitStorageFeatures {
+func (x VkPhysicalDevice16BitStorageFeatures) WithUniformAndStorageBuffer16BitAccess(y VkBool32) VkPhysicalDevice16BitStorageFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.uniformAndStorageBuffer16BitAccess = *ptr
 	return x
@@ -23902,7 +23877,7 @@ func (x VkPhysicalDevice16BitStorageFeatures) StoragePushConstant16() VkBool32 {
 
 // WithStoragePushConstant16 copies the provided value into C space and stores it
 // at storagePushConstant16 on VkPhysicalDevice16BitStorageFeatures
-func (x *VkPhysicalDevice16BitStorageFeatures) WithStoragePushConstant16(y VkBool32) *VkPhysicalDevice16BitStorageFeatures {
+func (x VkPhysicalDevice16BitStorageFeatures) WithStoragePushConstant16(y VkBool32) VkPhysicalDevice16BitStorageFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.storagePushConstant16 = *ptr
 	return x
@@ -23916,7 +23891,7 @@ func (x VkPhysicalDevice16BitStorageFeatures) StorageInputOutput16() VkBool32 {
 
 // WithStorageInputOutput16 copies the provided value into C space and stores it
 // at storageInputOutput16 on VkPhysicalDevice16BitStorageFeatures
-func (x *VkPhysicalDevice16BitStorageFeatures) WithStorageInputOutput16(y VkBool32) *VkPhysicalDevice16BitStorageFeatures {
+func (x VkPhysicalDevice16BitStorageFeatures) WithStorageInputOutput16(y VkBool32) VkPhysicalDevice16BitStorageFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.storageInputOutput16 = *ptr
 	return x
@@ -23943,12 +23918,12 @@ func (x *VkBindImageMemoryInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkBindImageMemoryInfo) AsPtr() *VkBindImageMemoryInfo { return x }
+func (x VkBindImageMemoryInfo) AsPtr() *VkBindImageMemoryInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkBindImageMemoryInfo) AsCPtr() *VkBindImageMemoryInfo {
+func (x VkBindImageMemoryInfo) AsCPtr() *VkBindImageMemoryInfo {
 	clone := newVkBindImageMemoryInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -23960,13 +23935,13 @@ func (x VkBindImageMemoryInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkBindImageMemoryInfo) WithDefaultSType() *VkBindImageMemoryInfo {
+func (x VkBindImageMemoryInfo) WithDefaultSType() VkBindImageMemoryInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkBindImageMemoryInfo
-func (x *VkBindImageMemoryInfo) WithSType(y VkStructureType) *VkBindImageMemoryInfo {
+func (x VkBindImageMemoryInfo) WithSType(y VkStructureType) VkBindImageMemoryInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -23980,7 +23955,7 @@ func (x VkBindImageMemoryInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkBindImageMemoryInfo
-func (x *VkBindImageMemoryInfo) WithPNext(y unsafe.Pointer) *VkBindImageMemoryInfo {
+func (x VkBindImageMemoryInfo) WithPNext(y unsafe.Pointer) VkBindImageMemoryInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -23994,7 +23969,7 @@ func (x VkBindImageMemoryInfo) Image() VkImage {
 
 // WithImage copies the provided value into C space and stores it
 // at image on VkBindImageMemoryInfo
-func (x *VkBindImageMemoryInfo) WithImage(y VkImage) *VkBindImageMemoryInfo {
+func (x VkBindImageMemoryInfo) WithImage(y VkImage) VkBindImageMemoryInfo {
 	ptr := func(x *VkImage) *C.VkImage { /* Handle */ return (*C.VkImage)(unsafe.Pointer(x)) }(&y)
 	x.image = *ptr
 	return x
@@ -24008,7 +23983,7 @@ func (x VkBindImageMemoryInfo) Memory() VkDeviceMemory {
 
 // WithMemory copies the provided value into C space and stores it
 // at memory on VkBindImageMemoryInfo
-func (x *VkBindImageMemoryInfo) WithMemory(y VkDeviceMemory) *VkBindImageMemoryInfo {
+func (x VkBindImageMemoryInfo) WithMemory(y VkDeviceMemory) VkBindImageMemoryInfo {
 	ptr := func(x *VkDeviceMemory) *C.VkDeviceMemory { /* Handle */ return (*C.VkDeviceMemory)(unsafe.Pointer(x)) }(&y)
 	x.memory = *ptr
 	return x
@@ -24022,7 +23997,7 @@ func (x VkBindImageMemoryInfo) MemoryOffset() VkDeviceSize {
 
 // WithMemoryOffset copies the provided value into C space and stores it
 // at memoryOffset on VkBindImageMemoryInfo
-func (x *VkBindImageMemoryInfo) WithMemoryOffset(y VkDeviceSize) *VkBindImageMemoryInfo {
+func (x VkBindImageMemoryInfo) WithMemoryOffset(y VkDeviceSize) VkBindImageMemoryInfo {
 	ptr := /* Identifier */ (*C.VkDeviceSize)(&y)
 	x.memoryOffset = *ptr
 	return x
@@ -24049,12 +24024,12 @@ func (x *VkBindBufferMemoryInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkBindBufferMemoryInfo) AsPtr() *VkBindBufferMemoryInfo { return x }
+func (x VkBindBufferMemoryInfo) AsPtr() *VkBindBufferMemoryInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkBindBufferMemoryInfo) AsCPtr() *VkBindBufferMemoryInfo {
+func (x VkBindBufferMemoryInfo) AsCPtr() *VkBindBufferMemoryInfo {
 	clone := newVkBindBufferMemoryInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -24066,13 +24041,13 @@ func (x VkBindBufferMemoryInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkBindBufferMemoryInfo) WithDefaultSType() *VkBindBufferMemoryInfo {
+func (x VkBindBufferMemoryInfo) WithDefaultSType() VkBindBufferMemoryInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkBindBufferMemoryInfo
-func (x *VkBindBufferMemoryInfo) WithSType(y VkStructureType) *VkBindBufferMemoryInfo {
+func (x VkBindBufferMemoryInfo) WithSType(y VkStructureType) VkBindBufferMemoryInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -24086,7 +24061,7 @@ func (x VkBindBufferMemoryInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkBindBufferMemoryInfo
-func (x *VkBindBufferMemoryInfo) WithPNext(y unsafe.Pointer) *VkBindBufferMemoryInfo {
+func (x VkBindBufferMemoryInfo) WithPNext(y unsafe.Pointer) VkBindBufferMemoryInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -24100,7 +24075,7 @@ func (x VkBindBufferMemoryInfo) Buffer() VkBuffer {
 
 // WithBuffer copies the provided value into C space and stores it
 // at buffer on VkBindBufferMemoryInfo
-func (x *VkBindBufferMemoryInfo) WithBuffer(y VkBuffer) *VkBindBufferMemoryInfo {
+func (x VkBindBufferMemoryInfo) WithBuffer(y VkBuffer) VkBindBufferMemoryInfo {
 	ptr := func(x *VkBuffer) *C.VkBuffer { /* Handle */ return (*C.VkBuffer)(unsafe.Pointer(x)) }(&y)
 	x.buffer = *ptr
 	return x
@@ -24114,7 +24089,7 @@ func (x VkBindBufferMemoryInfo) Memory() VkDeviceMemory {
 
 // WithMemory copies the provided value into C space and stores it
 // at memory on VkBindBufferMemoryInfo
-func (x *VkBindBufferMemoryInfo) WithMemory(y VkDeviceMemory) *VkBindBufferMemoryInfo {
+func (x VkBindBufferMemoryInfo) WithMemory(y VkDeviceMemory) VkBindBufferMemoryInfo {
 	ptr := func(x *VkDeviceMemory) *C.VkDeviceMemory { /* Handle */ return (*C.VkDeviceMemory)(unsafe.Pointer(x)) }(&y)
 	x.memory = *ptr
 	return x
@@ -24128,7 +24103,7 @@ func (x VkBindBufferMemoryInfo) MemoryOffset() VkDeviceSize {
 
 // WithMemoryOffset copies the provided value into C space and stores it
 // at memoryOffset on VkBindBufferMemoryInfo
-func (x *VkBindBufferMemoryInfo) WithMemoryOffset(y VkDeviceSize) *VkBindBufferMemoryInfo {
+func (x VkBindBufferMemoryInfo) WithMemoryOffset(y VkDeviceSize) VkBindBufferMemoryInfo {
 	ptr := /* Identifier */ (*C.VkDeviceSize)(&y)
 	x.memoryOffset = *ptr
 	return x
@@ -24155,12 +24130,12 @@ func (x *VkDescriptorUpdateTemplateEntry) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDescriptorUpdateTemplateEntry) AsPtr() *VkDescriptorUpdateTemplateEntry { return x }
+func (x VkDescriptorUpdateTemplateEntry) AsPtr() *VkDescriptorUpdateTemplateEntry { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDescriptorUpdateTemplateEntry) AsCPtr() *VkDescriptorUpdateTemplateEntry {
+func (x VkDescriptorUpdateTemplateEntry) AsCPtr() *VkDescriptorUpdateTemplateEntry {
 	clone := newVkDescriptorUpdateTemplateEntry()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -24172,7 +24147,7 @@ func (x VkDescriptorUpdateTemplateEntry) DstBinding() uint32 {
 
 // WithDstBinding copies the provided value into C space and stores it
 // at dstBinding on VkDescriptorUpdateTemplateEntry
-func (x *VkDescriptorUpdateTemplateEntry) WithDstBinding(y uint32) *VkDescriptorUpdateTemplateEntry {
+func (x VkDescriptorUpdateTemplateEntry) WithDstBinding(y uint32) VkDescriptorUpdateTemplateEntry {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.dstBinding = *ptr
 	return x
@@ -24186,7 +24161,7 @@ func (x VkDescriptorUpdateTemplateEntry) DstArrayElement() uint32 {
 
 // WithDstArrayElement copies the provided value into C space and stores it
 // at dstArrayElement on VkDescriptorUpdateTemplateEntry
-func (x *VkDescriptorUpdateTemplateEntry) WithDstArrayElement(y uint32) *VkDescriptorUpdateTemplateEntry {
+func (x VkDescriptorUpdateTemplateEntry) WithDstArrayElement(y uint32) VkDescriptorUpdateTemplateEntry {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.dstArrayElement = *ptr
 	return x
@@ -24200,7 +24175,7 @@ func (x VkDescriptorUpdateTemplateEntry) DescriptorCount() uint32 {
 
 // WithDescriptorCount copies the provided value into C space and stores it
 // at descriptorCount on VkDescriptorUpdateTemplateEntry
-func (x *VkDescriptorUpdateTemplateEntry) WithDescriptorCount(y uint32) *VkDescriptorUpdateTemplateEntry {
+func (x VkDescriptorUpdateTemplateEntry) WithDescriptorCount(y uint32) VkDescriptorUpdateTemplateEntry {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.descriptorCount = *ptr
 	return x
@@ -24214,7 +24189,7 @@ func (x VkDescriptorUpdateTemplateEntry) DescriptorType() VkDescriptorType {
 
 // WithDescriptorType copies the provided value into C space and stores it
 // at descriptorType on VkDescriptorUpdateTemplateEntry
-func (x *VkDescriptorUpdateTemplateEntry) WithDescriptorType(y VkDescriptorType) *VkDescriptorUpdateTemplateEntry {
+func (x VkDescriptorUpdateTemplateEntry) WithDescriptorType(y VkDescriptorType) VkDescriptorUpdateTemplateEntry {
 	ptr := /* Identifier */ (*C.VkDescriptorType)(&y)
 	x.descriptorType = *ptr
 	return x
@@ -24228,7 +24203,7 @@ func (x VkDescriptorUpdateTemplateEntry) Offset() uint32 {
 
 // WithOffset copies the provided value into C space and stores it
 // at offset on VkDescriptorUpdateTemplateEntry
-func (x *VkDescriptorUpdateTemplateEntry) WithOffset(y uint32) *VkDescriptorUpdateTemplateEntry {
+func (x VkDescriptorUpdateTemplateEntry) WithOffset(y uint32) VkDescriptorUpdateTemplateEntry {
 	ptr := func(x *uint32) *C.ulong { /* Scalar */ return (*C.ulong)(unsafe.Pointer(x)) }(&y)
 	x.offset = *ptr
 	return x
@@ -24242,7 +24217,7 @@ func (x VkDescriptorUpdateTemplateEntry) Stride() uint32 {
 
 // WithStride copies the provided value into C space and stores it
 // at stride on VkDescriptorUpdateTemplateEntry
-func (x *VkDescriptorUpdateTemplateEntry) WithStride(y uint32) *VkDescriptorUpdateTemplateEntry {
+func (x VkDescriptorUpdateTemplateEntry) WithStride(y uint32) VkDescriptorUpdateTemplateEntry {
 	ptr := func(x *uint32) *C.ulong { /* Scalar */ return (*C.ulong)(unsafe.Pointer(x)) }(&y)
 	x.stride = *ptr
 	return x
@@ -24269,14 +24244,14 @@ func (x *VkDescriptorUpdateTemplateCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDescriptorUpdateTemplateCreateInfo) AsPtr() *VkDescriptorUpdateTemplateCreateInfo {
-	return x
+func (x VkDescriptorUpdateTemplateCreateInfo) AsPtr() *VkDescriptorUpdateTemplateCreateInfo {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDescriptorUpdateTemplateCreateInfo) AsCPtr() *VkDescriptorUpdateTemplateCreateInfo {
+func (x VkDescriptorUpdateTemplateCreateInfo) AsCPtr() *VkDescriptorUpdateTemplateCreateInfo {
 	clone := newVkDescriptorUpdateTemplateCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -24288,13 +24263,13 @@ func (x VkDescriptorUpdateTemplateCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkDescriptorUpdateTemplateCreateInfo) WithDefaultSType() *VkDescriptorUpdateTemplateCreateInfo {
+func (x VkDescriptorUpdateTemplateCreateInfo) WithDefaultSType() VkDescriptorUpdateTemplateCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkDescriptorUpdateTemplateCreateInfo
-func (x *VkDescriptorUpdateTemplateCreateInfo) WithSType(y VkStructureType) *VkDescriptorUpdateTemplateCreateInfo {
+func (x VkDescriptorUpdateTemplateCreateInfo) WithSType(y VkStructureType) VkDescriptorUpdateTemplateCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -24308,7 +24283,7 @@ func (x VkDescriptorUpdateTemplateCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkDescriptorUpdateTemplateCreateInfo
-func (x *VkDescriptorUpdateTemplateCreateInfo) WithPNext(y unsafe.Pointer) *VkDescriptorUpdateTemplateCreateInfo {
+func (x VkDescriptorUpdateTemplateCreateInfo) WithPNext(y unsafe.Pointer) VkDescriptorUpdateTemplateCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -24322,7 +24297,7 @@ func (x VkDescriptorUpdateTemplateCreateInfo) Flags() VkDescriptorUpdateTemplate
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkDescriptorUpdateTemplateCreateInfo
-func (x *VkDescriptorUpdateTemplateCreateInfo) WithFlags(y VkDescriptorUpdateTemplateCreateFlags) *VkDescriptorUpdateTemplateCreateInfo {
+func (x VkDescriptorUpdateTemplateCreateInfo) WithFlags(y VkDescriptorUpdateTemplateCreateFlags) VkDescriptorUpdateTemplateCreateInfo {
 	ptr := /* Identifier */ (*C.VkDescriptorUpdateTemplateCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -24336,7 +24311,7 @@ func (x VkDescriptorUpdateTemplateCreateInfo) DescriptorUpdateEntryCount() uint3
 
 // WithDescriptorUpdateEntryCount copies the provided value into C space and stores it
 // at descriptorUpdateEntryCount on VkDescriptorUpdateTemplateCreateInfo
-func (x *VkDescriptorUpdateTemplateCreateInfo) WithDescriptorUpdateEntryCount(y uint32) *VkDescriptorUpdateTemplateCreateInfo {
+func (x VkDescriptorUpdateTemplateCreateInfo) WithDescriptorUpdateEntryCount(y uint32) VkDescriptorUpdateTemplateCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.descriptorUpdateEntryCount = *ptr
 	return x
@@ -24353,7 +24328,7 @@ func (x VkDescriptorUpdateTemplateCreateInfo) PDescriptorUpdateEntries() []VkDes
 
 // WithPDescriptorUpdateEntries copies the provided value into C space and stores it
 // at pDescriptorUpdateEntries on VkDescriptorUpdateTemplateCreateInfo
-func (x *VkDescriptorUpdateTemplateCreateInfo) WithPDescriptorUpdateEntries(y []VkDescriptorUpdateTemplateEntry) *VkDescriptorUpdateTemplateCreateInfo {
+func (x VkDescriptorUpdateTemplateCreateInfo) WithPDescriptorUpdateEntries(y []VkDescriptorUpdateTemplateEntry) VkDescriptorUpdateTemplateCreateInfo {
 	ptr := func(x *[]VkDescriptorUpdateTemplateEntry) **C.VkDescriptorUpdateTemplateEntry { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkDescriptorUpdateTemplateEntry)(unsafe.Pointer(&((*x)[0])))
@@ -24374,7 +24349,7 @@ func (x VkDescriptorUpdateTemplateCreateInfo) TemplateType() VkDescriptorUpdateT
 
 // WithTemplateType copies the provided value into C space and stores it
 // at templateType on VkDescriptorUpdateTemplateCreateInfo
-func (x *VkDescriptorUpdateTemplateCreateInfo) WithTemplateType(y VkDescriptorUpdateTemplateType) *VkDescriptorUpdateTemplateCreateInfo {
+func (x VkDescriptorUpdateTemplateCreateInfo) WithTemplateType(y VkDescriptorUpdateTemplateType) VkDescriptorUpdateTemplateCreateInfo {
 	ptr := /* Identifier */ (*C.VkDescriptorUpdateTemplateType)(&y)
 	x.templateType = *ptr
 	return x
@@ -24390,7 +24365,7 @@ func (x VkDescriptorUpdateTemplateCreateInfo) DescriptorSetLayout() VkDescriptor
 
 // WithDescriptorSetLayout copies the provided value into C space and stores it
 // at descriptorSetLayout on VkDescriptorUpdateTemplateCreateInfo
-func (x *VkDescriptorUpdateTemplateCreateInfo) WithDescriptorSetLayout(y VkDescriptorSetLayout) *VkDescriptorUpdateTemplateCreateInfo {
+func (x VkDescriptorUpdateTemplateCreateInfo) WithDescriptorSetLayout(y VkDescriptorSetLayout) VkDescriptorUpdateTemplateCreateInfo {
 	ptr := func(x *VkDescriptorSetLayout) *C.VkDescriptorSetLayout { /* Handle */
 		return (*C.VkDescriptorSetLayout)(unsafe.Pointer(x))
 	}(&y)
@@ -24406,7 +24381,7 @@ func (x VkDescriptorUpdateTemplateCreateInfo) PipelineBindPoint() VkPipelineBind
 
 // WithPipelineBindPoint copies the provided value into C space and stores it
 // at pipelineBindPoint on VkDescriptorUpdateTemplateCreateInfo
-func (x *VkDescriptorUpdateTemplateCreateInfo) WithPipelineBindPoint(y VkPipelineBindPoint) *VkDescriptorUpdateTemplateCreateInfo {
+func (x VkDescriptorUpdateTemplateCreateInfo) WithPipelineBindPoint(y VkPipelineBindPoint) VkDescriptorUpdateTemplateCreateInfo {
 	ptr := /* Identifier */ (*C.VkPipelineBindPoint)(&y)
 	x.pipelineBindPoint = *ptr
 	return x
@@ -24422,7 +24397,7 @@ func (x VkDescriptorUpdateTemplateCreateInfo) PipelineLayout() VkPipelineLayout 
 
 // WithPipelineLayout copies the provided value into C space and stores it
 // at pipelineLayout on VkDescriptorUpdateTemplateCreateInfo
-func (x *VkDescriptorUpdateTemplateCreateInfo) WithPipelineLayout(y VkPipelineLayout) *VkDescriptorUpdateTemplateCreateInfo {
+func (x VkDescriptorUpdateTemplateCreateInfo) WithPipelineLayout(y VkPipelineLayout) VkDescriptorUpdateTemplateCreateInfo {
 	ptr := func(x *VkPipelineLayout) *C.VkPipelineLayout { /* Handle */
 		return (*C.VkPipelineLayout)(unsafe.Pointer(x))
 	}(&y)
@@ -24438,7 +24413,7 @@ func (x VkDescriptorUpdateTemplateCreateInfo) Set() uint32 {
 
 // WithSet copies the provided value into C space and stores it
 // at set on VkDescriptorUpdateTemplateCreateInfo
-func (x *VkDescriptorUpdateTemplateCreateInfo) WithSet(y uint32) *VkDescriptorUpdateTemplateCreateInfo {
+func (x VkDescriptorUpdateTemplateCreateInfo) WithSet(y uint32) VkDescriptorUpdateTemplateCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.set = *ptr
 	return x
@@ -24465,12 +24440,12 @@ func (x *VkExternalBufferProperties) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkExternalBufferProperties) AsPtr() *VkExternalBufferProperties { return x }
+func (x VkExternalBufferProperties) AsPtr() *VkExternalBufferProperties { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkExternalBufferProperties) AsCPtr() *VkExternalBufferProperties {
+func (x VkExternalBufferProperties) AsCPtr() *VkExternalBufferProperties {
 	clone := newVkExternalBufferProperties()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -24482,13 +24457,13 @@ func (x VkExternalBufferProperties) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkExternalBufferProperties) WithDefaultSType() *VkExternalBufferProperties {
+func (x VkExternalBufferProperties) WithDefaultSType() VkExternalBufferProperties {
 	return x.WithSType(VK_STRUCTURE_TYPE_EXTERNAL_BUFFER_PROPERTIES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkExternalBufferProperties
-func (x *VkExternalBufferProperties) WithSType(y VkStructureType) *VkExternalBufferProperties {
+func (x VkExternalBufferProperties) WithSType(y VkStructureType) VkExternalBufferProperties {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -24502,7 +24477,7 @@ func (x VkExternalBufferProperties) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkExternalBufferProperties
-func (x *VkExternalBufferProperties) WithPNext(y unsafe.Pointer) *VkExternalBufferProperties {
+func (x VkExternalBufferProperties) WithPNext(y unsafe.Pointer) VkExternalBufferProperties {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -24535,14 +24510,14 @@ func (x *VkPhysicalDeviceMaintenance3Properties) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceMaintenance3Properties) AsPtr() *VkPhysicalDeviceMaintenance3Properties {
-	return x
+func (x VkPhysicalDeviceMaintenance3Properties) AsPtr() *VkPhysicalDeviceMaintenance3Properties {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceMaintenance3Properties) AsCPtr() *VkPhysicalDeviceMaintenance3Properties {
+func (x VkPhysicalDeviceMaintenance3Properties) AsCPtr() *VkPhysicalDeviceMaintenance3Properties {
 	clone := newVkPhysicalDeviceMaintenance3Properties()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -24554,13 +24529,13 @@ func (x VkPhysicalDeviceMaintenance3Properties) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceMaintenance3Properties) WithDefaultSType() *VkPhysicalDeviceMaintenance3Properties {
+func (x VkPhysicalDeviceMaintenance3Properties) WithDefaultSType() VkPhysicalDeviceMaintenance3Properties {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceMaintenance3Properties
-func (x *VkPhysicalDeviceMaintenance3Properties) WithSType(y VkStructureType) *VkPhysicalDeviceMaintenance3Properties {
+func (x VkPhysicalDeviceMaintenance3Properties) WithSType(y VkStructureType) VkPhysicalDeviceMaintenance3Properties {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -24574,7 +24549,7 @@ func (x VkPhysicalDeviceMaintenance3Properties) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceMaintenance3Properties
-func (x *VkPhysicalDeviceMaintenance3Properties) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceMaintenance3Properties {
+func (x VkPhysicalDeviceMaintenance3Properties) WithPNext(y unsafe.Pointer) VkPhysicalDeviceMaintenance3Properties {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -24613,12 +24588,12 @@ func (x *VkDescriptorSetLayoutSupport) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDescriptorSetLayoutSupport) AsPtr() *VkDescriptorSetLayoutSupport { return x }
+func (x VkDescriptorSetLayoutSupport) AsPtr() *VkDescriptorSetLayoutSupport { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDescriptorSetLayoutSupport) AsCPtr() *VkDescriptorSetLayoutSupport {
+func (x VkDescriptorSetLayoutSupport) AsCPtr() *VkDescriptorSetLayoutSupport {
 	clone := newVkDescriptorSetLayoutSupport()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -24630,13 +24605,13 @@ func (x VkDescriptorSetLayoutSupport) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkDescriptorSetLayoutSupport) WithDefaultSType() *VkDescriptorSetLayoutSupport {
+func (x VkDescriptorSetLayoutSupport) WithDefaultSType() VkDescriptorSetLayoutSupport {
 	return x.WithSType(VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_SUPPORT)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkDescriptorSetLayoutSupport
-func (x *VkDescriptorSetLayoutSupport) WithSType(y VkStructureType) *VkDescriptorSetLayoutSupport {
+func (x VkDescriptorSetLayoutSupport) WithSType(y VkStructureType) VkDescriptorSetLayoutSupport {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -24650,7 +24625,7 @@ func (x VkDescriptorSetLayoutSupport) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkDescriptorSetLayoutSupport
-func (x *VkDescriptorSetLayoutSupport) WithPNext(y unsafe.Pointer) *VkDescriptorSetLayoutSupport {
+func (x VkDescriptorSetLayoutSupport) WithPNext(y unsafe.Pointer) VkDescriptorSetLayoutSupport {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -24683,12 +24658,12 @@ func (x *VkPhysicalDeviceSubgroupProperties) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceSubgroupProperties) AsPtr() *VkPhysicalDeviceSubgroupProperties { return x }
+func (x VkPhysicalDeviceSubgroupProperties) AsPtr() *VkPhysicalDeviceSubgroupProperties { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceSubgroupProperties) AsCPtr() *VkPhysicalDeviceSubgroupProperties {
+func (x VkPhysicalDeviceSubgroupProperties) AsCPtr() *VkPhysicalDeviceSubgroupProperties {
 	clone := newVkPhysicalDeviceSubgroupProperties()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -24700,13 +24675,13 @@ func (x VkPhysicalDeviceSubgroupProperties) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceSubgroupProperties) WithDefaultSType() *VkPhysicalDeviceSubgroupProperties {
+func (x VkPhysicalDeviceSubgroupProperties) WithDefaultSType() VkPhysicalDeviceSubgroupProperties {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_PROPERTIES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceSubgroupProperties
-func (x *VkPhysicalDeviceSubgroupProperties) WithSType(y VkStructureType) *VkPhysicalDeviceSubgroupProperties {
+func (x VkPhysicalDeviceSubgroupProperties) WithSType(y VkStructureType) VkPhysicalDeviceSubgroupProperties {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -24720,7 +24695,7 @@ func (x VkPhysicalDeviceSubgroupProperties) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceSubgroupProperties
-func (x *VkPhysicalDeviceSubgroupProperties) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceSubgroupProperties {
+func (x VkPhysicalDeviceSubgroupProperties) WithPNext(y unsafe.Pointer) VkPhysicalDeviceSubgroupProperties {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -24750,37 +24725,12 @@ func (x VkPhysicalDeviceSubgroupProperties) QuadOperationsInAllStages() VkBool32
 	return *ptr
 }
 
-//VkPhysicalDeviceShaderDrawParameterFeatures provides a go interface for VkPhysicalDeviceShaderDrawParameterFeatures.
+//VkPhysicalDeviceShaderDrawParameterFeatures is an alias to VkPhysicalDeviceShaderDrawParametersFeatures.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPhysicalDeviceShaderDrawParameterFeatures.html
-type VkPhysicalDeviceShaderDrawParameterFeatures C.struct_VkPhysicalDeviceShaderDrawParameterFeatures
-
-// NewVkPhysicalDeviceShaderDrawParameterFeatures allocates an instance of this struct in the C memory instead
-// of the Go memory.
-func newVkPhysicalDeviceShaderDrawParameterFeatures() *VkPhysicalDeviceShaderDrawParameterFeatures {
-	sz := unsafe.Sizeof(VkPhysicalDeviceShaderDrawParameterFeatures{})
-	ptr := C.malloc(C.ulong(sz))
-	C.memset(ptr, 0, C.ulong(sz))
-	return (*VkPhysicalDeviceShaderDrawParameterFeatures)(ptr)
-}
-
-// Free releases the memory allocated by the NewVkPhysicalDeviceShaderDrawParameterFeatures method.
-// It does not free pointers stored in the structure. It should only
-// be used on CPtr instances.
-func (x *VkPhysicalDeviceShaderDrawParameterFeatures) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceShaderDrawParameterFeatures) AsPtr() *VkPhysicalDeviceShaderDrawParameterFeatures {
-	return x
-}
-
-// AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceShaderDrawParameterFeatures) AsCPtr() *VkPhysicalDeviceShaderDrawParameterFeatures {
-	clone := newVkPhysicalDeviceShaderDrawParameterFeatures()
-	*clone = *x
-	return clone
-}
+//
+// Deprecated: Most Aliases in the Vulkan spec are for compatibility purposes as extensions get
+// promoted to features. If possible, update code to use the promoted name: VkPhysicalDeviceShaderDrawParametersFeatures.
+type VkPhysicalDeviceShaderDrawParameterFeatures = VkPhysicalDeviceShaderDrawParametersFeatures
 
 //VkExternalMemoryProperties provides a go interface for VkExternalMemoryProperties.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExternalMemoryProperties.html
@@ -24803,12 +24753,12 @@ func (x *VkExternalMemoryProperties) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkExternalMemoryProperties) AsPtr() *VkExternalMemoryProperties { return x }
+func (x VkExternalMemoryProperties) AsPtr() *VkExternalMemoryProperties { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkExternalMemoryProperties) AsCPtr() *VkExternalMemoryProperties {
+func (x VkExternalMemoryProperties) AsCPtr() *VkExternalMemoryProperties {
 	clone := newVkExternalMemoryProperties()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -24851,14 +24801,14 @@ func (x *VkPhysicalDeviceExternalImageFormatInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceExternalImageFormatInfo) AsPtr() *VkPhysicalDeviceExternalImageFormatInfo {
-	return x
+func (x VkPhysicalDeviceExternalImageFormatInfo) AsPtr() *VkPhysicalDeviceExternalImageFormatInfo {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceExternalImageFormatInfo) AsCPtr() *VkPhysicalDeviceExternalImageFormatInfo {
+func (x VkPhysicalDeviceExternalImageFormatInfo) AsCPtr() *VkPhysicalDeviceExternalImageFormatInfo {
 	clone := newVkPhysicalDeviceExternalImageFormatInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -24870,13 +24820,13 @@ func (x VkPhysicalDeviceExternalImageFormatInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceExternalImageFormatInfo) WithDefaultSType() *VkPhysicalDeviceExternalImageFormatInfo {
+func (x VkPhysicalDeviceExternalImageFormatInfo) WithDefaultSType() VkPhysicalDeviceExternalImageFormatInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_IMAGE_FORMAT_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceExternalImageFormatInfo
-func (x *VkPhysicalDeviceExternalImageFormatInfo) WithSType(y VkStructureType) *VkPhysicalDeviceExternalImageFormatInfo {
+func (x VkPhysicalDeviceExternalImageFormatInfo) WithSType(y VkStructureType) VkPhysicalDeviceExternalImageFormatInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -24890,7 +24840,7 @@ func (x VkPhysicalDeviceExternalImageFormatInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceExternalImageFormatInfo
-func (x *VkPhysicalDeviceExternalImageFormatInfo) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceExternalImageFormatInfo {
+func (x VkPhysicalDeviceExternalImageFormatInfo) WithPNext(y unsafe.Pointer) VkPhysicalDeviceExternalImageFormatInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -24904,7 +24854,7 @@ func (x VkPhysicalDeviceExternalImageFormatInfo) HandleType() VkExternalMemoryHa
 
 // WithHandleType copies the provided value into C space and stores it
 // at handleType on VkPhysicalDeviceExternalImageFormatInfo
-func (x *VkPhysicalDeviceExternalImageFormatInfo) WithHandleType(y VkExternalMemoryHandleTypeFlagBits) *VkPhysicalDeviceExternalImageFormatInfo {
+func (x VkPhysicalDeviceExternalImageFormatInfo) WithHandleType(y VkExternalMemoryHandleTypeFlagBits) VkPhysicalDeviceExternalImageFormatInfo {
 	ptr := /* Identifier */ (*C.VkExternalMemoryHandleTypeFlagBits)(&y)
 	x.handleType = *ptr
 	return x
@@ -24931,12 +24881,12 @@ func (x *VkExternalImageFormatProperties) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkExternalImageFormatProperties) AsPtr() *VkExternalImageFormatProperties { return x }
+func (x VkExternalImageFormatProperties) AsPtr() *VkExternalImageFormatProperties { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkExternalImageFormatProperties) AsCPtr() *VkExternalImageFormatProperties {
+func (x VkExternalImageFormatProperties) AsCPtr() *VkExternalImageFormatProperties {
 	clone := newVkExternalImageFormatProperties()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -24948,13 +24898,13 @@ func (x VkExternalImageFormatProperties) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkExternalImageFormatProperties) WithDefaultSType() *VkExternalImageFormatProperties {
+func (x VkExternalImageFormatProperties) WithDefaultSType() VkExternalImageFormatProperties {
 	return x.WithSType(VK_STRUCTURE_TYPE_EXTERNAL_IMAGE_FORMAT_PROPERTIES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkExternalImageFormatProperties
-func (x *VkExternalImageFormatProperties) WithSType(y VkStructureType) *VkExternalImageFormatProperties {
+func (x VkExternalImageFormatProperties) WithSType(y VkStructureType) VkExternalImageFormatProperties {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -24968,7 +24918,7 @@ func (x VkExternalImageFormatProperties) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkExternalImageFormatProperties
-func (x *VkExternalImageFormatProperties) WithPNext(y unsafe.Pointer) *VkExternalImageFormatProperties {
+func (x VkExternalImageFormatProperties) WithPNext(y unsafe.Pointer) VkExternalImageFormatProperties {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -25001,12 +24951,12 @@ func (x *VkPhysicalDeviceExternalBufferInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceExternalBufferInfo) AsPtr() *VkPhysicalDeviceExternalBufferInfo { return x }
+func (x VkPhysicalDeviceExternalBufferInfo) AsPtr() *VkPhysicalDeviceExternalBufferInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceExternalBufferInfo) AsCPtr() *VkPhysicalDeviceExternalBufferInfo {
+func (x VkPhysicalDeviceExternalBufferInfo) AsCPtr() *VkPhysicalDeviceExternalBufferInfo {
 	clone := newVkPhysicalDeviceExternalBufferInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -25018,13 +24968,13 @@ func (x VkPhysicalDeviceExternalBufferInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceExternalBufferInfo) WithDefaultSType() *VkPhysicalDeviceExternalBufferInfo {
+func (x VkPhysicalDeviceExternalBufferInfo) WithDefaultSType() VkPhysicalDeviceExternalBufferInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_BUFFER_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceExternalBufferInfo
-func (x *VkPhysicalDeviceExternalBufferInfo) WithSType(y VkStructureType) *VkPhysicalDeviceExternalBufferInfo {
+func (x VkPhysicalDeviceExternalBufferInfo) WithSType(y VkStructureType) VkPhysicalDeviceExternalBufferInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -25038,7 +24988,7 @@ func (x VkPhysicalDeviceExternalBufferInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceExternalBufferInfo
-func (x *VkPhysicalDeviceExternalBufferInfo) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceExternalBufferInfo {
+func (x VkPhysicalDeviceExternalBufferInfo) WithPNext(y unsafe.Pointer) VkPhysicalDeviceExternalBufferInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -25052,7 +25002,7 @@ func (x VkPhysicalDeviceExternalBufferInfo) Flags() VkBufferCreateFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkPhysicalDeviceExternalBufferInfo
-func (x *VkPhysicalDeviceExternalBufferInfo) WithFlags(y VkBufferCreateFlags) *VkPhysicalDeviceExternalBufferInfo {
+func (x VkPhysicalDeviceExternalBufferInfo) WithFlags(y VkBufferCreateFlags) VkPhysicalDeviceExternalBufferInfo {
 	ptr := /* Identifier */ (*C.VkBufferCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -25066,7 +25016,7 @@ func (x VkPhysicalDeviceExternalBufferInfo) Usage() VkBufferUsageFlags {
 
 // WithUsage copies the provided value into C space and stores it
 // at usage on VkPhysicalDeviceExternalBufferInfo
-func (x *VkPhysicalDeviceExternalBufferInfo) WithUsage(y VkBufferUsageFlags) *VkPhysicalDeviceExternalBufferInfo {
+func (x VkPhysicalDeviceExternalBufferInfo) WithUsage(y VkBufferUsageFlags) VkPhysicalDeviceExternalBufferInfo {
 	ptr := /* Identifier */ (*C.VkBufferUsageFlags)(&y)
 	x.usage = *ptr
 	return x
@@ -25080,7 +25030,7 @@ func (x VkPhysicalDeviceExternalBufferInfo) HandleType() VkExternalMemoryHandleT
 
 // WithHandleType copies the provided value into C space and stores it
 // at handleType on VkPhysicalDeviceExternalBufferInfo
-func (x *VkPhysicalDeviceExternalBufferInfo) WithHandleType(y VkExternalMemoryHandleTypeFlagBits) *VkPhysicalDeviceExternalBufferInfo {
+func (x VkPhysicalDeviceExternalBufferInfo) WithHandleType(y VkExternalMemoryHandleTypeFlagBits) VkPhysicalDeviceExternalBufferInfo {
 	ptr := /* Identifier */ (*C.VkExternalMemoryHandleTypeFlagBits)(&y)
 	x.handleType = *ptr
 	return x
@@ -25107,14 +25057,14 @@ func (x *VkPhysicalDeviceShaderDrawParametersFeatures) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceShaderDrawParametersFeatures) AsPtr() *VkPhysicalDeviceShaderDrawParametersFeatures {
-	return x
+func (x VkPhysicalDeviceShaderDrawParametersFeatures) AsPtr() *VkPhysicalDeviceShaderDrawParametersFeatures {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceShaderDrawParametersFeatures) AsCPtr() *VkPhysicalDeviceShaderDrawParametersFeatures {
+func (x VkPhysicalDeviceShaderDrawParametersFeatures) AsCPtr() *VkPhysicalDeviceShaderDrawParametersFeatures {
 	clone := newVkPhysicalDeviceShaderDrawParametersFeatures()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -25126,13 +25076,13 @@ func (x VkPhysicalDeviceShaderDrawParametersFeatures) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceShaderDrawParametersFeatures) WithDefaultSType() *VkPhysicalDeviceShaderDrawParametersFeatures {
+func (x VkPhysicalDeviceShaderDrawParametersFeatures) WithDefaultSType() VkPhysicalDeviceShaderDrawParametersFeatures {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceShaderDrawParametersFeatures
-func (x *VkPhysicalDeviceShaderDrawParametersFeatures) WithSType(y VkStructureType) *VkPhysicalDeviceShaderDrawParametersFeatures {
+func (x VkPhysicalDeviceShaderDrawParametersFeatures) WithSType(y VkStructureType) VkPhysicalDeviceShaderDrawParametersFeatures {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -25146,7 +25096,7 @@ func (x VkPhysicalDeviceShaderDrawParametersFeatures) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceShaderDrawParametersFeatures
-func (x *VkPhysicalDeviceShaderDrawParametersFeatures) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceShaderDrawParametersFeatures {
+func (x VkPhysicalDeviceShaderDrawParametersFeatures) WithPNext(y unsafe.Pointer) VkPhysicalDeviceShaderDrawParametersFeatures {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -25160,7 +25110,7 @@ func (x VkPhysicalDeviceShaderDrawParametersFeatures) ShaderDrawParameters() VkB
 
 // WithShaderDrawParameters copies the provided value into C space and stores it
 // at shaderDrawParameters on VkPhysicalDeviceShaderDrawParametersFeatures
-func (x *VkPhysicalDeviceShaderDrawParametersFeatures) WithShaderDrawParameters(y VkBool32) *VkPhysicalDeviceShaderDrawParametersFeatures {
+func (x VkPhysicalDeviceShaderDrawParametersFeatures) WithShaderDrawParameters(y VkBool32) VkPhysicalDeviceShaderDrawParametersFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderDrawParameters = *ptr
 	return x
@@ -25731,12 +25681,12 @@ func (x *VkSubpassEndInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkSubpassEndInfo) AsPtr() *VkSubpassEndInfo { return x }
+func (x VkSubpassEndInfo) AsPtr() *VkSubpassEndInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkSubpassEndInfo) AsCPtr() *VkSubpassEndInfo {
+func (x VkSubpassEndInfo) AsCPtr() *VkSubpassEndInfo {
 	clone := newVkSubpassEndInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -25748,13 +25698,13 @@ func (x VkSubpassEndInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkSubpassEndInfo) WithDefaultSType() *VkSubpassEndInfo {
+func (x VkSubpassEndInfo) WithDefaultSType() VkSubpassEndInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_SUBPASS_END_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkSubpassEndInfo
-func (x *VkSubpassEndInfo) WithSType(y VkStructureType) *VkSubpassEndInfo {
+func (x VkSubpassEndInfo) WithSType(y VkStructureType) VkSubpassEndInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -25768,7 +25718,7 @@ func (x VkSubpassEndInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkSubpassEndInfo
-func (x *VkSubpassEndInfo) WithPNext(y unsafe.Pointer) *VkSubpassEndInfo {
+func (x VkSubpassEndInfo) WithPNext(y unsafe.Pointer) VkSubpassEndInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -25795,12 +25745,12 @@ func (x *VkRenderPassCreateInfo2) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkRenderPassCreateInfo2) AsPtr() *VkRenderPassCreateInfo2 { return x }
+func (x VkRenderPassCreateInfo2) AsPtr() *VkRenderPassCreateInfo2 { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkRenderPassCreateInfo2) AsCPtr() *VkRenderPassCreateInfo2 {
+func (x VkRenderPassCreateInfo2) AsCPtr() *VkRenderPassCreateInfo2 {
 	clone := newVkRenderPassCreateInfo2()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -25812,13 +25762,13 @@ func (x VkRenderPassCreateInfo2) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkRenderPassCreateInfo2) WithDefaultSType() *VkRenderPassCreateInfo2 {
+func (x VkRenderPassCreateInfo2) WithDefaultSType() VkRenderPassCreateInfo2 {
 	return x.WithSType(VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO_2)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkRenderPassCreateInfo2
-func (x *VkRenderPassCreateInfo2) WithSType(y VkStructureType) *VkRenderPassCreateInfo2 {
+func (x VkRenderPassCreateInfo2) WithSType(y VkStructureType) VkRenderPassCreateInfo2 {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -25832,7 +25782,7 @@ func (x VkRenderPassCreateInfo2) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkRenderPassCreateInfo2
-func (x *VkRenderPassCreateInfo2) WithPNext(y unsafe.Pointer) *VkRenderPassCreateInfo2 {
+func (x VkRenderPassCreateInfo2) WithPNext(y unsafe.Pointer) VkRenderPassCreateInfo2 {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -25846,7 +25796,7 @@ func (x VkRenderPassCreateInfo2) Flags() VkRenderPassCreateFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkRenderPassCreateInfo2
-func (x *VkRenderPassCreateInfo2) WithFlags(y VkRenderPassCreateFlags) *VkRenderPassCreateInfo2 {
+func (x VkRenderPassCreateInfo2) WithFlags(y VkRenderPassCreateFlags) VkRenderPassCreateInfo2 {
 	ptr := /* Identifier */ (*C.VkRenderPassCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -25860,7 +25810,7 @@ func (x VkRenderPassCreateInfo2) AttachmentCount() uint32 {
 
 // WithAttachmentCount copies the provided value into C space and stores it
 // at attachmentCount on VkRenderPassCreateInfo2
-func (x *VkRenderPassCreateInfo2) WithAttachmentCount(y uint32) *VkRenderPassCreateInfo2 {
+func (x VkRenderPassCreateInfo2) WithAttachmentCount(y uint32) VkRenderPassCreateInfo2 {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.attachmentCount = *ptr
 	return x
@@ -25877,7 +25827,7 @@ func (x VkRenderPassCreateInfo2) PAttachments() []VkAttachmentDescription2 {
 
 // WithPAttachments copies the provided value into C space and stores it
 // at pAttachments on VkRenderPassCreateInfo2
-func (x *VkRenderPassCreateInfo2) WithPAttachments(y []VkAttachmentDescription2) *VkRenderPassCreateInfo2 {
+func (x VkRenderPassCreateInfo2) WithPAttachments(y []VkAttachmentDescription2) VkRenderPassCreateInfo2 {
 	ptr := func(x *[]VkAttachmentDescription2) **C.VkAttachmentDescription2 { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkAttachmentDescription2)(unsafe.Pointer(&((*x)[0])))
@@ -25898,7 +25848,7 @@ func (x VkRenderPassCreateInfo2) SubpassCount() uint32 {
 
 // WithSubpassCount copies the provided value into C space and stores it
 // at subpassCount on VkRenderPassCreateInfo2
-func (x *VkRenderPassCreateInfo2) WithSubpassCount(y uint32) *VkRenderPassCreateInfo2 {
+func (x VkRenderPassCreateInfo2) WithSubpassCount(y uint32) VkRenderPassCreateInfo2 {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.subpassCount = *ptr
 	return x
@@ -25915,7 +25865,7 @@ func (x VkRenderPassCreateInfo2) PSubpasses() []VkSubpassDescription2 {
 
 // WithPSubpasses copies the provided value into C space and stores it
 // at pSubpasses on VkRenderPassCreateInfo2
-func (x *VkRenderPassCreateInfo2) WithPSubpasses(y []VkSubpassDescription2) *VkRenderPassCreateInfo2 {
+func (x VkRenderPassCreateInfo2) WithPSubpasses(y []VkSubpassDescription2) VkRenderPassCreateInfo2 {
 	ptr := func(x *[]VkSubpassDescription2) **C.VkSubpassDescription2 { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkSubpassDescription2)(unsafe.Pointer(&((*x)[0])))
@@ -25936,7 +25886,7 @@ func (x VkRenderPassCreateInfo2) DependencyCount() uint32 {
 
 // WithDependencyCount copies the provided value into C space and stores it
 // at dependencyCount on VkRenderPassCreateInfo2
-func (x *VkRenderPassCreateInfo2) WithDependencyCount(y uint32) *VkRenderPassCreateInfo2 {
+func (x VkRenderPassCreateInfo2) WithDependencyCount(y uint32) VkRenderPassCreateInfo2 {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.dependencyCount = *ptr
 	return x
@@ -25953,7 +25903,7 @@ func (x VkRenderPassCreateInfo2) PDependencies() []VkSubpassDependency2 {
 
 // WithPDependencies copies the provided value into C space and stores it
 // at pDependencies on VkRenderPassCreateInfo2
-func (x *VkRenderPassCreateInfo2) WithPDependencies(y []VkSubpassDependency2) *VkRenderPassCreateInfo2 {
+func (x VkRenderPassCreateInfo2) WithPDependencies(y []VkSubpassDependency2) VkRenderPassCreateInfo2 {
 	ptr := func(x *[]VkSubpassDependency2) **C.VkSubpassDependency2 { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkSubpassDependency2)(unsafe.Pointer(&((*x)[0])))
@@ -25974,7 +25924,7 @@ func (x VkRenderPassCreateInfo2) CorrelatedViewMaskCount() uint32 {
 
 // WithCorrelatedViewMaskCount copies the provided value into C space and stores it
 // at correlatedViewMaskCount on VkRenderPassCreateInfo2
-func (x *VkRenderPassCreateInfo2) WithCorrelatedViewMaskCount(y uint32) *VkRenderPassCreateInfo2 {
+func (x VkRenderPassCreateInfo2) WithCorrelatedViewMaskCount(y uint32) VkRenderPassCreateInfo2 {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.correlatedViewMaskCount = *ptr
 	return x
@@ -25991,7 +25941,7 @@ func (x VkRenderPassCreateInfo2) PCorrelatedViewMasks() []uint32 {
 
 // WithPCorrelatedViewMasks copies the provided value into C space and stores it
 // at pCorrelatedViewMasks on VkRenderPassCreateInfo2
-func (x *VkRenderPassCreateInfo2) WithPCorrelatedViewMasks(y []uint32) *VkRenderPassCreateInfo2 {
+func (x VkRenderPassCreateInfo2) WithPCorrelatedViewMasks(y []uint32) VkRenderPassCreateInfo2 {
 	ptr := func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
@@ -26025,12 +25975,12 @@ func (x *VkAttachmentDescription2) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkAttachmentDescription2) AsPtr() *VkAttachmentDescription2 { return x }
+func (x VkAttachmentDescription2) AsPtr() *VkAttachmentDescription2 { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkAttachmentDescription2) AsCPtr() *VkAttachmentDescription2 {
+func (x VkAttachmentDescription2) AsCPtr() *VkAttachmentDescription2 {
 	clone := newVkAttachmentDescription2()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -26042,13 +25992,13 @@ func (x VkAttachmentDescription2) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkAttachmentDescription2) WithDefaultSType() *VkAttachmentDescription2 {
+func (x VkAttachmentDescription2) WithDefaultSType() VkAttachmentDescription2 {
 	return x.WithSType(VK_STRUCTURE_TYPE_ATTACHMENT_DESCRIPTION_2)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkAttachmentDescription2
-func (x *VkAttachmentDescription2) WithSType(y VkStructureType) *VkAttachmentDescription2 {
+func (x VkAttachmentDescription2) WithSType(y VkStructureType) VkAttachmentDescription2 {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -26062,7 +26012,7 @@ func (x VkAttachmentDescription2) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkAttachmentDescription2
-func (x *VkAttachmentDescription2) WithPNext(y unsafe.Pointer) *VkAttachmentDescription2 {
+func (x VkAttachmentDescription2) WithPNext(y unsafe.Pointer) VkAttachmentDescription2 {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -26076,7 +26026,7 @@ func (x VkAttachmentDescription2) Flags() VkAttachmentDescriptionFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkAttachmentDescription2
-func (x *VkAttachmentDescription2) WithFlags(y VkAttachmentDescriptionFlags) *VkAttachmentDescription2 {
+func (x VkAttachmentDescription2) WithFlags(y VkAttachmentDescriptionFlags) VkAttachmentDescription2 {
 	ptr := /* Identifier */ (*C.VkAttachmentDescriptionFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -26090,7 +26040,7 @@ func (x VkAttachmentDescription2) Format() VkFormat {
 
 // WithFormat copies the provided value into C space and stores it
 // at format on VkAttachmentDescription2
-func (x *VkAttachmentDescription2) WithFormat(y VkFormat) *VkAttachmentDescription2 {
+func (x VkAttachmentDescription2) WithFormat(y VkFormat) VkAttachmentDescription2 {
 	ptr := /* Identifier */ (*C.VkFormat)(&y)
 	x.format = *ptr
 	return x
@@ -26104,7 +26054,7 @@ func (x VkAttachmentDescription2) Samples() VkSampleCountFlagBits {
 
 // WithSamples copies the provided value into C space and stores it
 // at samples on VkAttachmentDescription2
-func (x *VkAttachmentDescription2) WithSamples(y VkSampleCountFlagBits) *VkAttachmentDescription2 {
+func (x VkAttachmentDescription2) WithSamples(y VkSampleCountFlagBits) VkAttachmentDescription2 {
 	ptr := /* Identifier */ (*C.VkSampleCountFlagBits)(&y)
 	x.samples = *ptr
 	return x
@@ -26118,7 +26068,7 @@ func (x VkAttachmentDescription2) LoadOp() VkAttachmentLoadOp {
 
 // WithLoadOp copies the provided value into C space and stores it
 // at loadOp on VkAttachmentDescription2
-func (x *VkAttachmentDescription2) WithLoadOp(y VkAttachmentLoadOp) *VkAttachmentDescription2 {
+func (x VkAttachmentDescription2) WithLoadOp(y VkAttachmentLoadOp) VkAttachmentDescription2 {
 	ptr := /* Identifier */ (*C.VkAttachmentLoadOp)(&y)
 	x.loadOp = *ptr
 	return x
@@ -26132,7 +26082,7 @@ func (x VkAttachmentDescription2) StoreOp() VkAttachmentStoreOp {
 
 // WithStoreOp copies the provided value into C space and stores it
 // at storeOp on VkAttachmentDescription2
-func (x *VkAttachmentDescription2) WithStoreOp(y VkAttachmentStoreOp) *VkAttachmentDescription2 {
+func (x VkAttachmentDescription2) WithStoreOp(y VkAttachmentStoreOp) VkAttachmentDescription2 {
 	ptr := /* Identifier */ (*C.VkAttachmentStoreOp)(&y)
 	x.storeOp = *ptr
 	return x
@@ -26146,7 +26096,7 @@ func (x VkAttachmentDescription2) StencilLoadOp() VkAttachmentLoadOp {
 
 // WithStencilLoadOp copies the provided value into C space and stores it
 // at stencilLoadOp on VkAttachmentDescription2
-func (x *VkAttachmentDescription2) WithStencilLoadOp(y VkAttachmentLoadOp) *VkAttachmentDescription2 {
+func (x VkAttachmentDescription2) WithStencilLoadOp(y VkAttachmentLoadOp) VkAttachmentDescription2 {
 	ptr := /* Identifier */ (*C.VkAttachmentLoadOp)(&y)
 	x.stencilLoadOp = *ptr
 	return x
@@ -26160,7 +26110,7 @@ func (x VkAttachmentDescription2) StencilStoreOp() VkAttachmentStoreOp {
 
 // WithStencilStoreOp copies the provided value into C space and stores it
 // at stencilStoreOp on VkAttachmentDescription2
-func (x *VkAttachmentDescription2) WithStencilStoreOp(y VkAttachmentStoreOp) *VkAttachmentDescription2 {
+func (x VkAttachmentDescription2) WithStencilStoreOp(y VkAttachmentStoreOp) VkAttachmentDescription2 {
 	ptr := /* Identifier */ (*C.VkAttachmentStoreOp)(&y)
 	x.stencilStoreOp = *ptr
 	return x
@@ -26174,7 +26124,7 @@ func (x VkAttachmentDescription2) InitialLayout() VkImageLayout {
 
 // WithInitialLayout copies the provided value into C space and stores it
 // at initialLayout on VkAttachmentDescription2
-func (x *VkAttachmentDescription2) WithInitialLayout(y VkImageLayout) *VkAttachmentDescription2 {
+func (x VkAttachmentDescription2) WithInitialLayout(y VkImageLayout) VkAttachmentDescription2 {
 	ptr := /* Identifier */ (*C.VkImageLayout)(&y)
 	x.initialLayout = *ptr
 	return x
@@ -26188,7 +26138,7 @@ func (x VkAttachmentDescription2) FinalLayout() VkImageLayout {
 
 // WithFinalLayout copies the provided value into C space and stores it
 // at finalLayout on VkAttachmentDescription2
-func (x *VkAttachmentDescription2) WithFinalLayout(y VkImageLayout) *VkAttachmentDescription2 {
+func (x VkAttachmentDescription2) WithFinalLayout(y VkImageLayout) VkAttachmentDescription2 {
 	ptr := /* Identifier */ (*C.VkImageLayout)(&y)
 	x.finalLayout = *ptr
 	return x
@@ -26215,12 +26165,12 @@ func (x *VkAttachmentReference2) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkAttachmentReference2) AsPtr() *VkAttachmentReference2 { return x }
+func (x VkAttachmentReference2) AsPtr() *VkAttachmentReference2 { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkAttachmentReference2) AsCPtr() *VkAttachmentReference2 {
+func (x VkAttachmentReference2) AsCPtr() *VkAttachmentReference2 {
 	clone := newVkAttachmentReference2()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -26232,13 +26182,13 @@ func (x VkAttachmentReference2) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkAttachmentReference2) WithDefaultSType() *VkAttachmentReference2 {
+func (x VkAttachmentReference2) WithDefaultSType() VkAttachmentReference2 {
 	return x.WithSType(VK_STRUCTURE_TYPE_ATTACHMENT_REFERENCE_2)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkAttachmentReference2
-func (x *VkAttachmentReference2) WithSType(y VkStructureType) *VkAttachmentReference2 {
+func (x VkAttachmentReference2) WithSType(y VkStructureType) VkAttachmentReference2 {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -26252,7 +26202,7 @@ func (x VkAttachmentReference2) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkAttachmentReference2
-func (x *VkAttachmentReference2) WithPNext(y unsafe.Pointer) *VkAttachmentReference2 {
+func (x VkAttachmentReference2) WithPNext(y unsafe.Pointer) VkAttachmentReference2 {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -26266,7 +26216,7 @@ func (x VkAttachmentReference2) Attachment() uint32 {
 
 // WithAttachment copies the provided value into C space and stores it
 // at attachment on VkAttachmentReference2
-func (x *VkAttachmentReference2) WithAttachment(y uint32) *VkAttachmentReference2 {
+func (x VkAttachmentReference2) WithAttachment(y uint32) VkAttachmentReference2 {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.attachment = *ptr
 	return x
@@ -26280,7 +26230,7 @@ func (x VkAttachmentReference2) Layout() VkImageLayout {
 
 // WithLayout copies the provided value into C space and stores it
 // at layout on VkAttachmentReference2
-func (x *VkAttachmentReference2) WithLayout(y VkImageLayout) *VkAttachmentReference2 {
+func (x VkAttachmentReference2) WithLayout(y VkImageLayout) VkAttachmentReference2 {
 	ptr := /* Identifier */ (*C.VkImageLayout)(&y)
 	x.layout = *ptr
 	return x
@@ -26294,7 +26244,7 @@ func (x VkAttachmentReference2) AspectMask() VkImageAspectFlags {
 
 // WithAspectMask copies the provided value into C space and stores it
 // at aspectMask on VkAttachmentReference2
-func (x *VkAttachmentReference2) WithAspectMask(y VkImageAspectFlags) *VkAttachmentReference2 {
+func (x VkAttachmentReference2) WithAspectMask(y VkImageAspectFlags) VkAttachmentReference2 {
 	ptr := /* Identifier */ (*C.VkImageAspectFlags)(&y)
 	x.aspectMask = *ptr
 	return x
@@ -26321,12 +26271,12 @@ func (x *VkSubpassDescription2) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkSubpassDescription2) AsPtr() *VkSubpassDescription2 { return x }
+func (x VkSubpassDescription2) AsPtr() *VkSubpassDescription2 { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkSubpassDescription2) AsCPtr() *VkSubpassDescription2 {
+func (x VkSubpassDescription2) AsCPtr() *VkSubpassDescription2 {
 	clone := newVkSubpassDescription2()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -26338,13 +26288,13 @@ func (x VkSubpassDescription2) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkSubpassDescription2) WithDefaultSType() *VkSubpassDescription2 {
+func (x VkSubpassDescription2) WithDefaultSType() VkSubpassDescription2 {
 	return x.WithSType(VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_2)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkSubpassDescription2
-func (x *VkSubpassDescription2) WithSType(y VkStructureType) *VkSubpassDescription2 {
+func (x VkSubpassDescription2) WithSType(y VkStructureType) VkSubpassDescription2 {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -26358,7 +26308,7 @@ func (x VkSubpassDescription2) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkSubpassDescription2
-func (x *VkSubpassDescription2) WithPNext(y unsafe.Pointer) *VkSubpassDescription2 {
+func (x VkSubpassDescription2) WithPNext(y unsafe.Pointer) VkSubpassDescription2 {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -26372,7 +26322,7 @@ func (x VkSubpassDescription2) Flags() VkSubpassDescriptionFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkSubpassDescription2
-func (x *VkSubpassDescription2) WithFlags(y VkSubpassDescriptionFlags) *VkSubpassDescription2 {
+func (x VkSubpassDescription2) WithFlags(y VkSubpassDescriptionFlags) VkSubpassDescription2 {
 	ptr := /* Identifier */ (*C.VkSubpassDescriptionFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -26386,7 +26336,7 @@ func (x VkSubpassDescription2) PipelineBindPoint() VkPipelineBindPoint {
 
 // WithPipelineBindPoint copies the provided value into C space and stores it
 // at pipelineBindPoint on VkSubpassDescription2
-func (x *VkSubpassDescription2) WithPipelineBindPoint(y VkPipelineBindPoint) *VkSubpassDescription2 {
+func (x VkSubpassDescription2) WithPipelineBindPoint(y VkPipelineBindPoint) VkSubpassDescription2 {
 	ptr := /* Identifier */ (*C.VkPipelineBindPoint)(&y)
 	x.pipelineBindPoint = *ptr
 	return x
@@ -26400,7 +26350,7 @@ func (x VkSubpassDescription2) ViewMask() uint32 {
 
 // WithViewMask copies the provided value into C space and stores it
 // at viewMask on VkSubpassDescription2
-func (x *VkSubpassDescription2) WithViewMask(y uint32) *VkSubpassDescription2 {
+func (x VkSubpassDescription2) WithViewMask(y uint32) VkSubpassDescription2 {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.viewMask = *ptr
 	return x
@@ -26414,7 +26364,7 @@ func (x VkSubpassDescription2) InputAttachmentCount() uint32 {
 
 // WithInputAttachmentCount copies the provided value into C space and stores it
 // at inputAttachmentCount on VkSubpassDescription2
-func (x *VkSubpassDescription2) WithInputAttachmentCount(y uint32) *VkSubpassDescription2 {
+func (x VkSubpassDescription2) WithInputAttachmentCount(y uint32) VkSubpassDescription2 {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.inputAttachmentCount = *ptr
 	return x
@@ -26431,7 +26381,7 @@ func (x VkSubpassDescription2) PInputAttachments() []VkAttachmentReference2 {
 
 // WithPInputAttachments copies the provided value into C space and stores it
 // at pInputAttachments on VkSubpassDescription2
-func (x *VkSubpassDescription2) WithPInputAttachments(y []VkAttachmentReference2) *VkSubpassDescription2 {
+func (x VkSubpassDescription2) WithPInputAttachments(y []VkAttachmentReference2) VkSubpassDescription2 {
 	ptr := func(x *[]VkAttachmentReference2) **C.VkAttachmentReference2 { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkAttachmentReference2)(unsafe.Pointer(&((*x)[0])))
@@ -26452,7 +26402,7 @@ func (x VkSubpassDescription2) ColorAttachmentCount() uint32 {
 
 // WithColorAttachmentCount copies the provided value into C space and stores it
 // at colorAttachmentCount on VkSubpassDescription2
-func (x *VkSubpassDescription2) WithColorAttachmentCount(y uint32) *VkSubpassDescription2 {
+func (x VkSubpassDescription2) WithColorAttachmentCount(y uint32) VkSubpassDescription2 {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.colorAttachmentCount = *ptr
 	return x
@@ -26469,7 +26419,7 @@ func (x VkSubpassDescription2) PColorAttachments() []VkAttachmentReference2 {
 
 // WithPColorAttachments copies the provided value into C space and stores it
 // at pColorAttachments on VkSubpassDescription2
-func (x *VkSubpassDescription2) WithPColorAttachments(y []VkAttachmentReference2) *VkSubpassDescription2 {
+func (x VkSubpassDescription2) WithPColorAttachments(y []VkAttachmentReference2) VkSubpassDescription2 {
 	ptr := func(x *[]VkAttachmentReference2) **C.VkAttachmentReference2 { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkAttachmentReference2)(unsafe.Pointer(&((*x)[0])))
@@ -26493,7 +26443,7 @@ func (x VkSubpassDescription2) PResolveAttachments() []VkAttachmentReference2 {
 
 // WithPResolveAttachments copies the provided value into C space and stores it
 // at pResolveAttachments on VkSubpassDescription2
-func (x *VkSubpassDescription2) WithPResolveAttachments(y []VkAttachmentReference2) *VkSubpassDescription2 {
+func (x VkSubpassDescription2) WithPResolveAttachments(y []VkAttachmentReference2) VkSubpassDescription2 {
 	ptr := func(x *[]VkAttachmentReference2) **C.VkAttachmentReference2 { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkAttachmentReference2)(unsafe.Pointer(&((*x)[0])))
@@ -26516,7 +26466,7 @@ func (x VkSubpassDescription2) PDepthStencilAttachment() *VkAttachmentReference2
 
 // WithPDepthStencilAttachment copies the provided value into C space and stores it
 // at pDepthStencilAttachment on VkSubpassDescription2
-func (x *VkSubpassDescription2) WithPDepthStencilAttachment(y *VkAttachmentReference2) *VkSubpassDescription2 {
+func (x VkSubpassDescription2) WithPDepthStencilAttachment(y *VkAttachmentReference2) VkSubpassDescription2 {
 	ptr := func(x **VkAttachmentReference2) **C.VkAttachmentReference2 { /* Pointer */
 		return (**C.VkAttachmentReference2)(unsafe.Pointer(x))
 	}(&y)
@@ -26532,7 +26482,7 @@ func (x VkSubpassDescription2) PreserveAttachmentCount() uint32 {
 
 // WithPreserveAttachmentCount copies the provided value into C space and stores it
 // at preserveAttachmentCount on VkSubpassDescription2
-func (x *VkSubpassDescription2) WithPreserveAttachmentCount(y uint32) *VkSubpassDescription2 {
+func (x VkSubpassDescription2) WithPreserveAttachmentCount(y uint32) VkSubpassDescription2 {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.preserveAttachmentCount = *ptr
 	return x
@@ -26549,7 +26499,7 @@ func (x VkSubpassDescription2) PPreserveAttachments() []uint32 {
 
 // WithPPreserveAttachments copies the provided value into C space and stores it
 // at pPreserveAttachments on VkSubpassDescription2
-func (x *VkSubpassDescription2) WithPPreserveAttachments(y []uint32) *VkSubpassDescription2 {
+func (x VkSubpassDescription2) WithPPreserveAttachments(y []uint32) VkSubpassDescription2 {
 	ptr := func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
@@ -26583,12 +26533,12 @@ func (x *VkSubpassDependency2) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkSubpassDependency2) AsPtr() *VkSubpassDependency2 { return x }
+func (x VkSubpassDependency2) AsPtr() *VkSubpassDependency2 { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkSubpassDependency2) AsCPtr() *VkSubpassDependency2 {
+func (x VkSubpassDependency2) AsCPtr() *VkSubpassDependency2 {
 	clone := newVkSubpassDependency2()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -26600,13 +26550,13 @@ func (x VkSubpassDependency2) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkSubpassDependency2) WithDefaultSType() *VkSubpassDependency2 {
+func (x VkSubpassDependency2) WithDefaultSType() VkSubpassDependency2 {
 	return x.WithSType(VK_STRUCTURE_TYPE_SUBPASS_DEPENDENCY_2)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkSubpassDependency2
-func (x *VkSubpassDependency2) WithSType(y VkStructureType) *VkSubpassDependency2 {
+func (x VkSubpassDependency2) WithSType(y VkStructureType) VkSubpassDependency2 {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -26620,7 +26570,7 @@ func (x VkSubpassDependency2) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkSubpassDependency2
-func (x *VkSubpassDependency2) WithPNext(y unsafe.Pointer) *VkSubpassDependency2 {
+func (x VkSubpassDependency2) WithPNext(y unsafe.Pointer) VkSubpassDependency2 {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -26634,7 +26584,7 @@ func (x VkSubpassDependency2) SrcSubpass() uint32 {
 
 // WithSrcSubpass copies the provided value into C space and stores it
 // at srcSubpass on VkSubpassDependency2
-func (x *VkSubpassDependency2) WithSrcSubpass(y uint32) *VkSubpassDependency2 {
+func (x VkSubpassDependency2) WithSrcSubpass(y uint32) VkSubpassDependency2 {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.srcSubpass = *ptr
 	return x
@@ -26648,7 +26598,7 @@ func (x VkSubpassDependency2) DstSubpass() uint32 {
 
 // WithDstSubpass copies the provided value into C space and stores it
 // at dstSubpass on VkSubpassDependency2
-func (x *VkSubpassDependency2) WithDstSubpass(y uint32) *VkSubpassDependency2 {
+func (x VkSubpassDependency2) WithDstSubpass(y uint32) VkSubpassDependency2 {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.dstSubpass = *ptr
 	return x
@@ -26662,7 +26612,7 @@ func (x VkSubpassDependency2) SrcStageMask() VkPipelineStageFlags {
 
 // WithSrcStageMask copies the provided value into C space and stores it
 // at srcStageMask on VkSubpassDependency2
-func (x *VkSubpassDependency2) WithSrcStageMask(y VkPipelineStageFlags) *VkSubpassDependency2 {
+func (x VkSubpassDependency2) WithSrcStageMask(y VkPipelineStageFlags) VkSubpassDependency2 {
 	ptr := /* Identifier */ (*C.VkPipelineStageFlags)(&y)
 	x.srcStageMask = *ptr
 	return x
@@ -26676,7 +26626,7 @@ func (x VkSubpassDependency2) DstStageMask() VkPipelineStageFlags {
 
 // WithDstStageMask copies the provided value into C space and stores it
 // at dstStageMask on VkSubpassDependency2
-func (x *VkSubpassDependency2) WithDstStageMask(y VkPipelineStageFlags) *VkSubpassDependency2 {
+func (x VkSubpassDependency2) WithDstStageMask(y VkPipelineStageFlags) VkSubpassDependency2 {
 	ptr := /* Identifier */ (*C.VkPipelineStageFlags)(&y)
 	x.dstStageMask = *ptr
 	return x
@@ -26690,7 +26640,7 @@ func (x VkSubpassDependency2) SrcAccessMask() VkAccessFlags {
 
 // WithSrcAccessMask copies the provided value into C space and stores it
 // at srcAccessMask on VkSubpassDependency2
-func (x *VkSubpassDependency2) WithSrcAccessMask(y VkAccessFlags) *VkSubpassDependency2 {
+func (x VkSubpassDependency2) WithSrcAccessMask(y VkAccessFlags) VkSubpassDependency2 {
 	ptr := /* Identifier */ (*C.VkAccessFlags)(&y)
 	x.srcAccessMask = *ptr
 	return x
@@ -26704,7 +26654,7 @@ func (x VkSubpassDependency2) DstAccessMask() VkAccessFlags {
 
 // WithDstAccessMask copies the provided value into C space and stores it
 // at dstAccessMask on VkSubpassDependency2
-func (x *VkSubpassDependency2) WithDstAccessMask(y VkAccessFlags) *VkSubpassDependency2 {
+func (x VkSubpassDependency2) WithDstAccessMask(y VkAccessFlags) VkSubpassDependency2 {
 	ptr := /* Identifier */ (*C.VkAccessFlags)(&y)
 	x.dstAccessMask = *ptr
 	return x
@@ -26718,7 +26668,7 @@ func (x VkSubpassDependency2) DependencyFlags() VkDependencyFlags {
 
 // WithDependencyFlags copies the provided value into C space and stores it
 // at dependencyFlags on VkSubpassDependency2
-func (x *VkSubpassDependency2) WithDependencyFlags(y VkDependencyFlags) *VkSubpassDependency2 {
+func (x VkSubpassDependency2) WithDependencyFlags(y VkDependencyFlags) VkSubpassDependency2 {
 	ptr := /* Identifier */ (*C.VkDependencyFlags)(&y)
 	x.dependencyFlags = *ptr
 	return x
@@ -26732,7 +26682,7 @@ func (x VkSubpassDependency2) ViewOffset() int32 {
 
 // WithViewOffset copies the provided value into C space and stores it
 // at viewOffset on VkSubpassDependency2
-func (x *VkSubpassDependency2) WithViewOffset(y int32) *VkSubpassDependency2 {
+func (x VkSubpassDependency2) WithViewOffset(y int32) VkSubpassDependency2 {
 	ptr := func(x *int32) *C.int { /* Scalar */ return (*C.int)(unsafe.Pointer(x)) }(&y)
 	x.viewOffset = *ptr
 	return x
@@ -26759,12 +26709,12 @@ func (x *VkSubpassBeginInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkSubpassBeginInfo) AsPtr() *VkSubpassBeginInfo { return x }
+func (x VkSubpassBeginInfo) AsPtr() *VkSubpassBeginInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkSubpassBeginInfo) AsCPtr() *VkSubpassBeginInfo {
+func (x VkSubpassBeginInfo) AsCPtr() *VkSubpassBeginInfo {
 	clone := newVkSubpassBeginInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -26776,13 +26726,13 @@ func (x VkSubpassBeginInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkSubpassBeginInfo) WithDefaultSType() *VkSubpassBeginInfo {
+func (x VkSubpassBeginInfo) WithDefaultSType() VkSubpassBeginInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_SUBPASS_BEGIN_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkSubpassBeginInfo
-func (x *VkSubpassBeginInfo) WithSType(y VkStructureType) *VkSubpassBeginInfo {
+func (x VkSubpassBeginInfo) WithSType(y VkStructureType) VkSubpassBeginInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -26796,7 +26746,7 @@ func (x VkSubpassBeginInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkSubpassBeginInfo
-func (x *VkSubpassBeginInfo) WithPNext(y unsafe.Pointer) *VkSubpassBeginInfo {
+func (x VkSubpassBeginInfo) WithPNext(y unsafe.Pointer) VkSubpassBeginInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -26810,7 +26760,7 @@ func (x VkSubpassBeginInfo) Contents() VkSubpassContents {
 
 // WithContents copies the provided value into C space and stores it
 // at contents on VkSubpassBeginInfo
-func (x *VkSubpassBeginInfo) WithContents(y VkSubpassContents) *VkSubpassBeginInfo {
+func (x VkSubpassBeginInfo) WithContents(y VkSubpassContents) VkSubpassBeginInfo {
 	ptr := /* Identifier */ (*C.VkSubpassContents)(&y)
 	x.contents = *ptr
 	return x
@@ -26837,12 +26787,12 @@ func (x *VkSemaphoreWaitInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkSemaphoreWaitInfo) AsPtr() *VkSemaphoreWaitInfo { return x }
+func (x VkSemaphoreWaitInfo) AsPtr() *VkSemaphoreWaitInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkSemaphoreWaitInfo) AsCPtr() *VkSemaphoreWaitInfo {
+func (x VkSemaphoreWaitInfo) AsCPtr() *VkSemaphoreWaitInfo {
 	clone := newVkSemaphoreWaitInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -26854,13 +26804,13 @@ func (x VkSemaphoreWaitInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkSemaphoreWaitInfo) WithDefaultSType() *VkSemaphoreWaitInfo {
+func (x VkSemaphoreWaitInfo) WithDefaultSType() VkSemaphoreWaitInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_SEMAPHORE_WAIT_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkSemaphoreWaitInfo
-func (x *VkSemaphoreWaitInfo) WithSType(y VkStructureType) *VkSemaphoreWaitInfo {
+func (x VkSemaphoreWaitInfo) WithSType(y VkStructureType) VkSemaphoreWaitInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -26874,7 +26824,7 @@ func (x VkSemaphoreWaitInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkSemaphoreWaitInfo
-func (x *VkSemaphoreWaitInfo) WithPNext(y unsafe.Pointer) *VkSemaphoreWaitInfo {
+func (x VkSemaphoreWaitInfo) WithPNext(y unsafe.Pointer) VkSemaphoreWaitInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -26888,7 +26838,7 @@ func (x VkSemaphoreWaitInfo) Flags() VkSemaphoreWaitFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkSemaphoreWaitInfo
-func (x *VkSemaphoreWaitInfo) WithFlags(y VkSemaphoreWaitFlags) *VkSemaphoreWaitInfo {
+func (x VkSemaphoreWaitInfo) WithFlags(y VkSemaphoreWaitFlags) VkSemaphoreWaitInfo {
 	ptr := /* Identifier */ (*C.VkSemaphoreWaitFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -26902,7 +26852,7 @@ func (x VkSemaphoreWaitInfo) SemaphoreCount() uint32 {
 
 // WithSemaphoreCount copies the provided value into C space and stores it
 // at semaphoreCount on VkSemaphoreWaitInfo
-func (x *VkSemaphoreWaitInfo) WithSemaphoreCount(y uint32) *VkSemaphoreWaitInfo {
+func (x VkSemaphoreWaitInfo) WithSemaphoreCount(y uint32) VkSemaphoreWaitInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.semaphoreCount = *ptr
 	return x
@@ -26919,7 +26869,7 @@ func (x VkSemaphoreWaitInfo) PSemaphores() []VkSemaphore {
 
 // WithPSemaphores copies the provided value into C space and stores it
 // at pSemaphores on VkSemaphoreWaitInfo
-func (x *VkSemaphoreWaitInfo) WithPSemaphores(y []VkSemaphore) *VkSemaphoreWaitInfo {
+func (x VkSemaphoreWaitInfo) WithPSemaphores(y []VkSemaphore) VkSemaphoreWaitInfo {
 	ptr := func(x *[]VkSemaphore) **C.VkSemaphore { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkSemaphore)(unsafe.Pointer(&((*x)[0])))
@@ -26943,7 +26893,7 @@ func (x VkSemaphoreWaitInfo) PValues() []uint64 {
 
 // WithPValues copies the provided value into C space and stores it
 // at pValues on VkSemaphoreWaitInfo
-func (x *VkSemaphoreWaitInfo) WithPValues(y []uint64) *VkSemaphoreWaitInfo {
+func (x VkSemaphoreWaitInfo) WithPValues(y []uint64) VkSemaphoreWaitInfo {
 	ptr := func(x *[]uint64) **C.ulonglong { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.ulonglong)(unsafe.Pointer(&((*x)[0])))
@@ -26977,12 +26927,12 @@ func (x *VkPhysicalDevice8BitStorageFeatures) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDevice8BitStorageFeatures) AsPtr() *VkPhysicalDevice8BitStorageFeatures { return x }
+func (x VkPhysicalDevice8BitStorageFeatures) AsPtr() *VkPhysicalDevice8BitStorageFeatures { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDevice8BitStorageFeatures) AsCPtr() *VkPhysicalDevice8BitStorageFeatures {
+func (x VkPhysicalDevice8BitStorageFeatures) AsCPtr() *VkPhysicalDevice8BitStorageFeatures {
 	clone := newVkPhysicalDevice8BitStorageFeatures()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -26994,13 +26944,13 @@ func (x VkPhysicalDevice8BitStorageFeatures) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDevice8BitStorageFeatures) WithDefaultSType() *VkPhysicalDevice8BitStorageFeatures {
+func (x VkPhysicalDevice8BitStorageFeatures) WithDefaultSType() VkPhysicalDevice8BitStorageFeatures {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_8BIT_STORAGE_FEATURES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDevice8BitStorageFeatures
-func (x *VkPhysicalDevice8BitStorageFeatures) WithSType(y VkStructureType) *VkPhysicalDevice8BitStorageFeatures {
+func (x VkPhysicalDevice8BitStorageFeatures) WithSType(y VkStructureType) VkPhysicalDevice8BitStorageFeatures {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -27014,7 +26964,7 @@ func (x VkPhysicalDevice8BitStorageFeatures) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDevice8BitStorageFeatures
-func (x *VkPhysicalDevice8BitStorageFeatures) WithPNext(y unsafe.Pointer) *VkPhysicalDevice8BitStorageFeatures {
+func (x VkPhysicalDevice8BitStorageFeatures) WithPNext(y unsafe.Pointer) VkPhysicalDevice8BitStorageFeatures {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -27028,7 +26978,7 @@ func (x VkPhysicalDevice8BitStorageFeatures) StorageBuffer8BitAccess() VkBool32 
 
 // WithStorageBuffer8BitAccess copies the provided value into C space and stores it
 // at storageBuffer8BitAccess on VkPhysicalDevice8BitStorageFeatures
-func (x *VkPhysicalDevice8BitStorageFeatures) WithStorageBuffer8BitAccess(y VkBool32) *VkPhysicalDevice8BitStorageFeatures {
+func (x VkPhysicalDevice8BitStorageFeatures) WithStorageBuffer8BitAccess(y VkBool32) VkPhysicalDevice8BitStorageFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.storageBuffer8BitAccess = *ptr
 	return x
@@ -27042,7 +26992,7 @@ func (x VkPhysicalDevice8BitStorageFeatures) UniformAndStorageBuffer8BitAccess()
 
 // WithUniformAndStorageBuffer8BitAccess copies the provided value into C space and stores it
 // at uniformAndStorageBuffer8BitAccess on VkPhysicalDevice8BitStorageFeatures
-func (x *VkPhysicalDevice8BitStorageFeatures) WithUniformAndStorageBuffer8BitAccess(y VkBool32) *VkPhysicalDevice8BitStorageFeatures {
+func (x VkPhysicalDevice8BitStorageFeatures) WithUniformAndStorageBuffer8BitAccess(y VkBool32) VkPhysicalDevice8BitStorageFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.uniformAndStorageBuffer8BitAccess = *ptr
 	return x
@@ -27056,7 +27006,7 @@ func (x VkPhysicalDevice8BitStorageFeatures) StoragePushConstant8() VkBool32 {
 
 // WithStoragePushConstant8 copies the provided value into C space and stores it
 // at storagePushConstant8 on VkPhysicalDevice8BitStorageFeatures
-func (x *VkPhysicalDevice8BitStorageFeatures) WithStoragePushConstant8(y VkBool32) *VkPhysicalDevice8BitStorageFeatures {
+func (x VkPhysicalDevice8BitStorageFeatures) WithStoragePushConstant8(y VkBool32) VkPhysicalDevice8BitStorageFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.storagePushConstant8 = *ptr
 	return x
@@ -27083,12 +27033,12 @@ func (x *VkSemaphoreSignalInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkSemaphoreSignalInfo) AsPtr() *VkSemaphoreSignalInfo { return x }
+func (x VkSemaphoreSignalInfo) AsPtr() *VkSemaphoreSignalInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkSemaphoreSignalInfo) AsCPtr() *VkSemaphoreSignalInfo {
+func (x VkSemaphoreSignalInfo) AsCPtr() *VkSemaphoreSignalInfo {
 	clone := newVkSemaphoreSignalInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -27100,13 +27050,13 @@ func (x VkSemaphoreSignalInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkSemaphoreSignalInfo) WithDefaultSType() *VkSemaphoreSignalInfo {
+func (x VkSemaphoreSignalInfo) WithDefaultSType() VkSemaphoreSignalInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_SEMAPHORE_SIGNAL_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkSemaphoreSignalInfo
-func (x *VkSemaphoreSignalInfo) WithSType(y VkStructureType) *VkSemaphoreSignalInfo {
+func (x VkSemaphoreSignalInfo) WithSType(y VkStructureType) VkSemaphoreSignalInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -27120,7 +27070,7 @@ func (x VkSemaphoreSignalInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkSemaphoreSignalInfo
-func (x *VkSemaphoreSignalInfo) WithPNext(y unsafe.Pointer) *VkSemaphoreSignalInfo {
+func (x VkSemaphoreSignalInfo) WithPNext(y unsafe.Pointer) VkSemaphoreSignalInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -27134,7 +27084,7 @@ func (x VkSemaphoreSignalInfo) Semaphore() VkSemaphore {
 
 // WithSemaphore copies the provided value into C space and stores it
 // at semaphore on VkSemaphoreSignalInfo
-func (x *VkSemaphoreSignalInfo) WithSemaphore(y VkSemaphore) *VkSemaphoreSignalInfo {
+func (x VkSemaphoreSignalInfo) WithSemaphore(y VkSemaphore) VkSemaphoreSignalInfo {
 	ptr := func(x *VkSemaphore) *C.VkSemaphore { /* Handle */ return (*C.VkSemaphore)(unsafe.Pointer(x)) }(&y)
 	x.semaphore = *ptr
 	return x
@@ -27148,7 +27098,7 @@ func (x VkSemaphoreSignalInfo) Value() uint64 {
 
 // WithValue copies the provided value into C space and stores it
 // at value on VkSemaphoreSignalInfo
-func (x *VkSemaphoreSignalInfo) WithValue(y uint64) *VkSemaphoreSignalInfo {
+func (x VkSemaphoreSignalInfo) WithValue(y uint64) VkSemaphoreSignalInfo {
 	ptr := func(x *uint64) *C.ulonglong { /* Scalar */ return (*C.ulonglong)(unsafe.Pointer(x)) }(&y)
 	x.value = *ptr
 	return x
@@ -27175,12 +27125,12 @@ func (x *VkConformanceVersion) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkConformanceVersion) AsPtr() *VkConformanceVersion { return x }
+func (x VkConformanceVersion) AsPtr() *VkConformanceVersion { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkConformanceVersion) AsCPtr() *VkConformanceVersion {
+func (x VkConformanceVersion) AsCPtr() *VkConformanceVersion {
 	clone := newVkConformanceVersion()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -27192,7 +27142,7 @@ func (x VkConformanceVersion) Major() byte {
 
 // WithMajor copies the provided value into C space and stores it
 // at major on VkConformanceVersion
-func (x *VkConformanceVersion) WithMajor(y byte) *VkConformanceVersion {
+func (x VkConformanceVersion) WithMajor(y byte) VkConformanceVersion {
 	ptr := func(x *byte) *C.uchar { /* Scalar */ return (*C.uchar)(unsafe.Pointer(x)) }(&y)
 	x.major = *ptr
 	return x
@@ -27206,7 +27156,7 @@ func (x VkConformanceVersion) Minor() byte {
 
 // WithMinor copies the provided value into C space and stores it
 // at minor on VkConformanceVersion
-func (x *VkConformanceVersion) WithMinor(y byte) *VkConformanceVersion {
+func (x VkConformanceVersion) WithMinor(y byte) VkConformanceVersion {
 	ptr := func(x *byte) *C.uchar { /* Scalar */ return (*C.uchar)(unsafe.Pointer(x)) }(&y)
 	x.minor = *ptr
 	return x
@@ -27220,7 +27170,7 @@ func (x VkConformanceVersion) Subminor() byte {
 
 // WithSubminor copies the provided value into C space and stores it
 // at subminor on VkConformanceVersion
-func (x *VkConformanceVersion) WithSubminor(y byte) *VkConformanceVersion {
+func (x VkConformanceVersion) WithSubminor(y byte) VkConformanceVersion {
 	ptr := func(x *byte) *C.uchar { /* Scalar */ return (*C.uchar)(unsafe.Pointer(x)) }(&y)
 	x.subminor = *ptr
 	return x
@@ -27234,7 +27184,7 @@ func (x VkConformanceVersion) Patch() byte {
 
 // WithPatch copies the provided value into C space and stores it
 // at patch on VkConformanceVersion
-func (x *VkConformanceVersion) WithPatch(y byte) *VkConformanceVersion {
+func (x VkConformanceVersion) WithPatch(y byte) VkConformanceVersion {
 	ptr := func(x *byte) *C.uchar { /* Scalar */ return (*C.uchar)(unsafe.Pointer(x)) }(&y)
 	x.patch = *ptr
 	return x
@@ -27261,12 +27211,12 @@ func (x *VkPhysicalDeviceDriverProperties) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceDriverProperties) AsPtr() *VkPhysicalDeviceDriverProperties { return x }
+func (x VkPhysicalDeviceDriverProperties) AsPtr() *VkPhysicalDeviceDriverProperties { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceDriverProperties) AsCPtr() *VkPhysicalDeviceDriverProperties {
+func (x VkPhysicalDeviceDriverProperties) AsCPtr() *VkPhysicalDeviceDriverProperties {
 	clone := newVkPhysicalDeviceDriverProperties()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -27278,13 +27228,13 @@ func (x VkPhysicalDeviceDriverProperties) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceDriverProperties) WithDefaultSType() *VkPhysicalDeviceDriverProperties {
+func (x VkPhysicalDeviceDriverProperties) WithDefaultSType() VkPhysicalDeviceDriverProperties {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceDriverProperties
-func (x *VkPhysicalDeviceDriverProperties) WithSType(y VkStructureType) *VkPhysicalDeviceDriverProperties {
+func (x VkPhysicalDeviceDriverProperties) WithSType(y VkStructureType) VkPhysicalDeviceDriverProperties {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -27298,7 +27248,7 @@ func (x VkPhysicalDeviceDriverProperties) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceDriverProperties
-func (x *VkPhysicalDeviceDriverProperties) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceDriverProperties {
+func (x VkPhysicalDeviceDriverProperties) WithPNext(y unsafe.Pointer) VkPhysicalDeviceDriverProperties {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -27355,14 +27305,14 @@ func (x *VkPhysicalDeviceBufferDeviceAddressFeatures) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceBufferDeviceAddressFeatures) AsPtr() *VkPhysicalDeviceBufferDeviceAddressFeatures {
-	return x
+func (x VkPhysicalDeviceBufferDeviceAddressFeatures) AsPtr() *VkPhysicalDeviceBufferDeviceAddressFeatures {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceBufferDeviceAddressFeatures) AsCPtr() *VkPhysicalDeviceBufferDeviceAddressFeatures {
+func (x VkPhysicalDeviceBufferDeviceAddressFeatures) AsCPtr() *VkPhysicalDeviceBufferDeviceAddressFeatures {
 	clone := newVkPhysicalDeviceBufferDeviceAddressFeatures()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -27374,13 +27324,13 @@ func (x VkPhysicalDeviceBufferDeviceAddressFeatures) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceBufferDeviceAddressFeatures) WithDefaultSType() *VkPhysicalDeviceBufferDeviceAddressFeatures {
+func (x VkPhysicalDeviceBufferDeviceAddressFeatures) WithDefaultSType() VkPhysicalDeviceBufferDeviceAddressFeatures {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_FEATURES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceBufferDeviceAddressFeatures
-func (x *VkPhysicalDeviceBufferDeviceAddressFeatures) WithSType(y VkStructureType) *VkPhysicalDeviceBufferDeviceAddressFeatures {
+func (x VkPhysicalDeviceBufferDeviceAddressFeatures) WithSType(y VkStructureType) VkPhysicalDeviceBufferDeviceAddressFeatures {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -27394,7 +27344,7 @@ func (x VkPhysicalDeviceBufferDeviceAddressFeatures) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceBufferDeviceAddressFeatures
-func (x *VkPhysicalDeviceBufferDeviceAddressFeatures) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceBufferDeviceAddressFeatures {
+func (x VkPhysicalDeviceBufferDeviceAddressFeatures) WithPNext(y unsafe.Pointer) VkPhysicalDeviceBufferDeviceAddressFeatures {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -27408,7 +27358,7 @@ func (x VkPhysicalDeviceBufferDeviceAddressFeatures) BufferDeviceAddress() VkBoo
 
 // WithBufferDeviceAddress copies the provided value into C space and stores it
 // at bufferDeviceAddress on VkPhysicalDeviceBufferDeviceAddressFeatures
-func (x *VkPhysicalDeviceBufferDeviceAddressFeatures) WithBufferDeviceAddress(y VkBool32) *VkPhysicalDeviceBufferDeviceAddressFeatures {
+func (x VkPhysicalDeviceBufferDeviceAddressFeatures) WithBufferDeviceAddress(y VkBool32) VkPhysicalDeviceBufferDeviceAddressFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.bufferDeviceAddress = *ptr
 	return x
@@ -27422,7 +27372,7 @@ func (x VkPhysicalDeviceBufferDeviceAddressFeatures) BufferDeviceAddressCaptureR
 
 // WithBufferDeviceAddressCaptureReplay copies the provided value into C space and stores it
 // at bufferDeviceAddressCaptureReplay on VkPhysicalDeviceBufferDeviceAddressFeatures
-func (x *VkPhysicalDeviceBufferDeviceAddressFeatures) WithBufferDeviceAddressCaptureReplay(y VkBool32) *VkPhysicalDeviceBufferDeviceAddressFeatures {
+func (x VkPhysicalDeviceBufferDeviceAddressFeatures) WithBufferDeviceAddressCaptureReplay(y VkBool32) VkPhysicalDeviceBufferDeviceAddressFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.bufferDeviceAddressCaptureReplay = *ptr
 	return x
@@ -27436,7 +27386,7 @@ func (x VkPhysicalDeviceBufferDeviceAddressFeatures) BufferDeviceAddressMultiDev
 
 // WithBufferDeviceAddressMultiDevice copies the provided value into C space and stores it
 // at bufferDeviceAddressMultiDevice on VkPhysicalDeviceBufferDeviceAddressFeatures
-func (x *VkPhysicalDeviceBufferDeviceAddressFeatures) WithBufferDeviceAddressMultiDevice(y VkBool32) *VkPhysicalDeviceBufferDeviceAddressFeatures {
+func (x VkPhysicalDeviceBufferDeviceAddressFeatures) WithBufferDeviceAddressMultiDevice(y VkBool32) VkPhysicalDeviceBufferDeviceAddressFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.bufferDeviceAddressMultiDevice = *ptr
 	return x
@@ -27463,12 +27413,12 @@ func (x *VkBufferDeviceAddressInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkBufferDeviceAddressInfo) AsPtr() *VkBufferDeviceAddressInfo { return x }
+func (x VkBufferDeviceAddressInfo) AsPtr() *VkBufferDeviceAddressInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkBufferDeviceAddressInfo) AsCPtr() *VkBufferDeviceAddressInfo {
+func (x VkBufferDeviceAddressInfo) AsCPtr() *VkBufferDeviceAddressInfo {
 	clone := newVkBufferDeviceAddressInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -27480,13 +27430,13 @@ func (x VkBufferDeviceAddressInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkBufferDeviceAddressInfo) WithDefaultSType() *VkBufferDeviceAddressInfo {
+func (x VkBufferDeviceAddressInfo) WithDefaultSType() VkBufferDeviceAddressInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkBufferDeviceAddressInfo
-func (x *VkBufferDeviceAddressInfo) WithSType(y VkStructureType) *VkBufferDeviceAddressInfo {
+func (x VkBufferDeviceAddressInfo) WithSType(y VkStructureType) VkBufferDeviceAddressInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -27500,7 +27450,7 @@ func (x VkBufferDeviceAddressInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkBufferDeviceAddressInfo
-func (x *VkBufferDeviceAddressInfo) WithPNext(y unsafe.Pointer) *VkBufferDeviceAddressInfo {
+func (x VkBufferDeviceAddressInfo) WithPNext(y unsafe.Pointer) VkBufferDeviceAddressInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -27514,7 +27464,7 @@ func (x VkBufferDeviceAddressInfo) Buffer() VkBuffer {
 
 // WithBuffer copies the provided value into C space and stores it
 // at buffer on VkBufferDeviceAddressInfo
-func (x *VkBufferDeviceAddressInfo) WithBuffer(y VkBuffer) *VkBufferDeviceAddressInfo {
+func (x VkBufferDeviceAddressInfo) WithBuffer(y VkBuffer) VkBufferDeviceAddressInfo {
 	ptr := func(x *VkBuffer) *C.VkBuffer { /* Handle */ return (*C.VkBuffer)(unsafe.Pointer(x)) }(&y)
 	x.buffer = *ptr
 	return x
@@ -27541,14 +27491,14 @@ func (x *VkPhysicalDeviceShaderAtomicInt64Features) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceShaderAtomicInt64Features) AsPtr() *VkPhysicalDeviceShaderAtomicInt64Features {
-	return x
+func (x VkPhysicalDeviceShaderAtomicInt64Features) AsPtr() *VkPhysicalDeviceShaderAtomicInt64Features {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceShaderAtomicInt64Features) AsCPtr() *VkPhysicalDeviceShaderAtomicInt64Features {
+func (x VkPhysicalDeviceShaderAtomicInt64Features) AsCPtr() *VkPhysicalDeviceShaderAtomicInt64Features {
 	clone := newVkPhysicalDeviceShaderAtomicInt64Features()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -27560,13 +27510,13 @@ func (x VkPhysicalDeviceShaderAtomicInt64Features) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceShaderAtomicInt64Features) WithDefaultSType() *VkPhysicalDeviceShaderAtomicInt64Features {
+func (x VkPhysicalDeviceShaderAtomicInt64Features) WithDefaultSType() VkPhysicalDeviceShaderAtomicInt64Features {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_INT64_FEATURES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceShaderAtomicInt64Features
-func (x *VkPhysicalDeviceShaderAtomicInt64Features) WithSType(y VkStructureType) *VkPhysicalDeviceShaderAtomicInt64Features {
+func (x VkPhysicalDeviceShaderAtomicInt64Features) WithSType(y VkStructureType) VkPhysicalDeviceShaderAtomicInt64Features {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -27580,7 +27530,7 @@ func (x VkPhysicalDeviceShaderAtomicInt64Features) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceShaderAtomicInt64Features
-func (x *VkPhysicalDeviceShaderAtomicInt64Features) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceShaderAtomicInt64Features {
+func (x VkPhysicalDeviceShaderAtomicInt64Features) WithPNext(y unsafe.Pointer) VkPhysicalDeviceShaderAtomicInt64Features {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -27594,7 +27544,7 @@ func (x VkPhysicalDeviceShaderAtomicInt64Features) ShaderBufferInt64Atomics() Vk
 
 // WithShaderBufferInt64Atomics copies the provided value into C space and stores it
 // at shaderBufferInt64Atomics on VkPhysicalDeviceShaderAtomicInt64Features
-func (x *VkPhysicalDeviceShaderAtomicInt64Features) WithShaderBufferInt64Atomics(y VkBool32) *VkPhysicalDeviceShaderAtomicInt64Features {
+func (x VkPhysicalDeviceShaderAtomicInt64Features) WithShaderBufferInt64Atomics(y VkBool32) VkPhysicalDeviceShaderAtomicInt64Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderBufferInt64Atomics = *ptr
 	return x
@@ -27608,7 +27558,7 @@ func (x VkPhysicalDeviceShaderAtomicInt64Features) ShaderSharedInt64Atomics() Vk
 
 // WithShaderSharedInt64Atomics copies the provided value into C space and stores it
 // at shaderSharedInt64Atomics on VkPhysicalDeviceShaderAtomicInt64Features
-func (x *VkPhysicalDeviceShaderAtomicInt64Features) WithShaderSharedInt64Atomics(y VkBool32) *VkPhysicalDeviceShaderAtomicInt64Features {
+func (x VkPhysicalDeviceShaderAtomicInt64Features) WithShaderSharedInt64Atomics(y VkBool32) VkPhysicalDeviceShaderAtomicInt64Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderSharedInt64Atomics = *ptr
 	return x
@@ -27635,14 +27585,14 @@ func (x *VkPhysicalDeviceShaderFloat16Int8Features) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceShaderFloat16Int8Features) AsPtr() *VkPhysicalDeviceShaderFloat16Int8Features {
-	return x
+func (x VkPhysicalDeviceShaderFloat16Int8Features) AsPtr() *VkPhysicalDeviceShaderFloat16Int8Features {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceShaderFloat16Int8Features) AsCPtr() *VkPhysicalDeviceShaderFloat16Int8Features {
+func (x VkPhysicalDeviceShaderFloat16Int8Features) AsCPtr() *VkPhysicalDeviceShaderFloat16Int8Features {
 	clone := newVkPhysicalDeviceShaderFloat16Int8Features()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -27654,13 +27604,13 @@ func (x VkPhysicalDeviceShaderFloat16Int8Features) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceShaderFloat16Int8Features) WithDefaultSType() *VkPhysicalDeviceShaderFloat16Int8Features {
+func (x VkPhysicalDeviceShaderFloat16Int8Features) WithDefaultSType() VkPhysicalDeviceShaderFloat16Int8Features {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FLOAT16_INT8_FEATURES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceShaderFloat16Int8Features
-func (x *VkPhysicalDeviceShaderFloat16Int8Features) WithSType(y VkStructureType) *VkPhysicalDeviceShaderFloat16Int8Features {
+func (x VkPhysicalDeviceShaderFloat16Int8Features) WithSType(y VkStructureType) VkPhysicalDeviceShaderFloat16Int8Features {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -27674,7 +27624,7 @@ func (x VkPhysicalDeviceShaderFloat16Int8Features) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceShaderFloat16Int8Features
-func (x *VkPhysicalDeviceShaderFloat16Int8Features) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceShaderFloat16Int8Features {
+func (x VkPhysicalDeviceShaderFloat16Int8Features) WithPNext(y unsafe.Pointer) VkPhysicalDeviceShaderFloat16Int8Features {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -27688,7 +27638,7 @@ func (x VkPhysicalDeviceShaderFloat16Int8Features) ShaderFloat16() VkBool32 {
 
 // WithShaderFloat16 copies the provided value into C space and stores it
 // at shaderFloat16 on VkPhysicalDeviceShaderFloat16Int8Features
-func (x *VkPhysicalDeviceShaderFloat16Int8Features) WithShaderFloat16(y VkBool32) *VkPhysicalDeviceShaderFloat16Int8Features {
+func (x VkPhysicalDeviceShaderFloat16Int8Features) WithShaderFloat16(y VkBool32) VkPhysicalDeviceShaderFloat16Int8Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderFloat16 = *ptr
 	return x
@@ -27702,7 +27652,7 @@ func (x VkPhysicalDeviceShaderFloat16Int8Features) ShaderInt8() VkBool32 {
 
 // WithShaderInt8 copies the provided value into C space and stores it
 // at shaderInt8 on VkPhysicalDeviceShaderFloat16Int8Features
-func (x *VkPhysicalDeviceShaderFloat16Int8Features) WithShaderInt8(y VkBool32) *VkPhysicalDeviceShaderFloat16Int8Features {
+func (x VkPhysicalDeviceShaderFloat16Int8Features) WithShaderInt8(y VkBool32) VkPhysicalDeviceShaderFloat16Int8Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderInt8 = *ptr
 	return x
@@ -27729,14 +27679,14 @@ func (x *VkPhysicalDeviceFloatControlsProperties) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceFloatControlsProperties) AsPtr() *VkPhysicalDeviceFloatControlsProperties {
-	return x
+func (x VkPhysicalDeviceFloatControlsProperties) AsPtr() *VkPhysicalDeviceFloatControlsProperties {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceFloatControlsProperties) AsCPtr() *VkPhysicalDeviceFloatControlsProperties {
+func (x VkPhysicalDeviceFloatControlsProperties) AsCPtr() *VkPhysicalDeviceFloatControlsProperties {
 	clone := newVkPhysicalDeviceFloatControlsProperties()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -27748,13 +27698,13 @@ func (x VkPhysicalDeviceFloatControlsProperties) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceFloatControlsProperties) WithDefaultSType() *VkPhysicalDeviceFloatControlsProperties {
+func (x VkPhysicalDeviceFloatControlsProperties) WithDefaultSType() VkPhysicalDeviceFloatControlsProperties {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceFloatControlsProperties
-func (x *VkPhysicalDeviceFloatControlsProperties) WithSType(y VkStructureType) *VkPhysicalDeviceFloatControlsProperties {
+func (x VkPhysicalDeviceFloatControlsProperties) WithSType(y VkStructureType) VkPhysicalDeviceFloatControlsProperties {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -27768,7 +27718,7 @@ func (x VkPhysicalDeviceFloatControlsProperties) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceFloatControlsProperties
-func (x *VkPhysicalDeviceFloatControlsProperties) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceFloatControlsProperties {
+func (x VkPhysicalDeviceFloatControlsProperties) WithPNext(y unsafe.Pointer) VkPhysicalDeviceFloatControlsProperties {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -27897,14 +27847,14 @@ func (x *VkBufferOpaqueCaptureAddressCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkBufferOpaqueCaptureAddressCreateInfo) AsPtr() *VkBufferOpaqueCaptureAddressCreateInfo {
-	return x
+func (x VkBufferOpaqueCaptureAddressCreateInfo) AsPtr() *VkBufferOpaqueCaptureAddressCreateInfo {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkBufferOpaqueCaptureAddressCreateInfo) AsCPtr() *VkBufferOpaqueCaptureAddressCreateInfo {
+func (x VkBufferOpaqueCaptureAddressCreateInfo) AsCPtr() *VkBufferOpaqueCaptureAddressCreateInfo {
 	clone := newVkBufferOpaqueCaptureAddressCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -27916,13 +27866,13 @@ func (x VkBufferOpaqueCaptureAddressCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkBufferOpaqueCaptureAddressCreateInfo) WithDefaultSType() *VkBufferOpaqueCaptureAddressCreateInfo {
+func (x VkBufferOpaqueCaptureAddressCreateInfo) WithDefaultSType() VkBufferOpaqueCaptureAddressCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_BUFFER_OPAQUE_CAPTURE_ADDRESS_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkBufferOpaqueCaptureAddressCreateInfo
-func (x *VkBufferOpaqueCaptureAddressCreateInfo) WithSType(y VkStructureType) *VkBufferOpaqueCaptureAddressCreateInfo {
+func (x VkBufferOpaqueCaptureAddressCreateInfo) WithSType(y VkStructureType) VkBufferOpaqueCaptureAddressCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -27936,7 +27886,7 @@ func (x VkBufferOpaqueCaptureAddressCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkBufferOpaqueCaptureAddressCreateInfo
-func (x *VkBufferOpaqueCaptureAddressCreateInfo) WithPNext(y unsafe.Pointer) *VkBufferOpaqueCaptureAddressCreateInfo {
+func (x VkBufferOpaqueCaptureAddressCreateInfo) WithPNext(y unsafe.Pointer) VkBufferOpaqueCaptureAddressCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -27950,7 +27900,7 @@ func (x VkBufferOpaqueCaptureAddressCreateInfo) OpaqueCaptureAddress() uint64 {
 
 // WithOpaqueCaptureAddress copies the provided value into C space and stores it
 // at opaqueCaptureAddress on VkBufferOpaqueCaptureAddressCreateInfo
-func (x *VkBufferOpaqueCaptureAddressCreateInfo) WithOpaqueCaptureAddress(y uint64) *VkBufferOpaqueCaptureAddressCreateInfo {
+func (x VkBufferOpaqueCaptureAddressCreateInfo) WithOpaqueCaptureAddress(y uint64) VkBufferOpaqueCaptureAddressCreateInfo {
 	ptr := func(x *uint64) *C.ulonglong { /* Scalar */ return (*C.ulonglong)(unsafe.Pointer(x)) }(&y)
 	x.opaqueCaptureAddress = *ptr
 	return x
@@ -27977,14 +27927,14 @@ func (x *VkMemoryOpaqueCaptureAddressAllocateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkMemoryOpaqueCaptureAddressAllocateInfo) AsPtr() *VkMemoryOpaqueCaptureAddressAllocateInfo {
-	return x
+func (x VkMemoryOpaqueCaptureAddressAllocateInfo) AsPtr() *VkMemoryOpaqueCaptureAddressAllocateInfo {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkMemoryOpaqueCaptureAddressAllocateInfo) AsCPtr() *VkMemoryOpaqueCaptureAddressAllocateInfo {
+func (x VkMemoryOpaqueCaptureAddressAllocateInfo) AsCPtr() *VkMemoryOpaqueCaptureAddressAllocateInfo {
 	clone := newVkMemoryOpaqueCaptureAddressAllocateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -27996,13 +27946,13 @@ func (x VkMemoryOpaqueCaptureAddressAllocateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkMemoryOpaqueCaptureAddressAllocateInfo) WithDefaultSType() *VkMemoryOpaqueCaptureAddressAllocateInfo {
+func (x VkMemoryOpaqueCaptureAddressAllocateInfo) WithDefaultSType() VkMemoryOpaqueCaptureAddressAllocateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_MEMORY_OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkMemoryOpaqueCaptureAddressAllocateInfo
-func (x *VkMemoryOpaqueCaptureAddressAllocateInfo) WithSType(y VkStructureType) *VkMemoryOpaqueCaptureAddressAllocateInfo {
+func (x VkMemoryOpaqueCaptureAddressAllocateInfo) WithSType(y VkStructureType) VkMemoryOpaqueCaptureAddressAllocateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -28016,7 +27966,7 @@ func (x VkMemoryOpaqueCaptureAddressAllocateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkMemoryOpaqueCaptureAddressAllocateInfo
-func (x *VkMemoryOpaqueCaptureAddressAllocateInfo) WithPNext(y unsafe.Pointer) *VkMemoryOpaqueCaptureAddressAllocateInfo {
+func (x VkMemoryOpaqueCaptureAddressAllocateInfo) WithPNext(y unsafe.Pointer) VkMemoryOpaqueCaptureAddressAllocateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -28030,7 +27980,7 @@ func (x VkMemoryOpaqueCaptureAddressAllocateInfo) OpaqueCaptureAddress() uint64 
 
 // WithOpaqueCaptureAddress copies the provided value into C space and stores it
 // at opaqueCaptureAddress on VkMemoryOpaqueCaptureAddressAllocateInfo
-func (x *VkMemoryOpaqueCaptureAddressAllocateInfo) WithOpaqueCaptureAddress(y uint64) *VkMemoryOpaqueCaptureAddressAllocateInfo {
+func (x VkMemoryOpaqueCaptureAddressAllocateInfo) WithOpaqueCaptureAddress(y uint64) VkMemoryOpaqueCaptureAddressAllocateInfo {
 	ptr := func(x *uint64) *C.ulonglong { /* Scalar */ return (*C.ulonglong)(unsafe.Pointer(x)) }(&y)
 	x.opaqueCaptureAddress = *ptr
 	return x
@@ -28057,14 +28007,14 @@ func (x *VkPhysicalDeviceDescriptorIndexingFeatures) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceDescriptorIndexingFeatures) AsPtr() *VkPhysicalDeviceDescriptorIndexingFeatures {
-	return x
+func (x VkPhysicalDeviceDescriptorIndexingFeatures) AsPtr() *VkPhysicalDeviceDescriptorIndexingFeatures {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceDescriptorIndexingFeatures) AsCPtr() *VkPhysicalDeviceDescriptorIndexingFeatures {
+func (x VkPhysicalDeviceDescriptorIndexingFeatures) AsCPtr() *VkPhysicalDeviceDescriptorIndexingFeatures {
 	clone := newVkPhysicalDeviceDescriptorIndexingFeatures()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -28076,13 +28026,13 @@ func (x VkPhysicalDeviceDescriptorIndexingFeatures) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceDescriptorIndexingFeatures) WithDefaultSType() *VkPhysicalDeviceDescriptorIndexingFeatures {
+func (x VkPhysicalDeviceDescriptorIndexingFeatures) WithDefaultSType() VkPhysicalDeviceDescriptorIndexingFeatures {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_FEATURES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceDescriptorIndexingFeatures
-func (x *VkPhysicalDeviceDescriptorIndexingFeatures) WithSType(y VkStructureType) *VkPhysicalDeviceDescriptorIndexingFeatures {
+func (x VkPhysicalDeviceDescriptorIndexingFeatures) WithSType(y VkStructureType) VkPhysicalDeviceDescriptorIndexingFeatures {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -28096,7 +28046,7 @@ func (x VkPhysicalDeviceDescriptorIndexingFeatures) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceDescriptorIndexingFeatures
-func (x *VkPhysicalDeviceDescriptorIndexingFeatures) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceDescriptorIndexingFeatures {
+func (x VkPhysicalDeviceDescriptorIndexingFeatures) WithPNext(y unsafe.Pointer) VkPhysicalDeviceDescriptorIndexingFeatures {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -28110,7 +28060,7 @@ func (x VkPhysicalDeviceDescriptorIndexingFeatures) ShaderInputAttachmentArrayDy
 
 // WithShaderInputAttachmentArrayDynamicIndexing copies the provided value into C space and stores it
 // at shaderInputAttachmentArrayDynamicIndexing on VkPhysicalDeviceDescriptorIndexingFeatures
-func (x *VkPhysicalDeviceDescriptorIndexingFeatures) WithShaderInputAttachmentArrayDynamicIndexing(y VkBool32) *VkPhysicalDeviceDescriptorIndexingFeatures {
+func (x VkPhysicalDeviceDescriptorIndexingFeatures) WithShaderInputAttachmentArrayDynamicIndexing(y VkBool32) VkPhysicalDeviceDescriptorIndexingFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderInputAttachmentArrayDynamicIndexing = *ptr
 	return x
@@ -28124,7 +28074,7 @@ func (x VkPhysicalDeviceDescriptorIndexingFeatures) ShaderUniformTexelBufferArra
 
 // WithShaderUniformTexelBufferArrayDynamicIndexing copies the provided value into C space and stores it
 // at shaderUniformTexelBufferArrayDynamicIndexing on VkPhysicalDeviceDescriptorIndexingFeatures
-func (x *VkPhysicalDeviceDescriptorIndexingFeatures) WithShaderUniformTexelBufferArrayDynamicIndexing(y VkBool32) *VkPhysicalDeviceDescriptorIndexingFeatures {
+func (x VkPhysicalDeviceDescriptorIndexingFeatures) WithShaderUniformTexelBufferArrayDynamicIndexing(y VkBool32) VkPhysicalDeviceDescriptorIndexingFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderUniformTexelBufferArrayDynamicIndexing = *ptr
 	return x
@@ -28138,7 +28088,7 @@ func (x VkPhysicalDeviceDescriptorIndexingFeatures) ShaderStorageTexelBufferArra
 
 // WithShaderStorageTexelBufferArrayDynamicIndexing copies the provided value into C space and stores it
 // at shaderStorageTexelBufferArrayDynamicIndexing on VkPhysicalDeviceDescriptorIndexingFeatures
-func (x *VkPhysicalDeviceDescriptorIndexingFeatures) WithShaderStorageTexelBufferArrayDynamicIndexing(y VkBool32) *VkPhysicalDeviceDescriptorIndexingFeatures {
+func (x VkPhysicalDeviceDescriptorIndexingFeatures) WithShaderStorageTexelBufferArrayDynamicIndexing(y VkBool32) VkPhysicalDeviceDescriptorIndexingFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderStorageTexelBufferArrayDynamicIndexing = *ptr
 	return x
@@ -28152,7 +28102,7 @@ func (x VkPhysicalDeviceDescriptorIndexingFeatures) ShaderUniformBufferArrayNonU
 
 // WithShaderUniformBufferArrayNonUniformIndexing copies the provided value into C space and stores it
 // at shaderUniformBufferArrayNonUniformIndexing on VkPhysicalDeviceDescriptorIndexingFeatures
-func (x *VkPhysicalDeviceDescriptorIndexingFeatures) WithShaderUniformBufferArrayNonUniformIndexing(y VkBool32) *VkPhysicalDeviceDescriptorIndexingFeatures {
+func (x VkPhysicalDeviceDescriptorIndexingFeatures) WithShaderUniformBufferArrayNonUniformIndexing(y VkBool32) VkPhysicalDeviceDescriptorIndexingFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderUniformBufferArrayNonUniformIndexing = *ptr
 	return x
@@ -28166,7 +28116,7 @@ func (x VkPhysicalDeviceDescriptorIndexingFeatures) ShaderSampledImageArrayNonUn
 
 // WithShaderSampledImageArrayNonUniformIndexing copies the provided value into C space and stores it
 // at shaderSampledImageArrayNonUniformIndexing on VkPhysicalDeviceDescriptorIndexingFeatures
-func (x *VkPhysicalDeviceDescriptorIndexingFeatures) WithShaderSampledImageArrayNonUniformIndexing(y VkBool32) *VkPhysicalDeviceDescriptorIndexingFeatures {
+func (x VkPhysicalDeviceDescriptorIndexingFeatures) WithShaderSampledImageArrayNonUniformIndexing(y VkBool32) VkPhysicalDeviceDescriptorIndexingFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderSampledImageArrayNonUniformIndexing = *ptr
 	return x
@@ -28180,7 +28130,7 @@ func (x VkPhysicalDeviceDescriptorIndexingFeatures) ShaderStorageBufferArrayNonU
 
 // WithShaderStorageBufferArrayNonUniformIndexing copies the provided value into C space and stores it
 // at shaderStorageBufferArrayNonUniformIndexing on VkPhysicalDeviceDescriptorIndexingFeatures
-func (x *VkPhysicalDeviceDescriptorIndexingFeatures) WithShaderStorageBufferArrayNonUniformIndexing(y VkBool32) *VkPhysicalDeviceDescriptorIndexingFeatures {
+func (x VkPhysicalDeviceDescriptorIndexingFeatures) WithShaderStorageBufferArrayNonUniformIndexing(y VkBool32) VkPhysicalDeviceDescriptorIndexingFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderStorageBufferArrayNonUniformIndexing = *ptr
 	return x
@@ -28194,7 +28144,7 @@ func (x VkPhysicalDeviceDescriptorIndexingFeatures) ShaderStorageImageArrayNonUn
 
 // WithShaderStorageImageArrayNonUniformIndexing copies the provided value into C space and stores it
 // at shaderStorageImageArrayNonUniformIndexing on VkPhysicalDeviceDescriptorIndexingFeatures
-func (x *VkPhysicalDeviceDescriptorIndexingFeatures) WithShaderStorageImageArrayNonUniformIndexing(y VkBool32) *VkPhysicalDeviceDescriptorIndexingFeatures {
+func (x VkPhysicalDeviceDescriptorIndexingFeatures) WithShaderStorageImageArrayNonUniformIndexing(y VkBool32) VkPhysicalDeviceDescriptorIndexingFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderStorageImageArrayNonUniformIndexing = *ptr
 	return x
@@ -28208,7 +28158,7 @@ func (x VkPhysicalDeviceDescriptorIndexingFeatures) ShaderInputAttachmentArrayNo
 
 // WithShaderInputAttachmentArrayNonUniformIndexing copies the provided value into C space and stores it
 // at shaderInputAttachmentArrayNonUniformIndexing on VkPhysicalDeviceDescriptorIndexingFeatures
-func (x *VkPhysicalDeviceDescriptorIndexingFeatures) WithShaderInputAttachmentArrayNonUniformIndexing(y VkBool32) *VkPhysicalDeviceDescriptorIndexingFeatures {
+func (x VkPhysicalDeviceDescriptorIndexingFeatures) WithShaderInputAttachmentArrayNonUniformIndexing(y VkBool32) VkPhysicalDeviceDescriptorIndexingFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderInputAttachmentArrayNonUniformIndexing = *ptr
 	return x
@@ -28222,7 +28172,7 @@ func (x VkPhysicalDeviceDescriptorIndexingFeatures) ShaderUniformTexelBufferArra
 
 // WithShaderUniformTexelBufferArrayNonUniformIndexing copies the provided value into C space and stores it
 // at shaderUniformTexelBufferArrayNonUniformIndexing on VkPhysicalDeviceDescriptorIndexingFeatures
-func (x *VkPhysicalDeviceDescriptorIndexingFeatures) WithShaderUniformTexelBufferArrayNonUniformIndexing(y VkBool32) *VkPhysicalDeviceDescriptorIndexingFeatures {
+func (x VkPhysicalDeviceDescriptorIndexingFeatures) WithShaderUniformTexelBufferArrayNonUniformIndexing(y VkBool32) VkPhysicalDeviceDescriptorIndexingFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderUniformTexelBufferArrayNonUniformIndexing = *ptr
 	return x
@@ -28236,7 +28186,7 @@ func (x VkPhysicalDeviceDescriptorIndexingFeatures) ShaderStorageTexelBufferArra
 
 // WithShaderStorageTexelBufferArrayNonUniformIndexing copies the provided value into C space and stores it
 // at shaderStorageTexelBufferArrayNonUniformIndexing on VkPhysicalDeviceDescriptorIndexingFeatures
-func (x *VkPhysicalDeviceDescriptorIndexingFeatures) WithShaderStorageTexelBufferArrayNonUniformIndexing(y VkBool32) *VkPhysicalDeviceDescriptorIndexingFeatures {
+func (x VkPhysicalDeviceDescriptorIndexingFeatures) WithShaderStorageTexelBufferArrayNonUniformIndexing(y VkBool32) VkPhysicalDeviceDescriptorIndexingFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderStorageTexelBufferArrayNonUniformIndexing = *ptr
 	return x
@@ -28250,7 +28200,7 @@ func (x VkPhysicalDeviceDescriptorIndexingFeatures) DescriptorBindingUniformBuff
 
 // WithDescriptorBindingUniformBufferUpdateAfterBind copies the provided value into C space and stores it
 // at descriptorBindingUniformBufferUpdateAfterBind on VkPhysicalDeviceDescriptorIndexingFeatures
-func (x *VkPhysicalDeviceDescriptorIndexingFeatures) WithDescriptorBindingUniformBufferUpdateAfterBind(y VkBool32) *VkPhysicalDeviceDescriptorIndexingFeatures {
+func (x VkPhysicalDeviceDescriptorIndexingFeatures) WithDescriptorBindingUniformBufferUpdateAfterBind(y VkBool32) VkPhysicalDeviceDescriptorIndexingFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.descriptorBindingUniformBufferUpdateAfterBind = *ptr
 	return x
@@ -28264,7 +28214,7 @@ func (x VkPhysicalDeviceDescriptorIndexingFeatures) DescriptorBindingSampledImag
 
 // WithDescriptorBindingSampledImageUpdateAfterBind copies the provided value into C space and stores it
 // at descriptorBindingSampledImageUpdateAfterBind on VkPhysicalDeviceDescriptorIndexingFeatures
-func (x *VkPhysicalDeviceDescriptorIndexingFeatures) WithDescriptorBindingSampledImageUpdateAfterBind(y VkBool32) *VkPhysicalDeviceDescriptorIndexingFeatures {
+func (x VkPhysicalDeviceDescriptorIndexingFeatures) WithDescriptorBindingSampledImageUpdateAfterBind(y VkBool32) VkPhysicalDeviceDescriptorIndexingFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.descriptorBindingSampledImageUpdateAfterBind = *ptr
 	return x
@@ -28278,7 +28228,7 @@ func (x VkPhysicalDeviceDescriptorIndexingFeatures) DescriptorBindingStorageImag
 
 // WithDescriptorBindingStorageImageUpdateAfterBind copies the provided value into C space and stores it
 // at descriptorBindingStorageImageUpdateAfterBind on VkPhysicalDeviceDescriptorIndexingFeatures
-func (x *VkPhysicalDeviceDescriptorIndexingFeatures) WithDescriptorBindingStorageImageUpdateAfterBind(y VkBool32) *VkPhysicalDeviceDescriptorIndexingFeatures {
+func (x VkPhysicalDeviceDescriptorIndexingFeatures) WithDescriptorBindingStorageImageUpdateAfterBind(y VkBool32) VkPhysicalDeviceDescriptorIndexingFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.descriptorBindingStorageImageUpdateAfterBind = *ptr
 	return x
@@ -28292,7 +28242,7 @@ func (x VkPhysicalDeviceDescriptorIndexingFeatures) DescriptorBindingStorageBuff
 
 // WithDescriptorBindingStorageBufferUpdateAfterBind copies the provided value into C space and stores it
 // at descriptorBindingStorageBufferUpdateAfterBind on VkPhysicalDeviceDescriptorIndexingFeatures
-func (x *VkPhysicalDeviceDescriptorIndexingFeatures) WithDescriptorBindingStorageBufferUpdateAfterBind(y VkBool32) *VkPhysicalDeviceDescriptorIndexingFeatures {
+func (x VkPhysicalDeviceDescriptorIndexingFeatures) WithDescriptorBindingStorageBufferUpdateAfterBind(y VkBool32) VkPhysicalDeviceDescriptorIndexingFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.descriptorBindingStorageBufferUpdateAfterBind = *ptr
 	return x
@@ -28306,7 +28256,7 @@ func (x VkPhysicalDeviceDescriptorIndexingFeatures) DescriptorBindingUniformTexe
 
 // WithDescriptorBindingUniformTexelBufferUpdateAfterBind copies the provided value into C space and stores it
 // at descriptorBindingUniformTexelBufferUpdateAfterBind on VkPhysicalDeviceDescriptorIndexingFeatures
-func (x *VkPhysicalDeviceDescriptorIndexingFeatures) WithDescriptorBindingUniformTexelBufferUpdateAfterBind(y VkBool32) *VkPhysicalDeviceDescriptorIndexingFeatures {
+func (x VkPhysicalDeviceDescriptorIndexingFeatures) WithDescriptorBindingUniformTexelBufferUpdateAfterBind(y VkBool32) VkPhysicalDeviceDescriptorIndexingFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.descriptorBindingUniformTexelBufferUpdateAfterBind = *ptr
 	return x
@@ -28320,7 +28270,7 @@ func (x VkPhysicalDeviceDescriptorIndexingFeatures) DescriptorBindingStorageTexe
 
 // WithDescriptorBindingStorageTexelBufferUpdateAfterBind copies the provided value into C space and stores it
 // at descriptorBindingStorageTexelBufferUpdateAfterBind on VkPhysicalDeviceDescriptorIndexingFeatures
-func (x *VkPhysicalDeviceDescriptorIndexingFeatures) WithDescriptorBindingStorageTexelBufferUpdateAfterBind(y VkBool32) *VkPhysicalDeviceDescriptorIndexingFeatures {
+func (x VkPhysicalDeviceDescriptorIndexingFeatures) WithDescriptorBindingStorageTexelBufferUpdateAfterBind(y VkBool32) VkPhysicalDeviceDescriptorIndexingFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.descriptorBindingStorageTexelBufferUpdateAfterBind = *ptr
 	return x
@@ -28334,7 +28284,7 @@ func (x VkPhysicalDeviceDescriptorIndexingFeatures) DescriptorBindingUpdateUnuse
 
 // WithDescriptorBindingUpdateUnusedWhilePending copies the provided value into C space and stores it
 // at descriptorBindingUpdateUnusedWhilePending on VkPhysicalDeviceDescriptorIndexingFeatures
-func (x *VkPhysicalDeviceDescriptorIndexingFeatures) WithDescriptorBindingUpdateUnusedWhilePending(y VkBool32) *VkPhysicalDeviceDescriptorIndexingFeatures {
+func (x VkPhysicalDeviceDescriptorIndexingFeatures) WithDescriptorBindingUpdateUnusedWhilePending(y VkBool32) VkPhysicalDeviceDescriptorIndexingFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.descriptorBindingUpdateUnusedWhilePending = *ptr
 	return x
@@ -28348,7 +28298,7 @@ func (x VkPhysicalDeviceDescriptorIndexingFeatures) DescriptorBindingPartiallyBo
 
 // WithDescriptorBindingPartiallyBound copies the provided value into C space and stores it
 // at descriptorBindingPartiallyBound on VkPhysicalDeviceDescriptorIndexingFeatures
-func (x *VkPhysicalDeviceDescriptorIndexingFeatures) WithDescriptorBindingPartiallyBound(y VkBool32) *VkPhysicalDeviceDescriptorIndexingFeatures {
+func (x VkPhysicalDeviceDescriptorIndexingFeatures) WithDescriptorBindingPartiallyBound(y VkBool32) VkPhysicalDeviceDescriptorIndexingFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.descriptorBindingPartiallyBound = *ptr
 	return x
@@ -28362,7 +28312,7 @@ func (x VkPhysicalDeviceDescriptorIndexingFeatures) DescriptorBindingVariableDes
 
 // WithDescriptorBindingVariableDescriptorCount copies the provided value into C space and stores it
 // at descriptorBindingVariableDescriptorCount on VkPhysicalDeviceDescriptorIndexingFeatures
-func (x *VkPhysicalDeviceDescriptorIndexingFeatures) WithDescriptorBindingVariableDescriptorCount(y VkBool32) *VkPhysicalDeviceDescriptorIndexingFeatures {
+func (x VkPhysicalDeviceDescriptorIndexingFeatures) WithDescriptorBindingVariableDescriptorCount(y VkBool32) VkPhysicalDeviceDescriptorIndexingFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.descriptorBindingVariableDescriptorCount = *ptr
 	return x
@@ -28376,7 +28326,7 @@ func (x VkPhysicalDeviceDescriptorIndexingFeatures) RuntimeDescriptorArray() VkB
 
 // WithRuntimeDescriptorArray copies the provided value into C space and stores it
 // at runtimeDescriptorArray on VkPhysicalDeviceDescriptorIndexingFeatures
-func (x *VkPhysicalDeviceDescriptorIndexingFeatures) WithRuntimeDescriptorArray(y VkBool32) *VkPhysicalDeviceDescriptorIndexingFeatures {
+func (x VkPhysicalDeviceDescriptorIndexingFeatures) WithRuntimeDescriptorArray(y VkBool32) VkPhysicalDeviceDescriptorIndexingFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.runtimeDescriptorArray = *ptr
 	return x
@@ -28403,14 +28353,14 @@ func (x *VkPhysicalDeviceDescriptorIndexingProperties) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceDescriptorIndexingProperties) AsPtr() *VkPhysicalDeviceDescriptorIndexingProperties {
-	return x
+func (x VkPhysicalDeviceDescriptorIndexingProperties) AsPtr() *VkPhysicalDeviceDescriptorIndexingProperties {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceDescriptorIndexingProperties) AsCPtr() *VkPhysicalDeviceDescriptorIndexingProperties {
+func (x VkPhysicalDeviceDescriptorIndexingProperties) AsCPtr() *VkPhysicalDeviceDescriptorIndexingProperties {
 	clone := newVkPhysicalDeviceDescriptorIndexingProperties()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -28422,13 +28372,13 @@ func (x VkPhysicalDeviceDescriptorIndexingProperties) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceDescriptorIndexingProperties) WithDefaultSType() *VkPhysicalDeviceDescriptorIndexingProperties {
+func (x VkPhysicalDeviceDescriptorIndexingProperties) WithDefaultSType() VkPhysicalDeviceDescriptorIndexingProperties {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_PROPERTIES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceDescriptorIndexingProperties
-func (x *VkPhysicalDeviceDescriptorIndexingProperties) WithSType(y VkStructureType) *VkPhysicalDeviceDescriptorIndexingProperties {
+func (x VkPhysicalDeviceDescriptorIndexingProperties) WithSType(y VkStructureType) VkPhysicalDeviceDescriptorIndexingProperties {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -28442,7 +28392,7 @@ func (x VkPhysicalDeviceDescriptorIndexingProperties) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceDescriptorIndexingProperties
-func (x *VkPhysicalDeviceDescriptorIndexingProperties) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceDescriptorIndexingProperties {
+func (x VkPhysicalDeviceDescriptorIndexingProperties) WithPNext(y unsafe.Pointer) VkPhysicalDeviceDescriptorIndexingProperties {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -28607,14 +28557,14 @@ func (x *VkDescriptorSetVariableDescriptorCountAllocateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDescriptorSetVariableDescriptorCountAllocateInfo) AsPtr() *VkDescriptorSetVariableDescriptorCountAllocateInfo {
-	return x
+func (x VkDescriptorSetVariableDescriptorCountAllocateInfo) AsPtr() *VkDescriptorSetVariableDescriptorCountAllocateInfo {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDescriptorSetVariableDescriptorCountAllocateInfo) AsCPtr() *VkDescriptorSetVariableDescriptorCountAllocateInfo {
+func (x VkDescriptorSetVariableDescriptorCountAllocateInfo) AsCPtr() *VkDescriptorSetVariableDescriptorCountAllocateInfo {
 	clone := newVkDescriptorSetVariableDescriptorCountAllocateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -28626,13 +28576,13 @@ func (x VkDescriptorSetVariableDescriptorCountAllocateInfo) SType() VkStructureT
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkDescriptorSetVariableDescriptorCountAllocateInfo) WithDefaultSType() *VkDescriptorSetVariableDescriptorCountAllocateInfo {
+func (x VkDescriptorSetVariableDescriptorCountAllocateInfo) WithDefaultSType() VkDescriptorSetVariableDescriptorCountAllocateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_ALLOCATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkDescriptorSetVariableDescriptorCountAllocateInfo
-func (x *VkDescriptorSetVariableDescriptorCountAllocateInfo) WithSType(y VkStructureType) *VkDescriptorSetVariableDescriptorCountAllocateInfo {
+func (x VkDescriptorSetVariableDescriptorCountAllocateInfo) WithSType(y VkStructureType) VkDescriptorSetVariableDescriptorCountAllocateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -28646,7 +28596,7 @@ func (x VkDescriptorSetVariableDescriptorCountAllocateInfo) PNext() unsafe.Point
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkDescriptorSetVariableDescriptorCountAllocateInfo
-func (x *VkDescriptorSetVariableDescriptorCountAllocateInfo) WithPNext(y unsafe.Pointer) *VkDescriptorSetVariableDescriptorCountAllocateInfo {
+func (x VkDescriptorSetVariableDescriptorCountAllocateInfo) WithPNext(y unsafe.Pointer) VkDescriptorSetVariableDescriptorCountAllocateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -28660,7 +28610,7 @@ func (x VkDescriptorSetVariableDescriptorCountAllocateInfo) DescriptorSetCount()
 
 // WithDescriptorSetCount copies the provided value into C space and stores it
 // at descriptorSetCount on VkDescriptorSetVariableDescriptorCountAllocateInfo
-func (x *VkDescriptorSetVariableDescriptorCountAllocateInfo) WithDescriptorSetCount(y uint32) *VkDescriptorSetVariableDescriptorCountAllocateInfo {
+func (x VkDescriptorSetVariableDescriptorCountAllocateInfo) WithDescriptorSetCount(y uint32) VkDescriptorSetVariableDescriptorCountAllocateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.descriptorSetCount = *ptr
 	return x
@@ -28677,7 +28627,7 @@ func (x VkDescriptorSetVariableDescriptorCountAllocateInfo) PDescriptorCounts() 
 
 // WithPDescriptorCounts copies the provided value into C space and stores it
 // at pDescriptorCounts on VkDescriptorSetVariableDescriptorCountAllocateInfo
-func (x *VkDescriptorSetVariableDescriptorCountAllocateInfo) WithPDescriptorCounts(y []uint32) *VkDescriptorSetVariableDescriptorCountAllocateInfo {
+func (x VkDescriptorSetVariableDescriptorCountAllocateInfo) WithPDescriptorCounts(y []uint32) VkDescriptorSetVariableDescriptorCountAllocateInfo {
 	ptr := func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
@@ -28711,14 +28661,14 @@ func (x *VkDescriptorSetVariableDescriptorCountLayoutSupport) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDescriptorSetVariableDescriptorCountLayoutSupport) AsPtr() *VkDescriptorSetVariableDescriptorCountLayoutSupport {
-	return x
+func (x VkDescriptorSetVariableDescriptorCountLayoutSupport) AsPtr() *VkDescriptorSetVariableDescriptorCountLayoutSupport {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDescriptorSetVariableDescriptorCountLayoutSupport) AsCPtr() *VkDescriptorSetVariableDescriptorCountLayoutSupport {
+func (x VkDescriptorSetVariableDescriptorCountLayoutSupport) AsCPtr() *VkDescriptorSetVariableDescriptorCountLayoutSupport {
 	clone := newVkDescriptorSetVariableDescriptorCountLayoutSupport()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -28730,13 +28680,13 @@ func (x VkDescriptorSetVariableDescriptorCountLayoutSupport) SType() VkStructure
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkDescriptorSetVariableDescriptorCountLayoutSupport) WithDefaultSType() *VkDescriptorSetVariableDescriptorCountLayoutSupport {
+func (x VkDescriptorSetVariableDescriptorCountLayoutSupport) WithDefaultSType() VkDescriptorSetVariableDescriptorCountLayoutSupport {
 	return x.WithSType(VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_LAYOUT_SUPPORT)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkDescriptorSetVariableDescriptorCountLayoutSupport
-func (x *VkDescriptorSetVariableDescriptorCountLayoutSupport) WithSType(y VkStructureType) *VkDescriptorSetVariableDescriptorCountLayoutSupport {
+func (x VkDescriptorSetVariableDescriptorCountLayoutSupport) WithSType(y VkStructureType) VkDescriptorSetVariableDescriptorCountLayoutSupport {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -28750,7 +28700,7 @@ func (x VkDescriptorSetVariableDescriptorCountLayoutSupport) PNext() unsafe.Poin
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkDescriptorSetVariableDescriptorCountLayoutSupport
-func (x *VkDescriptorSetVariableDescriptorCountLayoutSupport) WithPNext(y unsafe.Pointer) *VkDescriptorSetVariableDescriptorCountLayoutSupport {
+func (x VkDescriptorSetVariableDescriptorCountLayoutSupport) WithPNext(y unsafe.Pointer) VkDescriptorSetVariableDescriptorCountLayoutSupport {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -28783,12 +28733,12 @@ func (x *VkImageFormatListCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkImageFormatListCreateInfo) AsPtr() *VkImageFormatListCreateInfo { return x }
+func (x VkImageFormatListCreateInfo) AsPtr() *VkImageFormatListCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkImageFormatListCreateInfo) AsCPtr() *VkImageFormatListCreateInfo {
+func (x VkImageFormatListCreateInfo) AsCPtr() *VkImageFormatListCreateInfo {
 	clone := newVkImageFormatListCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -28800,13 +28750,13 @@ func (x VkImageFormatListCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkImageFormatListCreateInfo) WithDefaultSType() *VkImageFormatListCreateInfo {
+func (x VkImageFormatListCreateInfo) WithDefaultSType() VkImageFormatListCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_IMAGE_FORMAT_LIST_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkImageFormatListCreateInfo
-func (x *VkImageFormatListCreateInfo) WithSType(y VkStructureType) *VkImageFormatListCreateInfo {
+func (x VkImageFormatListCreateInfo) WithSType(y VkStructureType) VkImageFormatListCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -28820,7 +28770,7 @@ func (x VkImageFormatListCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkImageFormatListCreateInfo
-func (x *VkImageFormatListCreateInfo) WithPNext(y unsafe.Pointer) *VkImageFormatListCreateInfo {
+func (x VkImageFormatListCreateInfo) WithPNext(y unsafe.Pointer) VkImageFormatListCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -28834,7 +28784,7 @@ func (x VkImageFormatListCreateInfo) ViewFormatCount() uint32 {
 
 // WithViewFormatCount copies the provided value into C space and stores it
 // at viewFormatCount on VkImageFormatListCreateInfo
-func (x *VkImageFormatListCreateInfo) WithViewFormatCount(y uint32) *VkImageFormatListCreateInfo {
+func (x VkImageFormatListCreateInfo) WithViewFormatCount(y uint32) VkImageFormatListCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.viewFormatCount = *ptr
 	return x
@@ -28851,7 +28801,7 @@ func (x VkImageFormatListCreateInfo) PViewFormats() []VkFormat {
 
 // WithPViewFormats copies the provided value into C space and stores it
 // at pViewFormats on VkImageFormatListCreateInfo
-func (x *VkImageFormatListCreateInfo) WithPViewFormats(y []VkFormat) *VkImageFormatListCreateInfo {
+func (x VkImageFormatListCreateInfo) WithPViewFormats(y []VkFormat) VkImageFormatListCreateInfo {
 	ptr := func(x *[]VkFormat) **C.VkFormat { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkFormat)(unsafe.Pointer(&((*x)[0])))
@@ -28885,12 +28835,12 @@ func (x *VkPhysicalDeviceVulkan12Properties) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceVulkan12Properties) AsPtr() *VkPhysicalDeviceVulkan12Properties { return x }
+func (x VkPhysicalDeviceVulkan12Properties) AsPtr() *VkPhysicalDeviceVulkan12Properties { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceVulkan12Properties) AsCPtr() *VkPhysicalDeviceVulkan12Properties {
+func (x VkPhysicalDeviceVulkan12Properties) AsCPtr() *VkPhysicalDeviceVulkan12Properties {
 	clone := newVkPhysicalDeviceVulkan12Properties()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -28902,13 +28852,13 @@ func (x VkPhysicalDeviceVulkan12Properties) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceVulkan12Properties) WithDefaultSType() *VkPhysicalDeviceVulkan12Properties {
+func (x VkPhysicalDeviceVulkan12Properties) WithDefaultSType() VkPhysicalDeviceVulkan12Properties {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_2_PROPERTIES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceVulkan12Properties
-func (x *VkPhysicalDeviceVulkan12Properties) WithSType(y VkStructureType) *VkPhysicalDeviceVulkan12Properties {
+func (x VkPhysicalDeviceVulkan12Properties) WithSType(y VkStructureType) VkPhysicalDeviceVulkan12Properties {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -28922,7 +28872,7 @@ func (x VkPhysicalDeviceVulkan12Properties) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceVulkan12Properties
-func (x *VkPhysicalDeviceVulkan12Properties) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceVulkan12Properties {
+func (x VkPhysicalDeviceVulkan12Properties) WithPNext(y unsafe.Pointer) VkPhysicalDeviceVulkan12Properties {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -29267,14 +29217,14 @@ func (x *VkSubpassDescriptionDepthStencilResolve) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkSubpassDescriptionDepthStencilResolve) AsPtr() *VkSubpassDescriptionDepthStencilResolve {
-	return x
+func (x VkSubpassDescriptionDepthStencilResolve) AsPtr() *VkSubpassDescriptionDepthStencilResolve {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkSubpassDescriptionDepthStencilResolve) AsCPtr() *VkSubpassDescriptionDepthStencilResolve {
+func (x VkSubpassDescriptionDepthStencilResolve) AsCPtr() *VkSubpassDescriptionDepthStencilResolve {
 	clone := newVkSubpassDescriptionDepthStencilResolve()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -29286,13 +29236,13 @@ func (x VkSubpassDescriptionDepthStencilResolve) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkSubpassDescriptionDepthStencilResolve) WithDefaultSType() *VkSubpassDescriptionDepthStencilResolve {
+func (x VkSubpassDescriptionDepthStencilResolve) WithDefaultSType() VkSubpassDescriptionDepthStencilResolve {
 	return x.WithSType(VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkSubpassDescriptionDepthStencilResolve
-func (x *VkSubpassDescriptionDepthStencilResolve) WithSType(y VkStructureType) *VkSubpassDescriptionDepthStencilResolve {
+func (x VkSubpassDescriptionDepthStencilResolve) WithSType(y VkStructureType) VkSubpassDescriptionDepthStencilResolve {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -29306,7 +29256,7 @@ func (x VkSubpassDescriptionDepthStencilResolve) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkSubpassDescriptionDepthStencilResolve
-func (x *VkSubpassDescriptionDepthStencilResolve) WithPNext(y unsafe.Pointer) *VkSubpassDescriptionDepthStencilResolve {
+func (x VkSubpassDescriptionDepthStencilResolve) WithPNext(y unsafe.Pointer) VkSubpassDescriptionDepthStencilResolve {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -29320,7 +29270,7 @@ func (x VkSubpassDescriptionDepthStencilResolve) DepthResolveMode() VkResolveMod
 
 // WithDepthResolveMode copies the provided value into C space and stores it
 // at depthResolveMode on VkSubpassDescriptionDepthStencilResolve
-func (x *VkSubpassDescriptionDepthStencilResolve) WithDepthResolveMode(y VkResolveModeFlagBits) *VkSubpassDescriptionDepthStencilResolve {
+func (x VkSubpassDescriptionDepthStencilResolve) WithDepthResolveMode(y VkResolveModeFlagBits) VkSubpassDescriptionDepthStencilResolve {
 	ptr := /* Identifier */ (*C.VkResolveModeFlagBits)(&y)
 	x.depthResolveMode = *ptr
 	return x
@@ -29334,7 +29284,7 @@ func (x VkSubpassDescriptionDepthStencilResolve) StencilResolveMode() VkResolveM
 
 // WithStencilResolveMode copies the provided value into C space and stores it
 // at stencilResolveMode on VkSubpassDescriptionDepthStencilResolve
-func (x *VkSubpassDescriptionDepthStencilResolve) WithStencilResolveMode(y VkResolveModeFlagBits) *VkSubpassDescriptionDepthStencilResolve {
+func (x VkSubpassDescriptionDepthStencilResolve) WithStencilResolveMode(y VkResolveModeFlagBits) VkSubpassDescriptionDepthStencilResolve {
 	ptr := /* Identifier */ (*C.VkResolveModeFlagBits)(&y)
 	x.stencilResolveMode = *ptr
 	return x
@@ -29350,7 +29300,7 @@ func (x VkSubpassDescriptionDepthStencilResolve) PDepthStencilResolveAttachment(
 
 // WithPDepthStencilResolveAttachment copies the provided value into C space and stores it
 // at pDepthStencilResolveAttachment on VkSubpassDescriptionDepthStencilResolve
-func (x *VkSubpassDescriptionDepthStencilResolve) WithPDepthStencilResolveAttachment(y *VkAttachmentReference2) *VkSubpassDescriptionDepthStencilResolve {
+func (x VkSubpassDescriptionDepthStencilResolve) WithPDepthStencilResolveAttachment(y *VkAttachmentReference2) VkSubpassDescriptionDepthStencilResolve {
 	ptr := func(x **VkAttachmentReference2) **C.VkAttachmentReference2 { /* Pointer */
 		return (**C.VkAttachmentReference2)(unsafe.Pointer(x))
 	}(&y)
@@ -29379,14 +29329,14 @@ func (x *VkPhysicalDeviceDepthStencilResolveProperties) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceDepthStencilResolveProperties) AsPtr() *VkPhysicalDeviceDepthStencilResolveProperties {
-	return x
+func (x VkPhysicalDeviceDepthStencilResolveProperties) AsPtr() *VkPhysicalDeviceDepthStencilResolveProperties {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceDepthStencilResolveProperties) AsCPtr() *VkPhysicalDeviceDepthStencilResolveProperties {
+func (x VkPhysicalDeviceDepthStencilResolveProperties) AsCPtr() *VkPhysicalDeviceDepthStencilResolveProperties {
 	clone := newVkPhysicalDeviceDepthStencilResolveProperties()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -29398,13 +29348,13 @@ func (x VkPhysicalDeviceDepthStencilResolveProperties) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceDepthStencilResolveProperties) WithDefaultSType() *VkPhysicalDeviceDepthStencilResolveProperties {
+func (x VkPhysicalDeviceDepthStencilResolveProperties) WithDefaultSType() VkPhysicalDeviceDepthStencilResolveProperties {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceDepthStencilResolveProperties
-func (x *VkPhysicalDeviceDepthStencilResolveProperties) WithSType(y VkStructureType) *VkPhysicalDeviceDepthStencilResolveProperties {
+func (x VkPhysicalDeviceDepthStencilResolveProperties) WithSType(y VkStructureType) VkPhysicalDeviceDepthStencilResolveProperties {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -29418,7 +29368,7 @@ func (x VkPhysicalDeviceDepthStencilResolveProperties) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceDepthStencilResolveProperties
-func (x *VkPhysicalDeviceDepthStencilResolveProperties) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceDepthStencilResolveProperties {
+func (x VkPhysicalDeviceDepthStencilResolveProperties) WithPNext(y unsafe.Pointer) VkPhysicalDeviceDepthStencilResolveProperties {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -29469,12 +29419,12 @@ func (x *VkPhysicalDeviceVulkan12Features) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceVulkan12Features) AsPtr() *VkPhysicalDeviceVulkan12Features { return x }
+func (x VkPhysicalDeviceVulkan12Features) AsPtr() *VkPhysicalDeviceVulkan12Features { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceVulkan12Features) AsCPtr() *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) AsCPtr() *VkPhysicalDeviceVulkan12Features {
 	clone := newVkPhysicalDeviceVulkan12Features()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -29486,13 +29436,13 @@ func (x VkPhysicalDeviceVulkan12Features) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceVulkan12Features) WithDefaultSType() *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithDefaultSType() VkPhysicalDeviceVulkan12Features {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_2_FEATURES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithSType(y VkStructureType) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithSType(y VkStructureType) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -29506,7 +29456,7 @@ func (x VkPhysicalDeviceVulkan12Features) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithPNext(y unsafe.Pointer) VkPhysicalDeviceVulkan12Features {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -29520,7 +29470,7 @@ func (x VkPhysicalDeviceVulkan12Features) SamplerMirrorClampToEdge() VkBool32 {
 
 // WithSamplerMirrorClampToEdge copies the provided value into C space and stores it
 // at samplerMirrorClampToEdge on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithSamplerMirrorClampToEdge(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithSamplerMirrorClampToEdge(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.samplerMirrorClampToEdge = *ptr
 	return x
@@ -29534,7 +29484,7 @@ func (x VkPhysicalDeviceVulkan12Features) DrawIndirectCount() VkBool32 {
 
 // WithDrawIndirectCount copies the provided value into C space and stores it
 // at drawIndirectCount on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithDrawIndirectCount(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithDrawIndirectCount(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.drawIndirectCount = *ptr
 	return x
@@ -29548,7 +29498,7 @@ func (x VkPhysicalDeviceVulkan12Features) StorageBuffer8BitAccess() VkBool32 {
 
 // WithStorageBuffer8BitAccess copies the provided value into C space and stores it
 // at storageBuffer8BitAccess on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithStorageBuffer8BitAccess(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithStorageBuffer8BitAccess(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.storageBuffer8BitAccess = *ptr
 	return x
@@ -29562,7 +29512,7 @@ func (x VkPhysicalDeviceVulkan12Features) UniformAndStorageBuffer8BitAccess() Vk
 
 // WithUniformAndStorageBuffer8BitAccess copies the provided value into C space and stores it
 // at uniformAndStorageBuffer8BitAccess on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithUniformAndStorageBuffer8BitAccess(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithUniformAndStorageBuffer8BitAccess(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.uniformAndStorageBuffer8BitAccess = *ptr
 	return x
@@ -29576,7 +29526,7 @@ func (x VkPhysicalDeviceVulkan12Features) StoragePushConstant8() VkBool32 {
 
 // WithStoragePushConstant8 copies the provided value into C space and stores it
 // at storagePushConstant8 on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithStoragePushConstant8(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithStoragePushConstant8(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.storagePushConstant8 = *ptr
 	return x
@@ -29590,7 +29540,7 @@ func (x VkPhysicalDeviceVulkan12Features) ShaderBufferInt64Atomics() VkBool32 {
 
 // WithShaderBufferInt64Atomics copies the provided value into C space and stores it
 // at shaderBufferInt64Atomics on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithShaderBufferInt64Atomics(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithShaderBufferInt64Atomics(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderBufferInt64Atomics = *ptr
 	return x
@@ -29604,7 +29554,7 @@ func (x VkPhysicalDeviceVulkan12Features) ShaderSharedInt64Atomics() VkBool32 {
 
 // WithShaderSharedInt64Atomics copies the provided value into C space and stores it
 // at shaderSharedInt64Atomics on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithShaderSharedInt64Atomics(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithShaderSharedInt64Atomics(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderSharedInt64Atomics = *ptr
 	return x
@@ -29618,7 +29568,7 @@ func (x VkPhysicalDeviceVulkan12Features) ShaderFloat16() VkBool32 {
 
 // WithShaderFloat16 copies the provided value into C space and stores it
 // at shaderFloat16 on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithShaderFloat16(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithShaderFloat16(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderFloat16 = *ptr
 	return x
@@ -29632,7 +29582,7 @@ func (x VkPhysicalDeviceVulkan12Features) ShaderInt8() VkBool32 {
 
 // WithShaderInt8 copies the provided value into C space and stores it
 // at shaderInt8 on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithShaderInt8(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithShaderInt8(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderInt8 = *ptr
 	return x
@@ -29646,7 +29596,7 @@ func (x VkPhysicalDeviceVulkan12Features) DescriptorIndexing() VkBool32 {
 
 // WithDescriptorIndexing copies the provided value into C space and stores it
 // at descriptorIndexing on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithDescriptorIndexing(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithDescriptorIndexing(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.descriptorIndexing = *ptr
 	return x
@@ -29660,7 +29610,7 @@ func (x VkPhysicalDeviceVulkan12Features) ShaderInputAttachmentArrayDynamicIndex
 
 // WithShaderInputAttachmentArrayDynamicIndexing copies the provided value into C space and stores it
 // at shaderInputAttachmentArrayDynamicIndexing on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithShaderInputAttachmentArrayDynamicIndexing(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithShaderInputAttachmentArrayDynamicIndexing(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderInputAttachmentArrayDynamicIndexing = *ptr
 	return x
@@ -29674,7 +29624,7 @@ func (x VkPhysicalDeviceVulkan12Features) ShaderUniformTexelBufferArrayDynamicIn
 
 // WithShaderUniformTexelBufferArrayDynamicIndexing copies the provided value into C space and stores it
 // at shaderUniformTexelBufferArrayDynamicIndexing on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithShaderUniformTexelBufferArrayDynamicIndexing(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithShaderUniformTexelBufferArrayDynamicIndexing(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderUniformTexelBufferArrayDynamicIndexing = *ptr
 	return x
@@ -29688,7 +29638,7 @@ func (x VkPhysicalDeviceVulkan12Features) ShaderStorageTexelBufferArrayDynamicIn
 
 // WithShaderStorageTexelBufferArrayDynamicIndexing copies the provided value into C space and stores it
 // at shaderStorageTexelBufferArrayDynamicIndexing on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithShaderStorageTexelBufferArrayDynamicIndexing(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithShaderStorageTexelBufferArrayDynamicIndexing(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderStorageTexelBufferArrayDynamicIndexing = *ptr
 	return x
@@ -29702,7 +29652,7 @@ func (x VkPhysicalDeviceVulkan12Features) ShaderUniformBufferArrayNonUniformInde
 
 // WithShaderUniformBufferArrayNonUniformIndexing copies the provided value into C space and stores it
 // at shaderUniformBufferArrayNonUniformIndexing on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithShaderUniformBufferArrayNonUniformIndexing(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithShaderUniformBufferArrayNonUniformIndexing(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderUniformBufferArrayNonUniformIndexing = *ptr
 	return x
@@ -29716,7 +29666,7 @@ func (x VkPhysicalDeviceVulkan12Features) ShaderSampledImageArrayNonUniformIndex
 
 // WithShaderSampledImageArrayNonUniformIndexing copies the provided value into C space and stores it
 // at shaderSampledImageArrayNonUniformIndexing on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithShaderSampledImageArrayNonUniformIndexing(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithShaderSampledImageArrayNonUniformIndexing(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderSampledImageArrayNonUniformIndexing = *ptr
 	return x
@@ -29730,7 +29680,7 @@ func (x VkPhysicalDeviceVulkan12Features) ShaderStorageBufferArrayNonUniformInde
 
 // WithShaderStorageBufferArrayNonUniformIndexing copies the provided value into C space and stores it
 // at shaderStorageBufferArrayNonUniformIndexing on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithShaderStorageBufferArrayNonUniformIndexing(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithShaderStorageBufferArrayNonUniformIndexing(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderStorageBufferArrayNonUniformIndexing = *ptr
 	return x
@@ -29744,7 +29694,7 @@ func (x VkPhysicalDeviceVulkan12Features) ShaderStorageImageArrayNonUniformIndex
 
 // WithShaderStorageImageArrayNonUniformIndexing copies the provided value into C space and stores it
 // at shaderStorageImageArrayNonUniformIndexing on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithShaderStorageImageArrayNonUniformIndexing(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithShaderStorageImageArrayNonUniformIndexing(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderStorageImageArrayNonUniformIndexing = *ptr
 	return x
@@ -29758,7 +29708,7 @@ func (x VkPhysicalDeviceVulkan12Features) ShaderInputAttachmentArrayNonUniformIn
 
 // WithShaderInputAttachmentArrayNonUniformIndexing copies the provided value into C space and stores it
 // at shaderInputAttachmentArrayNonUniformIndexing on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithShaderInputAttachmentArrayNonUniformIndexing(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithShaderInputAttachmentArrayNonUniformIndexing(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderInputAttachmentArrayNonUniformIndexing = *ptr
 	return x
@@ -29772,7 +29722,7 @@ func (x VkPhysicalDeviceVulkan12Features) ShaderUniformTexelBufferArrayNonUnifor
 
 // WithShaderUniformTexelBufferArrayNonUniformIndexing copies the provided value into C space and stores it
 // at shaderUniformTexelBufferArrayNonUniformIndexing on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithShaderUniformTexelBufferArrayNonUniformIndexing(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithShaderUniformTexelBufferArrayNonUniformIndexing(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderUniformTexelBufferArrayNonUniformIndexing = *ptr
 	return x
@@ -29786,7 +29736,7 @@ func (x VkPhysicalDeviceVulkan12Features) ShaderStorageTexelBufferArrayNonUnifor
 
 // WithShaderStorageTexelBufferArrayNonUniformIndexing copies the provided value into C space and stores it
 // at shaderStorageTexelBufferArrayNonUniformIndexing on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithShaderStorageTexelBufferArrayNonUniformIndexing(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithShaderStorageTexelBufferArrayNonUniformIndexing(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderStorageTexelBufferArrayNonUniformIndexing = *ptr
 	return x
@@ -29800,7 +29750,7 @@ func (x VkPhysicalDeviceVulkan12Features) DescriptorBindingUniformBufferUpdateAf
 
 // WithDescriptorBindingUniformBufferUpdateAfterBind copies the provided value into C space and stores it
 // at descriptorBindingUniformBufferUpdateAfterBind on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithDescriptorBindingUniformBufferUpdateAfterBind(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithDescriptorBindingUniformBufferUpdateAfterBind(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.descriptorBindingUniformBufferUpdateAfterBind = *ptr
 	return x
@@ -29814,7 +29764,7 @@ func (x VkPhysicalDeviceVulkan12Features) DescriptorBindingSampledImageUpdateAft
 
 // WithDescriptorBindingSampledImageUpdateAfterBind copies the provided value into C space and stores it
 // at descriptorBindingSampledImageUpdateAfterBind on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithDescriptorBindingSampledImageUpdateAfterBind(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithDescriptorBindingSampledImageUpdateAfterBind(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.descriptorBindingSampledImageUpdateAfterBind = *ptr
 	return x
@@ -29828,7 +29778,7 @@ func (x VkPhysicalDeviceVulkan12Features) DescriptorBindingStorageImageUpdateAft
 
 // WithDescriptorBindingStorageImageUpdateAfterBind copies the provided value into C space and stores it
 // at descriptorBindingStorageImageUpdateAfterBind on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithDescriptorBindingStorageImageUpdateAfterBind(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithDescriptorBindingStorageImageUpdateAfterBind(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.descriptorBindingStorageImageUpdateAfterBind = *ptr
 	return x
@@ -29842,7 +29792,7 @@ func (x VkPhysicalDeviceVulkan12Features) DescriptorBindingStorageBufferUpdateAf
 
 // WithDescriptorBindingStorageBufferUpdateAfterBind copies the provided value into C space and stores it
 // at descriptorBindingStorageBufferUpdateAfterBind on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithDescriptorBindingStorageBufferUpdateAfterBind(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithDescriptorBindingStorageBufferUpdateAfterBind(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.descriptorBindingStorageBufferUpdateAfterBind = *ptr
 	return x
@@ -29856,7 +29806,7 @@ func (x VkPhysicalDeviceVulkan12Features) DescriptorBindingUniformTexelBufferUpd
 
 // WithDescriptorBindingUniformTexelBufferUpdateAfterBind copies the provided value into C space and stores it
 // at descriptorBindingUniformTexelBufferUpdateAfterBind on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithDescriptorBindingUniformTexelBufferUpdateAfterBind(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithDescriptorBindingUniformTexelBufferUpdateAfterBind(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.descriptorBindingUniformTexelBufferUpdateAfterBind = *ptr
 	return x
@@ -29870,7 +29820,7 @@ func (x VkPhysicalDeviceVulkan12Features) DescriptorBindingStorageTexelBufferUpd
 
 // WithDescriptorBindingStorageTexelBufferUpdateAfterBind copies the provided value into C space and stores it
 // at descriptorBindingStorageTexelBufferUpdateAfterBind on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithDescriptorBindingStorageTexelBufferUpdateAfterBind(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithDescriptorBindingStorageTexelBufferUpdateAfterBind(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.descriptorBindingStorageTexelBufferUpdateAfterBind = *ptr
 	return x
@@ -29884,7 +29834,7 @@ func (x VkPhysicalDeviceVulkan12Features) DescriptorBindingUpdateUnusedWhilePend
 
 // WithDescriptorBindingUpdateUnusedWhilePending copies the provided value into C space and stores it
 // at descriptorBindingUpdateUnusedWhilePending on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithDescriptorBindingUpdateUnusedWhilePending(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithDescriptorBindingUpdateUnusedWhilePending(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.descriptorBindingUpdateUnusedWhilePending = *ptr
 	return x
@@ -29898,7 +29848,7 @@ func (x VkPhysicalDeviceVulkan12Features) DescriptorBindingPartiallyBound() VkBo
 
 // WithDescriptorBindingPartiallyBound copies the provided value into C space and stores it
 // at descriptorBindingPartiallyBound on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithDescriptorBindingPartiallyBound(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithDescriptorBindingPartiallyBound(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.descriptorBindingPartiallyBound = *ptr
 	return x
@@ -29912,7 +29862,7 @@ func (x VkPhysicalDeviceVulkan12Features) DescriptorBindingVariableDescriptorCou
 
 // WithDescriptorBindingVariableDescriptorCount copies the provided value into C space and stores it
 // at descriptorBindingVariableDescriptorCount on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithDescriptorBindingVariableDescriptorCount(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithDescriptorBindingVariableDescriptorCount(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.descriptorBindingVariableDescriptorCount = *ptr
 	return x
@@ -29926,7 +29876,7 @@ func (x VkPhysicalDeviceVulkan12Features) RuntimeDescriptorArray() VkBool32 {
 
 // WithRuntimeDescriptorArray copies the provided value into C space and stores it
 // at runtimeDescriptorArray on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithRuntimeDescriptorArray(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithRuntimeDescriptorArray(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.runtimeDescriptorArray = *ptr
 	return x
@@ -29940,7 +29890,7 @@ func (x VkPhysicalDeviceVulkan12Features) SamplerFilterMinmax() VkBool32 {
 
 // WithSamplerFilterMinmax copies the provided value into C space and stores it
 // at samplerFilterMinmax on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithSamplerFilterMinmax(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithSamplerFilterMinmax(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.samplerFilterMinmax = *ptr
 	return x
@@ -29954,7 +29904,7 @@ func (x VkPhysicalDeviceVulkan12Features) ScalarBlockLayout() VkBool32 {
 
 // WithScalarBlockLayout copies the provided value into C space and stores it
 // at scalarBlockLayout on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithScalarBlockLayout(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithScalarBlockLayout(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.scalarBlockLayout = *ptr
 	return x
@@ -29968,7 +29918,7 @@ func (x VkPhysicalDeviceVulkan12Features) ImagelessFramebuffer() VkBool32 {
 
 // WithImagelessFramebuffer copies the provided value into C space and stores it
 // at imagelessFramebuffer on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithImagelessFramebuffer(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithImagelessFramebuffer(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.imagelessFramebuffer = *ptr
 	return x
@@ -29982,7 +29932,7 @@ func (x VkPhysicalDeviceVulkan12Features) UniformBufferStandardLayout() VkBool32
 
 // WithUniformBufferStandardLayout copies the provided value into C space and stores it
 // at uniformBufferStandardLayout on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithUniformBufferStandardLayout(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithUniformBufferStandardLayout(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.uniformBufferStandardLayout = *ptr
 	return x
@@ -29996,7 +29946,7 @@ func (x VkPhysicalDeviceVulkan12Features) ShaderSubgroupExtendedTypes() VkBool32
 
 // WithShaderSubgroupExtendedTypes copies the provided value into C space and stores it
 // at shaderSubgroupExtendedTypes on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithShaderSubgroupExtendedTypes(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithShaderSubgroupExtendedTypes(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderSubgroupExtendedTypes = *ptr
 	return x
@@ -30010,7 +29960,7 @@ func (x VkPhysicalDeviceVulkan12Features) SeparateDepthStencilLayouts() VkBool32
 
 // WithSeparateDepthStencilLayouts copies the provided value into C space and stores it
 // at separateDepthStencilLayouts on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithSeparateDepthStencilLayouts(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithSeparateDepthStencilLayouts(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.separateDepthStencilLayouts = *ptr
 	return x
@@ -30024,7 +29974,7 @@ func (x VkPhysicalDeviceVulkan12Features) HostQueryReset() VkBool32 {
 
 // WithHostQueryReset copies the provided value into C space and stores it
 // at hostQueryReset on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithHostQueryReset(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithHostQueryReset(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.hostQueryReset = *ptr
 	return x
@@ -30038,7 +29988,7 @@ func (x VkPhysicalDeviceVulkan12Features) TimelineSemaphore() VkBool32 {
 
 // WithTimelineSemaphore copies the provided value into C space and stores it
 // at timelineSemaphore on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithTimelineSemaphore(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithTimelineSemaphore(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.timelineSemaphore = *ptr
 	return x
@@ -30052,7 +30002,7 @@ func (x VkPhysicalDeviceVulkan12Features) BufferDeviceAddress() VkBool32 {
 
 // WithBufferDeviceAddress copies the provided value into C space and stores it
 // at bufferDeviceAddress on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithBufferDeviceAddress(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithBufferDeviceAddress(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.bufferDeviceAddress = *ptr
 	return x
@@ -30066,7 +30016,7 @@ func (x VkPhysicalDeviceVulkan12Features) BufferDeviceAddressCaptureReplay() VkB
 
 // WithBufferDeviceAddressCaptureReplay copies the provided value into C space and stores it
 // at bufferDeviceAddressCaptureReplay on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithBufferDeviceAddressCaptureReplay(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithBufferDeviceAddressCaptureReplay(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.bufferDeviceAddressCaptureReplay = *ptr
 	return x
@@ -30080,7 +30030,7 @@ func (x VkPhysicalDeviceVulkan12Features) BufferDeviceAddressMultiDevice() VkBoo
 
 // WithBufferDeviceAddressMultiDevice copies the provided value into C space and stores it
 // at bufferDeviceAddressMultiDevice on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithBufferDeviceAddressMultiDevice(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithBufferDeviceAddressMultiDevice(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.bufferDeviceAddressMultiDevice = *ptr
 	return x
@@ -30094,7 +30044,7 @@ func (x VkPhysicalDeviceVulkan12Features) VulkanMemoryModel() VkBool32 {
 
 // WithVulkanMemoryModel copies the provided value into C space and stores it
 // at vulkanMemoryModel on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithVulkanMemoryModel(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithVulkanMemoryModel(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.vulkanMemoryModel = *ptr
 	return x
@@ -30108,7 +30058,7 @@ func (x VkPhysicalDeviceVulkan12Features) VulkanMemoryModelDeviceScope() VkBool3
 
 // WithVulkanMemoryModelDeviceScope copies the provided value into C space and stores it
 // at vulkanMemoryModelDeviceScope on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithVulkanMemoryModelDeviceScope(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithVulkanMemoryModelDeviceScope(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.vulkanMemoryModelDeviceScope = *ptr
 	return x
@@ -30122,7 +30072,7 @@ func (x VkPhysicalDeviceVulkan12Features) VulkanMemoryModelAvailabilityVisibilit
 
 // WithVulkanMemoryModelAvailabilityVisibilityChains copies the provided value into C space and stores it
 // at vulkanMemoryModelAvailabilityVisibilityChains on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithVulkanMemoryModelAvailabilityVisibilityChains(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithVulkanMemoryModelAvailabilityVisibilityChains(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.vulkanMemoryModelAvailabilityVisibilityChains = *ptr
 	return x
@@ -30136,7 +30086,7 @@ func (x VkPhysicalDeviceVulkan12Features) ShaderOutputViewportIndex() VkBool32 {
 
 // WithShaderOutputViewportIndex copies the provided value into C space and stores it
 // at shaderOutputViewportIndex on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithShaderOutputViewportIndex(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithShaderOutputViewportIndex(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderOutputViewportIndex = *ptr
 	return x
@@ -30150,7 +30100,7 @@ func (x VkPhysicalDeviceVulkan12Features) ShaderOutputLayer() VkBool32 {
 
 // WithShaderOutputLayer copies the provided value into C space and stores it
 // at shaderOutputLayer on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithShaderOutputLayer(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithShaderOutputLayer(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderOutputLayer = *ptr
 	return x
@@ -30164,7 +30114,7 @@ func (x VkPhysicalDeviceVulkan12Features) SubgroupBroadcastDynamicId() VkBool32 
 
 // WithSubgroupBroadcastDynamicId copies the provided value into C space and stores it
 // at subgroupBroadcastDynamicId on VkPhysicalDeviceVulkan12Features
-func (x *VkPhysicalDeviceVulkan12Features) WithSubgroupBroadcastDynamicId(y VkBool32) *VkPhysicalDeviceVulkan12Features {
+func (x VkPhysicalDeviceVulkan12Features) WithSubgroupBroadcastDynamicId(y VkBool32) VkPhysicalDeviceVulkan12Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.subgroupBroadcastDynamicId = *ptr
 	return x
@@ -30191,12 +30141,12 @@ func (x *VkPhysicalDeviceVulkan11Properties) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceVulkan11Properties) AsPtr() *VkPhysicalDeviceVulkan11Properties { return x }
+func (x VkPhysicalDeviceVulkan11Properties) AsPtr() *VkPhysicalDeviceVulkan11Properties { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceVulkan11Properties) AsCPtr() *VkPhysicalDeviceVulkan11Properties {
+func (x VkPhysicalDeviceVulkan11Properties) AsCPtr() *VkPhysicalDeviceVulkan11Properties {
 	clone := newVkPhysicalDeviceVulkan11Properties()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -30208,13 +30158,13 @@ func (x VkPhysicalDeviceVulkan11Properties) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceVulkan11Properties) WithDefaultSType() *VkPhysicalDeviceVulkan11Properties {
+func (x VkPhysicalDeviceVulkan11Properties) WithDefaultSType() VkPhysicalDeviceVulkan11Properties {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_1_PROPERTIES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceVulkan11Properties
-func (x *VkPhysicalDeviceVulkan11Properties) WithSType(y VkStructureType) *VkPhysicalDeviceVulkan11Properties {
+func (x VkPhysicalDeviceVulkan11Properties) WithSType(y VkStructureType) VkPhysicalDeviceVulkan11Properties {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -30228,7 +30178,7 @@ func (x VkPhysicalDeviceVulkan11Properties) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceVulkan11Properties
-func (x *VkPhysicalDeviceVulkan11Properties) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceVulkan11Properties {
+func (x VkPhysicalDeviceVulkan11Properties) WithPNext(y unsafe.Pointer) VkPhysicalDeviceVulkan11Properties {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -30354,14 +30304,14 @@ func (x *VkPhysicalDeviceScalarBlockLayoutFeatures) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceScalarBlockLayoutFeatures) AsPtr() *VkPhysicalDeviceScalarBlockLayoutFeatures {
-	return x
+func (x VkPhysicalDeviceScalarBlockLayoutFeatures) AsPtr() *VkPhysicalDeviceScalarBlockLayoutFeatures {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceScalarBlockLayoutFeatures) AsCPtr() *VkPhysicalDeviceScalarBlockLayoutFeatures {
+func (x VkPhysicalDeviceScalarBlockLayoutFeatures) AsCPtr() *VkPhysicalDeviceScalarBlockLayoutFeatures {
 	clone := newVkPhysicalDeviceScalarBlockLayoutFeatures()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -30373,13 +30323,13 @@ func (x VkPhysicalDeviceScalarBlockLayoutFeatures) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceScalarBlockLayoutFeatures) WithDefaultSType() *VkPhysicalDeviceScalarBlockLayoutFeatures {
+func (x VkPhysicalDeviceScalarBlockLayoutFeatures) WithDefaultSType() VkPhysicalDeviceScalarBlockLayoutFeatures {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCALAR_BLOCK_LAYOUT_FEATURES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceScalarBlockLayoutFeatures
-func (x *VkPhysicalDeviceScalarBlockLayoutFeatures) WithSType(y VkStructureType) *VkPhysicalDeviceScalarBlockLayoutFeatures {
+func (x VkPhysicalDeviceScalarBlockLayoutFeatures) WithSType(y VkStructureType) VkPhysicalDeviceScalarBlockLayoutFeatures {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -30393,7 +30343,7 @@ func (x VkPhysicalDeviceScalarBlockLayoutFeatures) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceScalarBlockLayoutFeatures
-func (x *VkPhysicalDeviceScalarBlockLayoutFeatures) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceScalarBlockLayoutFeatures {
+func (x VkPhysicalDeviceScalarBlockLayoutFeatures) WithPNext(y unsafe.Pointer) VkPhysicalDeviceScalarBlockLayoutFeatures {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -30407,7 +30357,7 @@ func (x VkPhysicalDeviceScalarBlockLayoutFeatures) ScalarBlockLayout() VkBool32 
 
 // WithScalarBlockLayout copies the provided value into C space and stores it
 // at scalarBlockLayout on VkPhysicalDeviceScalarBlockLayoutFeatures
-func (x *VkPhysicalDeviceScalarBlockLayoutFeatures) WithScalarBlockLayout(y VkBool32) *VkPhysicalDeviceScalarBlockLayoutFeatures {
+func (x VkPhysicalDeviceScalarBlockLayoutFeatures) WithScalarBlockLayout(y VkBool32) VkPhysicalDeviceScalarBlockLayoutFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.scalarBlockLayout = *ptr
 	return x
@@ -30434,12 +30384,12 @@ func (x *VkImageStencilUsageCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkImageStencilUsageCreateInfo) AsPtr() *VkImageStencilUsageCreateInfo { return x }
+func (x VkImageStencilUsageCreateInfo) AsPtr() *VkImageStencilUsageCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkImageStencilUsageCreateInfo) AsCPtr() *VkImageStencilUsageCreateInfo {
+func (x VkImageStencilUsageCreateInfo) AsCPtr() *VkImageStencilUsageCreateInfo {
 	clone := newVkImageStencilUsageCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -30451,13 +30401,13 @@ func (x VkImageStencilUsageCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkImageStencilUsageCreateInfo) WithDefaultSType() *VkImageStencilUsageCreateInfo {
+func (x VkImageStencilUsageCreateInfo) WithDefaultSType() VkImageStencilUsageCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkImageStencilUsageCreateInfo
-func (x *VkImageStencilUsageCreateInfo) WithSType(y VkStructureType) *VkImageStencilUsageCreateInfo {
+func (x VkImageStencilUsageCreateInfo) WithSType(y VkStructureType) VkImageStencilUsageCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -30471,7 +30421,7 @@ func (x VkImageStencilUsageCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkImageStencilUsageCreateInfo
-func (x *VkImageStencilUsageCreateInfo) WithPNext(y unsafe.Pointer) *VkImageStencilUsageCreateInfo {
+func (x VkImageStencilUsageCreateInfo) WithPNext(y unsafe.Pointer) VkImageStencilUsageCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -30485,7 +30435,7 @@ func (x VkImageStencilUsageCreateInfo) StencilUsage() VkImageUsageFlags {
 
 // WithStencilUsage copies the provided value into C space and stores it
 // at stencilUsage on VkImageStencilUsageCreateInfo
-func (x *VkImageStencilUsageCreateInfo) WithStencilUsage(y VkImageUsageFlags) *VkImageStencilUsageCreateInfo {
+func (x VkImageStencilUsageCreateInfo) WithStencilUsage(y VkImageUsageFlags) VkImageStencilUsageCreateInfo {
 	ptr := /* Identifier */ (*C.VkImageUsageFlags)(&y)
 	x.stencilUsage = *ptr
 	return x
@@ -30512,12 +30462,12 @@ func (x *VkPhysicalDeviceVulkan11Features) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceVulkan11Features) AsPtr() *VkPhysicalDeviceVulkan11Features { return x }
+func (x VkPhysicalDeviceVulkan11Features) AsPtr() *VkPhysicalDeviceVulkan11Features { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceVulkan11Features) AsCPtr() *VkPhysicalDeviceVulkan11Features {
+func (x VkPhysicalDeviceVulkan11Features) AsCPtr() *VkPhysicalDeviceVulkan11Features {
 	clone := newVkPhysicalDeviceVulkan11Features()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -30529,13 +30479,13 @@ func (x VkPhysicalDeviceVulkan11Features) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceVulkan11Features) WithDefaultSType() *VkPhysicalDeviceVulkan11Features {
+func (x VkPhysicalDeviceVulkan11Features) WithDefaultSType() VkPhysicalDeviceVulkan11Features {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_1_FEATURES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceVulkan11Features
-func (x *VkPhysicalDeviceVulkan11Features) WithSType(y VkStructureType) *VkPhysicalDeviceVulkan11Features {
+func (x VkPhysicalDeviceVulkan11Features) WithSType(y VkStructureType) VkPhysicalDeviceVulkan11Features {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -30549,7 +30499,7 @@ func (x VkPhysicalDeviceVulkan11Features) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceVulkan11Features
-func (x *VkPhysicalDeviceVulkan11Features) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceVulkan11Features {
+func (x VkPhysicalDeviceVulkan11Features) WithPNext(y unsafe.Pointer) VkPhysicalDeviceVulkan11Features {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -30563,7 +30513,7 @@ func (x VkPhysicalDeviceVulkan11Features) StorageBuffer16BitAccess() VkBool32 {
 
 // WithStorageBuffer16BitAccess copies the provided value into C space and stores it
 // at storageBuffer16BitAccess on VkPhysicalDeviceVulkan11Features
-func (x *VkPhysicalDeviceVulkan11Features) WithStorageBuffer16BitAccess(y VkBool32) *VkPhysicalDeviceVulkan11Features {
+func (x VkPhysicalDeviceVulkan11Features) WithStorageBuffer16BitAccess(y VkBool32) VkPhysicalDeviceVulkan11Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.storageBuffer16BitAccess = *ptr
 	return x
@@ -30577,7 +30527,7 @@ func (x VkPhysicalDeviceVulkan11Features) UniformAndStorageBuffer16BitAccess() V
 
 // WithUniformAndStorageBuffer16BitAccess copies the provided value into C space and stores it
 // at uniformAndStorageBuffer16BitAccess on VkPhysicalDeviceVulkan11Features
-func (x *VkPhysicalDeviceVulkan11Features) WithUniformAndStorageBuffer16BitAccess(y VkBool32) *VkPhysicalDeviceVulkan11Features {
+func (x VkPhysicalDeviceVulkan11Features) WithUniformAndStorageBuffer16BitAccess(y VkBool32) VkPhysicalDeviceVulkan11Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.uniformAndStorageBuffer16BitAccess = *ptr
 	return x
@@ -30591,7 +30541,7 @@ func (x VkPhysicalDeviceVulkan11Features) StoragePushConstant16() VkBool32 {
 
 // WithStoragePushConstant16 copies the provided value into C space and stores it
 // at storagePushConstant16 on VkPhysicalDeviceVulkan11Features
-func (x *VkPhysicalDeviceVulkan11Features) WithStoragePushConstant16(y VkBool32) *VkPhysicalDeviceVulkan11Features {
+func (x VkPhysicalDeviceVulkan11Features) WithStoragePushConstant16(y VkBool32) VkPhysicalDeviceVulkan11Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.storagePushConstant16 = *ptr
 	return x
@@ -30605,7 +30555,7 @@ func (x VkPhysicalDeviceVulkan11Features) StorageInputOutput16() VkBool32 {
 
 // WithStorageInputOutput16 copies the provided value into C space and stores it
 // at storageInputOutput16 on VkPhysicalDeviceVulkan11Features
-func (x *VkPhysicalDeviceVulkan11Features) WithStorageInputOutput16(y VkBool32) *VkPhysicalDeviceVulkan11Features {
+func (x VkPhysicalDeviceVulkan11Features) WithStorageInputOutput16(y VkBool32) VkPhysicalDeviceVulkan11Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.storageInputOutput16 = *ptr
 	return x
@@ -30619,7 +30569,7 @@ func (x VkPhysicalDeviceVulkan11Features) Multiview() VkBool32 {
 
 // WithMultiview copies the provided value into C space and stores it
 // at multiview on VkPhysicalDeviceVulkan11Features
-func (x *VkPhysicalDeviceVulkan11Features) WithMultiview(y VkBool32) *VkPhysicalDeviceVulkan11Features {
+func (x VkPhysicalDeviceVulkan11Features) WithMultiview(y VkBool32) VkPhysicalDeviceVulkan11Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.multiview = *ptr
 	return x
@@ -30633,7 +30583,7 @@ func (x VkPhysicalDeviceVulkan11Features) MultiviewGeometryShader() VkBool32 {
 
 // WithMultiviewGeometryShader copies the provided value into C space and stores it
 // at multiviewGeometryShader on VkPhysicalDeviceVulkan11Features
-func (x *VkPhysicalDeviceVulkan11Features) WithMultiviewGeometryShader(y VkBool32) *VkPhysicalDeviceVulkan11Features {
+func (x VkPhysicalDeviceVulkan11Features) WithMultiviewGeometryShader(y VkBool32) VkPhysicalDeviceVulkan11Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.multiviewGeometryShader = *ptr
 	return x
@@ -30647,7 +30597,7 @@ func (x VkPhysicalDeviceVulkan11Features) MultiviewTessellationShader() VkBool32
 
 // WithMultiviewTessellationShader copies the provided value into C space and stores it
 // at multiviewTessellationShader on VkPhysicalDeviceVulkan11Features
-func (x *VkPhysicalDeviceVulkan11Features) WithMultiviewTessellationShader(y VkBool32) *VkPhysicalDeviceVulkan11Features {
+func (x VkPhysicalDeviceVulkan11Features) WithMultiviewTessellationShader(y VkBool32) VkPhysicalDeviceVulkan11Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.multiviewTessellationShader = *ptr
 	return x
@@ -30661,7 +30611,7 @@ func (x VkPhysicalDeviceVulkan11Features) VariablePointersStorageBuffer() VkBool
 
 // WithVariablePointersStorageBuffer copies the provided value into C space and stores it
 // at variablePointersStorageBuffer on VkPhysicalDeviceVulkan11Features
-func (x *VkPhysicalDeviceVulkan11Features) WithVariablePointersStorageBuffer(y VkBool32) *VkPhysicalDeviceVulkan11Features {
+func (x VkPhysicalDeviceVulkan11Features) WithVariablePointersStorageBuffer(y VkBool32) VkPhysicalDeviceVulkan11Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.variablePointersStorageBuffer = *ptr
 	return x
@@ -30675,7 +30625,7 @@ func (x VkPhysicalDeviceVulkan11Features) VariablePointers() VkBool32 {
 
 // WithVariablePointers copies the provided value into C space and stores it
 // at variablePointers on VkPhysicalDeviceVulkan11Features
-func (x *VkPhysicalDeviceVulkan11Features) WithVariablePointers(y VkBool32) *VkPhysicalDeviceVulkan11Features {
+func (x VkPhysicalDeviceVulkan11Features) WithVariablePointers(y VkBool32) VkPhysicalDeviceVulkan11Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.variablePointers = *ptr
 	return x
@@ -30689,7 +30639,7 @@ func (x VkPhysicalDeviceVulkan11Features) ProtectedMemory() VkBool32 {
 
 // WithProtectedMemory copies the provided value into C space and stores it
 // at protectedMemory on VkPhysicalDeviceVulkan11Features
-func (x *VkPhysicalDeviceVulkan11Features) WithProtectedMemory(y VkBool32) *VkPhysicalDeviceVulkan11Features {
+func (x VkPhysicalDeviceVulkan11Features) WithProtectedMemory(y VkBool32) VkPhysicalDeviceVulkan11Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.protectedMemory = *ptr
 	return x
@@ -30703,7 +30653,7 @@ func (x VkPhysicalDeviceVulkan11Features) SamplerYcbcrConversion() VkBool32 {
 
 // WithSamplerYcbcrConversion copies the provided value into C space and stores it
 // at samplerYcbcrConversion on VkPhysicalDeviceVulkan11Features
-func (x *VkPhysicalDeviceVulkan11Features) WithSamplerYcbcrConversion(y VkBool32) *VkPhysicalDeviceVulkan11Features {
+func (x VkPhysicalDeviceVulkan11Features) WithSamplerYcbcrConversion(y VkBool32) VkPhysicalDeviceVulkan11Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.samplerYcbcrConversion = *ptr
 	return x
@@ -30717,7 +30667,7 @@ func (x VkPhysicalDeviceVulkan11Features) ShaderDrawParameters() VkBool32 {
 
 // WithShaderDrawParameters copies the provided value into C space and stores it
 // at shaderDrawParameters on VkPhysicalDeviceVulkan11Features
-func (x *VkPhysicalDeviceVulkan11Features) WithShaderDrawParameters(y VkBool32) *VkPhysicalDeviceVulkan11Features {
+func (x VkPhysicalDeviceVulkan11Features) WithShaderDrawParameters(y VkBool32) VkPhysicalDeviceVulkan11Features {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderDrawParameters = *ptr
 	return x
@@ -30744,12 +30694,12 @@ func (x *VkSamplerReductionModeCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkSamplerReductionModeCreateInfo) AsPtr() *VkSamplerReductionModeCreateInfo { return x }
+func (x VkSamplerReductionModeCreateInfo) AsPtr() *VkSamplerReductionModeCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkSamplerReductionModeCreateInfo) AsCPtr() *VkSamplerReductionModeCreateInfo {
+func (x VkSamplerReductionModeCreateInfo) AsCPtr() *VkSamplerReductionModeCreateInfo {
 	clone := newVkSamplerReductionModeCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -30761,13 +30711,13 @@ func (x VkSamplerReductionModeCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkSamplerReductionModeCreateInfo) WithDefaultSType() *VkSamplerReductionModeCreateInfo {
+func (x VkSamplerReductionModeCreateInfo) WithDefaultSType() VkSamplerReductionModeCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_SAMPLER_REDUCTION_MODE_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkSamplerReductionModeCreateInfo
-func (x *VkSamplerReductionModeCreateInfo) WithSType(y VkStructureType) *VkSamplerReductionModeCreateInfo {
+func (x VkSamplerReductionModeCreateInfo) WithSType(y VkStructureType) VkSamplerReductionModeCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -30781,7 +30731,7 @@ func (x VkSamplerReductionModeCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkSamplerReductionModeCreateInfo
-func (x *VkSamplerReductionModeCreateInfo) WithPNext(y unsafe.Pointer) *VkSamplerReductionModeCreateInfo {
+func (x VkSamplerReductionModeCreateInfo) WithPNext(y unsafe.Pointer) VkSamplerReductionModeCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -30795,7 +30745,7 @@ func (x VkSamplerReductionModeCreateInfo) ReductionMode() VkSamplerReductionMode
 
 // WithReductionMode copies the provided value into C space and stores it
 // at reductionMode on VkSamplerReductionModeCreateInfo
-func (x *VkSamplerReductionModeCreateInfo) WithReductionMode(y VkSamplerReductionMode) *VkSamplerReductionModeCreateInfo {
+func (x VkSamplerReductionModeCreateInfo) WithReductionMode(y VkSamplerReductionMode) VkSamplerReductionModeCreateInfo {
 	ptr := /* Identifier */ (*C.VkSamplerReductionMode)(&y)
 	x.reductionMode = *ptr
 	return x
@@ -30822,14 +30772,14 @@ func (x *VkPhysicalDeviceSamplerFilterMinmaxProperties) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceSamplerFilterMinmaxProperties) AsPtr() *VkPhysicalDeviceSamplerFilterMinmaxProperties {
-	return x
+func (x VkPhysicalDeviceSamplerFilterMinmaxProperties) AsPtr() *VkPhysicalDeviceSamplerFilterMinmaxProperties {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceSamplerFilterMinmaxProperties) AsCPtr() *VkPhysicalDeviceSamplerFilterMinmaxProperties {
+func (x VkPhysicalDeviceSamplerFilterMinmaxProperties) AsCPtr() *VkPhysicalDeviceSamplerFilterMinmaxProperties {
 	clone := newVkPhysicalDeviceSamplerFilterMinmaxProperties()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -30841,13 +30791,13 @@ func (x VkPhysicalDeviceSamplerFilterMinmaxProperties) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceSamplerFilterMinmaxProperties) WithDefaultSType() *VkPhysicalDeviceSamplerFilterMinmaxProperties {
+func (x VkPhysicalDeviceSamplerFilterMinmaxProperties) WithDefaultSType() VkPhysicalDeviceSamplerFilterMinmaxProperties {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_FILTER_MINMAX_PROPERTIES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceSamplerFilterMinmaxProperties
-func (x *VkPhysicalDeviceSamplerFilterMinmaxProperties) WithSType(y VkStructureType) *VkPhysicalDeviceSamplerFilterMinmaxProperties {
+func (x VkPhysicalDeviceSamplerFilterMinmaxProperties) WithSType(y VkStructureType) VkPhysicalDeviceSamplerFilterMinmaxProperties {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -30861,7 +30811,7 @@ func (x VkPhysicalDeviceSamplerFilterMinmaxProperties) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceSamplerFilterMinmaxProperties
-func (x *VkPhysicalDeviceSamplerFilterMinmaxProperties) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceSamplerFilterMinmaxProperties {
+func (x VkPhysicalDeviceSamplerFilterMinmaxProperties) WithPNext(y unsafe.Pointer) VkPhysicalDeviceSamplerFilterMinmaxProperties {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -30900,14 +30850,14 @@ func (x *VkPhysicalDeviceVulkanMemoryModelFeatures) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceVulkanMemoryModelFeatures) AsPtr() *VkPhysicalDeviceVulkanMemoryModelFeatures {
-	return x
+func (x VkPhysicalDeviceVulkanMemoryModelFeatures) AsPtr() *VkPhysicalDeviceVulkanMemoryModelFeatures {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceVulkanMemoryModelFeatures) AsCPtr() *VkPhysicalDeviceVulkanMemoryModelFeatures {
+func (x VkPhysicalDeviceVulkanMemoryModelFeatures) AsCPtr() *VkPhysicalDeviceVulkanMemoryModelFeatures {
 	clone := newVkPhysicalDeviceVulkanMemoryModelFeatures()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -30919,13 +30869,13 @@ func (x VkPhysicalDeviceVulkanMemoryModelFeatures) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceVulkanMemoryModelFeatures) WithDefaultSType() *VkPhysicalDeviceVulkanMemoryModelFeatures {
+func (x VkPhysicalDeviceVulkanMemoryModelFeatures) WithDefaultSType() VkPhysicalDeviceVulkanMemoryModelFeatures {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_MEMORY_MODEL_FEATURES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceVulkanMemoryModelFeatures
-func (x *VkPhysicalDeviceVulkanMemoryModelFeatures) WithSType(y VkStructureType) *VkPhysicalDeviceVulkanMemoryModelFeatures {
+func (x VkPhysicalDeviceVulkanMemoryModelFeatures) WithSType(y VkStructureType) VkPhysicalDeviceVulkanMemoryModelFeatures {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -30939,7 +30889,7 @@ func (x VkPhysicalDeviceVulkanMemoryModelFeatures) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceVulkanMemoryModelFeatures
-func (x *VkPhysicalDeviceVulkanMemoryModelFeatures) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceVulkanMemoryModelFeatures {
+func (x VkPhysicalDeviceVulkanMemoryModelFeatures) WithPNext(y unsafe.Pointer) VkPhysicalDeviceVulkanMemoryModelFeatures {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -30953,7 +30903,7 @@ func (x VkPhysicalDeviceVulkanMemoryModelFeatures) VulkanMemoryModel() VkBool32 
 
 // WithVulkanMemoryModel copies the provided value into C space and stores it
 // at vulkanMemoryModel on VkPhysicalDeviceVulkanMemoryModelFeatures
-func (x *VkPhysicalDeviceVulkanMemoryModelFeatures) WithVulkanMemoryModel(y VkBool32) *VkPhysicalDeviceVulkanMemoryModelFeatures {
+func (x VkPhysicalDeviceVulkanMemoryModelFeatures) WithVulkanMemoryModel(y VkBool32) VkPhysicalDeviceVulkanMemoryModelFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.vulkanMemoryModel = *ptr
 	return x
@@ -30967,7 +30917,7 @@ func (x VkPhysicalDeviceVulkanMemoryModelFeatures) VulkanMemoryModelDeviceScope(
 
 // WithVulkanMemoryModelDeviceScope copies the provided value into C space and stores it
 // at vulkanMemoryModelDeviceScope on VkPhysicalDeviceVulkanMemoryModelFeatures
-func (x *VkPhysicalDeviceVulkanMemoryModelFeatures) WithVulkanMemoryModelDeviceScope(y VkBool32) *VkPhysicalDeviceVulkanMemoryModelFeatures {
+func (x VkPhysicalDeviceVulkanMemoryModelFeatures) WithVulkanMemoryModelDeviceScope(y VkBool32) VkPhysicalDeviceVulkanMemoryModelFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.vulkanMemoryModelDeviceScope = *ptr
 	return x
@@ -30981,7 +30931,7 @@ func (x VkPhysicalDeviceVulkanMemoryModelFeatures) VulkanMemoryModelAvailability
 
 // WithVulkanMemoryModelAvailabilityVisibilityChains copies the provided value into C space and stores it
 // at vulkanMemoryModelAvailabilityVisibilityChains on VkPhysicalDeviceVulkanMemoryModelFeatures
-func (x *VkPhysicalDeviceVulkanMemoryModelFeatures) WithVulkanMemoryModelAvailabilityVisibilityChains(y VkBool32) *VkPhysicalDeviceVulkanMemoryModelFeatures {
+func (x VkPhysicalDeviceVulkanMemoryModelFeatures) WithVulkanMemoryModelAvailabilityVisibilityChains(y VkBool32) VkPhysicalDeviceVulkanMemoryModelFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.vulkanMemoryModelAvailabilityVisibilityChains = *ptr
 	return x
@@ -31008,14 +30958,14 @@ func (x *VkPhysicalDeviceImagelessFramebufferFeatures) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceImagelessFramebufferFeatures) AsPtr() *VkPhysicalDeviceImagelessFramebufferFeatures {
-	return x
+func (x VkPhysicalDeviceImagelessFramebufferFeatures) AsPtr() *VkPhysicalDeviceImagelessFramebufferFeatures {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceImagelessFramebufferFeatures) AsCPtr() *VkPhysicalDeviceImagelessFramebufferFeatures {
+func (x VkPhysicalDeviceImagelessFramebufferFeatures) AsCPtr() *VkPhysicalDeviceImagelessFramebufferFeatures {
 	clone := newVkPhysicalDeviceImagelessFramebufferFeatures()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -31027,13 +30977,13 @@ func (x VkPhysicalDeviceImagelessFramebufferFeatures) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceImagelessFramebufferFeatures) WithDefaultSType() *VkPhysicalDeviceImagelessFramebufferFeatures {
+func (x VkPhysicalDeviceImagelessFramebufferFeatures) WithDefaultSType() VkPhysicalDeviceImagelessFramebufferFeatures {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGELESS_FRAMEBUFFER_FEATURES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceImagelessFramebufferFeatures
-func (x *VkPhysicalDeviceImagelessFramebufferFeatures) WithSType(y VkStructureType) *VkPhysicalDeviceImagelessFramebufferFeatures {
+func (x VkPhysicalDeviceImagelessFramebufferFeatures) WithSType(y VkStructureType) VkPhysicalDeviceImagelessFramebufferFeatures {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -31047,7 +30997,7 @@ func (x VkPhysicalDeviceImagelessFramebufferFeatures) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceImagelessFramebufferFeatures
-func (x *VkPhysicalDeviceImagelessFramebufferFeatures) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceImagelessFramebufferFeatures {
+func (x VkPhysicalDeviceImagelessFramebufferFeatures) WithPNext(y unsafe.Pointer) VkPhysicalDeviceImagelessFramebufferFeatures {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -31061,7 +31011,7 @@ func (x VkPhysicalDeviceImagelessFramebufferFeatures) ImagelessFramebuffer() VkB
 
 // WithImagelessFramebuffer copies the provided value into C space and stores it
 // at imagelessFramebuffer on VkPhysicalDeviceImagelessFramebufferFeatures
-func (x *VkPhysicalDeviceImagelessFramebufferFeatures) WithImagelessFramebuffer(y VkBool32) *VkPhysicalDeviceImagelessFramebufferFeatures {
+func (x VkPhysicalDeviceImagelessFramebufferFeatures) WithImagelessFramebuffer(y VkBool32) VkPhysicalDeviceImagelessFramebufferFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.imagelessFramebuffer = *ptr
 	return x
@@ -31088,12 +31038,12 @@ func (x *VkFramebufferAttachmentsCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkFramebufferAttachmentsCreateInfo) AsPtr() *VkFramebufferAttachmentsCreateInfo { return x }
+func (x VkFramebufferAttachmentsCreateInfo) AsPtr() *VkFramebufferAttachmentsCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkFramebufferAttachmentsCreateInfo) AsCPtr() *VkFramebufferAttachmentsCreateInfo {
+func (x VkFramebufferAttachmentsCreateInfo) AsCPtr() *VkFramebufferAttachmentsCreateInfo {
 	clone := newVkFramebufferAttachmentsCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -31105,13 +31055,13 @@ func (x VkFramebufferAttachmentsCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkFramebufferAttachmentsCreateInfo) WithDefaultSType() *VkFramebufferAttachmentsCreateInfo {
+func (x VkFramebufferAttachmentsCreateInfo) WithDefaultSType() VkFramebufferAttachmentsCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_FRAMEBUFFER_ATTACHMENTS_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkFramebufferAttachmentsCreateInfo
-func (x *VkFramebufferAttachmentsCreateInfo) WithSType(y VkStructureType) *VkFramebufferAttachmentsCreateInfo {
+func (x VkFramebufferAttachmentsCreateInfo) WithSType(y VkStructureType) VkFramebufferAttachmentsCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -31125,7 +31075,7 @@ func (x VkFramebufferAttachmentsCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkFramebufferAttachmentsCreateInfo
-func (x *VkFramebufferAttachmentsCreateInfo) WithPNext(y unsafe.Pointer) *VkFramebufferAttachmentsCreateInfo {
+func (x VkFramebufferAttachmentsCreateInfo) WithPNext(y unsafe.Pointer) VkFramebufferAttachmentsCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -31139,7 +31089,7 @@ func (x VkFramebufferAttachmentsCreateInfo) AttachmentImageInfoCount() uint32 {
 
 // WithAttachmentImageInfoCount copies the provided value into C space and stores it
 // at attachmentImageInfoCount on VkFramebufferAttachmentsCreateInfo
-func (x *VkFramebufferAttachmentsCreateInfo) WithAttachmentImageInfoCount(y uint32) *VkFramebufferAttachmentsCreateInfo {
+func (x VkFramebufferAttachmentsCreateInfo) WithAttachmentImageInfoCount(y uint32) VkFramebufferAttachmentsCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.attachmentImageInfoCount = *ptr
 	return x
@@ -31156,7 +31106,7 @@ func (x VkFramebufferAttachmentsCreateInfo) PAttachmentImageInfos() []VkFramebuf
 
 // WithPAttachmentImageInfos copies the provided value into C space and stores it
 // at pAttachmentImageInfos on VkFramebufferAttachmentsCreateInfo
-func (x *VkFramebufferAttachmentsCreateInfo) WithPAttachmentImageInfos(y []VkFramebufferAttachmentImageInfo) *VkFramebufferAttachmentsCreateInfo {
+func (x VkFramebufferAttachmentsCreateInfo) WithPAttachmentImageInfos(y []VkFramebufferAttachmentImageInfo) VkFramebufferAttachmentsCreateInfo {
 	ptr := func(x *[]VkFramebufferAttachmentImageInfo) **C.VkFramebufferAttachmentImageInfo { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkFramebufferAttachmentImageInfo)(unsafe.Pointer(&((*x)[0])))
@@ -31190,12 +31140,12 @@ func (x *VkFramebufferAttachmentImageInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkFramebufferAttachmentImageInfo) AsPtr() *VkFramebufferAttachmentImageInfo { return x }
+func (x VkFramebufferAttachmentImageInfo) AsPtr() *VkFramebufferAttachmentImageInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkFramebufferAttachmentImageInfo) AsCPtr() *VkFramebufferAttachmentImageInfo {
+func (x VkFramebufferAttachmentImageInfo) AsCPtr() *VkFramebufferAttachmentImageInfo {
 	clone := newVkFramebufferAttachmentImageInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -31207,13 +31157,13 @@ func (x VkFramebufferAttachmentImageInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkFramebufferAttachmentImageInfo) WithDefaultSType() *VkFramebufferAttachmentImageInfo {
+func (x VkFramebufferAttachmentImageInfo) WithDefaultSType() VkFramebufferAttachmentImageInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_FRAMEBUFFER_ATTACHMENT_IMAGE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkFramebufferAttachmentImageInfo
-func (x *VkFramebufferAttachmentImageInfo) WithSType(y VkStructureType) *VkFramebufferAttachmentImageInfo {
+func (x VkFramebufferAttachmentImageInfo) WithSType(y VkStructureType) VkFramebufferAttachmentImageInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -31227,7 +31177,7 @@ func (x VkFramebufferAttachmentImageInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkFramebufferAttachmentImageInfo
-func (x *VkFramebufferAttachmentImageInfo) WithPNext(y unsafe.Pointer) *VkFramebufferAttachmentImageInfo {
+func (x VkFramebufferAttachmentImageInfo) WithPNext(y unsafe.Pointer) VkFramebufferAttachmentImageInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -31241,7 +31191,7 @@ func (x VkFramebufferAttachmentImageInfo) Flags() VkImageCreateFlags {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkFramebufferAttachmentImageInfo
-func (x *VkFramebufferAttachmentImageInfo) WithFlags(y VkImageCreateFlags) *VkFramebufferAttachmentImageInfo {
+func (x VkFramebufferAttachmentImageInfo) WithFlags(y VkImageCreateFlags) VkFramebufferAttachmentImageInfo {
 	ptr := /* Identifier */ (*C.VkImageCreateFlags)(&y)
 	x.flags = *ptr
 	return x
@@ -31255,7 +31205,7 @@ func (x VkFramebufferAttachmentImageInfo) Usage() VkImageUsageFlags {
 
 // WithUsage copies the provided value into C space and stores it
 // at usage on VkFramebufferAttachmentImageInfo
-func (x *VkFramebufferAttachmentImageInfo) WithUsage(y VkImageUsageFlags) *VkFramebufferAttachmentImageInfo {
+func (x VkFramebufferAttachmentImageInfo) WithUsage(y VkImageUsageFlags) VkFramebufferAttachmentImageInfo {
 	ptr := /* Identifier */ (*C.VkImageUsageFlags)(&y)
 	x.usage = *ptr
 	return x
@@ -31269,7 +31219,7 @@ func (x VkFramebufferAttachmentImageInfo) Width() uint32 {
 
 // WithWidth copies the provided value into C space and stores it
 // at width on VkFramebufferAttachmentImageInfo
-func (x *VkFramebufferAttachmentImageInfo) WithWidth(y uint32) *VkFramebufferAttachmentImageInfo {
+func (x VkFramebufferAttachmentImageInfo) WithWidth(y uint32) VkFramebufferAttachmentImageInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.width = *ptr
 	return x
@@ -31283,7 +31233,7 @@ func (x VkFramebufferAttachmentImageInfo) Height() uint32 {
 
 // WithHeight copies the provided value into C space and stores it
 // at height on VkFramebufferAttachmentImageInfo
-func (x *VkFramebufferAttachmentImageInfo) WithHeight(y uint32) *VkFramebufferAttachmentImageInfo {
+func (x VkFramebufferAttachmentImageInfo) WithHeight(y uint32) VkFramebufferAttachmentImageInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.height = *ptr
 	return x
@@ -31297,7 +31247,7 @@ func (x VkFramebufferAttachmentImageInfo) LayerCount() uint32 {
 
 // WithLayerCount copies the provided value into C space and stores it
 // at layerCount on VkFramebufferAttachmentImageInfo
-func (x *VkFramebufferAttachmentImageInfo) WithLayerCount(y uint32) *VkFramebufferAttachmentImageInfo {
+func (x VkFramebufferAttachmentImageInfo) WithLayerCount(y uint32) VkFramebufferAttachmentImageInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.layerCount = *ptr
 	return x
@@ -31311,7 +31261,7 @@ func (x VkFramebufferAttachmentImageInfo) ViewFormatCount() uint32 {
 
 // WithViewFormatCount copies the provided value into C space and stores it
 // at viewFormatCount on VkFramebufferAttachmentImageInfo
-func (x *VkFramebufferAttachmentImageInfo) WithViewFormatCount(y uint32) *VkFramebufferAttachmentImageInfo {
+func (x VkFramebufferAttachmentImageInfo) WithViewFormatCount(y uint32) VkFramebufferAttachmentImageInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.viewFormatCount = *ptr
 	return x
@@ -31328,7 +31278,7 @@ func (x VkFramebufferAttachmentImageInfo) PViewFormats() []VkFormat {
 
 // WithPViewFormats copies the provided value into C space and stores it
 // at pViewFormats on VkFramebufferAttachmentImageInfo
-func (x *VkFramebufferAttachmentImageInfo) WithPViewFormats(y []VkFormat) *VkFramebufferAttachmentImageInfo {
+func (x VkFramebufferAttachmentImageInfo) WithPViewFormats(y []VkFormat) VkFramebufferAttachmentImageInfo {
 	ptr := func(x *[]VkFormat) **C.VkFormat { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkFormat)(unsafe.Pointer(&((*x)[0])))
@@ -31362,12 +31312,12 @@ func (x *VkRenderPassAttachmentBeginInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkRenderPassAttachmentBeginInfo) AsPtr() *VkRenderPassAttachmentBeginInfo { return x }
+func (x VkRenderPassAttachmentBeginInfo) AsPtr() *VkRenderPassAttachmentBeginInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkRenderPassAttachmentBeginInfo) AsCPtr() *VkRenderPassAttachmentBeginInfo {
+func (x VkRenderPassAttachmentBeginInfo) AsCPtr() *VkRenderPassAttachmentBeginInfo {
 	clone := newVkRenderPassAttachmentBeginInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -31379,13 +31329,13 @@ func (x VkRenderPassAttachmentBeginInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkRenderPassAttachmentBeginInfo) WithDefaultSType() *VkRenderPassAttachmentBeginInfo {
+func (x VkRenderPassAttachmentBeginInfo) WithDefaultSType() VkRenderPassAttachmentBeginInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_RENDER_PASS_ATTACHMENT_BEGIN_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkRenderPassAttachmentBeginInfo
-func (x *VkRenderPassAttachmentBeginInfo) WithSType(y VkStructureType) *VkRenderPassAttachmentBeginInfo {
+func (x VkRenderPassAttachmentBeginInfo) WithSType(y VkStructureType) VkRenderPassAttachmentBeginInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -31399,7 +31349,7 @@ func (x VkRenderPassAttachmentBeginInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkRenderPassAttachmentBeginInfo
-func (x *VkRenderPassAttachmentBeginInfo) WithPNext(y unsafe.Pointer) *VkRenderPassAttachmentBeginInfo {
+func (x VkRenderPassAttachmentBeginInfo) WithPNext(y unsafe.Pointer) VkRenderPassAttachmentBeginInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -31413,7 +31363,7 @@ func (x VkRenderPassAttachmentBeginInfo) AttachmentCount() uint32 {
 
 // WithAttachmentCount copies the provided value into C space and stores it
 // at attachmentCount on VkRenderPassAttachmentBeginInfo
-func (x *VkRenderPassAttachmentBeginInfo) WithAttachmentCount(y uint32) *VkRenderPassAttachmentBeginInfo {
+func (x VkRenderPassAttachmentBeginInfo) WithAttachmentCount(y uint32) VkRenderPassAttachmentBeginInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.attachmentCount = *ptr
 	return x
@@ -31430,7 +31380,7 @@ func (x VkRenderPassAttachmentBeginInfo) PAttachments() []VkImageView {
 
 // WithPAttachments copies the provided value into C space and stores it
 // at pAttachments on VkRenderPassAttachmentBeginInfo
-func (x *VkRenderPassAttachmentBeginInfo) WithPAttachments(y []VkImageView) *VkRenderPassAttachmentBeginInfo {
+func (x VkRenderPassAttachmentBeginInfo) WithPAttachments(y []VkImageView) VkRenderPassAttachmentBeginInfo {
 	ptr := func(x *[]VkImageView) **C.VkImageView { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkImageView)(unsafe.Pointer(&((*x)[0])))
@@ -31464,14 +31414,14 @@ func (x *VkPhysicalDeviceUniformBufferStandardLayoutFeatures) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceUniformBufferStandardLayoutFeatures) AsPtr() *VkPhysicalDeviceUniformBufferStandardLayoutFeatures {
-	return x
+func (x VkPhysicalDeviceUniformBufferStandardLayoutFeatures) AsPtr() *VkPhysicalDeviceUniformBufferStandardLayoutFeatures {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceUniformBufferStandardLayoutFeatures) AsCPtr() *VkPhysicalDeviceUniformBufferStandardLayoutFeatures {
+func (x VkPhysicalDeviceUniformBufferStandardLayoutFeatures) AsCPtr() *VkPhysicalDeviceUniformBufferStandardLayoutFeatures {
 	clone := newVkPhysicalDeviceUniformBufferStandardLayoutFeatures()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -31483,13 +31433,13 @@ func (x VkPhysicalDeviceUniformBufferStandardLayoutFeatures) SType() VkStructure
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceUniformBufferStandardLayoutFeatures) WithDefaultSType() *VkPhysicalDeviceUniformBufferStandardLayoutFeatures {
+func (x VkPhysicalDeviceUniformBufferStandardLayoutFeatures) WithDefaultSType() VkPhysicalDeviceUniformBufferStandardLayoutFeatures {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_UNIFORM_BUFFER_STANDARD_LAYOUT_FEATURES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceUniformBufferStandardLayoutFeatures
-func (x *VkPhysicalDeviceUniformBufferStandardLayoutFeatures) WithSType(y VkStructureType) *VkPhysicalDeviceUniformBufferStandardLayoutFeatures {
+func (x VkPhysicalDeviceUniformBufferStandardLayoutFeatures) WithSType(y VkStructureType) VkPhysicalDeviceUniformBufferStandardLayoutFeatures {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -31503,7 +31453,7 @@ func (x VkPhysicalDeviceUniformBufferStandardLayoutFeatures) PNext() unsafe.Poin
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceUniformBufferStandardLayoutFeatures
-func (x *VkPhysicalDeviceUniformBufferStandardLayoutFeatures) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceUniformBufferStandardLayoutFeatures {
+func (x VkPhysicalDeviceUniformBufferStandardLayoutFeatures) WithPNext(y unsafe.Pointer) VkPhysicalDeviceUniformBufferStandardLayoutFeatures {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -31517,7 +31467,7 @@ func (x VkPhysicalDeviceUniformBufferStandardLayoutFeatures) UniformBufferStanda
 
 // WithUniformBufferStandardLayout copies the provided value into C space and stores it
 // at uniformBufferStandardLayout on VkPhysicalDeviceUniformBufferStandardLayoutFeatures
-func (x *VkPhysicalDeviceUniformBufferStandardLayoutFeatures) WithUniformBufferStandardLayout(y VkBool32) *VkPhysicalDeviceUniformBufferStandardLayoutFeatures {
+func (x VkPhysicalDeviceUniformBufferStandardLayoutFeatures) WithUniformBufferStandardLayout(y VkBool32) VkPhysicalDeviceUniformBufferStandardLayoutFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.uniformBufferStandardLayout = *ptr
 	return x
@@ -31544,14 +31494,14 @@ func (x *VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures) AsPtr() *VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures {
-	return x
+func (x VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures) AsPtr() *VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures) AsCPtr() *VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures {
+func (x VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures) AsCPtr() *VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures {
 	clone := newVkPhysicalDeviceShaderSubgroupExtendedTypesFeatures()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -31563,13 +31513,13 @@ func (x VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures) SType() VkStructure
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures) WithDefaultSType() *VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures {
+func (x VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures) WithDefaultSType() VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_EXTENDED_TYPES_FEATURES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures
-func (x *VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures) WithSType(y VkStructureType) *VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures {
+func (x VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures) WithSType(y VkStructureType) VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -31583,7 +31533,7 @@ func (x VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures) PNext() unsafe.Poin
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures
-func (x *VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures {
+func (x VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures) WithPNext(y unsafe.Pointer) VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -31597,7 +31547,7 @@ func (x VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures) ShaderSubgroupExten
 
 // WithShaderSubgroupExtendedTypes copies the provided value into C space and stores it
 // at shaderSubgroupExtendedTypes on VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures
-func (x *VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures) WithShaderSubgroupExtendedTypes(y VkBool32) *VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures {
+func (x VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures) WithShaderSubgroupExtendedTypes(y VkBool32) VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.shaderSubgroupExtendedTypes = *ptr
 	return x
@@ -31624,14 +31574,14 @@ func (x *VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures) AsPtr() *VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures {
-	return x
+func (x VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures) AsPtr() *VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures) AsCPtr() *VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures {
+func (x VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures) AsCPtr() *VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures {
 	clone := newVkPhysicalDeviceSeparateDepthStencilLayoutsFeatures()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -31643,13 +31593,13 @@ func (x VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures) SType() VkStructure
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures) WithDefaultSType() *VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures {
+func (x VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures) WithDefaultSType() VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SEPARATE_DEPTH_STENCIL_LAYOUTS_FEATURES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures
-func (x *VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures) WithSType(y VkStructureType) *VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures {
+func (x VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures) WithSType(y VkStructureType) VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -31663,7 +31613,7 @@ func (x VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures) PNext() unsafe.Poin
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures
-func (x *VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures {
+func (x VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures) WithPNext(y unsafe.Pointer) VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -31677,7 +31627,7 @@ func (x VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures) SeparateDepthStenci
 
 // WithSeparateDepthStencilLayouts copies the provided value into C space and stores it
 // at separateDepthStencilLayouts on VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures
-func (x *VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures) WithSeparateDepthStencilLayouts(y VkBool32) *VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures {
+func (x VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures) WithSeparateDepthStencilLayouts(y VkBool32) VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.separateDepthStencilLayouts = *ptr
 	return x
@@ -31704,12 +31654,12 @@ func (x *VkAttachmentReferenceStencilLayout) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkAttachmentReferenceStencilLayout) AsPtr() *VkAttachmentReferenceStencilLayout { return x }
+func (x VkAttachmentReferenceStencilLayout) AsPtr() *VkAttachmentReferenceStencilLayout { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkAttachmentReferenceStencilLayout) AsCPtr() *VkAttachmentReferenceStencilLayout {
+func (x VkAttachmentReferenceStencilLayout) AsCPtr() *VkAttachmentReferenceStencilLayout {
 	clone := newVkAttachmentReferenceStencilLayout()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -31721,13 +31671,13 @@ func (x VkAttachmentReferenceStencilLayout) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkAttachmentReferenceStencilLayout) WithDefaultSType() *VkAttachmentReferenceStencilLayout {
+func (x VkAttachmentReferenceStencilLayout) WithDefaultSType() VkAttachmentReferenceStencilLayout {
 	return x.WithSType(VK_STRUCTURE_TYPE_ATTACHMENT_REFERENCE_STENCIL_LAYOUT)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkAttachmentReferenceStencilLayout
-func (x *VkAttachmentReferenceStencilLayout) WithSType(y VkStructureType) *VkAttachmentReferenceStencilLayout {
+func (x VkAttachmentReferenceStencilLayout) WithSType(y VkStructureType) VkAttachmentReferenceStencilLayout {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -31741,7 +31691,7 @@ func (x VkAttachmentReferenceStencilLayout) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkAttachmentReferenceStencilLayout
-func (x *VkAttachmentReferenceStencilLayout) WithPNext(y unsafe.Pointer) *VkAttachmentReferenceStencilLayout {
+func (x VkAttachmentReferenceStencilLayout) WithPNext(y unsafe.Pointer) VkAttachmentReferenceStencilLayout {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -31755,7 +31705,7 @@ func (x VkAttachmentReferenceStencilLayout) StencilLayout() VkImageLayout {
 
 // WithStencilLayout copies the provided value into C space and stores it
 // at stencilLayout on VkAttachmentReferenceStencilLayout
-func (x *VkAttachmentReferenceStencilLayout) WithStencilLayout(y VkImageLayout) *VkAttachmentReferenceStencilLayout {
+func (x VkAttachmentReferenceStencilLayout) WithStencilLayout(y VkImageLayout) VkAttachmentReferenceStencilLayout {
 	ptr := /* Identifier */ (*C.VkImageLayout)(&y)
 	x.stencilLayout = *ptr
 	return x
@@ -31782,14 +31732,14 @@ func (x *VkAttachmentDescriptionStencilLayout) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkAttachmentDescriptionStencilLayout) AsPtr() *VkAttachmentDescriptionStencilLayout {
-	return x
+func (x VkAttachmentDescriptionStencilLayout) AsPtr() *VkAttachmentDescriptionStencilLayout {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkAttachmentDescriptionStencilLayout) AsCPtr() *VkAttachmentDescriptionStencilLayout {
+func (x VkAttachmentDescriptionStencilLayout) AsCPtr() *VkAttachmentDescriptionStencilLayout {
 	clone := newVkAttachmentDescriptionStencilLayout()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -31801,13 +31751,13 @@ func (x VkAttachmentDescriptionStencilLayout) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkAttachmentDescriptionStencilLayout) WithDefaultSType() *VkAttachmentDescriptionStencilLayout {
+func (x VkAttachmentDescriptionStencilLayout) WithDefaultSType() VkAttachmentDescriptionStencilLayout {
 	return x.WithSType(VK_STRUCTURE_TYPE_ATTACHMENT_DESCRIPTION_STENCIL_LAYOUT)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkAttachmentDescriptionStencilLayout
-func (x *VkAttachmentDescriptionStencilLayout) WithSType(y VkStructureType) *VkAttachmentDescriptionStencilLayout {
+func (x VkAttachmentDescriptionStencilLayout) WithSType(y VkStructureType) VkAttachmentDescriptionStencilLayout {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -31821,7 +31771,7 @@ func (x VkAttachmentDescriptionStencilLayout) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkAttachmentDescriptionStencilLayout
-func (x *VkAttachmentDescriptionStencilLayout) WithPNext(y unsafe.Pointer) *VkAttachmentDescriptionStencilLayout {
+func (x VkAttachmentDescriptionStencilLayout) WithPNext(y unsafe.Pointer) VkAttachmentDescriptionStencilLayout {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -31835,7 +31785,7 @@ func (x VkAttachmentDescriptionStencilLayout) StencilInitialLayout() VkImageLayo
 
 // WithStencilInitialLayout copies the provided value into C space and stores it
 // at stencilInitialLayout on VkAttachmentDescriptionStencilLayout
-func (x *VkAttachmentDescriptionStencilLayout) WithStencilInitialLayout(y VkImageLayout) *VkAttachmentDescriptionStencilLayout {
+func (x VkAttachmentDescriptionStencilLayout) WithStencilInitialLayout(y VkImageLayout) VkAttachmentDescriptionStencilLayout {
 	ptr := /* Identifier */ (*C.VkImageLayout)(&y)
 	x.stencilInitialLayout = *ptr
 	return x
@@ -31849,7 +31799,7 @@ func (x VkAttachmentDescriptionStencilLayout) StencilFinalLayout() VkImageLayout
 
 // WithStencilFinalLayout copies the provided value into C space and stores it
 // at stencilFinalLayout on VkAttachmentDescriptionStencilLayout
-func (x *VkAttachmentDescriptionStencilLayout) WithStencilFinalLayout(y VkImageLayout) *VkAttachmentDescriptionStencilLayout {
+func (x VkAttachmentDescriptionStencilLayout) WithStencilFinalLayout(y VkImageLayout) VkAttachmentDescriptionStencilLayout {
 	ptr := /* Identifier */ (*C.VkImageLayout)(&y)
 	x.stencilFinalLayout = *ptr
 	return x
@@ -31876,12 +31826,12 @@ func (x *VkTimelineSemaphoreSubmitInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkTimelineSemaphoreSubmitInfo) AsPtr() *VkTimelineSemaphoreSubmitInfo { return x }
+func (x VkTimelineSemaphoreSubmitInfo) AsPtr() *VkTimelineSemaphoreSubmitInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkTimelineSemaphoreSubmitInfo) AsCPtr() *VkTimelineSemaphoreSubmitInfo {
+func (x VkTimelineSemaphoreSubmitInfo) AsCPtr() *VkTimelineSemaphoreSubmitInfo {
 	clone := newVkTimelineSemaphoreSubmitInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -31893,13 +31843,13 @@ func (x VkTimelineSemaphoreSubmitInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkTimelineSemaphoreSubmitInfo) WithDefaultSType() *VkTimelineSemaphoreSubmitInfo {
+func (x VkTimelineSemaphoreSubmitInfo) WithDefaultSType() VkTimelineSemaphoreSubmitInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_TIMELINE_SEMAPHORE_SUBMIT_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkTimelineSemaphoreSubmitInfo
-func (x *VkTimelineSemaphoreSubmitInfo) WithSType(y VkStructureType) *VkTimelineSemaphoreSubmitInfo {
+func (x VkTimelineSemaphoreSubmitInfo) WithSType(y VkStructureType) VkTimelineSemaphoreSubmitInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -31913,7 +31863,7 @@ func (x VkTimelineSemaphoreSubmitInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkTimelineSemaphoreSubmitInfo
-func (x *VkTimelineSemaphoreSubmitInfo) WithPNext(y unsafe.Pointer) *VkTimelineSemaphoreSubmitInfo {
+func (x VkTimelineSemaphoreSubmitInfo) WithPNext(y unsafe.Pointer) VkTimelineSemaphoreSubmitInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -31927,7 +31877,7 @@ func (x VkTimelineSemaphoreSubmitInfo) WaitSemaphoreValueCount() uint32 {
 
 // WithWaitSemaphoreValueCount copies the provided value into C space and stores it
 // at waitSemaphoreValueCount on VkTimelineSemaphoreSubmitInfo
-func (x *VkTimelineSemaphoreSubmitInfo) WithWaitSemaphoreValueCount(y uint32) *VkTimelineSemaphoreSubmitInfo {
+func (x VkTimelineSemaphoreSubmitInfo) WithWaitSemaphoreValueCount(y uint32) VkTimelineSemaphoreSubmitInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.waitSemaphoreValueCount = *ptr
 	return x
@@ -31944,7 +31894,7 @@ func (x VkTimelineSemaphoreSubmitInfo) PWaitSemaphoreValues() []uint64 {
 
 // WithPWaitSemaphoreValues copies the provided value into C space and stores it
 // at pWaitSemaphoreValues on VkTimelineSemaphoreSubmitInfo
-func (x *VkTimelineSemaphoreSubmitInfo) WithPWaitSemaphoreValues(y []uint64) *VkTimelineSemaphoreSubmitInfo {
+func (x VkTimelineSemaphoreSubmitInfo) WithPWaitSemaphoreValues(y []uint64) VkTimelineSemaphoreSubmitInfo {
 	ptr := func(x *[]uint64) **C.ulonglong { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.ulonglong)(unsafe.Pointer(&((*x)[0])))
@@ -31965,7 +31915,7 @@ func (x VkTimelineSemaphoreSubmitInfo) SignalSemaphoreValueCount() uint32 {
 
 // WithSignalSemaphoreValueCount copies the provided value into C space and stores it
 // at signalSemaphoreValueCount on VkTimelineSemaphoreSubmitInfo
-func (x *VkTimelineSemaphoreSubmitInfo) WithSignalSemaphoreValueCount(y uint32) *VkTimelineSemaphoreSubmitInfo {
+func (x VkTimelineSemaphoreSubmitInfo) WithSignalSemaphoreValueCount(y uint32) VkTimelineSemaphoreSubmitInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.signalSemaphoreValueCount = *ptr
 	return x
@@ -31982,7 +31932,7 @@ func (x VkTimelineSemaphoreSubmitInfo) PSignalSemaphoreValues() []uint64 {
 
 // WithPSignalSemaphoreValues copies the provided value into C space and stores it
 // at pSignalSemaphoreValues on VkTimelineSemaphoreSubmitInfo
-func (x *VkTimelineSemaphoreSubmitInfo) WithPSignalSemaphoreValues(y []uint64) *VkTimelineSemaphoreSubmitInfo {
+func (x VkTimelineSemaphoreSubmitInfo) WithPSignalSemaphoreValues(y []uint64) VkTimelineSemaphoreSubmitInfo {
 	ptr := func(x *[]uint64) **C.ulonglong { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.ulonglong)(unsafe.Pointer(&((*x)[0])))
@@ -32016,14 +31966,14 @@ func (x *VkPhysicalDeviceHostQueryResetFeatures) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceHostQueryResetFeatures) AsPtr() *VkPhysicalDeviceHostQueryResetFeatures {
-	return x
+func (x VkPhysicalDeviceHostQueryResetFeatures) AsPtr() *VkPhysicalDeviceHostQueryResetFeatures {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceHostQueryResetFeatures) AsCPtr() *VkPhysicalDeviceHostQueryResetFeatures {
+func (x VkPhysicalDeviceHostQueryResetFeatures) AsCPtr() *VkPhysicalDeviceHostQueryResetFeatures {
 	clone := newVkPhysicalDeviceHostQueryResetFeatures()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -32035,13 +31985,13 @@ func (x VkPhysicalDeviceHostQueryResetFeatures) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceHostQueryResetFeatures) WithDefaultSType() *VkPhysicalDeviceHostQueryResetFeatures {
+func (x VkPhysicalDeviceHostQueryResetFeatures) WithDefaultSType() VkPhysicalDeviceHostQueryResetFeatures {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_QUERY_RESET_FEATURES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceHostQueryResetFeatures
-func (x *VkPhysicalDeviceHostQueryResetFeatures) WithSType(y VkStructureType) *VkPhysicalDeviceHostQueryResetFeatures {
+func (x VkPhysicalDeviceHostQueryResetFeatures) WithSType(y VkStructureType) VkPhysicalDeviceHostQueryResetFeatures {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -32055,7 +32005,7 @@ func (x VkPhysicalDeviceHostQueryResetFeatures) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceHostQueryResetFeatures
-func (x *VkPhysicalDeviceHostQueryResetFeatures) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceHostQueryResetFeatures {
+func (x VkPhysicalDeviceHostQueryResetFeatures) WithPNext(y unsafe.Pointer) VkPhysicalDeviceHostQueryResetFeatures {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -32069,7 +32019,7 @@ func (x VkPhysicalDeviceHostQueryResetFeatures) HostQueryReset() VkBool32 {
 
 // WithHostQueryReset copies the provided value into C space and stores it
 // at hostQueryReset on VkPhysicalDeviceHostQueryResetFeatures
-func (x *VkPhysicalDeviceHostQueryResetFeatures) WithHostQueryReset(y VkBool32) *VkPhysicalDeviceHostQueryResetFeatures {
+func (x VkPhysicalDeviceHostQueryResetFeatures) WithHostQueryReset(y VkBool32) VkPhysicalDeviceHostQueryResetFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.hostQueryReset = *ptr
 	return x
@@ -32096,12 +32046,12 @@ func (x *VkSemaphoreTypeCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkSemaphoreTypeCreateInfo) AsPtr() *VkSemaphoreTypeCreateInfo { return x }
+func (x VkSemaphoreTypeCreateInfo) AsPtr() *VkSemaphoreTypeCreateInfo { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkSemaphoreTypeCreateInfo) AsCPtr() *VkSemaphoreTypeCreateInfo {
+func (x VkSemaphoreTypeCreateInfo) AsCPtr() *VkSemaphoreTypeCreateInfo {
 	clone := newVkSemaphoreTypeCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -32113,13 +32063,13 @@ func (x VkSemaphoreTypeCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkSemaphoreTypeCreateInfo) WithDefaultSType() *VkSemaphoreTypeCreateInfo {
+func (x VkSemaphoreTypeCreateInfo) WithDefaultSType() VkSemaphoreTypeCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_SEMAPHORE_TYPE_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkSemaphoreTypeCreateInfo
-func (x *VkSemaphoreTypeCreateInfo) WithSType(y VkStructureType) *VkSemaphoreTypeCreateInfo {
+func (x VkSemaphoreTypeCreateInfo) WithSType(y VkStructureType) VkSemaphoreTypeCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -32133,7 +32083,7 @@ func (x VkSemaphoreTypeCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkSemaphoreTypeCreateInfo
-func (x *VkSemaphoreTypeCreateInfo) WithPNext(y unsafe.Pointer) *VkSemaphoreTypeCreateInfo {
+func (x VkSemaphoreTypeCreateInfo) WithPNext(y unsafe.Pointer) VkSemaphoreTypeCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -32147,7 +32097,7 @@ func (x VkSemaphoreTypeCreateInfo) SemaphoreType() VkSemaphoreType {
 
 // WithSemaphoreType copies the provided value into C space and stores it
 // at semaphoreType on VkSemaphoreTypeCreateInfo
-func (x *VkSemaphoreTypeCreateInfo) WithSemaphoreType(y VkSemaphoreType) *VkSemaphoreTypeCreateInfo {
+func (x VkSemaphoreTypeCreateInfo) WithSemaphoreType(y VkSemaphoreType) VkSemaphoreTypeCreateInfo {
 	ptr := /* Identifier */ (*C.VkSemaphoreType)(&y)
 	x.semaphoreType = *ptr
 	return x
@@ -32161,7 +32111,7 @@ func (x VkSemaphoreTypeCreateInfo) InitialValue() uint64 {
 
 // WithInitialValue copies the provided value into C space and stores it
 // at initialValue on VkSemaphoreTypeCreateInfo
-func (x *VkSemaphoreTypeCreateInfo) WithInitialValue(y uint64) *VkSemaphoreTypeCreateInfo {
+func (x VkSemaphoreTypeCreateInfo) WithInitialValue(y uint64) VkSemaphoreTypeCreateInfo {
 	ptr := func(x *uint64) *C.ulonglong { /* Scalar */ return (*C.ulonglong)(unsafe.Pointer(x)) }(&y)
 	x.initialValue = *ptr
 	return x
@@ -32188,14 +32138,14 @@ func (x *VkPhysicalDeviceTimelineSemaphoreProperties) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceTimelineSemaphoreProperties) AsPtr() *VkPhysicalDeviceTimelineSemaphoreProperties {
-	return x
+func (x VkPhysicalDeviceTimelineSemaphoreProperties) AsPtr() *VkPhysicalDeviceTimelineSemaphoreProperties {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceTimelineSemaphoreProperties) AsCPtr() *VkPhysicalDeviceTimelineSemaphoreProperties {
+func (x VkPhysicalDeviceTimelineSemaphoreProperties) AsCPtr() *VkPhysicalDeviceTimelineSemaphoreProperties {
 	clone := newVkPhysicalDeviceTimelineSemaphoreProperties()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -32207,13 +32157,13 @@ func (x VkPhysicalDeviceTimelineSemaphoreProperties) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceTimelineSemaphoreProperties) WithDefaultSType() *VkPhysicalDeviceTimelineSemaphoreProperties {
+func (x VkPhysicalDeviceTimelineSemaphoreProperties) WithDefaultSType() VkPhysicalDeviceTimelineSemaphoreProperties {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TIMELINE_SEMAPHORE_PROPERTIES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceTimelineSemaphoreProperties
-func (x *VkPhysicalDeviceTimelineSemaphoreProperties) WithSType(y VkStructureType) *VkPhysicalDeviceTimelineSemaphoreProperties {
+func (x VkPhysicalDeviceTimelineSemaphoreProperties) WithSType(y VkStructureType) VkPhysicalDeviceTimelineSemaphoreProperties {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -32227,7 +32177,7 @@ func (x VkPhysicalDeviceTimelineSemaphoreProperties) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceTimelineSemaphoreProperties
-func (x *VkPhysicalDeviceTimelineSemaphoreProperties) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceTimelineSemaphoreProperties {
+func (x VkPhysicalDeviceTimelineSemaphoreProperties) WithPNext(y unsafe.Pointer) VkPhysicalDeviceTimelineSemaphoreProperties {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -32260,14 +32210,14 @@ func (x *VkPhysicalDeviceTimelineSemaphoreFeatures) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPhysicalDeviceTimelineSemaphoreFeatures) AsPtr() *VkPhysicalDeviceTimelineSemaphoreFeatures {
-	return x
+func (x VkPhysicalDeviceTimelineSemaphoreFeatures) AsPtr() *VkPhysicalDeviceTimelineSemaphoreFeatures {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPhysicalDeviceTimelineSemaphoreFeatures) AsCPtr() *VkPhysicalDeviceTimelineSemaphoreFeatures {
+func (x VkPhysicalDeviceTimelineSemaphoreFeatures) AsCPtr() *VkPhysicalDeviceTimelineSemaphoreFeatures {
 	clone := newVkPhysicalDeviceTimelineSemaphoreFeatures()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -32279,13 +32229,13 @@ func (x VkPhysicalDeviceTimelineSemaphoreFeatures) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPhysicalDeviceTimelineSemaphoreFeatures) WithDefaultSType() *VkPhysicalDeviceTimelineSemaphoreFeatures {
+func (x VkPhysicalDeviceTimelineSemaphoreFeatures) WithDefaultSType() VkPhysicalDeviceTimelineSemaphoreFeatures {
 	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TIMELINE_SEMAPHORE_FEATURES)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPhysicalDeviceTimelineSemaphoreFeatures
-func (x *VkPhysicalDeviceTimelineSemaphoreFeatures) WithSType(y VkStructureType) *VkPhysicalDeviceTimelineSemaphoreFeatures {
+func (x VkPhysicalDeviceTimelineSemaphoreFeatures) WithSType(y VkStructureType) VkPhysicalDeviceTimelineSemaphoreFeatures {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -32299,7 +32249,7 @@ func (x VkPhysicalDeviceTimelineSemaphoreFeatures) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPhysicalDeviceTimelineSemaphoreFeatures
-func (x *VkPhysicalDeviceTimelineSemaphoreFeatures) WithPNext(y unsafe.Pointer) *VkPhysicalDeviceTimelineSemaphoreFeatures {
+func (x VkPhysicalDeviceTimelineSemaphoreFeatures) WithPNext(y unsafe.Pointer) VkPhysicalDeviceTimelineSemaphoreFeatures {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -32313,7 +32263,7 @@ func (x VkPhysicalDeviceTimelineSemaphoreFeatures) TimelineSemaphore() VkBool32 
 
 // WithTimelineSemaphore copies the provided value into C space and stores it
 // at timelineSemaphore on VkPhysicalDeviceTimelineSemaphoreFeatures
-func (x *VkPhysicalDeviceTimelineSemaphoreFeatures) WithTimelineSemaphore(y VkBool32) *VkPhysicalDeviceTimelineSemaphoreFeatures {
+func (x VkPhysicalDeviceTimelineSemaphoreFeatures) WithTimelineSemaphore(y VkBool32) VkPhysicalDeviceTimelineSemaphoreFeatures {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.timelineSemaphore = *ptr
 	return x
@@ -32340,14 +32290,14 @@ func (x *VkDescriptorSetLayoutBindingFlagsCreateInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDescriptorSetLayoutBindingFlagsCreateInfo) AsPtr() *VkDescriptorSetLayoutBindingFlagsCreateInfo {
-	return x
+func (x VkDescriptorSetLayoutBindingFlagsCreateInfo) AsPtr() *VkDescriptorSetLayoutBindingFlagsCreateInfo {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDescriptorSetLayoutBindingFlagsCreateInfo) AsCPtr() *VkDescriptorSetLayoutBindingFlagsCreateInfo {
+func (x VkDescriptorSetLayoutBindingFlagsCreateInfo) AsCPtr() *VkDescriptorSetLayoutBindingFlagsCreateInfo {
 	clone := newVkDescriptorSetLayoutBindingFlagsCreateInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -32359,13 +32309,13 @@ func (x VkDescriptorSetLayoutBindingFlagsCreateInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkDescriptorSetLayoutBindingFlagsCreateInfo) WithDefaultSType() *VkDescriptorSetLayoutBindingFlagsCreateInfo {
+func (x VkDescriptorSetLayoutBindingFlagsCreateInfo) WithDefaultSType() VkDescriptorSetLayoutBindingFlagsCreateInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkDescriptorSetLayoutBindingFlagsCreateInfo
-func (x *VkDescriptorSetLayoutBindingFlagsCreateInfo) WithSType(y VkStructureType) *VkDescriptorSetLayoutBindingFlagsCreateInfo {
+func (x VkDescriptorSetLayoutBindingFlagsCreateInfo) WithSType(y VkStructureType) VkDescriptorSetLayoutBindingFlagsCreateInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -32379,7 +32329,7 @@ func (x VkDescriptorSetLayoutBindingFlagsCreateInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkDescriptorSetLayoutBindingFlagsCreateInfo
-func (x *VkDescriptorSetLayoutBindingFlagsCreateInfo) WithPNext(y unsafe.Pointer) *VkDescriptorSetLayoutBindingFlagsCreateInfo {
+func (x VkDescriptorSetLayoutBindingFlagsCreateInfo) WithPNext(y unsafe.Pointer) VkDescriptorSetLayoutBindingFlagsCreateInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -32393,7 +32343,7 @@ func (x VkDescriptorSetLayoutBindingFlagsCreateInfo) BindingCount() uint32 {
 
 // WithBindingCount copies the provided value into C space and stores it
 // at bindingCount on VkDescriptorSetLayoutBindingFlagsCreateInfo
-func (x *VkDescriptorSetLayoutBindingFlagsCreateInfo) WithBindingCount(y uint32) *VkDescriptorSetLayoutBindingFlagsCreateInfo {
+func (x VkDescriptorSetLayoutBindingFlagsCreateInfo) WithBindingCount(y uint32) VkDescriptorSetLayoutBindingFlagsCreateInfo {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.bindingCount = *ptr
 	return x
@@ -32410,7 +32360,7 @@ func (x VkDescriptorSetLayoutBindingFlagsCreateInfo) PBindingFlags() []VkDescrip
 
 // WithPBindingFlags copies the provided value into C space and stores it
 // at pBindingFlags on VkDescriptorSetLayoutBindingFlagsCreateInfo
-func (x *VkDescriptorSetLayoutBindingFlagsCreateInfo) WithPBindingFlags(y []VkDescriptorBindingFlags) *VkDescriptorSetLayoutBindingFlagsCreateInfo {
+func (x VkDescriptorSetLayoutBindingFlagsCreateInfo) WithPBindingFlags(y []VkDescriptorBindingFlags) VkDescriptorSetLayoutBindingFlagsCreateInfo {
 	ptr := func(x *[]VkDescriptorBindingFlags) **C.VkDescriptorBindingFlags { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkDescriptorBindingFlags)(unsafe.Pointer(&((*x)[0])))
@@ -32444,14 +32394,14 @@ func (x *VkDeviceMemoryOpaqueCaptureAddressInfo) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDeviceMemoryOpaqueCaptureAddressInfo) AsPtr() *VkDeviceMemoryOpaqueCaptureAddressInfo {
-	return x
+func (x VkDeviceMemoryOpaqueCaptureAddressInfo) AsPtr() *VkDeviceMemoryOpaqueCaptureAddressInfo {
+	return &x
 }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDeviceMemoryOpaqueCaptureAddressInfo) AsCPtr() *VkDeviceMemoryOpaqueCaptureAddressInfo {
+func (x VkDeviceMemoryOpaqueCaptureAddressInfo) AsCPtr() *VkDeviceMemoryOpaqueCaptureAddressInfo {
 	clone := newVkDeviceMemoryOpaqueCaptureAddressInfo()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -32463,13 +32413,13 @@ func (x VkDeviceMemoryOpaqueCaptureAddressInfo) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkDeviceMemoryOpaqueCaptureAddressInfo) WithDefaultSType() *VkDeviceMemoryOpaqueCaptureAddressInfo {
+func (x VkDeviceMemoryOpaqueCaptureAddressInfo) WithDefaultSType() VkDeviceMemoryOpaqueCaptureAddressInfo {
 	return x.WithSType(VK_STRUCTURE_TYPE_DEVICE_MEMORY_OPAQUE_CAPTURE_ADDRESS_INFO)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkDeviceMemoryOpaqueCaptureAddressInfo
-func (x *VkDeviceMemoryOpaqueCaptureAddressInfo) WithSType(y VkStructureType) *VkDeviceMemoryOpaqueCaptureAddressInfo {
+func (x VkDeviceMemoryOpaqueCaptureAddressInfo) WithSType(y VkStructureType) VkDeviceMemoryOpaqueCaptureAddressInfo {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -32483,7 +32433,7 @@ func (x VkDeviceMemoryOpaqueCaptureAddressInfo) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkDeviceMemoryOpaqueCaptureAddressInfo
-func (x *VkDeviceMemoryOpaqueCaptureAddressInfo) WithPNext(y unsafe.Pointer) *VkDeviceMemoryOpaqueCaptureAddressInfo {
+func (x VkDeviceMemoryOpaqueCaptureAddressInfo) WithPNext(y unsafe.Pointer) VkDeviceMemoryOpaqueCaptureAddressInfo {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -32497,7 +32447,7 @@ func (x VkDeviceMemoryOpaqueCaptureAddressInfo) Memory() VkDeviceMemory {
 
 // WithMemory copies the provided value into C space and stores it
 // at memory on VkDeviceMemoryOpaqueCaptureAddressInfo
-func (x *VkDeviceMemoryOpaqueCaptureAddressInfo) WithMemory(y VkDeviceMemory) *VkDeviceMemoryOpaqueCaptureAddressInfo {
+func (x VkDeviceMemoryOpaqueCaptureAddressInfo) WithMemory(y VkDeviceMemory) VkDeviceMemoryOpaqueCaptureAddressInfo {
 	ptr := func(x *VkDeviceMemory) *C.VkDeviceMemory { /* Handle */ return (*C.VkDeviceMemory)(unsafe.Pointer(x)) }(&y)
 	x.memory = *ptr
 	return x
@@ -32780,12 +32730,12 @@ func (x *VkSurfaceCapabilitiesKHR) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkSurfaceCapabilitiesKHR) AsPtr() *VkSurfaceCapabilitiesKHR { return x }
+func (x VkSurfaceCapabilitiesKHR) AsPtr() *VkSurfaceCapabilitiesKHR { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkSurfaceCapabilitiesKHR) AsCPtr() *VkSurfaceCapabilitiesKHR {
+func (x VkSurfaceCapabilitiesKHR) AsCPtr() *VkSurfaceCapabilitiesKHR {
 	clone := newVkSurfaceCapabilitiesKHR()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -32870,12 +32820,12 @@ func (x *VkSurfaceFormatKHR) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkSurfaceFormatKHR) AsPtr() *VkSurfaceFormatKHR { return x }
+func (x VkSurfaceFormatKHR) AsPtr() *VkSurfaceFormatKHR { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkSurfaceFormatKHR) AsCPtr() *VkSurfaceFormatKHR {
+func (x VkSurfaceFormatKHR) AsCPtr() *VkSurfaceFormatKHR {
 	clone := newVkSurfaceFormatKHR()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -33037,12 +32987,12 @@ func (x *VkBindImageMemorySwapchainInfoKHR) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkBindImageMemorySwapchainInfoKHR) AsPtr() *VkBindImageMemorySwapchainInfoKHR { return x }
+func (x VkBindImageMemorySwapchainInfoKHR) AsPtr() *VkBindImageMemorySwapchainInfoKHR { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkBindImageMemorySwapchainInfoKHR) AsCPtr() *VkBindImageMemorySwapchainInfoKHR {
+func (x VkBindImageMemorySwapchainInfoKHR) AsCPtr() *VkBindImageMemorySwapchainInfoKHR {
 	clone := newVkBindImageMemorySwapchainInfoKHR()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -33054,13 +33004,13 @@ func (x VkBindImageMemorySwapchainInfoKHR) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkBindImageMemorySwapchainInfoKHR) WithDefaultSType() *VkBindImageMemorySwapchainInfoKHR {
+func (x VkBindImageMemorySwapchainInfoKHR) WithDefaultSType() VkBindImageMemorySwapchainInfoKHR {
 	return x.WithSType(VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_SWAPCHAIN_INFO_KHR)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkBindImageMemorySwapchainInfoKHR
-func (x *VkBindImageMemorySwapchainInfoKHR) WithSType(y VkStructureType) *VkBindImageMemorySwapchainInfoKHR {
+func (x VkBindImageMemorySwapchainInfoKHR) WithSType(y VkStructureType) VkBindImageMemorySwapchainInfoKHR {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -33074,7 +33024,7 @@ func (x VkBindImageMemorySwapchainInfoKHR) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkBindImageMemorySwapchainInfoKHR
-func (x *VkBindImageMemorySwapchainInfoKHR) WithPNext(y unsafe.Pointer) *VkBindImageMemorySwapchainInfoKHR {
+func (x VkBindImageMemorySwapchainInfoKHR) WithPNext(y unsafe.Pointer) VkBindImageMemorySwapchainInfoKHR {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -33088,7 +33038,7 @@ func (x VkBindImageMemorySwapchainInfoKHR) Swapchain() VkSwapchainKHR {
 
 // WithSwapchain copies the provided value into C space and stores it
 // at swapchain on VkBindImageMemorySwapchainInfoKHR
-func (x *VkBindImageMemorySwapchainInfoKHR) WithSwapchain(y VkSwapchainKHR) *VkBindImageMemorySwapchainInfoKHR {
+func (x VkBindImageMemorySwapchainInfoKHR) WithSwapchain(y VkSwapchainKHR) VkBindImageMemorySwapchainInfoKHR {
 	ptr := func(x *VkSwapchainKHR) *C.VkSwapchainKHR { /* Handle */ return (*C.VkSwapchainKHR)(unsafe.Pointer(x)) }(&y)
 	x.swapchain = *ptr
 	return x
@@ -33102,7 +33052,7 @@ func (x VkBindImageMemorySwapchainInfoKHR) ImageIndex() uint32 {
 
 // WithImageIndex copies the provided value into C space and stores it
 // at imageIndex on VkBindImageMemorySwapchainInfoKHR
-func (x *VkBindImageMemorySwapchainInfoKHR) WithImageIndex(y uint32) *VkBindImageMemorySwapchainInfoKHR {
+func (x VkBindImageMemorySwapchainInfoKHR) WithImageIndex(y uint32) VkBindImageMemorySwapchainInfoKHR {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.imageIndex = *ptr
 	return x
@@ -33129,12 +33079,12 @@ func (x *VkSwapchainCreateInfoKHR) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkSwapchainCreateInfoKHR) AsPtr() *VkSwapchainCreateInfoKHR { return x }
+func (x VkSwapchainCreateInfoKHR) AsPtr() *VkSwapchainCreateInfoKHR { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkSwapchainCreateInfoKHR) AsCPtr() *VkSwapchainCreateInfoKHR {
+func (x VkSwapchainCreateInfoKHR) AsCPtr() *VkSwapchainCreateInfoKHR {
 	clone := newVkSwapchainCreateInfoKHR()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -33146,13 +33096,13 @@ func (x VkSwapchainCreateInfoKHR) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkSwapchainCreateInfoKHR) WithDefaultSType() *VkSwapchainCreateInfoKHR {
+func (x VkSwapchainCreateInfoKHR) WithDefaultSType() VkSwapchainCreateInfoKHR {
 	return x.WithSType(VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkSwapchainCreateInfoKHR
-func (x *VkSwapchainCreateInfoKHR) WithSType(y VkStructureType) *VkSwapchainCreateInfoKHR {
+func (x VkSwapchainCreateInfoKHR) WithSType(y VkStructureType) VkSwapchainCreateInfoKHR {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -33166,7 +33116,7 @@ func (x VkSwapchainCreateInfoKHR) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkSwapchainCreateInfoKHR
-func (x *VkSwapchainCreateInfoKHR) WithPNext(y unsafe.Pointer) *VkSwapchainCreateInfoKHR {
+func (x VkSwapchainCreateInfoKHR) WithPNext(y unsafe.Pointer) VkSwapchainCreateInfoKHR {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -33180,7 +33130,7 @@ func (x VkSwapchainCreateInfoKHR) Flags() VkSwapchainCreateFlagsKHR {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkSwapchainCreateInfoKHR
-func (x *VkSwapchainCreateInfoKHR) WithFlags(y VkSwapchainCreateFlagsKHR) *VkSwapchainCreateInfoKHR {
+func (x VkSwapchainCreateInfoKHR) WithFlags(y VkSwapchainCreateFlagsKHR) VkSwapchainCreateInfoKHR {
 	ptr := /* Identifier */ (*C.VkSwapchainCreateFlagsKHR)(&y)
 	x.flags = *ptr
 	return x
@@ -33194,7 +33144,7 @@ func (x VkSwapchainCreateInfoKHR) Surface() VkSurfaceKHR {
 
 // WithSurface copies the provided value into C space and stores it
 // at surface on VkSwapchainCreateInfoKHR
-func (x *VkSwapchainCreateInfoKHR) WithSurface(y VkSurfaceKHR) *VkSwapchainCreateInfoKHR {
+func (x VkSwapchainCreateInfoKHR) WithSurface(y VkSurfaceKHR) VkSwapchainCreateInfoKHR {
 	ptr := func(x *VkSurfaceKHR) *C.VkSurfaceKHR { /* Handle */ return (*C.VkSurfaceKHR)(unsafe.Pointer(x)) }(&y)
 	x.surface = *ptr
 	return x
@@ -33208,7 +33158,7 @@ func (x VkSwapchainCreateInfoKHR) MinImageCount() uint32 {
 
 // WithMinImageCount copies the provided value into C space and stores it
 // at minImageCount on VkSwapchainCreateInfoKHR
-func (x *VkSwapchainCreateInfoKHR) WithMinImageCount(y uint32) *VkSwapchainCreateInfoKHR {
+func (x VkSwapchainCreateInfoKHR) WithMinImageCount(y uint32) VkSwapchainCreateInfoKHR {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.minImageCount = *ptr
 	return x
@@ -33222,7 +33172,7 @@ func (x VkSwapchainCreateInfoKHR) ImageFormat() VkFormat {
 
 // WithImageFormat copies the provided value into C space and stores it
 // at imageFormat on VkSwapchainCreateInfoKHR
-func (x *VkSwapchainCreateInfoKHR) WithImageFormat(y VkFormat) *VkSwapchainCreateInfoKHR {
+func (x VkSwapchainCreateInfoKHR) WithImageFormat(y VkFormat) VkSwapchainCreateInfoKHR {
 	ptr := /* Identifier */ (*C.VkFormat)(&y)
 	x.imageFormat = *ptr
 	return x
@@ -33236,7 +33186,7 @@ func (x VkSwapchainCreateInfoKHR) ImageColorSpace() VkColorSpaceKHR {
 
 // WithImageColorSpace copies the provided value into C space and stores it
 // at imageColorSpace on VkSwapchainCreateInfoKHR
-func (x *VkSwapchainCreateInfoKHR) WithImageColorSpace(y VkColorSpaceKHR) *VkSwapchainCreateInfoKHR {
+func (x VkSwapchainCreateInfoKHR) WithImageColorSpace(y VkColorSpaceKHR) VkSwapchainCreateInfoKHR {
 	ptr := /* Identifier */ (*C.VkColorSpaceKHR)(&y)
 	x.imageColorSpace = *ptr
 	return x
@@ -33250,7 +33200,7 @@ func (x VkSwapchainCreateInfoKHR) ImageExtent() VkExtent2D {
 
 // WithImageExtent copies the provided value into C space and stores it
 // at imageExtent on VkSwapchainCreateInfoKHR
-func (x *VkSwapchainCreateInfoKHR) WithImageExtent(y VkExtent2D) *VkSwapchainCreateInfoKHR {
+func (x VkSwapchainCreateInfoKHR) WithImageExtent(y VkExtent2D) VkSwapchainCreateInfoKHR {
 	ptr := /* Identifier */ (*C.VkExtent2D)(&y)
 	x.imageExtent = *ptr
 	return x
@@ -33264,7 +33214,7 @@ func (x VkSwapchainCreateInfoKHR) ImageArrayLayers() uint32 {
 
 // WithImageArrayLayers copies the provided value into C space and stores it
 // at imageArrayLayers on VkSwapchainCreateInfoKHR
-func (x *VkSwapchainCreateInfoKHR) WithImageArrayLayers(y uint32) *VkSwapchainCreateInfoKHR {
+func (x VkSwapchainCreateInfoKHR) WithImageArrayLayers(y uint32) VkSwapchainCreateInfoKHR {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.imageArrayLayers = *ptr
 	return x
@@ -33278,7 +33228,7 @@ func (x VkSwapchainCreateInfoKHR) ImageUsage() VkImageUsageFlags {
 
 // WithImageUsage copies the provided value into C space and stores it
 // at imageUsage on VkSwapchainCreateInfoKHR
-func (x *VkSwapchainCreateInfoKHR) WithImageUsage(y VkImageUsageFlags) *VkSwapchainCreateInfoKHR {
+func (x VkSwapchainCreateInfoKHR) WithImageUsage(y VkImageUsageFlags) VkSwapchainCreateInfoKHR {
 	ptr := /* Identifier */ (*C.VkImageUsageFlags)(&y)
 	x.imageUsage = *ptr
 	return x
@@ -33292,7 +33242,7 @@ func (x VkSwapchainCreateInfoKHR) ImageSharingMode() VkSharingMode {
 
 // WithImageSharingMode copies the provided value into C space and stores it
 // at imageSharingMode on VkSwapchainCreateInfoKHR
-func (x *VkSwapchainCreateInfoKHR) WithImageSharingMode(y VkSharingMode) *VkSwapchainCreateInfoKHR {
+func (x VkSwapchainCreateInfoKHR) WithImageSharingMode(y VkSharingMode) VkSwapchainCreateInfoKHR {
 	ptr := /* Identifier */ (*C.VkSharingMode)(&y)
 	x.imageSharingMode = *ptr
 	return x
@@ -33306,7 +33256,7 @@ func (x VkSwapchainCreateInfoKHR) QueueFamilyIndexCount() uint32 {
 
 // WithQueueFamilyIndexCount copies the provided value into C space and stores it
 // at queueFamilyIndexCount on VkSwapchainCreateInfoKHR
-func (x *VkSwapchainCreateInfoKHR) WithQueueFamilyIndexCount(y uint32) *VkSwapchainCreateInfoKHR {
+func (x VkSwapchainCreateInfoKHR) WithQueueFamilyIndexCount(y uint32) VkSwapchainCreateInfoKHR {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.queueFamilyIndexCount = *ptr
 	return x
@@ -33323,7 +33273,7 @@ func (x VkSwapchainCreateInfoKHR) PQueueFamilyIndices() []uint32 {
 
 // WithPQueueFamilyIndices copies the provided value into C space and stores it
 // at pQueueFamilyIndices on VkSwapchainCreateInfoKHR
-func (x *VkSwapchainCreateInfoKHR) WithPQueueFamilyIndices(y []uint32) *VkSwapchainCreateInfoKHR {
+func (x VkSwapchainCreateInfoKHR) WithPQueueFamilyIndices(y []uint32) VkSwapchainCreateInfoKHR {
 	ptr := func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
@@ -33344,7 +33294,7 @@ func (x VkSwapchainCreateInfoKHR) PreTransform() VkSurfaceTransformFlagBitsKHR {
 
 // WithPreTransform copies the provided value into C space and stores it
 // at preTransform on VkSwapchainCreateInfoKHR
-func (x *VkSwapchainCreateInfoKHR) WithPreTransform(y VkSurfaceTransformFlagBitsKHR) *VkSwapchainCreateInfoKHR {
+func (x VkSwapchainCreateInfoKHR) WithPreTransform(y VkSurfaceTransformFlagBitsKHR) VkSwapchainCreateInfoKHR {
 	ptr := /* Identifier */ (*C.VkSurfaceTransformFlagBitsKHR)(&y)
 	x.preTransform = *ptr
 	return x
@@ -33358,7 +33308,7 @@ func (x VkSwapchainCreateInfoKHR) CompositeAlpha() VkCompositeAlphaFlagBitsKHR {
 
 // WithCompositeAlpha copies the provided value into C space and stores it
 // at compositeAlpha on VkSwapchainCreateInfoKHR
-func (x *VkSwapchainCreateInfoKHR) WithCompositeAlpha(y VkCompositeAlphaFlagBitsKHR) *VkSwapchainCreateInfoKHR {
+func (x VkSwapchainCreateInfoKHR) WithCompositeAlpha(y VkCompositeAlphaFlagBitsKHR) VkSwapchainCreateInfoKHR {
 	ptr := /* Identifier */ (*C.VkCompositeAlphaFlagBitsKHR)(&y)
 	x.compositeAlpha = *ptr
 	return x
@@ -33372,7 +33322,7 @@ func (x VkSwapchainCreateInfoKHR) PresentMode() VkPresentModeKHR {
 
 // WithPresentMode copies the provided value into C space and stores it
 // at presentMode on VkSwapchainCreateInfoKHR
-func (x *VkSwapchainCreateInfoKHR) WithPresentMode(y VkPresentModeKHR) *VkSwapchainCreateInfoKHR {
+func (x VkSwapchainCreateInfoKHR) WithPresentMode(y VkPresentModeKHR) VkSwapchainCreateInfoKHR {
 	ptr := /* Identifier */ (*C.VkPresentModeKHR)(&y)
 	x.presentMode = *ptr
 	return x
@@ -33386,7 +33336,7 @@ func (x VkSwapchainCreateInfoKHR) Clipped() VkBool32 {
 
 // WithClipped copies the provided value into C space and stores it
 // at clipped on VkSwapchainCreateInfoKHR
-func (x *VkSwapchainCreateInfoKHR) WithClipped(y VkBool32) *VkSwapchainCreateInfoKHR {
+func (x VkSwapchainCreateInfoKHR) WithClipped(y VkBool32) VkSwapchainCreateInfoKHR {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.clipped = *ptr
 	return x
@@ -33400,7 +33350,7 @@ func (x VkSwapchainCreateInfoKHR) OldSwapchain() VkSwapchainKHR {
 
 // WithOldSwapchain copies the provided value into C space and stores it
 // at oldSwapchain on VkSwapchainCreateInfoKHR
-func (x *VkSwapchainCreateInfoKHR) WithOldSwapchain(y VkSwapchainKHR) *VkSwapchainCreateInfoKHR {
+func (x VkSwapchainCreateInfoKHR) WithOldSwapchain(y VkSwapchainKHR) VkSwapchainCreateInfoKHR {
 	ptr := func(x *VkSwapchainKHR) *C.VkSwapchainKHR { /* Handle */ return (*C.VkSwapchainKHR)(unsafe.Pointer(x)) }(&y)
 	x.oldSwapchain = *ptr
 	return x
@@ -33427,12 +33377,12 @@ func (x *VkPresentInfoKHR) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkPresentInfoKHR) AsPtr() *VkPresentInfoKHR { return x }
+func (x VkPresentInfoKHR) AsPtr() *VkPresentInfoKHR { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkPresentInfoKHR) AsCPtr() *VkPresentInfoKHR {
+func (x VkPresentInfoKHR) AsCPtr() *VkPresentInfoKHR {
 	clone := newVkPresentInfoKHR()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -33444,13 +33394,13 @@ func (x VkPresentInfoKHR) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkPresentInfoKHR) WithDefaultSType() *VkPresentInfoKHR {
+func (x VkPresentInfoKHR) WithDefaultSType() VkPresentInfoKHR {
 	return x.WithSType(VK_STRUCTURE_TYPE_PRESENT_INFO_KHR)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkPresentInfoKHR
-func (x *VkPresentInfoKHR) WithSType(y VkStructureType) *VkPresentInfoKHR {
+func (x VkPresentInfoKHR) WithSType(y VkStructureType) VkPresentInfoKHR {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -33464,7 +33414,7 @@ func (x VkPresentInfoKHR) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkPresentInfoKHR
-func (x *VkPresentInfoKHR) WithPNext(y unsafe.Pointer) *VkPresentInfoKHR {
+func (x VkPresentInfoKHR) WithPNext(y unsafe.Pointer) VkPresentInfoKHR {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -33478,7 +33428,7 @@ func (x VkPresentInfoKHR) WaitSemaphoreCount() uint32 {
 
 // WithWaitSemaphoreCount copies the provided value into C space and stores it
 // at waitSemaphoreCount on VkPresentInfoKHR
-func (x *VkPresentInfoKHR) WithWaitSemaphoreCount(y uint32) *VkPresentInfoKHR {
+func (x VkPresentInfoKHR) WithWaitSemaphoreCount(y uint32) VkPresentInfoKHR {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.waitSemaphoreCount = *ptr
 	return x
@@ -33495,7 +33445,7 @@ func (x VkPresentInfoKHR) PWaitSemaphores() []VkSemaphore {
 
 // WithPWaitSemaphores copies the provided value into C space and stores it
 // at pWaitSemaphores on VkPresentInfoKHR
-func (x *VkPresentInfoKHR) WithPWaitSemaphores(y []VkSemaphore) *VkPresentInfoKHR {
+func (x VkPresentInfoKHR) WithPWaitSemaphores(y []VkSemaphore) VkPresentInfoKHR {
 	ptr := func(x *[]VkSemaphore) **C.VkSemaphore { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkSemaphore)(unsafe.Pointer(&((*x)[0])))
@@ -33516,7 +33466,7 @@ func (x VkPresentInfoKHR) SwapchainCount() uint32 {
 
 // WithSwapchainCount copies the provided value into C space and stores it
 // at swapchainCount on VkPresentInfoKHR
-func (x *VkPresentInfoKHR) WithSwapchainCount(y uint32) *VkPresentInfoKHR {
+func (x VkPresentInfoKHR) WithSwapchainCount(y uint32) VkPresentInfoKHR {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.swapchainCount = *ptr
 	return x
@@ -33533,7 +33483,7 @@ func (x VkPresentInfoKHR) PSwapchains() []VkSwapchainKHR {
 
 // WithPSwapchains copies the provided value into C space and stores it
 // at pSwapchains on VkPresentInfoKHR
-func (x *VkPresentInfoKHR) WithPSwapchains(y []VkSwapchainKHR) *VkPresentInfoKHR {
+func (x VkPresentInfoKHR) WithPSwapchains(y []VkSwapchainKHR) VkPresentInfoKHR {
 	ptr := func(x *[]VkSwapchainKHR) **C.VkSwapchainKHR { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkSwapchainKHR)(unsafe.Pointer(&((*x)[0])))
@@ -33557,7 +33507,7 @@ func (x VkPresentInfoKHR) PImageIndices() []uint32 {
 
 // WithPImageIndices copies the provided value into C space and stores it
 // at pImageIndices on VkPresentInfoKHR
-func (x *VkPresentInfoKHR) WithPImageIndices(y []uint32) *VkPresentInfoKHR {
+func (x VkPresentInfoKHR) WithPImageIndices(y []uint32) VkPresentInfoKHR {
 	ptr := func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
@@ -33581,7 +33531,7 @@ func (x VkPresentInfoKHR) PResults() []VkResult {
 
 // WithPResults copies the provided value into C space and stores it
 // at pResults on VkPresentInfoKHR
-func (x *VkPresentInfoKHR) WithPResults(y []VkResult) *VkPresentInfoKHR {
+func (x VkPresentInfoKHR) WithPResults(y []VkResult) VkPresentInfoKHR {
 	ptr := func(x *[]VkResult) **C.VkResult { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkResult)(unsafe.Pointer(&((*x)[0])))
@@ -33615,12 +33565,12 @@ func (x *VkDeviceGroupPresentCapabilitiesKHR) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDeviceGroupPresentCapabilitiesKHR) AsPtr() *VkDeviceGroupPresentCapabilitiesKHR { return x }
+func (x VkDeviceGroupPresentCapabilitiesKHR) AsPtr() *VkDeviceGroupPresentCapabilitiesKHR { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDeviceGroupPresentCapabilitiesKHR) AsCPtr() *VkDeviceGroupPresentCapabilitiesKHR {
+func (x VkDeviceGroupPresentCapabilitiesKHR) AsCPtr() *VkDeviceGroupPresentCapabilitiesKHR {
 	clone := newVkDeviceGroupPresentCapabilitiesKHR()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -33632,13 +33582,13 @@ func (x VkDeviceGroupPresentCapabilitiesKHR) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkDeviceGroupPresentCapabilitiesKHR) WithDefaultSType() *VkDeviceGroupPresentCapabilitiesKHR {
+func (x VkDeviceGroupPresentCapabilitiesKHR) WithDefaultSType() VkDeviceGroupPresentCapabilitiesKHR {
 	return x.WithSType(VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_CAPABILITIES_KHR)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkDeviceGroupPresentCapabilitiesKHR
-func (x *VkDeviceGroupPresentCapabilitiesKHR) WithSType(y VkStructureType) *VkDeviceGroupPresentCapabilitiesKHR {
+func (x VkDeviceGroupPresentCapabilitiesKHR) WithSType(y VkStructureType) VkDeviceGroupPresentCapabilitiesKHR {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -33652,7 +33602,7 @@ func (x VkDeviceGroupPresentCapabilitiesKHR) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkDeviceGroupPresentCapabilitiesKHR
-func (x *VkDeviceGroupPresentCapabilitiesKHR) WithPNext(y unsafe.Pointer) *VkDeviceGroupPresentCapabilitiesKHR {
+func (x VkDeviceGroupPresentCapabilitiesKHR) WithPNext(y unsafe.Pointer) VkDeviceGroupPresentCapabilitiesKHR {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -33694,12 +33644,12 @@ func (x *VkDeviceGroupPresentInfoKHR) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDeviceGroupPresentInfoKHR) AsPtr() *VkDeviceGroupPresentInfoKHR { return x }
+func (x VkDeviceGroupPresentInfoKHR) AsPtr() *VkDeviceGroupPresentInfoKHR { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDeviceGroupPresentInfoKHR) AsCPtr() *VkDeviceGroupPresentInfoKHR {
+func (x VkDeviceGroupPresentInfoKHR) AsCPtr() *VkDeviceGroupPresentInfoKHR {
 	clone := newVkDeviceGroupPresentInfoKHR()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -33711,13 +33661,13 @@ func (x VkDeviceGroupPresentInfoKHR) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkDeviceGroupPresentInfoKHR) WithDefaultSType() *VkDeviceGroupPresentInfoKHR {
+func (x VkDeviceGroupPresentInfoKHR) WithDefaultSType() VkDeviceGroupPresentInfoKHR {
 	return x.WithSType(VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_INFO_KHR)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkDeviceGroupPresentInfoKHR
-func (x *VkDeviceGroupPresentInfoKHR) WithSType(y VkStructureType) *VkDeviceGroupPresentInfoKHR {
+func (x VkDeviceGroupPresentInfoKHR) WithSType(y VkStructureType) VkDeviceGroupPresentInfoKHR {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -33731,7 +33681,7 @@ func (x VkDeviceGroupPresentInfoKHR) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkDeviceGroupPresentInfoKHR
-func (x *VkDeviceGroupPresentInfoKHR) WithPNext(y unsafe.Pointer) *VkDeviceGroupPresentInfoKHR {
+func (x VkDeviceGroupPresentInfoKHR) WithPNext(y unsafe.Pointer) VkDeviceGroupPresentInfoKHR {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -33745,7 +33695,7 @@ func (x VkDeviceGroupPresentInfoKHR) SwapchainCount() uint32 {
 
 // WithSwapchainCount copies the provided value into C space and stores it
 // at swapchainCount on VkDeviceGroupPresentInfoKHR
-func (x *VkDeviceGroupPresentInfoKHR) WithSwapchainCount(y uint32) *VkDeviceGroupPresentInfoKHR {
+func (x VkDeviceGroupPresentInfoKHR) WithSwapchainCount(y uint32) VkDeviceGroupPresentInfoKHR {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.swapchainCount = *ptr
 	return x
@@ -33762,7 +33712,7 @@ func (x VkDeviceGroupPresentInfoKHR) PDeviceMasks() []uint32 {
 
 // WithPDeviceMasks copies the provided value into C space and stores it
 // at pDeviceMasks on VkDeviceGroupPresentInfoKHR
-func (x *VkDeviceGroupPresentInfoKHR) WithPDeviceMasks(y []uint32) *VkDeviceGroupPresentInfoKHR {
+func (x VkDeviceGroupPresentInfoKHR) WithPDeviceMasks(y []uint32) VkDeviceGroupPresentInfoKHR {
 	ptr := func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
@@ -33783,7 +33733,7 @@ func (x VkDeviceGroupPresentInfoKHR) Mode() VkDeviceGroupPresentModeFlagBitsKHR 
 
 // WithMode copies the provided value into C space and stores it
 // at mode on VkDeviceGroupPresentInfoKHR
-func (x *VkDeviceGroupPresentInfoKHR) WithMode(y VkDeviceGroupPresentModeFlagBitsKHR) *VkDeviceGroupPresentInfoKHR {
+func (x VkDeviceGroupPresentInfoKHR) WithMode(y VkDeviceGroupPresentModeFlagBitsKHR) VkDeviceGroupPresentInfoKHR {
 	ptr := /* Identifier */ (*C.VkDeviceGroupPresentModeFlagBitsKHR)(&y)
 	x.mode = *ptr
 	return x
@@ -33810,12 +33760,12 @@ func (x *VkDeviceGroupSwapchainCreateInfoKHR) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDeviceGroupSwapchainCreateInfoKHR) AsPtr() *VkDeviceGroupSwapchainCreateInfoKHR { return x }
+func (x VkDeviceGroupSwapchainCreateInfoKHR) AsPtr() *VkDeviceGroupSwapchainCreateInfoKHR { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDeviceGroupSwapchainCreateInfoKHR) AsCPtr() *VkDeviceGroupSwapchainCreateInfoKHR {
+func (x VkDeviceGroupSwapchainCreateInfoKHR) AsCPtr() *VkDeviceGroupSwapchainCreateInfoKHR {
 	clone := newVkDeviceGroupSwapchainCreateInfoKHR()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -33827,13 +33777,13 @@ func (x VkDeviceGroupSwapchainCreateInfoKHR) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkDeviceGroupSwapchainCreateInfoKHR) WithDefaultSType() *VkDeviceGroupSwapchainCreateInfoKHR {
+func (x VkDeviceGroupSwapchainCreateInfoKHR) WithDefaultSType() VkDeviceGroupSwapchainCreateInfoKHR {
 	return x.WithSType(VK_STRUCTURE_TYPE_DEVICE_GROUP_SWAPCHAIN_CREATE_INFO_KHR)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkDeviceGroupSwapchainCreateInfoKHR
-func (x *VkDeviceGroupSwapchainCreateInfoKHR) WithSType(y VkStructureType) *VkDeviceGroupSwapchainCreateInfoKHR {
+func (x VkDeviceGroupSwapchainCreateInfoKHR) WithSType(y VkStructureType) VkDeviceGroupSwapchainCreateInfoKHR {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -33847,7 +33797,7 @@ func (x VkDeviceGroupSwapchainCreateInfoKHR) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkDeviceGroupSwapchainCreateInfoKHR
-func (x *VkDeviceGroupSwapchainCreateInfoKHR) WithPNext(y unsafe.Pointer) *VkDeviceGroupSwapchainCreateInfoKHR {
+func (x VkDeviceGroupSwapchainCreateInfoKHR) WithPNext(y unsafe.Pointer) VkDeviceGroupSwapchainCreateInfoKHR {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -33861,7 +33811,7 @@ func (x VkDeviceGroupSwapchainCreateInfoKHR) Modes() VkDeviceGroupPresentModeFla
 
 // WithModes copies the provided value into C space and stores it
 // at modes on VkDeviceGroupSwapchainCreateInfoKHR
-func (x *VkDeviceGroupSwapchainCreateInfoKHR) WithModes(y VkDeviceGroupPresentModeFlagsKHR) *VkDeviceGroupSwapchainCreateInfoKHR {
+func (x VkDeviceGroupSwapchainCreateInfoKHR) WithModes(y VkDeviceGroupPresentModeFlagsKHR) VkDeviceGroupSwapchainCreateInfoKHR {
 	ptr := /* Identifier */ (*C.VkDeviceGroupPresentModeFlagsKHR)(&y)
 	x.modes = *ptr
 	return x
@@ -33888,12 +33838,12 @@ func (x *VkAcquireNextImageInfoKHR) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkAcquireNextImageInfoKHR) AsPtr() *VkAcquireNextImageInfoKHR { return x }
+func (x VkAcquireNextImageInfoKHR) AsPtr() *VkAcquireNextImageInfoKHR { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkAcquireNextImageInfoKHR) AsCPtr() *VkAcquireNextImageInfoKHR {
+func (x VkAcquireNextImageInfoKHR) AsCPtr() *VkAcquireNextImageInfoKHR {
 	clone := newVkAcquireNextImageInfoKHR()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -33905,13 +33855,13 @@ func (x VkAcquireNextImageInfoKHR) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkAcquireNextImageInfoKHR) WithDefaultSType() *VkAcquireNextImageInfoKHR {
+func (x VkAcquireNextImageInfoKHR) WithDefaultSType() VkAcquireNextImageInfoKHR {
 	return x.WithSType(VK_STRUCTURE_TYPE_ACQUIRE_NEXT_IMAGE_INFO_KHR)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkAcquireNextImageInfoKHR
-func (x *VkAcquireNextImageInfoKHR) WithSType(y VkStructureType) *VkAcquireNextImageInfoKHR {
+func (x VkAcquireNextImageInfoKHR) WithSType(y VkStructureType) VkAcquireNextImageInfoKHR {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -33925,7 +33875,7 @@ func (x VkAcquireNextImageInfoKHR) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkAcquireNextImageInfoKHR
-func (x *VkAcquireNextImageInfoKHR) WithPNext(y unsafe.Pointer) *VkAcquireNextImageInfoKHR {
+func (x VkAcquireNextImageInfoKHR) WithPNext(y unsafe.Pointer) VkAcquireNextImageInfoKHR {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -33939,7 +33889,7 @@ func (x VkAcquireNextImageInfoKHR) Swapchain() VkSwapchainKHR {
 
 // WithSwapchain copies the provided value into C space and stores it
 // at swapchain on VkAcquireNextImageInfoKHR
-func (x *VkAcquireNextImageInfoKHR) WithSwapchain(y VkSwapchainKHR) *VkAcquireNextImageInfoKHR {
+func (x VkAcquireNextImageInfoKHR) WithSwapchain(y VkSwapchainKHR) VkAcquireNextImageInfoKHR {
 	ptr := func(x *VkSwapchainKHR) *C.VkSwapchainKHR { /* Handle */ return (*C.VkSwapchainKHR)(unsafe.Pointer(x)) }(&y)
 	x.swapchain = *ptr
 	return x
@@ -33953,7 +33903,7 @@ func (x VkAcquireNextImageInfoKHR) Timeout() uint64 {
 
 // WithTimeout copies the provided value into C space and stores it
 // at timeout on VkAcquireNextImageInfoKHR
-func (x *VkAcquireNextImageInfoKHR) WithTimeout(y uint64) *VkAcquireNextImageInfoKHR {
+func (x VkAcquireNextImageInfoKHR) WithTimeout(y uint64) VkAcquireNextImageInfoKHR {
 	ptr := func(x *uint64) *C.ulonglong { /* Scalar */ return (*C.ulonglong)(unsafe.Pointer(x)) }(&y)
 	x.timeout = *ptr
 	return x
@@ -33967,7 +33917,7 @@ func (x VkAcquireNextImageInfoKHR) Semaphore() VkSemaphore {
 
 // WithSemaphore copies the provided value into C space and stores it
 // at semaphore on VkAcquireNextImageInfoKHR
-func (x *VkAcquireNextImageInfoKHR) WithSemaphore(y VkSemaphore) *VkAcquireNextImageInfoKHR {
+func (x VkAcquireNextImageInfoKHR) WithSemaphore(y VkSemaphore) VkAcquireNextImageInfoKHR {
 	ptr := func(x *VkSemaphore) *C.VkSemaphore { /* Handle */ return (*C.VkSemaphore)(unsafe.Pointer(x)) }(&y)
 	x.semaphore = *ptr
 	return x
@@ -33981,7 +33931,7 @@ func (x VkAcquireNextImageInfoKHR) Fence() VkFence {
 
 // WithFence copies the provided value into C space and stores it
 // at fence on VkAcquireNextImageInfoKHR
-func (x *VkAcquireNextImageInfoKHR) WithFence(y VkFence) *VkAcquireNextImageInfoKHR {
+func (x VkAcquireNextImageInfoKHR) WithFence(y VkFence) VkAcquireNextImageInfoKHR {
 	ptr := func(x *VkFence) *C.VkFence { /* Handle */ return (*C.VkFence)(unsafe.Pointer(x)) }(&y)
 	x.fence = *ptr
 	return x
@@ -33995,7 +33945,7 @@ func (x VkAcquireNextImageInfoKHR) DeviceMask() uint32 {
 
 // WithDeviceMask copies the provided value into C space and stores it
 // at deviceMask on VkAcquireNextImageInfoKHR
-func (x *VkAcquireNextImageInfoKHR) WithDeviceMask(y uint32) *VkAcquireNextImageInfoKHR {
+func (x VkAcquireNextImageInfoKHR) WithDeviceMask(y uint32) VkAcquireNextImageInfoKHR {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.deviceMask = *ptr
 	return x
@@ -34022,12 +33972,12 @@ func (x *VkImageSwapchainCreateInfoKHR) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkImageSwapchainCreateInfoKHR) AsPtr() *VkImageSwapchainCreateInfoKHR { return x }
+func (x VkImageSwapchainCreateInfoKHR) AsPtr() *VkImageSwapchainCreateInfoKHR { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkImageSwapchainCreateInfoKHR) AsCPtr() *VkImageSwapchainCreateInfoKHR {
+func (x VkImageSwapchainCreateInfoKHR) AsCPtr() *VkImageSwapchainCreateInfoKHR {
 	clone := newVkImageSwapchainCreateInfoKHR()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -34039,13 +33989,13 @@ func (x VkImageSwapchainCreateInfoKHR) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkImageSwapchainCreateInfoKHR) WithDefaultSType() *VkImageSwapchainCreateInfoKHR {
+func (x VkImageSwapchainCreateInfoKHR) WithDefaultSType() VkImageSwapchainCreateInfoKHR {
 	return x.WithSType(VK_STRUCTURE_TYPE_IMAGE_SWAPCHAIN_CREATE_INFO_KHR)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkImageSwapchainCreateInfoKHR
-func (x *VkImageSwapchainCreateInfoKHR) WithSType(y VkStructureType) *VkImageSwapchainCreateInfoKHR {
+func (x VkImageSwapchainCreateInfoKHR) WithSType(y VkStructureType) VkImageSwapchainCreateInfoKHR {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -34059,7 +34009,7 @@ func (x VkImageSwapchainCreateInfoKHR) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkImageSwapchainCreateInfoKHR
-func (x *VkImageSwapchainCreateInfoKHR) WithPNext(y unsafe.Pointer) *VkImageSwapchainCreateInfoKHR {
+func (x VkImageSwapchainCreateInfoKHR) WithPNext(y unsafe.Pointer) VkImageSwapchainCreateInfoKHR {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -34073,7 +34023,7 @@ func (x VkImageSwapchainCreateInfoKHR) Swapchain() VkSwapchainKHR {
 
 // WithSwapchain copies the provided value into C space and stores it
 // at swapchain on VkImageSwapchainCreateInfoKHR
-func (x *VkImageSwapchainCreateInfoKHR) WithSwapchain(y VkSwapchainKHR) *VkImageSwapchainCreateInfoKHR {
+func (x VkImageSwapchainCreateInfoKHR) WithSwapchain(y VkSwapchainKHR) VkImageSwapchainCreateInfoKHR {
 	ptr := func(x *VkSwapchainKHR) *C.VkSwapchainKHR { /* Handle */ return (*C.VkSwapchainKHR)(unsafe.Pointer(x)) }(&y)
 	x.swapchain = *ptr
 	return x
@@ -34252,12 +34202,12 @@ func (x *VkDisplayPlanePropertiesKHR) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDisplayPlanePropertiesKHR) AsPtr() *VkDisplayPlanePropertiesKHR { return x }
+func (x VkDisplayPlanePropertiesKHR) AsPtr() *VkDisplayPlanePropertiesKHR { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDisplayPlanePropertiesKHR) AsCPtr() *VkDisplayPlanePropertiesKHR {
+func (x VkDisplayPlanePropertiesKHR) AsCPtr() *VkDisplayPlanePropertiesKHR {
 	clone := newVkDisplayPlanePropertiesKHR()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -34294,12 +34244,12 @@ func (x *VkDisplayModePropertiesKHR) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDisplayModePropertiesKHR) AsPtr() *VkDisplayModePropertiesKHR { return x }
+func (x VkDisplayModePropertiesKHR) AsPtr() *VkDisplayModePropertiesKHR { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDisplayModePropertiesKHR) AsCPtr() *VkDisplayModePropertiesKHR {
+func (x VkDisplayModePropertiesKHR) AsCPtr() *VkDisplayModePropertiesKHR {
 	clone := newVkDisplayModePropertiesKHR()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -34338,12 +34288,12 @@ func (x *VkDisplayPropertiesKHR) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDisplayPropertiesKHR) AsPtr() *VkDisplayPropertiesKHR { return x }
+func (x VkDisplayPropertiesKHR) AsPtr() *VkDisplayPropertiesKHR { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDisplayPropertiesKHR) AsCPtr() *VkDisplayPropertiesKHR {
+func (x VkDisplayPropertiesKHR) AsCPtr() *VkDisplayPropertiesKHR {
 	clone := newVkDisplayPropertiesKHR()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -34410,12 +34360,12 @@ func (x *VkDisplayModeCreateInfoKHR) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDisplayModeCreateInfoKHR) AsPtr() *VkDisplayModeCreateInfoKHR { return x }
+func (x VkDisplayModeCreateInfoKHR) AsPtr() *VkDisplayModeCreateInfoKHR { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDisplayModeCreateInfoKHR) AsCPtr() *VkDisplayModeCreateInfoKHR {
+func (x VkDisplayModeCreateInfoKHR) AsCPtr() *VkDisplayModeCreateInfoKHR {
 	clone := newVkDisplayModeCreateInfoKHR()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -34427,13 +34377,13 @@ func (x VkDisplayModeCreateInfoKHR) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkDisplayModeCreateInfoKHR) WithDefaultSType() *VkDisplayModeCreateInfoKHR {
+func (x VkDisplayModeCreateInfoKHR) WithDefaultSType() VkDisplayModeCreateInfoKHR {
 	return x.WithSType(VK_STRUCTURE_TYPE_DISPLAY_MODE_CREATE_INFO_KHR)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkDisplayModeCreateInfoKHR
-func (x *VkDisplayModeCreateInfoKHR) WithSType(y VkStructureType) *VkDisplayModeCreateInfoKHR {
+func (x VkDisplayModeCreateInfoKHR) WithSType(y VkStructureType) VkDisplayModeCreateInfoKHR {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -34447,7 +34397,7 @@ func (x VkDisplayModeCreateInfoKHR) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkDisplayModeCreateInfoKHR
-func (x *VkDisplayModeCreateInfoKHR) WithPNext(y unsafe.Pointer) *VkDisplayModeCreateInfoKHR {
+func (x VkDisplayModeCreateInfoKHR) WithPNext(y unsafe.Pointer) VkDisplayModeCreateInfoKHR {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -34461,7 +34411,7 @@ func (x VkDisplayModeCreateInfoKHR) Flags() VkDisplayModeCreateFlagsKHR {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkDisplayModeCreateInfoKHR
-func (x *VkDisplayModeCreateInfoKHR) WithFlags(y VkDisplayModeCreateFlagsKHR) *VkDisplayModeCreateInfoKHR {
+func (x VkDisplayModeCreateInfoKHR) WithFlags(y VkDisplayModeCreateFlagsKHR) VkDisplayModeCreateInfoKHR {
 	ptr := /* Identifier */ (*C.VkDisplayModeCreateFlagsKHR)(&y)
 	x.flags = *ptr
 	return x
@@ -34475,7 +34425,7 @@ func (x VkDisplayModeCreateInfoKHR) Parameters() VkDisplayModeParametersKHR {
 
 // WithParameters copies the provided value into C space and stores it
 // at parameters on VkDisplayModeCreateInfoKHR
-func (x *VkDisplayModeCreateInfoKHR) WithParameters(y VkDisplayModeParametersKHR) *VkDisplayModeCreateInfoKHR {
+func (x VkDisplayModeCreateInfoKHR) WithParameters(y VkDisplayModeParametersKHR) VkDisplayModeCreateInfoKHR {
 	ptr := /* Identifier */ (*C.VkDisplayModeParametersKHR)(&y)
 	x.parameters = *ptr
 	return x
@@ -34502,12 +34452,12 @@ func (x *VkDisplayPlaneCapabilitiesKHR) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDisplayPlaneCapabilitiesKHR) AsPtr() *VkDisplayPlaneCapabilitiesKHR { return x }
+func (x VkDisplayPlaneCapabilitiesKHR) AsPtr() *VkDisplayPlaneCapabilitiesKHR { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDisplayPlaneCapabilitiesKHR) AsCPtr() *VkDisplayPlaneCapabilitiesKHR {
+func (x VkDisplayPlaneCapabilitiesKHR) AsCPtr() *VkDisplayPlaneCapabilitiesKHR {
 	clone := newVkDisplayPlaneCapabilitiesKHR()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -34586,12 +34536,12 @@ func (x *VkDisplayModeParametersKHR) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDisplayModeParametersKHR) AsPtr() *VkDisplayModeParametersKHR { return x }
+func (x VkDisplayModeParametersKHR) AsPtr() *VkDisplayModeParametersKHR { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDisplayModeParametersKHR) AsCPtr() *VkDisplayModeParametersKHR {
+func (x VkDisplayModeParametersKHR) AsCPtr() *VkDisplayModeParametersKHR {
 	clone := newVkDisplayModeParametersKHR()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -34603,7 +34553,7 @@ func (x VkDisplayModeParametersKHR) VisibleRegion() VkExtent2D {
 
 // WithVisibleRegion copies the provided value into C space and stores it
 // at visibleRegion on VkDisplayModeParametersKHR
-func (x *VkDisplayModeParametersKHR) WithVisibleRegion(y VkExtent2D) *VkDisplayModeParametersKHR {
+func (x VkDisplayModeParametersKHR) WithVisibleRegion(y VkExtent2D) VkDisplayModeParametersKHR {
 	ptr := /* Identifier */ (*C.VkExtent2D)(&y)
 	x.visibleRegion = *ptr
 	return x
@@ -34617,7 +34567,7 @@ func (x VkDisplayModeParametersKHR) RefreshRate() uint32 {
 
 // WithRefreshRate copies the provided value into C space and stores it
 // at refreshRate on VkDisplayModeParametersKHR
-func (x *VkDisplayModeParametersKHR) WithRefreshRate(y uint32) *VkDisplayModeParametersKHR {
+func (x VkDisplayModeParametersKHR) WithRefreshRate(y uint32) VkDisplayModeParametersKHR {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.refreshRate = *ptr
 	return x
@@ -34644,12 +34594,12 @@ func (x *VkDisplaySurfaceCreateInfoKHR) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDisplaySurfaceCreateInfoKHR) AsPtr() *VkDisplaySurfaceCreateInfoKHR { return x }
+func (x VkDisplaySurfaceCreateInfoKHR) AsPtr() *VkDisplaySurfaceCreateInfoKHR { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDisplaySurfaceCreateInfoKHR) AsCPtr() *VkDisplaySurfaceCreateInfoKHR {
+func (x VkDisplaySurfaceCreateInfoKHR) AsCPtr() *VkDisplaySurfaceCreateInfoKHR {
 	clone := newVkDisplaySurfaceCreateInfoKHR()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -34661,13 +34611,13 @@ func (x VkDisplaySurfaceCreateInfoKHR) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkDisplaySurfaceCreateInfoKHR) WithDefaultSType() *VkDisplaySurfaceCreateInfoKHR {
+func (x VkDisplaySurfaceCreateInfoKHR) WithDefaultSType() VkDisplaySurfaceCreateInfoKHR {
 	return x.WithSType(VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkDisplaySurfaceCreateInfoKHR
-func (x *VkDisplaySurfaceCreateInfoKHR) WithSType(y VkStructureType) *VkDisplaySurfaceCreateInfoKHR {
+func (x VkDisplaySurfaceCreateInfoKHR) WithSType(y VkStructureType) VkDisplaySurfaceCreateInfoKHR {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -34681,7 +34631,7 @@ func (x VkDisplaySurfaceCreateInfoKHR) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkDisplaySurfaceCreateInfoKHR
-func (x *VkDisplaySurfaceCreateInfoKHR) WithPNext(y unsafe.Pointer) *VkDisplaySurfaceCreateInfoKHR {
+func (x VkDisplaySurfaceCreateInfoKHR) WithPNext(y unsafe.Pointer) VkDisplaySurfaceCreateInfoKHR {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -34695,7 +34645,7 @@ func (x VkDisplaySurfaceCreateInfoKHR) Flags() VkDisplaySurfaceCreateFlagsKHR {
 
 // WithFlags copies the provided value into C space and stores it
 // at flags on VkDisplaySurfaceCreateInfoKHR
-func (x *VkDisplaySurfaceCreateInfoKHR) WithFlags(y VkDisplaySurfaceCreateFlagsKHR) *VkDisplaySurfaceCreateInfoKHR {
+func (x VkDisplaySurfaceCreateInfoKHR) WithFlags(y VkDisplaySurfaceCreateFlagsKHR) VkDisplaySurfaceCreateInfoKHR {
 	ptr := /* Identifier */ (*C.VkDisplaySurfaceCreateFlagsKHR)(&y)
 	x.flags = *ptr
 	return x
@@ -34711,7 +34661,7 @@ func (x VkDisplaySurfaceCreateInfoKHR) DisplayMode() VkDisplayModeKHR {
 
 // WithDisplayMode copies the provided value into C space and stores it
 // at displayMode on VkDisplaySurfaceCreateInfoKHR
-func (x *VkDisplaySurfaceCreateInfoKHR) WithDisplayMode(y VkDisplayModeKHR) *VkDisplaySurfaceCreateInfoKHR {
+func (x VkDisplaySurfaceCreateInfoKHR) WithDisplayMode(y VkDisplayModeKHR) VkDisplaySurfaceCreateInfoKHR {
 	ptr := func(x *VkDisplayModeKHR) *C.VkDisplayModeKHR { /* Handle */
 		return (*C.VkDisplayModeKHR)(unsafe.Pointer(x))
 	}(&y)
@@ -34727,7 +34677,7 @@ func (x VkDisplaySurfaceCreateInfoKHR) PlaneIndex() uint32 {
 
 // WithPlaneIndex copies the provided value into C space and stores it
 // at planeIndex on VkDisplaySurfaceCreateInfoKHR
-func (x *VkDisplaySurfaceCreateInfoKHR) WithPlaneIndex(y uint32) *VkDisplaySurfaceCreateInfoKHR {
+func (x VkDisplaySurfaceCreateInfoKHR) WithPlaneIndex(y uint32) VkDisplaySurfaceCreateInfoKHR {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.planeIndex = *ptr
 	return x
@@ -34741,7 +34691,7 @@ func (x VkDisplaySurfaceCreateInfoKHR) PlaneStackIndex() uint32 {
 
 // WithPlaneStackIndex copies the provided value into C space and stores it
 // at planeStackIndex on VkDisplaySurfaceCreateInfoKHR
-func (x *VkDisplaySurfaceCreateInfoKHR) WithPlaneStackIndex(y uint32) *VkDisplaySurfaceCreateInfoKHR {
+func (x VkDisplaySurfaceCreateInfoKHR) WithPlaneStackIndex(y uint32) VkDisplaySurfaceCreateInfoKHR {
 	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
 	x.planeStackIndex = *ptr
 	return x
@@ -34755,7 +34705,7 @@ func (x VkDisplaySurfaceCreateInfoKHR) Transform() VkSurfaceTransformFlagBitsKHR
 
 // WithTransform copies the provided value into C space and stores it
 // at transform on VkDisplaySurfaceCreateInfoKHR
-func (x *VkDisplaySurfaceCreateInfoKHR) WithTransform(y VkSurfaceTransformFlagBitsKHR) *VkDisplaySurfaceCreateInfoKHR {
+func (x VkDisplaySurfaceCreateInfoKHR) WithTransform(y VkSurfaceTransformFlagBitsKHR) VkDisplaySurfaceCreateInfoKHR {
 	ptr := /* Identifier */ (*C.VkSurfaceTransformFlagBitsKHR)(&y)
 	x.transform = *ptr
 	return x
@@ -34769,7 +34719,7 @@ func (x VkDisplaySurfaceCreateInfoKHR) GlobalAlpha() float32 {
 
 // WithGlobalAlpha copies the provided value into C space and stores it
 // at globalAlpha on VkDisplaySurfaceCreateInfoKHR
-func (x *VkDisplaySurfaceCreateInfoKHR) WithGlobalAlpha(y float32) *VkDisplaySurfaceCreateInfoKHR {
+func (x VkDisplaySurfaceCreateInfoKHR) WithGlobalAlpha(y float32) VkDisplaySurfaceCreateInfoKHR {
 	ptr := func(x *float32) *C.float { /* Scalar */ return (*C.float)(unsafe.Pointer(x)) }(&y)
 	x.globalAlpha = *ptr
 	return x
@@ -34783,7 +34733,7 @@ func (x VkDisplaySurfaceCreateInfoKHR) AlphaMode() VkDisplayPlaneAlphaFlagBitsKH
 
 // WithAlphaMode copies the provided value into C space and stores it
 // at alphaMode on VkDisplaySurfaceCreateInfoKHR
-func (x *VkDisplaySurfaceCreateInfoKHR) WithAlphaMode(y VkDisplayPlaneAlphaFlagBitsKHR) *VkDisplaySurfaceCreateInfoKHR {
+func (x VkDisplaySurfaceCreateInfoKHR) WithAlphaMode(y VkDisplayPlaneAlphaFlagBitsKHR) VkDisplaySurfaceCreateInfoKHR {
 	ptr := /* Identifier */ (*C.VkDisplayPlaneAlphaFlagBitsKHR)(&y)
 	x.alphaMode = *ptr
 	return x
@@ -34797,7 +34747,7 @@ func (x VkDisplaySurfaceCreateInfoKHR) ImageExtent() VkExtent2D {
 
 // WithImageExtent copies the provided value into C space and stores it
 // at imageExtent on VkDisplaySurfaceCreateInfoKHR
-func (x *VkDisplaySurfaceCreateInfoKHR) WithImageExtent(y VkExtent2D) *VkDisplaySurfaceCreateInfoKHR {
+func (x VkDisplaySurfaceCreateInfoKHR) WithImageExtent(y VkExtent2D) VkDisplaySurfaceCreateInfoKHR {
 	ptr := /* Identifier */ (*C.VkExtent2D)(&y)
 	x.imageExtent = *ptr
 	return x
@@ -34947,12 +34897,12 @@ func (x *VkDisplayPresentInfoKHR) Free() {
 }
 
 // AsPtr returns the object as a pointer.
-func (x *VkDisplayPresentInfoKHR) AsPtr() *VkDisplayPresentInfoKHR { return x }
+func (x VkDisplayPresentInfoKHR) AsPtr() *VkDisplayPresentInfoKHR { return &x }
 
 // AsCPtr copies the object to C memory and returns the pointer.
-func (x *VkDisplayPresentInfoKHR) AsCPtr() *VkDisplayPresentInfoKHR {
+func (x VkDisplayPresentInfoKHR) AsCPtr() *VkDisplayPresentInfoKHR {
 	clone := newVkDisplayPresentInfoKHR()
-	*clone = *x
+	*clone = x
 	return clone
 }
 
@@ -34964,13 +34914,13 @@ func (x VkDisplayPresentInfoKHR) SType() VkStructureType {
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification if there is only a single value in the specification.
-func (x *VkDisplayPresentInfoKHR) WithDefaultSType() *VkDisplayPresentInfoKHR {
+func (x VkDisplayPresentInfoKHR) WithDefaultSType() VkDisplayPresentInfoKHR {
 	return x.WithSType(VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR)
 }
 
 // WithSType copies the provided value into C space and stores it
 // at sType on VkDisplayPresentInfoKHR
-func (x *VkDisplayPresentInfoKHR) WithSType(y VkStructureType) *VkDisplayPresentInfoKHR {
+func (x VkDisplayPresentInfoKHR) WithSType(y VkStructureType) VkDisplayPresentInfoKHR {
 	ptr := /* Identifier */ (*C.VkStructureType)(&y)
 	x.sType = *ptr
 	return x
@@ -34984,7 +34934,7 @@ func (x VkDisplayPresentInfoKHR) PNext() unsafe.Pointer {
 
 // WithPNext copies the provided value into C space and stores it
 // at pNext on VkDisplayPresentInfoKHR
-func (x *VkDisplayPresentInfoKHR) WithPNext(y unsafe.Pointer) *VkDisplayPresentInfoKHR {
+func (x VkDisplayPresentInfoKHR) WithPNext(y unsafe.Pointer) VkDisplayPresentInfoKHR {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
 	x.pNext = *ptr
 	return x
@@ -34998,7 +34948,7 @@ func (x VkDisplayPresentInfoKHR) SrcRect() VkRect2D {
 
 // WithSrcRect copies the provided value into C space and stores it
 // at srcRect on VkDisplayPresentInfoKHR
-func (x *VkDisplayPresentInfoKHR) WithSrcRect(y VkRect2D) *VkDisplayPresentInfoKHR {
+func (x VkDisplayPresentInfoKHR) WithSrcRect(y VkRect2D) VkDisplayPresentInfoKHR {
 	ptr := /* Identifier */ (*C.VkRect2D)(&y)
 	x.srcRect = *ptr
 	return x
@@ -35012,7 +34962,7 @@ func (x VkDisplayPresentInfoKHR) DstRect() VkRect2D {
 
 // WithDstRect copies the provided value into C space and stores it
 // at dstRect on VkDisplayPresentInfoKHR
-func (x *VkDisplayPresentInfoKHR) WithDstRect(y VkRect2D) *VkDisplayPresentInfoKHR {
+func (x VkDisplayPresentInfoKHR) WithDstRect(y VkRect2D) VkDisplayPresentInfoKHR {
 	ptr := /* Identifier */ (*C.VkRect2D)(&y)
 	x.dstRect = *ptr
 	return x
@@ -35026,7 +34976,7 @@ func (x VkDisplayPresentInfoKHR) Persistent() VkBool32 {
 
 // WithPersistent copies the provided value into C space and stores it
 // at persistent on VkDisplayPresentInfoKHR
-func (x *VkDisplayPresentInfoKHR) WithPersistent(y VkBool32) *VkDisplayPresentInfoKHR {
+func (x VkDisplayPresentInfoKHR) WithPersistent(y VkBool32) VkDisplayPresentInfoKHR {
 	ptr := /* Identifier */ (*C.VkBool32)(&y)
 	x.persistent = *ptr
 	return x

@@ -82,22 +82,21 @@ func (v Version) String() string {
 	return fmt.Sprintf("%d[v.%d.%d.%d/%d]", v, v.Major(), v.Minor(), v.Patch(), v.Variant())
 }
 
-func (x *VkApplicationInfo) WithApplication(name string, v Version) *VkApplicationInfo {
+func (x VkApplicationInfo) WithApplication(name string, v Version) VkApplicationInfo {
 	n := NullTerminatedPointer(name)
 	return x.
 		WithPApplicationName(n).
 		WithApplicationVersion(uint32(v))
 }
 
-func (x *VkApplicationInfo) WithEngine(name string, v Version) *VkApplicationInfo {
+func (x VkApplicationInfo) WithEngine(name string, v Version) VkApplicationInfo {
 	n := NullTerminatedPointer(name)
 	return x.
 		WithPEngineName(n).
-		WithEngineVersion(uint32(v)).
-		AsPtr()
+		WithEngineVersion(uint32(v))
 }
 
-func (x *VkInstanceCreateInfo) WithLayers(names []string) *VkInstanceCreateInfo {
+func (x VkInstanceCreateInfo) WithLayers(names []string) VkInstanceCreateInfo {
 	var cNames []*byte
 	for h := range names {
 		cNames = append(cNames, NullTerminatedPointer(names[h]))
@@ -107,7 +106,7 @@ func (x *VkInstanceCreateInfo) WithLayers(names []string) *VkInstanceCreateInfo 
 		WithEnabledLayerCount(uint32(len(cNames)))
 }
 
-func (x *VkInstanceCreateInfo) WithExtensions(names []string) *VkInstanceCreateInfo {
+func (x VkInstanceCreateInfo) WithExtensions(names []string) VkInstanceCreateInfo {
 	var cNames []*byte
 	for h := range names {
 		cNames = append(cNames, NullTerminatedPointer(names[h]))
