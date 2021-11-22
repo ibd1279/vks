@@ -533,9 +533,8 @@ type ExtensionElement struct {
 	// Name is required. Version name, used as the C preprocessor token under
 	// which the version’s interfaces are protected against multiple inclusion.
 	Name string `xml:"name,attr"`
-	// Number is required. Feature version number, usually a string interpreted
-	// as majorNumber.minorNumber.
-	Number string `xml:"number,attr"`
+	// Number is required. Extension version number.
+	Number int `xml:"number,attr"`
 	// SortOrder is optional. A decimal number which specifies an order relative
 	// to other feature tags when calling output generators. Defaults to 0
 	SortOrder int `xml:"sortorder,attr,omitempty"`
@@ -1024,6 +1023,7 @@ func (registryNode RegistryNode) String() string {
 	return fmt.Sprintf("%s(%v)", registryNode.Name(), registryNode.NodeType)
 }
 
+// RegistryNodeElementType is the type of a registry node.
 type RegistryNodeElementType int
 
 func (nodeType RegistryNodeElementType) String() string {
@@ -1080,31 +1080,62 @@ func (graph RegistryGraph) ApplyFeatureExtensions(name string) {
 	feature := node.FeatureElement()
 
 	for _, req := range feature.Requires {
-		for _, enum := range req.Enums {
-			if len(enum.Extends) > 0 {
-				grandParent := &RegistryNode{
-					NodeType: RegistryNodeEnum,
-				}
-				parent := graph[enum.Extends].EnumsParents()[0]
-				if parent.E.Type == EnumsElementBitmask {
-				} else {
-					baseValue := 1_000_000_000
-					rangeSize := 1_000
-					enumValue := func(extNumber, offset int) int {
-						return baseValue + (extNumber-1)*rangeSize + offset
-					}
-					if len(enum.Alias) == 0 && len(enum.Value) == 0 {
-						value := enumValue(enum.ExtensionNumber, enum.Offset)
-						enum.EnumElement.Value = fmt.Sprintf("%d", value)
-					}
-				}
-				grandParent.Element = enum.EnumElement
-				parent.N.AddParent(grandParent)
-			}
+		graph.applyRequiresElement(req, 0)
+	}
+}
+
+// ApplyExtensionExtensions processes the require and remove blocks for features in the XML.
+// The format for calculating enum extension values is defined in
+// https://www.khronos.org/registry/vulkan/specs/1.2/styleguide.html#_assigning_extension_token_values
+// The edges in the graph are updated by this method, but the graph map itself is not.
+// The included map is used to check if a feature or extension required by the feature block
+// is included.
+func (graph RegistryGraph) ApplyExtensionExtensions(name string, included map[string]bool) {
+	node := graph[name]
+	if node == nil {
+		return
+	}
+	extension := node.ExtensionElement()
+
+	for _, req := range extension.Requires {
+		if len(req.Feature) == 0 || included[req.Feature] {
+			graph.applyRequiresElement(req, extension.Number)
 		}
 	}
 }
 
+func (graph RegistryGraph) applyRequiresElement(element RequireElement, extensionNumber int) {
+	for _, enum := range element.Enums {
+		if len(enum.Extends) > 0 {
+			grandParent := &RegistryNode{
+				NodeType: RegistryNodeEnum,
+			}
+			parent := graph[enum.Extends].EnumsParents()[0]
+			if parent.E.Type == EnumsElementBitmask {
+			} else {
+				baseValue := 1_000_000_000
+				rangeSize := 1_000
+				enumValue := func(extNumber, offset int) int {
+					return baseValue + (extNumber-1)*rangeSize + offset
+				}
+				if len(enum.Alias) == 0 && len(enum.Value) == 0 {
+					extNumber := extensionNumber
+					if enum.ExtensionNumber > 0 {
+						extNumber = enum.ExtensionNumber
+					}
+					value := enumValue(extNumber, enum.Offset)
+					enum.EnumElement.Value = fmt.Sprintf("%d", value)
+				}
+			}
+			grandParent.Element = enum.EnumElement
+			parent.N.AddParent(grandParent)
+		}
+	}
+}
+
+// DepthFirstSearch performs a depth first search on the graph, calling `collect` for
+// any node with all the children visited. It is used to flatten / order the dependency
+// graph for generating the output file.
 func (graph RegistryGraph) DepthFirstSearch(starts []string, collect func([]*RegistryNode)) {
 	tracker := map[*RegistryNode]bool{}
 	enqueued := map[*RegistryNode]bool{}

@@ -12,17 +12,43 @@ import (
 	strip "github.com/grokify/html-strip-tags-go"
 )
 
-func main() {
-	registry := LoadRegistry("/usr/local/share/vulkan/registry/vk.xml")
-	graph, constants := registry.Graph()
-	graph.ApplyFeatureExtensions("VK_VERSION_1_0::vulkan")
-	graph.ApplyFeatureExtensions("VK_VERSION_1_1::vulkan")
-	graph.ApplyFeatureExtensions("VK_VERSION_1_2::vulkan")
+const registryPath = "/usr/local/share/vulkan/registry/vk.xml"
 
-	enabled := []string{
-		"VK_VERSION_1_0::vulkan",
-		"VK_VERSION_1_1::vulkan",
-		"VK_VERSION_1_2::vulkan",
+var (
+	enabledFeatures []string = []string{
+		"VK_VERSION_1_0",
+		"VK_VERSION_1_1",
+		"VK_VERSION_1_2",
+	}
+	enabledExtensions []string = []string{
+		"VK_KHR_surface",
+		"VK_KHR_swapchain",
+		"VK_KHR_display",
+		"VK_KHR_display_swapchain",
+	}
+)
+
+func main() {
+	enabledMap := make(map[string]bool, 0)
+	for _, v := range enabledFeatures {
+		enabledMap[v] = true
+	}
+	for _, v := range enabledExtensions {
+		enabledMap[v] = true
+	}
+
+	registry := LoadRegistry(registryPath)
+	graph, constants := registry.Graph()
+
+	enabled := make([]string, 0, len(enabledFeatures)+len(enabledExtensions))
+	for _, v := range enabledFeatures {
+		n := fmt.Sprintf("%s::vulkan", v)
+		graph.ApplyFeatureExtensions(n)
+		enabled = append(enabled, n)
+	}
+	for _, v := range enabledExtensions {
+		graph.ApplyExtensionExtensions(v, enabledMap)
+		enabled = append(enabled, v)
 	}
 
 	var data []interface{}

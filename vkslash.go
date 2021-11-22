@@ -296,6 +296,17 @@ const (
 	VK_STRUCTURE_TYPE_BUFFER_OPAQUE_CAPTURE_ADDRESS_CREATE_INFO               VkStructureType = 1000257002
 	VK_STRUCTURE_TYPE_MEMORY_OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO             VkStructureType = 1000257003
 	VK_STRUCTURE_TYPE_DEVICE_MEMORY_OPAQUE_CAPTURE_ADDRESS_INFO               VkStructureType = 1000257004
+	VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR                               VkStructureType = 1000001000
+	VK_STRUCTURE_TYPE_PRESENT_INFO_KHR                                        VkStructureType = 1000001001
+	VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_CAPABILITIES_KHR                   VkStructureType = 1000060007
+	VK_STRUCTURE_TYPE_IMAGE_SWAPCHAIN_CREATE_INFO_KHR                         VkStructureType = 1000060008
+	VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_SWAPCHAIN_INFO_KHR                    VkStructureType = 1000060009
+	VK_STRUCTURE_TYPE_ACQUIRE_NEXT_IMAGE_INFO_KHR                             VkStructureType = 1000060010
+	VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_INFO_KHR                           VkStructureType = 1000060011
+	VK_STRUCTURE_TYPE_DEVICE_GROUP_SWAPCHAIN_CREATE_INFO_KHR                  VkStructureType = 1000060012
+	VK_STRUCTURE_TYPE_DISPLAY_MODE_CREATE_INFO_KHR                            VkStructureType = 1000002000
+	VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR                         VkStructureType = 1000002001
+	VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR                                VkStructureType = 1000003000
 )
 
 var (
@@ -464,6 +475,17 @@ var (
 		VK_STRUCTURE_TYPE_BUFFER_OPAQUE_CAPTURE_ADDRESS_CREATE_INFO:               "VK_STRUCTURE_TYPE_BUFFER_OPAQUE_CAPTURE_ADDRESS_CREATE_INFO",
 		VK_STRUCTURE_TYPE_MEMORY_OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO:             "VK_STRUCTURE_TYPE_MEMORY_OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO",
 		VK_STRUCTURE_TYPE_DEVICE_MEMORY_OPAQUE_CAPTURE_ADDRESS_INFO:               "VK_STRUCTURE_TYPE_DEVICE_MEMORY_OPAQUE_CAPTURE_ADDRESS_INFO",
+		VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR:                               "VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR",
+		VK_STRUCTURE_TYPE_PRESENT_INFO_KHR:                                        "VK_STRUCTURE_TYPE_PRESENT_INFO_KHR",
+		VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_CAPABILITIES_KHR:                   "VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_CAPABILITIES_KHR",
+		VK_STRUCTURE_TYPE_IMAGE_SWAPCHAIN_CREATE_INFO_KHR:                         "VK_STRUCTURE_TYPE_IMAGE_SWAPCHAIN_CREATE_INFO_KHR",
+		VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_SWAPCHAIN_INFO_KHR:                    "VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_SWAPCHAIN_INFO_KHR",
+		VK_STRUCTURE_TYPE_ACQUIRE_NEXT_IMAGE_INFO_KHR:                             "VK_STRUCTURE_TYPE_ACQUIRE_NEXT_IMAGE_INFO_KHR",
+		VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_INFO_KHR:                           "VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_INFO_KHR",
+		VK_STRUCTURE_TYPE_DEVICE_GROUP_SWAPCHAIN_CREATE_INFO_KHR:                  "VK_STRUCTURE_TYPE_DEVICE_GROUP_SWAPCHAIN_CREATE_INFO_KHR",
+		VK_STRUCTURE_TYPE_DISPLAY_MODE_CREATE_INFO_KHR:                            "VK_STRUCTURE_TYPE_DISPLAY_MODE_CREATE_INFO_KHR",
+		VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR:                         "VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR",
+		VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR:                                "VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR",
 	}
 )
 
@@ -1158,6 +1180,10 @@ const (
 	VK_OBJECT_TYPE_COMMAND_POOL               VkObjectType = 25
 	VK_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION   VkObjectType = 1000156000
 	VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE VkObjectType = 1000085000
+	VK_OBJECT_TYPE_SURFACE_KHR                VkObjectType = 1000000000
+	VK_OBJECT_TYPE_SWAPCHAIN_KHR              VkObjectType = 1000001000
+	VK_OBJECT_TYPE_DISPLAY_KHR                VkObjectType = 1000002000
+	VK_OBJECT_TYPE_DISPLAY_MODE_KHR           VkObjectType = 1000002001
 )
 
 var (
@@ -1190,6 +1216,10 @@ var (
 		VK_OBJECT_TYPE_COMMAND_POOL:               "VK_OBJECT_TYPE_COMMAND_POOL",
 		VK_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION:   "VK_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION",
 		VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE: "VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE",
+		VK_OBJECT_TYPE_SURFACE_KHR:                "VK_OBJECT_TYPE_SURFACE_KHR",
+		VK_OBJECT_TYPE_SWAPCHAIN_KHR:              "VK_OBJECT_TYPE_SWAPCHAIN_KHR",
+		VK_OBJECT_TYPE_DISPLAY_KHR:                "VK_OBJECT_TYPE_DISPLAY_KHR",
+		VK_OBJECT_TYPE_DISPLAY_MODE_KHR:           "VK_OBJECT_TYPE_DISPLAY_MODE_KHR",
 	}
 )
 
@@ -1447,6 +1477,7 @@ const (
 	VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL                    VkImageLayout = 1000241001
 	VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL                 VkImageLayout = 1000241002
 	VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL                  VkImageLayout = 1000241003
+	VK_IMAGE_LAYOUT_PRESENT_SRC_KHR                            VkImageLayout = 1000001002
 )
 
 var (
@@ -1466,6 +1497,7 @@ var (
 		VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL:                    "VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL",
 		VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL:                 "VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL",
 		VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL:                  "VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL",
+		VK_IMAGE_LAYOUT_PRESENT_SRC_KHR:                            "VK_IMAGE_LAYOUT_PRESENT_SRC_KHR",
 	}
 )
 
@@ -2636,6 +2668,11 @@ const (
 	VK_ERROR_INVALID_EXTERNAL_HANDLE        VkResult = 1000072003
 	VK_ERROR_FRAGMENTATION                  VkResult = 1000161000
 	VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS VkResult = 1000257000
+	VK_ERROR_SURFACE_LOST_KHR               VkResult = 1000000000
+	VK_ERROR_NATIVE_WINDOW_IN_USE_KHR       VkResult = 1000000001
+	VK_SUBOPTIMAL_KHR                       VkResult = 1000001003
+	VK_ERROR_OUT_OF_DATE_KHR                VkResult = 1000001004
+	VK_ERROR_INCOMPATIBLE_DISPLAY_KHR       VkResult = 1000003001
 )
 
 var (
@@ -2663,6 +2700,11 @@ var (
 		VK_ERROR_INVALID_EXTERNAL_HANDLE:        "VK_ERROR_INVALID_EXTERNAL_HANDLE",
 		VK_ERROR_FRAGMENTATION:                  "VK_ERROR_FRAGMENTATION",
 		VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS: "VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS",
+		VK_ERROR_SURFACE_LOST_KHR:               "VK_ERROR_SURFACE_LOST_KHR",
+		VK_ERROR_NATIVE_WINDOW_IN_USE_KHR:       "VK_ERROR_NATIVE_WINDOW_IN_USE_KHR",
+		VK_SUBOPTIMAL_KHR:                       "VK_SUBOPTIMAL_KHR",
+		VK_ERROR_OUT_OF_DATE_KHR:                "VK_ERROR_OUT_OF_DATE_KHR",
+		VK_ERROR_INCOMPATIBLE_DISPLAY_KHR:       "VK_ERROR_INCOMPATIBLE_DISPLAY_KHR",
 	}
 )
 
@@ -32601,6 +32643,2418 @@ func VkSignalSemaphore(device VkDevice, pSignalInfo *VkSemaphoreSignalInfo) VkRe
 		return (**C.VkSemaphoreSignalInfo)(unsafe.Pointer(x))
 	}(&pSignalInfo)
 	ret := C.vkSignalSemaphore(*p0, *p1)
+	retPtr := /* Identifier */ (*VkResult)(&ret)
+	return *retPtr
+}
+
+// VkSurfaceKHR is a Handle to a vulkan resource.
+type VkSurfaceKHR C.VkSurfaceKHR
+
+type VkPresentModeKHR uint32
+
+const (
+	VK_PRESENT_MODE_IMMEDIATE_KHR    VkPresentModeKHR = 0
+	VK_PRESENT_MODE_MAILBOX_KHR      VkPresentModeKHR = 1
+	VK_PRESENT_MODE_FIFO_KHR         VkPresentModeKHR = 2
+	VK_PRESENT_MODE_FIFO_RELAXED_KHR VkPresentModeKHR = 3
+)
+
+var (
+	reverseVkPresentModeKHR map[VkPresentModeKHR]string = map[VkPresentModeKHR]string{
+		VK_PRESENT_MODE_IMMEDIATE_KHR:    "VK_PRESENT_MODE_IMMEDIATE_KHR",
+		VK_PRESENT_MODE_MAILBOX_KHR:      "VK_PRESENT_MODE_MAILBOX_KHR",
+		VK_PRESENT_MODE_FIFO_KHR:         "VK_PRESENT_MODE_FIFO_KHR",
+		VK_PRESENT_MODE_FIFO_RELAXED_KHR: "VK_PRESENT_MODE_FIFO_RELAXED_KHR",
+	}
+)
+
+func (x VkPresentModeKHR) String() string {
+	if s, ok := reverseVkPresentModeKHR[x]; ok {
+		return s
+	}
+	return fmt.Sprintf("VkPresentModeKHR=%d", x)
+}
+
+type VkCompositeAlphaFlagBitsKHR uint32
+
+const (
+	VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR          VkCompositeAlphaFlagBitsKHR = (1 << 0)
+	VK_COMPOSITE_ALPHA_PRE_MULTIPLIED_BIT_KHR  VkCompositeAlphaFlagBitsKHR = (1 << 1)
+	VK_COMPOSITE_ALPHA_POST_MULTIPLIED_BIT_KHR VkCompositeAlphaFlagBitsKHR = (1 << 2)
+	VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR         VkCompositeAlphaFlagBitsKHR = (1 << 3)
+)
+
+var (
+	reverseVkCompositeAlphaFlagBitsKHR map[VkCompositeAlphaFlagBitsKHR]string = map[VkCompositeAlphaFlagBitsKHR]string{
+		VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR:          "VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR",
+		VK_COMPOSITE_ALPHA_PRE_MULTIPLIED_BIT_KHR:  "VK_COMPOSITE_ALPHA_PRE_MULTIPLIED_BIT_KHR",
+		VK_COMPOSITE_ALPHA_POST_MULTIPLIED_BIT_KHR: "VK_COMPOSITE_ALPHA_POST_MULTIPLIED_BIT_KHR",
+		VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR:         "VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR",
+	}
+)
+
+func (x VkCompositeAlphaFlagBitsKHR) String() string {
+	if s, ok := reverseVkCompositeAlphaFlagBitsKHR[x]; ok {
+		return s
+	}
+	return fmt.Sprintf("VkCompositeAlphaFlagBitsKHR=%d", x)
+}
+
+type VkColorSpaceKHR uint32
+
+const (
+	VK_COLOR_SPACE_SRGB_NONLINEAR_KHR VkColorSpaceKHR = 0
+	VK_COLORSPACE_SRGB_NONLINEAR_KHR  VkColorSpaceKHR = VK_COLOR_SPACE_SRGB_NONLINEAR_KHR
+)
+
+var (
+	reverseVkColorSpaceKHR map[VkColorSpaceKHR]string = map[VkColorSpaceKHR]string{
+		VK_COLOR_SPACE_SRGB_NONLINEAR_KHR: "VK_COLOR_SPACE_SRGB_NONLINEAR_KHR",
+	}
+)
+
+func (x VkColorSpaceKHR) String() string {
+	if s, ok := reverseVkColorSpaceKHR[x]; ok {
+		return s
+	}
+	return fmt.Sprintf("VkColorSpaceKHR=%d", x)
+}
+
+type VkSurfaceTransformFlagBitsKHR uint32
+
+const (
+	VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR                     VkSurfaceTransformFlagBitsKHR = (1 << 0)
+	VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR                    VkSurfaceTransformFlagBitsKHR = (1 << 1)
+	VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR                   VkSurfaceTransformFlagBitsKHR = (1 << 2)
+	VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR                   VkSurfaceTransformFlagBitsKHR = (1 << 3)
+	VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_BIT_KHR            VkSurfaceTransformFlagBitsKHR = (1 << 4)
+	VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_90_BIT_KHR  VkSurfaceTransformFlagBitsKHR = (1 << 5)
+	VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_180_BIT_KHR VkSurfaceTransformFlagBitsKHR = (1 << 6)
+	VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_270_BIT_KHR VkSurfaceTransformFlagBitsKHR = (1 << 7)
+	VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR                      VkSurfaceTransformFlagBitsKHR = (1 << 8)
+)
+
+var (
+	reverseVkSurfaceTransformFlagBitsKHR map[VkSurfaceTransformFlagBitsKHR]string = map[VkSurfaceTransformFlagBitsKHR]string{
+		VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR:                     "VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR",
+		VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR:                    "VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR",
+		VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR:                   "VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR",
+		VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR:                   "VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR",
+		VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_BIT_KHR:            "VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_BIT_KHR",
+		VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_90_BIT_KHR:  "VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_90_BIT_KHR",
+		VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_180_BIT_KHR: "VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_180_BIT_KHR",
+		VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_270_BIT_KHR: "VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_270_BIT_KHR",
+		VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR:                      "VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR",
+	}
+)
+
+func (x VkSurfaceTransformFlagBitsKHR) String() string {
+	if s, ok := reverseVkSurfaceTransformFlagBitsKHR[x]; ok {
+		return s
+	}
+	return fmt.Sprintf("VkSurfaceTransformFlagBitsKHR=%d", x)
+}
+
+type VkCompositeAlphaFlagsKHR VkFlags
+
+type VkSurfaceTransformFlagsKHR VkFlags
+
+//VkSurfaceCapabilitiesKHR provides a go interface for VkSurfaceCapabilitiesKHR.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSurfaceCapabilitiesKHR.html
+type VkSurfaceCapabilitiesKHR C.struct_VkSurfaceCapabilitiesKHR
+
+// NewVkSurfaceCapabilitiesKHR allocates an instance of this struct in the C memory instead
+// of the Go memory.
+func newVkSurfaceCapabilitiesKHR() *VkSurfaceCapabilitiesKHR {
+	sz := unsafe.Sizeof(VkSurfaceCapabilitiesKHR{})
+	ptr := C.malloc(C.ulong(sz))
+	C.memset(ptr, 0, C.ulong(sz))
+	return (*VkSurfaceCapabilitiesKHR)(ptr)
+}
+
+// Free releases the memory allocated by the NewVkSurfaceCapabilitiesKHR method.
+// It does not free pointers stored in the structure. It should only
+// be used on CPtr instances.
+func (x *VkSurfaceCapabilitiesKHR) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsPtr returns the object as a pointer.
+func (x *VkSurfaceCapabilitiesKHR) AsPtr() *VkSurfaceCapabilitiesKHR { return x }
+
+// AsCPtr copies the object to C memory and returns the pointer.
+func (x *VkSurfaceCapabilitiesKHR) AsCPtr() *VkSurfaceCapabilitiesKHR {
+	clone := newVkSurfaceCapabilitiesKHR()
+	*clone = *x
+	return clone
+}
+
+// MinImageCount returns the value of minImageCount from VkSurfaceCapabilitiesKHR
+func (x VkSurfaceCapabilitiesKHR) MinImageCount() uint32 {
+	ptr := func(x *C.uint) *uint32 { /* Scalar */ return (*uint32)(unsafe.Pointer(x)) }(&x.minImageCount)
+	return *ptr
+}
+
+// MaxImageCount returns the value of maxImageCount from VkSurfaceCapabilitiesKHR
+func (x VkSurfaceCapabilitiesKHR) MaxImageCount() uint32 {
+	ptr := func(x *C.uint) *uint32 { /* Scalar */ return (*uint32)(unsafe.Pointer(x)) }(&x.maxImageCount)
+	return *ptr
+}
+
+// CurrentExtent returns the value of currentExtent from VkSurfaceCapabilitiesKHR
+func (x VkSurfaceCapabilitiesKHR) CurrentExtent() VkExtent2D {
+	ptr := /* Identifier */ (*VkExtent2D)(&x.currentExtent)
+	return *ptr
+}
+
+// MinImageExtent returns the value of minImageExtent from VkSurfaceCapabilitiesKHR
+func (x VkSurfaceCapabilitiesKHR) MinImageExtent() VkExtent2D {
+	ptr := /* Identifier */ (*VkExtent2D)(&x.minImageExtent)
+	return *ptr
+}
+
+// MaxImageExtent returns the value of maxImageExtent from VkSurfaceCapabilitiesKHR
+func (x VkSurfaceCapabilitiesKHR) MaxImageExtent() VkExtent2D {
+	ptr := /* Identifier */ (*VkExtent2D)(&x.maxImageExtent)
+	return *ptr
+}
+
+// MaxImageArrayLayers returns the value of maxImageArrayLayers from VkSurfaceCapabilitiesKHR
+func (x VkSurfaceCapabilitiesKHR) MaxImageArrayLayers() uint32 {
+	ptr := func(x *C.uint) *uint32 { /* Scalar */ return (*uint32)(unsafe.Pointer(x)) }(&x.maxImageArrayLayers)
+	return *ptr
+}
+
+// SupportedTransforms returns the value of supportedTransforms from VkSurfaceCapabilitiesKHR
+func (x VkSurfaceCapabilitiesKHR) SupportedTransforms() VkSurfaceTransformFlagsKHR {
+	ptr := /* Identifier */ (*VkSurfaceTransformFlagsKHR)(&x.supportedTransforms)
+	return *ptr
+}
+
+// CurrentTransform returns the value of currentTransform from VkSurfaceCapabilitiesKHR
+func (x VkSurfaceCapabilitiesKHR) CurrentTransform() VkSurfaceTransformFlagBitsKHR {
+	ptr := /* Identifier */ (*VkSurfaceTransformFlagBitsKHR)(&x.currentTransform)
+	return *ptr
+}
+
+// SupportedCompositeAlpha returns the value of supportedCompositeAlpha from VkSurfaceCapabilitiesKHR
+func (x VkSurfaceCapabilitiesKHR) SupportedCompositeAlpha() VkCompositeAlphaFlagsKHR {
+	ptr := /* Identifier */ (*VkCompositeAlphaFlagsKHR)(&x.supportedCompositeAlpha)
+	return *ptr
+}
+
+// SupportedUsageFlags returns the value of supportedUsageFlags from VkSurfaceCapabilitiesKHR
+func (x VkSurfaceCapabilitiesKHR) SupportedUsageFlags() VkImageUsageFlags {
+	ptr := /* Identifier */ (*VkImageUsageFlags)(&x.supportedUsageFlags)
+	return *ptr
+}
+
+//VkSurfaceFormatKHR provides a go interface for VkSurfaceFormatKHR.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSurfaceFormatKHR.html
+type VkSurfaceFormatKHR C.struct_VkSurfaceFormatKHR
+
+// NewVkSurfaceFormatKHR allocates an instance of this struct in the C memory instead
+// of the Go memory.
+func newVkSurfaceFormatKHR() *VkSurfaceFormatKHR {
+	sz := unsafe.Sizeof(VkSurfaceFormatKHR{})
+	ptr := C.malloc(C.ulong(sz))
+	C.memset(ptr, 0, C.ulong(sz))
+	return (*VkSurfaceFormatKHR)(ptr)
+}
+
+// Free releases the memory allocated by the NewVkSurfaceFormatKHR method.
+// It does not free pointers stored in the structure. It should only
+// be used on CPtr instances.
+func (x *VkSurfaceFormatKHR) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsPtr returns the object as a pointer.
+func (x *VkSurfaceFormatKHR) AsPtr() *VkSurfaceFormatKHR { return x }
+
+// AsCPtr copies the object to C memory and returns the pointer.
+func (x *VkSurfaceFormatKHR) AsCPtr() *VkSurfaceFormatKHR {
+	clone := newVkSurfaceFormatKHR()
+	*clone = *x
+	return clone
+}
+
+// Format returns the value of format from VkSurfaceFormatKHR
+func (x VkSurfaceFormatKHR) Format() VkFormat {
+	ptr := /* Identifier */ (*VkFormat)(&x.format)
+	return *ptr
+}
+
+// ColorSpace returns the value of colorSpace from VkSurfaceFormatKHR
+func (x VkSurfaceFormatKHR) ColorSpace() VkColorSpaceKHR {
+	ptr := /* Identifier */ (*VkColorSpaceKHR)(&x.colorSpace)
+	return *ptr
+}
+
+func VkGetPhysicalDeviceSurfacePresentModesKHR(physicalDevice VkPhysicalDevice, surface VkSurfaceKHR, pPresentModeCount *uint32, pPresentModes []VkPresentModeKHR) VkResult {
+	p0 := func(x *VkPhysicalDevice) *C.VkPhysicalDevice { /* Handle */
+		return (*C.VkPhysicalDevice)(unsafe.Pointer(x))
+	}(&physicalDevice)
+	p1 := func(x *VkSurfaceKHR) *C.VkSurfaceKHR { /* Handle */ return (*C.VkSurfaceKHR)(unsafe.Pointer(x)) }(&surface)
+	p2 := func(x **uint32) **C.uint { /* Pointer */ return (**C.uint)(unsafe.Pointer(x)) }(&pPresentModeCount)
+	p3 := func(x *[]VkPresentModeKHR) **C.VkPresentModeKHR { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.VkPresentModeKHR)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.VkPresentModeKHR)(unsafe.Pointer((&ptr)))
+	}(&pPresentModes)
+	ret := C.vkGetPhysicalDeviceSurfacePresentModesKHR(*p0, *p1, *p2, *p3)
+	retPtr := /* Identifier */ (*VkResult)(&ret)
+	return *retPtr
+}
+
+func VkGetPhysicalDeviceSurfaceFormatsKHR(physicalDevice VkPhysicalDevice, surface VkSurfaceKHR, pSurfaceFormatCount *uint32, pSurfaceFormats []VkSurfaceFormatKHR) VkResult {
+	p0 := func(x *VkPhysicalDevice) *C.VkPhysicalDevice { /* Handle */
+		return (*C.VkPhysicalDevice)(unsafe.Pointer(x))
+	}(&physicalDevice)
+	p1 := func(x *VkSurfaceKHR) *C.VkSurfaceKHR { /* Handle */ return (*C.VkSurfaceKHR)(unsafe.Pointer(x)) }(&surface)
+	p2 := func(x **uint32) **C.uint { /* Pointer */ return (**C.uint)(unsafe.Pointer(x)) }(&pSurfaceFormatCount)
+	p3 := func(x *[]VkSurfaceFormatKHR) **C.VkSurfaceFormatKHR { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.VkSurfaceFormatKHR)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.VkSurfaceFormatKHR)(unsafe.Pointer((&ptr)))
+	}(&pSurfaceFormats)
+	ret := C.vkGetPhysicalDeviceSurfaceFormatsKHR(*p0, *p1, *p2, *p3)
+	retPtr := /* Identifier */ (*VkResult)(&ret)
+	return *retPtr
+}
+
+func VkGetPhysicalDeviceSurfaceCapabilitiesKHR(physicalDevice VkPhysicalDevice, surface VkSurfaceKHR, pSurfaceCapabilities *VkSurfaceCapabilitiesKHR) VkResult {
+	p0 := func(x *VkPhysicalDevice) *C.VkPhysicalDevice { /* Handle */
+		return (*C.VkPhysicalDevice)(unsafe.Pointer(x))
+	}(&physicalDevice)
+	p1 := func(x *VkSurfaceKHR) *C.VkSurfaceKHR { /* Handle */ return (*C.VkSurfaceKHR)(unsafe.Pointer(x)) }(&surface)
+	p2 := func(x **VkSurfaceCapabilitiesKHR) **C.VkSurfaceCapabilitiesKHR { /* Pointer */
+		return (**C.VkSurfaceCapabilitiesKHR)(unsafe.Pointer(x))
+	}(&pSurfaceCapabilities)
+	ret := C.vkGetPhysicalDeviceSurfaceCapabilitiesKHR(*p0, *p1, *p2)
+	retPtr := /* Identifier */ (*VkResult)(&ret)
+	return *retPtr
+}
+
+func VkGetPhysicalDeviceSurfaceSupportKHR(physicalDevice VkPhysicalDevice, queueFamilyIndex uint32, surface VkSurfaceKHR, pSupported *VkBool32) VkResult {
+	p0 := func(x *VkPhysicalDevice) *C.VkPhysicalDevice { /* Handle */
+		return (*C.VkPhysicalDevice)(unsafe.Pointer(x))
+	}(&physicalDevice)
+	p1 := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&queueFamilyIndex)
+	p2 := func(x *VkSurfaceKHR) *C.VkSurfaceKHR { /* Handle */ return (*C.VkSurfaceKHR)(unsafe.Pointer(x)) }(&surface)
+	p3 := func(x **VkBool32) **C.VkBool32 { /* Pointer */ return (**C.VkBool32)(unsafe.Pointer(x)) }(&pSupported)
+	ret := C.vkGetPhysicalDeviceSurfaceSupportKHR(*p0, *p1, *p2, *p3)
+	retPtr := /* Identifier */ (*VkResult)(&ret)
+	return *retPtr
+}
+
+func VkDestroySurfaceKHR(instance VkInstance, surface VkSurfaceKHR, pAllocator *VkAllocationCallbacks) {
+	p0 := func(x *VkInstance) *C.VkInstance { /* Handle */ return (*C.VkInstance)(unsafe.Pointer(x)) }(&instance)
+	p1 := func(x *VkSurfaceKHR) *C.VkSurfaceKHR { /* Handle */ return (*C.VkSurfaceKHR)(unsafe.Pointer(x)) }(&surface)
+	p2 := func(x **VkAllocationCallbacks) **C.VkAllocationCallbacks { /* Pointer */
+		return (**C.VkAllocationCallbacks)(unsafe.Pointer(x))
+	}(&pAllocator)
+	C.vkDestroySurfaceKHR(*p0, *p1, *p2)
+}
+
+// VkSwapchainKHR is a Handle to a vulkan resource.
+type VkSwapchainKHR C.VkSwapchainKHR
+
+type VkSwapchainCreateFlagBitsKHR uint32
+
+const (
+	VK_SWAPCHAIN_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR VkSwapchainCreateFlagBitsKHR = (1 << 0)
+	VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR                   VkSwapchainCreateFlagBitsKHR = (1 << 1)
+)
+
+var (
+	reverseVkSwapchainCreateFlagBitsKHR map[VkSwapchainCreateFlagBitsKHR]string = map[VkSwapchainCreateFlagBitsKHR]string{
+		VK_SWAPCHAIN_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR: "VK_SWAPCHAIN_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR",
+		VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR:                   "VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR",
+	}
+)
+
+func (x VkSwapchainCreateFlagBitsKHR) String() string {
+	if s, ok := reverseVkSwapchainCreateFlagBitsKHR[x]; ok {
+		return s
+	}
+	return fmt.Sprintf("VkSwapchainCreateFlagBitsKHR=%d", x)
+}
+
+type VkDeviceGroupPresentModeFlagBitsKHR uint32
+
+const (
+	VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR              VkDeviceGroupPresentModeFlagBitsKHR = (1 << 0)
+	VK_DEVICE_GROUP_PRESENT_MODE_REMOTE_BIT_KHR             VkDeviceGroupPresentModeFlagBitsKHR = (1 << 1)
+	VK_DEVICE_GROUP_PRESENT_MODE_SUM_BIT_KHR                VkDeviceGroupPresentModeFlagBitsKHR = (1 << 2)
+	VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_MULTI_DEVICE_BIT_KHR VkDeviceGroupPresentModeFlagBitsKHR = (1 << 3)
+)
+
+var (
+	reverseVkDeviceGroupPresentModeFlagBitsKHR map[VkDeviceGroupPresentModeFlagBitsKHR]string = map[VkDeviceGroupPresentModeFlagBitsKHR]string{
+		VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR:              "VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR",
+		VK_DEVICE_GROUP_PRESENT_MODE_REMOTE_BIT_KHR:             "VK_DEVICE_GROUP_PRESENT_MODE_REMOTE_BIT_KHR",
+		VK_DEVICE_GROUP_PRESENT_MODE_SUM_BIT_KHR:                "VK_DEVICE_GROUP_PRESENT_MODE_SUM_BIT_KHR",
+		VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_MULTI_DEVICE_BIT_KHR: "VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_MULTI_DEVICE_BIT_KHR",
+	}
+)
+
+func (x VkDeviceGroupPresentModeFlagBitsKHR) String() string {
+	if s, ok := reverseVkDeviceGroupPresentModeFlagBitsKHR[x]; ok {
+		return s
+	}
+	return fmt.Sprintf("VkDeviceGroupPresentModeFlagBitsKHR=%d", x)
+}
+
+type VkDeviceGroupPresentModeFlagsKHR VkFlags
+
+type VkSwapchainCreateFlagsKHR VkFlags
+
+//VkBindImageMemorySwapchainInfoKHR provides a go interface for VkBindImageMemorySwapchainInfoKHR.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBindImageMemorySwapchainInfoKHR.html
+type VkBindImageMemorySwapchainInfoKHR C.struct_VkBindImageMemorySwapchainInfoKHR
+
+// NewVkBindImageMemorySwapchainInfoKHR allocates an instance of this struct in the C memory instead
+// of the Go memory.
+func newVkBindImageMemorySwapchainInfoKHR() *VkBindImageMemorySwapchainInfoKHR {
+	sz := unsafe.Sizeof(VkBindImageMemorySwapchainInfoKHR{})
+	ptr := C.malloc(C.ulong(sz))
+	C.memset(ptr, 0, C.ulong(sz))
+	return (*VkBindImageMemorySwapchainInfoKHR)(ptr)
+}
+
+// Free releases the memory allocated by the NewVkBindImageMemorySwapchainInfoKHR method.
+// It does not free pointers stored in the structure. It should only
+// be used on CPtr instances.
+func (x *VkBindImageMemorySwapchainInfoKHR) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsPtr returns the object as a pointer.
+func (x *VkBindImageMemorySwapchainInfoKHR) AsPtr() *VkBindImageMemorySwapchainInfoKHR { return x }
+
+// AsCPtr copies the object to C memory and returns the pointer.
+func (x *VkBindImageMemorySwapchainInfoKHR) AsCPtr() *VkBindImageMemorySwapchainInfoKHR {
+	clone := newVkBindImageMemorySwapchainInfoKHR()
+	*clone = *x
+	return clone
+}
+
+// SType returns the value of sType from VkBindImageMemorySwapchainInfoKHR
+func (x VkBindImageMemorySwapchainInfoKHR) SType() VkStructureType {
+	ptr := /* Identifier */ (*VkStructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification if there is only a single value in the specification.
+func (x *VkBindImageMemorySwapchainInfoKHR) WithDefaultSType() *VkBindImageMemorySwapchainInfoKHR {
+	return x.WithSType(VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_SWAPCHAIN_INFO_KHR)
+}
+
+// WithSType copies the provided value into C space and stores it
+// at sType on VkBindImageMemorySwapchainInfoKHR
+func (x *VkBindImageMemorySwapchainInfoKHR) WithSType(y VkStructureType) *VkBindImageMemorySwapchainInfoKHR {
+	ptr := /* Identifier */ (*C.VkStructureType)(&y)
+	x.sType = *ptr
+	return x
+}
+
+// PNext returns the value of pNext from VkBindImageMemorySwapchainInfoKHR
+func (x VkBindImageMemorySwapchainInfoKHR) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext copies the provided value into C space and stores it
+// at pNext on VkBindImageMemorySwapchainInfoKHR
+func (x *VkBindImageMemorySwapchainInfoKHR) WithPNext(y unsafe.Pointer) *VkBindImageMemorySwapchainInfoKHR {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
+	x.pNext = *ptr
+	return x
+}
+
+// Swapchain returns the value of swapchain from VkBindImageMemorySwapchainInfoKHR
+func (x VkBindImageMemorySwapchainInfoKHR) Swapchain() VkSwapchainKHR {
+	ptr := func(x *C.VkSwapchainKHR) *VkSwapchainKHR { /* Handle */ return (*VkSwapchainKHR)(unsafe.Pointer(x)) }(&x.swapchain)
+	return *ptr
+}
+
+// WithSwapchain copies the provided value into C space and stores it
+// at swapchain on VkBindImageMemorySwapchainInfoKHR
+func (x *VkBindImageMemorySwapchainInfoKHR) WithSwapchain(y VkSwapchainKHR) *VkBindImageMemorySwapchainInfoKHR {
+	ptr := func(x *VkSwapchainKHR) *C.VkSwapchainKHR { /* Handle */ return (*C.VkSwapchainKHR)(unsafe.Pointer(x)) }(&y)
+	x.swapchain = *ptr
+	return x
+}
+
+// ImageIndex returns the value of imageIndex from VkBindImageMemorySwapchainInfoKHR
+func (x VkBindImageMemorySwapchainInfoKHR) ImageIndex() uint32 {
+	ptr := func(x *C.uint) *uint32 { /* Scalar */ return (*uint32)(unsafe.Pointer(x)) }(&x.imageIndex)
+	return *ptr
+}
+
+// WithImageIndex copies the provided value into C space and stores it
+// at imageIndex on VkBindImageMemorySwapchainInfoKHR
+func (x *VkBindImageMemorySwapchainInfoKHR) WithImageIndex(y uint32) *VkBindImageMemorySwapchainInfoKHR {
+	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
+	x.imageIndex = *ptr
+	return x
+}
+
+//VkSwapchainCreateInfoKHR provides a go interface for VkSwapchainCreateInfoKHR.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSwapchainCreateInfoKHR.html
+type VkSwapchainCreateInfoKHR C.struct_VkSwapchainCreateInfoKHR
+
+// NewVkSwapchainCreateInfoKHR allocates an instance of this struct in the C memory instead
+// of the Go memory.
+func newVkSwapchainCreateInfoKHR() *VkSwapchainCreateInfoKHR {
+	sz := unsafe.Sizeof(VkSwapchainCreateInfoKHR{})
+	ptr := C.malloc(C.ulong(sz))
+	C.memset(ptr, 0, C.ulong(sz))
+	return (*VkSwapchainCreateInfoKHR)(ptr)
+}
+
+// Free releases the memory allocated by the NewVkSwapchainCreateInfoKHR method.
+// It does not free pointers stored in the structure. It should only
+// be used on CPtr instances.
+func (x *VkSwapchainCreateInfoKHR) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsPtr returns the object as a pointer.
+func (x *VkSwapchainCreateInfoKHR) AsPtr() *VkSwapchainCreateInfoKHR { return x }
+
+// AsCPtr copies the object to C memory and returns the pointer.
+func (x *VkSwapchainCreateInfoKHR) AsCPtr() *VkSwapchainCreateInfoKHR {
+	clone := newVkSwapchainCreateInfoKHR()
+	*clone = *x
+	return clone
+}
+
+// SType returns the value of sType from VkSwapchainCreateInfoKHR
+func (x VkSwapchainCreateInfoKHR) SType() VkStructureType {
+	ptr := /* Identifier */ (*VkStructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification if there is only a single value in the specification.
+func (x *VkSwapchainCreateInfoKHR) WithDefaultSType() *VkSwapchainCreateInfoKHR {
+	return x.WithSType(VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR)
+}
+
+// WithSType copies the provided value into C space and stores it
+// at sType on VkSwapchainCreateInfoKHR
+func (x *VkSwapchainCreateInfoKHR) WithSType(y VkStructureType) *VkSwapchainCreateInfoKHR {
+	ptr := /* Identifier */ (*C.VkStructureType)(&y)
+	x.sType = *ptr
+	return x
+}
+
+// PNext returns the value of pNext from VkSwapchainCreateInfoKHR
+func (x VkSwapchainCreateInfoKHR) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext copies the provided value into C space and stores it
+// at pNext on VkSwapchainCreateInfoKHR
+func (x *VkSwapchainCreateInfoKHR) WithPNext(y unsafe.Pointer) *VkSwapchainCreateInfoKHR {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
+	x.pNext = *ptr
+	return x
+}
+
+// Flags returns the value of flags from VkSwapchainCreateInfoKHR
+func (x VkSwapchainCreateInfoKHR) Flags() VkSwapchainCreateFlagsKHR {
+	ptr := /* Identifier */ (*VkSwapchainCreateFlagsKHR)(&x.flags)
+	return *ptr
+}
+
+// WithFlags copies the provided value into C space and stores it
+// at flags on VkSwapchainCreateInfoKHR
+func (x *VkSwapchainCreateInfoKHR) WithFlags(y VkSwapchainCreateFlagsKHR) *VkSwapchainCreateInfoKHR {
+	ptr := /* Identifier */ (*C.VkSwapchainCreateFlagsKHR)(&y)
+	x.flags = *ptr
+	return x
+}
+
+// Surface returns the value of surface from VkSwapchainCreateInfoKHR
+func (x VkSwapchainCreateInfoKHR) Surface() VkSurfaceKHR {
+	ptr := func(x *C.VkSurfaceKHR) *VkSurfaceKHR { /* Handle */ return (*VkSurfaceKHR)(unsafe.Pointer(x)) }(&x.surface)
+	return *ptr
+}
+
+// WithSurface copies the provided value into C space and stores it
+// at surface on VkSwapchainCreateInfoKHR
+func (x *VkSwapchainCreateInfoKHR) WithSurface(y VkSurfaceKHR) *VkSwapchainCreateInfoKHR {
+	ptr := func(x *VkSurfaceKHR) *C.VkSurfaceKHR { /* Handle */ return (*C.VkSurfaceKHR)(unsafe.Pointer(x)) }(&y)
+	x.surface = *ptr
+	return x
+}
+
+// MinImageCount returns the value of minImageCount from VkSwapchainCreateInfoKHR
+func (x VkSwapchainCreateInfoKHR) MinImageCount() uint32 {
+	ptr := func(x *C.uint) *uint32 { /* Scalar */ return (*uint32)(unsafe.Pointer(x)) }(&x.minImageCount)
+	return *ptr
+}
+
+// WithMinImageCount copies the provided value into C space and stores it
+// at minImageCount on VkSwapchainCreateInfoKHR
+func (x *VkSwapchainCreateInfoKHR) WithMinImageCount(y uint32) *VkSwapchainCreateInfoKHR {
+	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
+	x.minImageCount = *ptr
+	return x
+}
+
+// ImageFormat returns the value of imageFormat from VkSwapchainCreateInfoKHR
+func (x VkSwapchainCreateInfoKHR) ImageFormat() VkFormat {
+	ptr := /* Identifier */ (*VkFormat)(&x.imageFormat)
+	return *ptr
+}
+
+// WithImageFormat copies the provided value into C space and stores it
+// at imageFormat on VkSwapchainCreateInfoKHR
+func (x *VkSwapchainCreateInfoKHR) WithImageFormat(y VkFormat) *VkSwapchainCreateInfoKHR {
+	ptr := /* Identifier */ (*C.VkFormat)(&y)
+	x.imageFormat = *ptr
+	return x
+}
+
+// ImageColorSpace returns the value of imageColorSpace from VkSwapchainCreateInfoKHR
+func (x VkSwapchainCreateInfoKHR) ImageColorSpace() VkColorSpaceKHR {
+	ptr := /* Identifier */ (*VkColorSpaceKHR)(&x.imageColorSpace)
+	return *ptr
+}
+
+// WithImageColorSpace copies the provided value into C space and stores it
+// at imageColorSpace on VkSwapchainCreateInfoKHR
+func (x *VkSwapchainCreateInfoKHR) WithImageColorSpace(y VkColorSpaceKHR) *VkSwapchainCreateInfoKHR {
+	ptr := /* Identifier */ (*C.VkColorSpaceKHR)(&y)
+	x.imageColorSpace = *ptr
+	return x
+}
+
+// ImageExtent returns the value of imageExtent from VkSwapchainCreateInfoKHR
+func (x VkSwapchainCreateInfoKHR) ImageExtent() VkExtent2D {
+	ptr := /* Identifier */ (*VkExtent2D)(&x.imageExtent)
+	return *ptr
+}
+
+// WithImageExtent copies the provided value into C space and stores it
+// at imageExtent on VkSwapchainCreateInfoKHR
+func (x *VkSwapchainCreateInfoKHR) WithImageExtent(y VkExtent2D) *VkSwapchainCreateInfoKHR {
+	ptr := /* Identifier */ (*C.VkExtent2D)(&y)
+	x.imageExtent = *ptr
+	return x
+}
+
+// ImageArrayLayers returns the value of imageArrayLayers from VkSwapchainCreateInfoKHR
+func (x VkSwapchainCreateInfoKHR) ImageArrayLayers() uint32 {
+	ptr := func(x *C.uint) *uint32 { /* Scalar */ return (*uint32)(unsafe.Pointer(x)) }(&x.imageArrayLayers)
+	return *ptr
+}
+
+// WithImageArrayLayers copies the provided value into C space and stores it
+// at imageArrayLayers on VkSwapchainCreateInfoKHR
+func (x *VkSwapchainCreateInfoKHR) WithImageArrayLayers(y uint32) *VkSwapchainCreateInfoKHR {
+	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
+	x.imageArrayLayers = *ptr
+	return x
+}
+
+// ImageUsage returns the value of imageUsage from VkSwapchainCreateInfoKHR
+func (x VkSwapchainCreateInfoKHR) ImageUsage() VkImageUsageFlags {
+	ptr := /* Identifier */ (*VkImageUsageFlags)(&x.imageUsage)
+	return *ptr
+}
+
+// WithImageUsage copies the provided value into C space and stores it
+// at imageUsage on VkSwapchainCreateInfoKHR
+func (x *VkSwapchainCreateInfoKHR) WithImageUsage(y VkImageUsageFlags) *VkSwapchainCreateInfoKHR {
+	ptr := /* Identifier */ (*C.VkImageUsageFlags)(&y)
+	x.imageUsage = *ptr
+	return x
+}
+
+// ImageSharingMode returns the value of imageSharingMode from VkSwapchainCreateInfoKHR
+func (x VkSwapchainCreateInfoKHR) ImageSharingMode() VkSharingMode {
+	ptr := /* Identifier */ (*VkSharingMode)(&x.imageSharingMode)
+	return *ptr
+}
+
+// WithImageSharingMode copies the provided value into C space and stores it
+// at imageSharingMode on VkSwapchainCreateInfoKHR
+func (x *VkSwapchainCreateInfoKHR) WithImageSharingMode(y VkSharingMode) *VkSwapchainCreateInfoKHR {
+	ptr := /* Identifier */ (*C.VkSharingMode)(&y)
+	x.imageSharingMode = *ptr
+	return x
+}
+
+// QueueFamilyIndexCount returns the value of queueFamilyIndexCount from VkSwapchainCreateInfoKHR
+func (x VkSwapchainCreateInfoKHR) QueueFamilyIndexCount() uint32 {
+	ptr := func(x *C.uint) *uint32 { /* Scalar */ return (*uint32)(unsafe.Pointer(x)) }(&x.queueFamilyIndexCount)
+	return *ptr
+}
+
+// WithQueueFamilyIndexCount copies the provided value into C space and stores it
+// at queueFamilyIndexCount on VkSwapchainCreateInfoKHR
+func (x *VkSwapchainCreateInfoKHR) WithQueueFamilyIndexCount(y uint32) *VkSwapchainCreateInfoKHR {
+	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
+	x.queueFamilyIndexCount = *ptr
+	return x
+}
+
+// PQueueFamilyIndices returns the value of pQueueFamilyIndices from VkSwapchainCreateInfoKHR
+func (x VkSwapchainCreateInfoKHR) PQueueFamilyIndices() []uint32 {
+	ptr := func(x **C.uint) *[]uint32 { /* Slice */
+		slc := unsafe.Slice((*uint32)(unsafe.Pointer(x)), (1 << 31))
+		return &slc
+	}(&x.pQueueFamilyIndices)
+	return *ptr
+}
+
+// WithPQueueFamilyIndices copies the provided value into C space and stores it
+// at pQueueFamilyIndices on VkSwapchainCreateInfoKHR
+func (x *VkSwapchainCreateInfoKHR) WithPQueueFamilyIndices(y []uint32) *VkSwapchainCreateInfoKHR {
+	ptr := func(x *[]uint32) **C.uint { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.uint)(unsafe.Pointer((&ptr)))
+	}(&y)
+	x.pQueueFamilyIndices = *ptr
+	return x
+}
+
+// PreTransform returns the value of preTransform from VkSwapchainCreateInfoKHR
+func (x VkSwapchainCreateInfoKHR) PreTransform() VkSurfaceTransformFlagBitsKHR {
+	ptr := /* Identifier */ (*VkSurfaceTransformFlagBitsKHR)(&x.preTransform)
+	return *ptr
+}
+
+// WithPreTransform copies the provided value into C space and stores it
+// at preTransform on VkSwapchainCreateInfoKHR
+func (x *VkSwapchainCreateInfoKHR) WithPreTransform(y VkSurfaceTransformFlagBitsKHR) *VkSwapchainCreateInfoKHR {
+	ptr := /* Identifier */ (*C.VkSurfaceTransformFlagBitsKHR)(&y)
+	x.preTransform = *ptr
+	return x
+}
+
+// CompositeAlpha returns the value of compositeAlpha from VkSwapchainCreateInfoKHR
+func (x VkSwapchainCreateInfoKHR) CompositeAlpha() VkCompositeAlphaFlagBitsKHR {
+	ptr := /* Identifier */ (*VkCompositeAlphaFlagBitsKHR)(&x.compositeAlpha)
+	return *ptr
+}
+
+// WithCompositeAlpha copies the provided value into C space and stores it
+// at compositeAlpha on VkSwapchainCreateInfoKHR
+func (x *VkSwapchainCreateInfoKHR) WithCompositeAlpha(y VkCompositeAlphaFlagBitsKHR) *VkSwapchainCreateInfoKHR {
+	ptr := /* Identifier */ (*C.VkCompositeAlphaFlagBitsKHR)(&y)
+	x.compositeAlpha = *ptr
+	return x
+}
+
+// PresentMode returns the value of presentMode from VkSwapchainCreateInfoKHR
+func (x VkSwapchainCreateInfoKHR) PresentMode() VkPresentModeKHR {
+	ptr := /* Identifier */ (*VkPresentModeKHR)(&x.presentMode)
+	return *ptr
+}
+
+// WithPresentMode copies the provided value into C space and stores it
+// at presentMode on VkSwapchainCreateInfoKHR
+func (x *VkSwapchainCreateInfoKHR) WithPresentMode(y VkPresentModeKHR) *VkSwapchainCreateInfoKHR {
+	ptr := /* Identifier */ (*C.VkPresentModeKHR)(&y)
+	x.presentMode = *ptr
+	return x
+}
+
+// Clipped returns the value of clipped from VkSwapchainCreateInfoKHR
+func (x VkSwapchainCreateInfoKHR) Clipped() VkBool32 {
+	ptr := /* Identifier */ (*VkBool32)(&x.clipped)
+	return *ptr
+}
+
+// WithClipped copies the provided value into C space and stores it
+// at clipped on VkSwapchainCreateInfoKHR
+func (x *VkSwapchainCreateInfoKHR) WithClipped(y VkBool32) *VkSwapchainCreateInfoKHR {
+	ptr := /* Identifier */ (*C.VkBool32)(&y)
+	x.clipped = *ptr
+	return x
+}
+
+// OldSwapchain returns the value of oldSwapchain from VkSwapchainCreateInfoKHR
+func (x VkSwapchainCreateInfoKHR) OldSwapchain() VkSwapchainKHR {
+	ptr := func(x *C.VkSwapchainKHR) *VkSwapchainKHR { /* Handle */ return (*VkSwapchainKHR)(unsafe.Pointer(x)) }(&x.oldSwapchain)
+	return *ptr
+}
+
+// WithOldSwapchain copies the provided value into C space and stores it
+// at oldSwapchain on VkSwapchainCreateInfoKHR
+func (x *VkSwapchainCreateInfoKHR) WithOldSwapchain(y VkSwapchainKHR) *VkSwapchainCreateInfoKHR {
+	ptr := func(x *VkSwapchainKHR) *C.VkSwapchainKHR { /* Handle */ return (*C.VkSwapchainKHR)(unsafe.Pointer(x)) }(&y)
+	x.oldSwapchain = *ptr
+	return x
+}
+
+//VkPresentInfoKHR provides a go interface for VkPresentInfoKHR.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPresentInfoKHR.html
+type VkPresentInfoKHR C.struct_VkPresentInfoKHR
+
+// NewVkPresentInfoKHR allocates an instance of this struct in the C memory instead
+// of the Go memory.
+func newVkPresentInfoKHR() *VkPresentInfoKHR {
+	sz := unsafe.Sizeof(VkPresentInfoKHR{})
+	ptr := C.malloc(C.ulong(sz))
+	C.memset(ptr, 0, C.ulong(sz))
+	return (*VkPresentInfoKHR)(ptr)
+}
+
+// Free releases the memory allocated by the NewVkPresentInfoKHR method.
+// It does not free pointers stored in the structure. It should only
+// be used on CPtr instances.
+func (x *VkPresentInfoKHR) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsPtr returns the object as a pointer.
+func (x *VkPresentInfoKHR) AsPtr() *VkPresentInfoKHR { return x }
+
+// AsCPtr copies the object to C memory and returns the pointer.
+func (x *VkPresentInfoKHR) AsCPtr() *VkPresentInfoKHR {
+	clone := newVkPresentInfoKHR()
+	*clone = *x
+	return clone
+}
+
+// SType returns the value of sType from VkPresentInfoKHR
+func (x VkPresentInfoKHR) SType() VkStructureType {
+	ptr := /* Identifier */ (*VkStructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification if there is only a single value in the specification.
+func (x *VkPresentInfoKHR) WithDefaultSType() *VkPresentInfoKHR {
+	return x.WithSType(VK_STRUCTURE_TYPE_PRESENT_INFO_KHR)
+}
+
+// WithSType copies the provided value into C space and stores it
+// at sType on VkPresentInfoKHR
+func (x *VkPresentInfoKHR) WithSType(y VkStructureType) *VkPresentInfoKHR {
+	ptr := /* Identifier */ (*C.VkStructureType)(&y)
+	x.sType = *ptr
+	return x
+}
+
+// PNext returns the value of pNext from VkPresentInfoKHR
+func (x VkPresentInfoKHR) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext copies the provided value into C space and stores it
+// at pNext on VkPresentInfoKHR
+func (x *VkPresentInfoKHR) WithPNext(y unsafe.Pointer) *VkPresentInfoKHR {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
+	x.pNext = *ptr
+	return x
+}
+
+// WaitSemaphoreCount returns the value of waitSemaphoreCount from VkPresentInfoKHR
+func (x VkPresentInfoKHR) WaitSemaphoreCount() uint32 {
+	ptr := func(x *C.uint) *uint32 { /* Scalar */ return (*uint32)(unsafe.Pointer(x)) }(&x.waitSemaphoreCount)
+	return *ptr
+}
+
+// WithWaitSemaphoreCount copies the provided value into C space and stores it
+// at waitSemaphoreCount on VkPresentInfoKHR
+func (x *VkPresentInfoKHR) WithWaitSemaphoreCount(y uint32) *VkPresentInfoKHR {
+	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
+	x.waitSemaphoreCount = *ptr
+	return x
+}
+
+// PWaitSemaphores returns the value of pWaitSemaphores from VkPresentInfoKHR
+func (x VkPresentInfoKHR) PWaitSemaphores() []VkSemaphore {
+	ptr := func(x **C.VkSemaphore) *[]VkSemaphore { /* Slice */
+		slc := unsafe.Slice((*VkSemaphore)(unsafe.Pointer(x)), (1 << 31))
+		return &slc
+	}(&x.pWaitSemaphores)
+	return *ptr
+}
+
+// WithPWaitSemaphores copies the provided value into C space and stores it
+// at pWaitSemaphores on VkPresentInfoKHR
+func (x *VkPresentInfoKHR) WithPWaitSemaphores(y []VkSemaphore) *VkPresentInfoKHR {
+	ptr := func(x *[]VkSemaphore) **C.VkSemaphore { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.VkSemaphore)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.VkSemaphore)(unsafe.Pointer((&ptr)))
+	}(&y)
+	x.pWaitSemaphores = *ptr
+	return x
+}
+
+// SwapchainCount returns the value of swapchainCount from VkPresentInfoKHR
+func (x VkPresentInfoKHR) SwapchainCount() uint32 {
+	ptr := func(x *C.uint) *uint32 { /* Scalar */ return (*uint32)(unsafe.Pointer(x)) }(&x.swapchainCount)
+	return *ptr
+}
+
+// WithSwapchainCount copies the provided value into C space and stores it
+// at swapchainCount on VkPresentInfoKHR
+func (x *VkPresentInfoKHR) WithSwapchainCount(y uint32) *VkPresentInfoKHR {
+	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
+	x.swapchainCount = *ptr
+	return x
+}
+
+// PSwapchains returns the value of pSwapchains from VkPresentInfoKHR
+func (x VkPresentInfoKHR) PSwapchains() []VkSwapchainKHR {
+	ptr := func(x **C.VkSwapchainKHR) *[]VkSwapchainKHR { /* Slice */
+		slc := unsafe.Slice((*VkSwapchainKHR)(unsafe.Pointer(x)), (1 << 31))
+		return &slc
+	}(&x.pSwapchains)
+	return *ptr
+}
+
+// WithPSwapchains copies the provided value into C space and stores it
+// at pSwapchains on VkPresentInfoKHR
+func (x *VkPresentInfoKHR) WithPSwapchains(y []VkSwapchainKHR) *VkPresentInfoKHR {
+	ptr := func(x *[]VkSwapchainKHR) **C.VkSwapchainKHR { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.VkSwapchainKHR)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.VkSwapchainKHR)(unsafe.Pointer((&ptr)))
+	}(&y)
+	x.pSwapchains = *ptr
+	return x
+}
+
+// PImageIndices returns the value of pImageIndices from VkPresentInfoKHR
+func (x VkPresentInfoKHR) PImageIndices() []uint32 {
+	ptr := func(x **C.uint) *[]uint32 { /* Slice */
+		slc := unsafe.Slice((*uint32)(unsafe.Pointer(x)), (1 << 31))
+		return &slc
+	}(&x.pImageIndices)
+	return *ptr
+}
+
+// WithPImageIndices copies the provided value into C space and stores it
+// at pImageIndices on VkPresentInfoKHR
+func (x *VkPresentInfoKHR) WithPImageIndices(y []uint32) *VkPresentInfoKHR {
+	ptr := func(x *[]uint32) **C.uint { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.uint)(unsafe.Pointer((&ptr)))
+	}(&y)
+	x.pImageIndices = *ptr
+	return x
+}
+
+// PResults returns the value of pResults from VkPresentInfoKHR
+func (x VkPresentInfoKHR) PResults() []VkResult {
+	ptr := func(x **C.VkResult) *[]VkResult { /* Slice */
+		slc := unsafe.Slice((*VkResult)(unsafe.Pointer(x)), (1 << 31))
+		return &slc
+	}(&x.pResults)
+	return *ptr
+}
+
+// WithPResults copies the provided value into C space and stores it
+// at pResults on VkPresentInfoKHR
+func (x *VkPresentInfoKHR) WithPResults(y []VkResult) *VkPresentInfoKHR {
+	ptr := func(x *[]VkResult) **C.VkResult { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.VkResult)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.VkResult)(unsafe.Pointer((&ptr)))
+	}(&y)
+	x.pResults = *ptr
+	return x
+}
+
+//VkDeviceGroupPresentCapabilitiesKHR provides a go interface for VkDeviceGroupPresentCapabilitiesKHR.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceGroupPresentCapabilitiesKHR.html
+type VkDeviceGroupPresentCapabilitiesKHR C.struct_VkDeviceGroupPresentCapabilitiesKHR
+
+// NewVkDeviceGroupPresentCapabilitiesKHR allocates an instance of this struct in the C memory instead
+// of the Go memory.
+func newVkDeviceGroupPresentCapabilitiesKHR() *VkDeviceGroupPresentCapabilitiesKHR {
+	sz := unsafe.Sizeof(VkDeviceGroupPresentCapabilitiesKHR{})
+	ptr := C.malloc(C.ulong(sz))
+	C.memset(ptr, 0, C.ulong(sz))
+	return (*VkDeviceGroupPresentCapabilitiesKHR)(ptr)
+}
+
+// Free releases the memory allocated by the NewVkDeviceGroupPresentCapabilitiesKHR method.
+// It does not free pointers stored in the structure. It should only
+// be used on CPtr instances.
+func (x *VkDeviceGroupPresentCapabilitiesKHR) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsPtr returns the object as a pointer.
+func (x *VkDeviceGroupPresentCapabilitiesKHR) AsPtr() *VkDeviceGroupPresentCapabilitiesKHR { return x }
+
+// AsCPtr copies the object to C memory and returns the pointer.
+func (x *VkDeviceGroupPresentCapabilitiesKHR) AsCPtr() *VkDeviceGroupPresentCapabilitiesKHR {
+	clone := newVkDeviceGroupPresentCapabilitiesKHR()
+	*clone = *x
+	return clone
+}
+
+// SType returns the value of sType from VkDeviceGroupPresentCapabilitiesKHR
+func (x VkDeviceGroupPresentCapabilitiesKHR) SType() VkStructureType {
+	ptr := /* Identifier */ (*VkStructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification if there is only a single value in the specification.
+func (x *VkDeviceGroupPresentCapabilitiesKHR) WithDefaultSType() *VkDeviceGroupPresentCapabilitiesKHR {
+	return x.WithSType(VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_CAPABILITIES_KHR)
+}
+
+// WithSType copies the provided value into C space and stores it
+// at sType on VkDeviceGroupPresentCapabilitiesKHR
+func (x *VkDeviceGroupPresentCapabilitiesKHR) WithSType(y VkStructureType) *VkDeviceGroupPresentCapabilitiesKHR {
+	ptr := /* Identifier */ (*C.VkStructureType)(&y)
+	x.sType = *ptr
+	return x
+}
+
+// PNext returns the value of pNext from VkDeviceGroupPresentCapabilitiesKHR
+func (x VkDeviceGroupPresentCapabilitiesKHR) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext copies the provided value into C space and stores it
+// at pNext on VkDeviceGroupPresentCapabilitiesKHR
+func (x *VkDeviceGroupPresentCapabilitiesKHR) WithPNext(y unsafe.Pointer) *VkDeviceGroupPresentCapabilitiesKHR {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
+	x.pNext = *ptr
+	return x
+}
+
+// PresentMask returns the value of presentMask from VkDeviceGroupPresentCapabilitiesKHR
+func (x VkDeviceGroupPresentCapabilitiesKHR) PresentMask() []uint32 {
+	ptr := func(x *[VK_MAX_DEVICE_GROUP_SIZE]C.uint) *[]uint32 { /* Array */
+		slc := unsafe.Slice((*uint32)(unsafe.Pointer(x)), VK_MAX_DEVICE_GROUP_SIZE)
+		return &slc
+	}(&x.presentMask)
+	return *ptr
+}
+
+// Modes returns the value of modes from VkDeviceGroupPresentCapabilitiesKHR
+func (x VkDeviceGroupPresentCapabilitiesKHR) Modes() VkDeviceGroupPresentModeFlagsKHR {
+	ptr := /* Identifier */ (*VkDeviceGroupPresentModeFlagsKHR)(&x.modes)
+	return *ptr
+}
+
+//VkDeviceGroupPresentInfoKHR provides a go interface for VkDeviceGroupPresentInfoKHR.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceGroupPresentInfoKHR.html
+type VkDeviceGroupPresentInfoKHR C.struct_VkDeviceGroupPresentInfoKHR
+
+// NewVkDeviceGroupPresentInfoKHR allocates an instance of this struct in the C memory instead
+// of the Go memory.
+func newVkDeviceGroupPresentInfoKHR() *VkDeviceGroupPresentInfoKHR {
+	sz := unsafe.Sizeof(VkDeviceGroupPresentInfoKHR{})
+	ptr := C.malloc(C.ulong(sz))
+	C.memset(ptr, 0, C.ulong(sz))
+	return (*VkDeviceGroupPresentInfoKHR)(ptr)
+}
+
+// Free releases the memory allocated by the NewVkDeviceGroupPresentInfoKHR method.
+// It does not free pointers stored in the structure. It should only
+// be used on CPtr instances.
+func (x *VkDeviceGroupPresentInfoKHR) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsPtr returns the object as a pointer.
+func (x *VkDeviceGroupPresentInfoKHR) AsPtr() *VkDeviceGroupPresentInfoKHR { return x }
+
+// AsCPtr copies the object to C memory and returns the pointer.
+func (x *VkDeviceGroupPresentInfoKHR) AsCPtr() *VkDeviceGroupPresentInfoKHR {
+	clone := newVkDeviceGroupPresentInfoKHR()
+	*clone = *x
+	return clone
+}
+
+// SType returns the value of sType from VkDeviceGroupPresentInfoKHR
+func (x VkDeviceGroupPresentInfoKHR) SType() VkStructureType {
+	ptr := /* Identifier */ (*VkStructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification if there is only a single value in the specification.
+func (x *VkDeviceGroupPresentInfoKHR) WithDefaultSType() *VkDeviceGroupPresentInfoKHR {
+	return x.WithSType(VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_INFO_KHR)
+}
+
+// WithSType copies the provided value into C space and stores it
+// at sType on VkDeviceGroupPresentInfoKHR
+func (x *VkDeviceGroupPresentInfoKHR) WithSType(y VkStructureType) *VkDeviceGroupPresentInfoKHR {
+	ptr := /* Identifier */ (*C.VkStructureType)(&y)
+	x.sType = *ptr
+	return x
+}
+
+// PNext returns the value of pNext from VkDeviceGroupPresentInfoKHR
+func (x VkDeviceGroupPresentInfoKHR) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext copies the provided value into C space and stores it
+// at pNext on VkDeviceGroupPresentInfoKHR
+func (x *VkDeviceGroupPresentInfoKHR) WithPNext(y unsafe.Pointer) *VkDeviceGroupPresentInfoKHR {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
+	x.pNext = *ptr
+	return x
+}
+
+// SwapchainCount returns the value of swapchainCount from VkDeviceGroupPresentInfoKHR
+func (x VkDeviceGroupPresentInfoKHR) SwapchainCount() uint32 {
+	ptr := func(x *C.uint) *uint32 { /* Scalar */ return (*uint32)(unsafe.Pointer(x)) }(&x.swapchainCount)
+	return *ptr
+}
+
+// WithSwapchainCount copies the provided value into C space and stores it
+// at swapchainCount on VkDeviceGroupPresentInfoKHR
+func (x *VkDeviceGroupPresentInfoKHR) WithSwapchainCount(y uint32) *VkDeviceGroupPresentInfoKHR {
+	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
+	x.swapchainCount = *ptr
+	return x
+}
+
+// PDeviceMasks returns the value of pDeviceMasks from VkDeviceGroupPresentInfoKHR
+func (x VkDeviceGroupPresentInfoKHR) PDeviceMasks() []uint32 {
+	ptr := func(x **C.uint) *[]uint32 { /* Slice */
+		slc := unsafe.Slice((*uint32)(unsafe.Pointer(x)), (1 << 31))
+		return &slc
+	}(&x.pDeviceMasks)
+	return *ptr
+}
+
+// WithPDeviceMasks copies the provided value into C space and stores it
+// at pDeviceMasks on VkDeviceGroupPresentInfoKHR
+func (x *VkDeviceGroupPresentInfoKHR) WithPDeviceMasks(y []uint32) *VkDeviceGroupPresentInfoKHR {
+	ptr := func(x *[]uint32) **C.uint { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.uint)(unsafe.Pointer((&ptr)))
+	}(&y)
+	x.pDeviceMasks = *ptr
+	return x
+}
+
+// Mode returns the value of mode from VkDeviceGroupPresentInfoKHR
+func (x VkDeviceGroupPresentInfoKHR) Mode() VkDeviceGroupPresentModeFlagBitsKHR {
+	ptr := /* Identifier */ (*VkDeviceGroupPresentModeFlagBitsKHR)(&x.mode)
+	return *ptr
+}
+
+// WithMode copies the provided value into C space and stores it
+// at mode on VkDeviceGroupPresentInfoKHR
+func (x *VkDeviceGroupPresentInfoKHR) WithMode(y VkDeviceGroupPresentModeFlagBitsKHR) *VkDeviceGroupPresentInfoKHR {
+	ptr := /* Identifier */ (*C.VkDeviceGroupPresentModeFlagBitsKHR)(&y)
+	x.mode = *ptr
+	return x
+}
+
+//VkDeviceGroupSwapchainCreateInfoKHR provides a go interface for VkDeviceGroupSwapchainCreateInfoKHR.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceGroupSwapchainCreateInfoKHR.html
+type VkDeviceGroupSwapchainCreateInfoKHR C.struct_VkDeviceGroupSwapchainCreateInfoKHR
+
+// NewVkDeviceGroupSwapchainCreateInfoKHR allocates an instance of this struct in the C memory instead
+// of the Go memory.
+func newVkDeviceGroupSwapchainCreateInfoKHR() *VkDeviceGroupSwapchainCreateInfoKHR {
+	sz := unsafe.Sizeof(VkDeviceGroupSwapchainCreateInfoKHR{})
+	ptr := C.malloc(C.ulong(sz))
+	C.memset(ptr, 0, C.ulong(sz))
+	return (*VkDeviceGroupSwapchainCreateInfoKHR)(ptr)
+}
+
+// Free releases the memory allocated by the NewVkDeviceGroupSwapchainCreateInfoKHR method.
+// It does not free pointers stored in the structure. It should only
+// be used on CPtr instances.
+func (x *VkDeviceGroupSwapchainCreateInfoKHR) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsPtr returns the object as a pointer.
+func (x *VkDeviceGroupSwapchainCreateInfoKHR) AsPtr() *VkDeviceGroupSwapchainCreateInfoKHR { return x }
+
+// AsCPtr copies the object to C memory and returns the pointer.
+func (x *VkDeviceGroupSwapchainCreateInfoKHR) AsCPtr() *VkDeviceGroupSwapchainCreateInfoKHR {
+	clone := newVkDeviceGroupSwapchainCreateInfoKHR()
+	*clone = *x
+	return clone
+}
+
+// SType returns the value of sType from VkDeviceGroupSwapchainCreateInfoKHR
+func (x VkDeviceGroupSwapchainCreateInfoKHR) SType() VkStructureType {
+	ptr := /* Identifier */ (*VkStructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification if there is only a single value in the specification.
+func (x *VkDeviceGroupSwapchainCreateInfoKHR) WithDefaultSType() *VkDeviceGroupSwapchainCreateInfoKHR {
+	return x.WithSType(VK_STRUCTURE_TYPE_DEVICE_GROUP_SWAPCHAIN_CREATE_INFO_KHR)
+}
+
+// WithSType copies the provided value into C space and stores it
+// at sType on VkDeviceGroupSwapchainCreateInfoKHR
+func (x *VkDeviceGroupSwapchainCreateInfoKHR) WithSType(y VkStructureType) *VkDeviceGroupSwapchainCreateInfoKHR {
+	ptr := /* Identifier */ (*C.VkStructureType)(&y)
+	x.sType = *ptr
+	return x
+}
+
+// PNext returns the value of pNext from VkDeviceGroupSwapchainCreateInfoKHR
+func (x VkDeviceGroupSwapchainCreateInfoKHR) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext copies the provided value into C space and stores it
+// at pNext on VkDeviceGroupSwapchainCreateInfoKHR
+func (x *VkDeviceGroupSwapchainCreateInfoKHR) WithPNext(y unsafe.Pointer) *VkDeviceGroupSwapchainCreateInfoKHR {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
+	x.pNext = *ptr
+	return x
+}
+
+// Modes returns the value of modes from VkDeviceGroupSwapchainCreateInfoKHR
+func (x VkDeviceGroupSwapchainCreateInfoKHR) Modes() VkDeviceGroupPresentModeFlagsKHR {
+	ptr := /* Identifier */ (*VkDeviceGroupPresentModeFlagsKHR)(&x.modes)
+	return *ptr
+}
+
+// WithModes copies the provided value into C space and stores it
+// at modes on VkDeviceGroupSwapchainCreateInfoKHR
+func (x *VkDeviceGroupSwapchainCreateInfoKHR) WithModes(y VkDeviceGroupPresentModeFlagsKHR) *VkDeviceGroupSwapchainCreateInfoKHR {
+	ptr := /* Identifier */ (*C.VkDeviceGroupPresentModeFlagsKHR)(&y)
+	x.modes = *ptr
+	return x
+}
+
+//VkAcquireNextImageInfoKHR provides a go interface for VkAcquireNextImageInfoKHR.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkAcquireNextImageInfoKHR.html
+type VkAcquireNextImageInfoKHR C.struct_VkAcquireNextImageInfoKHR
+
+// NewVkAcquireNextImageInfoKHR allocates an instance of this struct in the C memory instead
+// of the Go memory.
+func newVkAcquireNextImageInfoKHR() *VkAcquireNextImageInfoKHR {
+	sz := unsafe.Sizeof(VkAcquireNextImageInfoKHR{})
+	ptr := C.malloc(C.ulong(sz))
+	C.memset(ptr, 0, C.ulong(sz))
+	return (*VkAcquireNextImageInfoKHR)(ptr)
+}
+
+// Free releases the memory allocated by the NewVkAcquireNextImageInfoKHR method.
+// It does not free pointers stored in the structure. It should only
+// be used on CPtr instances.
+func (x *VkAcquireNextImageInfoKHR) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsPtr returns the object as a pointer.
+func (x *VkAcquireNextImageInfoKHR) AsPtr() *VkAcquireNextImageInfoKHR { return x }
+
+// AsCPtr copies the object to C memory and returns the pointer.
+func (x *VkAcquireNextImageInfoKHR) AsCPtr() *VkAcquireNextImageInfoKHR {
+	clone := newVkAcquireNextImageInfoKHR()
+	*clone = *x
+	return clone
+}
+
+// SType returns the value of sType from VkAcquireNextImageInfoKHR
+func (x VkAcquireNextImageInfoKHR) SType() VkStructureType {
+	ptr := /* Identifier */ (*VkStructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification if there is only a single value in the specification.
+func (x *VkAcquireNextImageInfoKHR) WithDefaultSType() *VkAcquireNextImageInfoKHR {
+	return x.WithSType(VK_STRUCTURE_TYPE_ACQUIRE_NEXT_IMAGE_INFO_KHR)
+}
+
+// WithSType copies the provided value into C space and stores it
+// at sType on VkAcquireNextImageInfoKHR
+func (x *VkAcquireNextImageInfoKHR) WithSType(y VkStructureType) *VkAcquireNextImageInfoKHR {
+	ptr := /* Identifier */ (*C.VkStructureType)(&y)
+	x.sType = *ptr
+	return x
+}
+
+// PNext returns the value of pNext from VkAcquireNextImageInfoKHR
+func (x VkAcquireNextImageInfoKHR) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext copies the provided value into C space and stores it
+// at pNext on VkAcquireNextImageInfoKHR
+func (x *VkAcquireNextImageInfoKHR) WithPNext(y unsafe.Pointer) *VkAcquireNextImageInfoKHR {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
+	x.pNext = *ptr
+	return x
+}
+
+// Swapchain returns the value of swapchain from VkAcquireNextImageInfoKHR
+func (x VkAcquireNextImageInfoKHR) Swapchain() VkSwapchainKHR {
+	ptr := func(x *C.VkSwapchainKHR) *VkSwapchainKHR { /* Handle */ return (*VkSwapchainKHR)(unsafe.Pointer(x)) }(&x.swapchain)
+	return *ptr
+}
+
+// WithSwapchain copies the provided value into C space and stores it
+// at swapchain on VkAcquireNextImageInfoKHR
+func (x *VkAcquireNextImageInfoKHR) WithSwapchain(y VkSwapchainKHR) *VkAcquireNextImageInfoKHR {
+	ptr := func(x *VkSwapchainKHR) *C.VkSwapchainKHR { /* Handle */ return (*C.VkSwapchainKHR)(unsafe.Pointer(x)) }(&y)
+	x.swapchain = *ptr
+	return x
+}
+
+// Timeout returns the value of timeout from VkAcquireNextImageInfoKHR
+func (x VkAcquireNextImageInfoKHR) Timeout() uint64 {
+	ptr := func(x *C.ulonglong) *uint64 { /* Scalar */ return (*uint64)(unsafe.Pointer(x)) }(&x.timeout)
+	return *ptr
+}
+
+// WithTimeout copies the provided value into C space and stores it
+// at timeout on VkAcquireNextImageInfoKHR
+func (x *VkAcquireNextImageInfoKHR) WithTimeout(y uint64) *VkAcquireNextImageInfoKHR {
+	ptr := func(x *uint64) *C.ulonglong { /* Scalar */ return (*C.ulonglong)(unsafe.Pointer(x)) }(&y)
+	x.timeout = *ptr
+	return x
+}
+
+// Semaphore returns the value of semaphore from VkAcquireNextImageInfoKHR
+func (x VkAcquireNextImageInfoKHR) Semaphore() VkSemaphore {
+	ptr := func(x *C.VkSemaphore) *VkSemaphore { /* Handle */ return (*VkSemaphore)(unsafe.Pointer(x)) }(&x.semaphore)
+	return *ptr
+}
+
+// WithSemaphore copies the provided value into C space and stores it
+// at semaphore on VkAcquireNextImageInfoKHR
+func (x *VkAcquireNextImageInfoKHR) WithSemaphore(y VkSemaphore) *VkAcquireNextImageInfoKHR {
+	ptr := func(x *VkSemaphore) *C.VkSemaphore { /* Handle */ return (*C.VkSemaphore)(unsafe.Pointer(x)) }(&y)
+	x.semaphore = *ptr
+	return x
+}
+
+// Fence returns the value of fence from VkAcquireNextImageInfoKHR
+func (x VkAcquireNextImageInfoKHR) Fence() VkFence {
+	ptr := func(x *C.VkFence) *VkFence { /* Handle */ return (*VkFence)(unsafe.Pointer(x)) }(&x.fence)
+	return *ptr
+}
+
+// WithFence copies the provided value into C space and stores it
+// at fence on VkAcquireNextImageInfoKHR
+func (x *VkAcquireNextImageInfoKHR) WithFence(y VkFence) *VkAcquireNextImageInfoKHR {
+	ptr := func(x *VkFence) *C.VkFence { /* Handle */ return (*C.VkFence)(unsafe.Pointer(x)) }(&y)
+	x.fence = *ptr
+	return x
+}
+
+// DeviceMask returns the value of deviceMask from VkAcquireNextImageInfoKHR
+func (x VkAcquireNextImageInfoKHR) DeviceMask() uint32 {
+	ptr := func(x *C.uint) *uint32 { /* Scalar */ return (*uint32)(unsafe.Pointer(x)) }(&x.deviceMask)
+	return *ptr
+}
+
+// WithDeviceMask copies the provided value into C space and stores it
+// at deviceMask on VkAcquireNextImageInfoKHR
+func (x *VkAcquireNextImageInfoKHR) WithDeviceMask(y uint32) *VkAcquireNextImageInfoKHR {
+	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
+	x.deviceMask = *ptr
+	return x
+}
+
+//VkImageSwapchainCreateInfoKHR provides a go interface for VkImageSwapchainCreateInfoKHR.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageSwapchainCreateInfoKHR.html
+type VkImageSwapchainCreateInfoKHR C.struct_VkImageSwapchainCreateInfoKHR
+
+// NewVkImageSwapchainCreateInfoKHR allocates an instance of this struct in the C memory instead
+// of the Go memory.
+func newVkImageSwapchainCreateInfoKHR() *VkImageSwapchainCreateInfoKHR {
+	sz := unsafe.Sizeof(VkImageSwapchainCreateInfoKHR{})
+	ptr := C.malloc(C.ulong(sz))
+	C.memset(ptr, 0, C.ulong(sz))
+	return (*VkImageSwapchainCreateInfoKHR)(ptr)
+}
+
+// Free releases the memory allocated by the NewVkImageSwapchainCreateInfoKHR method.
+// It does not free pointers stored in the structure. It should only
+// be used on CPtr instances.
+func (x *VkImageSwapchainCreateInfoKHR) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsPtr returns the object as a pointer.
+func (x *VkImageSwapchainCreateInfoKHR) AsPtr() *VkImageSwapchainCreateInfoKHR { return x }
+
+// AsCPtr copies the object to C memory and returns the pointer.
+func (x *VkImageSwapchainCreateInfoKHR) AsCPtr() *VkImageSwapchainCreateInfoKHR {
+	clone := newVkImageSwapchainCreateInfoKHR()
+	*clone = *x
+	return clone
+}
+
+// SType returns the value of sType from VkImageSwapchainCreateInfoKHR
+func (x VkImageSwapchainCreateInfoKHR) SType() VkStructureType {
+	ptr := /* Identifier */ (*VkStructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification if there is only a single value in the specification.
+func (x *VkImageSwapchainCreateInfoKHR) WithDefaultSType() *VkImageSwapchainCreateInfoKHR {
+	return x.WithSType(VK_STRUCTURE_TYPE_IMAGE_SWAPCHAIN_CREATE_INFO_KHR)
+}
+
+// WithSType copies the provided value into C space and stores it
+// at sType on VkImageSwapchainCreateInfoKHR
+func (x *VkImageSwapchainCreateInfoKHR) WithSType(y VkStructureType) *VkImageSwapchainCreateInfoKHR {
+	ptr := /* Identifier */ (*C.VkStructureType)(&y)
+	x.sType = *ptr
+	return x
+}
+
+// PNext returns the value of pNext from VkImageSwapchainCreateInfoKHR
+func (x VkImageSwapchainCreateInfoKHR) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext copies the provided value into C space and stores it
+// at pNext on VkImageSwapchainCreateInfoKHR
+func (x *VkImageSwapchainCreateInfoKHR) WithPNext(y unsafe.Pointer) *VkImageSwapchainCreateInfoKHR {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
+	x.pNext = *ptr
+	return x
+}
+
+// Swapchain returns the value of swapchain from VkImageSwapchainCreateInfoKHR
+func (x VkImageSwapchainCreateInfoKHR) Swapchain() VkSwapchainKHR {
+	ptr := func(x *C.VkSwapchainKHR) *VkSwapchainKHR { /* Handle */ return (*VkSwapchainKHR)(unsafe.Pointer(x)) }(&x.swapchain)
+	return *ptr
+}
+
+// WithSwapchain copies the provided value into C space and stores it
+// at swapchain on VkImageSwapchainCreateInfoKHR
+func (x *VkImageSwapchainCreateInfoKHR) WithSwapchain(y VkSwapchainKHR) *VkImageSwapchainCreateInfoKHR {
+	ptr := func(x *VkSwapchainKHR) *C.VkSwapchainKHR { /* Handle */ return (*C.VkSwapchainKHR)(unsafe.Pointer(x)) }(&y)
+	x.swapchain = *ptr
+	return x
+}
+
+func VkGetPhysicalDevicePresentRectanglesKHR(physicalDevice VkPhysicalDevice, surface VkSurfaceKHR, pRectCount *uint32, pRects []VkRect2D) VkResult {
+	p0 := func(x *VkPhysicalDevice) *C.VkPhysicalDevice { /* Handle */
+		return (*C.VkPhysicalDevice)(unsafe.Pointer(x))
+	}(&physicalDevice)
+	p1 := func(x *VkSurfaceKHR) *C.VkSurfaceKHR { /* Handle */ return (*C.VkSurfaceKHR)(unsafe.Pointer(x)) }(&surface)
+	p2 := func(x **uint32) **C.uint { /* Pointer */ return (**C.uint)(unsafe.Pointer(x)) }(&pRectCount)
+	p3 := func(x *[]VkRect2D) **C.VkRect2D { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.VkRect2D)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.VkRect2D)(unsafe.Pointer((&ptr)))
+	}(&pRects)
+	ret := C.vkGetPhysicalDevicePresentRectanglesKHR(*p0, *p1, *p2, *p3)
+	retPtr := /* Identifier */ (*VkResult)(&ret)
+	return *retPtr
+}
+
+func VkAcquireNextImage2KHR(device VkDevice, pAcquireInfo *VkAcquireNextImageInfoKHR, pImageIndex *uint32) VkResult {
+	p0 := func(x *VkDevice) *C.VkDevice { /* Handle */ return (*C.VkDevice)(unsafe.Pointer(x)) }(&device)
+	p1 := func(x **VkAcquireNextImageInfoKHR) **C.VkAcquireNextImageInfoKHR { /* Pointer */
+		return (**C.VkAcquireNextImageInfoKHR)(unsafe.Pointer(x))
+	}(&pAcquireInfo)
+	p2 := func(x **uint32) **C.uint { /* Pointer */ return (**C.uint)(unsafe.Pointer(x)) }(&pImageIndex)
+	ret := C.vkAcquireNextImage2KHR(*p0, *p1, *p2)
+	retPtr := /* Identifier */ (*VkResult)(&ret)
+	return *retPtr
+}
+
+func VkGetDeviceGroupSurfacePresentModesKHR(device VkDevice, surface VkSurfaceKHR, pModes *VkDeviceGroupPresentModeFlagsKHR) VkResult {
+	p0 := func(x *VkDevice) *C.VkDevice { /* Handle */ return (*C.VkDevice)(unsafe.Pointer(x)) }(&device)
+	p1 := func(x *VkSurfaceKHR) *C.VkSurfaceKHR { /* Handle */ return (*C.VkSurfaceKHR)(unsafe.Pointer(x)) }(&surface)
+	p2 := func(x **VkDeviceGroupPresentModeFlagsKHR) **C.VkDeviceGroupPresentModeFlagsKHR { /* Pointer */
+		return (**C.VkDeviceGroupPresentModeFlagsKHR)(unsafe.Pointer(x))
+	}(&pModes)
+	ret := C.vkGetDeviceGroupSurfacePresentModesKHR(*p0, *p1, *p2)
+	retPtr := /* Identifier */ (*VkResult)(&ret)
+	return *retPtr
+}
+
+func VkGetDeviceGroupPresentCapabilitiesKHR(device VkDevice, pDeviceGroupPresentCapabilities *VkDeviceGroupPresentCapabilitiesKHR) VkResult {
+	p0 := func(x *VkDevice) *C.VkDevice { /* Handle */ return (*C.VkDevice)(unsafe.Pointer(x)) }(&device)
+	p1 := func(x **VkDeviceGroupPresentCapabilitiesKHR) **C.VkDeviceGroupPresentCapabilitiesKHR { /* Pointer */
+		return (**C.VkDeviceGroupPresentCapabilitiesKHR)(unsafe.Pointer(x))
+	}(&pDeviceGroupPresentCapabilities)
+	ret := C.vkGetDeviceGroupPresentCapabilitiesKHR(*p0, *p1)
+	retPtr := /* Identifier */ (*VkResult)(&ret)
+	return *retPtr
+}
+
+func VkQueuePresentKHR(queue VkQueue, pPresentInfo *VkPresentInfoKHR) VkResult {
+	p0 := func(x *VkQueue) *C.VkQueue { /* Handle */ return (*C.VkQueue)(unsafe.Pointer(x)) }(&queue)
+	p1 := func(x **VkPresentInfoKHR) **C.VkPresentInfoKHR { /* Pointer */
+		return (**C.VkPresentInfoKHR)(unsafe.Pointer(x))
+	}(&pPresentInfo)
+	ret := C.vkQueuePresentKHR(*p0, *p1)
+	retPtr := /* Identifier */ (*VkResult)(&ret)
+	return *retPtr
+}
+
+func VkAcquireNextImageKHR(device VkDevice, swapchain VkSwapchainKHR, timeout uint64, semaphore VkSemaphore, fence VkFence, pImageIndex *uint32) VkResult {
+	p0 := func(x *VkDevice) *C.VkDevice { /* Handle */ return (*C.VkDevice)(unsafe.Pointer(x)) }(&device)
+	p1 := func(x *VkSwapchainKHR) *C.VkSwapchainKHR { /* Handle */ return (*C.VkSwapchainKHR)(unsafe.Pointer(x)) }(&swapchain)
+	p2 := func(x *uint64) *C.ulonglong { /* Scalar */ return (*C.ulonglong)(unsafe.Pointer(x)) }(&timeout)
+	p3 := func(x *VkSemaphore) *C.VkSemaphore { /* Handle */ return (*C.VkSemaphore)(unsafe.Pointer(x)) }(&semaphore)
+	p4 := func(x *VkFence) *C.VkFence { /* Handle */ return (*C.VkFence)(unsafe.Pointer(x)) }(&fence)
+	p5 := func(x **uint32) **C.uint { /* Pointer */ return (**C.uint)(unsafe.Pointer(x)) }(&pImageIndex)
+	ret := C.vkAcquireNextImageKHR(*p0, *p1, *p2, *p3, *p4, *p5)
+	retPtr := /* Identifier */ (*VkResult)(&ret)
+	return *retPtr
+}
+
+func VkGetSwapchainImagesKHR(device VkDevice, swapchain VkSwapchainKHR, pSwapchainImageCount *uint32, pSwapchainImages []VkImage) VkResult {
+	p0 := func(x *VkDevice) *C.VkDevice { /* Handle */ return (*C.VkDevice)(unsafe.Pointer(x)) }(&device)
+	p1 := func(x *VkSwapchainKHR) *C.VkSwapchainKHR { /* Handle */ return (*C.VkSwapchainKHR)(unsafe.Pointer(x)) }(&swapchain)
+	p2 := func(x **uint32) **C.uint { /* Pointer */ return (**C.uint)(unsafe.Pointer(x)) }(&pSwapchainImageCount)
+	p3 := func(x *[]VkImage) **C.VkImage { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.VkImage)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.VkImage)(unsafe.Pointer((&ptr)))
+	}(&pSwapchainImages)
+	ret := C.vkGetSwapchainImagesKHR(*p0, *p1, *p2, *p3)
+	retPtr := /* Identifier */ (*VkResult)(&ret)
+	return *retPtr
+}
+
+func VkDestroySwapchainKHR(device VkDevice, swapchain VkSwapchainKHR, pAllocator *VkAllocationCallbacks) {
+	p0 := func(x *VkDevice) *C.VkDevice { /* Handle */ return (*C.VkDevice)(unsafe.Pointer(x)) }(&device)
+	p1 := func(x *VkSwapchainKHR) *C.VkSwapchainKHR { /* Handle */ return (*C.VkSwapchainKHR)(unsafe.Pointer(x)) }(&swapchain)
+	p2 := func(x **VkAllocationCallbacks) **C.VkAllocationCallbacks { /* Pointer */
+		return (**C.VkAllocationCallbacks)(unsafe.Pointer(x))
+	}(&pAllocator)
+	C.vkDestroySwapchainKHR(*p0, *p1, *p2)
+}
+
+func VkCreateSwapchainKHR(device VkDevice, pCreateInfo *VkSwapchainCreateInfoKHR, pAllocator *VkAllocationCallbacks, pSwapchain *VkSwapchainKHR) VkResult {
+	p0 := func(x *VkDevice) *C.VkDevice { /* Handle */ return (*C.VkDevice)(unsafe.Pointer(x)) }(&device)
+	p1 := func(x **VkSwapchainCreateInfoKHR) **C.VkSwapchainCreateInfoKHR { /* Pointer */
+		return (**C.VkSwapchainCreateInfoKHR)(unsafe.Pointer(x))
+	}(&pCreateInfo)
+	p2 := func(x **VkAllocationCallbacks) **C.VkAllocationCallbacks { /* Pointer */
+		return (**C.VkAllocationCallbacks)(unsafe.Pointer(x))
+	}(&pAllocator)
+	p3 := func(x **VkSwapchainKHR) **C.VkSwapchainKHR { /* Pointer */
+		return (**C.VkSwapchainKHR)(unsafe.Pointer(x))
+	}(&pSwapchain)
+	ret := C.vkCreateSwapchainKHR(*p0, *p1, *p2, *p3)
+	retPtr := /* Identifier */ (*VkResult)(&ret)
+	return *retPtr
+}
+
+// VkDisplayKHR is a Handle to a vulkan resource.
+type VkDisplayKHR C.VkDisplayKHR
+
+// VkDisplayModeKHR is a Handle to a vulkan resource.
+type VkDisplayModeKHR C.VkDisplayModeKHR
+
+type VkDisplayPlaneAlphaFlagBitsKHR uint32
+
+const (
+	VK_DISPLAY_PLANE_ALPHA_OPAQUE_BIT_KHR                  VkDisplayPlaneAlphaFlagBitsKHR = (1 << 0)
+	VK_DISPLAY_PLANE_ALPHA_GLOBAL_BIT_KHR                  VkDisplayPlaneAlphaFlagBitsKHR = (1 << 1)
+	VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_BIT_KHR               VkDisplayPlaneAlphaFlagBitsKHR = (1 << 2)
+	VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_PREMULTIPLIED_BIT_KHR VkDisplayPlaneAlphaFlagBitsKHR = (1 << 3)
+)
+
+var (
+	reverseVkDisplayPlaneAlphaFlagBitsKHR map[VkDisplayPlaneAlphaFlagBitsKHR]string = map[VkDisplayPlaneAlphaFlagBitsKHR]string{
+		VK_DISPLAY_PLANE_ALPHA_OPAQUE_BIT_KHR:                  "VK_DISPLAY_PLANE_ALPHA_OPAQUE_BIT_KHR",
+		VK_DISPLAY_PLANE_ALPHA_GLOBAL_BIT_KHR:                  "VK_DISPLAY_PLANE_ALPHA_GLOBAL_BIT_KHR",
+		VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_BIT_KHR:               "VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_BIT_KHR",
+		VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_PREMULTIPLIED_BIT_KHR: "VK_DISPLAY_PLANE_ALPHA_PER_PIXEL_PREMULTIPLIED_BIT_KHR",
+	}
+)
+
+func (x VkDisplayPlaneAlphaFlagBitsKHR) String() string {
+	if s, ok := reverseVkDisplayPlaneAlphaFlagBitsKHR[x]; ok {
+		return s
+	}
+	return fmt.Sprintf("VkDisplayPlaneAlphaFlagBitsKHR=%d", x)
+}
+
+type VkDisplayModeCreateFlagsKHR VkFlags
+
+type VkDisplayPlaneAlphaFlagsKHR VkFlags
+
+type VkDisplaySurfaceCreateFlagsKHR VkFlags
+
+//VkDisplayPlanePropertiesKHR provides a go interface for VkDisplayPlanePropertiesKHR.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDisplayPlanePropertiesKHR.html
+type VkDisplayPlanePropertiesKHR C.struct_VkDisplayPlanePropertiesKHR
+
+// NewVkDisplayPlanePropertiesKHR allocates an instance of this struct in the C memory instead
+// of the Go memory.
+func newVkDisplayPlanePropertiesKHR() *VkDisplayPlanePropertiesKHR {
+	sz := unsafe.Sizeof(VkDisplayPlanePropertiesKHR{})
+	ptr := C.malloc(C.ulong(sz))
+	C.memset(ptr, 0, C.ulong(sz))
+	return (*VkDisplayPlanePropertiesKHR)(ptr)
+}
+
+// Free releases the memory allocated by the NewVkDisplayPlanePropertiesKHR method.
+// It does not free pointers stored in the structure. It should only
+// be used on CPtr instances.
+func (x *VkDisplayPlanePropertiesKHR) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsPtr returns the object as a pointer.
+func (x *VkDisplayPlanePropertiesKHR) AsPtr() *VkDisplayPlanePropertiesKHR { return x }
+
+// AsCPtr copies the object to C memory and returns the pointer.
+func (x *VkDisplayPlanePropertiesKHR) AsCPtr() *VkDisplayPlanePropertiesKHR {
+	clone := newVkDisplayPlanePropertiesKHR()
+	*clone = *x
+	return clone
+}
+
+// CurrentDisplay returns the value of currentDisplay from VkDisplayPlanePropertiesKHR
+func (x VkDisplayPlanePropertiesKHR) CurrentDisplay() VkDisplayKHR {
+	ptr := func(x *C.VkDisplayKHR) *VkDisplayKHR { /* Handle */ return (*VkDisplayKHR)(unsafe.Pointer(x)) }(&x.currentDisplay)
+	return *ptr
+}
+
+// CurrentStackIndex returns the value of currentStackIndex from VkDisplayPlanePropertiesKHR
+func (x VkDisplayPlanePropertiesKHR) CurrentStackIndex() uint32 {
+	ptr := func(x *C.uint) *uint32 { /* Scalar */ return (*uint32)(unsafe.Pointer(x)) }(&x.currentStackIndex)
+	return *ptr
+}
+
+//VkDisplayModePropertiesKHR provides a go interface for VkDisplayModePropertiesKHR.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDisplayModePropertiesKHR.html
+type VkDisplayModePropertiesKHR C.struct_VkDisplayModePropertiesKHR
+
+// NewVkDisplayModePropertiesKHR allocates an instance of this struct in the C memory instead
+// of the Go memory.
+func newVkDisplayModePropertiesKHR() *VkDisplayModePropertiesKHR {
+	sz := unsafe.Sizeof(VkDisplayModePropertiesKHR{})
+	ptr := C.malloc(C.ulong(sz))
+	C.memset(ptr, 0, C.ulong(sz))
+	return (*VkDisplayModePropertiesKHR)(ptr)
+}
+
+// Free releases the memory allocated by the NewVkDisplayModePropertiesKHR method.
+// It does not free pointers stored in the structure. It should only
+// be used on CPtr instances.
+func (x *VkDisplayModePropertiesKHR) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsPtr returns the object as a pointer.
+func (x *VkDisplayModePropertiesKHR) AsPtr() *VkDisplayModePropertiesKHR { return x }
+
+// AsCPtr copies the object to C memory and returns the pointer.
+func (x *VkDisplayModePropertiesKHR) AsCPtr() *VkDisplayModePropertiesKHR {
+	clone := newVkDisplayModePropertiesKHR()
+	*clone = *x
+	return clone
+}
+
+// DisplayMode returns the value of displayMode from VkDisplayModePropertiesKHR
+func (x VkDisplayModePropertiesKHR) DisplayMode() VkDisplayModeKHR {
+	ptr := func(x *C.VkDisplayModeKHR) *VkDisplayModeKHR { /* Handle */
+		return (*VkDisplayModeKHR)(unsafe.Pointer(x))
+	}(&x.displayMode)
+	return *ptr
+}
+
+// Parameters returns the value of parameters from VkDisplayModePropertiesKHR
+func (x VkDisplayModePropertiesKHR) Parameters() VkDisplayModeParametersKHR {
+	ptr := /* Identifier */ (*VkDisplayModeParametersKHR)(&x.parameters)
+	return *ptr
+}
+
+//VkDisplayPropertiesKHR provides a go interface for VkDisplayPropertiesKHR.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDisplayPropertiesKHR.html
+type VkDisplayPropertiesKHR C.struct_VkDisplayPropertiesKHR
+
+// NewVkDisplayPropertiesKHR allocates an instance of this struct in the C memory instead
+// of the Go memory.
+func newVkDisplayPropertiesKHR() *VkDisplayPropertiesKHR {
+	sz := unsafe.Sizeof(VkDisplayPropertiesKHR{})
+	ptr := C.malloc(C.ulong(sz))
+	C.memset(ptr, 0, C.ulong(sz))
+	return (*VkDisplayPropertiesKHR)(ptr)
+}
+
+// Free releases the memory allocated by the NewVkDisplayPropertiesKHR method.
+// It does not free pointers stored in the structure. It should only
+// be used on CPtr instances.
+func (x *VkDisplayPropertiesKHR) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsPtr returns the object as a pointer.
+func (x *VkDisplayPropertiesKHR) AsPtr() *VkDisplayPropertiesKHR { return x }
+
+// AsCPtr copies the object to C memory and returns the pointer.
+func (x *VkDisplayPropertiesKHR) AsCPtr() *VkDisplayPropertiesKHR {
+	clone := newVkDisplayPropertiesKHR()
+	*clone = *x
+	return clone
+}
+
+// Display returns the value of display from VkDisplayPropertiesKHR
+func (x VkDisplayPropertiesKHR) Display() VkDisplayKHR {
+	ptr := func(x *C.VkDisplayKHR) *VkDisplayKHR { /* Handle */ return (*VkDisplayKHR)(unsafe.Pointer(x)) }(&x.display)
+	return *ptr
+}
+
+// DisplayName returns the value of displayName from VkDisplayPropertiesKHR
+func (x VkDisplayPropertiesKHR) DisplayName() *byte {
+	ptr := func(x **C.char) **byte { /* Pointer */ return (**byte)(unsafe.Pointer(x)) }(&x.displayName)
+	return *ptr
+}
+
+// PhysicalDimensions returns the value of physicalDimensions from VkDisplayPropertiesKHR
+func (x VkDisplayPropertiesKHR) PhysicalDimensions() VkExtent2D {
+	ptr := /* Identifier */ (*VkExtent2D)(&x.physicalDimensions)
+	return *ptr
+}
+
+// PhysicalResolution returns the value of physicalResolution from VkDisplayPropertiesKHR
+func (x VkDisplayPropertiesKHR) PhysicalResolution() VkExtent2D {
+	ptr := /* Identifier */ (*VkExtent2D)(&x.physicalResolution)
+	return *ptr
+}
+
+// SupportedTransforms returns the value of supportedTransforms from VkDisplayPropertiesKHR
+func (x VkDisplayPropertiesKHR) SupportedTransforms() VkSurfaceTransformFlagsKHR {
+	ptr := /* Identifier */ (*VkSurfaceTransformFlagsKHR)(&x.supportedTransforms)
+	return *ptr
+}
+
+// PlaneReorderPossible returns the value of planeReorderPossible from VkDisplayPropertiesKHR
+func (x VkDisplayPropertiesKHR) PlaneReorderPossible() VkBool32 {
+	ptr := /* Identifier */ (*VkBool32)(&x.planeReorderPossible)
+	return *ptr
+}
+
+// PersistentContent returns the value of persistentContent from VkDisplayPropertiesKHR
+func (x VkDisplayPropertiesKHR) PersistentContent() VkBool32 {
+	ptr := /* Identifier */ (*VkBool32)(&x.persistentContent)
+	return *ptr
+}
+
+//VkDisplayModeCreateInfoKHR provides a go interface for VkDisplayModeCreateInfoKHR.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDisplayModeCreateInfoKHR.html
+type VkDisplayModeCreateInfoKHR C.struct_VkDisplayModeCreateInfoKHR
+
+// NewVkDisplayModeCreateInfoKHR allocates an instance of this struct in the C memory instead
+// of the Go memory.
+func newVkDisplayModeCreateInfoKHR() *VkDisplayModeCreateInfoKHR {
+	sz := unsafe.Sizeof(VkDisplayModeCreateInfoKHR{})
+	ptr := C.malloc(C.ulong(sz))
+	C.memset(ptr, 0, C.ulong(sz))
+	return (*VkDisplayModeCreateInfoKHR)(ptr)
+}
+
+// Free releases the memory allocated by the NewVkDisplayModeCreateInfoKHR method.
+// It does not free pointers stored in the structure. It should only
+// be used on CPtr instances.
+func (x *VkDisplayModeCreateInfoKHR) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsPtr returns the object as a pointer.
+func (x *VkDisplayModeCreateInfoKHR) AsPtr() *VkDisplayModeCreateInfoKHR { return x }
+
+// AsCPtr copies the object to C memory and returns the pointer.
+func (x *VkDisplayModeCreateInfoKHR) AsCPtr() *VkDisplayModeCreateInfoKHR {
+	clone := newVkDisplayModeCreateInfoKHR()
+	*clone = *x
+	return clone
+}
+
+// SType returns the value of sType from VkDisplayModeCreateInfoKHR
+func (x VkDisplayModeCreateInfoKHR) SType() VkStructureType {
+	ptr := /* Identifier */ (*VkStructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification if there is only a single value in the specification.
+func (x *VkDisplayModeCreateInfoKHR) WithDefaultSType() *VkDisplayModeCreateInfoKHR {
+	return x.WithSType(VK_STRUCTURE_TYPE_DISPLAY_MODE_CREATE_INFO_KHR)
+}
+
+// WithSType copies the provided value into C space and stores it
+// at sType on VkDisplayModeCreateInfoKHR
+func (x *VkDisplayModeCreateInfoKHR) WithSType(y VkStructureType) *VkDisplayModeCreateInfoKHR {
+	ptr := /* Identifier */ (*C.VkStructureType)(&y)
+	x.sType = *ptr
+	return x
+}
+
+// PNext returns the value of pNext from VkDisplayModeCreateInfoKHR
+func (x VkDisplayModeCreateInfoKHR) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext copies the provided value into C space and stores it
+// at pNext on VkDisplayModeCreateInfoKHR
+func (x *VkDisplayModeCreateInfoKHR) WithPNext(y unsafe.Pointer) *VkDisplayModeCreateInfoKHR {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
+	x.pNext = *ptr
+	return x
+}
+
+// Flags returns the value of flags from VkDisplayModeCreateInfoKHR
+func (x VkDisplayModeCreateInfoKHR) Flags() VkDisplayModeCreateFlagsKHR {
+	ptr := /* Identifier */ (*VkDisplayModeCreateFlagsKHR)(&x.flags)
+	return *ptr
+}
+
+// WithFlags copies the provided value into C space and stores it
+// at flags on VkDisplayModeCreateInfoKHR
+func (x *VkDisplayModeCreateInfoKHR) WithFlags(y VkDisplayModeCreateFlagsKHR) *VkDisplayModeCreateInfoKHR {
+	ptr := /* Identifier */ (*C.VkDisplayModeCreateFlagsKHR)(&y)
+	x.flags = *ptr
+	return x
+}
+
+// Parameters returns the value of parameters from VkDisplayModeCreateInfoKHR
+func (x VkDisplayModeCreateInfoKHR) Parameters() VkDisplayModeParametersKHR {
+	ptr := /* Identifier */ (*VkDisplayModeParametersKHR)(&x.parameters)
+	return *ptr
+}
+
+// WithParameters copies the provided value into C space and stores it
+// at parameters on VkDisplayModeCreateInfoKHR
+func (x *VkDisplayModeCreateInfoKHR) WithParameters(y VkDisplayModeParametersKHR) *VkDisplayModeCreateInfoKHR {
+	ptr := /* Identifier */ (*C.VkDisplayModeParametersKHR)(&y)
+	x.parameters = *ptr
+	return x
+}
+
+//VkDisplayPlaneCapabilitiesKHR provides a go interface for VkDisplayPlaneCapabilitiesKHR.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDisplayPlaneCapabilitiesKHR.html
+type VkDisplayPlaneCapabilitiesKHR C.struct_VkDisplayPlaneCapabilitiesKHR
+
+// NewVkDisplayPlaneCapabilitiesKHR allocates an instance of this struct in the C memory instead
+// of the Go memory.
+func newVkDisplayPlaneCapabilitiesKHR() *VkDisplayPlaneCapabilitiesKHR {
+	sz := unsafe.Sizeof(VkDisplayPlaneCapabilitiesKHR{})
+	ptr := C.malloc(C.ulong(sz))
+	C.memset(ptr, 0, C.ulong(sz))
+	return (*VkDisplayPlaneCapabilitiesKHR)(ptr)
+}
+
+// Free releases the memory allocated by the NewVkDisplayPlaneCapabilitiesKHR method.
+// It does not free pointers stored in the structure. It should only
+// be used on CPtr instances.
+func (x *VkDisplayPlaneCapabilitiesKHR) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsPtr returns the object as a pointer.
+func (x *VkDisplayPlaneCapabilitiesKHR) AsPtr() *VkDisplayPlaneCapabilitiesKHR { return x }
+
+// AsCPtr copies the object to C memory and returns the pointer.
+func (x *VkDisplayPlaneCapabilitiesKHR) AsCPtr() *VkDisplayPlaneCapabilitiesKHR {
+	clone := newVkDisplayPlaneCapabilitiesKHR()
+	*clone = *x
+	return clone
+}
+
+// SupportedAlpha returns the value of supportedAlpha from VkDisplayPlaneCapabilitiesKHR
+func (x VkDisplayPlaneCapabilitiesKHR) SupportedAlpha() VkDisplayPlaneAlphaFlagsKHR {
+	ptr := /* Identifier */ (*VkDisplayPlaneAlphaFlagsKHR)(&x.supportedAlpha)
+	return *ptr
+}
+
+// MinSrcPosition returns the value of minSrcPosition from VkDisplayPlaneCapabilitiesKHR
+func (x VkDisplayPlaneCapabilitiesKHR) MinSrcPosition() VkOffset2D {
+	ptr := /* Identifier */ (*VkOffset2D)(&x.minSrcPosition)
+	return *ptr
+}
+
+// MaxSrcPosition returns the value of maxSrcPosition from VkDisplayPlaneCapabilitiesKHR
+func (x VkDisplayPlaneCapabilitiesKHR) MaxSrcPosition() VkOffset2D {
+	ptr := /* Identifier */ (*VkOffset2D)(&x.maxSrcPosition)
+	return *ptr
+}
+
+// MinSrcExtent returns the value of minSrcExtent from VkDisplayPlaneCapabilitiesKHR
+func (x VkDisplayPlaneCapabilitiesKHR) MinSrcExtent() VkExtent2D {
+	ptr := /* Identifier */ (*VkExtent2D)(&x.minSrcExtent)
+	return *ptr
+}
+
+// MaxSrcExtent returns the value of maxSrcExtent from VkDisplayPlaneCapabilitiesKHR
+func (x VkDisplayPlaneCapabilitiesKHR) MaxSrcExtent() VkExtent2D {
+	ptr := /* Identifier */ (*VkExtent2D)(&x.maxSrcExtent)
+	return *ptr
+}
+
+// MinDstPosition returns the value of minDstPosition from VkDisplayPlaneCapabilitiesKHR
+func (x VkDisplayPlaneCapabilitiesKHR) MinDstPosition() VkOffset2D {
+	ptr := /* Identifier */ (*VkOffset2D)(&x.minDstPosition)
+	return *ptr
+}
+
+// MaxDstPosition returns the value of maxDstPosition from VkDisplayPlaneCapabilitiesKHR
+func (x VkDisplayPlaneCapabilitiesKHR) MaxDstPosition() VkOffset2D {
+	ptr := /* Identifier */ (*VkOffset2D)(&x.maxDstPosition)
+	return *ptr
+}
+
+// MinDstExtent returns the value of minDstExtent from VkDisplayPlaneCapabilitiesKHR
+func (x VkDisplayPlaneCapabilitiesKHR) MinDstExtent() VkExtent2D {
+	ptr := /* Identifier */ (*VkExtent2D)(&x.minDstExtent)
+	return *ptr
+}
+
+// MaxDstExtent returns the value of maxDstExtent from VkDisplayPlaneCapabilitiesKHR
+func (x VkDisplayPlaneCapabilitiesKHR) MaxDstExtent() VkExtent2D {
+	ptr := /* Identifier */ (*VkExtent2D)(&x.maxDstExtent)
+	return *ptr
+}
+
+//VkDisplayModeParametersKHR provides a go interface for VkDisplayModeParametersKHR.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDisplayModeParametersKHR.html
+type VkDisplayModeParametersKHR C.struct_VkDisplayModeParametersKHR
+
+// NewVkDisplayModeParametersKHR allocates an instance of this struct in the C memory instead
+// of the Go memory.
+func newVkDisplayModeParametersKHR() *VkDisplayModeParametersKHR {
+	sz := unsafe.Sizeof(VkDisplayModeParametersKHR{})
+	ptr := C.malloc(C.ulong(sz))
+	C.memset(ptr, 0, C.ulong(sz))
+	return (*VkDisplayModeParametersKHR)(ptr)
+}
+
+// Free releases the memory allocated by the NewVkDisplayModeParametersKHR method.
+// It does not free pointers stored in the structure. It should only
+// be used on CPtr instances.
+func (x *VkDisplayModeParametersKHR) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsPtr returns the object as a pointer.
+func (x *VkDisplayModeParametersKHR) AsPtr() *VkDisplayModeParametersKHR { return x }
+
+// AsCPtr copies the object to C memory and returns the pointer.
+func (x *VkDisplayModeParametersKHR) AsCPtr() *VkDisplayModeParametersKHR {
+	clone := newVkDisplayModeParametersKHR()
+	*clone = *x
+	return clone
+}
+
+// VisibleRegion returns the value of visibleRegion from VkDisplayModeParametersKHR
+func (x VkDisplayModeParametersKHR) VisibleRegion() VkExtent2D {
+	ptr := /* Identifier */ (*VkExtent2D)(&x.visibleRegion)
+	return *ptr
+}
+
+// WithVisibleRegion copies the provided value into C space and stores it
+// at visibleRegion on VkDisplayModeParametersKHR
+func (x *VkDisplayModeParametersKHR) WithVisibleRegion(y VkExtent2D) *VkDisplayModeParametersKHR {
+	ptr := /* Identifier */ (*C.VkExtent2D)(&y)
+	x.visibleRegion = *ptr
+	return x
+}
+
+// RefreshRate returns the value of refreshRate from VkDisplayModeParametersKHR
+func (x VkDisplayModeParametersKHR) RefreshRate() uint32 {
+	ptr := func(x *C.uint) *uint32 { /* Scalar */ return (*uint32)(unsafe.Pointer(x)) }(&x.refreshRate)
+	return *ptr
+}
+
+// WithRefreshRate copies the provided value into C space and stores it
+// at refreshRate on VkDisplayModeParametersKHR
+func (x *VkDisplayModeParametersKHR) WithRefreshRate(y uint32) *VkDisplayModeParametersKHR {
+	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
+	x.refreshRate = *ptr
+	return x
+}
+
+//VkDisplaySurfaceCreateInfoKHR provides a go interface for VkDisplaySurfaceCreateInfoKHR.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDisplaySurfaceCreateInfoKHR.html
+type VkDisplaySurfaceCreateInfoKHR C.struct_VkDisplaySurfaceCreateInfoKHR
+
+// NewVkDisplaySurfaceCreateInfoKHR allocates an instance of this struct in the C memory instead
+// of the Go memory.
+func newVkDisplaySurfaceCreateInfoKHR() *VkDisplaySurfaceCreateInfoKHR {
+	sz := unsafe.Sizeof(VkDisplaySurfaceCreateInfoKHR{})
+	ptr := C.malloc(C.ulong(sz))
+	C.memset(ptr, 0, C.ulong(sz))
+	return (*VkDisplaySurfaceCreateInfoKHR)(ptr)
+}
+
+// Free releases the memory allocated by the NewVkDisplaySurfaceCreateInfoKHR method.
+// It does not free pointers stored in the structure. It should only
+// be used on CPtr instances.
+func (x *VkDisplaySurfaceCreateInfoKHR) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsPtr returns the object as a pointer.
+func (x *VkDisplaySurfaceCreateInfoKHR) AsPtr() *VkDisplaySurfaceCreateInfoKHR { return x }
+
+// AsCPtr copies the object to C memory and returns the pointer.
+func (x *VkDisplaySurfaceCreateInfoKHR) AsCPtr() *VkDisplaySurfaceCreateInfoKHR {
+	clone := newVkDisplaySurfaceCreateInfoKHR()
+	*clone = *x
+	return clone
+}
+
+// SType returns the value of sType from VkDisplaySurfaceCreateInfoKHR
+func (x VkDisplaySurfaceCreateInfoKHR) SType() VkStructureType {
+	ptr := /* Identifier */ (*VkStructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification if there is only a single value in the specification.
+func (x *VkDisplaySurfaceCreateInfoKHR) WithDefaultSType() *VkDisplaySurfaceCreateInfoKHR {
+	return x.WithSType(VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR)
+}
+
+// WithSType copies the provided value into C space and stores it
+// at sType on VkDisplaySurfaceCreateInfoKHR
+func (x *VkDisplaySurfaceCreateInfoKHR) WithSType(y VkStructureType) *VkDisplaySurfaceCreateInfoKHR {
+	ptr := /* Identifier */ (*C.VkStructureType)(&y)
+	x.sType = *ptr
+	return x
+}
+
+// PNext returns the value of pNext from VkDisplaySurfaceCreateInfoKHR
+func (x VkDisplaySurfaceCreateInfoKHR) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext copies the provided value into C space and stores it
+// at pNext on VkDisplaySurfaceCreateInfoKHR
+func (x *VkDisplaySurfaceCreateInfoKHR) WithPNext(y unsafe.Pointer) *VkDisplaySurfaceCreateInfoKHR {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
+	x.pNext = *ptr
+	return x
+}
+
+// Flags returns the value of flags from VkDisplaySurfaceCreateInfoKHR
+func (x VkDisplaySurfaceCreateInfoKHR) Flags() VkDisplaySurfaceCreateFlagsKHR {
+	ptr := /* Identifier */ (*VkDisplaySurfaceCreateFlagsKHR)(&x.flags)
+	return *ptr
+}
+
+// WithFlags copies the provided value into C space and stores it
+// at flags on VkDisplaySurfaceCreateInfoKHR
+func (x *VkDisplaySurfaceCreateInfoKHR) WithFlags(y VkDisplaySurfaceCreateFlagsKHR) *VkDisplaySurfaceCreateInfoKHR {
+	ptr := /* Identifier */ (*C.VkDisplaySurfaceCreateFlagsKHR)(&y)
+	x.flags = *ptr
+	return x
+}
+
+// DisplayMode returns the value of displayMode from VkDisplaySurfaceCreateInfoKHR
+func (x VkDisplaySurfaceCreateInfoKHR) DisplayMode() VkDisplayModeKHR {
+	ptr := func(x *C.VkDisplayModeKHR) *VkDisplayModeKHR { /* Handle */
+		return (*VkDisplayModeKHR)(unsafe.Pointer(x))
+	}(&x.displayMode)
+	return *ptr
+}
+
+// WithDisplayMode copies the provided value into C space and stores it
+// at displayMode on VkDisplaySurfaceCreateInfoKHR
+func (x *VkDisplaySurfaceCreateInfoKHR) WithDisplayMode(y VkDisplayModeKHR) *VkDisplaySurfaceCreateInfoKHR {
+	ptr := func(x *VkDisplayModeKHR) *C.VkDisplayModeKHR { /* Handle */
+		return (*C.VkDisplayModeKHR)(unsafe.Pointer(x))
+	}(&y)
+	x.displayMode = *ptr
+	return x
+}
+
+// PlaneIndex returns the value of planeIndex from VkDisplaySurfaceCreateInfoKHR
+func (x VkDisplaySurfaceCreateInfoKHR) PlaneIndex() uint32 {
+	ptr := func(x *C.uint) *uint32 { /* Scalar */ return (*uint32)(unsafe.Pointer(x)) }(&x.planeIndex)
+	return *ptr
+}
+
+// WithPlaneIndex copies the provided value into C space and stores it
+// at planeIndex on VkDisplaySurfaceCreateInfoKHR
+func (x *VkDisplaySurfaceCreateInfoKHR) WithPlaneIndex(y uint32) *VkDisplaySurfaceCreateInfoKHR {
+	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
+	x.planeIndex = *ptr
+	return x
+}
+
+// PlaneStackIndex returns the value of planeStackIndex from VkDisplaySurfaceCreateInfoKHR
+func (x VkDisplaySurfaceCreateInfoKHR) PlaneStackIndex() uint32 {
+	ptr := func(x *C.uint) *uint32 { /* Scalar */ return (*uint32)(unsafe.Pointer(x)) }(&x.planeStackIndex)
+	return *ptr
+}
+
+// WithPlaneStackIndex copies the provided value into C space and stores it
+// at planeStackIndex on VkDisplaySurfaceCreateInfoKHR
+func (x *VkDisplaySurfaceCreateInfoKHR) WithPlaneStackIndex(y uint32) *VkDisplaySurfaceCreateInfoKHR {
+	ptr := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&y)
+	x.planeStackIndex = *ptr
+	return x
+}
+
+// Transform returns the value of transform from VkDisplaySurfaceCreateInfoKHR
+func (x VkDisplaySurfaceCreateInfoKHR) Transform() VkSurfaceTransformFlagBitsKHR {
+	ptr := /* Identifier */ (*VkSurfaceTransformFlagBitsKHR)(&x.transform)
+	return *ptr
+}
+
+// WithTransform copies the provided value into C space and stores it
+// at transform on VkDisplaySurfaceCreateInfoKHR
+func (x *VkDisplaySurfaceCreateInfoKHR) WithTransform(y VkSurfaceTransformFlagBitsKHR) *VkDisplaySurfaceCreateInfoKHR {
+	ptr := /* Identifier */ (*C.VkSurfaceTransformFlagBitsKHR)(&y)
+	x.transform = *ptr
+	return x
+}
+
+// GlobalAlpha returns the value of globalAlpha from VkDisplaySurfaceCreateInfoKHR
+func (x VkDisplaySurfaceCreateInfoKHR) GlobalAlpha() float32 {
+	ptr := func(x *C.float) *float32 { /* Scalar */ return (*float32)(unsafe.Pointer(x)) }(&x.globalAlpha)
+	return *ptr
+}
+
+// WithGlobalAlpha copies the provided value into C space and stores it
+// at globalAlpha on VkDisplaySurfaceCreateInfoKHR
+func (x *VkDisplaySurfaceCreateInfoKHR) WithGlobalAlpha(y float32) *VkDisplaySurfaceCreateInfoKHR {
+	ptr := func(x *float32) *C.float { /* Scalar */ return (*C.float)(unsafe.Pointer(x)) }(&y)
+	x.globalAlpha = *ptr
+	return x
+}
+
+// AlphaMode returns the value of alphaMode from VkDisplaySurfaceCreateInfoKHR
+func (x VkDisplaySurfaceCreateInfoKHR) AlphaMode() VkDisplayPlaneAlphaFlagBitsKHR {
+	ptr := /* Identifier */ (*VkDisplayPlaneAlphaFlagBitsKHR)(&x.alphaMode)
+	return *ptr
+}
+
+// WithAlphaMode copies the provided value into C space and stores it
+// at alphaMode on VkDisplaySurfaceCreateInfoKHR
+func (x *VkDisplaySurfaceCreateInfoKHR) WithAlphaMode(y VkDisplayPlaneAlphaFlagBitsKHR) *VkDisplaySurfaceCreateInfoKHR {
+	ptr := /* Identifier */ (*C.VkDisplayPlaneAlphaFlagBitsKHR)(&y)
+	x.alphaMode = *ptr
+	return x
+}
+
+// ImageExtent returns the value of imageExtent from VkDisplaySurfaceCreateInfoKHR
+func (x VkDisplaySurfaceCreateInfoKHR) ImageExtent() VkExtent2D {
+	ptr := /* Identifier */ (*VkExtent2D)(&x.imageExtent)
+	return *ptr
+}
+
+// WithImageExtent copies the provided value into C space and stores it
+// at imageExtent on VkDisplaySurfaceCreateInfoKHR
+func (x *VkDisplaySurfaceCreateInfoKHR) WithImageExtent(y VkExtent2D) *VkDisplaySurfaceCreateInfoKHR {
+	ptr := /* Identifier */ (*C.VkExtent2D)(&y)
+	x.imageExtent = *ptr
+	return x
+}
+
+func VkCreateDisplayPlaneSurfaceKHR(instance VkInstance, pCreateInfo *VkDisplaySurfaceCreateInfoKHR, pAllocator *VkAllocationCallbacks, pSurface *VkSurfaceKHR) VkResult {
+	p0 := func(x *VkInstance) *C.VkInstance { /* Handle */ return (*C.VkInstance)(unsafe.Pointer(x)) }(&instance)
+	p1 := func(x **VkDisplaySurfaceCreateInfoKHR) **C.VkDisplaySurfaceCreateInfoKHR { /* Pointer */
+		return (**C.VkDisplaySurfaceCreateInfoKHR)(unsafe.Pointer(x))
+	}(&pCreateInfo)
+	p2 := func(x **VkAllocationCallbacks) **C.VkAllocationCallbacks { /* Pointer */
+		return (**C.VkAllocationCallbacks)(unsafe.Pointer(x))
+	}(&pAllocator)
+	p3 := func(x **VkSurfaceKHR) **C.VkSurfaceKHR { /* Pointer */ return (**C.VkSurfaceKHR)(unsafe.Pointer(x)) }(&pSurface)
+	ret := C.vkCreateDisplayPlaneSurfaceKHR(*p0, *p1, *p2, *p3)
+	retPtr := /* Identifier */ (*VkResult)(&ret)
+	return *retPtr
+}
+
+func VkGetDisplayPlaneCapabilitiesKHR(physicalDevice VkPhysicalDevice, mode VkDisplayModeKHR, planeIndex uint32, pCapabilities *VkDisplayPlaneCapabilitiesKHR) VkResult {
+	p0 := func(x *VkPhysicalDevice) *C.VkPhysicalDevice { /* Handle */
+		return (*C.VkPhysicalDevice)(unsafe.Pointer(x))
+	}(&physicalDevice)
+	p1 := func(x *VkDisplayModeKHR) *C.VkDisplayModeKHR { /* Handle */
+		return (*C.VkDisplayModeKHR)(unsafe.Pointer(x))
+	}(&mode)
+	p2 := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&planeIndex)
+	p3 := func(x **VkDisplayPlaneCapabilitiesKHR) **C.VkDisplayPlaneCapabilitiesKHR { /* Pointer */
+		return (**C.VkDisplayPlaneCapabilitiesKHR)(unsafe.Pointer(x))
+	}(&pCapabilities)
+	ret := C.vkGetDisplayPlaneCapabilitiesKHR(*p0, *p1, *p2, *p3)
+	retPtr := /* Identifier */ (*VkResult)(&ret)
+	return *retPtr
+}
+
+func VkCreateDisplayModeKHR(physicalDevice VkPhysicalDevice, display VkDisplayKHR, pCreateInfo *VkDisplayModeCreateInfoKHR, pAllocator *VkAllocationCallbacks, pMode *VkDisplayModeKHR) VkResult {
+	p0 := func(x *VkPhysicalDevice) *C.VkPhysicalDevice { /* Handle */
+		return (*C.VkPhysicalDevice)(unsafe.Pointer(x))
+	}(&physicalDevice)
+	p1 := func(x *VkDisplayKHR) *C.VkDisplayKHR { /* Handle */ return (*C.VkDisplayKHR)(unsafe.Pointer(x)) }(&display)
+	p2 := func(x **VkDisplayModeCreateInfoKHR) **C.VkDisplayModeCreateInfoKHR { /* Pointer */
+		return (**C.VkDisplayModeCreateInfoKHR)(unsafe.Pointer(x))
+	}(&pCreateInfo)
+	p3 := func(x **VkAllocationCallbacks) **C.VkAllocationCallbacks { /* Pointer */
+		return (**C.VkAllocationCallbacks)(unsafe.Pointer(x))
+	}(&pAllocator)
+	p4 := func(x **VkDisplayModeKHR) **C.VkDisplayModeKHR { /* Pointer */
+		return (**C.VkDisplayModeKHR)(unsafe.Pointer(x))
+	}(&pMode)
+	ret := C.vkCreateDisplayModeKHR(*p0, *p1, *p2, *p3, *p4)
+	retPtr := /* Identifier */ (*VkResult)(&ret)
+	return *retPtr
+}
+
+func VkGetDisplayModePropertiesKHR(physicalDevice VkPhysicalDevice, display VkDisplayKHR, pPropertyCount *uint32, pProperties []VkDisplayModePropertiesKHR) VkResult {
+	p0 := func(x *VkPhysicalDevice) *C.VkPhysicalDevice { /* Handle */
+		return (*C.VkPhysicalDevice)(unsafe.Pointer(x))
+	}(&physicalDevice)
+	p1 := func(x *VkDisplayKHR) *C.VkDisplayKHR { /* Handle */ return (*C.VkDisplayKHR)(unsafe.Pointer(x)) }(&display)
+	p2 := func(x **uint32) **C.uint { /* Pointer */ return (**C.uint)(unsafe.Pointer(x)) }(&pPropertyCount)
+	p3 := func(x *[]VkDisplayModePropertiesKHR) **C.VkDisplayModePropertiesKHR { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.VkDisplayModePropertiesKHR)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.VkDisplayModePropertiesKHR)(unsafe.Pointer((&ptr)))
+	}(&pProperties)
+	ret := C.vkGetDisplayModePropertiesKHR(*p0, *p1, *p2, *p3)
+	retPtr := /* Identifier */ (*VkResult)(&ret)
+	return *retPtr
+}
+
+func VkGetDisplayPlaneSupportedDisplaysKHR(physicalDevice VkPhysicalDevice, planeIndex uint32, pDisplayCount *uint32, pDisplays []VkDisplayKHR) VkResult {
+	p0 := func(x *VkPhysicalDevice) *C.VkPhysicalDevice { /* Handle */
+		return (*C.VkPhysicalDevice)(unsafe.Pointer(x))
+	}(&physicalDevice)
+	p1 := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&planeIndex)
+	p2 := func(x **uint32) **C.uint { /* Pointer */ return (**C.uint)(unsafe.Pointer(x)) }(&pDisplayCount)
+	p3 := func(x *[]VkDisplayKHR) **C.VkDisplayKHR { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.VkDisplayKHR)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.VkDisplayKHR)(unsafe.Pointer((&ptr)))
+	}(&pDisplays)
+	ret := C.vkGetDisplayPlaneSupportedDisplaysKHR(*p0, *p1, *p2, *p3)
+	retPtr := /* Identifier */ (*VkResult)(&ret)
+	return *retPtr
+}
+
+func VkGetPhysicalDeviceDisplayPlanePropertiesKHR(physicalDevice VkPhysicalDevice, pPropertyCount *uint32, pProperties []VkDisplayPlanePropertiesKHR) VkResult {
+	p0 := func(x *VkPhysicalDevice) *C.VkPhysicalDevice { /* Handle */
+		return (*C.VkPhysicalDevice)(unsafe.Pointer(x))
+	}(&physicalDevice)
+	p1 := func(x **uint32) **C.uint { /* Pointer */ return (**C.uint)(unsafe.Pointer(x)) }(&pPropertyCount)
+	p2 := func(x *[]VkDisplayPlanePropertiesKHR) **C.VkDisplayPlanePropertiesKHR { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.VkDisplayPlanePropertiesKHR)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.VkDisplayPlanePropertiesKHR)(unsafe.Pointer((&ptr)))
+	}(&pProperties)
+	ret := C.vkGetPhysicalDeviceDisplayPlanePropertiesKHR(*p0, *p1, *p2)
+	retPtr := /* Identifier */ (*VkResult)(&ret)
+	return *retPtr
+}
+
+func VkGetPhysicalDeviceDisplayPropertiesKHR(physicalDevice VkPhysicalDevice, pPropertyCount *uint32, pProperties []VkDisplayPropertiesKHR) VkResult {
+	p0 := func(x *VkPhysicalDevice) *C.VkPhysicalDevice { /* Handle */
+		return (*C.VkPhysicalDevice)(unsafe.Pointer(x))
+	}(&physicalDevice)
+	p1 := func(x **uint32) **C.uint { /* Pointer */ return (**C.uint)(unsafe.Pointer(x)) }(&pPropertyCount)
+	p2 := func(x *[]VkDisplayPropertiesKHR) **C.VkDisplayPropertiesKHR { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.VkDisplayPropertiesKHR)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.VkDisplayPropertiesKHR)(unsafe.Pointer((&ptr)))
+	}(&pProperties)
+	ret := C.vkGetPhysicalDeviceDisplayPropertiesKHR(*p0, *p1, *p2)
+	retPtr := /* Identifier */ (*VkResult)(&ret)
+	return *retPtr
+}
+
+//VkDisplayPresentInfoKHR provides a go interface for VkDisplayPresentInfoKHR.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDisplayPresentInfoKHR.html
+type VkDisplayPresentInfoKHR C.struct_VkDisplayPresentInfoKHR
+
+// NewVkDisplayPresentInfoKHR allocates an instance of this struct in the C memory instead
+// of the Go memory.
+func newVkDisplayPresentInfoKHR() *VkDisplayPresentInfoKHR {
+	sz := unsafe.Sizeof(VkDisplayPresentInfoKHR{})
+	ptr := C.malloc(C.ulong(sz))
+	C.memset(ptr, 0, C.ulong(sz))
+	return (*VkDisplayPresentInfoKHR)(ptr)
+}
+
+// Free releases the memory allocated by the NewVkDisplayPresentInfoKHR method.
+// It does not free pointers stored in the structure. It should only
+// be used on CPtr instances.
+func (x *VkDisplayPresentInfoKHR) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsPtr returns the object as a pointer.
+func (x *VkDisplayPresentInfoKHR) AsPtr() *VkDisplayPresentInfoKHR { return x }
+
+// AsCPtr copies the object to C memory and returns the pointer.
+func (x *VkDisplayPresentInfoKHR) AsCPtr() *VkDisplayPresentInfoKHR {
+	clone := newVkDisplayPresentInfoKHR()
+	*clone = *x
+	return clone
+}
+
+// SType returns the value of sType from VkDisplayPresentInfoKHR
+func (x VkDisplayPresentInfoKHR) SType() VkStructureType {
+	ptr := /* Identifier */ (*VkStructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification if there is only a single value in the specification.
+func (x *VkDisplayPresentInfoKHR) WithDefaultSType() *VkDisplayPresentInfoKHR {
+	return x.WithSType(VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR)
+}
+
+// WithSType copies the provided value into C space and stores it
+// at sType on VkDisplayPresentInfoKHR
+func (x *VkDisplayPresentInfoKHR) WithSType(y VkStructureType) *VkDisplayPresentInfoKHR {
+	ptr := /* Identifier */ (*C.VkStructureType)(&y)
+	x.sType = *ptr
+	return x
+}
+
+// PNext returns the value of pNext from VkDisplayPresentInfoKHR
+func (x VkDisplayPresentInfoKHR) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext copies the provided value into C space and stores it
+// at pNext on VkDisplayPresentInfoKHR
+func (x *VkDisplayPresentInfoKHR) WithPNext(y unsafe.Pointer) *VkDisplayPresentInfoKHR {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&y)
+	x.pNext = *ptr
+	return x
+}
+
+// SrcRect returns the value of srcRect from VkDisplayPresentInfoKHR
+func (x VkDisplayPresentInfoKHR) SrcRect() VkRect2D {
+	ptr := /* Identifier */ (*VkRect2D)(&x.srcRect)
+	return *ptr
+}
+
+// WithSrcRect copies the provided value into C space and stores it
+// at srcRect on VkDisplayPresentInfoKHR
+func (x *VkDisplayPresentInfoKHR) WithSrcRect(y VkRect2D) *VkDisplayPresentInfoKHR {
+	ptr := /* Identifier */ (*C.VkRect2D)(&y)
+	x.srcRect = *ptr
+	return x
+}
+
+// DstRect returns the value of dstRect from VkDisplayPresentInfoKHR
+func (x VkDisplayPresentInfoKHR) DstRect() VkRect2D {
+	ptr := /* Identifier */ (*VkRect2D)(&x.dstRect)
+	return *ptr
+}
+
+// WithDstRect copies the provided value into C space and stores it
+// at dstRect on VkDisplayPresentInfoKHR
+func (x *VkDisplayPresentInfoKHR) WithDstRect(y VkRect2D) *VkDisplayPresentInfoKHR {
+	ptr := /* Identifier */ (*C.VkRect2D)(&y)
+	x.dstRect = *ptr
+	return x
+}
+
+// Persistent returns the value of persistent from VkDisplayPresentInfoKHR
+func (x VkDisplayPresentInfoKHR) Persistent() VkBool32 {
+	ptr := /* Identifier */ (*VkBool32)(&x.persistent)
+	return *ptr
+}
+
+// WithPersistent copies the provided value into C space and stores it
+// at persistent on VkDisplayPresentInfoKHR
+func (x *VkDisplayPresentInfoKHR) WithPersistent(y VkBool32) *VkDisplayPresentInfoKHR {
+	ptr := /* Identifier */ (*C.VkBool32)(&y)
+	x.persistent = *ptr
+	return x
+}
+
+func VkCreateSharedSwapchainsKHR(device VkDevice, swapchainCount uint32, pCreateInfos []VkSwapchainCreateInfoKHR, pAllocator *VkAllocationCallbacks, pSwapchains []VkSwapchainKHR) VkResult {
+	p0 := func(x *VkDevice) *C.VkDevice { /* Handle */ return (*C.VkDevice)(unsafe.Pointer(x)) }(&device)
+	p1 := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&swapchainCount)
+	p2 := func(x *[]VkSwapchainCreateInfoKHR) **C.VkSwapchainCreateInfoKHR { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.VkSwapchainCreateInfoKHR)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.VkSwapchainCreateInfoKHR)(unsafe.Pointer((&ptr)))
+	}(&pCreateInfos)
+	p3 := func(x **VkAllocationCallbacks) **C.VkAllocationCallbacks { /* Pointer */
+		return (**C.VkAllocationCallbacks)(unsafe.Pointer(x))
+	}(&pAllocator)
+	p4 := func(x *[]VkSwapchainKHR) **C.VkSwapchainKHR { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.VkSwapchainKHR)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.VkSwapchainKHR)(unsafe.Pointer((&ptr)))
+	}(&pSwapchains)
+	ret := C.vkCreateSharedSwapchainsKHR(*p0, *p1, *p2, *p3, *p4)
 	retPtr := /* Identifier */ (*VkResult)(&ret)
 	return *retPtr
 }
