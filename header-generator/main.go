@@ -2,50 +2,33 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"os"
 	"text/template"
-)
 
-const (
-	registryPath = "/usr/local/share/vulkan/registry/vk.xml"
-	packageName  = "vks"
-)
-
-var (
-	enabledFeatures []string = []string{
-		"VK_VERSION_1_0",
-		"VK_VERSION_1_1",
-		"VK_VERSION_1_2",
-	}
-	enabledExtensions []string = []string{
-		"VK_KHR_surface",
-		"VK_KHR_swapchain",
-		"VK_KHR_display",
-		"VK_KHR_display_swapchain",
-		"VK_KHR_get_surface_capabilities2",
-	}
+	"gopkg.in/yaml.v3"
 )
 
 func main() {
+	config := LoadConfig("vkxml.yml")
+
 	enabledMap := make(map[string]bool, 0)
-	for _, v := range enabledFeatures {
+	for _, v := range config.Features {
 		enabledMap[v] = true
 	}
-	for _, v := range enabledExtensions {
+	for _, v := range config.Extensions {
 		enabledMap[v] = true
 	}
 
-	registry := LoadRegistry(registryPath)
+	registry := LoadRegistry(config.VkxmlPath)
 	graph, constants := registry.Graph()
 
-	enabled := make([]string, 0, len(enabledFeatures)+len(enabledExtensions))
-	for _, v := range enabledFeatures {
+	enabled := make([]string, 0, len(config.Features)+len(config.Extensions))
+	for _, v := range config.Features {
 		n := fmt.Sprintf("%s::vulkan", v)
 		graph.ApplyFeatureExtensions(n)
 		enabled = append(enabled, n)
 	}
-	for _, v := range enabledExtensions {
+	for _, v := range config.Extensions {
 		graph.ApplyExtensionExtensions(v, enabledMap)
 		enabled = append(enabled, v)
 	}
@@ -84,8 +67,34 @@ func main() {
 	err := t.Execute(os.Stdout, struct {
 		PackageName string
 		Data        []interface{}
-	}{packageName, data})
-	log.Printf("Error %v", err)
+	}{config.PackageName, data})
+
+	if err != nil {
+		panic(err)
+	}
+}
+
+func LoadConfig(fn string) *Config {
+	fh, err := os.OpenFile(fn, os.O_RDONLY, 0)
+	if err != nil {
+		panic(err)
+	}
+	defer fh.Close()
+
+	var config Config
+	decoder := yaml.NewDecoder(fh)
+	if err := decoder.Decode(&config); err != nil {
+		panic(err)
+	}
+
+	return &config
+}
+
+type Config struct {
+	PackageName string
+	VkxmlPath   string
+	Features    []string
+	Extensions  []string
 }
 
 func LoadRegistry(fn string) *Registry {
