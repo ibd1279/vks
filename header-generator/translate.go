@@ -88,10 +88,10 @@ func (xl8r *HandleTranslator) C() string   { return xl8r.specValue }
 func (xl8r *HandleTranslator) CGo() string { return fmt.Sprintf("C.%s", xl8r.specValue) }
 func (xl8r *HandleTranslator) Go() string  { return xl8r.specValue }
 func (xl8r *HandleTranslator) CToGo() string {
-	return fmt.Sprintf("func(x *%s) *%s { /* Handle */ return (*%s)(unsafe.Pointer(x)) }", xl8r.CGo(), xl8r.Go(), xl8r.Go())
+	return fmt.Sprintf("/* Handle */ (*%s)", xl8r.Go())
 }
 func (xl8r *HandleTranslator) GoToC() string {
-	return fmt.Sprintf("func(x *%s) *%s { /* Handle */ return (*%s)(unsafe.Pointer(x)) }", xl8r.Go(), xl8r.CGo(), xl8r.CGo())
+	return fmt.Sprintf("/* Handle */ (*%s)", xl8r.CGo())
 }
 
 var (
@@ -183,30 +183,14 @@ func (xl8r *IdentifierTranslator) GoToC() string {
 	return fmt.Sprintf("/* Identifier */ (*%s)", xl8r.CGo())
 }
 
-type FunctionTranslator struct {
-	specValue string
-}
-
-func (xl8r *FunctionTranslator) C() string   { return xl8r.specValue }
-func (xl8r *FunctionTranslator) CGo() string { return fmt.Sprintf("C.%s", xl8r.specValue) }
-func (xl8r *FunctionTranslator) Go() string  { return "unsafe.Pointer" }
-func (xl8r *FunctionTranslator) CToGo() string {
-	return fmt.Sprintf("func(x *%s) *%s { /* Function */ return (*%s)(unsafe.Pointer(x)) }", xl8r.CGo(), xl8r.Go(), xl8r.Go())
-}
-func (xl8r *FunctionTranslator) GoToC() string {
-	return fmt.Sprintf("/* Function */ (*%s)", xl8r.CGo())
-}
-
 // VkClearValue vs C.union_VkClearValue
 type UnionTranslator struct {
 	specValue string
 }
 
-func (xl8r *UnionTranslator) C() string     { return xl8r.specValue }
-func (xl8r *UnionTranslator) CGo() string   { return fmt.Sprintf("C.union_%s", xl8r.specValue) }
-func (xl8r *UnionTranslator) Go() string    { return xl8r.specValue }
-func (xl8r *UnionTranslator) CToGo() string { return fmt.Sprintf("/* Union */ %s", xl8r.Go()) }
-func (xl8r *UnionTranslator) GoToC() string { return fmt.Sprintf("/* Union */ %s", xl8r.CGo()) }
+func (xl8r *UnionTranslator) C() string   { return xl8r.specValue }
+func (xl8r *UnionTranslator) CGo() string { return fmt.Sprintf("C.union_%s", xl8r.specValue) }
+func (xl8r *UnionTranslator) Go() string  { return xl8r.specValue }
 
 // VkClearAttachment vs C.struct_VkClearAttachment
 type StructTranslator struct {
@@ -216,12 +200,6 @@ type StructTranslator struct {
 func (xl8r *StructTranslator) C() string   { return xl8r.specValue }
 func (xl8r *StructTranslator) CGo() string { return fmt.Sprintf("C.struct_%s", xl8r.specValue) }
 func (xl8r *StructTranslator) Go() string  { return xl8r.specValue }
-func (xl8r *StructTranslator) CToGo() string {
-	return fmt.Sprintf("/* Struct */ %s", xl8r.Go())
-}
-func (xl8r *StructTranslator) GoToC() string {
-	return fmt.Sprintf("/* Struct */ %s", xl8r.CGo())
-}
 
 // uint32_t* vs *uint32
 type PointerTranslator struct {
@@ -273,7 +251,7 @@ func (xl8r *ArrayTranslator) CToGo() string {
 	return fmt.Sprintf("func(x *%s) *%s { /* Array */ slc := unsafe.Slice((*%s)(unsafe.Pointer(x)), %s); return &slc }", xl8r.CGo(), xl8r.Go(), xl8r.orig.Go(), xl8r.size.Go())
 }
 func (xl8r *ArrayTranslator) GoToC() string {
-	return fmt.Sprintf("func(x *%s) **%s { /* Array */ if *x != nil { slc := (*%s)(unsafe.Pointer(&((*x)[0]))); return &slc }; var ptr unsafe.Pointer; return (**%s)(unsafe.Pointer((&ptr))) }", xl8r.Go(), xl8r.orig.CGo(), xl8r.orig.CGo(), xl8r.orig.CGo())
+	return fmt.Sprintf("func(x *%s) **%s { /* Array */ if len(*x) > 0 { slc := (*%s)(unsafe.Pointer(&((*x)[0]))); return &slc }; var ptr unsafe.Pointer; return (**%s)(unsafe.Pointer((&ptr))) }", xl8r.Go(), xl8r.orig.CGo(), xl8r.orig.CGo(), xl8r.orig.CGo())
 }
 
 /* const VK_MAX_PHYSICAL_DEVICE_NAME_SIZE uint32 256 */

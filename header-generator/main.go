@@ -12,7 +12,10 @@ import (
 	strip "github.com/grokify/html-strip-tags-go"
 )
 
-const registryPath = "/usr/local/share/vulkan/registry/vk.xml"
+const (
+	registryPath = "/usr/local/share/vulkan/registry/vk.xml"
+	packageName  = "vks"
+)
 
 var (
 	enabledFeatures []string = []string{
@@ -83,7 +86,10 @@ func main() {
 	t = template.Must(t.Parse(structTemplate))
 	t = template.Must(t.Parse(unionTemplate))
 	t = template.Must(t.Parse(commandTemplate))
-	err := t.Execute(os.Stdout, data)
+	err := t.Execute(os.Stdout, struct {
+		PackageName string
+		Data        []interface{}
+	}{packageName, data})
 	log.Printf("Error %v", err)
 }
 
@@ -205,7 +211,7 @@ const commandTemplate = `{{define "command"}}func {{.Name.Go}}({{range .Paramete
 	return *retPtr
 {{end}}}
 {{end}}`
-const primaryTemplate = `package vks
+const primaryTemplate = `package {{.PackageName}}
 
 //#cgo LDFLAGS: -lvulkan
 //#include <stdlib.h>
@@ -217,7 +223,7 @@ import (
 	"unsafe"
 )
 
-{{range .}}{{if eq .Template "const"}}{{block "const" .Data}}{{.}}{{end}}
+{{range .Data}}{{if eq .Template "const"}}{{block "const" .Data}}{{.}}{{end}}
 {{else if eq .Template "base"}}{{block "base" .Data}}{{.}}{{end}}
 {{else if eq .Template "handle"}}{{block "handle" .Data}}{{.}}{{end}}
 {{else if eq .Template "enum"}}{{block "enum" .Data}}{{.}}{{end}}
