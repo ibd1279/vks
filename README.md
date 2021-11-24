@@ -9,8 +9,7 @@ the logic is for converting from Cgo types into go types, but ensuring that C
 memory is allocated and released is up to the program, not to this binding.
 
 ## Completeness
-Currently, the header is only generating implementatations for the features in
-the "vulkan" API for 1.0, 1.1, and 1.2.
+A list of the enabled features and extensions is available in the [vkxml.yml](https://github.com/ibd1279/vks/blob/main/vkxml.yml) file. 
 
 Nothing is done to "fix" the names of functions or types. That means
 typing "vks.Vk" frequently. There are a couple of functions where I've taken a first
@@ -32,26 +31,15 @@ import (
 )
 
 func main() {
-	if layProps, result := vks.EnumerateInstanceLayerProperties(); result.IsSuccess() {
-		for k, v := range layProps {
-			name := vks.ToString(v.LayerName())
-			log.Printf("layer %d %v %d %t", k, name, len(name), "VK_LAYER_LUNARG_api_dump" == name)
-		}
-	}
-	if extProps, result := vks.EnumerateInstanceExtensionProperties(""); result.IsSuccess() {
-		for k, v := range extProps {
-			name := vks.ToString(v.ExtensionName())
-			log.Printf("extension %d %v %d %t", k, name, len(name), "VK_KHR_surface" == name)
-		}
-	}
-	if version, result := vks.EnumerateInstanceVersion(); result.IsSuccess() {
+	var version uint32
+	if result := vks.VkEnumerateInstanceVersion(&version); result.IsSuccess() {
 		log.Printf("%v", version)
 	}
 
 	appInfo := new(vks.VkApplicationInfo).
 		WithDefaultSType().
-		WithApplication("Test", vks.MakeApiVersion(0, 1, 0, 0)).
-		WithEngine("NoEngine", vks.MakeApiVersion(0, 1, 0, 0)).
+		WithApplication("Test", vks.MakeVkApiVersion(0, 1, 0, 0)).
+		WithEngine("NoEngine", vks.MakeVkApiVersion(0, 1, 0, 0)).
 		WithApiVersion(uint32(vks.VK_API_VERSION_1_2)).
 		AsCPtr()
 	createInfo := new(vks.VkInstanceCreateInfo).
@@ -82,9 +70,9 @@ func main() {
 			vks.VkGetPhysicalDeviceProperties2(phyDev, props)
 
 			name := vks.ToString(props.Properties().DeviceName())
-			apiVersion := vks.Version(props.Properties().ApiVersion())
+			apiVersion := vks.VkApiVersion(props.Properties().ApiVersion())
 			devType := props.Properties().DeviceType()
-			driverVersion := vks.Version(props.Properties().DriverVersion())
+			driverVersion := vks.VkApiVersion(props.Properties().DriverVersion())
 			vendorId := props.Properties().VendorID()
 			driverInfo := vks.ToString(driverProps.DriverInfo())
 			driverName := vks.ToString(driverProps.DriverName())
@@ -98,3 +86,26 @@ func main() {
 	vks.VkDestroyInstance(instance, nil)
 }
 ```
+
+## Expected usage.
+
+The expected usage is to configure a vkxml.yml file for a project, and use
+the header-generator program to expose the vulkan functionality you need to
+your program.
+
+That being said, I intend to keep the (in my opinion) most common
+extensions enabled and available for vks, partially for testing, and partially
+as a living example of expected usage.
+
+## Next steps
+
+Listed in no particular order:
+* add renaming support to header-generator (to remove all the Vk prefixes on types).
+* add dynamic linking, and using get\*ProcAddr() to remove some
+  of the overhead.
+* add WSI support, and putting certain extension data in different files (with
+  different build tags).
+* Put better documentation into the output. Hoping to find a way to pull some of the
+  Vulkan docs into the file.
+* Re-organize the output to be more OO -- this may go with the get\*ProcAddr, as
+  tracking handles to their parent instance may be part of that.

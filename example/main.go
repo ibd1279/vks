@@ -8,26 +8,15 @@ import (
 )
 
 func main() {
-	if layProps, result := vks.EnumerateInstanceLayerProperties(); result.IsSuccess() {
-		for k, v := range layProps {
-			name := vks.ToString(v.LayerName())
-			log.Printf("layer %d %v %d %t", k, name, len(name), "VK_LAYER_LUNARG_api_dump" == name)
-		}
-	}
-	if extProps, result := vks.EnumerateInstanceExtensionProperties(""); result.IsSuccess() {
-		for k, v := range extProps {
-			name := vks.ToString(v.ExtensionName())
-			log.Printf("extension %d %v %d %t", k, name, len(name), "VK_KHR_surface" == name)
-		}
-	}
-	if version, result := vks.EnumerateInstanceVersion(); result.IsSuccess() {
+	var version uint32
+	if result := vks.VkEnumerateInstanceVersion(&version); result.IsSuccess() {
 		log.Printf("%v", version)
 	}
 
 	appInfo := new(vks.VkApplicationInfo).
 		WithDefaultSType().
-		WithApplication("Test", vks.MakeApiVersion(0, 1, 0, 0)).
-		WithEngine("NoEngine", vks.MakeApiVersion(0, 1, 0, 0)).
+		WithApplication("Test", vks.MakeVkApiVersion(0, 1, 0, 0)).
+		WithEngine("NoEngine", vks.MakeVkApiVersion(0, 1, 0, 0)).
 		WithApiVersion(uint32(vks.VK_API_VERSION_1_2)).
 		AsCPtr()
 	createInfo := new(vks.VkInstanceCreateInfo).
@@ -58,9 +47,9 @@ func main() {
 			vks.VkGetPhysicalDeviceProperties2(phyDev, props)
 
 			name := vks.ToString(props.Properties().DeviceName())
-			apiVersion := vks.Version(props.Properties().ApiVersion())
+			apiVersion := vks.VkApiVersion(props.Properties().ApiVersion())
 			devType := props.Properties().DeviceType()
-			driverVersion := vks.Version(props.Properties().DriverVersion())
+			driverVersion := vks.VkApiVersion(props.Properties().DriverVersion())
 			vendorId := props.Properties().VendorID()
 			driverInfo := vks.ToString(driverProps.DriverInfo())
 			driverName := vks.ToString(driverProps.DriverName())

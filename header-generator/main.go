@@ -40,13 +40,13 @@ func main() {
 		switch node.NodeType {
 		case RegistryNodeType:
 			if tiepuh := node.TypeElement(); tiepuh != nil {
-				if d := TypeToData(node, *tiepuh); d != nil {
+				if b, d := TypeToData(node, *tiepuh); b {
 					data = append(data, d)
 				}
 			}
 		case RegistryNodeCommand:
 			if command := node.CommandElement(); command != nil {
-				if d := CommandToData(node, *command); d != nil {
+				if b, d := CommandToData(node, *command); b {
 					data = append(data, d)
 				}
 			}
@@ -56,6 +56,7 @@ func main() {
 
 	t := template.Must(template.New("primary").Parse(primaryTemplate))
 	t = template.Must(t.Parse(constTemplate))
+	t = template.Must(t.Parse(versionTemplate))
 	t = template.Must(t.Parse(baseTemplate))
 	t = template.Must(t.Parse(handleTemplate))
 	t = template.Must(t.Parse(enumTemplate))
@@ -115,6 +116,33 @@ func LoadRegistry(fn string) *Registry {
 const constTemplate = `{{define "const"}}const ({{range .}}
 	{{.Name.Go}} = {{.Value.Go}}{{end}}
 )
+{{end}}`
+const versionTemplate = `{{define "version"}}// {{.Name.Go}} is an implementation of the Vulkan Make Api Version
+// defines.
+type {{.Name.Go}} uint32
+
+// MakeApiVersion creates a Version based on the provided Variant, maJor, miNor,
+// and Patch.
+func Make{{.Name.Go}}(v, j, n, p int) {{.Name.Go}} {
+	return {{.Name.Go}}((uint32(v) << 29) | (uint32(j) << 22) | (uint32(n) << 12) | (uint32(p)))
+}
+
+func (v {{.Name.Go}}) Major() uint32   { return uint32((v >> 22) & 0x7F) }
+func (v {{.Name.Go}}) Minor() uint32   { return uint32((v >> 12) & 0x3FF) }
+func (v {{.Name.Go}}) Patch() uint32   { return uint32(v & 0xFFF) }
+func (v {{.Name.Go}}) Variant() uint32 { return uint32(v >> 29) }
+func (v {{.Name.Go}}) String() string {
+	return fmt.Sprintf("%d[v.%d.%d.%d.%d]", v, v.Variant(), v.Major(), v.Minor(), v.Patch())
+}
+
+var (
+	VK_API_VERSION_1_0         {{.Name.Go}} = Make{{.Name.Go}}(0, 1, 0, 0)
+	VK_API_VERSION_1_1         {{.Name.Go}} = Make{{.Name.Go}}(0, 1, 1, 0)
+	VK_API_VERSION_1_2         {{.Name.Go}} = Make{{.Name.Go}}(0, 1, 2, 0)
+	VK_HEADER_VERSION_COMPLETE {{.Name.Go}} = Make{{.Name.Go}}({{.Value.Go}}, {{.HeaderVersionName.Go}})
+)
+{{end}}{{define "headerversion"}}// Version of the vk specification used to generate this.
+const {{.HeaderVersionName.Go}} = {{.Value.Go}}
 {{end}}`
 const baseTemplate = `{{define "base"}}type {{.Name.Go}} {{.Type.Go}}
 {{end}}`
@@ -228,6 +256,9 @@ import (
 )
 
 {{range .Data}}{{if eq .Template "const"}}{{block "const" .Data}}{{.}}{{end}}
+{{else if eq .Template "version"}}{{block "version" .Data}}{{.}}{{end}}
+{{else if eq .Template "headerversion"}}{{block "headerversion" .Data}}{{.}}{{end}}
+{{else if eq .Template "headerversioncomplete"}}{{block "headerversioncomplete" .Data}}{{.}}{{end}}
 {{else if eq .Template "base"}}{{block "base" .Data}}{{.}}{{end}}
 {{else if eq .Template "handle"}}{{block "handle" .Data}}{{.}}{{end}}
 {{else if eq .Template "enum"}}{{block "enum" .Data}}{{.}}{{end}}

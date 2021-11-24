@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"regexp"
 	"strconv"
 	"strings"
@@ -164,6 +165,26 @@ func (xl8r *NameTranslator) Go() string {
 	return name
 }
 
+// VK_API_VERSION vs VkApiVersion
+type CamelCaseTranslator struct {
+	specName string
+}
+
+func (xl8r *CamelCaseTranslator) C() string   { return xl8r.specName }
+func (xl8r *CamelCaseTranslator) CGo() string { return xl8r.specName }
+func (xl8r *CamelCaseTranslator) Go() string {
+	src := xl8r.specName
+	if strings.Contains(src, "_") {
+		lower := strings.ToLower(src)
+		parts := strings.Split(lower, "_")
+		for h := 1; h < len(parts); h++ {
+			parts[h] = strings.Title(parts[h])
+		}
+		return strings.Join(parts, "")
+	}
+	return src
+}
+
 // sType vs SType
 type ExportTranslator struct {
 	orig Translator
@@ -264,6 +285,13 @@ type ConstData struct {
 	Value Translator // e.g. 256
 }
 
+/* type VkVersion uint32 */
+type DefineData struct {
+	Name              Translator // e.g. VkVersion
+	HeaderVersionName Translator // e.g. VK_HEADER_VERSION
+	Value             Translator // e.g. 0, 1, 2 or 198
+}
+
 /* type VkBool32 uint32 */
 type BaseData struct {
 	Type Translator // e.g. uint32
@@ -337,10 +365,10 @@ type CommandParamData struct {
 	Type Translator // e.g. string
 }
 
-func CommandToData(node *RegistryNode, command CommandElement) interface{} {
+func CommandToData(node *RegistryNode, command CommandElement) (bool, interface{}) {
 	if len(command.Alias()) > 0 {
 		// TODO add support for Aliases later.
-		return nil
+		return false, nil
 	} else {
 		var returnTranslator Translator
 		if scalarXl8r := GetScalarTranslator(command.Proto.Type); scalarXl8r != nil {
@@ -360,32 +388,108 @@ func CommandToData(node *RegistryNode, command CommandElement) interface{} {
 			})
 		}
 
-		return &struct {
+		return true, &struct {
 			Template string
 			Data     CommandData
 		}{"command", data}
 	}
-	return nil
+	return false, nil
 }
 
-func TypeToData(node *RegistryNode, tiepuh TypeElement) interface{} {
+func TypeToData(node *RegistryNode, tiepuh TypeElement) (bool, interface{}) {
 	switch tiepuh.Category {
+	case TypeCategoryDefine:
+		tmp := defineTypeToData(node, tiepuh)
+		return tmp != nil, defineTypeToData(node, tiepuh)
 	case TypeCategoryBasetype:
-		return baseTypeToData(node, tiepuh)
+		tmp := baseTypeToData(node, tiepuh)
+		return tmp != nil, baseTypeToData(node, tiepuh)
 	case TypeCategoryHandle:
-		return handleTypeToData(node, tiepuh)
+		tmp := handleTypeToData(node, tiepuh)
+		return tmp != nil, handleTypeToData(node, tiepuh)
 	case TypeCategoryEnum:
-		return enumTypeToData(node, tiepuh)
+		tmp := enumTypeToData(node, tiepuh)
+		return tmp != nil, enumTypeToData(node, tiepuh)
 	case TypeCategoryBitmask:
-		return enumTypeToData(node, tiepuh)
+		tmp := enumTypeToData(node, tiepuh)
+		return tmp != nil, enumTypeToData(node, tiepuh)
 	case TypeCategoryFuncpointer:
-		return funcTypeToData(node, tiepuh)
+		tmp := funcTypeToData(node, tiepuh)
+		return tmp != nil, funcTypeToData(node, tiepuh)
 	case TypeCategoryStruct:
-		return structTypeToData(node, tiepuh)
+		tmp := structTypeToData(node, tiepuh)
+		return tmp != nil, structTypeToData(node, tiepuh)
 	case TypeCategoryUnion:
-		return unionTypeToData(node, tiepuh)
+		tmp := unionTypeToData(node, tiepuh)
+		return tmp != nil, unionTypeToData(node, tiepuh)
 	}
-	return nil
+	return false, nil
+}
+
+var (
+	// list of defines that are intentionally ignored because they don't apply
+	// to go, or are covered by the implementation of another define.
+	defineSkip map[string]bool = map[string]bool{
+		"VK_MAKE_VERSION":                   true, // deprecated
+		"VK_VERSION_MAJOR":                  true, // deprecated
+		"VK_VERSION_MINOR":                  true, // deprecated
+		"VK_VERSION_PATCH":                  true, // deprecated
+		"VK_API_VERSION":                    true, // deprecated
+		"VK_DEFINE_HANDLE":                  true, // doesn't apply to go.
+		"VK_USE_64_BIT_PTR_DEFINES":         true, // doesn't apply to go.
+		"VK_NULL_HANDLE":                    true, // in the handle template.
+		"VK_DEFINE_NON_DISPATCHABLE_HANDLE": true, // doesn't apply to go?
+		"VK_API_VERSION_VARIANT":            true, // in the version template.
+		"VK_API_VERSION_MAJOR":              true, // in the version template.
+		"VK_API_VERSION_MINOR":              true, // in the version template.
+		"VK_API_VERSION_PATCH":              true, // in the version template.
+		"VK_API_VERSION_1_0":                true, // in the version template.
+		"VK_API_VERSION_1_1":                true, // in the version template.
+		"VK_API_VERSION_1_2":                true, // in the version template.
+		"VK_MAKE_API_VERSION":               true, // in the version template.
+	}
+	headerVersionRegexp *regexp.Regexp = regexp.MustCompile("(\\d+)$")
+	vulkanVersionRegexp *regexp.Regexp = regexp.MustCompile("\\((\\d+, \\d+, \\d+), VK_HEADER_VERSION\\)$")
+)
+
+func defineTypeToData(node *RegistryNode, tiepuh TypeElement) *struct {
+	Template string
+	Data     DefineData
+} {
+	if defineSkip[tiepuh.Name()] {
+		return nil
+	}
+
+	t := "version"
+	data := DefineData{
+		Name:              &NameTranslator{&ExportTranslator{&CamelCaseTranslator{"VK_API_VERSION"}}},
+		HeaderVersionName: &NameTranslator{&ExportTranslator{&CamelCaseTranslator{"VK_HEADER_VERSION"}}},
+	}
+	switch tiepuh.Name() {
+	case "VK_HEADER_VERSION":
+		vals := headerVersionRegexp.FindStringSubmatch(tiepuh.Raw)
+		if len(vals) < 2 {
+			log.Printf("encountered a %s that could not be parsed / %s", tiepuh.Name(), tiepuh.Raw)
+			return nil
+		}
+		data.Value = &LiteralTranslator{vals[1]}
+		t = "headerversion"
+	case "VK_HEADER_VERSION_COMPLETE":
+		vals := vulkanVersionRegexp.FindStringSubmatch(tiepuh.Raw)
+		if len(vals) < 2 {
+			log.Printf("encountered a %s that could not be parsed / %s", tiepuh.Name(), tiepuh.Raw)
+			return nil
+		}
+		data.Value = &LiteralTranslator{vals[1]}
+	default:
+		log.Printf("Encountered a define that is not handled %s", tiepuh.Name())
+		return nil
+	}
+
+	return &struct {
+		Template string
+		Data     DefineData
+	}{t, data}
 }
 
 func baseTypeToData(node *RegistryNode, tiepuh TypeElement) *struct {
