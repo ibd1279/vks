@@ -725,6 +725,7 @@ func (registry *Registry) Graph() (RegistryGraph, *RegistryNode) {
 			link(self, member.Enum)
 		}
 		link(self, v.ObjTypeEnum)
+		link(self, v.TypeTag)
 	}
 	for _, v := range registry.Enums {
 		child := dictionary[v.Name]

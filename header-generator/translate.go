@@ -560,18 +560,23 @@ func enumTypeToData(node *RegistryNode, tiepuh TypeElement) *struct {
 					valueTranslator = &ValueTranslator{v.E.Value}
 				} else {
 					valueTranslator = &BitValueTranslator{v.E.BitPos}
+					if (1 << v.E.BitPos) > largestValue {
+						largestValue = (1 << v.E.BitPos)
+					} else if (1 << v.E.BitPos) < smallestValue {
+						smallestValue = (1 << v.E.BitPos)
+					}
 				}
 			} else {
-				if val, _ := strconv.ParseInt(v.E.Value, 10, 64); val > largestValue || val < smallestValue {
+				if len(v.E.Alias) > 0 {
+					valueTranslator = &LiteralTranslator{v.E.Alias}
+					evd.Alias = true
+				} else if val, _ := strconv.ParseInt(v.E.Value, 10, 64); val > largestValue || val < smallestValue {
+					valueTranslator = &ValueTranslator{v.E.Value}
 					if val > largestValue {
 						largestValue = val
 					} else if val < smallestValue {
 						smallestValue = val
 					}
-				}
-				if len(v.E.Alias) > 0 {
-					valueTranslator = &LiteralTranslator{v.E.Alias}
-					evd.Alias = true
 				} else {
 					valueTranslator = &ValueTranslator{v.E.Value}
 				}
@@ -581,6 +586,8 @@ func enumTypeToData(node *RegistryNode, tiepuh TypeElement) *struct {
 		}
 		if smallestValue < 0 {
 			ed.Type = Int32Translator
+		} else if largestValue > int64(^uint32(0)) {
+			ed.Type = Uint64Translator
 		}
 	}
 	if ed.Type == nil {
