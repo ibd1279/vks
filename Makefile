@@ -1,8 +1,9 @@
 all:
-	./header-generator/header-generator | gofmt > vkslash.go
+	./header-generator/header-generator
+	gofmt -s -w vk_wrapper.go
 
 clean:
-	rm -f vkslash.go
+	rm -f vk_wrapper.go
 
 test:
 	go build

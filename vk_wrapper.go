@@ -10,6 +10,7 @@ import (
 	"unsafe"
 )
 
+// These are API constants.
 const (
 	VK_MAX_PHYSICAL_DEVICE_NAME_SIZE = 256
 	VK_UUID_SIZE                     = 16
@@ -43,10 +44,12 @@ const (
 )
 
 // Version of the vk specification used to generate this.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VK_API_VERSION.html
 const HeaderVersion = 198
 
 // ApiVersion is an implementation of the Vulkan Make Api Version
-// defines.
+// defines. See
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VK_MAKE_API_VERSION.html
 type ApiVersion uint32
 
 // MakeApiVersion creates a Version based on the provided Variant, maJor, miNor,
@@ -70,166 +73,203 @@ var (
 	VK_HEADER_VERSION_COMPLETE ApiVersion = MakeApiVersion(0, 1, 2, HeaderVersion)
 )
 
+// SampleMask is a base type in the vulkan specification.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSampleMask.html
 type SampleMask uint32
 
+// DeviceSize is a base type in the vulkan specification.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceSize.html
 type DeviceSize uint64
 
+// DeviceAddress is a base type in the vulkan specification.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceAddress.html
 type DeviceAddress uint64
 
+// Bool32 is a base type in the vulkan specification.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBool32.html
 type Bool32 uint32
 
+// Flags is a base type in the vulkan specification.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFlags.html
 type Flags uint32
 
 // DescriptorSet is a Handle to a vulkan resource.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorSet.html
 type DescriptorSet C.VkDescriptorSet
 
+// NullDescriptorSet is a typed Null value for the DescriptorSet type.
 var NullDescriptorSet DescriptorSet
 
 // Instance is a Handle to a vulkan resource.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkInstance.html
 type Instance C.VkInstance
 
+// NullInstance is a typed Null value for the Instance type.
 var NullInstance Instance
 
 // Framebuffer is a Handle to a vulkan resource.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFramebuffer.html
 type Framebuffer C.VkFramebuffer
 
+// NullFramebuffer is a typed Null value for the Framebuffer type.
 var NullFramebuffer Framebuffer
 
 // BufferView is a Handle to a vulkan resource.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferView.html
 type BufferView C.VkBufferView
 
+// NullBufferView is a typed Null value for the BufferView type.
 var NullBufferView BufferView
 
 // Event is a Handle to a vulkan resource.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkEvent.html
 type Event C.VkEvent
 
+// NullEvent is a typed Null value for the Event type.
 var NullEvent Event
 
 // CommandPool is a Handle to a vulkan resource.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandPool.html
 type CommandPool C.VkCommandPool
 
+// NullCommandPool is a typed Null value for the CommandPool type.
 var NullCommandPool CommandPool
 
 // DeviceMemory is a Handle to a vulkan resource.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceMemory.html
 type DeviceMemory C.VkDeviceMemory
 
+// NullDeviceMemory is a typed Null value for the DeviceMemory type.
 var NullDeviceMemory DeviceMemory
 
 // Pipeline is a Handle to a vulkan resource.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipeline.html
 type Pipeline C.VkPipeline
 
+// NullPipeline is a typed Null value for the Pipeline type.
 var NullPipeline Pipeline
 
 // QueryPool is a Handle to a vulkan resource.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueryPool.html
 type QueryPool C.VkQueryPool
 
+// NullQueryPool is a typed Null value for the QueryPool type.
 var NullQueryPool QueryPool
 
 // Image is a Handle to a vulkan resource.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImage.html
 type Image C.VkImage
 
+// NullImage is a typed Null value for the Image type.
 var NullImage Image
 
 // PipelineCache is a Handle to a vulkan resource.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineCache.html
 type PipelineCache C.VkPipelineCache
 
+// NullPipelineCache is a typed Null value for the PipelineCache type.
 var NullPipelineCache PipelineCache
 
 // Device is a Handle to a vulkan resource.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDevice.html
 type Device C.VkDevice
 
+// NullDevice is a typed Null value for the Device type.
 var NullDevice Device
 
 // CommandBuffer is a Handle to a vulkan resource.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandBuffer.html
 type CommandBuffer C.VkCommandBuffer
 
+// NullCommandBuffer is a typed Null value for the CommandBuffer type.
 var NullCommandBuffer CommandBuffer
 
 // Semaphore is a Handle to a vulkan resource.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSemaphore.html
 type Semaphore C.VkSemaphore
 
+// NullSemaphore is a typed Null value for the Semaphore type.
 var NullSemaphore Semaphore
 
 // DescriptorSetLayout is a Handle to a vulkan resource.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorSetLayout.html
 type DescriptorSetLayout C.VkDescriptorSetLayout
 
+// NullDescriptorSetLayout is a typed Null value for the DescriptorSetLayout type.
 var NullDescriptorSetLayout DescriptorSetLayout
 
 // ImageView is a Handle to a vulkan resource.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageView.html
 type ImageView C.VkImageView
 
+// NullImageView is a typed Null value for the ImageView type.
 var NullImageView ImageView
 
 // Sampler is a Handle to a vulkan resource.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSampler.html
 type Sampler C.VkSampler
 
+// NullSampler is a typed Null value for the Sampler type.
 var NullSampler Sampler
 
 // Queue is a Handle to a vulkan resource.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueue.html
 type Queue C.VkQueue
 
+// NullQueue is a typed Null value for the Queue type.
 var NullQueue Queue
 
 // ShaderModule is a Handle to a vulkan resource.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkShaderModule.html
 type ShaderModule C.VkShaderModule
 
+// NullShaderModule is a typed Null value for the ShaderModule type.
 var NullShaderModule ShaderModule
 
 // Fence is a Handle to a vulkan resource.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFence.html
 type Fence C.VkFence
 
+// NullFence is a typed Null value for the Fence type.
 var NullFence Fence
 
 // PipelineLayout is a Handle to a vulkan resource.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineLayout.html
 type PipelineLayout C.VkPipelineLayout
 
+// NullPipelineLayout is a typed Null value for the PipelineLayout type.
 var NullPipelineLayout PipelineLayout
 
 // RenderPass is a Handle to a vulkan resource.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkRenderPass.html
 type RenderPass C.VkRenderPass
 
+// NullRenderPass is a typed Null value for the RenderPass type.
 var NullRenderPass RenderPass
 
 // Buffer is a Handle to a vulkan resource.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBuffer.html
 type Buffer C.VkBuffer
 
+// NullBuffer is a typed Null value for the Buffer type.
 var NullBuffer Buffer
 
 // DescriptorPool is a Handle to a vulkan resource.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorPool.html
 type DescriptorPool C.VkDescriptorPool
 
+// NullDescriptorPool is a typed Null value for the DescriptorPool type.
 var NullDescriptorPool DescriptorPool
 
 // PhysicalDevice is a Handle to a vulkan resource.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPhysicalDevice.html
 type PhysicalDevice C.VkPhysicalDevice
 
+// NullPhysicalDevice is a typed Null value for the PhysicalDevice type.
 var NullPhysicalDevice PhysicalDevice
 
+// Filter is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFilter.html
 type Filter uint32
 
 const (
@@ -251,6 +291,8 @@ func (x Filter) String() string {
 	return fmt.Sprintf("Filter=%d", x)
 }
 
+// BorderColor is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBorderColor.html
 type BorderColor uint32
 
 const (
@@ -280,6 +322,8 @@ func (x BorderColor) String() string {
 	return fmt.Sprintf("BorderColor=%d", x)
 }
 
+// AttachmentLoadOp is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkAttachmentLoadOp.html
 type AttachmentLoadOp uint32
 
 const (
@@ -303,6 +347,8 @@ func (x AttachmentLoadOp) String() string {
 	return fmt.Sprintf("AttachmentLoadOp=%d", x)
 }
 
+// StencilFaceFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkStencilFaceFlagBits.html
 type StencilFaceFlagBits uint32
 
 const (
@@ -327,8 +373,12 @@ func (x StencilFaceFlagBits) String() string {
 	return fmt.Sprintf("StencilFaceFlagBits=%d", x)
 }
 
+// RenderPassCreateFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkRenderPassCreateFlagBits.html
 type RenderPassCreateFlagBits uint32
 
+// IndexType is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkIndexType.html
 type IndexType uint32
 
 const (
@@ -350,6 +400,8 @@ func (x IndexType) String() string {
 	return fmt.Sprintf("IndexType=%d", x)
 }
 
+// PolygonMode is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPolygonMode.html
 type PolygonMode uint32
 
 const (
@@ -373,6 +425,8 @@ func (x PolygonMode) String() string {
 	return fmt.Sprintf("PolygonMode=%d", x)
 }
 
+// PipelineBindPoint is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineBindPoint.html
 type PipelineBindPoint uint32
 
 const (
@@ -394,6 +448,8 @@ func (x PipelineBindPoint) String() string {
 	return fmt.Sprintf("PipelineBindPoint=%d", x)
 }
 
+// FenceCreateFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFenceCreateFlagBits.html
 type FenceCreateFlagBits uint32
 
 const (
@@ -413,6 +469,8 @@ func (x FenceCreateFlagBits) String() string {
 	return fmt.Sprintf("FenceCreateFlagBits=%d", x)
 }
 
+// SamplerMipmapMode is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSamplerMipmapMode.html
 type SamplerMipmapMode uint32
 
 const (
@@ -434,6 +492,8 @@ func (x SamplerMipmapMode) String() string {
 	return fmt.Sprintf("SamplerMipmapMode=%d", x)
 }
 
+// PipelineCreateFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineCreateFlagBits.html
 type PipelineCreateFlagBits uint32
 
 const (
@@ -462,6 +522,8 @@ func (x PipelineCreateFlagBits) String() string {
 	return fmt.Sprintf("PipelineCreateFlagBits=%d", x)
 }
 
+// FramebufferCreateFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFramebufferCreateFlagBits.html
 type FramebufferCreateFlagBits uint32
 
 const (
@@ -481,6 +543,8 @@ func (x FramebufferCreateFlagBits) String() string {
 	return fmt.Sprintf("FramebufferCreateFlagBits=%d", x)
 }
 
+// PipelineCacheHeaderVersion is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineCacheHeaderVersion.html
 type PipelineCacheHeaderVersion uint32
 
 const (
@@ -500,6 +564,8 @@ func (x PipelineCacheHeaderVersion) String() string {
 	return fmt.Sprintf("PipelineCacheHeaderVersion=%d", x)
 }
 
+// BufferCreateFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferCreateFlagBits.html
 type BufferCreateFlagBits uint32
 
 const (
@@ -527,8 +593,12 @@ func (x BufferCreateFlagBits) String() string {
 	return fmt.Sprintf("BufferCreateFlagBits=%d", x)
 }
 
+// SubpassDescriptionFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSubpassDescriptionFlagBits.html
 type SubpassDescriptionFlagBits uint32
 
+// SparseMemoryBindFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSparseMemoryBindFlagBits.html
 type SparseMemoryBindFlagBits uint32
 
 const (
@@ -548,6 +618,8 @@ func (x SparseMemoryBindFlagBits) String() string {
 	return fmt.Sprintf("SparseMemoryBindFlagBits=%d", x)
 }
 
+// BufferUsageFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferUsageFlagBits.html
 type BufferUsageFlagBits uint32
 
 const (
@@ -585,6 +657,8 @@ func (x BufferUsageFlagBits) String() string {
 	return fmt.Sprintf("BufferUsageFlagBits=%d", x)
 }
 
+// ImageTiling is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageTiling.html
 type ImageTiling uint32
 
 const (
@@ -606,6 +680,8 @@ func (x ImageTiling) String() string {
 	return fmt.Sprintf("ImageTiling=%d", x)
 }
 
+// SharingMode is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSharingMode.html
 type SharingMode uint32
 
 const (
@@ -627,6 +703,8 @@ func (x SharingMode) String() string {
 	return fmt.Sprintf("SharingMode=%d", x)
 }
 
+// StructureType is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkStructureType.html
 type StructureType uint32
 
 const (
@@ -1016,6 +1094,8 @@ func (x StructureType) String() string {
 	return fmt.Sprintf("StructureType=%d", x)
 }
 
+// LogicOp is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkLogicOp.html
 type LogicOp uint32
 
 const (
@@ -1065,6 +1145,8 @@ func (x LogicOp) String() string {
 	return fmt.Sprintf("LogicOp=%d", x)
 }
 
+// Format is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFormat.html
 type Format uint32
 
 const (
@@ -1520,6 +1602,8 @@ func (x Format) String() string {
 	return fmt.Sprintf("Format=%d", x)
 }
 
+// FormatFeatureFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFormatFeatureFlagBits.html
 type FormatFeatureFlagBits uint32
 
 const (
@@ -1583,6 +1667,8 @@ func (x FormatFeatureFlagBits) String() string {
 	return fmt.Sprintf("FormatFeatureFlagBits=%d", x)
 }
 
+// AttachmentDescriptionFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkAttachmentDescriptionFlagBits.html
 type AttachmentDescriptionFlagBits uint32
 
 const (
@@ -1602,6 +1688,8 @@ func (x AttachmentDescriptionFlagBits) String() string {
 	return fmt.Sprintf("AttachmentDescriptionFlagBits=%d", x)
 }
 
+// FrontFace is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFrontFace.html
 type FrontFace uint32
 
 const (
@@ -1623,6 +1711,8 @@ func (x FrontFace) String() string {
 	return fmt.Sprintf("FrontFace=%d", x)
 }
 
+// ImageCreateFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageCreateFlagBits.html
 type ImageCreateFlagBits uint32
 
 const (
@@ -1664,6 +1754,8 @@ func (x ImageCreateFlagBits) String() string {
 	return fmt.Sprintf("ImageCreateFlagBits=%d", x)
 }
 
+// SparseImageFormatFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSparseImageFormatFlagBits.html
 type SparseImageFormatFlagBits uint32
 
 const (
@@ -1687,6 +1779,8 @@ func (x SparseImageFormatFlagBits) String() string {
 	return fmt.Sprintf("SparseImageFormatFlagBits=%d", x)
 }
 
+// DynamicState is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDynamicState.html
 type DynamicState uint32
 
 const (
@@ -1722,6 +1816,8 @@ func (x DynamicState) String() string {
 	return fmt.Sprintf("DynamicState=%d", x)
 }
 
+// VendorId is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkVendorId.html
 type VendorId uint32
 
 const (
@@ -1751,6 +1847,8 @@ func (x VendorId) String() string {
 	return fmt.Sprintf("VendorId=%d", x)
 }
 
+// ImageType is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageType.html
 type ImageType uint32
 
 const (
@@ -1774,6 +1872,8 @@ func (x ImageType) String() string {
 	return fmt.Sprintf("ImageType=%d", x)
 }
 
+// ImageUsageFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageUsageFlagBits.html
 type ImageUsageFlagBits uint32
 
 const (
@@ -1807,6 +1907,8 @@ func (x ImageUsageFlagBits) String() string {
 	return fmt.Sprintf("ImageUsageFlagBits=%d", x)
 }
 
+// ImageAspectFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageAspectFlagBits.html
 type ImageAspectFlagBits uint32
 
 const (
@@ -1838,6 +1940,8 @@ func (x ImageAspectFlagBits) String() string {
 	return fmt.Sprintf("ImageAspectFlagBits=%d", x)
 }
 
+// ObjectType is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkObjectType.html
 type ObjectType uint32
 
 const (
@@ -1919,8 +2023,12 @@ func (x ObjectType) String() string {
 	return fmt.Sprintf("ObjectType=%d", x)
 }
 
+// PipelineShaderStageCreateFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineShaderStageCreateFlagBits.html
 type PipelineShaderStageCreateFlagBits uint32
 
+// CullModeFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCullModeFlagBits.html
 type CullModeFlagBits uint32
 
 const (
@@ -1946,6 +2054,8 @@ func (x CullModeFlagBits) String() string {
 	return fmt.Sprintf("CullModeFlagBits=%d", x)
 }
 
+// InternalAllocationType is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkInternalAllocationType.html
 type InternalAllocationType uint32
 
 const (
@@ -1965,6 +2075,8 @@ func (x InternalAllocationType) String() string {
 	return fmt.Sprintf("InternalAllocationType=%d", x)
 }
 
+// CompareOp is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCompareOp.html
 type CompareOp uint32
 
 const (
@@ -1998,6 +2110,8 @@ func (x CompareOp) String() string {
 	return fmt.Sprintf("CompareOp=%d", x)
 }
 
+// MemoryHeapFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkMemoryHeapFlagBits.html
 type MemoryHeapFlagBits uint32
 
 const (
@@ -2019,6 +2133,8 @@ func (x MemoryHeapFlagBits) String() string {
 	return fmt.Sprintf("MemoryHeapFlagBits=%d", x)
 }
 
+// CommandPoolCreateFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandPoolCreateFlagBits.html
 type CommandPoolCreateFlagBits uint32
 
 const (
@@ -2042,6 +2158,8 @@ func (x CommandPoolCreateFlagBits) String() string {
 	return fmt.Sprintf("CommandPoolCreateFlagBits=%d", x)
 }
 
+// MemoryPropertyFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkMemoryPropertyFlagBits.html
 type MemoryPropertyFlagBits uint32
 
 const (
@@ -2071,6 +2189,8 @@ func (x MemoryPropertyFlagBits) String() string {
 	return fmt.Sprintf("MemoryPropertyFlagBits=%d", x)
 }
 
+// AccessFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkAccessFlagBits.html
 type AccessFlagBits uint32
 
 const (
@@ -2122,8 +2242,12 @@ func (x AccessFlagBits) String() string {
 	return fmt.Sprintf("AccessFlagBits=%d", x)
 }
 
+// EventCreateFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkEventCreateFlagBits.html
 type EventCreateFlagBits uint32
 
+// PipelineStageFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineStageFlagBits.html
 type PipelineStageFlagBits uint32
 
 const (
@@ -2175,6 +2299,8 @@ func (x PipelineStageFlagBits) String() string {
 	return fmt.Sprintf("PipelineStageFlagBits=%d", x)
 }
 
+// ColorComponentFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkColorComponentFlagBits.html
 type ColorComponentFlagBits uint32
 
 const (
@@ -2200,6 +2326,8 @@ func (x ColorComponentFlagBits) String() string {
 	return fmt.Sprintf("ColorComponentFlagBits=%d", x)
 }
 
+// BlendOp is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBlendOp.html
 type BlendOp uint32
 
 const (
@@ -2227,6 +2355,8 @@ func (x BlendOp) String() string {
 	return fmt.Sprintf("BlendOp=%d", x)
 }
 
+// QueryResultFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueryResultFlagBits.html
 type QueryResultFlagBits uint32
 
 const (
@@ -2252,6 +2382,8 @@ func (x QueryResultFlagBits) String() string {
 	return fmt.Sprintf("QueryResultFlagBits=%d", x)
 }
 
+// DependencyFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDependencyFlagBits.html
 type DependencyFlagBits uint32
 
 const (
@@ -2275,6 +2407,8 @@ func (x DependencyFlagBits) String() string {
 	return fmt.Sprintf("DependencyFlagBits=%d", x)
 }
 
+// PrimitiveTopology is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPrimitiveTopology.html
 type PrimitiveTopology uint32
 
 const (
@@ -2314,6 +2448,8 @@ func (x PrimitiveTopology) String() string {
 	return fmt.Sprintf("PrimitiveTopology=%d", x)
 }
 
+// PhysicalDeviceType is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPhysicalDeviceType.html
 type PhysicalDeviceType uint32
 
 const (
@@ -2341,6 +2477,8 @@ func (x PhysicalDeviceType) String() string {
 	return fmt.Sprintf("PhysicalDeviceType=%d", x)
 }
 
+// CommandPoolResetFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandPoolResetFlagBits.html
 type CommandPoolResetFlagBits uint32
 
 const (
@@ -2360,6 +2498,8 @@ func (x CommandPoolResetFlagBits) String() string {
 	return fmt.Sprintf("CommandPoolResetFlagBits=%d", x)
 }
 
+// QueueFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueueFlagBits.html
 type QueueFlagBits uint32
 
 const (
@@ -2387,6 +2527,8 @@ func (x QueueFlagBits) String() string {
 	return fmt.Sprintf("QueueFlagBits=%d", x)
 }
 
+// ImageLayout is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageLayout.html
 type ImageLayout uint32
 
 const (
@@ -2436,6 +2578,8 @@ func (x ImageLayout) String() string {
 	return fmt.Sprintf("ImageLayout=%d", x)
 }
 
+// SampleCountFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSampleCountFlagBits.html
 type SampleCountFlagBits uint32
 
 const (
@@ -2467,6 +2611,8 @@ func (x SampleCountFlagBits) String() string {
 	return fmt.Sprintf("SampleCountFlagBits=%d", x)
 }
 
+// DescriptorType is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorType.html
 type DescriptorType uint32
 
 const (
@@ -2506,6 +2652,8 @@ func (x DescriptorType) String() string {
 	return fmt.Sprintf("DescriptorType=%d", x)
 }
 
+// SystemAllocationScope is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSystemAllocationScope.html
 type SystemAllocationScope uint32
 
 const (
@@ -2533,6 +2681,8 @@ func (x SystemAllocationScope) String() string {
 	return fmt.Sprintf("SystemAllocationScope=%d", x)
 }
 
+// ShaderStageFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkShaderStageFlagBits.html
 type ShaderStageFlagBits uint32
 
 const (
@@ -2566,6 +2716,8 @@ func (x ShaderStageFlagBits) String() string {
 	return fmt.Sprintf("ShaderStageFlagBits=%d", x)
 }
 
+// DescriptorPoolCreateFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorPoolCreateFlagBits.html
 type DescriptorPoolCreateFlagBits uint32
 
 const (
@@ -2587,6 +2739,8 @@ func (x DescriptorPoolCreateFlagBits) String() string {
 	return fmt.Sprintf("DescriptorPoolCreateFlagBits=%d", x)
 }
 
+// Result is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkResult.html
 type Result int32
 
 const (
@@ -2660,6 +2814,8 @@ func (x Result) String() string {
 	return fmt.Sprintf("Result=%d", x)
 }
 
+// AttachmentStoreOp is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkAttachmentStoreOp.html
 type AttachmentStoreOp uint32
 
 const (
@@ -2681,6 +2837,8 @@ func (x AttachmentStoreOp) String() string {
 	return fmt.Sprintf("AttachmentStoreOp=%d", x)
 }
 
+// StencilOp is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkStencilOp.html
 type StencilOp uint32
 
 const (
@@ -2714,6 +2872,8 @@ func (x StencilOp) String() string {
 	return fmt.Sprintf("StencilOp=%d", x)
 }
 
+// ComponentSwizzle is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkComponentSwizzle.html
 type ComponentSwizzle uint32
 
 const (
@@ -2745,6 +2905,8 @@ func (x ComponentSwizzle) String() string {
 	return fmt.Sprintf("ComponentSwizzle=%d", x)
 }
 
+// DescriptorSetLayoutCreateFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorSetLayoutCreateFlagBits.html
 type DescriptorSetLayoutCreateFlagBits uint32
 
 const (
@@ -2764,6 +2926,8 @@ func (x DescriptorSetLayoutCreateFlagBits) String() string {
 	return fmt.Sprintf("DescriptorSetLayoutCreateFlagBits=%d", x)
 }
 
+// VertexInputRate is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkVertexInputRate.html
 type VertexInputRate uint32
 
 const (
@@ -2785,6 +2949,8 @@ func (x VertexInputRate) String() string {
 	return fmt.Sprintf("VertexInputRate=%d", x)
 }
 
+// QueryPipelineStatisticFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueryPipelineStatisticFlagBits.html
 type QueryPipelineStatisticFlagBits uint32
 
 const (
@@ -2824,8 +2990,12 @@ func (x QueryPipelineStatisticFlagBits) String() string {
 	return fmt.Sprintf("QueryPipelineStatisticFlagBits=%d", x)
 }
 
+// ImageViewCreateFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageViewCreateFlagBits.html
 type ImageViewCreateFlagBits uint32
 
+// ImageViewType is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageViewType.html
 type ImageViewType uint32
 
 const (
@@ -2857,6 +3027,8 @@ func (x ImageViewType) String() string {
 	return fmt.Sprintf("ImageViewType=%d", x)
 }
 
+// SubpassContents is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSubpassContents.html
 type SubpassContents uint32
 
 const (
@@ -2878,6 +3050,8 @@ func (x SubpassContents) String() string {
 	return fmt.Sprintf("SubpassContents=%d", x)
 }
 
+// QueryType is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueryType.html
 type QueryType uint32
 
 const (
@@ -2901,6 +3075,8 @@ func (x QueryType) String() string {
 	return fmt.Sprintf("QueryType=%d", x)
 }
 
+// CommandBufferLevel is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandBufferLevel.html
 type CommandBufferLevel uint32
 
 const (
@@ -2922,6 +3098,8 @@ func (x CommandBufferLevel) String() string {
 	return fmt.Sprintf("CommandBufferLevel=%d", x)
 }
 
+// QueryControlFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueryControlFlagBits.html
 type QueryControlFlagBits uint32
 
 const (
@@ -2941,6 +3119,8 @@ func (x QueryControlFlagBits) String() string {
 	return fmt.Sprintf("QueryControlFlagBits=%d", x)
 }
 
+// CommandBufferResetFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandBufferResetFlagBits.html
 type CommandBufferResetFlagBits uint32
 
 const (
@@ -2960,6 +3140,8 @@ func (x CommandBufferResetFlagBits) String() string {
 	return fmt.Sprintf("CommandBufferResetFlagBits=%d", x)
 }
 
+// CommandBufferUsageFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandBufferUsageFlagBits.html
 type CommandBufferUsageFlagBits uint32
 
 const (
@@ -2983,8 +3165,12 @@ func (x CommandBufferUsageFlagBits) String() string {
 	return fmt.Sprintf("CommandBufferUsageFlagBits=%d", x)
 }
 
+// SamplerCreateFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSamplerCreateFlagBits.html
 type SamplerCreateFlagBits uint32
 
+// BlendFactor is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBlendFactor.html
 type BlendFactor uint32
 
 const (
@@ -3040,6 +3226,8 @@ func (x BlendFactor) String() string {
 	return fmt.Sprintf("BlendFactor=%d", x)
 }
 
+// SamplerAddressMode is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSamplerAddressMode.html
 type SamplerAddressMode uint32
 
 const (
@@ -3067,18 +3255,32 @@ func (x SamplerAddressMode) String() string {
 	return fmt.Sprintf("SamplerAddressMode=%d", x)
 }
 
+// PipelineStageFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineStageFlags.html
 type PipelineStageFlags Flags
 
+// CommandBufferResetFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandBufferResetFlags.html
 type CommandBufferResetFlags Flags
 
+// CommandBufferUsageFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandBufferUsageFlags.html
 type CommandBufferUsageFlags Flags
 
+// QueryControlFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueryControlFlags.html
 type QueryControlFlags Flags
 
+// DescriptorSetLayoutCreateFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorSetLayoutCreateFlags.html
 type DescriptorSetLayoutCreateFlags Flags
 
+// ShaderModuleCreateFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkShaderModuleCreateFlags.html
 type ShaderModuleCreateFlags Flags
 
+// DeviceQueueCreateFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceQueueCreateFlagBits.html
 type DeviceQueueCreateFlagBits uint32
 
 const (
@@ -3098,122 +3300,240 @@ func (x DeviceQueueCreateFlagBits) String() string {
 	return fmt.Sprintf("DeviceQueueCreateFlagBits=%d", x)
 }
 
+// DeviceQueueCreateFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceQueueCreateFlags.html
 type DeviceQueueCreateFlags Flags
 
+// DeviceCreateFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceCreateFlags.html
 type DeviceCreateFlags Flags
 
+// SampleCountFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSampleCountFlags.html
 type SampleCountFlags Flags
 
+// QueueFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueueFlags.html
 type QueueFlags Flags
 
+// MemoryMapFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkMemoryMapFlags.html
 type MemoryMapFlags Flags
 
+// CommandPoolResetFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandPoolResetFlags.html
 type CommandPoolResetFlags Flags
 
+// PipelineCacheCreateFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineCacheCreateFlagBits.html
 type PipelineCacheCreateFlagBits uint32
 
+// PipelineCacheCreateFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineCacheCreateFlags.html
 type PipelineCacheCreateFlags Flags
 
+// DescriptorPoolResetFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorPoolResetFlags.html
 type DescriptorPoolResetFlags Flags
 
+// CommandPoolCreateFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandPoolCreateFlags.html
 type CommandPoolCreateFlags Flags
 
+// ColorComponentFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkColorComponentFlags.html
 type ColorComponentFlags Flags
 
+// MemoryPropertyFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkMemoryPropertyFlags.html
 type MemoryPropertyFlags Flags
 
+// MemoryHeapFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkMemoryHeapFlags.html
 type MemoryHeapFlags Flags
 
+// InstanceCreateFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkInstanceCreateFlags.html
 type InstanceCreateFlags Flags
 
+// SubpassDescriptionFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSubpassDescriptionFlags.html
 type SubpassDescriptionFlags Flags
 
+// AccessFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkAccessFlags.html
 type AccessFlags Flags
 
+// ImageUsageFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageUsageFlags.html
 type ImageUsageFlags Flags
 
+// ImageAspectFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageAspectFlags.html
 type ImageAspectFlags Flags
 
+// BufferViewCreateFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferViewCreateFlags.html
 type BufferViewCreateFlags Flags
 
+// CullModeFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCullModeFlags.html
 type CullModeFlags Flags
 
+// ImageCreateFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageCreateFlags.html
 type ImageCreateFlags Flags
 
+// SparseImageFormatFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSparseImageFormatFlags.html
 type SparseImageFormatFlags Flags
 
+// FormatFeatureFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFormatFeatureFlags.html
 type FormatFeatureFlags Flags
 
+// AttachmentDescriptionFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkAttachmentDescriptionFlags.html
 type AttachmentDescriptionFlags Flags
 
+// QueryPipelineStatisticFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueryPipelineStatisticFlags.html
 type QueryPipelineStatisticFlags Flags
 
+// DescriptorPoolCreateFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorPoolCreateFlags.html
 type DescriptorPoolCreateFlags Flags
 
+// ImageViewCreateFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageViewCreateFlags.html
 type ImageViewCreateFlags Flags
 
+// ShaderStageFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkShaderStageFlags.html
 type ShaderStageFlags Flags
 
+// PipelineViewportStateCreateFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineViewportStateCreateFlags.html
 type PipelineViewportStateCreateFlags Flags
 
+// SparseMemoryBindFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSparseMemoryBindFlags.html
 type SparseMemoryBindFlags Flags
 
+// DependencyFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDependencyFlags.html
 type DependencyFlags Flags
 
+// BufferCreateFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferCreateFlags.html
 type BufferCreateFlags Flags
 
+// PipelineVertexInputStateCreateFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineVertexInputStateCreateFlags.html
 type PipelineVertexInputStateCreateFlags Flags
 
+// PipelineColorBlendStateCreateFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineColorBlendStateCreateFlags.html
 type PipelineColorBlendStateCreateFlags Flags
 
+// RenderPassCreateFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkRenderPassCreateFlags.html
 type RenderPassCreateFlags Flags
 
+// PipelineCreateFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineCreateFlags.html
 type PipelineCreateFlags Flags
 
+// PipelineDepthStencilStateCreateFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineDepthStencilStateCreateFlags.html
 type PipelineDepthStencilStateCreateFlags Flags
 
+// FenceCreateFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFenceCreateFlags.html
 type FenceCreateFlags Flags
 
+// PipelineDynamicStateCreateFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineDynamicStateCreateFlags.html
 type PipelineDynamicStateCreateFlags Flags
 
+// PipelineInputAssemblyStateCreateFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineInputAssemblyStateCreateFlags.html
 type PipelineInputAssemblyStateCreateFlags Flags
 
+// StencilFaceFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkStencilFaceFlags.html
 type StencilFaceFlags Flags
 
+// QueryPoolCreateFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueryPoolCreateFlags.html
 type QueryPoolCreateFlags Flags
 
+// SemaphoreCreateFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSemaphoreCreateFlags.html
 type SemaphoreCreateFlags Flags
 
+// SamplerCreateFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSamplerCreateFlags.html
 type SamplerCreateFlags Flags
 
+// PipelineLayoutCreateFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineLayoutCreateFlags.html
 type PipelineLayoutCreateFlags Flags
 
+// QueryResultFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueryResultFlags.html
 type QueryResultFlags Flags
 
+// FramebufferCreateFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFramebufferCreateFlags.html
 type FramebufferCreateFlags Flags
 
+// PipelineMultisampleStateCreateFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineMultisampleStateCreateFlags.html
 type PipelineMultisampleStateCreateFlags Flags
 
+// PipelineRasterizationStateCreateFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineRasterizationStateCreateFlags.html
 type PipelineRasterizationStateCreateFlags Flags
 
+// PipelineShaderStageCreateFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineShaderStageCreateFlags.html
 type PipelineShaderStageCreateFlags Flags
 
+// BufferUsageFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferUsageFlags.html
 type BufferUsageFlags Flags
 
+// PipelineTessellationStateCreateFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineTessellationStateCreateFlags.html
 type PipelineTessellationStateCreateFlags Flags
 
+// EventCreateFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkEventCreateFlags.html
 type EventCreateFlags Flags
 
+// PFN_vkFreeFunction is a function pointer from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/PFN_vkFreeFunction.html
 type PFN_vkFreeFunction C.PFN_vkFreeFunction
 
+// PFN_vkInternalAllocationNotification is a function pointer from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/PFN_vkInternalAllocationNotification.html
 type PFN_vkInternalAllocationNotification C.PFN_vkInternalAllocationNotification
 
+// PFN_vkInternalFreeNotification is a function pointer from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/PFN_vkInternalFreeNotification.html
 type PFN_vkInternalFreeNotification C.PFN_vkInternalFreeNotification
 
+// PFN_vkReallocationFunction is a function pointer from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/PFN_vkReallocationFunction.html
 type PFN_vkReallocationFunction C.PFN_vkReallocationFunction
 
+// PFN_vkVoidFunction is a function pointer from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/PFN_vkVoidFunction.html
 type PFN_vkVoidFunction C.PFN_vkVoidFunction
 
+// PFN_vkAllocationFunction is a function pointer from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/PFN_vkAllocationFunction.html
 type PFN_vkAllocationFunction C.PFN_vkAllocationFunction
 
 //LayerProperties provides a go interface for VkLayerProperties.
@@ -16681,6 +17001,8 @@ func (x DescriptorBufferInfo) WithRange_(y DeviceSize) DescriptorBufferInfo {
 	return x
 }
 
+// VkClearValue is a union from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkClearValue.html
 type VkClearValue C.union_VkClearValue
 
 func (x VkClearValue) Color() VkClearColorValue {
@@ -16689,7 +17011,6 @@ func (x VkClearValue) Color() VkClearColorValue {
 func (x VkClearValue) SetColor(y VkClearColorValue) {
 	*(*VkClearColorValue)(unsafe.Pointer(&x[0])) = y
 }
-
 func (x VkClearValue) DepthStencil() ClearDepthStencilValue {
 	return *(*ClearDepthStencilValue)(unsafe.Pointer(&x[0]))
 }
@@ -16697,6 +17018,8 @@ func (x VkClearValue) SetDepthStencil(y ClearDepthStencilValue) {
 	*(*ClearDepthStencilValue)(unsafe.Pointer(&x[0])) = y
 }
 
+// VkClearColorValue is a union from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkClearColorValue.html
 type VkClearColorValue C.union_VkClearColorValue
 
 func (x VkClearColorValue) Float32() []float32 {
@@ -16705,14 +17028,12 @@ func (x VkClearColorValue) Float32() []float32 {
 func (x VkClearColorValue) SetFloat32(y []float32) {
 	*(*[]float32)(unsafe.Pointer(&x[0])) = y
 }
-
 func (x VkClearColorValue) Int32() []int32 {
 	return *(*[]int32)(unsafe.Pointer(&x[0]))
 }
 func (x VkClearColorValue) SetInt32(y []int32) {
 	*(*[]int32)(unsafe.Pointer(&x[0])) = y
 }
-
 func (x VkClearColorValue) Uint32() []uint32 {
 	return *(*[]uint32)(unsafe.Pointer(&x[0]))
 }
@@ -18423,14 +18744,18 @@ func CmdSetDepthBias(commandBuffer CommandBuffer, depthBiasConstantFactor float3
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorUpdateTemplate.html
 type DescriptorUpdateTemplate C.VkDescriptorUpdateTemplate
 
+// NullDescriptorUpdateTemplate is a typed Null value for the DescriptorUpdateTemplate type.
 var NullDescriptorUpdateTemplate DescriptorUpdateTemplate
 
 // SamplerYcbcrConversion is a Handle to a vulkan resource.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSamplerYcbcrConversion.html
 type SamplerYcbcrConversion C.VkSamplerYcbcrConversion
 
+// NullSamplerYcbcrConversion is a typed Null value for the SamplerYcbcrConversion type.
 var NullSamplerYcbcrConversion SamplerYcbcrConversion
 
+// ExternalFenceHandleTypeFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExternalFenceHandleTypeFlagBits.html
 type ExternalFenceHandleTypeFlagBits uint32
 
 const (
@@ -18456,6 +18781,8 @@ func (x ExternalFenceHandleTypeFlagBits) String() string {
 	return fmt.Sprintf("ExternalFenceHandleTypeFlagBits=%d", x)
 }
 
+// SubgroupFeatureFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSubgroupFeatureFlagBits.html
 type SubgroupFeatureFlagBits uint32
 
 const (
@@ -18489,6 +18816,8 @@ func (x SubgroupFeatureFlagBits) String() string {
 	return fmt.Sprintf("SubgroupFeatureFlagBits=%d", x)
 }
 
+// ExternalMemoryHandleTypeFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExternalMemoryHandleTypeFlagBits.html
 type ExternalMemoryHandleTypeFlagBits uint32
 
 const (
@@ -18520,6 +18849,8 @@ func (x ExternalMemoryHandleTypeFlagBits) String() string {
 	return fmt.Sprintf("ExternalMemoryHandleTypeFlagBits=%d", x)
 }
 
+// ExternalFenceFeatureFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExternalFenceFeatureFlagBits.html
 type ExternalFenceFeatureFlagBits uint32
 
 const (
@@ -18541,6 +18872,8 @@ func (x ExternalFenceFeatureFlagBits) String() string {
 	return fmt.Sprintf("ExternalFenceFeatureFlagBits=%d", x)
 }
 
+// DescriptorUpdateTemplateType is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorUpdateTemplateType.html
 type DescriptorUpdateTemplateType uint32
 
 const (
@@ -18560,6 +18893,8 @@ func (x DescriptorUpdateTemplateType) String() string {
 	return fmt.Sprintf("DescriptorUpdateTemplateType=%d", x)
 }
 
+// SamplerYcbcrRange is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSamplerYcbcrRange.html
 type SamplerYcbcrRange uint32
 
 const (
@@ -18581,6 +18916,8 @@ func (x SamplerYcbcrRange) String() string {
 	return fmt.Sprintf("SamplerYcbcrRange=%d", x)
 }
 
+// ExternalSemaphoreHandleTypeFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExternalSemaphoreHandleTypeFlagBits.html
 type ExternalSemaphoreHandleTypeFlagBits uint32
 
 const (
@@ -18609,6 +18946,8 @@ func (x ExternalSemaphoreHandleTypeFlagBits) String() string {
 	return fmt.Sprintf("ExternalSemaphoreHandleTypeFlagBits=%d", x)
 }
 
+// ChromaLocation is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkChromaLocation.html
 type ChromaLocation uint32
 
 const (
@@ -18630,6 +18969,8 @@ func (x ChromaLocation) String() string {
 	return fmt.Sprintf("ChromaLocation=%d", x)
 }
 
+// SamplerYcbcrModelConversion is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSamplerYcbcrModelConversion.html
 type SamplerYcbcrModelConversion uint32
 
 const (
@@ -18657,6 +18998,8 @@ func (x SamplerYcbcrModelConversion) String() string {
 	return fmt.Sprintf("SamplerYcbcrModelConversion=%d", x)
 }
 
+// FenceImportFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFenceImportFlagBits.html
 type FenceImportFlagBits uint32
 
 const (
@@ -18676,6 +19019,8 @@ func (x FenceImportFlagBits) String() string {
 	return fmt.Sprintf("FenceImportFlagBits=%d", x)
 }
 
+// PointClippingBehavior is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPointClippingBehavior.html
 type PointClippingBehavior uint32
 
 const (
@@ -18697,6 +19042,8 @@ func (x PointClippingBehavior) String() string {
 	return fmt.Sprintf("PointClippingBehavior=%d", x)
 }
 
+// ExternalSemaphoreFeatureFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExternalSemaphoreFeatureFlagBits.html
 type ExternalSemaphoreFeatureFlagBits uint32
 
 const (
@@ -18718,6 +19065,8 @@ func (x ExternalSemaphoreFeatureFlagBits) String() string {
 	return fmt.Sprintf("ExternalSemaphoreFeatureFlagBits=%d", x)
 }
 
+// TessellationDomainOrigin is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkTessellationDomainOrigin.html
 type TessellationDomainOrigin uint32
 
 const (
@@ -18739,6 +19088,8 @@ func (x TessellationDomainOrigin) String() string {
 	return fmt.Sprintf("TessellationDomainOrigin=%d", x)
 }
 
+// ExternalMemoryFeatureFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExternalMemoryFeatureFlagBits.html
 type ExternalMemoryFeatureFlagBits uint32
 
 const (
@@ -18762,6 +19113,8 @@ func (x ExternalMemoryFeatureFlagBits) String() string {
 	return fmt.Sprintf("ExternalMemoryFeatureFlagBits=%d", x)
 }
 
+// PeerMemoryFeatureFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPeerMemoryFeatureFlagBits.html
 type PeerMemoryFeatureFlagBits uint32
 
 const (
@@ -18787,6 +19140,8 @@ func (x PeerMemoryFeatureFlagBits) String() string {
 	return fmt.Sprintf("PeerMemoryFeatureFlagBits=%d", x)
 }
 
+// MemoryAllocateFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkMemoryAllocateFlagBits.html
 type MemoryAllocateFlagBits uint32
 
 const (
@@ -18810,6 +19165,8 @@ func (x MemoryAllocateFlagBits) String() string {
 	return fmt.Sprintf("MemoryAllocateFlagBits=%d", x)
 }
 
+// SemaphoreImportFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSemaphoreImportFlagBits.html
 type SemaphoreImportFlagBits uint32
 
 const (
@@ -18829,30 +19186,56 @@ func (x SemaphoreImportFlagBits) String() string {
 	return fmt.Sprintf("SemaphoreImportFlagBits=%d", x)
 }
 
+// MemoryAllocateFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkMemoryAllocateFlags.html
 type MemoryAllocateFlags Flags
 
+// PeerMemoryFeatureFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPeerMemoryFeatureFlags.html
 type PeerMemoryFeatureFlags Flags
 
+// ExternalFenceHandleTypeFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExternalFenceHandleTypeFlags.html
 type ExternalFenceHandleTypeFlags Flags
 
+// CommandPoolTrimFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandPoolTrimFlags.html
 type CommandPoolTrimFlags Flags
 
+// ExternalFenceFeatureFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExternalFenceFeatureFlags.html
 type ExternalFenceFeatureFlags Flags
 
+// DescriptorUpdateTemplateCreateFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorUpdateTemplateCreateFlags.html
 type DescriptorUpdateTemplateCreateFlags Flags
 
+// ExternalSemaphoreFeatureFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExternalSemaphoreFeatureFlags.html
 type ExternalSemaphoreFeatureFlags Flags
 
+// ExternalMemoryHandleTypeFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExternalMemoryHandleTypeFlags.html
 type ExternalMemoryHandleTypeFlags Flags
 
+// FenceImportFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFenceImportFlags.html
 type FenceImportFlags Flags
 
+// SubgroupFeatureFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSubgroupFeatureFlags.html
 type SubgroupFeatureFlags Flags
 
+// ExternalSemaphoreHandleTypeFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExternalSemaphoreHandleTypeFlags.html
 type ExternalSemaphoreHandleTypeFlags Flags
 
+// ExternalMemoryFeatureFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExternalMemoryFeatureFlags.html
 type ExternalMemoryFeatureFlags Flags
 
+// SemaphoreImportFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSemaphoreImportFlags.html
 type SemaphoreImportFlags Flags
 
 //PhysicalDeviceMemoryProperties2 provides a go interface for VkPhysicalDeviceMemoryProperties2.
@@ -25374,6 +25757,8 @@ func GetPhysicalDeviceExternalBufferProperties(physicalDevice PhysicalDevice, pE
 	C.vkGetPhysicalDeviceExternalBufferProperties(*p0, *p1, *p2)
 }
 
+// DriverId is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDriverId.html
 type DriverId uint32
 
 const (
@@ -25431,6 +25816,8 @@ func (x DriverId) String() string {
 	return fmt.Sprintf("DriverId=%d", x)
 }
 
+// SamplerReductionMode is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSamplerReductionMode.html
 type SamplerReductionMode uint32
 
 const (
@@ -25454,6 +25841,8 @@ func (x SamplerReductionMode) String() string {
 	return fmt.Sprintf("SamplerReductionMode=%d", x)
 }
 
+// SemaphoreWaitFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSemaphoreWaitFlagBits.html
 type SemaphoreWaitFlagBits uint32
 
 const (
@@ -25473,6 +25862,8 @@ func (x SemaphoreWaitFlagBits) String() string {
 	return fmt.Sprintf("SemaphoreWaitFlagBits=%d", x)
 }
 
+// DescriptorBindingFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorBindingFlagBits.html
 type DescriptorBindingFlagBits uint32
 
 const (
@@ -25498,6 +25889,8 @@ func (x DescriptorBindingFlagBits) String() string {
 	return fmt.Sprintf("DescriptorBindingFlagBits=%d", x)
 }
 
+// ResolveModeFlagBits is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkResolveModeFlagBits.html
 type ResolveModeFlagBits uint32
 
 const (
@@ -25525,6 +25918,8 @@ func (x ResolveModeFlagBits) String() string {
 	return fmt.Sprintf("ResolveModeFlagBits=%d", x)
 }
 
+// ShaderFloatControlsIndependence is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkShaderFloatControlsIndependence.html
 type ShaderFloatControlsIndependence uint32
 
 const (
@@ -25548,6 +25943,8 @@ func (x ShaderFloatControlsIndependence) String() string {
 	return fmt.Sprintf("ShaderFloatControlsIndependence=%d", x)
 }
 
+// SemaphoreType is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSemaphoreType.html
 type SemaphoreType uint32
 
 const (
@@ -25569,10 +25966,16 @@ func (x SemaphoreType) String() string {
 	return fmt.Sprintf("SemaphoreType=%d", x)
 }
 
+// DescriptorBindingFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorBindingFlags.html
 type DescriptorBindingFlags Flags
 
+// ResolveModeFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkResolveModeFlags.html
 type ResolveModeFlags Flags
 
+// SemaphoreWaitFlags is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSemaphoreWaitFlags.html
 type SemaphoreWaitFlags Flags
 
 //SubpassEndInfo provides a go interface for VkSubpassEndInfo.
@@ -32504,8 +32907,11 @@ func SignalSemaphore(device Device, pSignalInfo *SemaphoreSignalInfo) Result {
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSurfaceKHR.html
 type SurfaceKHR C.VkSurfaceKHR
 
+// NullSurfaceKHR is a typed Null value for the SurfaceKHR type.
 var NullSurfaceKHR SurfaceKHR
 
+// PresentModeKHR is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPresentModeKHR.html
 type PresentModeKHR uint32
 
 const (
@@ -32531,6 +32937,8 @@ func (x PresentModeKHR) String() string {
 	return fmt.Sprintf("PresentModeKHR=%d", x)
 }
 
+// CompositeAlphaFlagBitsKHR is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCompositeAlphaFlagBitsKHR.html
 type CompositeAlphaFlagBitsKHR uint32
 
 const (
@@ -32556,6 +32964,8 @@ func (x CompositeAlphaFlagBitsKHR) String() string {
 	return fmt.Sprintf("CompositeAlphaFlagBitsKHR=%d", x)
 }
 
+// ColorSpaceKHR is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkColorSpaceKHR.html
 type ColorSpaceKHR uint32
 
 const (
@@ -32576,6 +32986,8 @@ func (x ColorSpaceKHR) String() string {
 	return fmt.Sprintf("ColorSpaceKHR=%d", x)
 }
 
+// SurfaceTransformFlagBitsKHR is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSurfaceTransformFlagBitsKHR.html
 type SurfaceTransformFlagBitsKHR uint32
 
 const (
@@ -32611,8 +33023,12 @@ func (x SurfaceTransformFlagBitsKHR) String() string {
 	return fmt.Sprintf("SurfaceTransformFlagBitsKHR=%d", x)
 }
 
+// CompositeAlphaFlagsKHR is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCompositeAlphaFlagsKHR.html
 type CompositeAlphaFlagsKHR Flags
 
+// SurfaceTransformFlagsKHR is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSurfaceTransformFlagsKHR.html
 type SurfaceTransformFlagsKHR Flags
 
 //SurfaceCapabilitiesKHR provides a go interface for VkSurfaceCapabilitiesKHR.
@@ -33143,8 +33559,11 @@ func (x SurfaceProtectedCapabilitiesKHR) WithSupportsProtected(y Bool32) Surface
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSwapchainKHR.html
 type SwapchainKHR C.VkSwapchainKHR
 
+// NullSwapchainKHR is a typed Null value for the SwapchainKHR type.
 var NullSwapchainKHR SwapchainKHR
 
+// SwapchainCreateFlagBitsKHR is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSwapchainCreateFlagBitsKHR.html
 type SwapchainCreateFlagBitsKHR uint32
 
 const (
@@ -33166,6 +33585,8 @@ func (x SwapchainCreateFlagBitsKHR) String() string {
 	return fmt.Sprintf("SwapchainCreateFlagBitsKHR=%d", x)
 }
 
+// DeviceGroupPresentModeFlagBitsKHR is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceGroupPresentModeFlagBitsKHR.html
 type DeviceGroupPresentModeFlagBitsKHR uint32
 
 const (
@@ -33191,8 +33612,12 @@ func (x DeviceGroupPresentModeFlagBitsKHR) String() string {
 	return fmt.Sprintf("DeviceGroupPresentModeFlagBitsKHR=%d", x)
 }
 
+// DeviceGroupPresentModeFlagsKHR is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceGroupPresentModeFlagsKHR.html
 type DeviceGroupPresentModeFlagsKHR Flags
 
+// SwapchainCreateFlagsKHR is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSwapchainCreateFlagsKHR.html
 type SwapchainCreateFlagsKHR Flags
 
 //BindImageMemorySwapchainInfoKHR provides a go interface for VkBindImageMemorySwapchainInfoKHR.
@@ -34373,14 +34798,18 @@ func CreateSwapchainKHR(device Device, pCreateInfo *SwapchainCreateInfoKHR, pAll
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDisplayKHR.html
 type DisplayKHR C.VkDisplayKHR
 
+// NullDisplayKHR is a typed Null value for the DisplayKHR type.
 var NullDisplayKHR DisplayKHR
 
 // DisplayModeKHR is a Handle to a vulkan resource.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDisplayModeKHR.html
 type DisplayModeKHR C.VkDisplayModeKHR
 
+// NullDisplayModeKHR is a typed Null value for the DisplayModeKHR type.
 var NullDisplayModeKHR DisplayModeKHR
 
+// DisplayPlaneAlphaFlagBitsKHR is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDisplayPlaneAlphaFlagBitsKHR.html
 type DisplayPlaneAlphaFlagBitsKHR uint32
 
 const (
@@ -34406,10 +34835,16 @@ func (x DisplayPlaneAlphaFlagBitsKHR) String() string {
 	return fmt.Sprintf("DisplayPlaneAlphaFlagBitsKHR=%d", x)
 }
 
+// DisplayModeCreateFlagsKHR is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDisplayModeCreateFlagsKHR.html
 type DisplayModeCreateFlagsKHR Flags
 
+// DisplayPlaneAlphaFlagsKHR is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDisplayPlaneAlphaFlagsKHR.html
 type DisplayPlaneAlphaFlagsKHR Flags
 
+// DisplaySurfaceCreateFlagsKHR is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDisplaySurfaceCreateFlagsKHR.html
 type DisplaySurfaceCreateFlagsKHR Flags
 
 //DisplayPlanePropertiesKHR provides a go interface for VkDisplayPlanePropertiesKHR.
@@ -35654,6 +36089,8 @@ func CreateSharedSwapchainsKHR(device Device, swapchainCount uint32, pCreateInfo
 	return *retPtr
 }
 
+// FormatFeatureFlagBits2KHR is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFormatFeatureFlagBits2KHR.html
 type FormatFeatureFlagBits2KHR uint64
 
 const (
@@ -35725,8 +36162,12 @@ func (x FormatFeatureFlagBits2KHR) String() string {
 	return fmt.Sprintf("FormatFeatureFlagBits2KHR=%d", x)
 }
 
+// Flags64 is a base type in the vulkan specification.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFlags64.html
 type Flags64 uint64
 
+// FormatFeatureFlags2KHR is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFormatFeatureFlags2KHR.html
 type FormatFeatureFlags2KHR Flags64
 
 //FormatProperties3KHR provides a go interface for VkFormatProperties3KHR.

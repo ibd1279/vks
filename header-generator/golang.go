@@ -3,131 +3,52 @@ package main
 import (
 	"fmt"
 	"os"
-
-	"gopkg.in/yaml.v3"
+	"text/template"
 )
 
-func main() {
-	config := LoadConfig("vkxml.yml")
-	for _, v := range config.ExportTranslator {
-		switch v.Action {
-		case "deprefix":
-			TranslatorRules = append(TranslatorRules, exportTranslatorRuleDeprefix{v.Pattern})
-		case "title":
-			TranslatorRules = append(TranslatorRules, exportTranslatorRuleTitle{})
-		}
+func GenerateGoFile(config *Config, data []interface{}) error {
+	fn := fmt.Sprintf("%s.go", config.OutputName)
+
+	var t *template.Template
+	var err error
+	if t, err = template.New(fn).Parse(goPrimaryTemplate); err != nil {
+		return err
+	}
+	if t, err = t.Parse(goSubTemplates); err != nil {
+		return err
+	}
+	if t, err = t.Parse(goCommandTemplate); err != nil {
+		return err
+	}
+	if t, err = t.Parse(goStructTemplate); err != nil {
+		return err
 	}
 
-	enabledMap := make(map[string]bool, 0)
-	for _, v := range config.Features {
-		enabledMap[v] = true
-	}
-	for _, v := range config.Extensions {
-		enabledMap[v] = true
-	}
-
-	registry := LoadRegistry(config.VkxmlPath)
-	graph, constants := registry.Graph()
-
-	enabled := make([]string, 0, len(config.Features)+len(config.Extensions))
-	for _, v := range config.Features {
-		n := fmt.Sprintf("%s::vulkan", v)
-		graph.ApplyFeatureExtensions(n)
-		enabled = append(enabled, n)
-	}
-	for _, v := range config.Extensions {
-		graph.ApplyExtensionExtensions(v, enabledMap)
-		enabled = append(enabled, v)
-	}
-
-	var data []interface{}
-	data = append(data, ConstToData(constants))
-	store := func(nodes []*RegistryNode) {
-		node := nodes[len(nodes)-1]
-		switch node.NodeType {
-		case RegistryNodeType:
-			if tiepuh := node.TypeElement(); tiepuh != nil {
-				if b, d := TypeToData(node, *tiepuh); b {
-					data = append(data, d)
-				}
-			}
-		case RegistryNodeCommand:
-			if command := node.CommandElement(); command != nil {
-				if b, d := CommandToData(node, *command); b {
-					data = append(data, d)
-				}
-			}
-		}
-	}
-	graph.DepthFirstSearch(enabled, store)
-	data = data[:1]
-	graph.DepthFirstSearch(enabled, store)
-
-	if err := GenerateGoFile(config, data); err != nil {
-		panic(err)
-	}
-}
-
-func OpenOutput(fn string) *os.File {
-	fh, err := os.OpenFile(fn, os.O_WRONLY|os.O_TRUNC|os.O_CREATE, 0644)
+	var fh *os.File
+	fh, err = os.OpenFile(fn, os.O_WRONLY|os.O_TRUNC|os.O_CREATE, 0644)
 	if err != nil {
-		panic(err)
-	}
-	return fh
-}
-
-func LoadConfig(fn string) *Config {
-	fh, err := os.OpenFile(fn, os.O_RDONLY, 0)
-	if err != nil {
-		panic(err)
+		return err
 	}
 	defer fh.Close()
 
-	var config Config
-	decoder := yaml.NewDecoder(fh)
-	if err := decoder.Decode(&config); err != nil {
-		panic(err)
-	}
-
-	return &config
-}
-
-type Config struct {
-	PackageName      string
-	VkxmlPath        string
-	OutputName       string
-	Features         []string
-	Extensions       []string
-	ExportTranslator []TranslatorConfig
-}
-
-type TranslatorConfig struct {
-	Action      string
-	Pattern     string
-	Replacement string
-}
-
-func LoadRegistry(fn string) *Registry {
-	// Open the datasource.
-	fh, err := os.OpenFile(fn, os.O_RDONLY, 0)
+	err = t.Execute(fh, struct {
+		PackageName string
+		Data        []interface{}
+	}{config.PackageName, data})
 	if err != nil {
-		panic(err)
+		return err
 	}
-	defer fh.Close()
 
-	if registry, err := DecodeRegistry(fh); err != nil {
-		panic(err)
-	} else {
-		return registry
-	}
+	return nil
 }
 
-const constTemplate = `{{define "const"}}const ({{range .}}
+const goSubTemplates = `{{define "const"}}// These are API constants.
+const ({{range .}}
 	{{.Name.Go}} = {{.Value.Go}}{{end}}
 )
-{{end}}`
-const versionTemplate = `{{define "version"}}// {{.Name.Go}} is an implementation of the Vulkan Make Api Version
-// defines.
+{{end}}{{define "version"}}// {{.Name.Go}} is an implementation of the Vulkan Make Api Version
+// defines. See
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VK_MAKE_API_VERSION.html
 type {{.Name.Go}} uint32
 
 // MakeApiVersion creates a Version based on the provided Variant, maJor, miNor,
@@ -151,21 +72,25 @@ var (
 	VK_HEADER_VERSION_COMPLETE {{.Name.Go}} = Make{{.Name.Go}}({{.Value.Go}}, {{.HeaderVersionName.Go}})
 )
 {{end}}{{define "headerversion"}}// Version of the vk specification used to generate this.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{{.Name.C}}.html
 const {{.HeaderVersionName.Go}} = {{.Value.Go}}
-{{end}}`
-const baseTemplate = `{{define "base"}}type {{.Name.Go}} {{.Type.Go}}
-{{end}}`
-const handleTemplate = `{{define "handle"}}// {{.Name.Go}} is a Handle to a vulkan resource.
+{{end}}{{define "base"}}// {{.Name.Go}} is a base type in the vulkan specification.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{{.Name.C}}.html
+type {{.Name.Go}} {{.Type.Go}}
+{{end}}{{define "handle"}}// {{.Name.Go}} is a Handle to a vulkan resource.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{{.Name.C}}.html
 type {{.Name.Go}} {{.Name.CGo}}
 
+// Null{{.Name.Go}} is a typed Null value for the {{.Name.Go}} type.
 var Null{{.Name.Go}} {{.Name.Go}}
-{{end}}`
-const enumTemplate = `{{define "enum"}}type {{.Name.Go}} {{.Type.Go}}{{if gt (len .Values) 0}}
+{{end}}{{define "enum"}}// {{.Name.Go}} is an Enum from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{{.Name.C}}.html
+type {{.Name.Go}} {{.Type.Go}}{{if gt (len .Values) 0}}
 
 const ({{range .Values}}
 	{{.Name.Go}} {{.Type.Go}} = {{.Value.Go}}{{end}}
 )
+
 var (
 	reverse{{.Name.Go}} map[{{.Name.Go}}]string = map[{{.Name.Go}}]string{ {{range .Values}}{{if eq .Alias false}}
 		{{.Name.Go}}: "{{.Name.Go}}",{{end}}{{end}}
@@ -177,12 +102,31 @@ func (x {{.Name.Go}}) String() string {
 	}
 	return fmt.Sprintf("{{.Name.Go}}=%d", x)
 }{{end}}
+{{end}}{{define "bitmask"}}// {{.Name.Go}} is a bitmask from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{{.Name.C}}.html
+type {{.Name.Go}} {{.Type.Go}}
+{{end}}{{define "func"}}// {{.Name.Go}} is a function pointer from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{{.Name.C}}.html
+type {{.Name.Go}} {{.Name.CGo}}
+{{end}}{{define "union"}}// {{.Name.Go}} is a union from the Vulkan API.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{{.Name.C}}.html
+type {{.Name.Go}} {{.Name.CGo}}
+
+{{with $root := .}}{{range .Members}}func (x {{$root.Name.Go}}) {{.Name.Go}}() {{.Type.Go}} {
+	return *(*{{.Type.Go}})(unsafe.Pointer(&x[0]))
+}
+func (x {{$root.Name.Go}}) Set{{.Name.Go}}(y {{.Type.Go}}) {
+	*(*{{.Type.Go}})(unsafe.Pointer(&x[0])) = y
+}
+{{end}}{{end}}{{end}}`
+const goCommandTemplate = `{{define "command"}}func {{.Name.Go}}({{range .Parameters}}{{.Name.Go}} {{.Type.Go}}, {{end}}) {{if ne .Return.Go "void"}}{{.Return.Go}} {{end}}{ {{range $key, $val := .Parameters}}
+	p{{$key}} := {{$val.Type.GoToC}}(&{{$val.Name.Go}}){{end}}
+	{{if ne .Return.Go "void"}}ret := {{end}}{{.Name.CGo}}({{range $key, $val := .Parameters}}*p{{$key}}, {{end}})
+	{{if ne .Return.Go "void"}}retPtr := {{.Return.CToGo}}(&ret)
+	return *retPtr
+{{end}}}
 {{end}}`
-const bitmaskTemplate = `{{define "bitmask"}}type {{.Name.Go}} {{.Type.Go}}
-{{end}}`
-const funcTemplate = `{{define "func"}}type {{.Name.Go}} {{.Name.CGo}}
-{{end}}`
-const structTemplate = `{{define "struct"}}//{{.Name.Go}} provides a go interface for {{.Name.C}}.
+const goStructTemplate = `{{define "struct"}}//{{.Name.Go}} provides a go interface for {{.Name.C}}.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{{.Name.C}}.html
 type {{.Name.Go}} {{.Name.CGo}}
 
@@ -238,24 +182,7 @@ func (x {{$struct.Name.Go}}) With{{.Name.Go}}(y {{.Type.Go}}) {{$struct.Name.Go}
 // promoted to features. If possible, update code to use the promoted name: {{.Alias.Go}}.
 type {{.Name.Go}} = {{.Alias.Go}}{{end}}
 `
-const unionTemplate = `{{define "union"}}type {{.Name.Go}} {{.Name.CGo}}
-{{with $root := .}}{{range .Members}}
-func (x {{$root.Name.Go}}) {{.Name.Go}}() {{.Type.Go}} {
-	return *(*{{.Type.Go}})(unsafe.Pointer(&x[0]))
-}
-func (x {{$root.Name.Go}}) Set{{.Name.Go}}(y {{.Type.Go}}) {
-	*(*{{.Type.Go}})(unsafe.Pointer(&x[0])) = y
-}
-{{end}}{{end}}
-{{end}}`
-const commandTemplate = `{{define "command"}}func {{.Name.Go}}({{range .Parameters}}{{.Name.Go}} {{.Type.Go}}, {{end}}) {{if ne .Return.Go "void"}}{{.Return.Go}} {{end}}{ {{range $key, $val := .Parameters}}
-	p{{$key}} := {{$val.Type.GoToC}}(&{{$val.Name.Go}}){{end}}
-	{{if ne .Return.Go "void"}}ret := {{end}}{{.Name.CGo}}({{range $key, $val := .Parameters}}*p{{$key}}, {{end}})
-	{{if ne .Return.Go "void"}}retPtr := {{.Return.CToGo}}(&ret)
-	return *retPtr
-{{end}}}
-{{end}}`
-const primaryTemplate = `package {{.PackageName}}
+const goPrimaryTemplate = `package {{.PackageName}}
 
 //#cgo LDFLAGS: -lvulkan
 //#include <stdlib.h>

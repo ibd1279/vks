@@ -1,5 +1,6 @@
 packagename: vks
 vkxmlpath: /usr/local/share/vulkan/registry/vk.xml
+outputname: vk_wrapper
 features:
   - VK_VERSION_1_0
   - VK_VERSION_1_1
