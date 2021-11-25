@@ -164,7 +164,10 @@ const {{.HeaderVersionName.Go}} = {{.Value.Go}}
 const baseTemplate = `{{define "base"}}type {{.Name.Go}} {{.Type.Go}}
 {{end}}`
 const handleTemplate = `{{define "handle"}}// {{.Name.Go}} is a Handle to a vulkan resource.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{{.Name.C}}.html
 type {{.Name.Go}} {{.Name.CGo}}
+
+var Null{{.Name.Go}} {{.Name.Go}}
 {{end}}`
 const enumTemplate = `{{define "enum"}}type {{.Name.Go}} {{.Type.Go}}{{if gt (len .Values) 0}}
 

@@ -81,79 +81,154 @@ type Bool32 uint32
 type Flags uint32
 
 // DescriptorSet is a Handle to a vulkan resource.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorSet.html
 type DescriptorSet C.VkDescriptorSet
 
+var NullDescriptorSet DescriptorSet
+
 // Instance is a Handle to a vulkan resource.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkInstance.html
 type Instance C.VkInstance
 
+var NullInstance Instance
+
 // Framebuffer is a Handle to a vulkan resource.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFramebuffer.html
 type Framebuffer C.VkFramebuffer
 
+var NullFramebuffer Framebuffer
+
 // BufferView is a Handle to a vulkan resource.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferView.html
 type BufferView C.VkBufferView
 
+var NullBufferView BufferView
+
 // Event is a Handle to a vulkan resource.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkEvent.html
 type Event C.VkEvent
 
+var NullEvent Event
+
 // CommandPool is a Handle to a vulkan resource.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandPool.html
 type CommandPool C.VkCommandPool
 
+var NullCommandPool CommandPool
+
 // DeviceMemory is a Handle to a vulkan resource.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceMemory.html
 type DeviceMemory C.VkDeviceMemory
 
+var NullDeviceMemory DeviceMemory
+
 // Pipeline is a Handle to a vulkan resource.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipeline.html
 type Pipeline C.VkPipeline
 
+var NullPipeline Pipeline
+
 // QueryPool is a Handle to a vulkan resource.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueryPool.html
 type QueryPool C.VkQueryPool
 
+var NullQueryPool QueryPool
+
 // Image is a Handle to a vulkan resource.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImage.html
 type Image C.VkImage
 
+var NullImage Image
+
 // PipelineCache is a Handle to a vulkan resource.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineCache.html
 type PipelineCache C.VkPipelineCache
 
+var NullPipelineCache PipelineCache
+
 // Device is a Handle to a vulkan resource.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDevice.html
 type Device C.VkDevice
 
+var NullDevice Device
+
 // CommandBuffer is a Handle to a vulkan resource.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandBuffer.html
 type CommandBuffer C.VkCommandBuffer
 
+var NullCommandBuffer CommandBuffer
+
 // Semaphore is a Handle to a vulkan resource.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSemaphore.html
 type Semaphore C.VkSemaphore
 
+var NullSemaphore Semaphore
+
 // DescriptorSetLayout is a Handle to a vulkan resource.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorSetLayout.html
 type DescriptorSetLayout C.VkDescriptorSetLayout
 
+var NullDescriptorSetLayout DescriptorSetLayout
+
 // ImageView is a Handle to a vulkan resource.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageView.html
 type ImageView C.VkImageView
 
+var NullImageView ImageView
+
 // Sampler is a Handle to a vulkan resource.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSampler.html
 type Sampler C.VkSampler
 
+var NullSampler Sampler
+
 // Queue is a Handle to a vulkan resource.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueue.html
 type Queue C.VkQueue
 
+var NullQueue Queue
+
 // ShaderModule is a Handle to a vulkan resource.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkShaderModule.html
 type ShaderModule C.VkShaderModule
 
+var NullShaderModule ShaderModule
+
 // Fence is a Handle to a vulkan resource.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFence.html
 type Fence C.VkFence
 
+var NullFence Fence
+
 // PipelineLayout is a Handle to a vulkan resource.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineLayout.html
 type PipelineLayout C.VkPipelineLayout
 
+var NullPipelineLayout PipelineLayout
+
 // RenderPass is a Handle to a vulkan resource.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkRenderPass.html
 type RenderPass C.VkRenderPass
 
+var NullRenderPass RenderPass
+
 // Buffer is a Handle to a vulkan resource.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBuffer.html
 type Buffer C.VkBuffer
 
+var NullBuffer Buffer
+
 // DescriptorPool is a Handle to a vulkan resource.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorPool.html
 type DescriptorPool C.VkDescriptorPool
 
+var NullDescriptorPool DescriptorPool
+
 // PhysicalDevice is a Handle to a vulkan resource.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPhysicalDevice.html
 type PhysicalDevice C.VkPhysicalDevice
+
+var NullPhysicalDevice PhysicalDevice
 
 type Filter uint32
 
@@ -18345,10 +18420,16 @@ func CmdSetDepthBias(commandBuffer CommandBuffer, depthBiasConstantFactor float3
 }
 
 // DescriptorUpdateTemplate is a Handle to a vulkan resource.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorUpdateTemplate.html
 type DescriptorUpdateTemplate C.VkDescriptorUpdateTemplate
 
+var NullDescriptorUpdateTemplate DescriptorUpdateTemplate
+
 // SamplerYcbcrConversion is a Handle to a vulkan resource.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSamplerYcbcrConversion.html
 type SamplerYcbcrConversion C.VkSamplerYcbcrConversion
+
+var NullSamplerYcbcrConversion SamplerYcbcrConversion
 
 type ExternalFenceHandleTypeFlagBits uint32
 
@@ -32420,7 +32501,10 @@ func SignalSemaphore(device Device, pSignalInfo *SemaphoreSignalInfo) Result {
 }
 
 // SurfaceKHR is a Handle to a vulkan resource.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSurfaceKHR.html
 type SurfaceKHR C.VkSurfaceKHR
+
+var NullSurfaceKHR SurfaceKHR
 
 type PresentModeKHR uint32
 
@@ -33056,7 +33140,10 @@ func (x SurfaceProtectedCapabilitiesKHR) WithSupportsProtected(y Bool32) Surface
 }
 
 // SwapchainKHR is a Handle to a vulkan resource.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSwapchainKHR.html
 type SwapchainKHR C.VkSwapchainKHR
+
+var NullSwapchainKHR SwapchainKHR
 
 type SwapchainCreateFlagBitsKHR uint32
 
@@ -34283,10 +34370,16 @@ func CreateSwapchainKHR(device Device, pCreateInfo *SwapchainCreateInfoKHR, pAll
 }
 
 // DisplayKHR is a Handle to a vulkan resource.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDisplayKHR.html
 type DisplayKHR C.VkDisplayKHR
 
+var NullDisplayKHR DisplayKHR
+
 // DisplayModeKHR is a Handle to a vulkan resource.
+// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDisplayModeKHR.html
 type DisplayModeKHR C.VkDisplayModeKHR
+
+var NullDisplayModeKHR DisplayModeKHR
 
 type DisplayPlaneAlphaFlagBitsKHR uint32
 
