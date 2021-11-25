@@ -6,12 +6,12 @@ import (
 )
 
 // IsSuccess checks if the VkResult is equal to the VK_SUCCESS value.
-func (result VkResult) IsSuccess() bool {
+func (result Result) IsSuccess() bool {
 	return result == VK_SUCCESS
 }
 
 // AsError converts the VkResult into a Go error. VK_SUCCESS returns nil.
-func (result VkResult) AsErr() error {
+func (result Result) AsErr() error {
 	switch result {
 	case VK_SUCCESS:
 		return nil
@@ -21,7 +21,7 @@ func (result VkResult) AsErr() error {
 }
 
 // OrPanic panics if the VkResult is not VK_SUCCESS
-func (result VkResult) OrPanic() {
+func (result Result) OrPanic() {
 	if err := result.AsErr(); err != nil {
 		panic(err)
 	}

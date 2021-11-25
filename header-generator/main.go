@@ -10,6 +10,14 @@ import (
 
 func main() {
 	config := LoadConfig("vkxml.yml")
+	for _, v := range config.ExportTranslator {
+		switch v.Action {
+		case "deprefix":
+			TranslatorRules = append(TranslatorRules, exportTranslatorRuleDeprefix{v.Pattern})
+		case "title":
+			TranslatorRules = append(TranslatorRules, exportTranslatorRuleTitle{})
+		}
+	}
 
 	enabledMap := make(map[string]bool, 0)
 	for _, v := range config.Features {
@@ -53,6 +61,8 @@ func main() {
 		}
 	}
 	graph.DepthFirstSearch(enabled, store)
+	data = append([]interface{}{}, ConstToData(constants))
+	graph.DepthFirstSearch(enabled, store)
 
 	t := template.Must(template.New("primary").Parse(primaryTemplate))
 	t = template.Must(t.Parse(constTemplate))
@@ -92,10 +102,17 @@ func LoadConfig(fn string) *Config {
 }
 
 type Config struct {
-	PackageName string
-	VkxmlPath   string
-	Features    []string
-	Extensions  []string
+	PackageName      string
+	VkxmlPath        string
+	Features         []string
+	Extensions       []string
+	ExportTranslator []TranslatorConfig
+}
+
+type TranslatorConfig struct {
+	Action      string
+	Pattern     string
+	Replacement string
 }
 
 func LoadRegistry(fn string) *Registry {

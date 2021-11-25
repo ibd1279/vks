@@ -32,17 +32,18 @@ import (
 
 func main() {
 	var version uint32
-	if result := vks.VkEnumerateInstanceVersion(&version); result.IsSuccess() {
-		log.Printf("%v", version)
+	if result := vks.EnumerateInstanceVersion(&version); result.IsSuccess() {
+		log.Printf("%v", vks.ApiVersion(version))
+		log.Printf("%v", vks.VK_HEADER_VERSION_COMPLETE)
 	}
 
-	appInfo := new(vks.VkApplicationInfo).
+	appInfo := vks.ApplicationInfo{}.
 		WithDefaultSType().
-		WithApplication("Test", vks.MakeVkApiVersion(0, 1, 0, 0)).
-		WithEngine("NoEngine", vks.MakeVkApiVersion(0, 1, 0, 0)).
+		WithApplication("Test", vks.MakeApiVersion(0, 1, 0, 0)).
+		WithEngine("NoEngine", vks.MakeApiVersion(0, 1, 0, 0)).
 		WithApiVersion(uint32(vks.VK_API_VERSION_1_2)).
 		AsCPtr()
-	createInfo := new(vks.VkInstanceCreateInfo).
+	createInfo := vks.InstanceCreateInfo{}.
 		WithDefaultSType().
 		WithPApplicationInfo(appInfo).
 		WithLayers([]string{"VK_LAYER_KHRONOS_validation"}).
@@ -50,40 +51,47 @@ func main() {
 		AsCPtr()
 	defer func() { createInfo.Free(); appInfo.Free() }()
 
-	var instance vks.VkInstance
-	if err := vks.VkCreateInstance(createInfo, nil, &instance).AsErr(); err != nil {
+	var instance vks.Instance
+	if err := vks.CreateInstance(createInfo, nil, &instance).AsErr(); err != nil {
 		panic(err)
 	}
 
-	if phyDevs, result := vks.EnumeratePhysicalDevices(instance); result.IsSuccess() {
-		for k, phyDev := range phyDevs {
-			driverProps := new(vks.VkPhysicalDeviceDriverProperties).
-				WithDefaultSType().
-				AsCPtr()
-			defer func() { driverProps.Free() }()
-
-			props := new(vks.VkPhysicalDeviceProperties2).
-				WithDefaultSType().
-				WithPNext(unsafe.Pointer(driverProps)).
-				AsPtr()
-
-			vks.VkGetPhysicalDeviceProperties2(phyDev, props)
-
-			name := vks.ToString(props.Properties().DeviceName())
-			apiVersion := vks.VkApiVersion(props.Properties().ApiVersion())
-			devType := props.Properties().DeviceType()
-			driverVersion := vks.VkApiVersion(props.Properties().DriverVersion())
-			vendorId := props.Properties().VendorID()
-			driverInfo := vks.ToString(driverProps.DriverInfo())
-			driverName := vks.ToString(driverProps.DriverName())
-
-			log.Printf("physical device %d %s %s - %s - %d %s %s %s", k, name, devType,
-				apiVersion,
-				vendorId, driverName, driverVersion, driverInfo)
-		}
+	var count uint32
+	if result := vks.EnumeratePhysicalDevices(instance, &count, nil); !result.IsSuccess() {
+		panic(result.AsErr())
+	}
+	phyDevs := make([]vks.PhysicalDevice, count)
+	if result := vks.EnumeratePhysicalDevices(instance, &count, phyDevs); !result.IsSuccess() {
+		panic(result.AsErr())
 	}
 
-	vks.VkDestroyInstance(instance, nil)
+	for k, phyDev := range phyDevs {
+		driverProps := vks.PhysicalDeviceDriverProperties{}.
+			WithDefaultSType().
+			AsCPtr()
+		defer func() { driverProps.Free() }()
+
+		props := vks.PhysicalDeviceProperties2{}.
+			WithDefaultSType().
+			WithPNext(unsafe.Pointer(driverProps)).
+			AsPtr()
+
+		vks.GetPhysicalDeviceProperties2(phyDev, props)
+
+		name := vks.ToString(props.Properties().DeviceName())
+		apiVersion := vks.ApiVersion(props.Properties().ApiVersion())
+		devType := props.Properties().DeviceType()
+		driverVersion := vks.ApiVersion(props.Properties().DriverVersion())
+		vendorId := props.Properties().VendorID()
+		driverInfo := vks.ToString(driverProps.DriverInfo())
+		driverName := vks.ToString(driverProps.DriverName())
+
+		log.Printf("physical device %d %s %s - %s - %d %s %s %s", k, name, devType,
+			apiVersion,
+			vendorId, driverName, driverVersion, driverInfo)
+	}
+
+	vks.DestroyInstance(instance, nil)
 }
 ```
 
@@ -100,7 +108,7 @@ as a living example of expected usage.
 ## Next steps
 
 Listed in no particular order:
-* add renaming support to header-generator (to remove all the Vk prefixes on types).
+* ~~add renaming support to header-generator (to remove all the Vk prefixes on types and commands).~~
 * add dynamic linking, and using get\*ProcAddr() to remove some
   of the overhead.
 * add WSI support, and putting certain extension data in different files (with

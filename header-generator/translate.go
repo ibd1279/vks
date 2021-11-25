@@ -10,104 +10,16 @@ import (
 	strip "github.com/grokify/html-strip-tags-go"
 )
 
+// Translator interface provides a set of rules for how to translate the
+// specification type informaiton into names for other situations.
 type Translator interface {
-	C() string
-	CGo() string
-	Go() string
+	C() string   // C name.
+	CGo() string // Cgo name.
+	Go() string  // Go name.
 }
 
-type Converter interface {
-	CToGo() string
-	GoToC() string
-}
-
-// uint64_t vs unsigned long long vs. uint64
-type ScalarTranslator struct {
-	specType string // e.g. uint64_t
-	cGoType  string // e.g. C.ulonglong
-	goType   string // e.g. uint64
-	cToGo    string // e.g. C.GoString
-	goToC    string // e.g. C.CString
-}
-
-func (xl8r *ScalarTranslator) C() string   { return xl8r.specType }
-func (xl8r *ScalarTranslator) CGo() string { return xl8r.cGoType }
-func (xl8r *ScalarTranslator) Go() string  { return xl8r.goType }
-func (xl8r *ScalarTranslator) CToGo() string {
-	f := xl8r.cToGo
-	if len(f) == 0 {
-		f = xl8r.Go()
-	}
-	return fmt.Sprintf("func(x *%s) *%s { /* Scalar */ return (*%s)(unsafe.Pointer(x)) }", xl8r.CGo(), xl8r.Go(), f)
-}
-func (xl8r *ScalarTranslator) GoToC() string {
-	f := xl8r.goToC
-	if len(f) == 0 {
-		f = xl8r.CGo()
-	}
-	return fmt.Sprintf("func(x *%s) *%s { /* Scalar */ return (*%s)(unsafe.Pointer(x)) }", xl8r.Go(), xl8r.CGo(), f)
-}
-
-var (
-	Int8Translator          *ScalarTranslator = &ScalarTranslator{"int8_t", "C.schar", "int8", "", ""}
-	Int16Translator                           = &ScalarTranslator{"int16_t", "C.short", "int16", "", ""}
-	Int32Translator                           = &ScalarTranslator{"int32_t", "C.int", "int32", "", ""}
-	Int64Translator                           = &ScalarTranslator{"int64_t", "C.longlong", "int64", "", ""}
-	Uint8Translator                           = &ScalarTranslator{"uint8_t", "C.uchar", "byte", "", ""}
-	Uint16Translator                          = &ScalarTranslator{"uint16_t", "C.ushort", "uint16", "", ""}
-	Uint32Translator                          = &ScalarTranslator{"uint32_t", "C.uint", "uint32", "", ""}
-	Uint64Translator                          = &ScalarTranslator{"uint64_t", "C.ulonglong", "uint64", "", ""}
-	SizeTranslator                            = &ScalarTranslator{"size_t", "C.ulong", "uint32", "", ""}
-	Float32Translator                         = &ScalarTranslator{"float", "C.float", "float32", "", ""}
-	Float64Translator                         = &ScalarTranslator{"double", "C.double", "float64", "", ""}
-	StringTranslator                          = &ScalarTranslator{"char", "C.char", "byte", "", ""}
-	UnsafePointerTranslator                   = &ScalarTranslator{"void*", "unsafe.Pointer", "unsafe.Pointer", "", ""}
-
-	scalarTranslatorList map[string]*ScalarTranslator = map[string]*ScalarTranslator{
-		"int8_t":   Int8Translator,
-		"int16_t":  Int16Translator,
-		"int32_t":  Int32Translator,
-		"int64_t":  Int64Translator,
-		"uint8_t":  Uint8Translator,
-		"uint16_t": Uint16Translator,
-		"uint32_t": Uint32Translator,
-		"uint64_t": Uint64Translator,
-		"size_t":   SizeTranslator,
-		"float":    Float32Translator,
-		"double":   Float64Translator,
-		"char":     StringTranslator,
-		"void*":    UnsafePointerTranslator,
-	}
-)
-
-func GetScalarTranslator(specType string) *ScalarTranslator {
-	return scalarTranslatorList[specType]
-}
-
-// VkInstane vs C.VkInstance
-type HandleTranslator struct {
-	specValue string
-}
-
-func (xl8r *HandleTranslator) C() string   { return xl8r.specValue }
-func (xl8r *HandleTranslator) CGo() string { return fmt.Sprintf("C.%s", xl8r.specValue) }
-func (xl8r *HandleTranslator) Go() string  { return xl8r.specValue }
-func (xl8r *HandleTranslator) CToGo() string {
-	return fmt.Sprintf("/* Handle */ (*%s)", xl8r.Go())
-}
-func (xl8r *HandleTranslator) GoToC() string {
-	return fmt.Sprintf("/* Handle */ (*%s)", xl8r.CGo())
-}
-
-var (
-	handleTranslatorList map[string]*HandleTranslator = map[string]*HandleTranslator{}
-)
-
-func GetHandleTranslator(specType string) *HandleTranslator {
-	return handleTranslatorList[specType]
-}
-
-// VK_SUCCESS vs VK_SUCCESS
+// LiteralTranslator is used for values that are constants or expected to
+// be the same in all outputs. For example 198 or (1 << 4) or VK_SUCCESS.
 type LiteralTranslator struct {
 	specName string
 }
@@ -116,33 +28,24 @@ func (xl8r *LiteralTranslator) C() string   { return xl8r.specName }
 func (xl8r *LiteralTranslator) CGo() string { return xl8r.specName }
 func (xl8r *LiteralTranslator) Go() string  { return xl8r.specName }
 
-// 0x.8p-0 vs. 0x0.8fp-0
-type ValueTranslator struct {
-	specValue string
-}
-
-func (xl8r *ValueTranslator) C() string   { return xl8r.specValue }
-func (xl8r *ValueTranslator) CGo() string { return xl8r.specValue }
-func (xl8r *ValueTranslator) Go() string  { return xl8r.specValue }
-
-// (1 << 3) vs (1 << 3)
+// BitValueTranslator is outputs 1 shifted by enough bits to represent
+// the required bitposition in the bit mask.
 type BitValueTranslator struct {
 	bitPos int
 }
 
 func (xl8r *BitValueTranslator) C() string   { return xl8r.Go() }
 func (xl8r *BitValueTranslator) CGo() string { return xl8r.Go() }
-func (xl8r *BitValueTranslator) Go() string {
-	return fmt.Sprintf("(1 << %d)", xl8r.bitPos)
-}
+func (xl8r *BitValueTranslator) Go() string  { return fmt.Sprintf("(1 << %d)", xl8r.bitPos) }
 
-// type vs. type_
-type NameTranslator struct {
+// ReservedWordTranslator deals with un exported names (think parameter names)
+// that are reserved words, like type, range, and func
+type ReservedWordTranslator struct {
 	orig Translator
 }
 
-func (xl8r *NameTranslator) C() string { return xl8r.orig.C() }
-func (xl8r *NameTranslator) CGo() string {
+func (xl8r *ReservedWordTranslator) C() string { return xl8r.orig.C() }
+func (xl8r *ReservedWordTranslator) CGo() string {
 	name := xl8r.orig.CGo()
 	if name == "type" {
 		name = "_type"
@@ -153,7 +56,7 @@ func (xl8r *NameTranslator) CGo() string {
 	}
 	return name
 }
-func (xl8r *NameTranslator) Go() string {
+func (xl8r *ReservedWordTranslator) Go() string {
 	name := xl8r.orig.Go()
 	if name == "type" {
 		name = "type_"
@@ -165,7 +68,8 @@ func (xl8r *NameTranslator) Go() string {
 	return name
 }
 
-// VK_API_VERSION vs VkApiVersion
+// CamelCaseTranslator converts uppercase defines into More go friendly values.
+// For example, VK_API_VERSION vs VkApiVersion.
 type CamelCaseTranslator struct {
 	specName string
 }
@@ -185,30 +89,31 @@ func (xl8r *CamelCaseTranslator) Go() string {
 	return src
 }
 
-// sType vs SType
-type ExportTranslator struct {
-	orig Translator
+// TypeDefTranslator provides the C. prefix for the CGo translation. It is
+// generally used for things like Handles, where the typedef isn't a struct or
+// a union.
+type TypeDefTranslator struct {
+	specName string
 }
 
-func (xl8r *ExportTranslator) C() string   { return xl8r.orig.C() }
-func (xl8r *ExportTranslator) CGo() string { return xl8r.orig.CGo() }
-func (xl8r *ExportTranslator) Go() string  { return strings.Title(xl8r.orig.Go()) }
+func (xl8r *TypeDefTranslator) C() string   { return xl8r.specName }
+func (xl8r *TypeDefTranslator) CGo() string { return fmt.Sprintf("C.%s", xl8r.specName) }
+func (xl8r *TypeDefTranslator) Go() string  { return xl8r.specName }
 
-type IdentifierTranslator struct {
-	specValue string
+// StructTranslator provides the C.struct_ prefix for CGo translations. It is
+// used for struct types. This could probably be replaced by typedef, as
+// the vulkan header typedef's all the structs. Keeping it mostly for semantic
+// reasons.
+type StructTranslator struct {
+	specName string
 }
 
-func (xl8r *IdentifierTranslator) C() string   { return xl8r.specValue }
-func (xl8r *IdentifierTranslator) CGo() string { return fmt.Sprintf("C.%s", xl8r.specValue) }
-func (xl8r *IdentifierTranslator) Go() string  { return xl8r.specValue }
-func (xl8r *IdentifierTranslator) CToGo() string {
-	return fmt.Sprintf("/* Identifier */ (*%s)", xl8r.Go())
-}
-func (xl8r *IdentifierTranslator) GoToC() string {
-	return fmt.Sprintf("/* Identifier */ (*%s)", xl8r.CGo())
-}
+func (xl8r *StructTranslator) C() string   { return xl8r.specName }
+func (xl8r *StructTranslator) CGo() string { return fmt.Sprintf("C.struct_%s", xl8r.specName) }
+func (xl8r *StructTranslator) Go() string  { return xl8r.specName }
 
-// VkClearValue vs C.union_VkClearValue
+// UnionTranslator provides the C.union_ prefix for the CGo translation. It is
+// used for union types. Keeping it mostly for semantic reasons.
 type UnionTranslator struct {
 	specValue string
 }
@@ -217,66 +122,283 @@ func (xl8r *UnionTranslator) C() string   { return xl8r.specValue }
 func (xl8r *UnionTranslator) CGo() string { return fmt.Sprintf("C.union_%s", xl8r.specValue) }
 func (xl8r *UnionTranslator) Go() string  { return xl8r.specValue }
 
-// VkClearAttachment vs C.struct_VkClearAttachment
-type StructTranslator struct {
-	specValue string
-}
-
-func (xl8r *StructTranslator) C() string   { return xl8r.specValue }
-func (xl8r *StructTranslator) CGo() string { return fmt.Sprintf("C.struct_%s", xl8r.specValue) }
-func (xl8r *StructTranslator) Go() string  { return xl8r.specValue }
-
-// uint32_t* vs *uint32
-type PointerTranslator struct {
+// ExportTranslator runs a series of rules over the Go name to prepare it
+// to be part of the exported API. The rules are added to `TranslatorRules`
+// in the order they are expected to be executed.
+type ExportTranslator struct {
 	orig Translator
-	conv Converter
 }
 
-func (xl8r *PointerTranslator) C() string   { return fmt.Sprintf("%s*", xl8r.orig.C()) }
-func (xl8r *PointerTranslator) CGo() string { return fmt.Sprintf("*%s", xl8r.orig.CGo()) }
-func (xl8r *PointerTranslator) Go() string  { return fmt.Sprintf("*%s", xl8r.orig.Go()) }
-func (xl8r *PointerTranslator) CToGo() string {
+func (xl8r *ExportTranslator) C() string   { return xl8r.orig.C() }
+func (xl8r *ExportTranslator) CGo() string { return xl8r.orig.CGo() }
+func (xl8r *ExportTranslator) Go() string {
+	src := xl8r.orig.Go()
+	for _, v := range TranslatorRules {
+		src = v.Translate(src)
+	}
+	return src
+}
+
+// ExportTranslatorRule provides an interface for defining different
+// rules for the ExportTranslator. If a rule does apply, it should return
+// the original, it returns the original string.
+type ExportTranslatorRule interface {
+	Translate(string) string
+}
+
+// TranslatorRules are the configured list of rules for the ExportTranslator
+var TranslatorRules []ExportTranslatorRule
+
+// exportTranslatorRuleDeprefix removes the provided prefix if a word has it.
+type exportTranslatorRuleDeprefix struct {
+	prefix string
+}
+
+func (etRule exportTranslatorRuleDeprefix) Translate(src string) string {
+	if strings.HasPrefix(src, etRule.prefix) {
+		return src[len(etRule.prefix):]
+	}
+	return src
+}
+
+// exportTranslatorRuleTitle makes the first character of a string uppercase.
+type exportTranslatorRuleTitle struct{}
+
+func (etRule exportTranslatorRuleTitle) Translate(src string) string {
+	return strings.Title(src)
+}
+
+// Converter interface is an extension of the Translator interface. It
+// provides code for converting from one type to another type.
+type Converter interface {
+	Translator
+	CToGo() string
+	GoToC() string
+}
+
+// ScalarConverter provides conversions for the common C scalar types to
+// Go types.
+type ScalarConverter struct {
+	specType string // e.g. uint64_t
+	cGoType  string // e.g. C.ulonglong
+	goType   string // e.g. uint64
+	cToGo    string // e.g. C.GoString
+	goToC    string // e.g. C.CString
+}
+
+func (xl8r *ScalarConverter) C() string   { return xl8r.specType }
+func (xl8r *ScalarConverter) CGo() string { return xl8r.cGoType }
+func (xl8r *ScalarConverter) Go() string  { return xl8r.goType }
+func (xl8r *ScalarConverter) CToGo() string {
+	f := xl8r.cToGo
+	if len(f) == 0 {
+		f = xl8r.Go()
+	}
+	return fmt.Sprintf("func(x *%s) *%s { /* Scalar */ return (*%s)(unsafe.Pointer(x)) }", xl8r.CGo(), xl8r.Go(), f)
+}
+func (xl8r *ScalarConverter) GoToC() string {
+	f := xl8r.goToC
+	if len(f) == 0 {
+		f = xl8r.CGo()
+	}
+	return fmt.Sprintf("func(x *%s) *%s { /* Scalar */ return (*%s)(unsafe.Pointer(x)) }", xl8r.Go(), xl8r.CGo(), f)
+}
+
+var (
+	Int8Translator          *ScalarConverter = &ScalarConverter{"int8_t", "C.schar", "int8", "", ""}
+	Int16Translator                          = &ScalarConverter{"int16_t", "C.short", "int16", "", ""}
+	Int32Translator                          = &ScalarConverter{"int32_t", "C.int", "int32", "", ""}
+	Int64Translator                          = &ScalarConverter{"int64_t", "C.longlong", "int64", "", ""}
+	Uint8Translator                          = &ScalarConverter{"uint8_t", "C.uchar", "byte", "", ""}
+	Uint16Translator                         = &ScalarConverter{"uint16_t", "C.ushort", "uint16", "", ""}
+	Uint32Translator                         = &ScalarConverter{"uint32_t", "C.uint", "uint32", "", ""}
+	Uint64Translator                         = &ScalarConverter{"uint64_t", "C.ulonglong", "uint64", "", ""}
+	SizeTranslator                           = &ScalarConverter{"size_t", "C.ulong", "uint32", "", ""}
+	Float32Translator                        = &ScalarConverter{"float", "C.float", "float32", "", ""}
+	Float64Translator                        = &ScalarConverter{"double", "C.double", "float64", "", ""}
+	StringTranslator                         = &ScalarConverter{"char", "C.char", "byte", "", ""}
+	UnsafePointerTranslator                  = &ScalarConverter{"void*", "unsafe.Pointer", "unsafe.Pointer", "", ""}
+)
+
+// TypeDefConverter provides converter methods that convert from
+// compatible types. For example a C.VkInstance to a go Instance.
+// which is just a cast.
+type TypeDefConverter struct {
+	orig Translator
+}
+
+func (xl8r *TypeDefConverter) C() string   { return xl8r.orig.C() }
+func (xl8r *TypeDefConverter) CGo() string { return xl8r.orig.CGo() }
+func (xl8r *TypeDefConverter) Go() string  { return xl8r.orig.Go() }
+func (xl8r *TypeDefConverter) CToGo() string {
+	return fmt.Sprintf("/* typedef */ (*%s)", xl8r.Go())
+}
+func (xl8r *TypeDefConverter) GoToC() string {
+	return fmt.Sprintf("/* typedef */ (*%s)", xl8r.CGo())
+}
+
+// PointerConverter wraps an existing translator to be treated like a pointer.
+// It is mostly used in struct memebers and command parameters.
+type PointerConverter struct {
+	orig Translator
+}
+
+func (xl8r *PointerConverter) C() string   { return fmt.Sprintf("%s*", xl8r.orig.C()) }
+func (xl8r *PointerConverter) CGo() string { return fmt.Sprintf("*%s", xl8r.orig.CGo()) }
+func (xl8r *PointerConverter) Go() string  { return fmt.Sprintf("*%s", xl8r.orig.Go()) }
+func (xl8r *PointerConverter) CToGo() string {
 	return fmt.Sprintf("func(x *%s) *%s { /* Pointer */ return (*%s)(unsafe.Pointer(x)) }", xl8r.CGo(), xl8r.Go(), xl8r.Go())
 }
-func (xl8r *PointerTranslator) GoToC() string {
+func (xl8r *PointerConverter) GoToC() string {
 	return fmt.Sprintf("func(x *%s) *%s { /* Pointer */ return (*%s)(unsafe.Pointer(x)) }", xl8r.Go(), xl8r.CGo(), xl8r.CGo())
 }
 
-// uint32_t* vs []uint32
-type SliceTranslator struct {
+// SliceConverter wraps an existing translator to be treated like a slice.
+// It is mostly used in struct memebers and command parameters.
+type SliceConverter struct {
 	orig Translator
-	conv Converter
 }
 
-func (xl8r *SliceTranslator) C() string   { return fmt.Sprintf("%s*", xl8r.orig.C()) }
-func (xl8r *SliceTranslator) CGo() string { return fmt.Sprintf("*%s", xl8r.orig.CGo()) }
-func (xl8r *SliceTranslator) Go() string  { return fmt.Sprintf("[]%s", xl8r.orig.Go()) }
-func (xl8r *SliceTranslator) CToGo() string {
+func (xl8r *SliceConverter) C() string   { return fmt.Sprintf("%s*", xl8r.orig.C()) }
+func (xl8r *SliceConverter) CGo() string { return fmt.Sprintf("*%s", xl8r.orig.CGo()) }
+func (xl8r *SliceConverter) Go() string  { return fmt.Sprintf("[]%s", xl8r.orig.Go()) }
+func (xl8r *SliceConverter) CToGo() string {
 	return fmt.Sprintf("func(x *%s) *%s { /* Slice */ slc := unsafe.Slice((*%s)(unsafe.Pointer(x)), (1 << 31)); return &slc }", xl8r.CGo(), xl8r.Go(), xl8r.orig.Go())
 }
-func (xl8r *SliceTranslator) GoToC() string {
+func (xl8r *SliceConverter) GoToC() string {
 	return fmt.Sprintf("func(x *%s) *%s { /* Slice */ if len(*x) > 0 { slc := (%s)(unsafe.Pointer(&((*x)[0]))); return &slc }; var ptr unsafe.Pointer; return (*%s)(unsafe.Pointer((&ptr))) }", xl8r.Go(), xl8r.CGo(), xl8r.CGo(), xl8r.CGo())
 }
 
-// uint32_t[4] vs [4]uint32
-type ArrayTranslator struct {
+// ArrayConverter wraps an existing translator to be treated like an array.
+// It is mostly used in struct members.
+type ArrayConverter struct {
 	orig Translator
 	size Translator
-	conv Converter
 }
 
-func (xl8r *ArrayTranslator) C() string { return fmt.Sprintf("%s[%s]", xl8r.orig.C(), xl8r.size.C()) }
-func (xl8r *ArrayTranslator) CGo() string {
+func (xl8r *ArrayConverter) C() string { return fmt.Sprintf("%s[%s]", xl8r.orig.C(), xl8r.size.C()) }
+func (xl8r *ArrayConverter) CGo() string {
 	return fmt.Sprintf("[%s]%s", xl8r.size.CGo(), xl8r.orig.CGo())
 }
-func (xl8r *ArrayTranslator) Go() string {
+func (xl8r *ArrayConverter) Go() string {
 	return fmt.Sprintf("[]%s", xl8r.orig.Go())
 }
-func (xl8r *ArrayTranslator) CToGo() string {
+func (xl8r *ArrayConverter) CToGo() string {
 	return fmt.Sprintf("func(x *%s) *%s { /* Array */ slc := unsafe.Slice((*%s)(unsafe.Pointer(x)), %s); return &slc }", xl8r.CGo(), xl8r.Go(), xl8r.orig.Go(), xl8r.size.Go())
 }
-func (xl8r *ArrayTranslator) GoToC() string {
+func (xl8r *ArrayConverter) GoToC() string {
 	return fmt.Sprintf("func(x *%s) **%s { /* Array */ if len(*x) > 0 { slc := (*%s)(unsafe.Pointer(&((*x)[0]))); return &slc }; var ptr unsafe.Pointer; return (**%s)(unsafe.Pointer((&ptr))) }", xl8r.Go(), xl8r.orig.CGo(), xl8r.orig.CGo(), xl8r.orig.CGo())
+}
+
+var (
+	cachedTranslatorMap map[string]Translator = map[string]Translator{
+		"int8_t":   Int8Translator,
+		"int16_t":  Int16Translator,
+		"int32_t":  Int32Translator,
+		"int64_t":  Int64Translator,
+		"uint8_t":  Uint8Translator,
+		"uint16_t": Uint16Translator,
+		"uint32_t": Uint32Translator,
+		"uint64_t": Uint64Translator,
+		"size_t":   SizeTranslator,
+		"float":    Float32Translator,
+		"double":   Float64Translator,
+		"char":     StringTranslator,
+		"void*":    UnsafePointerTranslator,
+	}
+)
+
+func CachedConverter(specType string) (Converter, bool) {
+	if entry, ok := CachedTranslator(specType); ok {
+		if converter, ok := entry.(Converter); ok {
+			return converter, true
+		}
+	}
+	return nil, false
+}
+
+func CachedTranslator(specType string) (Translator, bool) {
+	entry, ok := cachedTranslatorMap[specType]
+	return entry, ok
+}
+
+func GetScalarConverter(specType string) Converter {
+	if converter, ok := CachedConverter(specType); ok {
+		return converter
+	}
+	panic(fmt.Errorf("Unknown Scalar type requested: %v", specType))
+}
+
+func GetCommandTranslator(specType string) Translator {
+	if entry, ok := CachedTranslator(specType); ok {
+		return entry
+	}
+	entry := &ExportTranslator{&TypeDefTranslator{specType}}
+	cachedTranslatorMap[specType] = entry
+	return entry
+}
+
+func GetDefineTranslator(specType string) Translator {
+	if entry, ok := CachedTranslator(specType); ok {
+		return entry
+	}
+	entry := &ExportTranslator{&CamelCaseTranslator{specType}}
+	cachedTranslatorMap[specType] = entry
+	return entry
+}
+
+func GetBaseConverter(specType string) Converter {
+	if entry, ok := CachedConverter(specType); ok {
+		return entry
+	}
+	entry := &TypeDefConverter{&ExportTranslator{&TypeDefTranslator{specType}}}
+	cachedTranslatorMap[specType] = entry
+	return entry
+}
+
+func GetHandleConverter(specType string) Converter {
+	if converter, ok := CachedConverter(specType); ok {
+		return converter
+	}
+	entry := &TypeDefConverter{&ExportTranslator{&TypeDefTranslator{specType}}}
+	cachedTranslatorMap[specType] = entry
+	return entry
+}
+
+func GetStructConverter(specType string) Converter {
+	if entry, ok := CachedConverter(specType); ok {
+		return entry
+	}
+	entry := &TypeDefConverter{&ExportTranslator{&StructTranslator{specType}}}
+	cachedTranslatorMap[specType] = entry
+	return entry
+}
+
+func GetEnumNameConverter(specType string) Converter {
+	if entry, ok := CachedConverter(specType); ok {
+		return entry
+	}
+	entry := &TypeDefConverter{&ExportTranslator{&TypeDefTranslator{specType}}}
+	cachedTranslatorMap[specType] = entry
+	return entry
+}
+
+func GetEnumValueConverter(specType string) Converter {
+	if entry, ok := CachedConverter(specType); ok {
+		return entry
+	}
+	entry := &TypeDefConverter{&ExportTranslator{&TypeDefTranslator{specType}}}
+	cachedTranslatorMap[specType] = entry
+	return entry
+}
+
+func GetFuncConverter(specType string) Converter {
+	if entry, ok := CachedConverter(specType); ok {
+		return entry
+	}
+	entry := &TypeDefConverter{&ExportTranslator{&TypeDefTranslator{specType}}}
+	cachedTranslatorMap[specType] = entry
+	return entry
 }
 
 /* const VK_MAX_PHYSICAL_DEVICE_NAME_SIZE uint32 256 */
@@ -371,19 +493,21 @@ func CommandToData(node *RegistryNode, command CommandElement) (bool, interface{
 		return false, nil
 	} else {
 		var returnTranslator Translator
-		if scalarXl8r := GetScalarTranslator(command.Proto.Type); scalarXl8r != nil {
-			returnTranslator = scalarXl8r
+		// Cheating a little bit as the spec does not currently have any
+		// commands that return a pointer
+		if tXl8r, ok := CachedTranslator(command.Proto.Type); ok {
+			returnTranslator = tXl8r
 		} else {
 			returnTranslator = helperMemberTypeTranslator(command.Proto.Type, "", command.Proto.Raw, "")
 		}
 		data := CommandData{
-			Name:   &ExportTranslator{&IdentifierTranslator{command.Name()}},
+			Name:   GetCommandTranslator(command.Name()),
 			Return: returnTranslator,
 		}
 
 		for _, v := range command.Params {
 			data.Parameters = append(data.Parameters, CommandParamData{
-				Name: &NameTranslator{&LiteralTranslator{v.Name}},
+				Name: &ReservedWordTranslator{&LiteralTranslator{v.Name}},
 				Type: helperMemberTypeTranslator(v.Type, v.Length, v.Raw, ""),
 			})
 		}
@@ -462,8 +586,8 @@ func defineTypeToData(node *RegistryNode, tiepuh TypeElement) *struct {
 
 	t := "version"
 	data := DefineData{
-		Name:              &NameTranslator{&ExportTranslator{&CamelCaseTranslator{"VK_API_VERSION"}}},
-		HeaderVersionName: &NameTranslator{&ExportTranslator{&CamelCaseTranslator{"VK_HEADER_VERSION"}}},
+		Name:              GetDefineTranslator("VK_API_VERSION"),
+		HeaderVersionName: GetDefineTranslator("VK_HEADER_VERSION"),
 	}
 	switch tiepuh.Name() {
 	case "VK_HEADER_VERSION":
@@ -500,8 +624,8 @@ func baseTypeToData(node *RegistryNode, tiepuh TypeElement) *struct {
 		return nil
 	}
 	data := BaseData{
-		Type: GetScalarTranslator(tiepuh.TypeTag),
-		Name: &IdentifierTranslator{tiepuh.Name()},
+		Type: GetScalarConverter(tiepuh.TypeTag),
+		Name: GetBaseConverter(tiepuh.Name()),
 	}
 	return &struct {
 		Template string
@@ -514,12 +638,10 @@ func handleTypeToData(node *RegistryNode, tiepuh TypeElement) *struct {
 	Data     HandleData
 } {
 	var data HandleData
-	if t := GetHandleTranslator(tiepuh.Name()); t != nil {
+	if t, ok := CachedConverter(tiepuh.Name()); ok {
 		data.Name = t
 	} else {
-		t = &HandleTranslator{tiepuh.Name()}
-		handleTranslatorList[tiepuh.Name()] = t
-		data.Name = t
+		data.Name = GetHandleConverter(tiepuh.Name())
 	}
 	return &struct {
 		Template string
@@ -532,62 +654,69 @@ func enumTypeToData(node *RegistryNode, tiepuh TypeElement) *struct {
 	Data     EnumData
 } {
 	ed := EnumData{
-		Name: &IdentifierTranslator{tiepuh.Name()},
+		Name: GetEnumNameConverter(tiepuh.Name()),
 	}
 
 	templateName := "enum"
+	var bitmask bool
 	if tiepuh.Category == TypeCategoryBitmask {
-		ed.Type = &IdentifierTranslator{tiepuh.TypeTag}
 		templateName = "bitmask"
+		if len(tiepuh.TypeTag) > 0 {
+			if t, ok := CachedTranslator(tiepuh.TypeTag); ok {
+				ed.Type = t
+			}
+		}
+		bitmask = true
 	}
 	for _, v := range node.EnumsParents() {
-		var bitmask bool
+		var largestValue, smallestValue float64
 		if v.E.Type == EnumsElementBitmask {
 			bitmask = true
 		}
-		var largestValue, smallestValue int64
 		for _, v := range v.N.EnumParents() {
 			evd := EnumValueData{
 				Type: ed.Name,
-				Name: &NameTranslator{&LiteralTranslator{v.E.Name}},
+				Name: GetEnumValueConverter(v.E.Name),
 			}
 			var valueTranslator Translator
-			if bitmask {
-				if len(v.E.Alias) > 0 {
-					valueTranslator = &LiteralTranslator{v.E.Alias}
-					evd.Alias = true
-				} else if v.E.BitPos == 0 && len(v.E.Value) > 0 {
-					valueTranslator = &ValueTranslator{v.E.Value}
+			if len(v.E.Alias) > 0 {
+				evd.Alias = true
+				if tXl8r, ok := CachedTranslator(v.E.Alias); ok {
+					valueTranslator = tXl8r
 				} else {
-					valueTranslator = &BitValueTranslator{v.E.BitPos}
-					if (1 << v.E.BitPos) > largestValue {
-						largestValue = (1 << v.E.BitPos)
-					} else if (1 << v.E.BitPos) < smallestValue {
-						smallestValue = (1 << v.E.BitPos)
+					valueTranslator = &LiteralTranslator{v.E.Alias}
+				}
+			} else if bitmask {
+				if v.E.BitPos == 0 && len(v.E.Value) > 0 {
+					valueTranslator = &LiteralTranslator{v.E.Value}
+				} else {
+					if float64(uint64(1)<<v.E.BitPos) > largestValue {
+						largestValue = float64(uint64(1) << v.E.BitPos)
+					} else if float64(uint64(1)<<v.E.BitPos) < smallestValue {
+						smallestValue = float64(uint64(1) << v.E.BitPos)
 					}
+					valueTranslator = &BitValueTranslator{v.E.BitPos}
 				}
 			} else {
-				if len(v.E.Alias) > 0 {
-					valueTranslator = &LiteralTranslator{v.E.Alias}
-					evd.Alias = true
-				} else if val, _ := strconv.ParseInt(v.E.Value, 10, 64); val > largestValue || val < smallestValue {
-					valueTranslator = &ValueTranslator{v.E.Value}
-					if val > largestValue {
-						largestValue = val
-					} else if val < smallestValue {
-						smallestValue = val
-					}
-				} else {
-					valueTranslator = &ValueTranslator{v.E.Value}
+				valueTranslator = &LiteralTranslator{v.E.Value}
+				val, _ := strconv.ParseFloat(v.E.Value, 64)
+				if val > largestValue {
+					largestValue = val
+				} else if val < smallestValue {
+					smallestValue = val
 				}
 			}
 			evd.Value = valueTranslator
 			ed.Values = append(ed.Values, evd)
 		}
-		if smallestValue < 0 {
+
+		// I should look up how golang deals with constants to avoid this noise.
+		if smallestValue < -0.5 && largestValue < float64((^uint32(0))>>1) {
 			ed.Type = Int32Translator
-		} else if largestValue > int64(^uint32(0)) {
+		} else if smallestValue > -0.5 && largestValue > float64(^uint32(0)) {
 			ed.Type = Uint64Translator
+		} else if smallestValue < -0.5 && largestValue > float64((^uint32(0))>>1) {
+			ed.Type = Int64Translator
 		}
 	}
 	if ed.Type == nil {
@@ -605,8 +734,8 @@ func funcTypeToData(node *RegistryNode, tiepuh TypeElement) *struct {
 	Data     FuncData
 } {
 	data := FuncData{
-		Type: GetScalarTranslator("void*"),
-		Name: &IdentifierTranslator{tiepuh.Name()},
+		Type: GetScalarConverter("void*"),
+		Name: GetFuncConverter(tiepuh.Name()),
 	}
 	return &struct {
 		Template string
@@ -619,11 +748,11 @@ func structTypeToData(node *RegistryNode, tiepuh TypeElement) *struct {
 	Data     StructData
 } {
 	data := StructData{
-		Name:     &StructTranslator{tiepuh.Name()},
+		Name:     GetStructConverter(tiepuh.Name()),
 		ReadOnly: tiepuh.ReturnedOnly,
 	}
 	if len(tiepuh.Alias) > 0 {
-		data.Alias = &StructTranslator{tiepuh.Alias}
+		data.Alias = GetStructConverter(tiepuh.Alias)
 		return &struct {
 			Template string
 			Data     StructData
@@ -632,7 +761,7 @@ func structTypeToData(node *RegistryNode, tiepuh TypeElement) *struct {
 
 	for _, v := range tiepuh.StructMembers {
 		subData := StructMemberData{
-			Name: &NameTranslator{&ExportTranslator{&LiteralTranslator{v.Name}}},
+			Name: &ExportTranslator{&ReservedWordTranslator{&LiteralTranslator{v.Name}}},
 			Type: helperMemberTypeTranslator(v.Type, v.Length, v.Raw, v.Comment),
 		}
 		if len(v.Values) > 0 && len(strings.Split(v.Values, ",")) == 1 && v.Name == "sType" {
@@ -657,7 +786,7 @@ func unionTypeToData(node *RegistryNode, tiepuh TypeElement) *struct {
 	}
 	for _, v := range tiepuh.StructMembers {
 		data.Members = append(data.Members, UnionMemberData{
-			Name: &NameTranslator{&ExportTranslator{&LiteralTranslator{v.Name}}},
+			Name: &ExportTranslator{&LiteralTranslator{v.Name}},
 			Type: helperMemberTypeTranslator(v.Type, v.Length, v.Raw, v.Comment),
 		})
 	}
@@ -719,35 +848,31 @@ func helperMemberTypeTranslator(specType, length, raw, comment string) Translato
 		arraySize = ""
 	}
 
-	var typeTranslator Translator
 	var typeConverter Converter
-	if handleXl8r := GetHandleTranslator(specType); handleXl8r != nil {
-		typeTranslator = handleXl8r
-		typeConverter = handleXl8r
-	} else if scalarXl8r := GetScalarTranslator(specType); scalarXl8r != nil {
-		typeTranslator = scalarXl8r
-		typeConverter = scalarXl8r
+	if cXl8r, ok := CachedConverter(specType); ok {
+		typeConverter = cXl8r
+	} else if tXl8r, ok := CachedTranslator(specType); ok {
+		//log.Printf("Investigate why %v does not have a converter.", specType)
+		typeConverter = &TypeDefConverter{tXl8r}
 	} else {
-		typeTranslator = &IdentifierTranslator{specType}
-		typeConverter = &IdentifierTranslator{specType}
+		//log.Printf("Investigate why %v does not have a cached converter or translator.", specType)
+		typeConverter = &TypeDefConverter{&TypeDefTranslator{specType}}
 	}
+
 	for h := 0; h < pointerCount; h++ {
-		typeTranslator = &PointerTranslator{typeTranslator, typeConverter}
-		typeConverter = &PointerTranslator{typeTranslator, typeConverter}
+		typeConverter = &PointerConverter{typeConverter}
 	}
 	for h := 0; h < sliceCount; h++ {
-		typeTranslator = &SliceTranslator{typeTranslator, typeConverter}
-		typeConverter = &SliceTranslator{typeTranslator, typeConverter}
+		typeConverter = &SliceConverter{typeConverter}
 	}
 	if len(arraySize) > 0 {
-		typeTranslator = &ArrayTranslator{
-			typeTranslator,
-			&ValueTranslator{arraySize},
+		typeConverter = &ArrayConverter{
 			typeConverter,
+			&LiteralTranslator{arraySize},
 		}
 	}
 
-	return typeTranslator
+	return typeConverter
 }
 
 func ConstToData(node *RegistryNode) *struct {
@@ -786,13 +911,13 @@ func ConstToData(node *RegistryNode) *struct {
 					}
 				}
 				data = &ConstData{
-					Name:  &ExportTranslator{&IdentifierTranslator{v.E.Name}},
-					Value: &ValueTranslator{value},
+					Name:  GetBaseConverter(v.E.Name),
+					Value: &LiteralTranslator{value},
 				}
 			} else if len(v.E.Name) > 0 && len(v.E.Alias) > 0 {
 				data = &ConstData{
-					Name:  &ExportTranslator{&IdentifierTranslator{v.E.Name}},
-					Value: &ExportTranslator{&IdentifierTranslator{v.E.Alias}},
+					Name:  GetBaseConverter(v.E.Name),
+					Value: GetBaseConverter(v.E.Alias),
 				}
 			}
 			if data != nil {
