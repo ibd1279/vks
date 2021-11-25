@@ -5,16 +5,23 @@ the vulkan specification published as XML to generate the output bindings.
 
 ## Memory management
 Unlike c-for-go, this wrapper does very little memory management for you. Most of
-the logic is for converting from Cgo types into go types, but ensuring that C
+the logic is for converting from Cgo types into go types. Ensuring that C
 memory is allocated and released is up to the program, not to this binding.
+
+A helper method for AsCPtr() exists on structures that makes it easier to copy
+the structure to C. The program must call free on that structure to release the
+C memory.
 
 ## Completeness
 A list of the enabled features and extensions is available in the [vkxml.yml](https://github.com/ibd1279/vks/blob/main/vkxml.yml) file. 
 
-Nothing is done to "fix" the names of functions or types. That means
-typing "vks.Vk" frequently. There are a couple of functions where I've taken a first
-stab at providing a more go-friendly wrapper ontop of the function, but for the
-most part, everything is working directly with the vulkan API.
+The project doesn't do much to make the Vulkan APIs much easier to use. Commands
+and types have the Vk prefix stripped, but not the constants. The API is used
+exactly how the C API would be used.
+
+The one place where it does make the API's easier to use is the SType field.
+Structures have a WithDefaultSType() method to make avoid typing that long
+constant.
 
 it also currently depends on the vulkan prototypes and linking with the vulkan library
 when building.
