@@ -112,16 +112,6 @@ func (xl8r *StructTranslator) C() string   { return xl8r.specName }
 func (xl8r *StructTranslator) CGo() string { return fmt.Sprintf("C.struct_%s", xl8r.specName) }
 func (xl8r *StructTranslator) Go() string  { return xl8r.specName }
 
-// UnionTranslator provides the C.union_ prefix for the CGo translation. It is
-// used for union types. Keeping it mostly for semantic reasons.
-type UnionTranslator struct {
-	specValue string
-}
-
-func (xl8r *UnionTranslator) C() string   { return xl8r.specValue }
-func (xl8r *UnionTranslator) CGo() string { return fmt.Sprintf("C.union_%s", xl8r.specValue) }
-func (xl8r *UnionTranslator) Go() string  { return xl8r.specValue }
-
 // ExportTranslator runs a series of rules over the Go name to prepare it
 // to be part of the exported API. The rules are added to `TranslatorRules`
 // in the order they are expected to be executed.
@@ -365,15 +355,6 @@ func GetHandleConverter(specType string) Converter {
 	return entry
 }
 
-func GetStructConverter(specType string) Converter {
-	if entry, ok := CachedConverter(specType); ok {
-		return entry
-	}
-	entry := &TypeDefConverter{&ExportTranslator{&StructTranslator{specType}}}
-	cachedTranslatorMap[specType] = entry
-	return entry
-}
-
 func GetEnumNameConverter(specType string) Converter {
 	if entry, ok := CachedConverter(specType); ok {
 		return entry
@@ -399,6 +380,55 @@ func GetFuncConverter(specType string) Converter {
 	entry := &TypeDefConverter{&ExportTranslator{&TypeDefTranslator{specType}}}
 	cachedTranslatorMap[specType] = entry
 	return entry
+}
+
+func GetStructConverter(specType string) Converter {
+	if entry, ok := CachedConverter(specType); ok {
+		return entry
+	}
+	entry := &TypeDefConverter{&ExportTranslator{&StructTranslator{specType}}}
+	cachedTranslatorMap[specType] = entry
+	return entry
+}
+
+func GetUnionConverter(specType string) Converter {
+	if entry, ok := CachedConverter(specType); ok {
+		return entry
+	}
+	entry := &TypeDefConverter{&ExportTranslator{&TypeDefTranslator{specType}}}
+	cachedTranslatorMap[specType] = entry
+	return entry
+}
+
+func CacheConverters(path []*RegistryNode) {
+	node := path[len(path)-1]
+	switch node.NodeType {
+	case RegistryNodeType:
+		if tiepuh := node.TypeElement(); tiepuh != nil {
+			switch tiepuh.Category {
+			case TypeCategoryDefine:
+				GetDefineTranslator(tiepuh.Name())
+			case TypeCategoryBasetype:
+				GetBaseConverter(tiepuh.Name())
+			case TypeCategoryHandle:
+				GetHandleConverter(tiepuh.Name())
+			case TypeCategoryEnum:
+				GetEnumNameConverter(tiepuh.Name())
+			case TypeCategoryBitmask:
+				GetEnumNameConverter(tiepuh.Name())
+			case TypeCategoryFuncpointer:
+				GetFuncConverter(tiepuh.Name())
+			case TypeCategoryStruct:
+				GetStructConverter(tiepuh.Name())
+			case TypeCategoryUnion:
+				GetUnionConverter(tiepuh.Name())
+			}
+		}
+	case RegistryNodeCommand:
+		if command := node.CommandElement(); command != nil {
+			GetCommandTranslator(command.Name())
+		}
+	}
 }
 
 /* const VK_MAX_PHYSICAL_DEVICE_NAME_SIZE uint32 256 */
@@ -782,7 +812,7 @@ func unionTypeToData(node *RegistryNode, tiepuh TypeElement) *struct {
 	Data     UnionData
 } {
 	data := UnionData{
-		Name: &UnionTranslator{tiepuh.Name()},
+		Name: GetUnionConverter(tiepuh.Name()),
 	}
 	for _, v := range tiepuh.StructMembers {
 		data.Members = append(data.Members, UnionMemberData{

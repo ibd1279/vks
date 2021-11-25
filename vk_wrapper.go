@@ -8060,14 +8060,14 @@ func (x ClearAttachment) WithColorAttachment(y uint32) ClearAttachment {
 }
 
 // ClearValue returns the value of clearValue from VkClearAttachment
-func (x ClearAttachment) ClearValue() VkClearValue {
-	ptr := /* typedef */ (*VkClearValue)(&x.clearValue)
+func (x ClearAttachment) ClearValue() ClearValue {
+	ptr := /* typedef */ (*ClearValue)(&x.clearValue)
 	return *ptr
 }
 
 // WithClearValue copies the provided value into C space and stores it
 // at clearValue on VkClearAttachment
-func (x ClearAttachment) WithClearValue(y VkClearValue) ClearAttachment {
+func (x ClearAttachment) WithClearValue(y ClearValue) ClearAttachment {
 	ptr := /* typedef */ (*C.VkClearValue)(&y)
 	x.clearValue = *ptr
 	return x
@@ -13196,9 +13196,9 @@ func (x RenderPassBeginInfo) WithClearValueCount(y uint32) RenderPassBeginInfo {
 }
 
 // PClearValues returns the value of pClearValues from VkRenderPassBeginInfo
-func (x RenderPassBeginInfo) PClearValues() []VkClearValue {
-	ptr := func(x **C.VkClearValue) *[]VkClearValue { /* Slice */
-		slc := unsafe.Slice((*VkClearValue)(unsafe.Pointer(x)), (1 << 31))
+func (x RenderPassBeginInfo) PClearValues() []ClearValue {
+	ptr := func(x **C.VkClearValue) *[]ClearValue { /* Slice */
+		slc := unsafe.Slice((*ClearValue)(unsafe.Pointer(x)), (1 << 31))
 		return &slc
 	}(&x.pClearValues)
 	return *ptr
@@ -13206,8 +13206,8 @@ func (x RenderPassBeginInfo) PClearValues() []VkClearValue {
 
 // WithPClearValues copies the provided value into C space and stores it
 // at pClearValues on VkRenderPassBeginInfo
-func (x RenderPassBeginInfo) WithPClearValues(y []VkClearValue) RenderPassBeginInfo {
-	ptr := func(x *[]VkClearValue) **C.VkClearValue { /* Slice */
+func (x RenderPassBeginInfo) WithPClearValues(y []ClearValue) RenderPassBeginInfo {
+	ptr := func(x *[]ClearValue) **C.VkClearValue { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkClearValue)(unsafe.Pointer(&((*x)[0])))
 			return &slc
@@ -17001,43 +17001,43 @@ func (x DescriptorBufferInfo) WithRange_(y DeviceSize) DescriptorBufferInfo {
 	return x
 }
 
-// VkClearValue is a union from the Vulkan API.
+// ClearValue is a union from the Vulkan API.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkClearValue.html
-type VkClearValue C.union_VkClearValue
+type ClearValue C.VkClearValue
 
-func (x VkClearValue) Color() VkClearColorValue {
-	return *(*VkClearColorValue)(unsafe.Pointer(&x[0]))
+func (x ClearValue) Color() ClearColorValue {
+	return *(*ClearColorValue)(unsafe.Pointer(&x[0]))
 }
-func (x VkClearValue) SetColor(y VkClearColorValue) {
-	*(*VkClearColorValue)(unsafe.Pointer(&x[0])) = y
+func (x ClearValue) SetColor(y ClearColorValue) {
+	*(*ClearColorValue)(unsafe.Pointer(&x[0])) = y
 }
-func (x VkClearValue) DepthStencil() ClearDepthStencilValue {
+func (x ClearValue) DepthStencil() ClearDepthStencilValue {
 	return *(*ClearDepthStencilValue)(unsafe.Pointer(&x[0]))
 }
-func (x VkClearValue) SetDepthStencil(y ClearDepthStencilValue) {
+func (x ClearValue) SetDepthStencil(y ClearDepthStencilValue) {
 	*(*ClearDepthStencilValue)(unsafe.Pointer(&x[0])) = y
 }
 
-// VkClearColorValue is a union from the Vulkan API.
+// ClearColorValue is a union from the Vulkan API.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkClearColorValue.html
-type VkClearColorValue C.union_VkClearColorValue
+type ClearColorValue C.VkClearColorValue
 
-func (x VkClearColorValue) Float32() []float32 {
+func (x ClearColorValue) Float32() []float32 {
 	return *(*[]float32)(unsafe.Pointer(&x[0]))
 }
-func (x VkClearColorValue) SetFloat32(y []float32) {
+func (x ClearColorValue) SetFloat32(y []float32) {
 	*(*[]float32)(unsafe.Pointer(&x[0])) = y
 }
-func (x VkClearColorValue) Int32() []int32 {
+func (x ClearColorValue) Int32() []int32 {
 	return *(*[]int32)(unsafe.Pointer(&x[0]))
 }
-func (x VkClearColorValue) SetInt32(y []int32) {
+func (x ClearColorValue) SetInt32(y []int32) {
 	*(*[]int32)(unsafe.Pointer(&x[0])) = y
 }
-func (x VkClearColorValue) Uint32() []uint32 {
+func (x ClearColorValue) Uint32() []uint32 {
 	return *(*[]uint32)(unsafe.Pointer(&x[0]))
 }
-func (x VkClearColorValue) SetUint32(y []uint32) {
+func (x ClearColorValue) SetUint32(y []uint32) {
 	*(*[]uint32)(unsafe.Pointer(&x[0])) = y
 }
 
@@ -18304,11 +18304,11 @@ func CmdFillBuffer(commandBuffer CommandBuffer, dstBuffer Buffer, dstOffset Devi
 	C.vkCmdFillBuffer(*p0, *p1, *p2, *p3, *p4)
 }
 
-func CmdClearColorImage(commandBuffer CommandBuffer, image Image, imageLayout ImageLayout, pColor *VkClearColorValue, rangeCount uint32, pRanges []ImageSubresourceRange) {
+func CmdClearColorImage(commandBuffer CommandBuffer, image Image, imageLayout ImageLayout, pColor *ClearColorValue, rangeCount uint32, pRanges []ImageSubresourceRange) {
 	p0 := /* typedef */ (*C.VkCommandBuffer)(&commandBuffer)
 	p1 := /* typedef */ (*C.VkImage)(&image)
 	p2 := /* typedef */ (*C.VkImageLayout)(&imageLayout)
-	p3 := func(x **VkClearColorValue) **C.VkClearColorValue { /* Pointer */
+	p3 := func(x **ClearColorValue) **C.VkClearColorValue { /* Pointer */
 		return (**C.VkClearColorValue)(unsafe.Pointer(x))
 	}(&pColor)
 	p4 := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&rangeCount)
