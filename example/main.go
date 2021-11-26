@@ -8,6 +8,10 @@ import (
 )
 
 func main() {
+	if ret := vks.Init(); !ret.IsSuccess() {
+		panic(ret.AsErr())
+	}
+	defer vks.Destroy()
 	var version uint32
 	if result := vks.EnumerateInstanceVersion(&version); result.IsSuccess() {
 		log.Printf("%v", vks.ApiVersion(version))

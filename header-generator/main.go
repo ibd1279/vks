@@ -38,28 +38,13 @@ func main() {
 	}
 	graph.DepthFirstSearch(config.Enabled(), CacheConverters)
 
-	var data []interface{}
-	data = append(data, ConstToData(constants))
-	store := func(nodes []*RegistryNode) {
-		node := nodes[len(nodes)-1]
-		switch node.NodeType {
-		case RegistryNodeType:
-			if tiepuh := node.TypeElement(); tiepuh != nil {
-				if b, d := TypeToData(node, *tiepuh); b {
-					data = append(data, d)
-				}
-			}
-		case RegistryNodeCommand:
-			if command := node.CommandElement(); command != nil {
-				if b, d := CommandToData(node, *command); b {
-					data = append(data, d)
-				}
-			}
-		}
+	if err := GenerateGoFile(config, constants, graph); err != nil {
+		panic(err)
 	}
-	graph.DepthFirstSearch(config.Enabled(), store)
-
-	if err := GenerateGoFile(config, data); err != nil {
+	if err := GenerateCDefineFile(config, graph); err != nil {
+		panic(err)
+	}
+	if err := GenerateCImplementFile(config, graph); err != nil {
 		panic(err)
 	}
 }

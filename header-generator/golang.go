@@ -6,8 +6,9 @@ import (
 	"text/template"
 )
 
-func GenerateGoFile(config *Config, data []interface{}) error {
+func GenerateGoFile(config *Config, constants *RegistryNode, graph RegistryGraph) error {
 	fn := fmt.Sprintf("%s.go", config.OutputName)
+	header := fmt.Sprintf("%s.h", config.OutputName)
 
 	var t *template.Template
 	var err error
@@ -24,6 +25,26 @@ func GenerateGoFile(config *Config, data []interface{}) error {
 		return err
 	}
 
+	data := append([]interface{}{}, ConstToData(constants))
+	store := func(nodes []*RegistryNode) {
+		node := nodes[len(nodes)-1]
+		switch node.NodeType {
+		case RegistryNodeType:
+			if tiepuh := node.TypeElement(); tiepuh != nil {
+				if b, d := TypeToData(node, *tiepuh); b {
+					data = append(data, d)
+				}
+			}
+		case RegistryNodeCommand:
+			if command := node.CommandElement(); command != nil {
+				if b, d := CommandToData(node, *command); b {
+					data = append(data, d)
+				}
+			}
+		}
+	}
+	graph.DepthFirstSearch(config.Enabled(), store)
+
 	var fh *os.File
 	fh, err = os.OpenFile(fn, os.O_WRONLY|os.O_TRUNC|os.O_CREATE, 0644)
 	if err != nil {
@@ -33,8 +54,9 @@ func GenerateGoFile(config *Config, data []interface{}) error {
 
 	err = t.Execute(fh, struct {
 		PackageName string
+		Header      string
 		Data        []interface{}
-	}{config.PackageName, data})
+	}{config.PackageName, header, data})
 	if err != nil {
 		return err
 	}
@@ -187,12 +209,22 @@ const goPrimaryTemplate = `package {{.PackageName}}
 //#cgo LDFLAGS: -lvulkan
 //#include <stdlib.h>
 //#include <string.h>
-//#include "vulkan/vulkan.h"
+//#include "{{.Header}}"
 import "C"
 import (
 	"fmt"
 	"unsafe"
 )
+
+func Init() Result {
+	ret := C.vksDynamicLoad()
+	ptr := (*Result)(&ret)
+	return *ptr
+}
+
+func Destroy() {
+	C.vksDynamicUnload()
+}
 
 {{range .Data}}{{if eq .Template "const"}}{{block "const" .Data}}{{.}}{{end}}
 {{else if eq .Template "version"}}{{block "version" .Data}}{{.}}{{end}}

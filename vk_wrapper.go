@@ -3,12 +3,22 @@ package vks
 //#cgo LDFLAGS: -lvulkan
 //#include <stdlib.h>
 //#include <string.h>
-//#include "vulkan/vulkan.h"
+//#include "vk_wrapper.h"
 import "C"
 import (
 	"fmt"
 	"unsafe"
 )
+
+func Init() Result {
+	ret := C.vksDynamicLoad()
+	ptr := (*Result)(&ret)
+	return *ptr
+}
+
+func Destroy() {
+	C.vksDynamicUnload()
+}
 
 // These are API constants.
 const (
