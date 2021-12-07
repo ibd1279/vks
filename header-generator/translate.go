@@ -211,7 +211,7 @@ var (
 )
 
 // TypeDefConverter provides converter methods that convert from
-// compatible types. For example a C.VkInstance to a go Instance.
+// compatible types. For example a C.VkFlags to a go Flags.
 // which is just a cast.
 type TypeDefConverter struct {
 	orig Translator
@@ -225,6 +225,25 @@ func (xl8r *TypeDefConverter) CToGo() string {
 }
 func (xl8r *TypeDefConverter) GoToC() string {
 	return fmt.Sprintf("/* typedef */ (*%s)", xl8r.CGo())
+}
+
+// HandleConverter provides converter methods that convert from
+// handle types. While this is generally the same as the TypeDef
+// converter, it has some additional methods for generating facades and
+// is distinct for semantic reasons.
+type HandleConverter struct {
+	orig Translator
+}
+
+func (xl8r *HandleConverter) C() string        { return xl8r.orig.C() }
+func (xl8r *HandleConverter) CGo() string      { return xl8r.orig.CGo() }
+func (xl8r *HandleConverter) Go() string       { return xl8r.orig.Go() }
+func (xl8r *HandleConverter) GoFacade() string { return fmt.Sprintf("%s%s", xl8r.orig.Go(), "Facade") }
+func (xl8r *HandleConverter) CToGo() string {
+	return fmt.Sprintf("/* handle */ (*%s)", xl8r.Go())
+}
+func (xl8r *HandleConverter) GoToC() string {
+	return fmt.Sprintf("/* handle */ (*%s)", xl8r.CGo())
 }
 
 // PointerConverter wraps an existing translator to be treated like a pointer.
@@ -350,7 +369,7 @@ func GetHandleConverter(specType string) Converter {
 	if converter, ok := CachedConverter(specType); ok {
 		return converter
 	}
-	entry := &TypeDefConverter{&ExportTranslator{&TypeDefTranslator{specType}}}
+	entry := &HandleConverter{&ExportTranslator{&TypeDefTranslator{specType}}}
 	cachedTranslatorMap[specType] = entry
 	return entry
 }
@@ -450,9 +469,11 @@ type BaseData struct {
 	Name Translator // e.g. VkBool32
 }
 
-/* type VkInstance uintptr */
+/* type VkInstance C.VkInstance */
 type HandleData struct {
-	Name Translator // e.g. VkInstance
+	Name       Translator // e.g. VkPhysicalDevice
+	HasParent  bool
+	ParentName Translator // e.g. VkInstance
 }
 
 /* type VkResult uint32 */
@@ -509,6 +530,7 @@ type UnionMemberData struct {
 type CommandData struct {
 	Name       Translator // e.g. VkGetInstanceProcAddr
 	Return     Translator // e.g. PFN_vkVoidFunction
+	Parent     Translator // i.e. first parameter type
 	Parameters []CommandParamData
 }
 
@@ -536,11 +558,14 @@ func CommandToData(node *RegistryNode, command CommandElement) (bool, interface{
 			Return: returnTranslator,
 		}
 
-		for _, v := range command.Params {
+		for k, v := range command.Params {
 			data.Parameters = append(data.Parameters, CommandParamData{
 				Name: &ReservedWordTranslator{&LiteralTranslator{v.Name}},
 				Type: helperMemberTypeTranslator(v.Type, v.Length, v.Raw, ""),
 			})
+			if k == 0 {
+				data.Parent = data.Parameters[0].Type
+			}
 		}
 
 		return true, &struct {
@@ -673,6 +698,10 @@ func handleTypeToData(node *RegistryNode, tiepuh TypeElement) *struct {
 		data.Name = t
 	} else {
 		data.Name = GetHandleConverter(tiepuh.Name())
+	}
+	if t, ok := CachedConverter(tiepuh.Parent); ok {
+		data.HasParent = true
+		data.ParentName = t
 	}
 	return &struct {
 		Template string

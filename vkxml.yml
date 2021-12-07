@@ -15,6 +15,15 @@ extensions:
   - VK_KHR_display_swapchain
   - VK_KHR_format_feature_flags2
   - VK_KHR_portability_subset
+globalprocs:
+  - vkGetInstanceProcAddr
+  - vkEnumerateInstanceVersion
+  - vkEnumerateInstanceExtensionProperties
+  - vkEnumerateInstanceLayerProperties
+  - vkCreateInstance
+procloaders:
+  VkInstance: "vksLoadInstanceProcAddrs"
+    #VkDevice: "vksLoadDeviceProcAddrs"
 cdefinepreproc:
   - "#define VK_ENABLE_BETA_EXTENSIONS"
   - "#define VK_NO_PROTOTYPES"

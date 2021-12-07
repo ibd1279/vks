@@ -10,9 +10,32 @@ func GenerateGoFile(config *Config, constants *RegistryNode, graph RegistryGraph
 	fn := fmt.Sprintf("%s.go", config.OutputName)
 	header := fmt.Sprintf("%s.h", config.OutputName)
 
-	var t *template.Template
 	var err error
-	if t, err = template.New(fn).Parse(goPrimaryTemplate); err != nil {
+	t := template.New(fn).Funcs(template.FuncMap{
+		"hasProcAddr":  func(name Translator) bool { _, ok := config.ProcLoaders[name.C()]; return ok },
+		"procAddrFunc": func(name Translator) string { return config.ProcLoaders[name.C()] },
+		"isGlobal": func(name Translator) bool {
+			for _, v := range config.GlobalProcs {
+				if v == name.C() {
+					return true
+				}
+			}
+			return false
+		},
+		"ooParams": func(name Translator, params []CommandParamData) []CommandParamData {
+			global := false
+			for _, v := range config.GlobalProcs {
+				if v == name.C() {
+					global = true
+				}
+			}
+			if global {
+				return params
+			}
+			return params[1:]
+		},
+	})
+	if t, err = t.Parse(goPrimaryTemplate); err != nil {
 		return err
 	}
 	if t, err = t.Parse(goSubTemplates); err != nil {
@@ -99,12 +122,53 @@ const {{.HeaderVersionName.Go}} = {{.Value.Go}}
 {{end}}{{define "base"}}// {{.Name.Go}} is a base type in the vulkan specification.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{{.Name.C}}.html
 type {{.Name.Go}} {{.Type.Go}}
-{{end}}{{define "handle"}}// {{.Name.Go}} is a Handle to a vulkan resource.
+{{end}}{{define "handle"}}// {{.Name.Go}} is a Handle to a vulkan resource.{{if .HasParent}}
+// {{.Name.Go}} is a child of {{.ParentName.Go}}.{{end}}
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{{.Name.C}}.html
 type {{.Name.Go}} {{.Name.CGo}}
 
 // Null{{.Name.Go}} is a typed Null value for the {{.Name.Go}} type.
-var Null{{.Name.Go}} {{.Name.Go}}
+var Null{{.Name.Go}} {{.Name.Go}}{{if and (hasProcAddr .Name) (not .HasParent)}}
+
+// Make{{.Name.GoFacade}}Facade provides a facade interface to the handle. It load the proc
+// addresses for the provided {{.Name.Go}} handle.
+func Make{{.Name.GoFacade}}(x {{.Name.Go}}) {{.Name.GoFacade}} {
+	var addrs C.vksProcAddr
+	C.{{procAddrFunc .Name}}(x, &addrs)
+	return {{.Name.GoFacade}}{
+		H:     x,
+		procs: &addrs,
+	}
+}{{else if and (hasProcAddr .Name) .HasParent}}
+
+// Make{{.Name.GoFacade}}provides a facade interface to the handle. It requires
+// the parent facade for the proc address to load the new proc addresses.
+func (parent {{.ParentName.GoFacade}}) Make{{.Name.GoFacade}}(x {{.Name.Go}}) {{.Name.GoFacade}} {
+	var addrs C.vksProcAddr
+	C.{{procAddrFunc .Name}}(x, &addrs, parent.procs)
+	return {{.Name.GoFacade}}{
+		H:     x,
+		procs: &addrs,
+	}
+}{{else if .HasParent}}
+
+// Make{{.Name.GoFacade}}provides a facade interface to the handle. It requires
+// the parent facade to copy the proc addresses.
+func (parent {{.ParentName.GoFacade}}) Make{{.Name.GoFacade}}(x {{.Name.Go}}) {{.Name.GoFacade}} {
+	return {{.Name.GoFacade}}{
+		H:     x,
+		procs: parent.procs,
+	}
+}{{end}}
+
+// {{.Name.GoFacade}} is a {{.Name.Go}} handle with the proc addresses pointer. It allows
+// the invocation of methods against the handle -- functions that take the handle
+// as the first parameter.
+type {{.Name.GoFacade}} struct {
+	H     {{.Name.Go}}   // The vulkan Handle
+	procs *C.vksProcAddr // The addresses for commands.
+}
+
 {{end}}{{define "enum"}}// {{.Name.Go}} is an Enum from the Vulkan API.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{{.Name.C}}.html
 type {{.Name.Go}} {{.Type.Go}}{{if gt (len .Values) 0}}
@@ -143,9 +207,10 @@ func (x {{.Name.Go}}) copy(y []byte) {{.Name.Go}} {
 	return x
 }
 {{end}}`
-const goCommandTemplate = `{{define "command"}}func {{.Name.Go}}({{range .Parameters}}{{.Name.Go}} {{.Type.Go}}, {{end}}) {{if ne .Return.Go "void"}}{{.Return.Go}} {{end}}{ {{range $key, $val := .Parameters}}
-	p{{$key}} := {{$val.Type.GoToC}}(&{{$val.Name.Go}}){{end}}
-	{{if ne .Return.Go "void"}}ret := {{end}}{{.Name.CGo}}({{range $key, $val := .Parameters}}*p{{$key}}, {{end}})
+const goCommandTemplate = `{{define "command"}}func {{if eq (isGlobal .Name) false}}(x {{.Parent.GoFacade}}){{end}}{{.Name.Go}}({{range ooParams .Name .Parameters}}{{.Name.Go}} {{.Type.Go}}, {{end}}) {{if ne .Return.Go "void"}}{{.Return.Go}} {{end}}{
+	addrs := {{if isGlobal .Name}}&C.vksProcAddresses{{else}}x.procs{{end}}{{$cmd := .Name}}{{range $key, $val := .Parameters}}
+	p{{$key}} := {{$val.Type.GoToC}}(&{{if or (isGlobal $cmd) (ne $key 0)}}{{$val.Name.Go}}{{else}}x.H{{end}}){{end}}
+	{{if ne .Return.Go "void"}}ret := {{end}}{{.Name.CGo}}(addrs{{range $key, $val := .Parameters}}, *p{{$key}}{{end}})
 	{{if ne .Return.Go "void"}}retPtr := {{.Return.CToGo}}(&ret)
 	return *retPtr
 {{end}}}

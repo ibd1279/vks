@@ -65,9 +65,12 @@ const cDefinePrimaryTemplate = `#ifndef __VKS_H__
 typedef struct vksProcAddr { {{range .Data}}{{with .Data}}
 	void* p{{.Name.C}};{{end}}{{end}}
 } vksProcAddr;
+extern vksProcAddr vksProcAddresses;
+void vksLoadInstanceProcAddrs(VkInstance, vksProcAddr*);
+void vksLoadDeviceProcAddrs(VkDevice, vksProcAddr*, vksProcAddr*);
 
 VkResult vksDynamicLoad();
 void vksDynamicUnload();
-{{range .Data}}{{with .Data}}{{.Return.C}} {{.Name.C}}({{range $idx, $param := .Parameters}}{{if ne $idx 0}}, {{end}}{{cparam $param.Type $param.Name}}{{end}});
+{{range .Data}}{{with .Data}}{{.Return.C}} {{.Name.C}}(vksProcAddr* addrs{{range .Parameters}}, {{cparam .Type .Name}}{{end}});
 {{end}}{{end}}
 #endif`

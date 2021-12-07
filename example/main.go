@@ -32,21 +32,23 @@ func main() {
 		AsCPtr()
 	defer func() { createInfo.Free(); appInfo.Free() }()
 
-	var instance vks.Instance
-	if err := vks.CreateInstance(createInfo, nil, &instance).AsErr(); err != nil {
+	var vkInstance vks.InstanceHandle
+	if err := vks.CreateInstance(createInfo, nil, &vkInstance).AsErr(); err != nil {
 		panic(err)
 	}
+	instance := vks.MakeInstance(vkInstance)
 
 	var count uint32
-	if result := vks.EnumeratePhysicalDevices(instance, &count, nil); !result.IsSuccess() {
+	if result := instance.EnumeratePhysicalDevices(&count, nil); !result.IsSuccess() {
 		panic(result.AsErr())
 	}
-	phyDevs := make([]vks.PhysicalDevice, count)
-	if result := vks.EnumeratePhysicalDevices(instance, &count, phyDevs); !result.IsSuccess() {
+	phyDevs := make([]vks.PhysicalDeviceHandle, count)
+	if result := instance.EnumeratePhysicalDevices(&count, phyDevs); !result.IsSuccess() {
 		panic(result.AsErr())
 	}
 
 	for k, phyDev := range phyDevs {
+		phyDev := instance.MakePhysicalDevice(phyDev)
 		driverProps := vks.PhysicalDeviceDriverProperties{}.
 			WithDefaultSType().
 			AsCPtr()
@@ -59,7 +61,7 @@ func main() {
 			props.Free()
 		}()
 
-		vks.GetPhysicalDeviceProperties2(phyDev, props)
+		phyDev.GetPhysicalDeviceProperties2(props)
 
 		name := vks.ToString(props.Properties().DeviceName())
 		apiVersion := vks.ApiVersion(props.Properties().ApiVersion())
@@ -74,5 +76,5 @@ func main() {
 			vendorId, driverName, driverVersion, driverInfo)
 	}
 
-	vks.DestroyInstance(instance, nil)
+	instance.DestroyInstance(nil)
 }

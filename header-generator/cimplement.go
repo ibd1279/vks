@@ -13,6 +13,15 @@ func GenerateCImplementFile(config *Config, graph RegistryGraph) error {
 	var err error
 	t := template.New(fn).Funcs(template.FuncMap{
 		"cparam": handleCArraySyntax,
+		"globalProcs": func() []string {
+			keys := make([]string, 0, len(config.GlobalProcs))
+			for _, v := range config.GlobalProcs {
+				if v != "vkGetInstanceProcAddr" {
+					keys = append(keys, v)
+				}
+			}
+			return keys
+		},
 	})
 	if t, err = t.Parse(cImplementPrimaryTemplate); err != nil {
 		return err
@@ -65,11 +74,8 @@ VkResult vksDynamicLoad() {
 	}
 	vksProcAddresses.pvkGetInstanceProcAddr = dlsym(vulkanHandle, "vkGetInstanceProcAddr");
 	// TODO end
-
-	vksProcAddresses.pvkEnumerateInstanceVersion = vkGetInstanceProcAddr(NULL, "vkEnumerateInstanceVersion");
-	vksProcAddresses.pvkEnumerateInstanceExtensionProperties = vkGetInstanceProcAddr(NULL, "vkEnumerateInstanceExtensionProperties");
-	vksProcAddresses.pvkEnumerateInstanceLayerProperties = vkGetInstanceProcAddr(NULL, "vkEnumerateInstanceLayerProperties");
-	vksProcAddresses.pvkCreateInstance = vkGetInstanceProcAddr(NULL, "vkCreateInstance");
+{{range globalProcs}}
+	vksProcAddresses.p{{.}} = vkGetInstanceProcAddr(&vksProcAddresses, NULL, "{{.}}");{{end}}
 	return VK_SUCCESS;
 }
 
@@ -78,17 +84,17 @@ void vksDynamicUnload() {
 }
 
 // call getProcAddress for all the commands.
-void vksInitializeInstanceProcAddrs(VkInstance instance) {
-	void* ptr = NULL;{{range .Data}}{{with .Data}}
-	ptr = vkGetInstanceProcAddr(instance, "{{.Name.C}}");
-	if (ptr) {
-		vksProcAddresses.p{{.Name.C}} = ptr;
-	}{{end}}{{end}}
+void vksLoadInstanceProcAddrs(VkInstance hndl, vksProcAddr* addrs) { {{range .Data}}{{with .Data}}
+	addrs->p{{.Name.C}} = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "{{.Name.C}}");{{end}}{{end}}
 }
 
-{{range .Data}}{{with .Data}}{{.Return.C}} {{.Name.C}}({{range $idx, $param := .Parameters}}{{if ne $idx 0}}, {{end}}{{cparam $param.Type $param.Name}}{{end}}) {
-	{{if ne .Return.C "void"}}{{.Return.C}} ret = {{end}}(((PFN_{{.Name.C}})vksProcAddresses.p{{.Name.C}})({{range $idx, $param := .Parameters}}{{if ne $idx 0}}, {{end}}{{$param.Name.C}}{{end}}));{{if eq .Name.C "vkCreateInstance"}}
-	vksInitializeInstanceProcAddrs(*pInstance);{{end}}{{if ne .Return.C "void"}}
+// call getProcAddress for all the commands.
+void vksLoadDeviceProcAddrs(VkDevice hndl, vksProcAddr* addrs, vksProcAddr* parent) { {{range .Data}}{{with .Data}}
+	addrs->p{{.Name.C}} = vkGetDeviceProcAddr(parent, hndl, "{{.Name.C}}");{{end}}{{end}}
+}
+
+{{range .Data}}{{with .Data}}{{.Return.C}} {{.Name.C}}(vksProcAddr* addrs{{range .Parameters}}, {{cparam .Type .Name}}{{end}}) {
+	{{if ne .Return.C "void"}}{{.Return.C}} ret = {{end}}(((PFN_{{.Name.C}})addrs->p{{.Name.C}})({{range $idx, $param := .Parameters}}{{if ne $idx 0}}, {{end}}{{$param.Name.C}}{{end}}));{{if ne .Return.C "void"}}
 	return ret;{{end}}
 }
 {{end}}{{end}}`

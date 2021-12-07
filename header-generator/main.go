@@ -79,6 +79,8 @@ type Config struct {
 	OutputName       string
 	Features         []string
 	Extensions       []string
+	GlobalProcs      []string
+	ProcLoaders      map[string]string
 	CDefinePreProc   []string
 	ExportTranslator []TranslatorConfig
 }
