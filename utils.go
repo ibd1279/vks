@@ -51,6 +51,11 @@ func (bool32 Bool32) IsFalse() bool {
 	return bool32 == VK_FALSE
 }
 
+// String returns the string representation of the bool.
+func (bool32 Bool32) String() string {
+	return fmt.Sprintf("%t", bool32.IsTrue())
+}
+
 // ToString converts a null terminated slice of bytes into a Go string.
 func ToString(b []byte) string {
 	var str bytes.Buffer
