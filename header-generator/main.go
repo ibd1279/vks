@@ -31,10 +31,10 @@ func main() {
 
 	for _, v := range config.Features {
 		n := fmt.Sprintf("%s::vulkan", v)
-		graph.ApplyFeatureExtensions(n)
+		graph.ApplyFeatureExtensions(n, constants)
 	}
 	for _, v := range config.Extensions {
-		graph.ApplyExtensionExtensions(v, enabledMap)
+		graph.ApplyExtensionExtensions(v, enabledMap, constants)
 	}
 	graph.DepthFirstSearch(config.Enabled(), CacheConverters)
 

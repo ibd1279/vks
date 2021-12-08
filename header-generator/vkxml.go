@@ -1073,7 +1073,7 @@ type RegistryGraph map[string]*RegistryNode
 // The format for calculating enum extension values is defined in
 // https://www.khronos.org/registry/vulkan/specs/1.2/styleguide.html#_assigning_extension_token_values
 // The edges in the graph are updated by this method, but the graph map itself is not.
-func (graph RegistryGraph) ApplyFeatureExtensions(name string) {
+func (graph RegistryGraph) ApplyFeatureExtensions(name string, constants *RegistryNode) {
 	node := graph[name]
 	if node == nil {
 		return
@@ -1081,7 +1081,7 @@ func (graph RegistryGraph) ApplyFeatureExtensions(name string) {
 	feature := node.FeatureElement()
 
 	for _, req := range feature.Requires {
-		graph.applyRequiresElement(req, 0)
+		graph.applyRequiresElement(req, 0, constants)
 	}
 }
 
@@ -1091,7 +1091,7 @@ func (graph RegistryGraph) ApplyFeatureExtensions(name string) {
 // The edges in the graph are updated by this method, but the graph map itself is not.
 // The included map is used to check if a feature or extension required by the feature block
 // is included.
-func (graph RegistryGraph) ApplyExtensionExtensions(name string, included map[string]bool) {
+func (graph RegistryGraph) ApplyExtensionExtensions(name string, included map[string]bool, constants *RegistryNode) {
 	node := graph[name]
 	if node == nil {
 		return
@@ -1100,17 +1100,17 @@ func (graph RegistryGraph) ApplyExtensionExtensions(name string, included map[st
 
 	for _, req := range extension.Requires {
 		if len(req.Feature) == 0 || included[req.Feature] {
-			graph.applyRequiresElement(req, extension.Number)
+			graph.applyRequiresElement(req, extension.Number, constants)
 		}
 	}
 }
 
-func (graph RegistryGraph) applyRequiresElement(element RequireElement, extensionNumber int) {
+func (graph RegistryGraph) applyRequiresElement(element RequireElement, extensionNumber int, constants *RegistryNode) {
 	for _, enum := range element.Enums {
+		grandParent := &RegistryNode{
+			NodeType: RegistryNodeEnum,
+		}
 		if len(enum.Extends) > 0 {
-			grandParent := &RegistryNode{
-				NodeType: RegistryNodeEnum,
-			}
 			parent := graph[enum.Extends].EnumsParents()[0]
 			if parent.E.Type == EnumsElementBitmask {
 			} else {
@@ -1128,6 +1128,10 @@ func (graph RegistryGraph) applyRequiresElement(element RequireElement, extensio
 					enum.EnumElement.Value = fmt.Sprintf("%d", value)
 				}
 			}
+			grandParent.Element = enum.EnumElement
+			parent.N.AddParent(grandParent)
+		} else if len(enum.Value) > 0 {
+			parent := constants.EnumsParents()[0]
 			grandParent.Element = enum.EnumElement
 			parent.N.AddParent(grandParent)
 		}
