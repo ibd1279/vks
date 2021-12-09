@@ -11,7 +11,8 @@ func GenerateCDefineFile(config *Config, graph RegistryGraph) error {
 
 	var err error
 	t := template.New(fn).Funcs(template.FuncMap{
-		"cparam": handleCArraySyntax,
+		"cparam":  handleCArraySyntax,
+		"preproc": func() []string { return config.CDefinePreProc },
 	})
 	if t, err = t.Parse(cDefinePrimaryTemplate); err != nil {
 		return err
@@ -55,8 +56,8 @@ func handleCArraySyntax(a, b Translator) string {
 }
 
 const cDefinePrimaryTemplate = `#ifndef __VKS_H__
-#define __VKS_H__
-#define VK_NO_PROTOTYPES
+#define __VKS_H__{{range preproc}}
+{{.}}{{end}}
 #include <stdlib.h>
 #include <string.h>
 #include "vulkan/vulkan.h"

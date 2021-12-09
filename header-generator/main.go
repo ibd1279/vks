@@ -79,6 +79,7 @@ type Config struct {
 	OutputName       string
 	Features         []string
 	Extensions       []string
+	CDefinePreProc   []string
 	ExportTranslator []TranslatorConfig
 }
 

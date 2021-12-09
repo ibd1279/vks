@@ -191,11 +191,12 @@ func (x {{$struct.Name.Go}}) WithDefault{{.Name.Go}}() {{$struct.Name.Go}} {
 }{{end}}{{if or (eq $struct.ReadOnly false) (or (eq .Name.Go "PNext") (eq .Name.Go "SType"))}}
 
 // With{{.Name.Go}} copies the provided value into C space and stores it
-// at {{.Name.C}} on {{$struct.Name.C}}
+// at {{.Name.C}} on {{$struct.Name.C}}.{{if ne .Length nil}} It also updates
+// {{.Length.Name.Go}} with the length of the value.{{end}}
 func (x {{$struct.Name.Go}}) With{{.Name.Go}}(y {{.Type.Go}}) {{$struct.Name.Go}} {
 	ptr := {{.Type.GoToC}}(&y)
 	{{if .Copy}}copy(x.{{.Name.CGo}}[:], unsafe.Slice(*ptr, len(y))){{else}}x.{{.Name.CGo}} = *ptr{{end}}
-	return x
+	return x{{if ne .Length nil}}.With{{.Length.Name.Go}}(uint32(len(y))){{end}}
 }{{end}}{{end}}
 {{end}}{{end}}{{define "structalias"}}//{{.Name.Go}} is an alias to {{.Alias.Go}}.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{{.Name.C}}.html

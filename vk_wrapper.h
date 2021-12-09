@@ -1,5 +1,6 @@
 #ifndef __VKS_H__
 #define __VKS_H__
+#define VK_ENABLE_BETA_EXTENSIONS
 #define VK_NO_PROTOTYPES
 #include <stdlib.h>
 #include <string.h>

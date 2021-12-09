@@ -486,10 +486,11 @@ type StructData struct {
 
 // x int32
 type StructMemberData struct {
-	Name  Translator // e.g. x
-	Type  Translator // e.g. int32
-	Value Translator
-	Copy  bool
+	Name   Translator // e.g. x
+	Type   Translator // e.g. int32
+	Value  Translator
+	Copy   bool
+	Length interface{}
 }
 
 // type VkClearValue C.VkClearValue
@@ -789,6 +790,7 @@ func structTypeToData(node *RegistryNode, tiepuh TypeElement) *struct {
 		}{"structalias", data}
 	}
 
+	lengthLookup := make(map[string]*StructMemberData, 0)
 	for _, v := range tiepuh.StructMembers {
 		subData := StructMemberData{
 			Name: &ExportTranslator{&ReservedWordTranslator{&LiteralTranslator{v.Name}}},
@@ -800,6 +802,14 @@ func structTypeToData(node *RegistryNode, tiepuh TypeElement) *struct {
 			subData.Copy = true
 		}
 		data.Members = append(data.Members, subData)
+		lengthLookup[v.Name] = &data.Members[len(data.Members)-1]
+	}
+	for k, v := range tiepuh.StructMembers {
+		if len(v.Length) > 0 && v.Length != "1" && len(strings.Split(v.Length, ",")) == 1 {
+			if ptr, ok := lengthLookup[v.Length]; ok && data.Members[k].Type.Go() != "unsafe.Pointer" {
+				data.Members[k].Length = ptr
+			}
+		}
 	}
 	return &struct {
 		Template string
