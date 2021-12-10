@@ -5,7 +5,8 @@ import "C"
 func (x DeviceCreateInfo) WithLayers(names []string) DeviceCreateInfo {
 	var cNames []*byte
 	for h := range names {
-		cNames = append(cNames, NullTerminatedPointer(names[h]))
+		// TODO deal with the leaked NewCString memory.
+		cNames = append(cNames, NewCString(names[h]))
 	}
 	return x.
 		WithPpEnabledLayerNames(cNames).
@@ -15,7 +16,8 @@ func (x DeviceCreateInfo) WithLayers(names []string) DeviceCreateInfo {
 func (x DeviceCreateInfo) WithExtensions(names []string) DeviceCreateInfo {
 	var cNames []*byte
 	for h := range names {
-		cNames = append(cNames, NullTerminatedPointer(names[h]))
+		// TODO deal with the leaked NewCString memory.
+		cNames = append(cNames, NewCString(names[h]))
 	}
 	return x.
 		WithPpEnabledExtensionNames(cNames).

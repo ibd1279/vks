@@ -50,12 +50,14 @@ func main() {
 		driverProps := vks.PhysicalDeviceDriverProperties{}.
 			WithDefaultSType().
 			AsCPtr()
-		defer func() { driverProps.Free() }()
-
 		props := vks.PhysicalDeviceProperties2{}.
 			WithDefaultSType().
 			WithPNext(unsafe.Pointer(driverProps)).
-			AsPtr()
+			AsCPtr()
+		defer func() {
+			driverProps.Free()
+			props.Free()
+		}()
 
 		vks.GetPhysicalDeviceProperties2(phyDev, props)
 

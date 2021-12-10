@@ -892,10 +892,8 @@ func helperMemberTypeTranslator(specType, length, raw, comment string) Translato
 	if cXl8r, ok := CachedConverter(specType); ok {
 		typeConverter = cXl8r
 	} else if tXl8r, ok := CachedTranslator(specType); ok {
-		//log.Printf("Investigate why %v does not have a converter.", specType)
 		typeConverter = &TypeDefConverter{tXl8r}
 	} else {
-		//log.Printf("Investigate why %v does not have a cached converter or translator.", specType)
 		typeConverter = &TypeDefConverter{&TypeDefTranslator{specType}}
 	}
 

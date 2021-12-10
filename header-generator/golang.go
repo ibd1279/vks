@@ -134,13 +134,15 @@ type {{.Name.Go}} {{.Name.CGo}}
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{{.Name.C}}.html
 type {{.Name.Go}} {{.Name.CGo}}
 
-{{with $root := .}}{{range .Members}}func (x {{$root.Name.Go}}) {{.Name.Go}}() {{.Type.Go}} {
-	return *(*{{.Type.Go}})(unsafe.Pointer(&x[0]))
+// Copy the provided byte slice into the structure.
+//
+// Unions are represented as byte arrays in go. Use this method to copy from a source
+// byte slice into the union byte array.
+func (x {{.Name.Go}}) copy(y []byte) {{.Name.Go}} {
+	copy(x[:], y)
+	return x
 }
-func (x {{$root.Name.Go}}) Set{{.Name.Go}}(y {{.Type.Go}}) {
-	*(*{{.Type.Go}})(unsafe.Pointer(&x[0])) = y
-}
-{{end}}{{end}}{{end}}`
+{{end}}`
 const goCommandTemplate = `{{define "command"}}func {{.Name.Go}}({{range .Parameters}}{{.Name.Go}} {{.Type.Go}}, {{end}}) {{if ne .Return.Go "void"}}{{.Return.Go}} {{end}}{ {{range $key, $val := .Parameters}}
 	p{{$key}} := {{$val.Type.GoToC}}(&{{$val.Name.Go}}){{end}}
 	{{if ne .Return.Go "void"}}ret := {{end}}{{.Name.CGo}}({{range $key, $val := .Parameters}}*p{{$key}}, {{end}})
@@ -152,31 +154,43 @@ const goStructTemplate = `{{define "struct"}}//{{.Name.Go}} provides a go interf
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{{.Name.C}}.html
 type {{.Name.Go}} {{.Name.CGo}}
 
-// New{{.Name.Go}} allocates an instance of this struct in the C memory instead
-// of the Go memory.
-func new{{.Name.Go}}() *{{.Name.Go}} {
-	sz := unsafe.Sizeof({{.Name.Go}}{})
-	ptr := C.malloc(C.ulong(sz))
-	C.memset(ptr, 0, C.ulong(sz))
-	return (*{{.Name.Go}})(ptr)
-}{{with $struct := .}}
+// Sizeof{{.Name.Go}} is the memory size of a {{.Name.Go}}
+var Sizeof{{.Name.Go}} int = int(unsafe.Sizeof({{.Name.Go}}{}))
 
-// Free releases the memory allocated by the New{{.Name.Go}} method.
-// It does not free pointers stored in the structure. It should only
-// be used on CPtr instances.
-func (x *{{$struct.Name.Go}}) Free() {
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *{{.Name.Go}}) Free() {
 	C.free(unsafe.Pointer(x))
 }
 
-// AsPtr returns the object as a pointer.
-func (x {{$struct.Name.Go}}) AsPtr() *{{$struct.Name.Go}} { return &x }
-
-// AsCPtr copies the object to C memory and returns the pointer.
-func (x {{$struct.Name.Go}}) AsCPtr() *{{$struct.Name.Go}} {
-	clone := new{{$struct.Name.Go}}()
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x {{.Name.Go}}) AsCPtr() *{{.Name.Go}} {
+	clone := (*{{.Name.Go}})(newCBlock(C.ulong(Sizeof{{.Name.Go}})))
 	*clone = x
 	return clone
-}{{range .Members}}
+}
+
+// {{.Name.Go}}FreeCSlice releases the memory allocated by {{.Name.Go}}MakeCSlice.
+// It does not free pointers stored inside the slice.
+func {{.Name.Go}}FreeCSlice(x []{{.Name.Go}}) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// {{.Name.Go}}MakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. {{.Name.Go}}FreeCSlice must be called on the returned slice.
+func {{.Name.Go}}MakeCSlice(x ...{{.Name.Go}}) []{{.Name.Go}} {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := Sizeof{{.Name.Go}} * len(x)
+	dst := unsafe.Slice((*{{.Name.Go}})(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}{{with $struct := .}}{{range .Members}}
 
 // {{.Name.Go}} returns the value of {{.Name.C}} from {{$struct.Name.C}}
 func (x {{$struct.Name.Go}}) {{.Name.Go}}() {{.Type.Go}} {
@@ -185,18 +199,20 @@ func (x {{$struct.Name.Go}}) {{.Name.Go}}() {{.Type.Go}} {
 }{{if ne .Value nil}}
 
 // WithDefault{{.Name.Go}} sets the value of {{.Name.Go}} to the value provided in the
-// specification if there is only a single value in the specification.
+// specification. This method only exists if there is a single value in the specification.
 func (x {{$struct.Name.Go}}) WithDefault{{.Name.Go}}() {{$struct.Name.Go}} {
 	return x.With{{.Name.Go}}({{.Value.Go}})
 }{{end}}{{if or (eq $struct.ReadOnly false) (or (eq .Name.Go "PNext") (eq .Name.Go "SType"))}}
 
-// With{{.Name.Go}} copies the provided value into C space and stores it
-// at {{.Name.C}} on {{$struct.Name.C}}.{{if ne .Length nil}} It also updates
-// {{.Length.Name.Go}} with the length of the value.{{end}}
+// With{{.Name.Go}} sets the value for the {{.Name.Go}} on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.{{if ne .Length nil}}
+// 
+// The specification defines {{.Length.Name.Go}} as the length of this field.
+// {{.Length.Name.Go}} is updated with the length of the new value.{{end}}
 func (x {{$struct.Name.Go}}) With{{.Name.Go}}(y {{.Type.Go}}) {{$struct.Name.Go}} {
 	ptr := {{.Type.GoToC}}(&y)
 	{{if .Copy}}copy(x.{{.Name.CGo}}[:], unsafe.Slice(*ptr, len(y))){{else}}x.{{.Name.CGo}} = *ptr{{end}}
-	return x{{if ne .Length nil}}.With{{.Length.Name.Go}}(uint32(len(y))){{end}}
+	return x{{if ne .Length nil}}.With{{.Length.Name.Go}}({{.Length.Type.Go}}(len(y))){{end}}
 }{{end}}{{end}}
 {{end}}{{end}}{{define "structalias"}}//{{.Name.Go}} is an alias to {{.Alias.Go}}.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{{.Name.C}}.html
@@ -213,18 +229,37 @@ const goPrimaryTemplate = `package {{.PackageName}}
 //#include "{{.Header}}"
 import "C"
 import (
+	"bytes"
 	"fmt"
 	"unsafe"
 )
 
+// Init loads the Vulkan library.
 func Init() Result {
 	ret := C.vksDynamicLoad()
 	ptr := (*Result)(&ret)
 	return *ptr
 }
 
+// Destroy unloads the Vulkan Library.
 func Destroy() {
 	C.vksDynamicUnload()
+}
+
+// NewCString allocates the provided string on the C heap. FreeCString must be
+// called when the string is no longer needed.
+func NewCString(s string) *byte {
+	b := nullTerminatedBuffer(s).Bytes()
+	ptr := C.malloc(C.ulong(len(b)))
+	C.memcpy(ptr, unsafe.Pointer(&b[0]), C.ulong(len(b)))
+	return (*byte)(ptr)
+}
+
+// FreeCString releases the C heap memory allocated by NewCString.
+func FreeCString(ptr *byte) {
+	if ptr != nil {
+		C.free(unsafe.Pointer(ptr))
+	}
 }
 
 {{range .Data}}{{if eq .Template "const"}}{{block "const" .Data}}{{.}}{{end}}
@@ -241,4 +276,28 @@ func Destroy() {
 {{else if eq .Template "union"}}{{block "union" .Data}}{{.}}{{end}}
 {{else if eq .Template "command"}}{{block "command" .Data}}{{.}}{{end}}
 {{end}}{{end}}
+
+func newCBlock(sz C.ulong) unsafe.Pointer {
+	ptr := C.malloc(sz)
+	C.memset(ptr, 0, sz)
+	return ptr
+}
+
+func nullTerminatedBuffer(s string) *bytes.Buffer {
+	var str bytes.Buffer
+	var isNullTerminated bool
+	for _, c := range ([]byte)(s) {
+		if c == 0 {
+			isNullTerminated = true
+		}
+		str.WriteByte(c)
+		if isNullTerminated {
+			break
+		}
+	}
+	if !isNullTerminated {
+		str.WriteByte(0)
+	}
+	return &str
+}
 `
