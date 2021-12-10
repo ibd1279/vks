@@ -8178,15 +8178,15 @@ func (x ShaderModuleCreateInfo) WithFlags(y ShaderModuleCreateFlags) ShaderModul
 }
 
 // CodeSize returns the value of codeSize from VkShaderModuleCreateInfo
-func (x ShaderModuleCreateInfo) CodeSize() uint32 {
-	ptr := func(x *C.ulong) *uint32 { /* Scalar */ return (*uint32)(unsafe.Pointer(x)) }(&x.codeSize)
+func (x ShaderModuleCreateInfo) CodeSize() uint64 {
+	ptr := func(x *C.ulong) *uint64 { /* Scalar */ return (*uint64)(unsafe.Pointer(x)) }(&x.codeSize)
 	return *ptr
 }
 
 // WithCodeSize copies the provided value into C space and stores it
 // at codeSize on VkShaderModuleCreateInfo
-func (x ShaderModuleCreateInfo) WithCodeSize(y uint32) ShaderModuleCreateInfo {
-	ptr := func(x *uint32) *C.ulong { /* Scalar */ return (*C.ulong)(unsafe.Pointer(x)) }(&y)
+func (x ShaderModuleCreateInfo) WithCodeSize(y uint64) ShaderModuleCreateInfo {
+	ptr := func(x *uint64) *C.ulong { /* Scalar */ return (*C.ulong)(unsafe.Pointer(x)) }(&y)
 	x.codeSize = *ptr
 	return x
 }
@@ -8972,15 +8972,15 @@ func (x PipelineCacheCreateInfo) WithFlags(y PipelineCacheCreateFlags) PipelineC
 }
 
 // InitialDataSize returns the value of initialDataSize from VkPipelineCacheCreateInfo
-func (x PipelineCacheCreateInfo) InitialDataSize() uint32 {
-	ptr := func(x *C.ulong) *uint32 { /* Scalar */ return (*uint32)(unsafe.Pointer(x)) }(&x.initialDataSize)
+func (x PipelineCacheCreateInfo) InitialDataSize() uint64 {
+	ptr := func(x *C.ulong) *uint64 { /* Scalar */ return (*uint64)(unsafe.Pointer(x)) }(&x.initialDataSize)
 	return *ptr
 }
 
 // WithInitialDataSize copies the provided value into C space and stores it
 // at initialDataSize on VkPipelineCacheCreateInfo
-func (x PipelineCacheCreateInfo) WithInitialDataSize(y uint32) PipelineCacheCreateInfo {
-	ptr := func(x *uint32) *C.ulong { /* Scalar */ return (*C.ulong)(unsafe.Pointer(x)) }(&y)
+func (x PipelineCacheCreateInfo) WithInitialDataSize(y uint64) PipelineCacheCreateInfo {
+	ptr := func(x *uint64) *C.ulong { /* Scalar */ return (*C.ulong)(unsafe.Pointer(x)) }(&y)
 	x.initialDataSize = *ptr
 	return x
 }
@@ -9706,8 +9706,8 @@ func (x PhysicalDeviceLimits) ViewportSubPixelBits() uint32 {
 }
 
 // MinMemoryMapAlignment returns the value of minMemoryMapAlignment from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MinMemoryMapAlignment() uint32 {
-	ptr := func(x *C.ulong) *uint32 { /* Scalar */ return (*uint32)(unsafe.Pointer(x)) }(&x.minMemoryMapAlignment)
+func (x PhysicalDeviceLimits) MinMemoryMapAlignment() uint64 {
+	ptr := func(x *C.ulong) *uint64 { /* Scalar */ return (*uint64)(unsafe.Pointer(x)) }(&x.minMemoryMapAlignment)
 	return *ptr
 }
 
@@ -15840,15 +15840,15 @@ func (x SpecializationInfo) WithPMapEntries(y []SpecializationMapEntry) Speciali
 }
 
 // DataSize returns the value of dataSize from VkSpecializationInfo
-func (x SpecializationInfo) DataSize() uint32 {
-	ptr := func(x *C.ulong) *uint32 { /* Scalar */ return (*uint32)(unsafe.Pointer(x)) }(&x.dataSize)
+func (x SpecializationInfo) DataSize() uint64 {
+	ptr := func(x *C.ulong) *uint64 { /* Scalar */ return (*uint64)(unsafe.Pointer(x)) }(&x.dataSize)
 	return *ptr
 }
 
 // WithDataSize copies the provided value into C space and stores it
 // at dataSize on VkSpecializationInfo
-func (x SpecializationInfo) WithDataSize(y uint32) SpecializationInfo {
-	ptr := func(x *uint32) *C.ulong { /* Scalar */ return (*C.ulong)(unsafe.Pointer(x)) }(&y)
+func (x SpecializationInfo) WithDataSize(y uint64) SpecializationInfo {
+	ptr := func(x *uint64) *C.ulong { /* Scalar */ return (*C.ulong)(unsafe.Pointer(x)) }(&y)
 	x.dataSize = *ptr
 	return x
 }
@@ -15926,15 +15926,15 @@ func (x SpecializationMapEntry) WithOffset(y uint32) SpecializationMapEntry {
 }
 
 // Size returns the value of size from VkSpecializationMapEntry
-func (x SpecializationMapEntry) Size() uint32 {
-	ptr := func(x *C.ulong) *uint32 { /* Scalar */ return (*uint32)(unsafe.Pointer(x)) }(&x.size)
+func (x SpecializationMapEntry) Size() uint64 {
+	ptr := func(x *C.ulong) *uint64 { /* Scalar */ return (*uint64)(unsafe.Pointer(x)) }(&x.size)
 	return *ptr
 }
 
 // WithSize copies the provided value into C space and stores it
 // at size on VkSpecializationMapEntry
-func (x SpecializationMapEntry) WithSize(y uint32) SpecializationMapEntry {
-	ptr := func(x *uint32) *C.ulong { /* Scalar */ return (*C.ulong)(unsafe.Pointer(x)) }(&y)
+func (x SpecializationMapEntry) WithSize(y uint64) SpecializationMapEntry {
+	ptr := func(x *uint64) *C.ulong { /* Scalar */ return (*C.ulong)(unsafe.Pointer(x)) }(&y)
 	x.size = *ptr
 	return x
 }
@@ -17329,10 +17329,10 @@ func MergePipelineCaches(device Device, dstCache PipelineCache, srcCacheCount ui
 	return *retPtr
 }
 
-func GetPipelineCacheData(device Device, pipelineCache PipelineCache, pDataSize *uint32, pData unsafe.Pointer) Result {
+func GetPipelineCacheData(device Device, pipelineCache PipelineCache, pDataSize *uint64, pData unsafe.Pointer) Result {
 	p0 := /* typedef */ (*C.VkDevice)(&device)
 	p1 := /* typedef */ (*C.VkPipelineCache)(&pipelineCache)
-	p2 := func(x **uint32) **C.ulong { /* Pointer */ return (**C.ulong)(unsafe.Pointer(x)) }(&pDataSize)
+	p2 := func(x **uint64) **C.ulong { /* Pointer */ return (**C.ulong)(unsafe.Pointer(x)) }(&pDataSize)
 	p3 := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&pData)
 	ret := C.vkGetPipelineCacheData(*p0, *p1, *p2, *p3)
 	retPtr := /* typedef */ (*Result)(&ret)
@@ -17546,12 +17546,12 @@ func CreateBuffer(device Device, pCreateInfo *BufferCreateInfo, pAllocator *Allo
 	return *retPtr
 }
 
-func GetQueryPoolResults(device Device, queryPool QueryPool, firstQuery uint32, queryCount uint32, dataSize uint32, pData unsafe.Pointer, stride DeviceSize, flags QueryResultFlags) Result {
+func GetQueryPoolResults(device Device, queryPool QueryPool, firstQuery uint32, queryCount uint32, dataSize uint64, pData unsafe.Pointer, stride DeviceSize, flags QueryResultFlags) Result {
 	p0 := /* typedef */ (*C.VkDevice)(&device)
 	p1 := /* typedef */ (*C.VkQueryPool)(&queryPool)
 	p2 := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&firstQuery)
 	p3 := func(x *uint32) *C.uint { /* Scalar */ return (*C.uint)(unsafe.Pointer(x)) }(&queryCount)
-	p4 := func(x *uint32) *C.ulong { /* Scalar */ return (*C.ulong)(unsafe.Pointer(x)) }(&dataSize)
+	p4 := func(x *uint64) *C.ulong { /* Scalar */ return (*C.ulong)(unsafe.Pointer(x)) }(&dataSize)
 	p5 := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ return (*unsafe.Pointer)(unsafe.Pointer(x)) }(&pData)
 	p6 := /* typedef */ (*C.VkDeviceSize)(&stride)
 	p7 := /* typedef */ (*C.VkQueryResultFlags)(&flags)
@@ -24556,29 +24556,29 @@ func (x DescriptorUpdateTemplateEntry) WithDescriptorType(y DescriptorType) Desc
 }
 
 // Offset returns the value of offset from VkDescriptorUpdateTemplateEntry
-func (x DescriptorUpdateTemplateEntry) Offset() uint32 {
-	ptr := func(x *C.ulong) *uint32 { /* Scalar */ return (*uint32)(unsafe.Pointer(x)) }(&x.offset)
+func (x DescriptorUpdateTemplateEntry) Offset() uint64 {
+	ptr := func(x *C.ulong) *uint64 { /* Scalar */ return (*uint64)(unsafe.Pointer(x)) }(&x.offset)
 	return *ptr
 }
 
 // WithOffset copies the provided value into C space and stores it
 // at offset on VkDescriptorUpdateTemplateEntry
-func (x DescriptorUpdateTemplateEntry) WithOffset(y uint32) DescriptorUpdateTemplateEntry {
-	ptr := func(x *uint32) *C.ulong { /* Scalar */ return (*C.ulong)(unsafe.Pointer(x)) }(&y)
+func (x DescriptorUpdateTemplateEntry) WithOffset(y uint64) DescriptorUpdateTemplateEntry {
+	ptr := func(x *uint64) *C.ulong { /* Scalar */ return (*C.ulong)(unsafe.Pointer(x)) }(&y)
 	x.offset = *ptr
 	return x
 }
 
 // Stride returns the value of stride from VkDescriptorUpdateTemplateEntry
-func (x DescriptorUpdateTemplateEntry) Stride() uint32 {
-	ptr := func(x *C.ulong) *uint32 { /* Scalar */ return (*uint32)(unsafe.Pointer(x)) }(&x.stride)
+func (x DescriptorUpdateTemplateEntry) Stride() uint64 {
+	ptr := func(x *C.ulong) *uint64 { /* Scalar */ return (*uint64)(unsafe.Pointer(x)) }(&x.stride)
 	return *ptr
 }
 
 // WithStride copies the provided value into C space and stores it
 // at stride on VkDescriptorUpdateTemplateEntry
-func (x DescriptorUpdateTemplateEntry) WithStride(y uint32) DescriptorUpdateTemplateEntry {
-	ptr := func(x *uint32) *C.ulong { /* Scalar */ return (*C.ulong)(unsafe.Pointer(x)) }(&y)
+func (x DescriptorUpdateTemplateEntry) WithStride(y uint64) DescriptorUpdateTemplateEntry {
+	ptr := func(x *uint64) *C.ulong { /* Scalar */ return (*C.ulong)(unsafe.Pointer(x)) }(&y)
 	x.stride = *ptr
 	return x
 }
