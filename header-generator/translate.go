@@ -203,7 +203,7 @@ var (
 	Uint16Translator                         = &ScalarConverter{"uint16_t", "C.ushort", "uint16", "", ""}
 	Uint32Translator                         = &ScalarConverter{"uint32_t", "C.uint", "uint32", "", ""}
 	Uint64Translator                         = &ScalarConverter{"uint64_t", "C.ulonglong", "uint64", "", ""}
-	SizeTranslator                           = &ScalarConverter{"size_t", "C.ulong", "uint32", "", ""}
+	SizeTranslator                           = &ScalarConverter{"size_t", "C.ulong", "uint64", "", ""}
 	Float32Translator                        = &ScalarConverter{"float", "C.float", "float32", "", ""}
 	Float64Translator                        = &ScalarConverter{"double", "C.double", "float64", "", ""}
 	StringTranslator                         = &ScalarConverter{"char", "C.char", "byte", "", ""}
