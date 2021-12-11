@@ -16,15 +16,9 @@ C memory.
 A list of the enabled features and extensions is available in the [vkxml.yml](https://github.com/ibd1279/vks/blob/main/vkxml.yml) file. 
 
 The project doesn't do much to make the Vulkan APIs much easier to use. Commands
-and types have the Vk prefix stripped, but not the constants. The API is used
-exactly how the C API would be used.
-
-The one place where it does make the API's easier to use is the SType field.
-Structures have a WithDefaultSType() method to make avoid typing that long
-constant.
-
-it also currently depends on the vulkan prototypes and linking with the vulkan library
-when building.
+and types have the Vk prefix stripped, but not the constants. Facade objects are
+used to access the methods, as they combine the function poitners with the handle
+required to invoke the function.
 
 ## Example application
 ```go
@@ -38,6 +32,10 @@ import (
 )
 
 func main() {
+	if ret := vks.Init(); !ret.IsSuccess() {
+		panic(ret.AsErr())
+	}
+	defer vks.Destroy()
 	var version uint32
 	if result := vks.EnumerateInstanceVersion(&version); result.IsSuccess() {
 		log.Printf("%v", vks.ApiVersion(version))
@@ -58,32 +56,36 @@ func main() {
 		AsCPtr()
 	defer func() { createInfo.Free(); appInfo.Free() }()
 
-	var instance vks.Instance
-	if err := vks.CreateInstance(createInfo, nil, &instance).AsErr(); err != nil {
+	var vkInstance vks.Instance
+	if err := vks.CreateInstance(createInfo, nil, &vkInstance).AsErr(); err != nil {
 		panic(err)
 	}
+	instance := vks.MakeInstanceFacade(vkInstance)
 
 	var count uint32
-	if result := vks.EnumeratePhysicalDevices(instance, &count, nil); !result.IsSuccess() {
+	if result := instance.EnumeratePhysicalDevices(&count, nil); !result.IsSuccess() {
 		panic(result.AsErr())
 	}
 	phyDevs := make([]vks.PhysicalDevice, count)
-	if result := vks.EnumeratePhysicalDevices(instance, &count, phyDevs); !result.IsSuccess() {
+	if result := instance.EnumeratePhysicalDevices(&count, phyDevs); !result.IsSuccess() {
 		panic(result.AsErr())
 	}
 
 	for k, phyDev := range phyDevs {
+		phyDev := instance.MakePhysicalDeviceFacade(phyDev)
 		driverProps := vks.PhysicalDeviceDriverProperties{}.
 			WithDefaultSType().
 			AsCPtr()
-		defer func() { driverProps.Free() }()
-
 		props := vks.PhysicalDeviceProperties2{}.
 			WithDefaultSType().
 			WithPNext(unsafe.Pointer(driverProps)).
-			AsPtr()
+			AsCPtr()
+		defer func() {
+			driverProps.Free()
+			props.Free()
+		}()
 
-		vks.GetPhysicalDeviceProperties2(phyDev, props)
+		phyDev.GetPhysicalDeviceProperties2(props)
 
 		name := vks.ToString(props.Properties().DeviceName())
 		apiVersion := vks.ApiVersion(props.Properties().ApiVersion())
@@ -98,7 +100,7 @@ func main() {
 			vendorId, driverName, driverVersion, driverInfo)
 	}
 
-	vks.DestroyInstance(instance, nil)
+	instance.DestroyInstance(nil)
 }
 ```
 
@@ -116,11 +118,11 @@ as a living example of expected usage.
 
 Listed in no particular order:
 * ~~add renaming support to header-generator (to remove all the Vk prefixes on types and commands).~~
-* add dynamic linking, and using get\*ProcAddr() to remove some
-  of the overhead.
+* ~~add dynamic linking, and using get\*ProcAddr() to remove some
+  of the overhead.~~
 * add WSI support, and putting certain extension data in different files (with
   different build tags).
 * Put better documentation into the output. Hoping to find a way to pull some of the
   Vulkan docs into the file.
-* Re-organize the output to be more OO -- this may go with the get\*ProcAddr, as
-  tracking handles to their parent instance may be part of that.
+* ~~Re-organize the output to be more OO -- this may go with the get\*ProcAddr, as
+  tracking handles to their parent instance may be part of that.~~

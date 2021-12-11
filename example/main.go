@@ -32,23 +32,23 @@ func main() {
 		AsCPtr()
 	defer func() { createInfo.Free(); appInfo.Free() }()
 
-	var vkInstance vks.InstanceHandle
+	var vkInstance vks.Instance
 	if err := vks.CreateInstance(createInfo, nil, &vkInstance).AsErr(); err != nil {
 		panic(err)
 	}
-	instance := vks.MakeInstance(vkInstance)
+	instance := vks.MakeInstanceFacade(vkInstance)
 
 	var count uint32
 	if result := instance.EnumeratePhysicalDevices(&count, nil); !result.IsSuccess() {
 		panic(result.AsErr())
 	}
-	phyDevs := make([]vks.PhysicalDeviceHandle, count)
+	phyDevs := make([]vks.PhysicalDevice, count)
 	if result := instance.EnumeratePhysicalDevices(&count, phyDevs); !result.IsSuccess() {
 		panic(result.AsErr())
 	}
 
 	for k, phyDev := range phyDevs {
-		phyDev := instance.MakePhysicalDevice(phyDev)
+		phyDev := instance.MakePhysicalDeviceFacade(phyDev)
 		driverProps := vks.PhysicalDeviceDriverProperties{}.
 			WithDefaultSType().
 			AsCPtr()
