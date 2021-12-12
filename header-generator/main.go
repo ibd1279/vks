@@ -97,6 +97,15 @@ func (config *Config) Enabled() []string {
 	return enabled
 }
 
+func (config *Config) IsGlobalProc(specName string) bool {
+	for _, v := range config.GlobalProcs {
+		if v == specName {
+			return true
+		}
+	}
+	return false
+}
+
 type TranslatorConfig struct {
 	Action      string
 	Pattern     string

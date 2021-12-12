@@ -9,30 +9,23 @@ import (
 func GenerateGoFile(config *Config, constants *RegistryNode, graph RegistryGraph) error {
 	fn := fmt.Sprintf("%s.go", config.OutputName)
 	header := fmt.Sprintf("%s.h", config.OutputName)
+	needsFacade := determineFacades(config, graph)
 
 	var err error
 	t := template.New(fn).Funcs(template.FuncMap{
 		"hasProcAddr":  func(name Translator) bool { _, ok := config.ProcLoaders[name.C()]; return ok },
 		"procAddrFunc": func(name Translator) string { return config.ProcLoaders[name.C()] },
 		"isGlobal": func(name Translator) bool {
-			for _, v := range config.GlobalProcs {
-				if v == name.C() {
-					return true
-				}
-			}
-			return false
+			return config.IsGlobalProc(name.C())
 		},
 		"ooParams": func(name Translator, params []CommandParamData) []CommandParamData {
-			global := false
-			for _, v := range config.GlobalProcs {
-				if v == name.C() {
-					global = true
-				}
-			}
-			if global {
+			if config.IsGlobalProc(name.C()) {
 				return params
 			}
 			return params[1:]
+		},
+		"needsFacade": func(name Translator) bool {
+			return needsFacade[name.C()]
 		},
 	})
 	if t, err = t.Parse(goPrimaryTemplate); err != nil {
@@ -87,6 +80,37 @@ func GenerateGoFile(config *Config, constants *RegistryNode, graph RegistryGraph
 	return nil
 }
 
+func determineFacades(config *Config, graph RegistryGraph) map[string]bool {
+	facades := make(map[string]bool, 0)
+	dependsOn := make(map[string]string, 0)
+	f := func(path []*RegistryNode) {
+		node := path[len(path)-1]
+		switch node.NodeType {
+		case RegistryNodeType:
+			if tiepuh := node.TypeElement(); tiepuh != nil {
+				if tiepuh.Category == TypeCategoryHandle && len(tiepuh.Parent) > 0 {
+					dependsOn[tiepuh.Name()] = tiepuh.Parent
+				}
+			}
+		case RegistryNodeCommand:
+			if command := node.CommandElement(); command != nil {
+				if len(command.Params) > 0 && !config.IsGlobalProc(command.Name()) {
+					facades[command.Params[0].Type] = true
+				}
+			}
+		}
+	}
+	graph.DepthFirstSearch(config.Enabled(), f)
+	needsFacade := make(map[string]bool, len(facades))
+	for current := range facades {
+		for len(current) > 0 {
+			needsFacade[current] = true
+			current = dependsOn[current]
+		}
+	}
+	return needsFacade
+}
+
 const goSubTemplates = `{{define "const"}}// These are API constants.
 const ({{range .}}
 	{{.Name.Go}} = {{.Value.Go}}{{end}}
@@ -119,18 +143,21 @@ var (
 {{end}}{{define "headerversion"}}// Version of the vk specification used to generate this.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{{.Name.C}}.html
 const {{.HeaderVersionName.Go}} = {{.Value.Go}}
-{{end}}{{define "base"}}// {{.Name.Go}} is a base type in the vulkan specification.
+{{end}}{{define "base"}}// Basetype {{.Name.Go}}
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{{.Name.C}}.html
 type {{.Name.Go}} {{.Type.Go}}
 {{end}}{{define "handle"}}// {{.Name.Go}} is a Handle to a vulkan resource.{{if .HasParent}}
-// {{.Name.Go}} is a child of {{.ParentName.Go}}.{{end}}
+// {{.Name.Go}} is a child of {{.ParentName.Go}}.{{end}}{{if needsFacade .Name}}
+//
+// Use {{if .HasParent}}{{.ParentName.GoFacade}}.{{end}}Make{{.Name.GoFacade}} to create a facade around this object to invoke methods.{{end}}
+// 
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{{.Name.C}}.html
 type {{.Name.Go}} {{.Name.CGo}}
 
 // Null{{.Name.Go}} is a typed Null value for the {{.Name.Go}} type.
 var Null{{.Name.Go}} {{.Name.Go}}{{if and (hasProcAddr .Name) (not .HasParent)}}
 
-// Make{{.Name.GoFacade}}Facade provides a facade interface to the handle. It load the proc
+// Make{{.Name.GoFacade}}Facade provides a facade interface to the handle. It loads the proc
 // addresses for the provided {{.Name.Go}} handle.
 func Make{{.Name.GoFacade}}(x {{.Name.Go}}) {{.Name.GoFacade}} {
 	var addrs C.vksProcAddr
@@ -139,7 +166,7 @@ func Make{{.Name.GoFacade}}(x {{.Name.Go}}) {{.Name.GoFacade}} {
 		H:     x,
 		procs: &addrs,
 	}
-}{{else if and (hasProcAddr .Name) .HasParent}}
+}{{else if and (hasProcAddr .Name) (needsFacade .Name)}}
 
 // Make{{.Name.GoFacade}}provides a facade interface to the handle. It requires
 // the parent facade for the proc address to load the new proc addresses.
@@ -150,7 +177,7 @@ func (parent {{.ParentName.GoFacade}}) Make{{.Name.GoFacade}}(x {{.Name.Go}}) {{
 		H:     x,
 		procs: &addrs,
 	}
-}{{else if .HasParent}}
+}{{else if needsFacade .Name}}
 
 // Make{{.Name.GoFacade}}provides a facade interface to the handle. It requires
 // the parent facade to copy the proc addresses.
@@ -159,15 +186,17 @@ func (parent {{.ParentName.GoFacade}}) Make{{.Name.GoFacade}}(x {{.Name.Go}}) {{
 		H:     x,
 		procs: parent.procs,
 	}
-}{{end}}
+}{{end}}{{if needsFacade .Name}}
 
 // {{.Name.GoFacade}} is a {{.Name.Go}} handle with the proc addresses pointer. It allows
-// the invocation of methods against the handle -- functions that take the handle
-// as the first parameter.
+// the invocation of methods against the handle. In the vulkan spec, these would be the functions
+// that take the handle as the first parameter.
+//
+// Use the H field to get the handle back.
 type {{.Name.GoFacade}} struct {
 	H     {{.Name.Go}}   // The vulkan Handle
 	procs *C.vksProcAddr // The addresses for commands.
-}
+}{{end}}
 
 {{end}}{{define "enum"}}// {{.Name.Go}} is an Enum from the Vulkan API.
 // See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{{.Name.C}}.html
