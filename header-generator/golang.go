@@ -111,13 +111,13 @@ func determineFacades(config *Config, graph RegistryGraph) map[string]bool {
 	return needsFacade
 }
 
-const goSubTemplates = `{{define "const"}}// These are API constants.
+const goSubTemplates = `{{define "docurl"}}https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{{.}}.html{{end}}{{define "const"}}// These are API constants.
 const ({{range .}}
 	{{.Name.Go}} = {{.Value.Go}}{{end}}
 )
 {{end}}{{define "version"}}// {{.Name.Go}} is an implementation of the Vulkan Make Api Version
 // defines. See
-// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VK_MAKE_API_VERSION.html
+// {{template "docurl" "VK_MAKE_API_VERSION"}}
 type {{.Name.Go}} uint32
 
 // MakeApiVersion creates a Version based on the provided Variant, maJor, miNor,
@@ -140,18 +140,18 @@ var (
 	VK_API_VERSION_1_2         {{.Name.Go}} = Make{{.Name.Go}}(0, 1, 2, 0)
 	VK_HEADER_VERSION_COMPLETE {{.Name.Go}} = Make{{.Name.Go}}({{.Value.Go}}, {{.HeaderVersionName.Go}})
 )
-{{end}}{{define "headerversion"}}// Version of the vk specification used to generate this.
-// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{{.Name.C}}.html
+{{end}}{{define "headerversion"}}// {{.HeaderVersionName.Go}} is the version of the vk specification used to generate this.
+// {{template "docurl" .Name.C}}
 const {{.HeaderVersionName.Go}} = {{.Value.Go}}
-{{end}}{{define "base"}}// Basetype {{.Name.Go}}
-// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{{.Name.C}}.html
+{{end}}{{define "base"}}// {{.Name.Go}} basetype
+// {{template "docurl" .Name.C}}
 type {{.Name.Go}} {{.Type.Go}}
 {{end}}{{define "handle"}}// {{.Name.Go}} is a Handle to a vulkan resource.{{if .HasParent}}
 // {{.Name.Go}} is a child of {{.ParentName.Go}}.{{end}}{{if needsFacade .Name}}
 //
 // Use {{if .HasParent}}{{.ParentName.GoFacade}}.{{end}}Make{{.Name.GoFacade}} to create a facade around this object to invoke methods.{{end}}
 // 
-// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{{.Name.C}}.html
+// {{template "docurl" .Name.C}}
 type {{.Name.Go}} {{.Name.CGo}}
 
 // Null{{.Name.Go}} is a typed Null value for the {{.Name.Go}} type.
@@ -199,7 +199,7 @@ type {{.Name.GoFacade}} struct {
 }{{end}}
 
 {{end}}{{define "enum"}}// {{.Name.Go}} is an Enum from the Vulkan API.
-// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{{.Name.C}}.html
+// {{template "docurl" .Name.C}}
 type {{.Name.Go}} {{.Type.Go}}{{if gt (len .Values) 0}}
 
 const ({{range .Values}}
@@ -217,14 +217,14 @@ func (x {{.Name.Go}}) String() string {
 	}
 	return fmt.Sprintf("{{.Name.Go}}=%d", x)
 }{{end}}
-{{end}}{{define "bitmask"}}// {{.Name.Go}} is a bitmask from the Vulkan API.
-// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{{.Name.C}}.html
+{{end}}{{define "bitmask"}}// {{.Name.Go}} bitmask
+// {{template "docurl" .Name.C}}
 type {{.Name.Go}} {{.Type.Go}}
-{{end}}{{define "func"}}// {{.Name.Go}} is a function pointer from the Vulkan API.
-// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{{.Name.C}}.html
+{{end}}{{define "func"}}// {{.Name.Go}} function pointer
+// {{template "docurl" .Name.C}}
 type {{.Name.Go}} {{.Name.CGo}}
-{{end}}{{define "union"}}// {{.Name.Go}} is a union from the Vulkan API.
-// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{{.Name.C}}.html
+{{end}}{{define "union"}}// {{.Name.Go}} union
+// {{template "docurl" .Name.C}}
 type {{.Name.Go}} {{.Name.CGo}}
 
 // Copy the provided byte slice into the structure.
@@ -244,8 +244,8 @@ const goCommandTemplate = `{{define "command"}}func {{if eq (isGlobal .Name) fal
 	return *retPtr
 {{end}}}
 {{end}}`
-const goStructTemplate = `{{define "struct"}}//{{.Name.Go}} provides a go interface for {{.Name.C}}.
-// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{{.Name.C}}.html
+const goStructTemplate = `{{define "struct"}}// {{.Name.Go}} provides a go interface for {{.Name.C}}.
+// {{template "docurl" .Name.C}}
 type {{.Name.Go}} {{.Name.CGo}}
 
 // Sizeof{{.Name.Go}} is the memory size of a {{.Name.Go}}
@@ -309,7 +309,7 @@ func (x {{$struct.Name.Go}}) With{{.Name.Go}}(y {{.Type.Go}}) {{$struct.Name.Go}
 	return x{{if ne .Length nil}}.With{{.Length.Name.Go}}({{.Length.Type.Go}}(len(y))){{end}}
 }{{end}}{{end}}
 {{end}}{{end}}{{define "structalias"}}//{{.Name.Go}} is an alias to {{.Alias.Go}}.
-// See https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{{.Name.C}}.html
+// {{template "docurl" .Name.C}}
 //
 // Deprecated: Most Aliases in the Vulkan spec are for compatibility purposes as extensions get
 // promoted to features. If possible, update code to use the promoted name: {{.Alias.Go}}.
