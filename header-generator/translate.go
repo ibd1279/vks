@@ -172,42 +172,32 @@ type ScalarConverter struct {
 	specType string // e.g. uint64_t
 	cGoType  string // e.g. C.ulonglong
 	goType   string // e.g. uint64
-	cToGo    string // e.g. C.GoString
-	goToC    string // e.g. C.CString
 }
 
 func (xl8r *ScalarConverter) C() string   { return xl8r.specType }
 func (xl8r *ScalarConverter) CGo() string { return xl8r.cGoType }
 func (xl8r *ScalarConverter) Go() string  { return xl8r.goType }
 func (xl8r *ScalarConverter) CToGo() string {
-	f := xl8r.cToGo
-	if len(f) == 0 {
-		f = xl8r.Go()
-	}
-	return fmt.Sprintf("func(x *%s) *%s { /* Scalar */ return (*%s)(unsafe.Pointer(x)) }", xl8r.CGo(), xl8r.Go(), f)
+	return fmt.Sprintf("func(x *%s) *%s { /* Scalar */ c2g := %s(*x); return &c2g }", xl8r.CGo(), xl8r.Go(), xl8r.Go())
 }
 func (xl8r *ScalarConverter) GoToC() string {
-	f := xl8r.goToC
-	if len(f) == 0 {
-		f = xl8r.CGo()
-	}
-	return fmt.Sprintf("func(x *%s) *%s { /* Scalar */ return (*%s)(unsafe.Pointer(x)) }", xl8r.Go(), xl8r.CGo(), f)
+	return fmt.Sprintf("func(x *%s) *%s { /* Scalar */ g2c := %s(*x); return &g2c }", xl8r.Go(), xl8r.CGo(), xl8r.CGo())
 }
 
 var (
-	Int8Translator          *ScalarConverter = &ScalarConverter{"int8_t", "C.schar", "int8", "", ""}
-	Int16Translator                          = &ScalarConverter{"int16_t", "C.short", "int16", "", ""}
-	Int32Translator                          = &ScalarConverter{"int32_t", "C.int", "int32", "", ""}
-	Int64Translator                          = &ScalarConverter{"int64_t", "C.longlong", "int64", "", ""}
-	Uint8Translator                          = &ScalarConverter{"uint8_t", "C.uchar", "byte", "", ""}
-	Uint16Translator                         = &ScalarConverter{"uint16_t", "C.ushort", "uint16", "", ""}
-	Uint32Translator                         = &ScalarConverter{"uint32_t", "C.uint", "uint32", "", ""}
-	Uint64Translator                         = &ScalarConverter{"uint64_t", "C.ulonglong", "uint64", "", ""}
-	SizeTranslator                           = &ScalarConverter{"size_t", "C.ulong", "uint64", "", ""}
-	Float32Translator                        = &ScalarConverter{"float", "C.float", "float32", "", ""}
-	Float64Translator                        = &ScalarConverter{"double", "C.double", "float64", "", ""}
-	StringTranslator                         = &ScalarConverter{"char", "C.char", "byte", "", ""}
-	UnsafePointerTranslator                  = &ScalarConverter{"void*", "unsafe.Pointer", "unsafe.Pointer", "", ""}
+	Int8Translator          *ScalarConverter = &ScalarConverter{"int8_t", "C.schar", "int8"}
+	Int16Translator                          = &ScalarConverter{"int16_t", "C.short", "int16"}
+	Int32Translator                          = &ScalarConverter{"int32_t", "C.int", "int32"}
+	Int64Translator                          = &ScalarConverter{"int64_t", "C.longlong", "int64"}
+	Uint8Translator                          = &ScalarConverter{"uint8_t", "C.uchar", "byte"}
+	Uint16Translator                         = &ScalarConverter{"uint16_t", "C.ushort", "uint16"}
+	Uint32Translator                         = &ScalarConverter{"uint32_t", "C.uint", "uint32"}
+	Uint64Translator                         = &ScalarConverter{"uint64_t", "C.ulonglong", "uint64"}
+	SizeTranslator                           = &ScalarConverter{"size_t", "C.ulong", "uint64"}
+	Float32Translator                        = &ScalarConverter{"float", "C.float", "float32"}
+	Float64Translator                        = &ScalarConverter{"double", "C.double", "float64"}
+	StringTranslator                         = &ScalarConverter{"char", "C.char", "byte"}
+	UnsafePointerTranslator                  = &ScalarConverter{"void*", "unsafe.Pointer", "unsafe.Pointer"}
 )
 
 // TypeDefConverter provides converter methods that convert from
