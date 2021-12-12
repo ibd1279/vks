@@ -492,7 +492,7 @@ type PhysicalDeviceFacade struct {
 	procs *C.vksProcAddr // The addresses for commands.
 }
 
-// Filter is an Enum from the Vulkan API.
+// Filter enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFilter.html
 type Filter uint32
 
@@ -515,7 +515,7 @@ func (x Filter) String() string {
 	return fmt.Sprintf("Filter=%d", x)
 }
 
-// BorderColor is an Enum from the Vulkan API.
+// BorderColor enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBorderColor.html
 type BorderColor uint32
 
@@ -546,7 +546,7 @@ func (x BorderColor) String() string {
 	return fmt.Sprintf("BorderColor=%d", x)
 }
 
-// AttachmentLoadOp is an Enum from the Vulkan API.
+// AttachmentLoadOp enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkAttachmentLoadOp.html
 type AttachmentLoadOp uint32
 
@@ -571,7 +571,7 @@ func (x AttachmentLoadOp) String() string {
 	return fmt.Sprintf("AttachmentLoadOp=%d", x)
 }
 
-// StencilFaceFlagBits is an Enum from the Vulkan API.
+// StencilFaceFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkStencilFaceFlagBits.html
 type StencilFaceFlagBits uint32
 
@@ -597,11 +597,11 @@ func (x StencilFaceFlagBits) String() string {
 	return fmt.Sprintf("StencilFaceFlagBits=%d", x)
 }
 
-// RenderPassCreateFlagBits is an Enum from the Vulkan API.
+// RenderPassCreateFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkRenderPassCreateFlagBits.html
 type RenderPassCreateFlagBits uint32
 
-// IndexType is an Enum from the Vulkan API.
+// IndexType enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkIndexType.html
 type IndexType uint32
 
@@ -624,7 +624,7 @@ func (x IndexType) String() string {
 	return fmt.Sprintf("IndexType=%d", x)
 }
 
-// PolygonMode is an Enum from the Vulkan API.
+// PolygonMode enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPolygonMode.html
 type PolygonMode uint32
 
@@ -649,7 +649,7 @@ func (x PolygonMode) String() string {
 	return fmt.Sprintf("PolygonMode=%d", x)
 }
 
-// PipelineBindPoint is an Enum from the Vulkan API.
+// PipelineBindPoint enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineBindPoint.html
 type PipelineBindPoint uint32
 
@@ -672,7 +672,7 @@ func (x PipelineBindPoint) String() string {
 	return fmt.Sprintf("PipelineBindPoint=%d", x)
 }
 
-// FenceCreateFlagBits is an Enum from the Vulkan API.
+// FenceCreateFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFenceCreateFlagBits.html
 type FenceCreateFlagBits uint32
 
@@ -693,7 +693,7 @@ func (x FenceCreateFlagBits) String() string {
 	return fmt.Sprintf("FenceCreateFlagBits=%d", x)
 }
 
-// SamplerMipmapMode is an Enum from the Vulkan API.
+// SamplerMipmapMode enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSamplerMipmapMode.html
 type SamplerMipmapMode uint32
 
@@ -716,7 +716,7 @@ func (x SamplerMipmapMode) String() string {
 	return fmt.Sprintf("SamplerMipmapMode=%d", x)
 }
 
-// PipelineCreateFlagBits is an Enum from the Vulkan API.
+// PipelineCreateFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineCreateFlagBits.html
 type PipelineCreateFlagBits uint32
 
@@ -746,7 +746,7 @@ func (x PipelineCreateFlagBits) String() string {
 	return fmt.Sprintf("PipelineCreateFlagBits=%d", x)
 }
 
-// FramebufferCreateFlagBits is an Enum from the Vulkan API.
+// FramebufferCreateFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFramebufferCreateFlagBits.html
 type FramebufferCreateFlagBits uint32
 
@@ -767,7 +767,7 @@ func (x FramebufferCreateFlagBits) String() string {
 	return fmt.Sprintf("FramebufferCreateFlagBits=%d", x)
 }
 
-// PipelineCacheHeaderVersion is an Enum from the Vulkan API.
+// PipelineCacheHeaderVersion enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineCacheHeaderVersion.html
 type PipelineCacheHeaderVersion uint32
 
@@ -788,7 +788,7 @@ func (x PipelineCacheHeaderVersion) String() string {
 	return fmt.Sprintf("PipelineCacheHeaderVersion=%d", x)
 }
 
-// BufferCreateFlagBits is an Enum from the Vulkan API.
+// BufferCreateFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferCreateFlagBits.html
 type BufferCreateFlagBits uint32
 
@@ -817,11 +817,11 @@ func (x BufferCreateFlagBits) String() string {
 	return fmt.Sprintf("BufferCreateFlagBits=%d", x)
 }
 
-// SubpassDescriptionFlagBits is an Enum from the Vulkan API.
+// SubpassDescriptionFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSubpassDescriptionFlagBits.html
 type SubpassDescriptionFlagBits uint32
 
-// SparseMemoryBindFlagBits is an Enum from the Vulkan API.
+// SparseMemoryBindFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSparseMemoryBindFlagBits.html
 type SparseMemoryBindFlagBits uint32
 
@@ -842,7 +842,7 @@ func (x SparseMemoryBindFlagBits) String() string {
 	return fmt.Sprintf("SparseMemoryBindFlagBits=%d", x)
 }
 
-// BufferUsageFlagBits is an Enum from the Vulkan API.
+// BufferUsageFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBufferUsageFlagBits.html
 type BufferUsageFlagBits uint32
 
@@ -881,7 +881,7 @@ func (x BufferUsageFlagBits) String() string {
 	return fmt.Sprintf("BufferUsageFlagBits=%d", x)
 }
 
-// ImageTiling is an Enum from the Vulkan API.
+// ImageTiling enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageTiling.html
 type ImageTiling uint32
 
@@ -904,7 +904,7 @@ func (x ImageTiling) String() string {
 	return fmt.Sprintf("ImageTiling=%d", x)
 }
 
-// SharingMode is an Enum from the Vulkan API.
+// SharingMode enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSharingMode.html
 type SharingMode uint32
 
@@ -927,7 +927,7 @@ func (x SharingMode) String() string {
 	return fmt.Sprintf("SharingMode=%d", x)
 }
 
-// StructureType is an Enum from the Vulkan API.
+// StructureType enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkStructureType.html
 type StructureType uint32
 
@@ -1322,7 +1322,7 @@ func (x StructureType) String() string {
 	return fmt.Sprintf("StructureType=%d", x)
 }
 
-// LogicOp is an Enum from the Vulkan API.
+// LogicOp enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkLogicOp.html
 type LogicOp uint32
 
@@ -1373,7 +1373,7 @@ func (x LogicOp) String() string {
 	return fmt.Sprintf("LogicOp=%d", x)
 }
 
-// Format is an Enum from the Vulkan API.
+// Format enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFormat.html
 type Format uint32
 
@@ -1830,7 +1830,7 @@ func (x Format) String() string {
 	return fmt.Sprintf("Format=%d", x)
 }
 
-// FormatFeatureFlagBits is an Enum from the Vulkan API.
+// FormatFeatureFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFormatFeatureFlagBits.html
 type FormatFeatureFlagBits uint32
 
@@ -1895,7 +1895,7 @@ func (x FormatFeatureFlagBits) String() string {
 	return fmt.Sprintf("FormatFeatureFlagBits=%d", x)
 }
 
-// AttachmentDescriptionFlagBits is an Enum from the Vulkan API.
+// AttachmentDescriptionFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkAttachmentDescriptionFlagBits.html
 type AttachmentDescriptionFlagBits uint32
 
@@ -1916,7 +1916,7 @@ func (x AttachmentDescriptionFlagBits) String() string {
 	return fmt.Sprintf("AttachmentDescriptionFlagBits=%d", x)
 }
 
-// FrontFace is an Enum from the Vulkan API.
+// FrontFace enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFrontFace.html
 type FrontFace uint32
 
@@ -1939,7 +1939,7 @@ func (x FrontFace) String() string {
 	return fmt.Sprintf("FrontFace=%d", x)
 }
 
-// ImageCreateFlagBits is an Enum from the Vulkan API.
+// ImageCreateFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageCreateFlagBits.html
 type ImageCreateFlagBits uint32
 
@@ -1982,7 +1982,7 @@ func (x ImageCreateFlagBits) String() string {
 	return fmt.Sprintf("ImageCreateFlagBits=%d", x)
 }
 
-// SparseImageFormatFlagBits is an Enum from the Vulkan API.
+// SparseImageFormatFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSparseImageFormatFlagBits.html
 type SparseImageFormatFlagBits uint32
 
@@ -2007,7 +2007,7 @@ func (x SparseImageFormatFlagBits) String() string {
 	return fmt.Sprintf("SparseImageFormatFlagBits=%d", x)
 }
 
-// DynamicState is an Enum from the Vulkan API.
+// DynamicState enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDynamicState.html
 type DynamicState uint32
 
@@ -2044,7 +2044,7 @@ func (x DynamicState) String() string {
 	return fmt.Sprintf("DynamicState=%d", x)
 }
 
-// VendorId is an Enum from the Vulkan API.
+// VendorId enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkVendorId.html
 type VendorId uint32
 
@@ -2075,7 +2075,7 @@ func (x VendorId) String() string {
 	return fmt.Sprintf("VendorId=%d", x)
 }
 
-// ImageType is an Enum from the Vulkan API.
+// ImageType enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageType.html
 type ImageType uint32
 
@@ -2100,7 +2100,7 @@ func (x ImageType) String() string {
 	return fmt.Sprintf("ImageType=%d", x)
 }
 
-// ImageUsageFlagBits is an Enum from the Vulkan API.
+// ImageUsageFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageUsageFlagBits.html
 type ImageUsageFlagBits uint32
 
@@ -2135,7 +2135,7 @@ func (x ImageUsageFlagBits) String() string {
 	return fmt.Sprintf("ImageUsageFlagBits=%d", x)
 }
 
-// ImageAspectFlagBits is an Enum from the Vulkan API.
+// ImageAspectFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageAspectFlagBits.html
 type ImageAspectFlagBits uint32
 
@@ -2168,7 +2168,7 @@ func (x ImageAspectFlagBits) String() string {
 	return fmt.Sprintf("ImageAspectFlagBits=%d", x)
 }
 
-// ObjectType is an Enum from the Vulkan API.
+// ObjectType enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkObjectType.html
 type ObjectType uint32
 
@@ -2251,11 +2251,11 @@ func (x ObjectType) String() string {
 	return fmt.Sprintf("ObjectType=%d", x)
 }
 
-// PipelineShaderStageCreateFlagBits is an Enum from the Vulkan API.
+// PipelineShaderStageCreateFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineShaderStageCreateFlagBits.html
 type PipelineShaderStageCreateFlagBits uint32
 
-// CullModeFlagBits is an Enum from the Vulkan API.
+// CullModeFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCullModeFlagBits.html
 type CullModeFlagBits uint32
 
@@ -2282,7 +2282,7 @@ func (x CullModeFlagBits) String() string {
 	return fmt.Sprintf("CullModeFlagBits=%d", x)
 }
 
-// InternalAllocationType is an Enum from the Vulkan API.
+// InternalAllocationType enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkInternalAllocationType.html
 type InternalAllocationType uint32
 
@@ -2303,7 +2303,7 @@ func (x InternalAllocationType) String() string {
 	return fmt.Sprintf("InternalAllocationType=%d", x)
 }
 
-// CompareOp is an Enum from the Vulkan API.
+// CompareOp enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCompareOp.html
 type CompareOp uint32
 
@@ -2338,7 +2338,7 @@ func (x CompareOp) String() string {
 	return fmt.Sprintf("CompareOp=%d", x)
 }
 
-// MemoryHeapFlagBits is an Enum from the Vulkan API.
+// MemoryHeapFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkMemoryHeapFlagBits.html
 type MemoryHeapFlagBits uint32
 
@@ -2361,7 +2361,7 @@ func (x MemoryHeapFlagBits) String() string {
 	return fmt.Sprintf("MemoryHeapFlagBits=%d", x)
 }
 
-// CommandPoolCreateFlagBits is an Enum from the Vulkan API.
+// CommandPoolCreateFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandPoolCreateFlagBits.html
 type CommandPoolCreateFlagBits uint32
 
@@ -2386,7 +2386,7 @@ func (x CommandPoolCreateFlagBits) String() string {
 	return fmt.Sprintf("CommandPoolCreateFlagBits=%d", x)
 }
 
-// MemoryPropertyFlagBits is an Enum from the Vulkan API.
+// MemoryPropertyFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkMemoryPropertyFlagBits.html
 type MemoryPropertyFlagBits uint32
 
@@ -2417,7 +2417,7 @@ func (x MemoryPropertyFlagBits) String() string {
 	return fmt.Sprintf("MemoryPropertyFlagBits=%d", x)
 }
 
-// AccessFlagBits is an Enum from the Vulkan API.
+// AccessFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkAccessFlagBits.html
 type AccessFlagBits uint32
 
@@ -2470,11 +2470,11 @@ func (x AccessFlagBits) String() string {
 	return fmt.Sprintf("AccessFlagBits=%d", x)
 }
 
-// EventCreateFlagBits is an Enum from the Vulkan API.
+// EventCreateFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkEventCreateFlagBits.html
 type EventCreateFlagBits uint32
 
-// PipelineStageFlagBits is an Enum from the Vulkan API.
+// PipelineStageFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineStageFlagBits.html
 type PipelineStageFlagBits uint32
 
@@ -2527,7 +2527,7 @@ func (x PipelineStageFlagBits) String() string {
 	return fmt.Sprintf("PipelineStageFlagBits=%d", x)
 }
 
-// ColorComponentFlagBits is an Enum from the Vulkan API.
+// ColorComponentFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkColorComponentFlagBits.html
 type ColorComponentFlagBits uint32
 
@@ -2554,7 +2554,7 @@ func (x ColorComponentFlagBits) String() string {
 	return fmt.Sprintf("ColorComponentFlagBits=%d", x)
 }
 
-// BlendOp is an Enum from the Vulkan API.
+// BlendOp enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBlendOp.html
 type BlendOp uint32
 
@@ -2583,7 +2583,7 @@ func (x BlendOp) String() string {
 	return fmt.Sprintf("BlendOp=%d", x)
 }
 
-// QueryResultFlagBits is an Enum from the Vulkan API.
+// QueryResultFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueryResultFlagBits.html
 type QueryResultFlagBits uint32
 
@@ -2610,7 +2610,7 @@ func (x QueryResultFlagBits) String() string {
 	return fmt.Sprintf("QueryResultFlagBits=%d", x)
 }
 
-// DependencyFlagBits is an Enum from the Vulkan API.
+// DependencyFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDependencyFlagBits.html
 type DependencyFlagBits uint32
 
@@ -2635,7 +2635,7 @@ func (x DependencyFlagBits) String() string {
 	return fmt.Sprintf("DependencyFlagBits=%d", x)
 }
 
-// PrimitiveTopology is an Enum from the Vulkan API.
+// PrimitiveTopology enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPrimitiveTopology.html
 type PrimitiveTopology uint32
 
@@ -2676,7 +2676,7 @@ func (x PrimitiveTopology) String() string {
 	return fmt.Sprintf("PrimitiveTopology=%d", x)
 }
 
-// PhysicalDeviceType is an Enum from the Vulkan API.
+// PhysicalDeviceType enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPhysicalDeviceType.html
 type PhysicalDeviceType uint32
 
@@ -2705,7 +2705,7 @@ func (x PhysicalDeviceType) String() string {
 	return fmt.Sprintf("PhysicalDeviceType=%d", x)
 }
 
-// CommandPoolResetFlagBits is an Enum from the Vulkan API.
+// CommandPoolResetFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandPoolResetFlagBits.html
 type CommandPoolResetFlagBits uint32
 
@@ -2726,7 +2726,7 @@ func (x CommandPoolResetFlagBits) String() string {
 	return fmt.Sprintf("CommandPoolResetFlagBits=%d", x)
 }
 
-// QueueFlagBits is an Enum from the Vulkan API.
+// QueueFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueueFlagBits.html
 type QueueFlagBits uint32
 
@@ -2755,7 +2755,7 @@ func (x QueueFlagBits) String() string {
 	return fmt.Sprintf("QueueFlagBits=%d", x)
 }
 
-// ImageLayout is an Enum from the Vulkan API.
+// ImageLayout enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageLayout.html
 type ImageLayout uint32
 
@@ -2806,7 +2806,7 @@ func (x ImageLayout) String() string {
 	return fmt.Sprintf("ImageLayout=%d", x)
 }
 
-// SampleCountFlagBits is an Enum from the Vulkan API.
+// SampleCountFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSampleCountFlagBits.html
 type SampleCountFlagBits uint32
 
@@ -2839,7 +2839,7 @@ func (x SampleCountFlagBits) String() string {
 	return fmt.Sprintf("SampleCountFlagBits=%d", x)
 }
 
-// DescriptorType is an Enum from the Vulkan API.
+// DescriptorType enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorType.html
 type DescriptorType uint32
 
@@ -2880,7 +2880,7 @@ func (x DescriptorType) String() string {
 	return fmt.Sprintf("DescriptorType=%d", x)
 }
 
-// SystemAllocationScope is an Enum from the Vulkan API.
+// SystemAllocationScope enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSystemAllocationScope.html
 type SystemAllocationScope uint32
 
@@ -2909,7 +2909,7 @@ func (x SystemAllocationScope) String() string {
 	return fmt.Sprintf("SystemAllocationScope=%d", x)
 }
 
-// ShaderStageFlagBits is an Enum from the Vulkan API.
+// ShaderStageFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkShaderStageFlagBits.html
 type ShaderStageFlagBits uint32
 
@@ -2944,7 +2944,7 @@ func (x ShaderStageFlagBits) String() string {
 	return fmt.Sprintf("ShaderStageFlagBits=%d", x)
 }
 
-// DescriptorPoolCreateFlagBits is an Enum from the Vulkan API.
+// DescriptorPoolCreateFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorPoolCreateFlagBits.html
 type DescriptorPoolCreateFlagBits uint32
 
@@ -2967,7 +2967,7 @@ func (x DescriptorPoolCreateFlagBits) String() string {
 	return fmt.Sprintf("DescriptorPoolCreateFlagBits=%d", x)
 }
 
-// Result is an Enum from the Vulkan API.
+// Result enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkResult.html
 type Result int32
 
@@ -3042,7 +3042,7 @@ func (x Result) String() string {
 	return fmt.Sprintf("Result=%d", x)
 }
 
-// AttachmentStoreOp is an Enum from the Vulkan API.
+// AttachmentStoreOp enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkAttachmentStoreOp.html
 type AttachmentStoreOp uint32
 
@@ -3065,7 +3065,7 @@ func (x AttachmentStoreOp) String() string {
 	return fmt.Sprintf("AttachmentStoreOp=%d", x)
 }
 
-// StencilOp is an Enum from the Vulkan API.
+// StencilOp enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkStencilOp.html
 type StencilOp uint32
 
@@ -3100,7 +3100,7 @@ func (x StencilOp) String() string {
 	return fmt.Sprintf("StencilOp=%d", x)
 }
 
-// ComponentSwizzle is an Enum from the Vulkan API.
+// ComponentSwizzle enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkComponentSwizzle.html
 type ComponentSwizzle uint32
 
@@ -3133,7 +3133,7 @@ func (x ComponentSwizzle) String() string {
 	return fmt.Sprintf("ComponentSwizzle=%d", x)
 }
 
-// DescriptorSetLayoutCreateFlagBits is an Enum from the Vulkan API.
+// DescriptorSetLayoutCreateFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorSetLayoutCreateFlagBits.html
 type DescriptorSetLayoutCreateFlagBits uint32
 
@@ -3154,7 +3154,7 @@ func (x DescriptorSetLayoutCreateFlagBits) String() string {
 	return fmt.Sprintf("DescriptorSetLayoutCreateFlagBits=%d", x)
 }
 
-// VertexInputRate is an Enum from the Vulkan API.
+// VertexInputRate enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkVertexInputRate.html
 type VertexInputRate uint32
 
@@ -3177,7 +3177,7 @@ func (x VertexInputRate) String() string {
 	return fmt.Sprintf("VertexInputRate=%d", x)
 }
 
-// QueryPipelineStatisticFlagBits is an Enum from the Vulkan API.
+// QueryPipelineStatisticFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueryPipelineStatisticFlagBits.html
 type QueryPipelineStatisticFlagBits uint32
 
@@ -3218,11 +3218,11 @@ func (x QueryPipelineStatisticFlagBits) String() string {
 	return fmt.Sprintf("QueryPipelineStatisticFlagBits=%d", x)
 }
 
-// ImageViewCreateFlagBits is an Enum from the Vulkan API.
+// ImageViewCreateFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageViewCreateFlagBits.html
 type ImageViewCreateFlagBits uint32
 
-// ImageViewType is an Enum from the Vulkan API.
+// ImageViewType enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkImageViewType.html
 type ImageViewType uint32
 
@@ -3255,7 +3255,7 @@ func (x ImageViewType) String() string {
 	return fmt.Sprintf("ImageViewType=%d", x)
 }
 
-// SubpassContents is an Enum from the Vulkan API.
+// SubpassContents enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSubpassContents.html
 type SubpassContents uint32
 
@@ -3278,7 +3278,7 @@ func (x SubpassContents) String() string {
 	return fmt.Sprintf("SubpassContents=%d", x)
 }
 
-// QueryType is an Enum from the Vulkan API.
+// QueryType enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueryType.html
 type QueryType uint32
 
@@ -3303,7 +3303,7 @@ func (x QueryType) String() string {
 	return fmt.Sprintf("QueryType=%d", x)
 }
 
-// CommandBufferLevel is an Enum from the Vulkan API.
+// CommandBufferLevel enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandBufferLevel.html
 type CommandBufferLevel uint32
 
@@ -3326,7 +3326,7 @@ func (x CommandBufferLevel) String() string {
 	return fmt.Sprintf("CommandBufferLevel=%d", x)
 }
 
-// QueryControlFlagBits is an Enum from the Vulkan API.
+// QueryControlFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkQueryControlFlagBits.html
 type QueryControlFlagBits uint32
 
@@ -3347,7 +3347,7 @@ func (x QueryControlFlagBits) String() string {
 	return fmt.Sprintf("QueryControlFlagBits=%d", x)
 }
 
-// CommandBufferResetFlagBits is an Enum from the Vulkan API.
+// CommandBufferResetFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandBufferResetFlagBits.html
 type CommandBufferResetFlagBits uint32
 
@@ -3368,7 +3368,7 @@ func (x CommandBufferResetFlagBits) String() string {
 	return fmt.Sprintf("CommandBufferResetFlagBits=%d", x)
 }
 
-// CommandBufferUsageFlagBits is an Enum from the Vulkan API.
+// CommandBufferUsageFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandBufferUsageFlagBits.html
 type CommandBufferUsageFlagBits uint32
 
@@ -3393,11 +3393,11 @@ func (x CommandBufferUsageFlagBits) String() string {
 	return fmt.Sprintf("CommandBufferUsageFlagBits=%d", x)
 }
 
-// SamplerCreateFlagBits is an Enum from the Vulkan API.
+// SamplerCreateFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSamplerCreateFlagBits.html
 type SamplerCreateFlagBits uint32
 
-// BlendFactor is an Enum from the Vulkan API.
+// BlendFactor enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBlendFactor.html
 type BlendFactor uint32
 
@@ -3454,7 +3454,7 @@ func (x BlendFactor) String() string {
 	return fmt.Sprintf("BlendFactor=%d", x)
 }
 
-// SamplerAddressMode is an Enum from the Vulkan API.
+// SamplerAddressMode enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSamplerAddressMode.html
 type SamplerAddressMode uint32
 
@@ -3507,7 +3507,7 @@ type DescriptorSetLayoutCreateFlags Flags
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkShaderModuleCreateFlags.html
 type ShaderModuleCreateFlags Flags
 
-// DeviceQueueCreateFlagBits is an Enum from the Vulkan API.
+// DeviceQueueCreateFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceQueueCreateFlagBits.html
 type DeviceQueueCreateFlagBits uint32
 
@@ -3552,7 +3552,7 @@ type MemoryMapFlags Flags
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandPoolResetFlags.html
 type CommandPoolResetFlags Flags
 
-// PipelineCacheCreateFlagBits is an Enum from the Vulkan API.
+// PipelineCacheCreateFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPipelineCacheCreateFlagBits.html
 type PipelineCacheCreateFlagBits uint32
 
@@ -3893,8 +3893,7 @@ func (x QueryPoolCreateInfo) WithDefaultSType() QueryPoolCreateInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x QueryPoolCreateInfo) WithSType(y StructureType) QueryPoolCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -3907,8 +3906,7 @@ func (x QueryPoolCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x QueryPoolCreateInfo) WithPNext(y unsafe.Pointer) QueryPoolCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -3921,8 +3919,7 @@ func (x QueryPoolCreateInfo) Flags() QueryPoolCreateFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x QueryPoolCreateInfo) WithFlags(y QueryPoolCreateFlags) QueryPoolCreateInfo {
-	ptr := /* typedef */ (*C.VkQueryPoolCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkQueryPoolCreateFlags)(&y))
 	return x
 }
 
@@ -3935,8 +3932,7 @@ func (x QueryPoolCreateInfo) QueryType() QueryType {
 // WithQueryType sets the value for the QueryType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x QueryPoolCreateInfo) WithQueryType(y QueryType) QueryPoolCreateInfo {
-	ptr := /* typedef */ (*C.VkQueryType)(&y)
-	x.queryType = *ptr
+	x.queryType = *( /* typedef */ (*C.VkQueryType)(&y))
 	return x
 }
 
@@ -3949,8 +3945,7 @@ func (x QueryPoolCreateInfo) QueryCount() uint32 {
 // WithQueryCount sets the value for the QueryCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x QueryPoolCreateInfo) WithQueryCount(y uint32) QueryPoolCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.queryCount = *ptr
+	x.queryCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -3963,8 +3958,7 @@ func (x QueryPoolCreateInfo) PipelineStatistics() QueryPipelineStatisticFlags {
 // WithPipelineStatistics sets the value for the PipelineStatistics on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x QueryPoolCreateInfo) WithPipelineStatistics(y QueryPipelineStatisticFlags) QueryPoolCreateInfo {
-	ptr := /* typedef */ (*C.VkQueryPipelineStatisticFlags)(&y)
-	x.pipelineStatistics = *ptr
+	x.pipelineStatistics = *( /* typedef */ (*C.VkQueryPipelineStatisticFlags)(&y))
 	return x
 }
 
@@ -4025,8 +4019,7 @@ func (x EventCreateInfo) WithDefaultSType() EventCreateInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x EventCreateInfo) WithSType(y StructureType) EventCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -4039,8 +4032,7 @@ func (x EventCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x EventCreateInfo) WithPNext(y unsafe.Pointer) EventCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -4053,8 +4045,7 @@ func (x EventCreateInfo) Flags() EventCreateFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x EventCreateInfo) WithFlags(y EventCreateFlags) EventCreateInfo {
-	ptr := /* typedef */ (*C.VkEventCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkEventCreateFlags)(&y))
 	return x
 }
 
@@ -4115,8 +4106,7 @@ func (x FramebufferCreateInfo) WithDefaultSType() FramebufferCreateInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x FramebufferCreateInfo) WithSType(y StructureType) FramebufferCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -4129,8 +4119,7 @@ func (x FramebufferCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x FramebufferCreateInfo) WithPNext(y unsafe.Pointer) FramebufferCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -4143,8 +4132,7 @@ func (x FramebufferCreateInfo) Flags() FramebufferCreateFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x FramebufferCreateInfo) WithFlags(y FramebufferCreateFlags) FramebufferCreateInfo {
-	ptr := /* typedef */ (*C.VkFramebufferCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkFramebufferCreateFlags)(&y))
 	return x
 }
 
@@ -4157,8 +4145,7 @@ func (x FramebufferCreateInfo) RenderPass() RenderPass {
 // WithRenderPass sets the value for the RenderPass on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x FramebufferCreateInfo) WithRenderPass(y RenderPass) FramebufferCreateInfo {
-	ptr := /* handle */ (*C.VkRenderPass)(&y)
-	x.renderPass = *ptr
+	x.renderPass = *( /* handle */ (*C.VkRenderPass)(&y))
 	return x
 }
 
@@ -4171,8 +4158,7 @@ func (x FramebufferCreateInfo) AttachmentCount() uint32 {
 // WithAttachmentCount sets the value for the AttachmentCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x FramebufferCreateInfo) WithAttachmentCount(y uint32) FramebufferCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.attachmentCount = *ptr
+	x.attachmentCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -4191,15 +4177,14 @@ func (x FramebufferCreateInfo) PAttachments() []ImageView {
 // The specification defines AttachmentCount as the length of this field.
 // AttachmentCount is updated with the length of the new value.
 func (x FramebufferCreateInfo) WithPAttachments(y []ImageView) FramebufferCreateInfo {
-	ptr := func(x *[]ImageView) **C.VkImageView { /* Slice */
+	x.pAttachments = *(func(x *[]ImageView) **C.VkImageView { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkImageView)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.VkImageView)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pAttachments = *ptr
+	}(&y))
 	return x.WithAttachmentCount(uint32(len(y)))
 }
 
@@ -4212,8 +4197,7 @@ func (x FramebufferCreateInfo) Width() uint32 {
 // WithWidth sets the value for the Width on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x FramebufferCreateInfo) WithWidth(y uint32) FramebufferCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.width = *ptr
+	x.width = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -4226,8 +4210,7 @@ func (x FramebufferCreateInfo) Height() uint32 {
 // WithHeight sets the value for the Height on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x FramebufferCreateInfo) WithHeight(y uint32) FramebufferCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.height = *ptr
+	x.height = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -4240,8 +4223,7 @@ func (x FramebufferCreateInfo) Layers() uint32 {
 // WithLayers sets the value for the Layers on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x FramebufferCreateInfo) WithLayers(y uint32) FramebufferCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.layers = *ptr
+	x.layers = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -4368,8 +4350,7 @@ func (x AttachmentReference) Attachment() uint32 {
 // WithAttachment sets the value for the Attachment on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentReference) WithAttachment(y uint32) AttachmentReference {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.attachment = *ptr
+	x.attachment = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -4382,8 +4363,7 @@ func (x AttachmentReference) Layout() ImageLayout {
 // WithLayout sets the value for the Layout on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentReference) WithLayout(y ImageLayout) AttachmentReference {
-	ptr := /* typedef */ (*C.VkImageLayout)(&y)
-	x.layout = *ptr
+	x.layout = *( /* typedef */ (*C.VkImageLayout)(&y))
 	return x
 }
 
@@ -4444,8 +4424,7 @@ func (x SemaphoreCreateInfo) WithDefaultSType() SemaphoreCreateInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SemaphoreCreateInfo) WithSType(y StructureType) SemaphoreCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -4458,8 +4437,7 @@ func (x SemaphoreCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SemaphoreCreateInfo) WithPNext(y unsafe.Pointer) SemaphoreCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -4472,8 +4450,7 @@ func (x SemaphoreCreateInfo) Flags() SemaphoreCreateFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SemaphoreCreateInfo) WithFlags(y SemaphoreCreateFlags) SemaphoreCreateInfo {
-	ptr := /* typedef */ (*C.VkSemaphoreCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkSemaphoreCreateFlags)(&y))
 	return x
 }
 
@@ -4534,8 +4511,7 @@ func (x RenderPassCreateInfo) WithDefaultSType() RenderPassCreateInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x RenderPassCreateInfo) WithSType(y StructureType) RenderPassCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -4548,8 +4524,7 @@ func (x RenderPassCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x RenderPassCreateInfo) WithPNext(y unsafe.Pointer) RenderPassCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -4562,8 +4537,7 @@ func (x RenderPassCreateInfo) Flags() RenderPassCreateFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x RenderPassCreateInfo) WithFlags(y RenderPassCreateFlags) RenderPassCreateInfo {
-	ptr := /* typedef */ (*C.VkRenderPassCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkRenderPassCreateFlags)(&y))
 	return x
 }
 
@@ -4576,8 +4550,7 @@ func (x RenderPassCreateInfo) AttachmentCount() uint32 {
 // WithAttachmentCount sets the value for the AttachmentCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x RenderPassCreateInfo) WithAttachmentCount(y uint32) RenderPassCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.attachmentCount = *ptr
+	x.attachmentCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -4596,15 +4569,14 @@ func (x RenderPassCreateInfo) PAttachments() []AttachmentDescription {
 // The specification defines AttachmentCount as the length of this field.
 // AttachmentCount is updated with the length of the new value.
 func (x RenderPassCreateInfo) WithPAttachments(y []AttachmentDescription) RenderPassCreateInfo {
-	ptr := func(x *[]AttachmentDescription) **C.struct_VkAttachmentDescription { /* Slice */
+	x.pAttachments = *(func(x *[]AttachmentDescription) **C.struct_VkAttachmentDescription { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkAttachmentDescription)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkAttachmentDescription)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pAttachments = *ptr
+	}(&y))
 	return x.WithAttachmentCount(uint32(len(y)))
 }
 
@@ -4617,8 +4589,7 @@ func (x RenderPassCreateInfo) SubpassCount() uint32 {
 // WithSubpassCount sets the value for the SubpassCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x RenderPassCreateInfo) WithSubpassCount(y uint32) RenderPassCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.subpassCount = *ptr
+	x.subpassCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -4637,15 +4608,14 @@ func (x RenderPassCreateInfo) PSubpasses() []SubpassDescription {
 // The specification defines SubpassCount as the length of this field.
 // SubpassCount is updated with the length of the new value.
 func (x RenderPassCreateInfo) WithPSubpasses(y []SubpassDescription) RenderPassCreateInfo {
-	ptr := func(x *[]SubpassDescription) **C.struct_VkSubpassDescription { /* Slice */
+	x.pSubpasses = *(func(x *[]SubpassDescription) **C.struct_VkSubpassDescription { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkSubpassDescription)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkSubpassDescription)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pSubpasses = *ptr
+	}(&y))
 	return x.WithSubpassCount(uint32(len(y)))
 }
 
@@ -4658,8 +4628,7 @@ func (x RenderPassCreateInfo) DependencyCount() uint32 {
 // WithDependencyCount sets the value for the DependencyCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x RenderPassCreateInfo) WithDependencyCount(y uint32) RenderPassCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.dependencyCount = *ptr
+	x.dependencyCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -4678,15 +4647,14 @@ func (x RenderPassCreateInfo) PDependencies() []SubpassDependency {
 // The specification defines DependencyCount as the length of this field.
 // DependencyCount is updated with the length of the new value.
 func (x RenderPassCreateInfo) WithPDependencies(y []SubpassDependency) RenderPassCreateInfo {
-	ptr := func(x *[]SubpassDependency) **C.struct_VkSubpassDependency { /* Slice */
+	x.pDependencies = *(func(x *[]SubpassDependency) **C.struct_VkSubpassDependency { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkSubpassDependency)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkSubpassDependency)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pDependencies = *ptr
+	}(&y))
 	return x.WithDependencyCount(uint32(len(y)))
 }
 
@@ -4741,8 +4709,7 @@ func (x SubpassDependency) SrcSubpass() uint32 {
 // WithSrcSubpass sets the value for the SrcSubpass on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDependency) WithSrcSubpass(y uint32) SubpassDependency {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.srcSubpass = *ptr
+	x.srcSubpass = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -4755,8 +4722,7 @@ func (x SubpassDependency) DstSubpass() uint32 {
 // WithDstSubpass sets the value for the DstSubpass on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDependency) WithDstSubpass(y uint32) SubpassDependency {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.dstSubpass = *ptr
+	x.dstSubpass = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -4769,8 +4735,7 @@ func (x SubpassDependency) SrcStageMask() PipelineStageFlags {
 // WithSrcStageMask sets the value for the SrcStageMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDependency) WithSrcStageMask(y PipelineStageFlags) SubpassDependency {
-	ptr := /* typedef */ (*C.VkPipelineStageFlags)(&y)
-	x.srcStageMask = *ptr
+	x.srcStageMask = *( /* typedef */ (*C.VkPipelineStageFlags)(&y))
 	return x
 }
 
@@ -4783,8 +4748,7 @@ func (x SubpassDependency) DstStageMask() PipelineStageFlags {
 // WithDstStageMask sets the value for the DstStageMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDependency) WithDstStageMask(y PipelineStageFlags) SubpassDependency {
-	ptr := /* typedef */ (*C.VkPipelineStageFlags)(&y)
-	x.dstStageMask = *ptr
+	x.dstStageMask = *( /* typedef */ (*C.VkPipelineStageFlags)(&y))
 	return x
 }
 
@@ -4797,8 +4761,7 @@ func (x SubpassDependency) SrcAccessMask() AccessFlags {
 // WithSrcAccessMask sets the value for the SrcAccessMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDependency) WithSrcAccessMask(y AccessFlags) SubpassDependency {
-	ptr := /* typedef */ (*C.VkAccessFlags)(&y)
-	x.srcAccessMask = *ptr
+	x.srcAccessMask = *( /* typedef */ (*C.VkAccessFlags)(&y))
 	return x
 }
 
@@ -4811,8 +4774,7 @@ func (x SubpassDependency) DstAccessMask() AccessFlags {
 // WithDstAccessMask sets the value for the DstAccessMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDependency) WithDstAccessMask(y AccessFlags) SubpassDependency {
-	ptr := /* typedef */ (*C.VkAccessFlags)(&y)
-	x.dstAccessMask = *ptr
+	x.dstAccessMask = *( /* typedef */ (*C.VkAccessFlags)(&y))
 	return x
 }
 
@@ -4825,8 +4787,7 @@ func (x SubpassDependency) DependencyFlags() DependencyFlags {
 // WithDependencyFlags sets the value for the DependencyFlags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDependency) WithDependencyFlags(y DependencyFlags) SubpassDependency {
-	ptr := /* typedef */ (*C.VkDependencyFlags)(&y)
-	x.dependencyFlags = *ptr
+	x.dependencyFlags = *( /* typedef */ (*C.VkDependencyFlags)(&y))
 	return x
 }
 
@@ -4881,8 +4842,7 @@ func (x SubpassDescription) Flags() SubpassDescriptionFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDescription) WithFlags(y SubpassDescriptionFlags) SubpassDescription {
-	ptr := /* typedef */ (*C.VkSubpassDescriptionFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkSubpassDescriptionFlags)(&y))
 	return x
 }
 
@@ -4895,8 +4855,7 @@ func (x SubpassDescription) PipelineBindPoint() PipelineBindPoint {
 // WithPipelineBindPoint sets the value for the PipelineBindPoint on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDescription) WithPipelineBindPoint(y PipelineBindPoint) SubpassDescription {
-	ptr := /* typedef */ (*C.VkPipelineBindPoint)(&y)
-	x.pipelineBindPoint = *ptr
+	x.pipelineBindPoint = *( /* typedef */ (*C.VkPipelineBindPoint)(&y))
 	return x
 }
 
@@ -4909,8 +4868,7 @@ func (x SubpassDescription) InputAttachmentCount() uint32 {
 // WithInputAttachmentCount sets the value for the InputAttachmentCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDescription) WithInputAttachmentCount(y uint32) SubpassDescription {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.inputAttachmentCount = *ptr
+	x.inputAttachmentCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -4929,15 +4887,14 @@ func (x SubpassDescription) PInputAttachments() []AttachmentReference {
 // The specification defines InputAttachmentCount as the length of this field.
 // InputAttachmentCount is updated with the length of the new value.
 func (x SubpassDescription) WithPInputAttachments(y []AttachmentReference) SubpassDescription {
-	ptr := func(x *[]AttachmentReference) **C.struct_VkAttachmentReference { /* Slice */
+	x.pInputAttachments = *(func(x *[]AttachmentReference) **C.struct_VkAttachmentReference { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkAttachmentReference)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkAttachmentReference)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pInputAttachments = *ptr
+	}(&y))
 	return x.WithInputAttachmentCount(uint32(len(y)))
 }
 
@@ -4950,8 +4907,7 @@ func (x SubpassDescription) ColorAttachmentCount() uint32 {
 // WithColorAttachmentCount sets the value for the ColorAttachmentCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDescription) WithColorAttachmentCount(y uint32) SubpassDescription {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.colorAttachmentCount = *ptr
+	x.colorAttachmentCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -4970,15 +4926,14 @@ func (x SubpassDescription) PColorAttachments() []AttachmentReference {
 // The specification defines ColorAttachmentCount as the length of this field.
 // ColorAttachmentCount is updated with the length of the new value.
 func (x SubpassDescription) WithPColorAttachments(y []AttachmentReference) SubpassDescription {
-	ptr := func(x *[]AttachmentReference) **C.struct_VkAttachmentReference { /* Slice */
+	x.pColorAttachments = *(func(x *[]AttachmentReference) **C.struct_VkAttachmentReference { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkAttachmentReference)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkAttachmentReference)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pColorAttachments = *ptr
+	}(&y))
 	return x.WithColorAttachmentCount(uint32(len(y)))
 }
 
@@ -4997,15 +4952,14 @@ func (x SubpassDescription) PResolveAttachments() []AttachmentReference {
 // The specification defines ColorAttachmentCount as the length of this field.
 // ColorAttachmentCount is updated with the length of the new value.
 func (x SubpassDescription) WithPResolveAttachments(y []AttachmentReference) SubpassDescription {
-	ptr := func(x *[]AttachmentReference) **C.struct_VkAttachmentReference { /* Slice */
+	x.pResolveAttachments = *(func(x *[]AttachmentReference) **C.struct_VkAttachmentReference { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkAttachmentReference)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkAttachmentReference)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pResolveAttachments = *ptr
+	}(&y))
 	return x.WithColorAttachmentCount(uint32(len(y)))
 }
 
@@ -5021,11 +4975,10 @@ func (x SubpassDescription) PDepthStencilAttachment() *AttachmentReference {
 // WithPDepthStencilAttachment sets the value for the PDepthStencilAttachment on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDescription) WithPDepthStencilAttachment(y *AttachmentReference) SubpassDescription {
-	ptr := func(x **AttachmentReference) **C.struct_VkAttachmentReference { /* Pointer */
+	x.pDepthStencilAttachment = *(func(x **AttachmentReference) **C.struct_VkAttachmentReference { /* Pointer */
 		g2c := (*C.struct_VkAttachmentReference)(*x)
 		return &g2c
-	}(&y)
-	x.pDepthStencilAttachment = *ptr
+	}(&y))
 	return x
 }
 
@@ -5038,8 +4991,7 @@ func (x SubpassDescription) PreserveAttachmentCount() uint32 {
 // WithPreserveAttachmentCount sets the value for the PreserveAttachmentCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDescription) WithPreserveAttachmentCount(y uint32) SubpassDescription {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.preserveAttachmentCount = *ptr
+	x.preserveAttachmentCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -5058,15 +5010,14 @@ func (x SubpassDescription) PPreserveAttachments() []uint32 {
 // The specification defines PreserveAttachmentCount as the length of this field.
 // PreserveAttachmentCount is updated with the length of the new value.
 func (x SubpassDescription) WithPPreserveAttachments(y []uint32) SubpassDescription {
-	ptr := func(x *[]uint32) **C.uint { /* Slice */
+	x.pPreserveAttachments = *(func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.uint)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pPreserveAttachments = *ptr
+	}(&y))
 	return x.WithPreserveAttachmentCount(uint32(len(y)))
 }
 
@@ -5127,8 +5078,7 @@ func (x BufferCreateInfo) WithDefaultSType() BufferCreateInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferCreateInfo) WithSType(y StructureType) BufferCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -5141,8 +5091,7 @@ func (x BufferCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferCreateInfo) WithPNext(y unsafe.Pointer) BufferCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -5155,8 +5104,7 @@ func (x BufferCreateInfo) Flags() BufferCreateFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferCreateInfo) WithFlags(y BufferCreateFlags) BufferCreateInfo {
-	ptr := /* typedef */ (*C.VkBufferCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkBufferCreateFlags)(&y))
 	return x
 }
 
@@ -5169,8 +5117,7 @@ func (x BufferCreateInfo) Size() DeviceSize {
 // WithSize sets the value for the Size on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferCreateInfo) WithSize(y DeviceSize) BufferCreateInfo {
-	ptr := /* typedef */ (*C.VkDeviceSize)(&y)
-	x.size = *ptr
+	x.size = *( /* typedef */ (*C.VkDeviceSize)(&y))
 	return x
 }
 
@@ -5183,8 +5130,7 @@ func (x BufferCreateInfo) Usage() BufferUsageFlags {
 // WithUsage sets the value for the Usage on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferCreateInfo) WithUsage(y BufferUsageFlags) BufferCreateInfo {
-	ptr := /* typedef */ (*C.VkBufferUsageFlags)(&y)
-	x.usage = *ptr
+	x.usage = *( /* typedef */ (*C.VkBufferUsageFlags)(&y))
 	return x
 }
 
@@ -5197,8 +5143,7 @@ func (x BufferCreateInfo) SharingMode() SharingMode {
 // WithSharingMode sets the value for the SharingMode on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferCreateInfo) WithSharingMode(y SharingMode) BufferCreateInfo {
-	ptr := /* typedef */ (*C.VkSharingMode)(&y)
-	x.sharingMode = *ptr
+	x.sharingMode = *( /* typedef */ (*C.VkSharingMode)(&y))
 	return x
 }
 
@@ -5211,8 +5156,7 @@ func (x BufferCreateInfo) QueueFamilyIndexCount() uint32 {
 // WithQueueFamilyIndexCount sets the value for the QueueFamilyIndexCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferCreateInfo) WithQueueFamilyIndexCount(y uint32) BufferCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.queueFamilyIndexCount = *ptr
+	x.queueFamilyIndexCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -5231,15 +5175,14 @@ func (x BufferCreateInfo) PQueueFamilyIndices() []uint32 {
 // The specification defines QueueFamilyIndexCount as the length of this field.
 // QueueFamilyIndexCount is updated with the length of the new value.
 func (x BufferCreateInfo) WithPQueueFamilyIndices(y []uint32) BufferCreateInfo {
-	ptr := func(x *[]uint32) **C.uint { /* Slice */
+	x.pQueueFamilyIndices = *(func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.uint)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pQueueFamilyIndices = *ptr
+	}(&y))
 	return x.WithQueueFamilyIndexCount(uint32(len(y)))
 }
 
@@ -5294,8 +5237,7 @@ func (x SparseMemoryBind) ResourceOffset() DeviceSize {
 // WithResourceOffset sets the value for the ResourceOffset on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SparseMemoryBind) WithResourceOffset(y DeviceSize) SparseMemoryBind {
-	ptr := /* typedef */ (*C.VkDeviceSize)(&y)
-	x.resourceOffset = *ptr
+	x.resourceOffset = *( /* typedef */ (*C.VkDeviceSize)(&y))
 	return x
 }
 
@@ -5308,8 +5250,7 @@ func (x SparseMemoryBind) Size() DeviceSize {
 // WithSize sets the value for the Size on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SparseMemoryBind) WithSize(y DeviceSize) SparseMemoryBind {
-	ptr := /* typedef */ (*C.VkDeviceSize)(&y)
-	x.size = *ptr
+	x.size = *( /* typedef */ (*C.VkDeviceSize)(&y))
 	return x
 }
 
@@ -5322,8 +5263,7 @@ func (x SparseMemoryBind) Memory() DeviceMemory {
 // WithMemory sets the value for the Memory on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SparseMemoryBind) WithMemory(y DeviceMemory) SparseMemoryBind {
-	ptr := /* handle */ (*C.VkDeviceMemory)(&y)
-	x.memory = *ptr
+	x.memory = *( /* handle */ (*C.VkDeviceMemory)(&y))
 	return x
 }
 
@@ -5336,8 +5276,7 @@ func (x SparseMemoryBind) MemoryOffset() DeviceSize {
 // WithMemoryOffset sets the value for the MemoryOffset on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SparseMemoryBind) WithMemoryOffset(y DeviceSize) SparseMemoryBind {
-	ptr := /* typedef */ (*C.VkDeviceSize)(&y)
-	x.memoryOffset = *ptr
+	x.memoryOffset = *( /* typedef */ (*C.VkDeviceSize)(&y))
 	return x
 }
 
@@ -5350,8 +5289,7 @@ func (x SparseMemoryBind) Flags() SparseMemoryBindFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SparseMemoryBind) WithFlags(y SparseMemoryBindFlags) SparseMemoryBind {
-	ptr := /* typedef */ (*C.VkSparseMemoryBindFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkSparseMemoryBindFlags)(&y))
 	return x
 }
 
@@ -5406,8 +5344,7 @@ func (x SparseImageOpaqueMemoryBindInfo) Image() Image {
 // WithImage sets the value for the Image on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SparseImageOpaqueMemoryBindInfo) WithImage(y Image) SparseImageOpaqueMemoryBindInfo {
-	ptr := /* handle */ (*C.VkImage)(&y)
-	x.image = *ptr
+	x.image = *( /* handle */ (*C.VkImage)(&y))
 	return x
 }
 
@@ -5420,8 +5357,7 @@ func (x SparseImageOpaqueMemoryBindInfo) BindCount() uint32 {
 // WithBindCount sets the value for the BindCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SparseImageOpaqueMemoryBindInfo) WithBindCount(y uint32) SparseImageOpaqueMemoryBindInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.bindCount = *ptr
+	x.bindCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -5440,15 +5376,14 @@ func (x SparseImageOpaqueMemoryBindInfo) PBinds() []SparseMemoryBind {
 // The specification defines BindCount as the length of this field.
 // BindCount is updated with the length of the new value.
 func (x SparseImageOpaqueMemoryBindInfo) WithPBinds(y []SparseMemoryBind) SparseImageOpaqueMemoryBindInfo {
-	ptr := func(x *[]SparseMemoryBind) **C.struct_VkSparseMemoryBind { /* Slice */
+	x.pBinds = *(func(x *[]SparseMemoryBind) **C.struct_VkSparseMemoryBind { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkSparseMemoryBind)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkSparseMemoryBind)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pBinds = *ptr
+	}(&y))
 	return x.WithBindCount(uint32(len(y)))
 }
 
@@ -5503,8 +5438,7 @@ func (x SparseImageMemoryBindInfo) Image() Image {
 // WithImage sets the value for the Image on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SparseImageMemoryBindInfo) WithImage(y Image) SparseImageMemoryBindInfo {
-	ptr := /* handle */ (*C.VkImage)(&y)
-	x.image = *ptr
+	x.image = *( /* handle */ (*C.VkImage)(&y))
 	return x
 }
 
@@ -5517,8 +5451,7 @@ func (x SparseImageMemoryBindInfo) BindCount() uint32 {
 // WithBindCount sets the value for the BindCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SparseImageMemoryBindInfo) WithBindCount(y uint32) SparseImageMemoryBindInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.bindCount = *ptr
+	x.bindCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -5537,15 +5470,14 @@ func (x SparseImageMemoryBindInfo) PBinds() []SparseImageMemoryBind {
 // The specification defines BindCount as the length of this field.
 // BindCount is updated with the length of the new value.
 func (x SparseImageMemoryBindInfo) WithPBinds(y []SparseImageMemoryBind) SparseImageMemoryBindInfo {
-	ptr := func(x *[]SparseImageMemoryBind) **C.struct_VkSparseImageMemoryBind { /* Slice */
+	x.pBinds = *(func(x *[]SparseImageMemoryBind) **C.struct_VkSparseImageMemoryBind { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkSparseImageMemoryBind)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkSparseImageMemoryBind)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pBinds = *ptr
+	}(&y))
 	return x.WithBindCount(uint32(len(y)))
 }
 
@@ -5600,8 +5532,7 @@ func (x SparseImageMemoryBind) Subresource() ImageSubresource {
 // WithSubresource sets the value for the Subresource on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SparseImageMemoryBind) WithSubresource(y ImageSubresource) SparseImageMemoryBind {
-	ptr := /* typedef */ (*C.struct_VkImageSubresource)(&y)
-	x.subresource = *ptr
+	x.subresource = *( /* typedef */ (*C.struct_VkImageSubresource)(&y))
 	return x
 }
 
@@ -5614,8 +5545,7 @@ func (x SparseImageMemoryBind) Offset() Offset3D {
 // WithOffset sets the value for the Offset on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SparseImageMemoryBind) WithOffset(y Offset3D) SparseImageMemoryBind {
-	ptr := /* typedef */ (*C.struct_VkOffset3D)(&y)
-	x.offset = *ptr
+	x.offset = *( /* typedef */ (*C.struct_VkOffset3D)(&y))
 	return x
 }
 
@@ -5628,8 +5558,7 @@ func (x SparseImageMemoryBind) Extent() Extent3D {
 // WithExtent sets the value for the Extent on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SparseImageMemoryBind) WithExtent(y Extent3D) SparseImageMemoryBind {
-	ptr := /* typedef */ (*C.struct_VkExtent3D)(&y)
-	x.extent = *ptr
+	x.extent = *( /* typedef */ (*C.struct_VkExtent3D)(&y))
 	return x
 }
 
@@ -5642,8 +5571,7 @@ func (x SparseImageMemoryBind) Memory() DeviceMemory {
 // WithMemory sets the value for the Memory on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SparseImageMemoryBind) WithMemory(y DeviceMemory) SparseImageMemoryBind {
-	ptr := /* handle */ (*C.VkDeviceMemory)(&y)
-	x.memory = *ptr
+	x.memory = *( /* handle */ (*C.VkDeviceMemory)(&y))
 	return x
 }
 
@@ -5656,8 +5584,7 @@ func (x SparseImageMemoryBind) MemoryOffset() DeviceSize {
 // WithMemoryOffset sets the value for the MemoryOffset on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SparseImageMemoryBind) WithMemoryOffset(y DeviceSize) SparseImageMemoryBind {
-	ptr := /* typedef */ (*C.VkDeviceSize)(&y)
-	x.memoryOffset = *ptr
+	x.memoryOffset = *( /* typedef */ (*C.VkDeviceSize)(&y))
 	return x
 }
 
@@ -5670,8 +5597,7 @@ func (x SparseImageMemoryBind) Flags() SparseMemoryBindFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SparseImageMemoryBind) WithFlags(y SparseMemoryBindFlags) SparseImageMemoryBind {
-	ptr := /* typedef */ (*C.VkSparseMemoryBindFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkSparseMemoryBindFlags)(&y))
 	return x
 }
 
@@ -5786,8 +5712,7 @@ func (x SparseBufferMemoryBindInfo) Buffer() Buffer {
 // WithBuffer sets the value for the Buffer on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SparseBufferMemoryBindInfo) WithBuffer(y Buffer) SparseBufferMemoryBindInfo {
-	ptr := /* handle */ (*C.VkBuffer)(&y)
-	x.buffer = *ptr
+	x.buffer = *( /* handle */ (*C.VkBuffer)(&y))
 	return x
 }
 
@@ -5800,8 +5725,7 @@ func (x SparseBufferMemoryBindInfo) BindCount() uint32 {
 // WithBindCount sets the value for the BindCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SparseBufferMemoryBindInfo) WithBindCount(y uint32) SparseBufferMemoryBindInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.bindCount = *ptr
+	x.bindCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -5820,15 +5744,14 @@ func (x SparseBufferMemoryBindInfo) PBinds() []SparseMemoryBind {
 // The specification defines BindCount as the length of this field.
 // BindCount is updated with the length of the new value.
 func (x SparseBufferMemoryBindInfo) WithPBinds(y []SparseMemoryBind) SparseBufferMemoryBindInfo {
-	ptr := func(x *[]SparseMemoryBind) **C.struct_VkSparseMemoryBind { /* Slice */
+	x.pBinds = *(func(x *[]SparseMemoryBind) **C.struct_VkSparseMemoryBind { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkSparseMemoryBind)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkSparseMemoryBind)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pBinds = *ptr
+	}(&y))
 	return x.WithBindCount(uint32(len(y)))
 }
 
@@ -5883,8 +5806,7 @@ func (x ImageSubresource) AspectMask() ImageAspectFlags {
 // WithAspectMask sets the value for the AspectMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageSubresource) WithAspectMask(y ImageAspectFlags) ImageSubresource {
-	ptr := /* typedef */ (*C.VkImageAspectFlags)(&y)
-	x.aspectMask = *ptr
+	x.aspectMask = *( /* typedef */ (*C.VkImageAspectFlags)(&y))
 	return x
 }
 
@@ -5897,8 +5819,7 @@ func (x ImageSubresource) MipLevel() uint32 {
 // WithMipLevel sets the value for the MipLevel on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageSubresource) WithMipLevel(y uint32) ImageSubresource {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.mipLevel = *ptr
+	x.mipLevel = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -5911,8 +5832,7 @@ func (x ImageSubresource) ArrayLayer() uint32 {
 // WithArrayLayer sets the value for the ArrayLayer on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageSubresource) WithArrayLayer(y uint32) ImageSubresource {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.arrayLayer = *ptr
+	x.arrayLayer = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -5973,8 +5893,7 @@ func (x BufferViewCreateInfo) WithDefaultSType() BufferViewCreateInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferViewCreateInfo) WithSType(y StructureType) BufferViewCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -5987,8 +5906,7 @@ func (x BufferViewCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferViewCreateInfo) WithPNext(y unsafe.Pointer) BufferViewCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -6001,8 +5919,7 @@ func (x BufferViewCreateInfo) Flags() BufferViewCreateFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferViewCreateInfo) WithFlags(y BufferViewCreateFlags) BufferViewCreateInfo {
-	ptr := /* typedef */ (*C.VkBufferViewCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkBufferViewCreateFlags)(&y))
 	return x
 }
 
@@ -6015,8 +5932,7 @@ func (x BufferViewCreateInfo) Buffer() Buffer {
 // WithBuffer sets the value for the Buffer on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferViewCreateInfo) WithBuffer(y Buffer) BufferViewCreateInfo {
-	ptr := /* handle */ (*C.VkBuffer)(&y)
-	x.buffer = *ptr
+	x.buffer = *( /* handle */ (*C.VkBuffer)(&y))
 	return x
 }
 
@@ -6029,8 +5945,7 @@ func (x BufferViewCreateInfo) Format() Format {
 // WithFormat sets the value for the Format on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferViewCreateInfo) WithFormat(y Format) BufferViewCreateInfo {
-	ptr := /* typedef */ (*C.VkFormat)(&y)
-	x.format = *ptr
+	x.format = *( /* typedef */ (*C.VkFormat)(&y))
 	return x
 }
 
@@ -6043,8 +5958,7 @@ func (x BufferViewCreateInfo) Offset() DeviceSize {
 // WithOffset sets the value for the Offset on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferViewCreateInfo) WithOffset(y DeviceSize) BufferViewCreateInfo {
-	ptr := /* typedef */ (*C.VkDeviceSize)(&y)
-	x.offset = *ptr
+	x.offset = *( /* typedef */ (*C.VkDeviceSize)(&y))
 	return x
 }
 
@@ -6057,8 +5971,7 @@ func (x BufferViewCreateInfo) Range_() DeviceSize {
 // WithRange_ sets the value for the Range_ on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferViewCreateInfo) WithRange_(y DeviceSize) BufferViewCreateInfo {
-	ptr := /* typedef */ (*C.VkDeviceSize)(&y)
-	x._range = *ptr
+	x._range = *( /* typedef */ (*C.VkDeviceSize)(&y))
 	return x
 }
 
@@ -6113,8 +6026,7 @@ func (x AttachmentDescription) Flags() AttachmentDescriptionFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentDescription) WithFlags(y AttachmentDescriptionFlags) AttachmentDescription {
-	ptr := /* typedef */ (*C.VkAttachmentDescriptionFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkAttachmentDescriptionFlags)(&y))
 	return x
 }
 
@@ -6127,8 +6039,7 @@ func (x AttachmentDescription) Format() Format {
 // WithFormat sets the value for the Format on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentDescription) WithFormat(y Format) AttachmentDescription {
-	ptr := /* typedef */ (*C.VkFormat)(&y)
-	x.format = *ptr
+	x.format = *( /* typedef */ (*C.VkFormat)(&y))
 	return x
 }
 
@@ -6141,8 +6052,7 @@ func (x AttachmentDescription) Samples() SampleCountFlagBits {
 // WithSamples sets the value for the Samples on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentDescription) WithSamples(y SampleCountFlagBits) AttachmentDescription {
-	ptr := /* typedef */ (*C.VkSampleCountFlagBits)(&y)
-	x.samples = *ptr
+	x.samples = *( /* typedef */ (*C.VkSampleCountFlagBits)(&y))
 	return x
 }
 
@@ -6155,8 +6065,7 @@ func (x AttachmentDescription) LoadOp() AttachmentLoadOp {
 // WithLoadOp sets the value for the LoadOp on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentDescription) WithLoadOp(y AttachmentLoadOp) AttachmentDescription {
-	ptr := /* typedef */ (*C.VkAttachmentLoadOp)(&y)
-	x.loadOp = *ptr
+	x.loadOp = *( /* typedef */ (*C.VkAttachmentLoadOp)(&y))
 	return x
 }
 
@@ -6169,8 +6078,7 @@ func (x AttachmentDescription) StoreOp() AttachmentStoreOp {
 // WithStoreOp sets the value for the StoreOp on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentDescription) WithStoreOp(y AttachmentStoreOp) AttachmentDescription {
-	ptr := /* typedef */ (*C.VkAttachmentStoreOp)(&y)
-	x.storeOp = *ptr
+	x.storeOp = *( /* typedef */ (*C.VkAttachmentStoreOp)(&y))
 	return x
 }
 
@@ -6183,8 +6091,7 @@ func (x AttachmentDescription) StencilLoadOp() AttachmentLoadOp {
 // WithStencilLoadOp sets the value for the StencilLoadOp on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentDescription) WithStencilLoadOp(y AttachmentLoadOp) AttachmentDescription {
-	ptr := /* typedef */ (*C.VkAttachmentLoadOp)(&y)
-	x.stencilLoadOp = *ptr
+	x.stencilLoadOp = *( /* typedef */ (*C.VkAttachmentLoadOp)(&y))
 	return x
 }
 
@@ -6197,8 +6104,7 @@ func (x AttachmentDescription) StencilStoreOp() AttachmentStoreOp {
 // WithStencilStoreOp sets the value for the StencilStoreOp on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentDescription) WithStencilStoreOp(y AttachmentStoreOp) AttachmentDescription {
-	ptr := /* typedef */ (*C.VkAttachmentStoreOp)(&y)
-	x.stencilStoreOp = *ptr
+	x.stencilStoreOp = *( /* typedef */ (*C.VkAttachmentStoreOp)(&y))
 	return x
 }
 
@@ -6211,8 +6117,7 @@ func (x AttachmentDescription) InitialLayout() ImageLayout {
 // WithInitialLayout sets the value for the InitialLayout on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentDescription) WithInitialLayout(y ImageLayout) AttachmentDescription {
-	ptr := /* typedef */ (*C.VkImageLayout)(&y)
-	x.initialLayout = *ptr
+	x.initialLayout = *( /* typedef */ (*C.VkImageLayout)(&y))
 	return x
 }
 
@@ -6225,8 +6130,7 @@ func (x AttachmentDescription) FinalLayout() ImageLayout {
 // WithFinalLayout sets the value for the FinalLayout on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentDescription) WithFinalLayout(y ImageLayout) AttachmentDescription {
-	ptr := /* typedef */ (*C.VkImageLayout)(&y)
-	x.finalLayout = *ptr
+	x.finalLayout = *( /* typedef */ (*C.VkImageLayout)(&y))
 	return x
 }
 
@@ -6287,8 +6191,7 @@ func (x BindSparseInfo) WithDefaultSType() BindSparseInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BindSparseInfo) WithSType(y StructureType) BindSparseInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -6301,8 +6204,7 @@ func (x BindSparseInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BindSparseInfo) WithPNext(y unsafe.Pointer) BindSparseInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -6315,8 +6217,7 @@ func (x BindSparseInfo) WaitSemaphoreCount() uint32 {
 // WithWaitSemaphoreCount sets the value for the WaitSemaphoreCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BindSparseInfo) WithWaitSemaphoreCount(y uint32) BindSparseInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.waitSemaphoreCount = *ptr
+	x.waitSemaphoreCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -6335,15 +6236,14 @@ func (x BindSparseInfo) PWaitSemaphores() []Semaphore {
 // The specification defines WaitSemaphoreCount as the length of this field.
 // WaitSemaphoreCount is updated with the length of the new value.
 func (x BindSparseInfo) WithPWaitSemaphores(y []Semaphore) BindSparseInfo {
-	ptr := func(x *[]Semaphore) **C.VkSemaphore { /* Slice */
+	x.pWaitSemaphores = *(func(x *[]Semaphore) **C.VkSemaphore { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkSemaphore)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.VkSemaphore)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pWaitSemaphores = *ptr
+	}(&y))
 	return x.WithWaitSemaphoreCount(uint32(len(y)))
 }
 
@@ -6356,8 +6256,7 @@ func (x BindSparseInfo) BufferBindCount() uint32 {
 // WithBufferBindCount sets the value for the BufferBindCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BindSparseInfo) WithBufferBindCount(y uint32) BindSparseInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.bufferBindCount = *ptr
+	x.bufferBindCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -6376,15 +6275,14 @@ func (x BindSparseInfo) PBufferBinds() []SparseBufferMemoryBindInfo {
 // The specification defines BufferBindCount as the length of this field.
 // BufferBindCount is updated with the length of the new value.
 func (x BindSparseInfo) WithPBufferBinds(y []SparseBufferMemoryBindInfo) BindSparseInfo {
-	ptr := func(x *[]SparseBufferMemoryBindInfo) **C.struct_VkSparseBufferMemoryBindInfo { /* Slice */
+	x.pBufferBinds = *(func(x *[]SparseBufferMemoryBindInfo) **C.struct_VkSparseBufferMemoryBindInfo { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkSparseBufferMemoryBindInfo)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkSparseBufferMemoryBindInfo)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pBufferBinds = *ptr
+	}(&y))
 	return x.WithBufferBindCount(uint32(len(y)))
 }
 
@@ -6397,8 +6295,7 @@ func (x BindSparseInfo) ImageOpaqueBindCount() uint32 {
 // WithImageOpaqueBindCount sets the value for the ImageOpaqueBindCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BindSparseInfo) WithImageOpaqueBindCount(y uint32) BindSparseInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.imageOpaqueBindCount = *ptr
+	x.imageOpaqueBindCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -6417,15 +6314,14 @@ func (x BindSparseInfo) PImageOpaqueBinds() []SparseImageOpaqueMemoryBindInfo {
 // The specification defines ImageOpaqueBindCount as the length of this field.
 // ImageOpaqueBindCount is updated with the length of the new value.
 func (x BindSparseInfo) WithPImageOpaqueBinds(y []SparseImageOpaqueMemoryBindInfo) BindSparseInfo {
-	ptr := func(x *[]SparseImageOpaqueMemoryBindInfo) **C.struct_VkSparseImageOpaqueMemoryBindInfo { /* Slice */
+	x.pImageOpaqueBinds = *(func(x *[]SparseImageOpaqueMemoryBindInfo) **C.struct_VkSparseImageOpaqueMemoryBindInfo { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkSparseImageOpaqueMemoryBindInfo)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkSparseImageOpaqueMemoryBindInfo)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pImageOpaqueBinds = *ptr
+	}(&y))
 	return x.WithImageOpaqueBindCount(uint32(len(y)))
 }
 
@@ -6438,8 +6334,7 @@ func (x BindSparseInfo) ImageBindCount() uint32 {
 // WithImageBindCount sets the value for the ImageBindCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BindSparseInfo) WithImageBindCount(y uint32) BindSparseInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.imageBindCount = *ptr
+	x.imageBindCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -6458,15 +6353,14 @@ func (x BindSparseInfo) PImageBinds() []SparseImageMemoryBindInfo {
 // The specification defines ImageBindCount as the length of this field.
 // ImageBindCount is updated with the length of the new value.
 func (x BindSparseInfo) WithPImageBinds(y []SparseImageMemoryBindInfo) BindSparseInfo {
-	ptr := func(x *[]SparseImageMemoryBindInfo) **C.struct_VkSparseImageMemoryBindInfo { /* Slice */
+	x.pImageBinds = *(func(x *[]SparseImageMemoryBindInfo) **C.struct_VkSparseImageMemoryBindInfo { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkSparseImageMemoryBindInfo)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkSparseImageMemoryBindInfo)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pImageBinds = *ptr
+	}(&y))
 	return x.WithImageBindCount(uint32(len(y)))
 }
 
@@ -6479,8 +6373,7 @@ func (x BindSparseInfo) SignalSemaphoreCount() uint32 {
 // WithSignalSemaphoreCount sets the value for the SignalSemaphoreCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BindSparseInfo) WithSignalSemaphoreCount(y uint32) BindSparseInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.signalSemaphoreCount = *ptr
+	x.signalSemaphoreCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -6499,15 +6392,14 @@ func (x BindSparseInfo) PSignalSemaphores() []Semaphore {
 // The specification defines SignalSemaphoreCount as the length of this field.
 // SignalSemaphoreCount is updated with the length of the new value.
 func (x BindSparseInfo) WithPSignalSemaphores(y []Semaphore) BindSparseInfo {
-	ptr := func(x *[]Semaphore) **C.VkSemaphore { /* Slice */
+	x.pSignalSemaphores = *(func(x *[]Semaphore) **C.VkSemaphore { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkSemaphore)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.VkSemaphore)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pSignalSemaphores = *ptr
+	}(&y))
 	return x.WithSignalSemaphoreCount(uint32(len(y)))
 }
 
@@ -6628,8 +6520,7 @@ func (x CommandPoolCreateInfo) WithDefaultSType() CommandPoolCreateInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x CommandPoolCreateInfo) WithSType(y StructureType) CommandPoolCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -6642,8 +6533,7 @@ func (x CommandPoolCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x CommandPoolCreateInfo) WithPNext(y unsafe.Pointer) CommandPoolCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -6656,8 +6546,7 @@ func (x CommandPoolCreateInfo) Flags() CommandPoolCreateFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x CommandPoolCreateInfo) WithFlags(y CommandPoolCreateFlags) CommandPoolCreateInfo {
-	ptr := /* typedef */ (*C.VkCommandPoolCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkCommandPoolCreateFlags)(&y))
 	return x
 }
 
@@ -6670,8 +6559,7 @@ func (x CommandPoolCreateInfo) QueueFamilyIndex() uint32 {
 // WithQueueFamilyIndex sets the value for the QueueFamilyIndex on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x CommandPoolCreateInfo) WithQueueFamilyIndex(y uint32) CommandPoolCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.queueFamilyIndex = *ptr
+	x.queueFamilyIndex = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -6732,8 +6620,7 @@ func (x ImageCreateInfo) WithDefaultSType() ImageCreateInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageCreateInfo) WithSType(y StructureType) ImageCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -6746,8 +6633,7 @@ func (x ImageCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageCreateInfo) WithPNext(y unsafe.Pointer) ImageCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -6760,8 +6646,7 @@ func (x ImageCreateInfo) Flags() ImageCreateFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageCreateInfo) WithFlags(y ImageCreateFlags) ImageCreateInfo {
-	ptr := /* typedef */ (*C.VkImageCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkImageCreateFlags)(&y))
 	return x
 }
 
@@ -6774,8 +6659,7 @@ func (x ImageCreateInfo) ImageType() ImageType {
 // WithImageType sets the value for the ImageType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageCreateInfo) WithImageType(y ImageType) ImageCreateInfo {
-	ptr := /* typedef */ (*C.VkImageType)(&y)
-	x.imageType = *ptr
+	x.imageType = *( /* typedef */ (*C.VkImageType)(&y))
 	return x
 }
 
@@ -6788,8 +6672,7 @@ func (x ImageCreateInfo) Format() Format {
 // WithFormat sets the value for the Format on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageCreateInfo) WithFormat(y Format) ImageCreateInfo {
-	ptr := /* typedef */ (*C.VkFormat)(&y)
-	x.format = *ptr
+	x.format = *( /* typedef */ (*C.VkFormat)(&y))
 	return x
 }
 
@@ -6802,8 +6685,7 @@ func (x ImageCreateInfo) Extent() Extent3D {
 // WithExtent sets the value for the Extent on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageCreateInfo) WithExtent(y Extent3D) ImageCreateInfo {
-	ptr := /* typedef */ (*C.struct_VkExtent3D)(&y)
-	x.extent = *ptr
+	x.extent = *( /* typedef */ (*C.struct_VkExtent3D)(&y))
 	return x
 }
 
@@ -6816,8 +6698,7 @@ func (x ImageCreateInfo) MipLevels() uint32 {
 // WithMipLevels sets the value for the MipLevels on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageCreateInfo) WithMipLevels(y uint32) ImageCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.mipLevels = *ptr
+	x.mipLevels = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -6830,8 +6711,7 @@ func (x ImageCreateInfo) ArrayLayers() uint32 {
 // WithArrayLayers sets the value for the ArrayLayers on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageCreateInfo) WithArrayLayers(y uint32) ImageCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.arrayLayers = *ptr
+	x.arrayLayers = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -6844,8 +6724,7 @@ func (x ImageCreateInfo) Samples() SampleCountFlagBits {
 // WithSamples sets the value for the Samples on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageCreateInfo) WithSamples(y SampleCountFlagBits) ImageCreateInfo {
-	ptr := /* typedef */ (*C.VkSampleCountFlagBits)(&y)
-	x.samples = *ptr
+	x.samples = *( /* typedef */ (*C.VkSampleCountFlagBits)(&y))
 	return x
 }
 
@@ -6858,8 +6737,7 @@ func (x ImageCreateInfo) Tiling() ImageTiling {
 // WithTiling sets the value for the Tiling on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageCreateInfo) WithTiling(y ImageTiling) ImageCreateInfo {
-	ptr := /* typedef */ (*C.VkImageTiling)(&y)
-	x.tiling = *ptr
+	x.tiling = *( /* typedef */ (*C.VkImageTiling)(&y))
 	return x
 }
 
@@ -6872,8 +6750,7 @@ func (x ImageCreateInfo) Usage() ImageUsageFlags {
 // WithUsage sets the value for the Usage on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageCreateInfo) WithUsage(y ImageUsageFlags) ImageCreateInfo {
-	ptr := /* typedef */ (*C.VkImageUsageFlags)(&y)
-	x.usage = *ptr
+	x.usage = *( /* typedef */ (*C.VkImageUsageFlags)(&y))
 	return x
 }
 
@@ -6886,8 +6763,7 @@ func (x ImageCreateInfo) SharingMode() SharingMode {
 // WithSharingMode sets the value for the SharingMode on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageCreateInfo) WithSharingMode(y SharingMode) ImageCreateInfo {
-	ptr := /* typedef */ (*C.VkSharingMode)(&y)
-	x.sharingMode = *ptr
+	x.sharingMode = *( /* typedef */ (*C.VkSharingMode)(&y))
 	return x
 }
 
@@ -6900,8 +6776,7 @@ func (x ImageCreateInfo) QueueFamilyIndexCount() uint32 {
 // WithQueueFamilyIndexCount sets the value for the QueueFamilyIndexCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageCreateInfo) WithQueueFamilyIndexCount(y uint32) ImageCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.queueFamilyIndexCount = *ptr
+	x.queueFamilyIndexCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -6920,15 +6795,14 @@ func (x ImageCreateInfo) PQueueFamilyIndices() []uint32 {
 // The specification defines QueueFamilyIndexCount as the length of this field.
 // QueueFamilyIndexCount is updated with the length of the new value.
 func (x ImageCreateInfo) WithPQueueFamilyIndices(y []uint32) ImageCreateInfo {
-	ptr := func(x *[]uint32) **C.uint { /* Slice */
+	x.pQueueFamilyIndices = *(func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.uint)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pQueueFamilyIndices = *ptr
+	}(&y))
 	return x.WithQueueFamilyIndexCount(uint32(len(y)))
 }
 
@@ -6941,8 +6815,7 @@ func (x ImageCreateInfo) InitialLayout() ImageLayout {
 // WithInitialLayout sets the value for the InitialLayout on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageCreateInfo) WithInitialLayout(y ImageLayout) ImageCreateInfo {
-	ptr := /* typedef */ (*C.VkImageLayout)(&y)
-	x.initialLayout = *ptr
+	x.initialLayout = *( /* typedef */ (*C.VkImageLayout)(&y))
 	return x
 }
 
@@ -7003,8 +6876,7 @@ func (x MemoryAllocateInfo) WithDefaultSType() MemoryAllocateInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x MemoryAllocateInfo) WithSType(y StructureType) MemoryAllocateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -7017,8 +6889,7 @@ func (x MemoryAllocateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x MemoryAllocateInfo) WithPNext(y unsafe.Pointer) MemoryAllocateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -7031,8 +6902,7 @@ func (x MemoryAllocateInfo) AllocationSize() DeviceSize {
 // WithAllocationSize sets the value for the AllocationSize on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x MemoryAllocateInfo) WithAllocationSize(y DeviceSize) MemoryAllocateInfo {
-	ptr := /* typedef */ (*C.VkDeviceSize)(&y)
-	x.allocationSize = *ptr
+	x.allocationSize = *( /* typedef */ (*C.VkDeviceSize)(&y))
 	return x
 }
 
@@ -7045,8 +6915,7 @@ func (x MemoryAllocateInfo) MemoryTypeIndex() uint32 {
 // WithMemoryTypeIndex sets the value for the MemoryTypeIndex on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x MemoryAllocateInfo) WithMemoryTypeIndex(y uint32) MemoryAllocateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.memoryTypeIndex = *ptr
+	x.memoryTypeIndex = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -7179,8 +7048,7 @@ func (x WriteDescriptorSet) WithDefaultSType() WriteDescriptorSet {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x WriteDescriptorSet) WithSType(y StructureType) WriteDescriptorSet {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -7193,8 +7061,7 @@ func (x WriteDescriptorSet) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x WriteDescriptorSet) WithPNext(y unsafe.Pointer) WriteDescriptorSet {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -7207,8 +7074,7 @@ func (x WriteDescriptorSet) DstSet() DescriptorSet {
 // WithDstSet sets the value for the DstSet on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x WriteDescriptorSet) WithDstSet(y DescriptorSet) WriteDescriptorSet {
-	ptr := /* handle */ (*C.VkDescriptorSet)(&y)
-	x.dstSet = *ptr
+	x.dstSet = *( /* handle */ (*C.VkDescriptorSet)(&y))
 	return x
 }
 
@@ -7221,8 +7087,7 @@ func (x WriteDescriptorSet) DstBinding() uint32 {
 // WithDstBinding sets the value for the DstBinding on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x WriteDescriptorSet) WithDstBinding(y uint32) WriteDescriptorSet {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.dstBinding = *ptr
+	x.dstBinding = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -7235,8 +7100,7 @@ func (x WriteDescriptorSet) DstArrayElement() uint32 {
 // WithDstArrayElement sets the value for the DstArrayElement on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x WriteDescriptorSet) WithDstArrayElement(y uint32) WriteDescriptorSet {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.dstArrayElement = *ptr
+	x.dstArrayElement = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -7249,8 +7113,7 @@ func (x WriteDescriptorSet) DescriptorCount() uint32 {
 // WithDescriptorCount sets the value for the DescriptorCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x WriteDescriptorSet) WithDescriptorCount(y uint32) WriteDescriptorSet {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.descriptorCount = *ptr
+	x.descriptorCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -7263,8 +7126,7 @@ func (x WriteDescriptorSet) DescriptorType() DescriptorType {
 // WithDescriptorType sets the value for the DescriptorType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x WriteDescriptorSet) WithDescriptorType(y DescriptorType) WriteDescriptorSet {
-	ptr := /* typedef */ (*C.VkDescriptorType)(&y)
-	x.descriptorType = *ptr
+	x.descriptorType = *( /* typedef */ (*C.VkDescriptorType)(&y))
 	return x
 }
 
@@ -7283,15 +7145,14 @@ func (x WriteDescriptorSet) PImageInfo() []DescriptorImageInfo {
 // The specification defines DescriptorCount as the length of this field.
 // DescriptorCount is updated with the length of the new value.
 func (x WriteDescriptorSet) WithPImageInfo(y []DescriptorImageInfo) WriteDescriptorSet {
-	ptr := func(x *[]DescriptorImageInfo) **C.struct_VkDescriptorImageInfo { /* Slice */
+	x.pImageInfo = *(func(x *[]DescriptorImageInfo) **C.struct_VkDescriptorImageInfo { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkDescriptorImageInfo)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkDescriptorImageInfo)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pImageInfo = *ptr
+	}(&y))
 	return x.WithDescriptorCount(uint32(len(y)))
 }
 
@@ -7310,15 +7171,14 @@ func (x WriteDescriptorSet) PBufferInfo() []DescriptorBufferInfo {
 // The specification defines DescriptorCount as the length of this field.
 // DescriptorCount is updated with the length of the new value.
 func (x WriteDescriptorSet) WithPBufferInfo(y []DescriptorBufferInfo) WriteDescriptorSet {
-	ptr := func(x *[]DescriptorBufferInfo) **C.struct_VkDescriptorBufferInfo { /* Slice */
+	x.pBufferInfo = *(func(x *[]DescriptorBufferInfo) **C.struct_VkDescriptorBufferInfo { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkDescriptorBufferInfo)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkDescriptorBufferInfo)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pBufferInfo = *ptr
+	}(&y))
 	return x.WithDescriptorCount(uint32(len(y)))
 }
 
@@ -7337,15 +7197,14 @@ func (x WriteDescriptorSet) PTexelBufferView() []BufferView {
 // The specification defines DescriptorCount as the length of this field.
 // DescriptorCount is updated with the length of the new value.
 func (x WriteDescriptorSet) WithPTexelBufferView(y []BufferView) WriteDescriptorSet {
-	ptr := func(x *[]BufferView) **C.VkBufferView { /* Slice */
+	x.pTexelBufferView = *(func(x *[]BufferView) **C.VkBufferView { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkBufferView)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.VkBufferView)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pTexelBufferView = *ptr
+	}(&y))
 	return x.WithDescriptorCount(uint32(len(y)))
 }
 
@@ -7406,8 +7265,7 @@ func (x MappedMemoryRange) WithDefaultSType() MappedMemoryRange {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x MappedMemoryRange) WithSType(y StructureType) MappedMemoryRange {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -7420,8 +7278,7 @@ func (x MappedMemoryRange) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x MappedMemoryRange) WithPNext(y unsafe.Pointer) MappedMemoryRange {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -7434,8 +7291,7 @@ func (x MappedMemoryRange) Memory() DeviceMemory {
 // WithMemory sets the value for the Memory on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x MappedMemoryRange) WithMemory(y DeviceMemory) MappedMemoryRange {
-	ptr := /* handle */ (*C.VkDeviceMemory)(&y)
-	x.memory = *ptr
+	x.memory = *( /* handle */ (*C.VkDeviceMemory)(&y))
 	return x
 }
 
@@ -7448,8 +7304,7 @@ func (x MappedMemoryRange) Offset() DeviceSize {
 // WithOffset sets the value for the Offset on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x MappedMemoryRange) WithOffset(y DeviceSize) MappedMemoryRange {
-	ptr := /* typedef */ (*C.VkDeviceSize)(&y)
-	x.offset = *ptr
+	x.offset = *( /* typedef */ (*C.VkDeviceSize)(&y))
 	return x
 }
 
@@ -7462,8 +7317,7 @@ func (x MappedMemoryRange) Size() DeviceSize {
 // WithSize sets the value for the Size on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x MappedMemoryRange) WithSize(y DeviceSize) MappedMemoryRange {
-	ptr := /* typedef */ (*C.VkDeviceSize)(&y)
-	x.size = *ptr
+	x.size = *( /* typedef */ (*C.VkDeviceSize)(&y))
 	return x
 }
 
@@ -7518,8 +7372,7 @@ func (x ComponentMapping) R() ComponentSwizzle {
 // WithR sets the value for the R on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ComponentMapping) WithR(y ComponentSwizzle) ComponentMapping {
-	ptr := /* typedef */ (*C.VkComponentSwizzle)(&y)
-	x.r = *ptr
+	x.r = *( /* typedef */ (*C.VkComponentSwizzle)(&y))
 	return x
 }
 
@@ -7532,8 +7385,7 @@ func (x ComponentMapping) G() ComponentSwizzle {
 // WithG sets the value for the G on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ComponentMapping) WithG(y ComponentSwizzle) ComponentMapping {
-	ptr := /* typedef */ (*C.VkComponentSwizzle)(&y)
-	x.g = *ptr
+	x.g = *( /* typedef */ (*C.VkComponentSwizzle)(&y))
 	return x
 }
 
@@ -7546,8 +7398,7 @@ func (x ComponentMapping) B() ComponentSwizzle {
 // WithB sets the value for the B on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ComponentMapping) WithB(y ComponentSwizzle) ComponentMapping {
-	ptr := /* typedef */ (*C.VkComponentSwizzle)(&y)
-	x.b = *ptr
+	x.b = *( /* typedef */ (*C.VkComponentSwizzle)(&y))
 	return x
 }
 
@@ -7560,8 +7411,7 @@ func (x ComponentMapping) A() ComponentSwizzle {
 // WithA sets the value for the A on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ComponentMapping) WithA(y ComponentSwizzle) ComponentMapping {
-	ptr := /* typedef */ (*C.VkComponentSwizzle)(&y)
-	x.a = *ptr
+	x.a = *( /* typedef */ (*C.VkComponentSwizzle)(&y))
 	return x
 }
 
@@ -7622,8 +7472,7 @@ func (x CommandBufferAllocateInfo) WithDefaultSType() CommandBufferAllocateInfo 
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x CommandBufferAllocateInfo) WithSType(y StructureType) CommandBufferAllocateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -7636,8 +7485,7 @@ func (x CommandBufferAllocateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x CommandBufferAllocateInfo) WithPNext(y unsafe.Pointer) CommandBufferAllocateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -7650,8 +7498,7 @@ func (x CommandBufferAllocateInfo) CommandPool() CommandPool {
 // WithCommandPool sets the value for the CommandPool on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x CommandBufferAllocateInfo) WithCommandPool(y CommandPool) CommandBufferAllocateInfo {
-	ptr := /* handle */ (*C.VkCommandPool)(&y)
-	x.commandPool = *ptr
+	x.commandPool = *( /* handle */ (*C.VkCommandPool)(&y))
 	return x
 }
 
@@ -7664,8 +7511,7 @@ func (x CommandBufferAllocateInfo) Level() CommandBufferLevel {
 // WithLevel sets the value for the Level on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x CommandBufferAllocateInfo) WithLevel(y CommandBufferLevel) CommandBufferAllocateInfo {
-	ptr := /* typedef */ (*C.VkCommandBufferLevel)(&y)
-	x.level = *ptr
+	x.level = *( /* typedef */ (*C.VkCommandBufferLevel)(&y))
 	return x
 }
 
@@ -7678,8 +7524,7 @@ func (x CommandBufferAllocateInfo) CommandBufferCount() uint32 {
 // WithCommandBufferCount sets the value for the CommandBufferCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x CommandBufferAllocateInfo) WithCommandBufferCount(y uint32) CommandBufferAllocateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.commandBufferCount = *ptr
+	x.commandBufferCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -7734,8 +7579,7 @@ func (x ImageSubresourceRange) AspectMask() ImageAspectFlags {
 // WithAspectMask sets the value for the AspectMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageSubresourceRange) WithAspectMask(y ImageAspectFlags) ImageSubresourceRange {
-	ptr := /* typedef */ (*C.VkImageAspectFlags)(&y)
-	x.aspectMask = *ptr
+	x.aspectMask = *( /* typedef */ (*C.VkImageAspectFlags)(&y))
 	return x
 }
 
@@ -7748,8 +7592,7 @@ func (x ImageSubresourceRange) BaseMipLevel() uint32 {
 // WithBaseMipLevel sets the value for the BaseMipLevel on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageSubresourceRange) WithBaseMipLevel(y uint32) ImageSubresourceRange {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.baseMipLevel = *ptr
+	x.baseMipLevel = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -7762,8 +7605,7 @@ func (x ImageSubresourceRange) LevelCount() uint32 {
 // WithLevelCount sets the value for the LevelCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageSubresourceRange) WithLevelCount(y uint32) ImageSubresourceRange {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.levelCount = *ptr
+	x.levelCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -7776,8 +7618,7 @@ func (x ImageSubresourceRange) BaseArrayLayer() uint32 {
 // WithBaseArrayLayer sets the value for the BaseArrayLayer on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageSubresourceRange) WithBaseArrayLayer(y uint32) ImageSubresourceRange {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.baseArrayLayer = *ptr
+	x.baseArrayLayer = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -7790,8 +7631,7 @@ func (x ImageSubresourceRange) LayerCount() uint32 {
 // WithLayerCount sets the value for the LayerCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageSubresourceRange) WithLayerCount(y uint32) ImageSubresourceRange {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.layerCount = *ptr
+	x.layerCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -7852,8 +7692,7 @@ func (x CommandBufferBeginInfo) WithDefaultSType() CommandBufferBeginInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x CommandBufferBeginInfo) WithSType(y StructureType) CommandBufferBeginInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -7866,8 +7705,7 @@ func (x CommandBufferBeginInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x CommandBufferBeginInfo) WithPNext(y unsafe.Pointer) CommandBufferBeginInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -7880,8 +7718,7 @@ func (x CommandBufferBeginInfo) Flags() CommandBufferUsageFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x CommandBufferBeginInfo) WithFlags(y CommandBufferUsageFlags) CommandBufferBeginInfo {
-	ptr := /* typedef */ (*C.VkCommandBufferUsageFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkCommandBufferUsageFlags)(&y))
 	return x
 }
 
@@ -7897,11 +7734,10 @@ func (x CommandBufferBeginInfo) PInheritanceInfo() *CommandBufferInheritanceInfo
 // WithPInheritanceInfo sets the value for the PInheritanceInfo on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x CommandBufferBeginInfo) WithPInheritanceInfo(y *CommandBufferInheritanceInfo) CommandBufferBeginInfo {
-	ptr := func(x **CommandBufferInheritanceInfo) **C.struct_VkCommandBufferInheritanceInfo { /* Pointer */
+	x.pInheritanceInfo = *(func(x **CommandBufferInheritanceInfo) **C.struct_VkCommandBufferInheritanceInfo { /* Pointer */
 		g2c := (*C.struct_VkCommandBufferInheritanceInfo)(*x)
 		return &g2c
-	}(&y)
-	x.pInheritanceInfo = *ptr
+	}(&y))
 	return x
 }
 
@@ -7962,8 +7798,7 @@ func (x CommandBufferInheritanceInfo) WithDefaultSType() CommandBufferInheritanc
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x CommandBufferInheritanceInfo) WithSType(y StructureType) CommandBufferInheritanceInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -7976,8 +7811,7 @@ func (x CommandBufferInheritanceInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x CommandBufferInheritanceInfo) WithPNext(y unsafe.Pointer) CommandBufferInheritanceInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -7990,8 +7824,7 @@ func (x CommandBufferInheritanceInfo) RenderPass() RenderPass {
 // WithRenderPass sets the value for the RenderPass on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x CommandBufferInheritanceInfo) WithRenderPass(y RenderPass) CommandBufferInheritanceInfo {
-	ptr := /* handle */ (*C.VkRenderPass)(&y)
-	x.renderPass = *ptr
+	x.renderPass = *( /* handle */ (*C.VkRenderPass)(&y))
 	return x
 }
 
@@ -8004,8 +7837,7 @@ func (x CommandBufferInheritanceInfo) Subpass() uint32 {
 // WithSubpass sets the value for the Subpass on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x CommandBufferInheritanceInfo) WithSubpass(y uint32) CommandBufferInheritanceInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.subpass = *ptr
+	x.subpass = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -8018,8 +7850,7 @@ func (x CommandBufferInheritanceInfo) Framebuffer() Framebuffer {
 // WithFramebuffer sets the value for the Framebuffer on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x CommandBufferInheritanceInfo) WithFramebuffer(y Framebuffer) CommandBufferInheritanceInfo {
-	ptr := /* handle */ (*C.VkFramebuffer)(&y)
-	x.framebuffer = *ptr
+	x.framebuffer = *( /* handle */ (*C.VkFramebuffer)(&y))
 	return x
 }
 
@@ -8032,8 +7863,7 @@ func (x CommandBufferInheritanceInfo) OcclusionQueryEnable() Bool32 {
 // WithOcclusionQueryEnable sets the value for the OcclusionQueryEnable on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x CommandBufferInheritanceInfo) WithOcclusionQueryEnable(y Bool32) CommandBufferInheritanceInfo {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.occlusionQueryEnable = *ptr
+	x.occlusionQueryEnable = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -8046,8 +7876,7 @@ func (x CommandBufferInheritanceInfo) QueryFlags() QueryControlFlags {
 // WithQueryFlags sets the value for the QueryFlags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x CommandBufferInheritanceInfo) WithQueryFlags(y QueryControlFlags) CommandBufferInheritanceInfo {
-	ptr := /* typedef */ (*C.VkQueryControlFlags)(&y)
-	x.queryFlags = *ptr
+	x.queryFlags = *( /* typedef */ (*C.VkQueryControlFlags)(&y))
 	return x
 }
 
@@ -8060,8 +7889,7 @@ func (x CommandBufferInheritanceInfo) PipelineStatistics() QueryPipelineStatisti
 // WithPipelineStatistics sets the value for the PipelineStatistics on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x CommandBufferInheritanceInfo) WithPipelineStatistics(y QueryPipelineStatisticFlags) CommandBufferInheritanceInfo {
-	ptr := /* typedef */ (*C.VkQueryPipelineStatisticFlags)(&y)
-	x.pipelineStatistics = *ptr
+	x.pipelineStatistics = *( /* typedef */ (*C.VkQueryPipelineStatisticFlags)(&y))
 	return x
 }
 
@@ -8122,8 +7950,7 @@ func (x SubmitInfo) WithDefaultSType() SubmitInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubmitInfo) WithSType(y StructureType) SubmitInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -8136,8 +7963,7 @@ func (x SubmitInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubmitInfo) WithPNext(y unsafe.Pointer) SubmitInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -8150,8 +7976,7 @@ func (x SubmitInfo) WaitSemaphoreCount() uint32 {
 // WithWaitSemaphoreCount sets the value for the WaitSemaphoreCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubmitInfo) WithWaitSemaphoreCount(y uint32) SubmitInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.waitSemaphoreCount = *ptr
+	x.waitSemaphoreCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -8170,15 +7995,14 @@ func (x SubmitInfo) PWaitSemaphores() []Semaphore {
 // The specification defines WaitSemaphoreCount as the length of this field.
 // WaitSemaphoreCount is updated with the length of the new value.
 func (x SubmitInfo) WithPWaitSemaphores(y []Semaphore) SubmitInfo {
-	ptr := func(x *[]Semaphore) **C.VkSemaphore { /* Slice */
+	x.pWaitSemaphores = *(func(x *[]Semaphore) **C.VkSemaphore { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkSemaphore)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.VkSemaphore)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pWaitSemaphores = *ptr
+	}(&y))
 	return x.WithWaitSemaphoreCount(uint32(len(y)))
 }
 
@@ -8197,15 +8021,14 @@ func (x SubmitInfo) PWaitDstStageMask() []PipelineStageFlags {
 // The specification defines WaitSemaphoreCount as the length of this field.
 // WaitSemaphoreCount is updated with the length of the new value.
 func (x SubmitInfo) WithPWaitDstStageMask(y []PipelineStageFlags) SubmitInfo {
-	ptr := func(x *[]PipelineStageFlags) **C.VkPipelineStageFlags { /* Slice */
+	x.pWaitDstStageMask = *(func(x *[]PipelineStageFlags) **C.VkPipelineStageFlags { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkPipelineStageFlags)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.VkPipelineStageFlags)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pWaitDstStageMask = *ptr
+	}(&y))
 	return x.WithWaitSemaphoreCount(uint32(len(y)))
 }
 
@@ -8218,8 +8041,7 @@ func (x SubmitInfo) CommandBufferCount() uint32 {
 // WithCommandBufferCount sets the value for the CommandBufferCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubmitInfo) WithCommandBufferCount(y uint32) SubmitInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.commandBufferCount = *ptr
+	x.commandBufferCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -8238,15 +8060,14 @@ func (x SubmitInfo) PCommandBuffers() []CommandBuffer {
 // The specification defines CommandBufferCount as the length of this field.
 // CommandBufferCount is updated with the length of the new value.
 func (x SubmitInfo) WithPCommandBuffers(y []CommandBuffer) SubmitInfo {
-	ptr := func(x *[]CommandBuffer) **C.VkCommandBuffer { /* Slice */
+	x.pCommandBuffers = *(func(x *[]CommandBuffer) **C.VkCommandBuffer { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkCommandBuffer)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.VkCommandBuffer)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pCommandBuffers = *ptr
+	}(&y))
 	return x.WithCommandBufferCount(uint32(len(y)))
 }
 
@@ -8259,8 +8080,7 @@ func (x SubmitInfo) SignalSemaphoreCount() uint32 {
 // WithSignalSemaphoreCount sets the value for the SignalSemaphoreCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubmitInfo) WithSignalSemaphoreCount(y uint32) SubmitInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.signalSemaphoreCount = *ptr
+	x.signalSemaphoreCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -8279,15 +8099,14 @@ func (x SubmitInfo) PSignalSemaphores() []Semaphore {
 // The specification defines SignalSemaphoreCount as the length of this field.
 // SignalSemaphoreCount is updated with the length of the new value.
 func (x SubmitInfo) WithPSignalSemaphores(y []Semaphore) SubmitInfo {
-	ptr := func(x *[]Semaphore) **C.VkSemaphore { /* Slice */
+	x.pSignalSemaphores = *(func(x *[]Semaphore) **C.VkSemaphore { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkSemaphore)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.VkSemaphore)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pSignalSemaphores = *ptr
+	}(&y))
 	return x.WithSignalSemaphoreCount(uint32(len(y)))
 }
 
@@ -8348,8 +8167,7 @@ func (x FenceCreateInfo) WithDefaultSType() FenceCreateInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x FenceCreateInfo) WithSType(y StructureType) FenceCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -8362,8 +8180,7 @@ func (x FenceCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x FenceCreateInfo) WithPNext(y unsafe.Pointer) FenceCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -8376,8 +8193,7 @@ func (x FenceCreateInfo) Flags() FenceCreateFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x FenceCreateInfo) WithFlags(y FenceCreateFlags) FenceCreateInfo {
-	ptr := /* typedef */ (*C.VkFenceCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkFenceCreateFlags)(&y))
 	return x
 }
 
@@ -8432,8 +8248,7 @@ func (x BufferCopy) SrcOffset() DeviceSize {
 // WithSrcOffset sets the value for the SrcOffset on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferCopy) WithSrcOffset(y DeviceSize) BufferCopy {
-	ptr := /* typedef */ (*C.VkDeviceSize)(&y)
-	x.srcOffset = *ptr
+	x.srcOffset = *( /* typedef */ (*C.VkDeviceSize)(&y))
 	return x
 }
 
@@ -8446,8 +8261,7 @@ func (x BufferCopy) DstOffset() DeviceSize {
 // WithDstOffset sets the value for the DstOffset on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferCopy) WithDstOffset(y DeviceSize) BufferCopy {
-	ptr := /* typedef */ (*C.VkDeviceSize)(&y)
-	x.dstOffset = *ptr
+	x.dstOffset = *( /* typedef */ (*C.VkDeviceSize)(&y))
 	return x
 }
 
@@ -8460,8 +8274,7 @@ func (x BufferCopy) Size() DeviceSize {
 // WithSize sets the value for the Size on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferCopy) WithSize(y DeviceSize) BufferCopy {
-	ptr := /* typedef */ (*C.VkDeviceSize)(&y)
-	x.size = *ptr
+	x.size = *( /* typedef */ (*C.VkDeviceSize)(&y))
 	return x
 }
 
@@ -8522,8 +8335,7 @@ func (x DescriptorSetLayoutCreateInfo) WithDefaultSType() DescriptorSetLayoutCre
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorSetLayoutCreateInfo) WithSType(y StructureType) DescriptorSetLayoutCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -8536,8 +8348,7 @@ func (x DescriptorSetLayoutCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorSetLayoutCreateInfo) WithPNext(y unsafe.Pointer) DescriptorSetLayoutCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -8550,8 +8361,7 @@ func (x DescriptorSetLayoutCreateInfo) Flags() DescriptorSetLayoutCreateFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorSetLayoutCreateInfo) WithFlags(y DescriptorSetLayoutCreateFlags) DescriptorSetLayoutCreateInfo {
-	ptr := /* typedef */ (*C.VkDescriptorSetLayoutCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkDescriptorSetLayoutCreateFlags)(&y))
 	return x
 }
 
@@ -8564,8 +8374,7 @@ func (x DescriptorSetLayoutCreateInfo) BindingCount() uint32 {
 // WithBindingCount sets the value for the BindingCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorSetLayoutCreateInfo) WithBindingCount(y uint32) DescriptorSetLayoutCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.bindingCount = *ptr
+	x.bindingCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -8584,15 +8393,14 @@ func (x DescriptorSetLayoutCreateInfo) PBindings() []DescriptorSetLayoutBinding 
 // The specification defines BindingCount as the length of this field.
 // BindingCount is updated with the length of the new value.
 func (x DescriptorSetLayoutCreateInfo) WithPBindings(y []DescriptorSetLayoutBinding) DescriptorSetLayoutCreateInfo {
-	ptr := func(x *[]DescriptorSetLayoutBinding) **C.struct_VkDescriptorSetLayoutBinding { /* Slice */
+	x.pBindings = *(func(x *[]DescriptorSetLayoutBinding) **C.struct_VkDescriptorSetLayoutBinding { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkDescriptorSetLayoutBinding)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkDescriptorSetLayoutBinding)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pBindings = *ptr
+	}(&y))
 	return x.WithBindingCount(uint32(len(y)))
 }
 
@@ -8704,8 +8512,7 @@ func (x BufferImageCopy) BufferOffset() DeviceSize {
 // WithBufferOffset sets the value for the BufferOffset on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferImageCopy) WithBufferOffset(y DeviceSize) BufferImageCopy {
-	ptr := /* typedef */ (*C.VkDeviceSize)(&y)
-	x.bufferOffset = *ptr
+	x.bufferOffset = *( /* typedef */ (*C.VkDeviceSize)(&y))
 	return x
 }
 
@@ -8718,8 +8525,7 @@ func (x BufferImageCopy) BufferRowLength() uint32 {
 // WithBufferRowLength sets the value for the BufferRowLength on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferImageCopy) WithBufferRowLength(y uint32) BufferImageCopy {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.bufferRowLength = *ptr
+	x.bufferRowLength = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -8732,8 +8538,7 @@ func (x BufferImageCopy) BufferImageHeight() uint32 {
 // WithBufferImageHeight sets the value for the BufferImageHeight on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferImageCopy) WithBufferImageHeight(y uint32) BufferImageCopy {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.bufferImageHeight = *ptr
+	x.bufferImageHeight = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -8746,8 +8551,7 @@ func (x BufferImageCopy) ImageSubresource() ImageSubresourceLayers {
 // WithImageSubresource sets the value for the ImageSubresource on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferImageCopy) WithImageSubresource(y ImageSubresourceLayers) BufferImageCopy {
-	ptr := /* typedef */ (*C.struct_VkImageSubresourceLayers)(&y)
-	x.imageSubresource = *ptr
+	x.imageSubresource = *( /* typedef */ (*C.struct_VkImageSubresourceLayers)(&y))
 	return x
 }
 
@@ -8760,8 +8564,7 @@ func (x BufferImageCopy) ImageOffset() Offset3D {
 // WithImageOffset sets the value for the ImageOffset on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferImageCopy) WithImageOffset(y Offset3D) BufferImageCopy {
-	ptr := /* typedef */ (*C.struct_VkOffset3D)(&y)
-	x.imageOffset = *ptr
+	x.imageOffset = *( /* typedef */ (*C.struct_VkOffset3D)(&y))
 	return x
 }
 
@@ -8774,8 +8577,7 @@ func (x BufferImageCopy) ImageExtent() Extent3D {
 // WithImageExtent sets the value for the ImageExtent on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferImageCopy) WithImageExtent(y Extent3D) BufferImageCopy {
-	ptr := /* typedef */ (*C.struct_VkExtent3D)(&y)
-	x.imageExtent = *ptr
+	x.imageExtent = *( /* typedef */ (*C.struct_VkExtent3D)(&y))
 	return x
 }
 
@@ -8830,8 +8632,7 @@ func (x ClearAttachment) AspectMask() ImageAspectFlags {
 // WithAspectMask sets the value for the AspectMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ClearAttachment) WithAspectMask(y ImageAspectFlags) ClearAttachment {
-	ptr := /* typedef */ (*C.VkImageAspectFlags)(&y)
-	x.aspectMask = *ptr
+	x.aspectMask = *( /* typedef */ (*C.VkImageAspectFlags)(&y))
 	return x
 }
 
@@ -8844,8 +8645,7 @@ func (x ClearAttachment) ColorAttachment() uint32 {
 // WithColorAttachment sets the value for the ColorAttachment on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ClearAttachment) WithColorAttachment(y uint32) ClearAttachment {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.colorAttachment = *ptr
+	x.colorAttachment = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -8858,8 +8658,7 @@ func (x ClearAttachment) ClearValue() ClearValue {
 // WithClearValue sets the value for the ClearValue on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ClearAttachment) WithClearValue(y ClearValue) ClearAttachment {
-	ptr := /* typedef */ (*C.VkClearValue)(&y)
-	x.clearValue = *ptr
+	x.clearValue = *( /* typedef */ (*C.VkClearValue)(&y))
 	return x
 }
 
@@ -8920,8 +8719,7 @@ func (x ShaderModuleCreateInfo) WithDefaultSType() ShaderModuleCreateInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ShaderModuleCreateInfo) WithSType(y StructureType) ShaderModuleCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -8934,8 +8732,7 @@ func (x ShaderModuleCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ShaderModuleCreateInfo) WithPNext(y unsafe.Pointer) ShaderModuleCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -8948,8 +8745,7 @@ func (x ShaderModuleCreateInfo) Flags() ShaderModuleCreateFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ShaderModuleCreateInfo) WithFlags(y ShaderModuleCreateFlags) ShaderModuleCreateInfo {
-	ptr := /* typedef */ (*C.VkShaderModuleCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkShaderModuleCreateFlags)(&y))
 	return x
 }
 
@@ -8962,8 +8758,7 @@ func (x ShaderModuleCreateInfo) CodeSize() uint64 {
 // WithCodeSize sets the value for the CodeSize on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ShaderModuleCreateInfo) WithCodeSize(y uint64) ShaderModuleCreateInfo {
-	ptr := func(x *uint64) *C.ulong { /* Scalar */ g2c := C.ulong(*x); return &g2c }(&y)
-	x.codeSize = *ptr
+	x.codeSize = *(func(x *uint64) *C.ulong { /* Scalar */ g2c := C.ulong(*x); return &g2c }(&y))
 	return x
 }
 
@@ -8979,15 +8774,14 @@ func (x ShaderModuleCreateInfo) PCode() []uint32 {
 // WithPCode sets the value for the PCode on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ShaderModuleCreateInfo) WithPCode(y []uint32) ShaderModuleCreateInfo {
-	ptr := func(x *[]uint32) **C.uint { /* Slice */
+	x.pCode = *(func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.uint)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pCode = *ptr
+	}(&y))
 	return x
 }
 
@@ -9048,8 +8842,7 @@ func (x DeviceQueueCreateInfo) WithDefaultSType() DeviceQueueCreateInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceQueueCreateInfo) WithSType(y StructureType) DeviceQueueCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -9062,8 +8855,7 @@ func (x DeviceQueueCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceQueueCreateInfo) WithPNext(y unsafe.Pointer) DeviceQueueCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -9076,8 +8868,7 @@ func (x DeviceQueueCreateInfo) Flags() DeviceQueueCreateFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceQueueCreateInfo) WithFlags(y DeviceQueueCreateFlags) DeviceQueueCreateInfo {
-	ptr := /* typedef */ (*C.VkDeviceQueueCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkDeviceQueueCreateFlags)(&y))
 	return x
 }
 
@@ -9090,8 +8881,7 @@ func (x DeviceQueueCreateInfo) QueueFamilyIndex() uint32 {
 // WithQueueFamilyIndex sets the value for the QueueFamilyIndex on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceQueueCreateInfo) WithQueueFamilyIndex(y uint32) DeviceQueueCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.queueFamilyIndex = *ptr
+	x.queueFamilyIndex = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -9104,8 +8894,7 @@ func (x DeviceQueueCreateInfo) QueueCount() uint32 {
 // WithQueueCount sets the value for the QueueCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceQueueCreateInfo) WithQueueCount(y uint32) DeviceQueueCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.queueCount = *ptr
+	x.queueCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -9124,15 +8913,14 @@ func (x DeviceQueueCreateInfo) PQueuePriorities() []float32 {
 // The specification defines QueueCount as the length of this field.
 // QueueCount is updated with the length of the new value.
 func (x DeviceQueueCreateInfo) WithPQueuePriorities(y []float32) DeviceQueueCreateInfo {
-	ptr := func(x *[]float32) **C.float { /* Slice */
+	x.pQueuePriorities = *(func(x *[]float32) **C.float { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.float)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.float)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pQueuePriorities = *ptr
+	}(&y))
 	return x.WithQueueCount(uint32(len(y)))
 }
 
@@ -9187,8 +8975,7 @@ func (x DescriptorSetLayoutBinding) Binding() uint32 {
 // WithBinding sets the value for the Binding on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorSetLayoutBinding) WithBinding(y uint32) DescriptorSetLayoutBinding {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.binding = *ptr
+	x.binding = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -9201,8 +8988,7 @@ func (x DescriptorSetLayoutBinding) DescriptorType() DescriptorType {
 // WithDescriptorType sets the value for the DescriptorType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorSetLayoutBinding) WithDescriptorType(y DescriptorType) DescriptorSetLayoutBinding {
-	ptr := /* typedef */ (*C.VkDescriptorType)(&y)
-	x.descriptorType = *ptr
+	x.descriptorType = *( /* typedef */ (*C.VkDescriptorType)(&y))
 	return x
 }
 
@@ -9215,8 +9001,7 @@ func (x DescriptorSetLayoutBinding) DescriptorCount() uint32 {
 // WithDescriptorCount sets the value for the DescriptorCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorSetLayoutBinding) WithDescriptorCount(y uint32) DescriptorSetLayoutBinding {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.descriptorCount = *ptr
+	x.descriptorCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -9229,8 +9014,7 @@ func (x DescriptorSetLayoutBinding) StageFlags() ShaderStageFlags {
 // WithStageFlags sets the value for the StageFlags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorSetLayoutBinding) WithStageFlags(y ShaderStageFlags) DescriptorSetLayoutBinding {
-	ptr := /* typedef */ (*C.VkShaderStageFlags)(&y)
-	x.stageFlags = *ptr
+	x.stageFlags = *( /* typedef */ (*C.VkShaderStageFlags)(&y))
 	return x
 }
 
@@ -9249,15 +9033,14 @@ func (x DescriptorSetLayoutBinding) PImmutableSamplers() []Sampler {
 // The specification defines DescriptorCount as the length of this field.
 // DescriptorCount is updated with the length of the new value.
 func (x DescriptorSetLayoutBinding) WithPImmutableSamplers(y []Sampler) DescriptorSetLayoutBinding {
-	ptr := func(x *[]Sampler) **C.VkSampler { /* Slice */
+	x.pImmutableSamplers = *(func(x *[]Sampler) **C.VkSampler { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkSampler)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.VkSampler)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pImmutableSamplers = *ptr
+	}(&y))
 	return x.WithDescriptorCount(uint32(len(y)))
 }
 
@@ -9318,8 +9101,7 @@ func (x DeviceCreateInfo) WithDefaultSType() DeviceCreateInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceCreateInfo) WithSType(y StructureType) DeviceCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -9332,8 +9114,7 @@ func (x DeviceCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceCreateInfo) WithPNext(y unsafe.Pointer) DeviceCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -9346,8 +9127,7 @@ func (x DeviceCreateInfo) Flags() DeviceCreateFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceCreateInfo) WithFlags(y DeviceCreateFlags) DeviceCreateInfo {
-	ptr := /* typedef */ (*C.VkDeviceCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkDeviceCreateFlags)(&y))
 	return x
 }
 
@@ -9360,8 +9140,7 @@ func (x DeviceCreateInfo) QueueCreateInfoCount() uint32 {
 // WithQueueCreateInfoCount sets the value for the QueueCreateInfoCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceCreateInfo) WithQueueCreateInfoCount(y uint32) DeviceCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.queueCreateInfoCount = *ptr
+	x.queueCreateInfoCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -9380,15 +9159,14 @@ func (x DeviceCreateInfo) PQueueCreateInfos() []DeviceQueueCreateInfo {
 // The specification defines QueueCreateInfoCount as the length of this field.
 // QueueCreateInfoCount is updated with the length of the new value.
 func (x DeviceCreateInfo) WithPQueueCreateInfos(y []DeviceQueueCreateInfo) DeviceCreateInfo {
-	ptr := func(x *[]DeviceQueueCreateInfo) **C.struct_VkDeviceQueueCreateInfo { /* Slice */
+	x.pQueueCreateInfos = *(func(x *[]DeviceQueueCreateInfo) **C.struct_VkDeviceQueueCreateInfo { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkDeviceQueueCreateInfo)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkDeviceQueueCreateInfo)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pQueueCreateInfos = *ptr
+	}(&y))
 	return x.WithQueueCreateInfoCount(uint32(len(y)))
 }
 
@@ -9401,8 +9179,7 @@ func (x DeviceCreateInfo) EnabledLayerCount() uint32 {
 // WithEnabledLayerCount sets the value for the EnabledLayerCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceCreateInfo) WithEnabledLayerCount(y uint32) DeviceCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.enabledLayerCount = *ptr
+	x.enabledLayerCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -9418,15 +9195,14 @@ func (x DeviceCreateInfo) PpEnabledLayerNames() []*byte {
 // WithPpEnabledLayerNames sets the value for the PpEnabledLayerNames on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceCreateInfo) WithPpEnabledLayerNames(y []*byte) DeviceCreateInfo {
-	ptr := func(x *[]*byte) ***C.char { /* Slice */
+	x.ppEnabledLayerNames = *(func(x *[]*byte) ***C.char { /* Slice */
 		if len(*x) > 0 {
 			slc := (**C.char)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (***C.char)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.ppEnabledLayerNames = *ptr
+	}(&y))
 	return x
 }
 
@@ -9439,8 +9215,7 @@ func (x DeviceCreateInfo) EnabledExtensionCount() uint32 {
 // WithEnabledExtensionCount sets the value for the EnabledExtensionCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceCreateInfo) WithEnabledExtensionCount(y uint32) DeviceCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.enabledExtensionCount = *ptr
+	x.enabledExtensionCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -9456,15 +9231,14 @@ func (x DeviceCreateInfo) PpEnabledExtensionNames() []*byte {
 // WithPpEnabledExtensionNames sets the value for the PpEnabledExtensionNames on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceCreateInfo) WithPpEnabledExtensionNames(y []*byte) DeviceCreateInfo {
-	ptr := func(x *[]*byte) ***C.char { /* Slice */
+	x.ppEnabledExtensionNames = *(func(x *[]*byte) ***C.char { /* Slice */
 		if len(*x) > 0 {
 			slc := (**C.char)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (***C.char)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.ppEnabledExtensionNames = *ptr
+	}(&y))
 	return x
 }
 
@@ -9480,11 +9254,10 @@ func (x DeviceCreateInfo) PEnabledFeatures() *PhysicalDeviceFeatures {
 // WithPEnabledFeatures sets the value for the PEnabledFeatures on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceCreateInfo) WithPEnabledFeatures(y *PhysicalDeviceFeatures) DeviceCreateInfo {
-	ptr := func(x **PhysicalDeviceFeatures) **C.struct_VkPhysicalDeviceFeatures { /* Pointer */
+	x.pEnabledFeatures = *(func(x **PhysicalDeviceFeatures) **C.struct_VkPhysicalDeviceFeatures { /* Pointer */
 		g2c := (*C.struct_VkPhysicalDeviceFeatures)(*x)
 		return &g2c
-	}(&y)
-	x.pEnabledFeatures = *ptr
+	}(&y))
 	return x
 }
 
@@ -9545,8 +9318,7 @@ func (x DescriptorSetAllocateInfo) WithDefaultSType() DescriptorSetAllocateInfo 
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorSetAllocateInfo) WithSType(y StructureType) DescriptorSetAllocateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -9559,8 +9331,7 @@ func (x DescriptorSetAllocateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorSetAllocateInfo) WithPNext(y unsafe.Pointer) DescriptorSetAllocateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -9573,8 +9344,7 @@ func (x DescriptorSetAllocateInfo) DescriptorPool() DescriptorPool {
 // WithDescriptorPool sets the value for the DescriptorPool on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorSetAllocateInfo) WithDescriptorPool(y DescriptorPool) DescriptorSetAllocateInfo {
-	ptr := /* handle */ (*C.VkDescriptorPool)(&y)
-	x.descriptorPool = *ptr
+	x.descriptorPool = *( /* handle */ (*C.VkDescriptorPool)(&y))
 	return x
 }
 
@@ -9587,8 +9357,7 @@ func (x DescriptorSetAllocateInfo) DescriptorSetCount() uint32 {
 // WithDescriptorSetCount sets the value for the DescriptorSetCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorSetAllocateInfo) WithDescriptorSetCount(y uint32) DescriptorSetAllocateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.descriptorSetCount = *ptr
+	x.descriptorSetCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -9607,15 +9376,14 @@ func (x DescriptorSetAllocateInfo) PSetLayouts() []DescriptorSetLayout {
 // The specification defines DescriptorSetCount as the length of this field.
 // DescriptorSetCount is updated with the length of the new value.
 func (x DescriptorSetAllocateInfo) WithPSetLayouts(y []DescriptorSetLayout) DescriptorSetAllocateInfo {
-	ptr := func(x *[]DescriptorSetLayout) **C.VkDescriptorSetLayout { /* Slice */
+	x.pSetLayouts = *(func(x *[]DescriptorSetLayout) **C.VkDescriptorSetLayout { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkDescriptorSetLayout)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.VkDescriptorSetLayout)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pSetLayouts = *ptr
+	}(&y))
 	return x.WithDescriptorSetCount(uint32(len(y)))
 }
 
@@ -9670,8 +9438,7 @@ func (x ClearDepthStencilValue) Depth() float32 {
 // WithDepth sets the value for the Depth on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ClearDepthStencilValue) WithDepth(y float32) ClearDepthStencilValue {
-	ptr := func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y)
-	x.depth = *ptr
+	x.depth = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
 	return x
 }
 
@@ -9684,8 +9451,7 @@ func (x ClearDepthStencilValue) Stencil() uint32 {
 // WithStencil sets the value for the Stencil on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ClearDepthStencilValue) WithStencil(y uint32) ClearDepthStencilValue {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.stencil = *ptr
+	x.stencil = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -9812,8 +9578,7 @@ func (x PipelineCacheCreateInfo) WithDefaultSType() PipelineCacheCreateInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineCacheCreateInfo) WithSType(y StructureType) PipelineCacheCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -9826,8 +9591,7 @@ func (x PipelineCacheCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineCacheCreateInfo) WithPNext(y unsafe.Pointer) PipelineCacheCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -9840,8 +9604,7 @@ func (x PipelineCacheCreateInfo) Flags() PipelineCacheCreateFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineCacheCreateInfo) WithFlags(y PipelineCacheCreateFlags) PipelineCacheCreateInfo {
-	ptr := /* typedef */ (*C.VkPipelineCacheCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkPipelineCacheCreateFlags)(&y))
 	return x
 }
 
@@ -9854,8 +9617,7 @@ func (x PipelineCacheCreateInfo) InitialDataSize() uint64 {
 // WithInitialDataSize sets the value for the InitialDataSize on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineCacheCreateInfo) WithInitialDataSize(y uint64) PipelineCacheCreateInfo {
-	ptr := func(x *uint64) *C.ulong { /* Scalar */ g2c := C.ulong(*x); return &g2c }(&y)
-	x.initialDataSize = *ptr
+	x.initialDataSize = *(func(x *uint64) *C.ulong { /* Scalar */ g2c := C.ulong(*x); return &g2c }(&y))
 	return x
 }
 
@@ -9868,8 +9630,7 @@ func (x PipelineCacheCreateInfo) PInitialData() unsafe.Pointer {
 // WithPInitialData sets the value for the PInitialData on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineCacheCreateInfo) WithPInitialData(y unsafe.Pointer) PipelineCacheCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pInitialData = *ptr
+	x.pInitialData = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -9996,8 +9757,7 @@ func (x DescriptorPoolSize) Type_() DescriptorType {
 // WithType_ sets the value for the Type_ on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorPoolSize) WithType_(y DescriptorType) DescriptorPoolSize {
-	ptr := /* typedef */ (*C.VkDescriptorType)(&y)
-	x._type = *ptr
+	x._type = *( /* typedef */ (*C.VkDescriptorType)(&y))
 	return x
 }
 
@@ -10010,8 +9770,7 @@ func (x DescriptorPoolSize) DescriptorCount() uint32 {
 // WithDescriptorCount sets the value for the DescriptorCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorPoolSize) WithDescriptorCount(y uint32) DescriptorPoolSize {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.descriptorCount = *ptr
+	x.descriptorCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -10936,8 +10695,7 @@ func (x PhysicalDeviceFeatures) RobustBufferAccess() Bool32 {
 // WithRobustBufferAccess sets the value for the RobustBufferAccess on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithRobustBufferAccess(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.robustBufferAccess = *ptr
+	x.robustBufferAccess = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -10950,8 +10708,7 @@ func (x PhysicalDeviceFeatures) FullDrawIndexUint32() Bool32 {
 // WithFullDrawIndexUint32 sets the value for the FullDrawIndexUint32 on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithFullDrawIndexUint32(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.fullDrawIndexUint32 = *ptr
+	x.fullDrawIndexUint32 = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -10964,8 +10721,7 @@ func (x PhysicalDeviceFeatures) ImageCubeArray() Bool32 {
 // WithImageCubeArray sets the value for the ImageCubeArray on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithImageCubeArray(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.imageCubeArray = *ptr
+	x.imageCubeArray = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -10978,8 +10734,7 @@ func (x PhysicalDeviceFeatures) IndependentBlend() Bool32 {
 // WithIndependentBlend sets the value for the IndependentBlend on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithIndependentBlend(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.independentBlend = *ptr
+	x.independentBlend = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -10992,8 +10747,7 @@ func (x PhysicalDeviceFeatures) GeometryShader() Bool32 {
 // WithGeometryShader sets the value for the GeometryShader on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithGeometryShader(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.geometryShader = *ptr
+	x.geometryShader = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11006,8 +10760,7 @@ func (x PhysicalDeviceFeatures) TessellationShader() Bool32 {
 // WithTessellationShader sets the value for the TessellationShader on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithTessellationShader(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.tessellationShader = *ptr
+	x.tessellationShader = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11020,8 +10773,7 @@ func (x PhysicalDeviceFeatures) SampleRateShading() Bool32 {
 // WithSampleRateShading sets the value for the SampleRateShading on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithSampleRateShading(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.sampleRateShading = *ptr
+	x.sampleRateShading = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11034,8 +10786,7 @@ func (x PhysicalDeviceFeatures) DualSrcBlend() Bool32 {
 // WithDualSrcBlend sets the value for the DualSrcBlend on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithDualSrcBlend(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.dualSrcBlend = *ptr
+	x.dualSrcBlend = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11048,8 +10799,7 @@ func (x PhysicalDeviceFeatures) LogicOp() Bool32 {
 // WithLogicOp sets the value for the LogicOp on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithLogicOp(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.logicOp = *ptr
+	x.logicOp = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11062,8 +10812,7 @@ func (x PhysicalDeviceFeatures) MultiDrawIndirect() Bool32 {
 // WithMultiDrawIndirect sets the value for the MultiDrawIndirect on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithMultiDrawIndirect(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.multiDrawIndirect = *ptr
+	x.multiDrawIndirect = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11076,8 +10825,7 @@ func (x PhysicalDeviceFeatures) DrawIndirectFirstInstance() Bool32 {
 // WithDrawIndirectFirstInstance sets the value for the DrawIndirectFirstInstance on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithDrawIndirectFirstInstance(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.drawIndirectFirstInstance = *ptr
+	x.drawIndirectFirstInstance = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11090,8 +10838,7 @@ func (x PhysicalDeviceFeatures) DepthClamp() Bool32 {
 // WithDepthClamp sets the value for the DepthClamp on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithDepthClamp(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.depthClamp = *ptr
+	x.depthClamp = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11104,8 +10851,7 @@ func (x PhysicalDeviceFeatures) DepthBiasClamp() Bool32 {
 // WithDepthBiasClamp sets the value for the DepthBiasClamp on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithDepthBiasClamp(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.depthBiasClamp = *ptr
+	x.depthBiasClamp = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11118,8 +10864,7 @@ func (x PhysicalDeviceFeatures) FillModeNonSolid() Bool32 {
 // WithFillModeNonSolid sets the value for the FillModeNonSolid on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithFillModeNonSolid(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.fillModeNonSolid = *ptr
+	x.fillModeNonSolid = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11132,8 +10877,7 @@ func (x PhysicalDeviceFeatures) DepthBounds() Bool32 {
 // WithDepthBounds sets the value for the DepthBounds on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithDepthBounds(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.depthBounds = *ptr
+	x.depthBounds = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11146,8 +10890,7 @@ func (x PhysicalDeviceFeatures) WideLines() Bool32 {
 // WithWideLines sets the value for the WideLines on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithWideLines(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.wideLines = *ptr
+	x.wideLines = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11160,8 +10903,7 @@ func (x PhysicalDeviceFeatures) LargePoints() Bool32 {
 // WithLargePoints sets the value for the LargePoints on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithLargePoints(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.largePoints = *ptr
+	x.largePoints = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11174,8 +10916,7 @@ func (x PhysicalDeviceFeatures) AlphaToOne() Bool32 {
 // WithAlphaToOne sets the value for the AlphaToOne on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithAlphaToOne(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.alphaToOne = *ptr
+	x.alphaToOne = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11188,8 +10929,7 @@ func (x PhysicalDeviceFeatures) MultiViewport() Bool32 {
 // WithMultiViewport sets the value for the MultiViewport on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithMultiViewport(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.multiViewport = *ptr
+	x.multiViewport = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11202,8 +10942,7 @@ func (x PhysicalDeviceFeatures) SamplerAnisotropy() Bool32 {
 // WithSamplerAnisotropy sets the value for the SamplerAnisotropy on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithSamplerAnisotropy(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.samplerAnisotropy = *ptr
+	x.samplerAnisotropy = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11216,8 +10955,7 @@ func (x PhysicalDeviceFeatures) TextureCompressionETC2() Bool32 {
 // WithTextureCompressionETC2 sets the value for the TextureCompressionETC2 on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithTextureCompressionETC2(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.textureCompressionETC2 = *ptr
+	x.textureCompressionETC2 = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11230,8 +10968,7 @@ func (x PhysicalDeviceFeatures) TextureCompressionASTC_LDR() Bool32 {
 // WithTextureCompressionASTC_LDR sets the value for the TextureCompressionASTC_LDR on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithTextureCompressionASTC_LDR(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.textureCompressionASTC_LDR = *ptr
+	x.textureCompressionASTC_LDR = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11244,8 +10981,7 @@ func (x PhysicalDeviceFeatures) TextureCompressionBC() Bool32 {
 // WithTextureCompressionBC sets the value for the TextureCompressionBC on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithTextureCompressionBC(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.textureCompressionBC = *ptr
+	x.textureCompressionBC = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11258,8 +10994,7 @@ func (x PhysicalDeviceFeatures) OcclusionQueryPrecise() Bool32 {
 // WithOcclusionQueryPrecise sets the value for the OcclusionQueryPrecise on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithOcclusionQueryPrecise(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.occlusionQueryPrecise = *ptr
+	x.occlusionQueryPrecise = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11272,8 +11007,7 @@ func (x PhysicalDeviceFeatures) PipelineStatisticsQuery() Bool32 {
 // WithPipelineStatisticsQuery sets the value for the PipelineStatisticsQuery on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithPipelineStatisticsQuery(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.pipelineStatisticsQuery = *ptr
+	x.pipelineStatisticsQuery = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11286,8 +11020,7 @@ func (x PhysicalDeviceFeatures) VertexPipelineStoresAndAtomics() Bool32 {
 // WithVertexPipelineStoresAndAtomics sets the value for the VertexPipelineStoresAndAtomics on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithVertexPipelineStoresAndAtomics(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.vertexPipelineStoresAndAtomics = *ptr
+	x.vertexPipelineStoresAndAtomics = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11300,8 +11033,7 @@ func (x PhysicalDeviceFeatures) FragmentStoresAndAtomics() Bool32 {
 // WithFragmentStoresAndAtomics sets the value for the FragmentStoresAndAtomics on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithFragmentStoresAndAtomics(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.fragmentStoresAndAtomics = *ptr
+	x.fragmentStoresAndAtomics = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11314,8 +11046,7 @@ func (x PhysicalDeviceFeatures) ShaderTessellationAndGeometryPointSize() Bool32 
 // WithShaderTessellationAndGeometryPointSize sets the value for the ShaderTessellationAndGeometryPointSize on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithShaderTessellationAndGeometryPointSize(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderTessellationAndGeometryPointSize = *ptr
+	x.shaderTessellationAndGeometryPointSize = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11328,8 +11059,7 @@ func (x PhysicalDeviceFeatures) ShaderImageGatherExtended() Bool32 {
 // WithShaderImageGatherExtended sets the value for the ShaderImageGatherExtended on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithShaderImageGatherExtended(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderImageGatherExtended = *ptr
+	x.shaderImageGatherExtended = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11342,8 +11072,7 @@ func (x PhysicalDeviceFeatures) ShaderStorageImageExtendedFormats() Bool32 {
 // WithShaderStorageImageExtendedFormats sets the value for the ShaderStorageImageExtendedFormats on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithShaderStorageImageExtendedFormats(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderStorageImageExtendedFormats = *ptr
+	x.shaderStorageImageExtendedFormats = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11356,8 +11085,7 @@ func (x PhysicalDeviceFeatures) ShaderStorageImageMultisample() Bool32 {
 // WithShaderStorageImageMultisample sets the value for the ShaderStorageImageMultisample on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithShaderStorageImageMultisample(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderStorageImageMultisample = *ptr
+	x.shaderStorageImageMultisample = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11370,8 +11098,7 @@ func (x PhysicalDeviceFeatures) ShaderStorageImageReadWithoutFormat() Bool32 {
 // WithShaderStorageImageReadWithoutFormat sets the value for the ShaderStorageImageReadWithoutFormat on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithShaderStorageImageReadWithoutFormat(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderStorageImageReadWithoutFormat = *ptr
+	x.shaderStorageImageReadWithoutFormat = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11384,8 +11111,7 @@ func (x PhysicalDeviceFeatures) ShaderStorageImageWriteWithoutFormat() Bool32 {
 // WithShaderStorageImageWriteWithoutFormat sets the value for the ShaderStorageImageWriteWithoutFormat on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithShaderStorageImageWriteWithoutFormat(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderStorageImageWriteWithoutFormat = *ptr
+	x.shaderStorageImageWriteWithoutFormat = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11398,8 +11124,7 @@ func (x PhysicalDeviceFeatures) ShaderUniformBufferArrayDynamicIndexing() Bool32
 // WithShaderUniformBufferArrayDynamicIndexing sets the value for the ShaderUniformBufferArrayDynamicIndexing on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithShaderUniformBufferArrayDynamicIndexing(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderUniformBufferArrayDynamicIndexing = *ptr
+	x.shaderUniformBufferArrayDynamicIndexing = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11412,8 +11137,7 @@ func (x PhysicalDeviceFeatures) ShaderSampledImageArrayDynamicIndexing() Bool32 
 // WithShaderSampledImageArrayDynamicIndexing sets the value for the ShaderSampledImageArrayDynamicIndexing on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithShaderSampledImageArrayDynamicIndexing(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderSampledImageArrayDynamicIndexing = *ptr
+	x.shaderSampledImageArrayDynamicIndexing = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11426,8 +11150,7 @@ func (x PhysicalDeviceFeatures) ShaderStorageBufferArrayDynamicIndexing() Bool32
 // WithShaderStorageBufferArrayDynamicIndexing sets the value for the ShaderStorageBufferArrayDynamicIndexing on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithShaderStorageBufferArrayDynamicIndexing(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderStorageBufferArrayDynamicIndexing = *ptr
+	x.shaderStorageBufferArrayDynamicIndexing = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11440,8 +11163,7 @@ func (x PhysicalDeviceFeatures) ShaderStorageImageArrayDynamicIndexing() Bool32 
 // WithShaderStorageImageArrayDynamicIndexing sets the value for the ShaderStorageImageArrayDynamicIndexing on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithShaderStorageImageArrayDynamicIndexing(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderStorageImageArrayDynamicIndexing = *ptr
+	x.shaderStorageImageArrayDynamicIndexing = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11454,8 +11176,7 @@ func (x PhysicalDeviceFeatures) ShaderClipDistance() Bool32 {
 // WithShaderClipDistance sets the value for the ShaderClipDistance on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithShaderClipDistance(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderClipDistance = *ptr
+	x.shaderClipDistance = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11468,8 +11189,7 @@ func (x PhysicalDeviceFeatures) ShaderCullDistance() Bool32 {
 // WithShaderCullDistance sets the value for the ShaderCullDistance on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithShaderCullDistance(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderCullDistance = *ptr
+	x.shaderCullDistance = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11482,8 +11202,7 @@ func (x PhysicalDeviceFeatures) ShaderFloat64() Bool32 {
 // WithShaderFloat64 sets the value for the ShaderFloat64 on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithShaderFloat64(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderFloat64 = *ptr
+	x.shaderFloat64 = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11496,8 +11215,7 @@ func (x PhysicalDeviceFeatures) ShaderInt64() Bool32 {
 // WithShaderInt64 sets the value for the ShaderInt64 on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithShaderInt64(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderInt64 = *ptr
+	x.shaderInt64 = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11510,8 +11228,7 @@ func (x PhysicalDeviceFeatures) ShaderInt16() Bool32 {
 // WithShaderInt16 sets the value for the ShaderInt16 on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithShaderInt16(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderInt16 = *ptr
+	x.shaderInt16 = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11524,8 +11241,7 @@ func (x PhysicalDeviceFeatures) ShaderResourceResidency() Bool32 {
 // WithShaderResourceResidency sets the value for the ShaderResourceResidency on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithShaderResourceResidency(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderResourceResidency = *ptr
+	x.shaderResourceResidency = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11538,8 +11254,7 @@ func (x PhysicalDeviceFeatures) ShaderResourceMinLod() Bool32 {
 // WithShaderResourceMinLod sets the value for the ShaderResourceMinLod on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithShaderResourceMinLod(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderResourceMinLod = *ptr
+	x.shaderResourceMinLod = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11552,8 +11267,7 @@ func (x PhysicalDeviceFeatures) SparseBinding() Bool32 {
 // WithSparseBinding sets the value for the SparseBinding on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithSparseBinding(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.sparseBinding = *ptr
+	x.sparseBinding = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11566,8 +11280,7 @@ func (x PhysicalDeviceFeatures) SparseResidencyBuffer() Bool32 {
 // WithSparseResidencyBuffer sets the value for the SparseResidencyBuffer on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithSparseResidencyBuffer(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.sparseResidencyBuffer = *ptr
+	x.sparseResidencyBuffer = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11580,8 +11293,7 @@ func (x PhysicalDeviceFeatures) SparseResidencyImage2D() Bool32 {
 // WithSparseResidencyImage2D sets the value for the SparseResidencyImage2D on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithSparseResidencyImage2D(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.sparseResidencyImage2D = *ptr
+	x.sparseResidencyImage2D = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11594,8 +11306,7 @@ func (x PhysicalDeviceFeatures) SparseResidencyImage3D() Bool32 {
 // WithSparseResidencyImage3D sets the value for the SparseResidencyImage3D on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithSparseResidencyImage3D(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.sparseResidencyImage3D = *ptr
+	x.sparseResidencyImage3D = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11608,8 +11319,7 @@ func (x PhysicalDeviceFeatures) SparseResidency2Samples() Bool32 {
 // WithSparseResidency2Samples sets the value for the SparseResidency2Samples on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithSparseResidency2Samples(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.sparseResidency2Samples = *ptr
+	x.sparseResidency2Samples = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11622,8 +11332,7 @@ func (x PhysicalDeviceFeatures) SparseResidency4Samples() Bool32 {
 // WithSparseResidency4Samples sets the value for the SparseResidency4Samples on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithSparseResidency4Samples(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.sparseResidency4Samples = *ptr
+	x.sparseResidency4Samples = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11636,8 +11345,7 @@ func (x PhysicalDeviceFeatures) SparseResidency8Samples() Bool32 {
 // WithSparseResidency8Samples sets the value for the SparseResidency8Samples on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithSparseResidency8Samples(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.sparseResidency8Samples = *ptr
+	x.sparseResidency8Samples = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11650,8 +11358,7 @@ func (x PhysicalDeviceFeatures) SparseResidency16Samples() Bool32 {
 // WithSparseResidency16Samples sets the value for the SparseResidency16Samples on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithSparseResidency16Samples(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.sparseResidency16Samples = *ptr
+	x.sparseResidency16Samples = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11664,8 +11371,7 @@ func (x PhysicalDeviceFeatures) SparseResidencyAliased() Bool32 {
 // WithSparseResidencyAliased sets the value for the SparseResidencyAliased on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithSparseResidencyAliased(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.sparseResidencyAliased = *ptr
+	x.sparseResidencyAliased = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11678,8 +11384,7 @@ func (x PhysicalDeviceFeatures) VariableMultisampleRate() Bool32 {
 // WithVariableMultisampleRate sets the value for the VariableMultisampleRate on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithVariableMultisampleRate(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.variableMultisampleRate = *ptr
+	x.variableMultisampleRate = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11692,8 +11397,7 @@ func (x PhysicalDeviceFeatures) InheritedQueries() Bool32 {
 // WithInheritedQueries sets the value for the InheritedQueries on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures) WithInheritedQueries(y Bool32) PhysicalDeviceFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.inheritedQueries = *ptr
+	x.inheritedQueries = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -11862,8 +11566,7 @@ func (x ComputePipelineCreateInfo) WithDefaultSType() ComputePipelineCreateInfo 
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ComputePipelineCreateInfo) WithSType(y StructureType) ComputePipelineCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -11876,8 +11579,7 @@ func (x ComputePipelineCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ComputePipelineCreateInfo) WithPNext(y unsafe.Pointer) ComputePipelineCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -11890,8 +11592,7 @@ func (x ComputePipelineCreateInfo) Flags() PipelineCreateFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ComputePipelineCreateInfo) WithFlags(y PipelineCreateFlags) ComputePipelineCreateInfo {
-	ptr := /* typedef */ (*C.VkPipelineCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkPipelineCreateFlags)(&y))
 	return x
 }
 
@@ -11904,8 +11605,7 @@ func (x ComputePipelineCreateInfo) Stage() PipelineShaderStageCreateInfo {
 // WithStage sets the value for the Stage on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ComputePipelineCreateInfo) WithStage(y PipelineShaderStageCreateInfo) ComputePipelineCreateInfo {
-	ptr := /* typedef */ (*C.struct_VkPipelineShaderStageCreateInfo)(&y)
-	x.stage = *ptr
+	x.stage = *( /* typedef */ (*C.struct_VkPipelineShaderStageCreateInfo)(&y))
 	return x
 }
 
@@ -11918,8 +11618,7 @@ func (x ComputePipelineCreateInfo) Layout() PipelineLayout {
 // WithLayout sets the value for the Layout on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ComputePipelineCreateInfo) WithLayout(y PipelineLayout) ComputePipelineCreateInfo {
-	ptr := /* handle */ (*C.VkPipelineLayout)(&y)
-	x.layout = *ptr
+	x.layout = *( /* handle */ (*C.VkPipelineLayout)(&y))
 	return x
 }
 
@@ -11932,8 +11631,7 @@ func (x ComputePipelineCreateInfo) BasePipelineHandle() Pipeline {
 // WithBasePipelineHandle sets the value for the BasePipelineHandle on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ComputePipelineCreateInfo) WithBasePipelineHandle(y Pipeline) ComputePipelineCreateInfo {
-	ptr := /* handle */ (*C.VkPipeline)(&y)
-	x.basePipelineHandle = *ptr
+	x.basePipelineHandle = *( /* handle */ (*C.VkPipeline)(&y))
 	return x
 }
 
@@ -11946,8 +11644,7 @@ func (x ComputePipelineCreateInfo) BasePipelineIndex() int32 {
 // WithBasePipelineIndex sets the value for the BasePipelineIndex on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ComputePipelineCreateInfo) WithBasePipelineIndex(y int32) ComputePipelineCreateInfo {
-	ptr := func(x *int32) *C.int { /* Scalar */ g2c := C.int(*x); return &g2c }(&y)
-	x.basePipelineIndex = *ptr
+	x.basePipelineIndex = *(func(x *int32) *C.int { /* Scalar */ g2c := C.int(*x); return &g2c }(&y))
 	return x
 }
 
@@ -12008,8 +11705,7 @@ func (x InstanceCreateInfo) WithDefaultSType() InstanceCreateInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x InstanceCreateInfo) WithSType(y StructureType) InstanceCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -12022,8 +11718,7 @@ func (x InstanceCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x InstanceCreateInfo) WithPNext(y unsafe.Pointer) InstanceCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -12036,8 +11731,7 @@ func (x InstanceCreateInfo) Flags() InstanceCreateFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x InstanceCreateInfo) WithFlags(y InstanceCreateFlags) InstanceCreateInfo {
-	ptr := /* typedef */ (*C.VkInstanceCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkInstanceCreateFlags)(&y))
 	return x
 }
 
@@ -12053,11 +11747,10 @@ func (x InstanceCreateInfo) PApplicationInfo() *ApplicationInfo {
 // WithPApplicationInfo sets the value for the PApplicationInfo on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x InstanceCreateInfo) WithPApplicationInfo(y *ApplicationInfo) InstanceCreateInfo {
-	ptr := func(x **ApplicationInfo) **C.struct_VkApplicationInfo { /* Pointer */
+	x.pApplicationInfo = *(func(x **ApplicationInfo) **C.struct_VkApplicationInfo { /* Pointer */
 		g2c := (*C.struct_VkApplicationInfo)(*x)
 		return &g2c
-	}(&y)
-	x.pApplicationInfo = *ptr
+	}(&y))
 	return x
 }
 
@@ -12070,8 +11763,7 @@ func (x InstanceCreateInfo) EnabledLayerCount() uint32 {
 // WithEnabledLayerCount sets the value for the EnabledLayerCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x InstanceCreateInfo) WithEnabledLayerCount(y uint32) InstanceCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.enabledLayerCount = *ptr
+	x.enabledLayerCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -12087,15 +11779,14 @@ func (x InstanceCreateInfo) PpEnabledLayerNames() []*byte {
 // WithPpEnabledLayerNames sets the value for the PpEnabledLayerNames on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x InstanceCreateInfo) WithPpEnabledLayerNames(y []*byte) InstanceCreateInfo {
-	ptr := func(x *[]*byte) ***C.char { /* Slice */
+	x.ppEnabledLayerNames = *(func(x *[]*byte) ***C.char { /* Slice */
 		if len(*x) > 0 {
 			slc := (**C.char)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (***C.char)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.ppEnabledLayerNames = *ptr
+	}(&y))
 	return x
 }
 
@@ -12108,8 +11799,7 @@ func (x InstanceCreateInfo) EnabledExtensionCount() uint32 {
 // WithEnabledExtensionCount sets the value for the EnabledExtensionCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x InstanceCreateInfo) WithEnabledExtensionCount(y uint32) InstanceCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.enabledExtensionCount = *ptr
+	x.enabledExtensionCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -12125,15 +11815,14 @@ func (x InstanceCreateInfo) PpEnabledExtensionNames() []*byte {
 // WithPpEnabledExtensionNames sets the value for the PpEnabledExtensionNames on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x InstanceCreateInfo) WithPpEnabledExtensionNames(y []*byte) InstanceCreateInfo {
-	ptr := func(x *[]*byte) ***C.char { /* Slice */
+	x.ppEnabledExtensionNames = *(func(x *[]*byte) ***C.char { /* Slice */
 		if len(*x) > 0 {
 			slc := (**C.char)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (***C.char)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.ppEnabledExtensionNames = *ptr
+	}(&y))
 	return x
 }
 
@@ -12194,8 +11883,7 @@ func (x CopyDescriptorSet) WithDefaultSType() CopyDescriptorSet {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x CopyDescriptorSet) WithSType(y StructureType) CopyDescriptorSet {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -12208,8 +11896,7 @@ func (x CopyDescriptorSet) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x CopyDescriptorSet) WithPNext(y unsafe.Pointer) CopyDescriptorSet {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -12222,8 +11909,7 @@ func (x CopyDescriptorSet) SrcSet() DescriptorSet {
 // WithSrcSet sets the value for the SrcSet on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x CopyDescriptorSet) WithSrcSet(y DescriptorSet) CopyDescriptorSet {
-	ptr := /* handle */ (*C.VkDescriptorSet)(&y)
-	x.srcSet = *ptr
+	x.srcSet = *( /* handle */ (*C.VkDescriptorSet)(&y))
 	return x
 }
 
@@ -12236,8 +11922,7 @@ func (x CopyDescriptorSet) SrcBinding() uint32 {
 // WithSrcBinding sets the value for the SrcBinding on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x CopyDescriptorSet) WithSrcBinding(y uint32) CopyDescriptorSet {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.srcBinding = *ptr
+	x.srcBinding = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -12250,8 +11935,7 @@ func (x CopyDescriptorSet) SrcArrayElement() uint32 {
 // WithSrcArrayElement sets the value for the SrcArrayElement on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x CopyDescriptorSet) WithSrcArrayElement(y uint32) CopyDescriptorSet {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.srcArrayElement = *ptr
+	x.srcArrayElement = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -12264,8 +11948,7 @@ func (x CopyDescriptorSet) DstSet() DescriptorSet {
 // WithDstSet sets the value for the DstSet on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x CopyDescriptorSet) WithDstSet(y DescriptorSet) CopyDescriptorSet {
-	ptr := /* handle */ (*C.VkDescriptorSet)(&y)
-	x.dstSet = *ptr
+	x.dstSet = *( /* handle */ (*C.VkDescriptorSet)(&y))
 	return x
 }
 
@@ -12278,8 +11961,7 @@ func (x CopyDescriptorSet) DstBinding() uint32 {
 // WithDstBinding sets the value for the DstBinding on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x CopyDescriptorSet) WithDstBinding(y uint32) CopyDescriptorSet {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.dstBinding = *ptr
+	x.dstBinding = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -12292,8 +11974,7 @@ func (x CopyDescriptorSet) DstArrayElement() uint32 {
 // WithDstArrayElement sets the value for the DstArrayElement on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x CopyDescriptorSet) WithDstArrayElement(y uint32) CopyDescriptorSet {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.dstArrayElement = *ptr
+	x.dstArrayElement = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -12306,8 +11987,7 @@ func (x CopyDescriptorSet) DescriptorCount() uint32 {
 // WithDescriptorCount sets the value for the DescriptorCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x CopyDescriptorSet) WithDescriptorCount(y uint32) CopyDescriptorSet {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.descriptorCount = *ptr
+	x.descriptorCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -12500,8 +12180,7 @@ func (x GraphicsPipelineCreateInfo) WithDefaultSType() GraphicsPipelineCreateInf
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x GraphicsPipelineCreateInfo) WithSType(y StructureType) GraphicsPipelineCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -12514,8 +12193,7 @@ func (x GraphicsPipelineCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x GraphicsPipelineCreateInfo) WithPNext(y unsafe.Pointer) GraphicsPipelineCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -12528,8 +12206,7 @@ func (x GraphicsPipelineCreateInfo) Flags() PipelineCreateFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x GraphicsPipelineCreateInfo) WithFlags(y PipelineCreateFlags) GraphicsPipelineCreateInfo {
-	ptr := /* typedef */ (*C.VkPipelineCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkPipelineCreateFlags)(&y))
 	return x
 }
 
@@ -12542,8 +12219,7 @@ func (x GraphicsPipelineCreateInfo) StageCount() uint32 {
 // WithStageCount sets the value for the StageCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x GraphicsPipelineCreateInfo) WithStageCount(y uint32) GraphicsPipelineCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.stageCount = *ptr
+	x.stageCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -12562,15 +12238,14 @@ func (x GraphicsPipelineCreateInfo) PStages() []PipelineShaderStageCreateInfo {
 // The specification defines StageCount as the length of this field.
 // StageCount is updated with the length of the new value.
 func (x GraphicsPipelineCreateInfo) WithPStages(y []PipelineShaderStageCreateInfo) GraphicsPipelineCreateInfo {
-	ptr := func(x *[]PipelineShaderStageCreateInfo) **C.struct_VkPipelineShaderStageCreateInfo { /* Slice */
+	x.pStages = *(func(x *[]PipelineShaderStageCreateInfo) **C.struct_VkPipelineShaderStageCreateInfo { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkPipelineShaderStageCreateInfo)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkPipelineShaderStageCreateInfo)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pStages = *ptr
+	}(&y))
 	return x.WithStageCount(uint32(len(y)))
 }
 
@@ -12586,11 +12261,10 @@ func (x GraphicsPipelineCreateInfo) PVertexInputState() *PipelineVertexInputStat
 // WithPVertexInputState sets the value for the PVertexInputState on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x GraphicsPipelineCreateInfo) WithPVertexInputState(y *PipelineVertexInputStateCreateInfo) GraphicsPipelineCreateInfo {
-	ptr := func(x **PipelineVertexInputStateCreateInfo) **C.struct_VkPipelineVertexInputStateCreateInfo { /* Pointer */
+	x.pVertexInputState = *(func(x **PipelineVertexInputStateCreateInfo) **C.struct_VkPipelineVertexInputStateCreateInfo { /* Pointer */
 		g2c := (*C.struct_VkPipelineVertexInputStateCreateInfo)(*x)
 		return &g2c
-	}(&y)
-	x.pVertexInputState = *ptr
+	}(&y))
 	return x
 }
 
@@ -12606,11 +12280,10 @@ func (x GraphicsPipelineCreateInfo) PInputAssemblyState() *PipelineInputAssembly
 // WithPInputAssemblyState sets the value for the PInputAssemblyState on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x GraphicsPipelineCreateInfo) WithPInputAssemblyState(y *PipelineInputAssemblyStateCreateInfo) GraphicsPipelineCreateInfo {
-	ptr := func(x **PipelineInputAssemblyStateCreateInfo) **C.struct_VkPipelineInputAssemblyStateCreateInfo { /* Pointer */
+	x.pInputAssemblyState = *(func(x **PipelineInputAssemblyStateCreateInfo) **C.struct_VkPipelineInputAssemblyStateCreateInfo { /* Pointer */
 		g2c := (*C.struct_VkPipelineInputAssemblyStateCreateInfo)(*x)
 		return &g2c
-	}(&y)
-	x.pInputAssemblyState = *ptr
+	}(&y))
 	return x
 }
 
@@ -12626,11 +12299,10 @@ func (x GraphicsPipelineCreateInfo) PTessellationState() *PipelineTessellationSt
 // WithPTessellationState sets the value for the PTessellationState on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x GraphicsPipelineCreateInfo) WithPTessellationState(y *PipelineTessellationStateCreateInfo) GraphicsPipelineCreateInfo {
-	ptr := func(x **PipelineTessellationStateCreateInfo) **C.struct_VkPipelineTessellationStateCreateInfo { /* Pointer */
+	x.pTessellationState = *(func(x **PipelineTessellationStateCreateInfo) **C.struct_VkPipelineTessellationStateCreateInfo { /* Pointer */
 		g2c := (*C.struct_VkPipelineTessellationStateCreateInfo)(*x)
 		return &g2c
-	}(&y)
-	x.pTessellationState = *ptr
+	}(&y))
 	return x
 }
 
@@ -12646,11 +12318,10 @@ func (x GraphicsPipelineCreateInfo) PViewportState() *PipelineViewportStateCreat
 // WithPViewportState sets the value for the PViewportState on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x GraphicsPipelineCreateInfo) WithPViewportState(y *PipelineViewportStateCreateInfo) GraphicsPipelineCreateInfo {
-	ptr := func(x **PipelineViewportStateCreateInfo) **C.struct_VkPipelineViewportStateCreateInfo { /* Pointer */
+	x.pViewportState = *(func(x **PipelineViewportStateCreateInfo) **C.struct_VkPipelineViewportStateCreateInfo { /* Pointer */
 		g2c := (*C.struct_VkPipelineViewportStateCreateInfo)(*x)
 		return &g2c
-	}(&y)
-	x.pViewportState = *ptr
+	}(&y))
 	return x
 }
 
@@ -12666,11 +12337,10 @@ func (x GraphicsPipelineCreateInfo) PRasterizationState() *PipelineRasterization
 // WithPRasterizationState sets the value for the PRasterizationState on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x GraphicsPipelineCreateInfo) WithPRasterizationState(y *PipelineRasterizationStateCreateInfo) GraphicsPipelineCreateInfo {
-	ptr := func(x **PipelineRasterizationStateCreateInfo) **C.struct_VkPipelineRasterizationStateCreateInfo { /* Pointer */
+	x.pRasterizationState = *(func(x **PipelineRasterizationStateCreateInfo) **C.struct_VkPipelineRasterizationStateCreateInfo { /* Pointer */
 		g2c := (*C.struct_VkPipelineRasterizationStateCreateInfo)(*x)
 		return &g2c
-	}(&y)
-	x.pRasterizationState = *ptr
+	}(&y))
 	return x
 }
 
@@ -12686,11 +12356,10 @@ func (x GraphicsPipelineCreateInfo) PMultisampleState() *PipelineMultisampleStat
 // WithPMultisampleState sets the value for the PMultisampleState on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x GraphicsPipelineCreateInfo) WithPMultisampleState(y *PipelineMultisampleStateCreateInfo) GraphicsPipelineCreateInfo {
-	ptr := func(x **PipelineMultisampleStateCreateInfo) **C.struct_VkPipelineMultisampleStateCreateInfo { /* Pointer */
+	x.pMultisampleState = *(func(x **PipelineMultisampleStateCreateInfo) **C.struct_VkPipelineMultisampleStateCreateInfo { /* Pointer */
 		g2c := (*C.struct_VkPipelineMultisampleStateCreateInfo)(*x)
 		return &g2c
-	}(&y)
-	x.pMultisampleState = *ptr
+	}(&y))
 	return x
 }
 
@@ -12706,11 +12375,10 @@ func (x GraphicsPipelineCreateInfo) PDepthStencilState() *PipelineDepthStencilSt
 // WithPDepthStencilState sets the value for the PDepthStencilState on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x GraphicsPipelineCreateInfo) WithPDepthStencilState(y *PipelineDepthStencilStateCreateInfo) GraphicsPipelineCreateInfo {
-	ptr := func(x **PipelineDepthStencilStateCreateInfo) **C.struct_VkPipelineDepthStencilStateCreateInfo { /* Pointer */
+	x.pDepthStencilState = *(func(x **PipelineDepthStencilStateCreateInfo) **C.struct_VkPipelineDepthStencilStateCreateInfo { /* Pointer */
 		g2c := (*C.struct_VkPipelineDepthStencilStateCreateInfo)(*x)
 		return &g2c
-	}(&y)
-	x.pDepthStencilState = *ptr
+	}(&y))
 	return x
 }
 
@@ -12726,11 +12394,10 @@ func (x GraphicsPipelineCreateInfo) PColorBlendState() *PipelineColorBlendStateC
 // WithPColorBlendState sets the value for the PColorBlendState on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x GraphicsPipelineCreateInfo) WithPColorBlendState(y *PipelineColorBlendStateCreateInfo) GraphicsPipelineCreateInfo {
-	ptr := func(x **PipelineColorBlendStateCreateInfo) **C.struct_VkPipelineColorBlendStateCreateInfo { /* Pointer */
+	x.pColorBlendState = *(func(x **PipelineColorBlendStateCreateInfo) **C.struct_VkPipelineColorBlendStateCreateInfo { /* Pointer */
 		g2c := (*C.struct_VkPipelineColorBlendStateCreateInfo)(*x)
 		return &g2c
-	}(&y)
-	x.pColorBlendState = *ptr
+	}(&y))
 	return x
 }
 
@@ -12746,11 +12413,10 @@ func (x GraphicsPipelineCreateInfo) PDynamicState() *PipelineDynamicStateCreateI
 // WithPDynamicState sets the value for the PDynamicState on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x GraphicsPipelineCreateInfo) WithPDynamicState(y *PipelineDynamicStateCreateInfo) GraphicsPipelineCreateInfo {
-	ptr := func(x **PipelineDynamicStateCreateInfo) **C.struct_VkPipelineDynamicStateCreateInfo { /* Pointer */
+	x.pDynamicState = *(func(x **PipelineDynamicStateCreateInfo) **C.struct_VkPipelineDynamicStateCreateInfo { /* Pointer */
 		g2c := (*C.struct_VkPipelineDynamicStateCreateInfo)(*x)
 		return &g2c
-	}(&y)
-	x.pDynamicState = *ptr
+	}(&y))
 	return x
 }
 
@@ -12763,8 +12429,7 @@ func (x GraphicsPipelineCreateInfo) Layout() PipelineLayout {
 // WithLayout sets the value for the Layout on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x GraphicsPipelineCreateInfo) WithLayout(y PipelineLayout) GraphicsPipelineCreateInfo {
-	ptr := /* handle */ (*C.VkPipelineLayout)(&y)
-	x.layout = *ptr
+	x.layout = *( /* handle */ (*C.VkPipelineLayout)(&y))
 	return x
 }
 
@@ -12777,8 +12442,7 @@ func (x GraphicsPipelineCreateInfo) RenderPass() RenderPass {
 // WithRenderPass sets the value for the RenderPass on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x GraphicsPipelineCreateInfo) WithRenderPass(y RenderPass) GraphicsPipelineCreateInfo {
-	ptr := /* handle */ (*C.VkRenderPass)(&y)
-	x.renderPass = *ptr
+	x.renderPass = *( /* handle */ (*C.VkRenderPass)(&y))
 	return x
 }
 
@@ -12791,8 +12455,7 @@ func (x GraphicsPipelineCreateInfo) Subpass() uint32 {
 // WithSubpass sets the value for the Subpass on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x GraphicsPipelineCreateInfo) WithSubpass(y uint32) GraphicsPipelineCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.subpass = *ptr
+	x.subpass = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -12805,8 +12468,7 @@ func (x GraphicsPipelineCreateInfo) BasePipelineHandle() Pipeline {
 // WithBasePipelineHandle sets the value for the BasePipelineHandle on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x GraphicsPipelineCreateInfo) WithBasePipelineHandle(y Pipeline) GraphicsPipelineCreateInfo {
-	ptr := /* handle */ (*C.VkPipeline)(&y)
-	x.basePipelineHandle = *ptr
+	x.basePipelineHandle = *( /* handle */ (*C.VkPipeline)(&y))
 	return x
 }
 
@@ -12819,8 +12481,7 @@ func (x GraphicsPipelineCreateInfo) BasePipelineIndex() int32 {
 // WithBasePipelineIndex sets the value for the BasePipelineIndex on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x GraphicsPipelineCreateInfo) WithBasePipelineIndex(y int32) GraphicsPipelineCreateInfo {
-	ptr := func(x *int32) *C.int { /* Scalar */ g2c := C.int(*x); return &g2c }(&y)
-	x.basePipelineIndex = *ptr
+	x.basePipelineIndex = *(func(x *int32) *C.int { /* Scalar */ g2c := C.int(*x); return &g2c }(&y))
 	return x
 }
 
@@ -12881,8 +12542,7 @@ func (x ApplicationInfo) WithDefaultSType() ApplicationInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ApplicationInfo) WithSType(y StructureType) ApplicationInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -12895,8 +12555,7 @@ func (x ApplicationInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ApplicationInfo) WithPNext(y unsafe.Pointer) ApplicationInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -12909,8 +12568,7 @@ func (x ApplicationInfo) PApplicationName() *byte {
 // WithPApplicationName sets the value for the PApplicationName on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ApplicationInfo) WithPApplicationName(y *byte) ApplicationInfo {
-	ptr := func(x **byte) **C.char { /* Pointer */ return (**C.char)(unsafe.Pointer(x)) }(&y)
-	x.pApplicationName = *ptr
+	x.pApplicationName = *(func(x **byte) **C.char { /* Pointer */ return (**C.char)(unsafe.Pointer(x)) }(&y))
 	return x
 }
 
@@ -12923,8 +12581,7 @@ func (x ApplicationInfo) ApplicationVersion() uint32 {
 // WithApplicationVersion sets the value for the ApplicationVersion on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ApplicationInfo) WithApplicationVersion(y uint32) ApplicationInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.applicationVersion = *ptr
+	x.applicationVersion = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -12937,8 +12594,7 @@ func (x ApplicationInfo) PEngineName() *byte {
 // WithPEngineName sets the value for the PEngineName on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ApplicationInfo) WithPEngineName(y *byte) ApplicationInfo {
-	ptr := func(x **byte) **C.char { /* Pointer */ return (**C.char)(unsafe.Pointer(x)) }(&y)
-	x.pEngineName = *ptr
+	x.pEngineName = *(func(x **byte) **C.char { /* Pointer */ return (**C.char)(unsafe.Pointer(x)) }(&y))
 	return x
 }
 
@@ -12951,8 +12607,7 @@ func (x ApplicationInfo) EngineVersion() uint32 {
 // WithEngineVersion sets the value for the EngineVersion on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ApplicationInfo) WithEngineVersion(y uint32) ApplicationInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.engineVersion = *ptr
+	x.engineVersion = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -12965,8 +12620,7 @@ func (x ApplicationInfo) ApiVersion() uint32 {
 // WithApiVersion sets the value for the ApiVersion on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ApplicationInfo) WithApiVersion(y uint32) ApplicationInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.apiVersion = *ptr
+	x.apiVersion = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -13021,8 +12675,7 @@ func (x AllocationCallbacks) PUserData() unsafe.Pointer {
 // WithPUserData sets the value for the PUserData on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AllocationCallbacks) WithPUserData(y unsafe.Pointer) AllocationCallbacks {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pUserData = *ptr
+	x.pUserData = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -13035,8 +12688,7 @@ func (x AllocationCallbacks) PfnAllocation() PFN_vkAllocationFunction {
 // WithPfnAllocation sets the value for the PfnAllocation on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AllocationCallbacks) WithPfnAllocation(y PFN_vkAllocationFunction) AllocationCallbacks {
-	ptr := /* typedef */ (*C.PFN_vkAllocationFunction)(&y)
-	x.pfnAllocation = *ptr
+	x.pfnAllocation = *( /* typedef */ (*C.PFN_vkAllocationFunction)(&y))
 	return x
 }
 
@@ -13049,8 +12701,7 @@ func (x AllocationCallbacks) PfnReallocation() PFN_vkReallocationFunction {
 // WithPfnReallocation sets the value for the PfnReallocation on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AllocationCallbacks) WithPfnReallocation(y PFN_vkReallocationFunction) AllocationCallbacks {
-	ptr := /* typedef */ (*C.PFN_vkReallocationFunction)(&y)
-	x.pfnReallocation = *ptr
+	x.pfnReallocation = *( /* typedef */ (*C.PFN_vkReallocationFunction)(&y))
 	return x
 }
 
@@ -13063,8 +12714,7 @@ func (x AllocationCallbacks) PfnFree() PFN_vkFreeFunction {
 // WithPfnFree sets the value for the PfnFree on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AllocationCallbacks) WithPfnFree(y PFN_vkFreeFunction) AllocationCallbacks {
-	ptr := /* typedef */ (*C.PFN_vkFreeFunction)(&y)
-	x.pfnFree = *ptr
+	x.pfnFree = *( /* typedef */ (*C.PFN_vkFreeFunction)(&y))
 	return x
 }
 
@@ -13077,8 +12727,7 @@ func (x AllocationCallbacks) PfnInternalAllocation() PFN_vkInternalAllocationNot
 // WithPfnInternalAllocation sets the value for the PfnInternalAllocation on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AllocationCallbacks) WithPfnInternalAllocation(y PFN_vkInternalAllocationNotification) AllocationCallbacks {
-	ptr := /* typedef */ (*C.PFN_vkInternalAllocationNotification)(&y)
-	x.pfnInternalAllocation = *ptr
+	x.pfnInternalAllocation = *( /* typedef */ (*C.PFN_vkInternalAllocationNotification)(&y))
 	return x
 }
 
@@ -13091,8 +12740,7 @@ func (x AllocationCallbacks) PfnInternalFree() PFN_vkInternalFreeNotification {
 // WithPfnInternalFree sets the value for the PfnInternalFree on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AllocationCallbacks) WithPfnInternalFree(y PFN_vkInternalFreeNotification) AllocationCallbacks {
-	ptr := /* typedef */ (*C.PFN_vkInternalFreeNotification)(&y)
-	x.pfnInternalFree = *ptr
+	x.pfnInternalFree = *( /* typedef */ (*C.PFN_vkInternalFreeNotification)(&y))
 	return x
 }
 
@@ -13147,8 +12795,7 @@ func (x PipelineColorBlendAttachmentState) BlendEnable() Bool32 {
 // WithBlendEnable sets the value for the BlendEnable on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineColorBlendAttachmentState) WithBlendEnable(y Bool32) PipelineColorBlendAttachmentState {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.blendEnable = *ptr
+	x.blendEnable = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -13161,8 +12808,7 @@ func (x PipelineColorBlendAttachmentState) SrcColorBlendFactor() BlendFactor {
 // WithSrcColorBlendFactor sets the value for the SrcColorBlendFactor on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineColorBlendAttachmentState) WithSrcColorBlendFactor(y BlendFactor) PipelineColorBlendAttachmentState {
-	ptr := /* typedef */ (*C.VkBlendFactor)(&y)
-	x.srcColorBlendFactor = *ptr
+	x.srcColorBlendFactor = *( /* typedef */ (*C.VkBlendFactor)(&y))
 	return x
 }
 
@@ -13175,8 +12821,7 @@ func (x PipelineColorBlendAttachmentState) DstColorBlendFactor() BlendFactor {
 // WithDstColorBlendFactor sets the value for the DstColorBlendFactor on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineColorBlendAttachmentState) WithDstColorBlendFactor(y BlendFactor) PipelineColorBlendAttachmentState {
-	ptr := /* typedef */ (*C.VkBlendFactor)(&y)
-	x.dstColorBlendFactor = *ptr
+	x.dstColorBlendFactor = *( /* typedef */ (*C.VkBlendFactor)(&y))
 	return x
 }
 
@@ -13189,8 +12834,7 @@ func (x PipelineColorBlendAttachmentState) ColorBlendOp() BlendOp {
 // WithColorBlendOp sets the value for the ColorBlendOp on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineColorBlendAttachmentState) WithColorBlendOp(y BlendOp) PipelineColorBlendAttachmentState {
-	ptr := /* typedef */ (*C.VkBlendOp)(&y)
-	x.colorBlendOp = *ptr
+	x.colorBlendOp = *( /* typedef */ (*C.VkBlendOp)(&y))
 	return x
 }
 
@@ -13203,8 +12847,7 @@ func (x PipelineColorBlendAttachmentState) SrcAlphaBlendFactor() BlendFactor {
 // WithSrcAlphaBlendFactor sets the value for the SrcAlphaBlendFactor on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineColorBlendAttachmentState) WithSrcAlphaBlendFactor(y BlendFactor) PipelineColorBlendAttachmentState {
-	ptr := /* typedef */ (*C.VkBlendFactor)(&y)
-	x.srcAlphaBlendFactor = *ptr
+	x.srcAlphaBlendFactor = *( /* typedef */ (*C.VkBlendFactor)(&y))
 	return x
 }
 
@@ -13217,8 +12860,7 @@ func (x PipelineColorBlendAttachmentState) DstAlphaBlendFactor() BlendFactor {
 // WithDstAlphaBlendFactor sets the value for the DstAlphaBlendFactor on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineColorBlendAttachmentState) WithDstAlphaBlendFactor(y BlendFactor) PipelineColorBlendAttachmentState {
-	ptr := /* typedef */ (*C.VkBlendFactor)(&y)
-	x.dstAlphaBlendFactor = *ptr
+	x.dstAlphaBlendFactor = *( /* typedef */ (*C.VkBlendFactor)(&y))
 	return x
 }
 
@@ -13231,8 +12873,7 @@ func (x PipelineColorBlendAttachmentState) AlphaBlendOp() BlendOp {
 // WithAlphaBlendOp sets the value for the AlphaBlendOp on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineColorBlendAttachmentState) WithAlphaBlendOp(y BlendOp) PipelineColorBlendAttachmentState {
-	ptr := /* typedef */ (*C.VkBlendOp)(&y)
-	x.alphaBlendOp = *ptr
+	x.alphaBlendOp = *( /* typedef */ (*C.VkBlendOp)(&y))
 	return x
 }
 
@@ -13245,8 +12886,7 @@ func (x PipelineColorBlendAttachmentState) ColorWriteMask() ColorComponentFlags 
 // WithColorWriteMask sets the value for the ColorWriteMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineColorBlendAttachmentState) WithColorWriteMask(y ColorComponentFlags) PipelineColorBlendAttachmentState {
-	ptr := /* typedef */ (*C.VkColorComponentFlags)(&y)
-	x.colorWriteMask = *ptr
+	x.colorWriteMask = *( /* typedef */ (*C.VkColorComponentFlags)(&y))
 	return x
 }
 
@@ -13301,8 +12941,7 @@ func (x ClearRect) Rect() Rect2D {
 // WithRect sets the value for the Rect on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ClearRect) WithRect(y Rect2D) ClearRect {
-	ptr := /* typedef */ (*C.struct_VkRect2D)(&y)
-	x.rect = *ptr
+	x.rect = *( /* typedef */ (*C.struct_VkRect2D)(&y))
 	return x
 }
 
@@ -13315,8 +12954,7 @@ func (x ClearRect) BaseArrayLayer() uint32 {
 // WithBaseArrayLayer sets the value for the BaseArrayLayer on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ClearRect) WithBaseArrayLayer(y uint32) ClearRect {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.baseArrayLayer = *ptr
+	x.baseArrayLayer = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -13329,8 +12967,7 @@ func (x ClearRect) LayerCount() uint32 {
 // WithLayerCount sets the value for the LayerCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ClearRect) WithLayerCount(y uint32) ClearRect {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.layerCount = *ptr
+	x.layerCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -13391,8 +13028,7 @@ func (x PipelineColorBlendStateCreateInfo) WithDefaultSType() PipelineColorBlend
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineColorBlendStateCreateInfo) WithSType(y StructureType) PipelineColorBlendStateCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -13405,8 +13041,7 @@ func (x PipelineColorBlendStateCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineColorBlendStateCreateInfo) WithPNext(y unsafe.Pointer) PipelineColorBlendStateCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -13419,8 +13054,7 @@ func (x PipelineColorBlendStateCreateInfo) Flags() PipelineColorBlendStateCreate
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineColorBlendStateCreateInfo) WithFlags(y PipelineColorBlendStateCreateFlags) PipelineColorBlendStateCreateInfo {
-	ptr := /* typedef */ (*C.VkPipelineColorBlendStateCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkPipelineColorBlendStateCreateFlags)(&y))
 	return x
 }
 
@@ -13433,8 +13067,7 @@ func (x PipelineColorBlendStateCreateInfo) LogicOpEnable() Bool32 {
 // WithLogicOpEnable sets the value for the LogicOpEnable on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineColorBlendStateCreateInfo) WithLogicOpEnable(y Bool32) PipelineColorBlendStateCreateInfo {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.logicOpEnable = *ptr
+	x.logicOpEnable = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -13447,8 +13080,7 @@ func (x PipelineColorBlendStateCreateInfo) LogicOp() LogicOp {
 // WithLogicOp sets the value for the LogicOp on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineColorBlendStateCreateInfo) WithLogicOp(y LogicOp) PipelineColorBlendStateCreateInfo {
-	ptr := /* typedef */ (*C.VkLogicOp)(&y)
-	x.logicOp = *ptr
+	x.logicOp = *( /* typedef */ (*C.VkLogicOp)(&y))
 	return x
 }
 
@@ -13461,8 +13093,7 @@ func (x PipelineColorBlendStateCreateInfo) AttachmentCount() uint32 {
 // WithAttachmentCount sets the value for the AttachmentCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineColorBlendStateCreateInfo) WithAttachmentCount(y uint32) PipelineColorBlendStateCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.attachmentCount = *ptr
+	x.attachmentCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -13481,15 +13112,14 @@ func (x PipelineColorBlendStateCreateInfo) PAttachments() []PipelineColorBlendAt
 // The specification defines AttachmentCount as the length of this field.
 // AttachmentCount is updated with the length of the new value.
 func (x PipelineColorBlendStateCreateInfo) WithPAttachments(y []PipelineColorBlendAttachmentState) PipelineColorBlendStateCreateInfo {
-	ptr := func(x *[]PipelineColorBlendAttachmentState) **C.struct_VkPipelineColorBlendAttachmentState { /* Slice */
+	x.pAttachments = *(func(x *[]PipelineColorBlendAttachmentState) **C.struct_VkPipelineColorBlendAttachmentState { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkPipelineColorBlendAttachmentState)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkPipelineColorBlendAttachmentState)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pAttachments = *ptr
+	}(&y))
 	return x.WithAttachmentCount(uint32(len(y)))
 }
 
@@ -13568,8 +13198,7 @@ func (x ImageBlit) SrcSubresource() ImageSubresourceLayers {
 // WithSrcSubresource sets the value for the SrcSubresource on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageBlit) WithSrcSubresource(y ImageSubresourceLayers) ImageBlit {
-	ptr := /* typedef */ (*C.struct_VkImageSubresourceLayers)(&y)
-	x.srcSubresource = *ptr
+	x.srcSubresource = *( /* typedef */ (*C.struct_VkImageSubresourceLayers)(&y))
 	return x
 }
 
@@ -13606,8 +13235,7 @@ func (x ImageBlit) DstSubresource() ImageSubresourceLayers {
 // WithDstSubresource sets the value for the DstSubresource on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageBlit) WithDstSubresource(y ImageSubresourceLayers) ImageBlit {
-	ptr := /* typedef */ (*C.struct_VkImageSubresourceLayers)(&y)
-	x.dstSubresource = *ptr
+	x.dstSubresource = *( /* typedef */ (*C.struct_VkImageSubresourceLayers)(&y))
 	return x
 }
 
@@ -13686,8 +13314,7 @@ func (x ImageCopy) SrcSubresource() ImageSubresourceLayers {
 // WithSrcSubresource sets the value for the SrcSubresource on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageCopy) WithSrcSubresource(y ImageSubresourceLayers) ImageCopy {
-	ptr := /* typedef */ (*C.struct_VkImageSubresourceLayers)(&y)
-	x.srcSubresource = *ptr
+	x.srcSubresource = *( /* typedef */ (*C.struct_VkImageSubresourceLayers)(&y))
 	return x
 }
 
@@ -13700,8 +13327,7 @@ func (x ImageCopy) SrcOffset() Offset3D {
 // WithSrcOffset sets the value for the SrcOffset on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageCopy) WithSrcOffset(y Offset3D) ImageCopy {
-	ptr := /* typedef */ (*C.struct_VkOffset3D)(&y)
-	x.srcOffset = *ptr
+	x.srcOffset = *( /* typedef */ (*C.struct_VkOffset3D)(&y))
 	return x
 }
 
@@ -13714,8 +13340,7 @@ func (x ImageCopy) DstSubresource() ImageSubresourceLayers {
 // WithDstSubresource sets the value for the DstSubresource on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageCopy) WithDstSubresource(y ImageSubresourceLayers) ImageCopy {
-	ptr := /* typedef */ (*C.struct_VkImageSubresourceLayers)(&y)
-	x.dstSubresource = *ptr
+	x.dstSubresource = *( /* typedef */ (*C.struct_VkImageSubresourceLayers)(&y))
 	return x
 }
 
@@ -13728,8 +13353,7 @@ func (x ImageCopy) DstOffset() Offset3D {
 // WithDstOffset sets the value for the DstOffset on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageCopy) WithDstOffset(y Offset3D) ImageCopy {
-	ptr := /* typedef */ (*C.struct_VkOffset3D)(&y)
-	x.dstOffset = *ptr
+	x.dstOffset = *( /* typedef */ (*C.struct_VkOffset3D)(&y))
 	return x
 }
 
@@ -13742,8 +13366,7 @@ func (x ImageCopy) Extent() Extent3D {
 // WithExtent sets the value for the Extent on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageCopy) WithExtent(y Extent3D) ImageCopy {
-	ptr := /* typedef */ (*C.struct_VkExtent3D)(&y)
-	x.extent = *ptr
+	x.extent = *( /* typedef */ (*C.struct_VkExtent3D)(&y))
 	return x
 }
 
@@ -13798,8 +13421,7 @@ func (x ImageResolve) SrcSubresource() ImageSubresourceLayers {
 // WithSrcSubresource sets the value for the SrcSubresource on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageResolve) WithSrcSubresource(y ImageSubresourceLayers) ImageResolve {
-	ptr := /* typedef */ (*C.struct_VkImageSubresourceLayers)(&y)
-	x.srcSubresource = *ptr
+	x.srcSubresource = *( /* typedef */ (*C.struct_VkImageSubresourceLayers)(&y))
 	return x
 }
 
@@ -13812,8 +13434,7 @@ func (x ImageResolve) SrcOffset() Offset3D {
 // WithSrcOffset sets the value for the SrcOffset on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageResolve) WithSrcOffset(y Offset3D) ImageResolve {
-	ptr := /* typedef */ (*C.struct_VkOffset3D)(&y)
-	x.srcOffset = *ptr
+	x.srcOffset = *( /* typedef */ (*C.struct_VkOffset3D)(&y))
 	return x
 }
 
@@ -13826,8 +13447,7 @@ func (x ImageResolve) DstSubresource() ImageSubresourceLayers {
 // WithDstSubresource sets the value for the DstSubresource on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageResolve) WithDstSubresource(y ImageSubresourceLayers) ImageResolve {
-	ptr := /* typedef */ (*C.struct_VkImageSubresourceLayers)(&y)
-	x.dstSubresource = *ptr
+	x.dstSubresource = *( /* typedef */ (*C.struct_VkImageSubresourceLayers)(&y))
 	return x
 }
 
@@ -13840,8 +13460,7 @@ func (x ImageResolve) DstOffset() Offset3D {
 // WithDstOffset sets the value for the DstOffset on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageResolve) WithDstOffset(y Offset3D) ImageResolve {
-	ptr := /* typedef */ (*C.struct_VkOffset3D)(&y)
-	x.dstOffset = *ptr
+	x.dstOffset = *( /* typedef */ (*C.struct_VkOffset3D)(&y))
 	return x
 }
 
@@ -13854,8 +13473,7 @@ func (x ImageResolve) Extent() Extent3D {
 // WithExtent sets the value for the Extent on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageResolve) WithExtent(y Extent3D) ImageResolve {
-	ptr := /* typedef */ (*C.struct_VkExtent3D)(&y)
-	x.extent = *ptr
+	x.extent = *( /* typedef */ (*C.struct_VkExtent3D)(&y))
 	return x
 }
 
@@ -13916,8 +13534,7 @@ func (x PipelineDepthStencilStateCreateInfo) WithDefaultSType() PipelineDepthSte
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineDepthStencilStateCreateInfo) WithSType(y StructureType) PipelineDepthStencilStateCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -13930,8 +13547,7 @@ func (x PipelineDepthStencilStateCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineDepthStencilStateCreateInfo) WithPNext(y unsafe.Pointer) PipelineDepthStencilStateCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -13944,8 +13560,7 @@ func (x PipelineDepthStencilStateCreateInfo) Flags() PipelineDepthStencilStateCr
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineDepthStencilStateCreateInfo) WithFlags(y PipelineDepthStencilStateCreateFlags) PipelineDepthStencilStateCreateInfo {
-	ptr := /* typedef */ (*C.VkPipelineDepthStencilStateCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkPipelineDepthStencilStateCreateFlags)(&y))
 	return x
 }
 
@@ -13958,8 +13573,7 @@ func (x PipelineDepthStencilStateCreateInfo) DepthTestEnable() Bool32 {
 // WithDepthTestEnable sets the value for the DepthTestEnable on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineDepthStencilStateCreateInfo) WithDepthTestEnable(y Bool32) PipelineDepthStencilStateCreateInfo {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.depthTestEnable = *ptr
+	x.depthTestEnable = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -13972,8 +13586,7 @@ func (x PipelineDepthStencilStateCreateInfo) DepthWriteEnable() Bool32 {
 // WithDepthWriteEnable sets the value for the DepthWriteEnable on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineDepthStencilStateCreateInfo) WithDepthWriteEnable(y Bool32) PipelineDepthStencilStateCreateInfo {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.depthWriteEnable = *ptr
+	x.depthWriteEnable = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -13986,8 +13599,7 @@ func (x PipelineDepthStencilStateCreateInfo) DepthCompareOp() CompareOp {
 // WithDepthCompareOp sets the value for the DepthCompareOp on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineDepthStencilStateCreateInfo) WithDepthCompareOp(y CompareOp) PipelineDepthStencilStateCreateInfo {
-	ptr := /* typedef */ (*C.VkCompareOp)(&y)
-	x.depthCompareOp = *ptr
+	x.depthCompareOp = *( /* typedef */ (*C.VkCompareOp)(&y))
 	return x
 }
 
@@ -14000,8 +13612,7 @@ func (x PipelineDepthStencilStateCreateInfo) DepthBoundsTestEnable() Bool32 {
 // WithDepthBoundsTestEnable sets the value for the DepthBoundsTestEnable on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineDepthStencilStateCreateInfo) WithDepthBoundsTestEnable(y Bool32) PipelineDepthStencilStateCreateInfo {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.depthBoundsTestEnable = *ptr
+	x.depthBoundsTestEnable = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -14014,8 +13625,7 @@ func (x PipelineDepthStencilStateCreateInfo) StencilTestEnable() Bool32 {
 // WithStencilTestEnable sets the value for the StencilTestEnable on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineDepthStencilStateCreateInfo) WithStencilTestEnable(y Bool32) PipelineDepthStencilStateCreateInfo {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.stencilTestEnable = *ptr
+	x.stencilTestEnable = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -14028,8 +13638,7 @@ func (x PipelineDepthStencilStateCreateInfo) Front() StencilOpState {
 // WithFront sets the value for the Front on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineDepthStencilStateCreateInfo) WithFront(y StencilOpState) PipelineDepthStencilStateCreateInfo {
-	ptr := /* typedef */ (*C.struct_VkStencilOpState)(&y)
-	x.front = *ptr
+	x.front = *( /* typedef */ (*C.struct_VkStencilOpState)(&y))
 	return x
 }
 
@@ -14042,8 +13651,7 @@ func (x PipelineDepthStencilStateCreateInfo) Back() StencilOpState {
 // WithBack sets the value for the Back on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineDepthStencilStateCreateInfo) WithBack(y StencilOpState) PipelineDepthStencilStateCreateInfo {
-	ptr := /* typedef */ (*C.struct_VkStencilOpState)(&y)
-	x.back = *ptr
+	x.back = *( /* typedef */ (*C.struct_VkStencilOpState)(&y))
 	return x
 }
 
@@ -14056,8 +13664,7 @@ func (x PipelineDepthStencilStateCreateInfo) MinDepthBounds() float32 {
 // WithMinDepthBounds sets the value for the MinDepthBounds on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineDepthStencilStateCreateInfo) WithMinDepthBounds(y float32) PipelineDepthStencilStateCreateInfo {
-	ptr := func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y)
-	x.minDepthBounds = *ptr
+	x.minDepthBounds = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
 	return x
 }
 
@@ -14070,8 +13677,7 @@ func (x PipelineDepthStencilStateCreateInfo) MaxDepthBounds() float32 {
 // WithMaxDepthBounds sets the value for the MaxDepthBounds on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineDepthStencilStateCreateInfo) WithMaxDepthBounds(y float32) PipelineDepthStencilStateCreateInfo {
-	ptr := func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y)
-	x.maxDepthBounds = *ptr
+	x.maxDepthBounds = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
 	return x
 }
 
@@ -14126,8 +13732,7 @@ func (x ImageSubresourceLayers) AspectMask() ImageAspectFlags {
 // WithAspectMask sets the value for the AspectMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageSubresourceLayers) WithAspectMask(y ImageAspectFlags) ImageSubresourceLayers {
-	ptr := /* typedef */ (*C.VkImageAspectFlags)(&y)
-	x.aspectMask = *ptr
+	x.aspectMask = *( /* typedef */ (*C.VkImageAspectFlags)(&y))
 	return x
 }
 
@@ -14140,8 +13745,7 @@ func (x ImageSubresourceLayers) MipLevel() uint32 {
 // WithMipLevel sets the value for the MipLevel on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageSubresourceLayers) WithMipLevel(y uint32) ImageSubresourceLayers {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.mipLevel = *ptr
+	x.mipLevel = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -14154,8 +13758,7 @@ func (x ImageSubresourceLayers) BaseArrayLayer() uint32 {
 // WithBaseArrayLayer sets the value for the BaseArrayLayer on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageSubresourceLayers) WithBaseArrayLayer(y uint32) ImageSubresourceLayers {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.baseArrayLayer = *ptr
+	x.baseArrayLayer = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -14168,8 +13771,7 @@ func (x ImageSubresourceLayers) LayerCount() uint32 {
 // WithLayerCount sets the value for the LayerCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageSubresourceLayers) WithLayerCount(y uint32) ImageSubresourceLayers {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.layerCount = *ptr
+	x.layerCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -14230,8 +13832,7 @@ func (x PipelineDynamicStateCreateInfo) WithDefaultSType() PipelineDynamicStateC
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineDynamicStateCreateInfo) WithSType(y StructureType) PipelineDynamicStateCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -14244,8 +13845,7 @@ func (x PipelineDynamicStateCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineDynamicStateCreateInfo) WithPNext(y unsafe.Pointer) PipelineDynamicStateCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -14258,8 +13858,7 @@ func (x PipelineDynamicStateCreateInfo) Flags() PipelineDynamicStateCreateFlags 
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineDynamicStateCreateInfo) WithFlags(y PipelineDynamicStateCreateFlags) PipelineDynamicStateCreateInfo {
-	ptr := /* typedef */ (*C.VkPipelineDynamicStateCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkPipelineDynamicStateCreateFlags)(&y))
 	return x
 }
 
@@ -14272,8 +13871,7 @@ func (x PipelineDynamicStateCreateInfo) DynamicStateCount() uint32 {
 // WithDynamicStateCount sets the value for the DynamicStateCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineDynamicStateCreateInfo) WithDynamicStateCount(y uint32) PipelineDynamicStateCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.dynamicStateCount = *ptr
+	x.dynamicStateCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -14292,15 +13890,14 @@ func (x PipelineDynamicStateCreateInfo) PDynamicStates() []DynamicState {
 // The specification defines DynamicStateCount as the length of this field.
 // DynamicStateCount is updated with the length of the new value.
 func (x PipelineDynamicStateCreateInfo) WithPDynamicStates(y []DynamicState) PipelineDynamicStateCreateInfo {
-	ptr := func(x *[]DynamicState) **C.VkDynamicState { /* Slice */
+	x.pDynamicStates = *(func(x *[]DynamicState) **C.VkDynamicState { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkDynamicState)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.VkDynamicState)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pDynamicStates = *ptr
+	}(&y))
 	return x.WithDynamicStateCount(uint32(len(y)))
 }
 
@@ -14361,8 +13958,7 @@ func (x RenderPassBeginInfo) WithDefaultSType() RenderPassBeginInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x RenderPassBeginInfo) WithSType(y StructureType) RenderPassBeginInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -14375,8 +13971,7 @@ func (x RenderPassBeginInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x RenderPassBeginInfo) WithPNext(y unsafe.Pointer) RenderPassBeginInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -14389,8 +13984,7 @@ func (x RenderPassBeginInfo) RenderPass() RenderPass {
 // WithRenderPass sets the value for the RenderPass on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x RenderPassBeginInfo) WithRenderPass(y RenderPass) RenderPassBeginInfo {
-	ptr := /* handle */ (*C.VkRenderPass)(&y)
-	x.renderPass = *ptr
+	x.renderPass = *( /* handle */ (*C.VkRenderPass)(&y))
 	return x
 }
 
@@ -14403,8 +13997,7 @@ func (x RenderPassBeginInfo) Framebuffer() Framebuffer {
 // WithFramebuffer sets the value for the Framebuffer on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x RenderPassBeginInfo) WithFramebuffer(y Framebuffer) RenderPassBeginInfo {
-	ptr := /* handle */ (*C.VkFramebuffer)(&y)
-	x.framebuffer = *ptr
+	x.framebuffer = *( /* handle */ (*C.VkFramebuffer)(&y))
 	return x
 }
 
@@ -14417,8 +14010,7 @@ func (x RenderPassBeginInfo) RenderArea() Rect2D {
 // WithRenderArea sets the value for the RenderArea on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x RenderPassBeginInfo) WithRenderArea(y Rect2D) RenderPassBeginInfo {
-	ptr := /* typedef */ (*C.struct_VkRect2D)(&y)
-	x.renderArea = *ptr
+	x.renderArea = *( /* typedef */ (*C.struct_VkRect2D)(&y))
 	return x
 }
 
@@ -14431,8 +14023,7 @@ func (x RenderPassBeginInfo) ClearValueCount() uint32 {
 // WithClearValueCount sets the value for the ClearValueCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x RenderPassBeginInfo) WithClearValueCount(y uint32) RenderPassBeginInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.clearValueCount = *ptr
+	x.clearValueCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -14451,15 +14042,14 @@ func (x RenderPassBeginInfo) PClearValues() []ClearValue {
 // The specification defines ClearValueCount as the length of this field.
 // ClearValueCount is updated with the length of the new value.
 func (x RenderPassBeginInfo) WithPClearValues(y []ClearValue) RenderPassBeginInfo {
-	ptr := func(x *[]ClearValue) **C.VkClearValue { /* Slice */
+	x.pClearValues = *(func(x *[]ClearValue) **C.VkClearValue { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkClearValue)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.VkClearValue)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pClearValues = *ptr
+	}(&y))
 	return x.WithClearValueCount(uint32(len(y)))
 }
 
@@ -14520,8 +14110,7 @@ func (x PipelineInputAssemblyStateCreateInfo) WithDefaultSType() PipelineInputAs
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineInputAssemblyStateCreateInfo) WithSType(y StructureType) PipelineInputAssemblyStateCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -14534,8 +14123,7 @@ func (x PipelineInputAssemblyStateCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineInputAssemblyStateCreateInfo) WithPNext(y unsafe.Pointer) PipelineInputAssemblyStateCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -14548,8 +14136,7 @@ func (x PipelineInputAssemblyStateCreateInfo) Flags() PipelineInputAssemblyState
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineInputAssemblyStateCreateInfo) WithFlags(y PipelineInputAssemblyStateCreateFlags) PipelineInputAssemblyStateCreateInfo {
-	ptr := /* typedef */ (*C.VkPipelineInputAssemblyStateCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkPipelineInputAssemblyStateCreateFlags)(&y))
 	return x
 }
 
@@ -14562,8 +14149,7 @@ func (x PipelineInputAssemblyStateCreateInfo) Topology() PrimitiveTopology {
 // WithTopology sets the value for the Topology on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineInputAssemblyStateCreateInfo) WithTopology(y PrimitiveTopology) PipelineInputAssemblyStateCreateInfo {
-	ptr := /* typedef */ (*C.VkPrimitiveTopology)(&y)
-	x.topology = *ptr
+	x.topology = *( /* typedef */ (*C.VkPrimitiveTopology)(&y))
 	return x
 }
 
@@ -14576,8 +14162,7 @@ func (x PipelineInputAssemblyStateCreateInfo) PrimitiveRestartEnable() Bool32 {
 // WithPrimitiveRestartEnable sets the value for the PrimitiveRestartEnable on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineInputAssemblyStateCreateInfo) WithPrimitiveRestartEnable(y Bool32) PipelineInputAssemblyStateCreateInfo {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.primitiveRestartEnable = *ptr
+	x.primitiveRestartEnable = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -14638,8 +14223,7 @@ func (x SamplerCreateInfo) WithDefaultSType() SamplerCreateInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerCreateInfo) WithSType(y StructureType) SamplerCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -14652,8 +14236,7 @@ func (x SamplerCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerCreateInfo) WithPNext(y unsafe.Pointer) SamplerCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -14666,8 +14249,7 @@ func (x SamplerCreateInfo) Flags() SamplerCreateFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerCreateInfo) WithFlags(y SamplerCreateFlags) SamplerCreateInfo {
-	ptr := /* typedef */ (*C.VkSamplerCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkSamplerCreateFlags)(&y))
 	return x
 }
 
@@ -14680,8 +14262,7 @@ func (x SamplerCreateInfo) MagFilter() Filter {
 // WithMagFilter sets the value for the MagFilter on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerCreateInfo) WithMagFilter(y Filter) SamplerCreateInfo {
-	ptr := /* typedef */ (*C.VkFilter)(&y)
-	x.magFilter = *ptr
+	x.magFilter = *( /* typedef */ (*C.VkFilter)(&y))
 	return x
 }
 
@@ -14694,8 +14275,7 @@ func (x SamplerCreateInfo) MinFilter() Filter {
 // WithMinFilter sets the value for the MinFilter on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerCreateInfo) WithMinFilter(y Filter) SamplerCreateInfo {
-	ptr := /* typedef */ (*C.VkFilter)(&y)
-	x.minFilter = *ptr
+	x.minFilter = *( /* typedef */ (*C.VkFilter)(&y))
 	return x
 }
 
@@ -14708,8 +14288,7 @@ func (x SamplerCreateInfo) MipmapMode() SamplerMipmapMode {
 // WithMipmapMode sets the value for the MipmapMode on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerCreateInfo) WithMipmapMode(y SamplerMipmapMode) SamplerCreateInfo {
-	ptr := /* typedef */ (*C.VkSamplerMipmapMode)(&y)
-	x.mipmapMode = *ptr
+	x.mipmapMode = *( /* typedef */ (*C.VkSamplerMipmapMode)(&y))
 	return x
 }
 
@@ -14722,8 +14301,7 @@ func (x SamplerCreateInfo) AddressModeU() SamplerAddressMode {
 // WithAddressModeU sets the value for the AddressModeU on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerCreateInfo) WithAddressModeU(y SamplerAddressMode) SamplerCreateInfo {
-	ptr := /* typedef */ (*C.VkSamplerAddressMode)(&y)
-	x.addressModeU = *ptr
+	x.addressModeU = *( /* typedef */ (*C.VkSamplerAddressMode)(&y))
 	return x
 }
 
@@ -14736,8 +14314,7 @@ func (x SamplerCreateInfo) AddressModeV() SamplerAddressMode {
 // WithAddressModeV sets the value for the AddressModeV on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerCreateInfo) WithAddressModeV(y SamplerAddressMode) SamplerCreateInfo {
-	ptr := /* typedef */ (*C.VkSamplerAddressMode)(&y)
-	x.addressModeV = *ptr
+	x.addressModeV = *( /* typedef */ (*C.VkSamplerAddressMode)(&y))
 	return x
 }
 
@@ -14750,8 +14327,7 @@ func (x SamplerCreateInfo) AddressModeW() SamplerAddressMode {
 // WithAddressModeW sets the value for the AddressModeW on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerCreateInfo) WithAddressModeW(y SamplerAddressMode) SamplerCreateInfo {
-	ptr := /* typedef */ (*C.VkSamplerAddressMode)(&y)
-	x.addressModeW = *ptr
+	x.addressModeW = *( /* typedef */ (*C.VkSamplerAddressMode)(&y))
 	return x
 }
 
@@ -14764,8 +14340,7 @@ func (x SamplerCreateInfo) MipLodBias() float32 {
 // WithMipLodBias sets the value for the MipLodBias on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerCreateInfo) WithMipLodBias(y float32) SamplerCreateInfo {
-	ptr := func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y)
-	x.mipLodBias = *ptr
+	x.mipLodBias = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
 	return x
 }
 
@@ -14778,8 +14353,7 @@ func (x SamplerCreateInfo) AnisotropyEnable() Bool32 {
 // WithAnisotropyEnable sets the value for the AnisotropyEnable on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerCreateInfo) WithAnisotropyEnable(y Bool32) SamplerCreateInfo {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.anisotropyEnable = *ptr
+	x.anisotropyEnable = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -14792,8 +14366,7 @@ func (x SamplerCreateInfo) MaxAnisotropy() float32 {
 // WithMaxAnisotropy sets the value for the MaxAnisotropy on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerCreateInfo) WithMaxAnisotropy(y float32) SamplerCreateInfo {
-	ptr := func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y)
-	x.maxAnisotropy = *ptr
+	x.maxAnisotropy = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
 	return x
 }
 
@@ -14806,8 +14379,7 @@ func (x SamplerCreateInfo) CompareEnable() Bool32 {
 // WithCompareEnable sets the value for the CompareEnable on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerCreateInfo) WithCompareEnable(y Bool32) SamplerCreateInfo {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.compareEnable = *ptr
+	x.compareEnable = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -14820,8 +14392,7 @@ func (x SamplerCreateInfo) CompareOp() CompareOp {
 // WithCompareOp sets the value for the CompareOp on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerCreateInfo) WithCompareOp(y CompareOp) SamplerCreateInfo {
-	ptr := /* typedef */ (*C.VkCompareOp)(&y)
-	x.compareOp = *ptr
+	x.compareOp = *( /* typedef */ (*C.VkCompareOp)(&y))
 	return x
 }
 
@@ -14834,8 +14405,7 @@ func (x SamplerCreateInfo) MinLod() float32 {
 // WithMinLod sets the value for the MinLod on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerCreateInfo) WithMinLod(y float32) SamplerCreateInfo {
-	ptr := func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y)
-	x.minLod = *ptr
+	x.minLod = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
 	return x
 }
 
@@ -14848,8 +14418,7 @@ func (x SamplerCreateInfo) MaxLod() float32 {
 // WithMaxLod sets the value for the MaxLod on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerCreateInfo) WithMaxLod(y float32) SamplerCreateInfo {
-	ptr := func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y)
-	x.maxLod = *ptr
+	x.maxLod = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
 	return x
 }
 
@@ -14862,8 +14431,7 @@ func (x SamplerCreateInfo) BorderColor() BorderColor {
 // WithBorderColor sets the value for the BorderColor on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerCreateInfo) WithBorderColor(y BorderColor) SamplerCreateInfo {
-	ptr := /* typedef */ (*C.VkBorderColor)(&y)
-	x.borderColor = *ptr
+	x.borderColor = *( /* typedef */ (*C.VkBorderColor)(&y))
 	return x
 }
 
@@ -14876,8 +14444,7 @@ func (x SamplerCreateInfo) UnnormalizedCoordinates() Bool32 {
 // WithUnnormalizedCoordinates sets the value for the UnnormalizedCoordinates on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerCreateInfo) WithUnnormalizedCoordinates(y Bool32) SamplerCreateInfo {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.unnormalizedCoordinates = *ptr
+	x.unnormalizedCoordinates = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -14932,8 +14499,7 @@ func (x DescriptorImageInfo) Sampler() Sampler {
 // WithSampler sets the value for the Sampler on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorImageInfo) WithSampler(y Sampler) DescriptorImageInfo {
-	ptr := /* handle */ (*C.VkSampler)(&y)
-	x.sampler = *ptr
+	x.sampler = *( /* handle */ (*C.VkSampler)(&y))
 	return x
 }
 
@@ -14946,8 +14512,7 @@ func (x DescriptorImageInfo) ImageView() ImageView {
 // WithImageView sets the value for the ImageView on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorImageInfo) WithImageView(y ImageView) DescriptorImageInfo {
-	ptr := /* handle */ (*C.VkImageView)(&y)
-	x.imageView = *ptr
+	x.imageView = *( /* handle */ (*C.VkImageView)(&y))
 	return x
 }
 
@@ -14960,8 +14525,7 @@ func (x DescriptorImageInfo) ImageLayout() ImageLayout {
 // WithImageLayout sets the value for the ImageLayout on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorImageInfo) WithImageLayout(y ImageLayout) DescriptorImageInfo {
-	ptr := /* typedef */ (*C.VkImageLayout)(&y)
-	x.imageLayout = *ptr
+	x.imageLayout = *( /* typedef */ (*C.VkImageLayout)(&y))
 	return x
 }
 
@@ -15022,8 +14586,7 @@ func (x PipelineMultisampleStateCreateInfo) WithDefaultSType() PipelineMultisamp
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineMultisampleStateCreateInfo) WithSType(y StructureType) PipelineMultisampleStateCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -15036,8 +14599,7 @@ func (x PipelineMultisampleStateCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineMultisampleStateCreateInfo) WithPNext(y unsafe.Pointer) PipelineMultisampleStateCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -15050,8 +14612,7 @@ func (x PipelineMultisampleStateCreateInfo) Flags() PipelineMultisampleStateCrea
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineMultisampleStateCreateInfo) WithFlags(y PipelineMultisampleStateCreateFlags) PipelineMultisampleStateCreateInfo {
-	ptr := /* typedef */ (*C.VkPipelineMultisampleStateCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkPipelineMultisampleStateCreateFlags)(&y))
 	return x
 }
 
@@ -15064,8 +14625,7 @@ func (x PipelineMultisampleStateCreateInfo) RasterizationSamples() SampleCountFl
 // WithRasterizationSamples sets the value for the RasterizationSamples on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineMultisampleStateCreateInfo) WithRasterizationSamples(y SampleCountFlagBits) PipelineMultisampleStateCreateInfo {
-	ptr := /* typedef */ (*C.VkSampleCountFlagBits)(&y)
-	x.rasterizationSamples = *ptr
+	x.rasterizationSamples = *( /* typedef */ (*C.VkSampleCountFlagBits)(&y))
 	return x
 }
 
@@ -15078,8 +14638,7 @@ func (x PipelineMultisampleStateCreateInfo) SampleShadingEnable() Bool32 {
 // WithSampleShadingEnable sets the value for the SampleShadingEnable on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineMultisampleStateCreateInfo) WithSampleShadingEnable(y Bool32) PipelineMultisampleStateCreateInfo {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.sampleShadingEnable = *ptr
+	x.sampleShadingEnable = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -15092,8 +14651,7 @@ func (x PipelineMultisampleStateCreateInfo) MinSampleShading() float32 {
 // WithMinSampleShading sets the value for the MinSampleShading on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineMultisampleStateCreateInfo) WithMinSampleShading(y float32) PipelineMultisampleStateCreateInfo {
-	ptr := func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y)
-	x.minSampleShading = *ptr
+	x.minSampleShading = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
 	return x
 }
 
@@ -15109,15 +14667,14 @@ func (x PipelineMultisampleStateCreateInfo) PSampleMask() []SampleMask {
 // WithPSampleMask sets the value for the PSampleMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineMultisampleStateCreateInfo) WithPSampleMask(y []SampleMask) PipelineMultisampleStateCreateInfo {
-	ptr := func(x *[]SampleMask) **C.VkSampleMask { /* Slice */
+	x.pSampleMask = *(func(x *[]SampleMask) **C.VkSampleMask { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkSampleMask)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.VkSampleMask)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pSampleMask = *ptr
+	}(&y))
 	return x
 }
 
@@ -15130,8 +14687,7 @@ func (x PipelineMultisampleStateCreateInfo) AlphaToCoverageEnable() Bool32 {
 // WithAlphaToCoverageEnable sets the value for the AlphaToCoverageEnable on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineMultisampleStateCreateInfo) WithAlphaToCoverageEnable(y Bool32) PipelineMultisampleStateCreateInfo {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.alphaToCoverageEnable = *ptr
+	x.alphaToCoverageEnable = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -15144,8 +14700,7 @@ func (x PipelineMultisampleStateCreateInfo) AlphaToOneEnable() Bool32 {
 // WithAlphaToOneEnable sets the value for the AlphaToOneEnable on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineMultisampleStateCreateInfo) WithAlphaToOneEnable(y Bool32) PipelineMultisampleStateCreateInfo {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.alphaToOneEnable = *ptr
+	x.alphaToOneEnable = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -15200,8 +14755,7 @@ func (x PipelineCacheHeaderVersionOne) HeaderSize() uint32 {
 // WithHeaderSize sets the value for the HeaderSize on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineCacheHeaderVersionOne) WithHeaderSize(y uint32) PipelineCacheHeaderVersionOne {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.headerSize = *ptr
+	x.headerSize = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -15214,8 +14768,7 @@ func (x PipelineCacheHeaderVersionOne) HeaderVersion() PipelineCacheHeaderVersio
 // WithHeaderVersion sets the value for the HeaderVersion on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineCacheHeaderVersionOne) WithHeaderVersion(y PipelineCacheHeaderVersion) PipelineCacheHeaderVersionOne {
-	ptr := /* typedef */ (*C.VkPipelineCacheHeaderVersion)(&y)
-	x.headerVersion = *ptr
+	x.headerVersion = *( /* typedef */ (*C.VkPipelineCacheHeaderVersion)(&y))
 	return x
 }
 
@@ -15228,8 +14781,7 @@ func (x PipelineCacheHeaderVersionOne) VendorID() uint32 {
 // WithVendorID sets the value for the VendorID on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineCacheHeaderVersionOne) WithVendorID(y uint32) PipelineCacheHeaderVersionOne {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.vendorID = *ptr
+	x.vendorID = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -15242,8 +14794,7 @@ func (x PipelineCacheHeaderVersionOne) DeviceID() uint32 {
 // WithDeviceID sets the value for the DeviceID on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineCacheHeaderVersionOne) WithDeviceID(y uint32) PipelineCacheHeaderVersionOne {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.deviceID = *ptr
+	x.deviceID = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -15328,8 +14879,7 @@ func (x PipelineRasterizationStateCreateInfo) WithDefaultSType() PipelineRasteri
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineRasterizationStateCreateInfo) WithSType(y StructureType) PipelineRasterizationStateCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -15342,8 +14892,7 @@ func (x PipelineRasterizationStateCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineRasterizationStateCreateInfo) WithPNext(y unsafe.Pointer) PipelineRasterizationStateCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -15356,8 +14905,7 @@ func (x PipelineRasterizationStateCreateInfo) Flags() PipelineRasterizationState
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineRasterizationStateCreateInfo) WithFlags(y PipelineRasterizationStateCreateFlags) PipelineRasterizationStateCreateInfo {
-	ptr := /* typedef */ (*C.VkPipelineRasterizationStateCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkPipelineRasterizationStateCreateFlags)(&y))
 	return x
 }
 
@@ -15370,8 +14918,7 @@ func (x PipelineRasterizationStateCreateInfo) DepthClampEnable() Bool32 {
 // WithDepthClampEnable sets the value for the DepthClampEnable on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineRasterizationStateCreateInfo) WithDepthClampEnable(y Bool32) PipelineRasterizationStateCreateInfo {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.depthClampEnable = *ptr
+	x.depthClampEnable = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -15384,8 +14931,7 @@ func (x PipelineRasterizationStateCreateInfo) RasterizerDiscardEnable() Bool32 {
 // WithRasterizerDiscardEnable sets the value for the RasterizerDiscardEnable on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineRasterizationStateCreateInfo) WithRasterizerDiscardEnable(y Bool32) PipelineRasterizationStateCreateInfo {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.rasterizerDiscardEnable = *ptr
+	x.rasterizerDiscardEnable = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -15398,8 +14944,7 @@ func (x PipelineRasterizationStateCreateInfo) PolygonMode() PolygonMode {
 // WithPolygonMode sets the value for the PolygonMode on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineRasterizationStateCreateInfo) WithPolygonMode(y PolygonMode) PipelineRasterizationStateCreateInfo {
-	ptr := /* typedef */ (*C.VkPolygonMode)(&y)
-	x.polygonMode = *ptr
+	x.polygonMode = *( /* typedef */ (*C.VkPolygonMode)(&y))
 	return x
 }
 
@@ -15412,8 +14957,7 @@ func (x PipelineRasterizationStateCreateInfo) CullMode() CullModeFlags {
 // WithCullMode sets the value for the CullMode on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineRasterizationStateCreateInfo) WithCullMode(y CullModeFlags) PipelineRasterizationStateCreateInfo {
-	ptr := /* typedef */ (*C.VkCullModeFlags)(&y)
-	x.cullMode = *ptr
+	x.cullMode = *( /* typedef */ (*C.VkCullModeFlags)(&y))
 	return x
 }
 
@@ -15426,8 +14970,7 @@ func (x PipelineRasterizationStateCreateInfo) FrontFace() FrontFace {
 // WithFrontFace sets the value for the FrontFace on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineRasterizationStateCreateInfo) WithFrontFace(y FrontFace) PipelineRasterizationStateCreateInfo {
-	ptr := /* typedef */ (*C.VkFrontFace)(&y)
-	x.frontFace = *ptr
+	x.frontFace = *( /* typedef */ (*C.VkFrontFace)(&y))
 	return x
 }
 
@@ -15440,8 +14983,7 @@ func (x PipelineRasterizationStateCreateInfo) DepthBiasEnable() Bool32 {
 // WithDepthBiasEnable sets the value for the DepthBiasEnable on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineRasterizationStateCreateInfo) WithDepthBiasEnable(y Bool32) PipelineRasterizationStateCreateInfo {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.depthBiasEnable = *ptr
+	x.depthBiasEnable = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -15454,8 +14996,7 @@ func (x PipelineRasterizationStateCreateInfo) DepthBiasConstantFactor() float32 
 // WithDepthBiasConstantFactor sets the value for the DepthBiasConstantFactor on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineRasterizationStateCreateInfo) WithDepthBiasConstantFactor(y float32) PipelineRasterizationStateCreateInfo {
-	ptr := func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y)
-	x.depthBiasConstantFactor = *ptr
+	x.depthBiasConstantFactor = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
 	return x
 }
 
@@ -15468,8 +15009,7 @@ func (x PipelineRasterizationStateCreateInfo) DepthBiasClamp() float32 {
 // WithDepthBiasClamp sets the value for the DepthBiasClamp on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineRasterizationStateCreateInfo) WithDepthBiasClamp(y float32) PipelineRasterizationStateCreateInfo {
-	ptr := func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y)
-	x.depthBiasClamp = *ptr
+	x.depthBiasClamp = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
 	return x
 }
 
@@ -15482,8 +15022,7 @@ func (x PipelineRasterizationStateCreateInfo) DepthBiasSlopeFactor() float32 {
 // WithDepthBiasSlopeFactor sets the value for the DepthBiasSlopeFactor on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineRasterizationStateCreateInfo) WithDepthBiasSlopeFactor(y float32) PipelineRasterizationStateCreateInfo {
-	ptr := func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y)
-	x.depthBiasSlopeFactor = *ptr
+	x.depthBiasSlopeFactor = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
 	return x
 }
 
@@ -15496,8 +15035,7 @@ func (x PipelineRasterizationStateCreateInfo) LineWidth() float32 {
 // WithLineWidth sets the value for the LineWidth on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineRasterizationStateCreateInfo) WithLineWidth(y float32) PipelineRasterizationStateCreateInfo {
-	ptr := func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y)
-	x.lineWidth = *ptr
+	x.lineWidth = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
 	return x
 }
 
@@ -15558,8 +15096,7 @@ func (x MemoryBarrier) WithDefaultSType() MemoryBarrier {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x MemoryBarrier) WithSType(y StructureType) MemoryBarrier {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -15572,8 +15109,7 @@ func (x MemoryBarrier) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x MemoryBarrier) WithPNext(y unsafe.Pointer) MemoryBarrier {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -15586,8 +15122,7 @@ func (x MemoryBarrier) SrcAccessMask() AccessFlags {
 // WithSrcAccessMask sets the value for the SrcAccessMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x MemoryBarrier) WithSrcAccessMask(y AccessFlags) MemoryBarrier {
-	ptr := /* typedef */ (*C.VkAccessFlags)(&y)
-	x.srcAccessMask = *ptr
+	x.srcAccessMask = *( /* typedef */ (*C.VkAccessFlags)(&y))
 	return x
 }
 
@@ -15600,8 +15135,7 @@ func (x MemoryBarrier) DstAccessMask() AccessFlags {
 // WithDstAccessMask sets the value for the DstAccessMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x MemoryBarrier) WithDstAccessMask(y AccessFlags) MemoryBarrier {
-	ptr := /* typedef */ (*C.VkAccessFlags)(&y)
-	x.dstAccessMask = *ptr
+	x.dstAccessMask = *( /* typedef */ (*C.VkAccessFlags)(&y))
 	return x
 }
 
@@ -15662,8 +15196,7 @@ func (x ImageMemoryBarrier) WithDefaultSType() ImageMemoryBarrier {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageMemoryBarrier) WithSType(y StructureType) ImageMemoryBarrier {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -15676,8 +15209,7 @@ func (x ImageMemoryBarrier) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageMemoryBarrier) WithPNext(y unsafe.Pointer) ImageMemoryBarrier {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -15690,8 +15222,7 @@ func (x ImageMemoryBarrier) SrcAccessMask() AccessFlags {
 // WithSrcAccessMask sets the value for the SrcAccessMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageMemoryBarrier) WithSrcAccessMask(y AccessFlags) ImageMemoryBarrier {
-	ptr := /* typedef */ (*C.VkAccessFlags)(&y)
-	x.srcAccessMask = *ptr
+	x.srcAccessMask = *( /* typedef */ (*C.VkAccessFlags)(&y))
 	return x
 }
 
@@ -15704,8 +15235,7 @@ func (x ImageMemoryBarrier) DstAccessMask() AccessFlags {
 // WithDstAccessMask sets the value for the DstAccessMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageMemoryBarrier) WithDstAccessMask(y AccessFlags) ImageMemoryBarrier {
-	ptr := /* typedef */ (*C.VkAccessFlags)(&y)
-	x.dstAccessMask = *ptr
+	x.dstAccessMask = *( /* typedef */ (*C.VkAccessFlags)(&y))
 	return x
 }
 
@@ -15718,8 +15248,7 @@ func (x ImageMemoryBarrier) OldLayout() ImageLayout {
 // WithOldLayout sets the value for the OldLayout on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageMemoryBarrier) WithOldLayout(y ImageLayout) ImageMemoryBarrier {
-	ptr := /* typedef */ (*C.VkImageLayout)(&y)
-	x.oldLayout = *ptr
+	x.oldLayout = *( /* typedef */ (*C.VkImageLayout)(&y))
 	return x
 }
 
@@ -15732,8 +15261,7 @@ func (x ImageMemoryBarrier) NewLayout() ImageLayout {
 // WithNewLayout sets the value for the NewLayout on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageMemoryBarrier) WithNewLayout(y ImageLayout) ImageMemoryBarrier {
-	ptr := /* typedef */ (*C.VkImageLayout)(&y)
-	x.newLayout = *ptr
+	x.newLayout = *( /* typedef */ (*C.VkImageLayout)(&y))
 	return x
 }
 
@@ -15746,8 +15274,7 @@ func (x ImageMemoryBarrier) SrcQueueFamilyIndex() uint32 {
 // WithSrcQueueFamilyIndex sets the value for the SrcQueueFamilyIndex on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageMemoryBarrier) WithSrcQueueFamilyIndex(y uint32) ImageMemoryBarrier {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.srcQueueFamilyIndex = *ptr
+	x.srcQueueFamilyIndex = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -15760,8 +15287,7 @@ func (x ImageMemoryBarrier) DstQueueFamilyIndex() uint32 {
 // WithDstQueueFamilyIndex sets the value for the DstQueueFamilyIndex on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageMemoryBarrier) WithDstQueueFamilyIndex(y uint32) ImageMemoryBarrier {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.dstQueueFamilyIndex = *ptr
+	x.dstQueueFamilyIndex = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -15774,8 +15300,7 @@ func (x ImageMemoryBarrier) Image() Image {
 // WithImage sets the value for the Image on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageMemoryBarrier) WithImage(y Image) ImageMemoryBarrier {
-	ptr := /* handle */ (*C.VkImage)(&y)
-	x.image = *ptr
+	x.image = *( /* handle */ (*C.VkImage)(&y))
 	return x
 }
 
@@ -15788,8 +15313,7 @@ func (x ImageMemoryBarrier) SubresourceRange() ImageSubresourceRange {
 // WithSubresourceRange sets the value for the SubresourceRange on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageMemoryBarrier) WithSubresourceRange(y ImageSubresourceRange) ImageMemoryBarrier {
-	ptr := /* typedef */ (*C.struct_VkImageSubresourceRange)(&y)
-	x.subresourceRange = *ptr
+	x.subresourceRange = *( /* typedef */ (*C.struct_VkImageSubresourceRange)(&y))
 	return x
 }
 
@@ -15850,8 +15374,7 @@ func (x PipelineShaderStageCreateInfo) WithDefaultSType() PipelineShaderStageCre
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineShaderStageCreateInfo) WithSType(y StructureType) PipelineShaderStageCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -15864,8 +15387,7 @@ func (x PipelineShaderStageCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineShaderStageCreateInfo) WithPNext(y unsafe.Pointer) PipelineShaderStageCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -15878,8 +15400,7 @@ func (x PipelineShaderStageCreateInfo) Flags() PipelineShaderStageCreateFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineShaderStageCreateInfo) WithFlags(y PipelineShaderStageCreateFlags) PipelineShaderStageCreateInfo {
-	ptr := /* typedef */ (*C.VkPipelineShaderStageCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkPipelineShaderStageCreateFlags)(&y))
 	return x
 }
 
@@ -15892,8 +15413,7 @@ func (x PipelineShaderStageCreateInfo) Stage() ShaderStageFlagBits {
 // WithStage sets the value for the Stage on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineShaderStageCreateInfo) WithStage(y ShaderStageFlagBits) PipelineShaderStageCreateInfo {
-	ptr := /* typedef */ (*C.VkShaderStageFlagBits)(&y)
-	x.stage = *ptr
+	x.stage = *( /* typedef */ (*C.VkShaderStageFlagBits)(&y))
 	return x
 }
 
@@ -15906,8 +15426,7 @@ func (x PipelineShaderStageCreateInfo) Module() ShaderModule {
 // WithModule sets the value for the Module on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineShaderStageCreateInfo) WithModule(y ShaderModule) PipelineShaderStageCreateInfo {
-	ptr := /* handle */ (*C.VkShaderModule)(&y)
-	x.module = *ptr
+	x.module = *( /* handle */ (*C.VkShaderModule)(&y))
 	return x
 }
 
@@ -15920,8 +15439,7 @@ func (x PipelineShaderStageCreateInfo) PName() *byte {
 // WithPName sets the value for the PName on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineShaderStageCreateInfo) WithPName(y *byte) PipelineShaderStageCreateInfo {
-	ptr := func(x **byte) **C.char { /* Pointer */ return (**C.char)(unsafe.Pointer(x)) }(&y)
-	x.pName = *ptr
+	x.pName = *(func(x **byte) **C.char { /* Pointer */ return (**C.char)(unsafe.Pointer(x)) }(&y))
 	return x
 }
 
@@ -15937,11 +15455,10 @@ func (x PipelineShaderStageCreateInfo) PSpecializationInfo() *SpecializationInfo
 // WithPSpecializationInfo sets the value for the PSpecializationInfo on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineShaderStageCreateInfo) WithPSpecializationInfo(y *SpecializationInfo) PipelineShaderStageCreateInfo {
-	ptr := func(x **SpecializationInfo) **C.struct_VkSpecializationInfo { /* Pointer */
+	x.pSpecializationInfo = *(func(x **SpecializationInfo) **C.struct_VkSpecializationInfo { /* Pointer */
 		g2c := (*C.struct_VkSpecializationInfo)(*x)
 		return &g2c
-	}(&y)
-	x.pSpecializationInfo = *ptr
+	}(&y))
 	return x
 }
 
@@ -15996,8 +15513,7 @@ func (x DrawIndirectCommand) VertexCount() uint32 {
 // WithVertexCount sets the value for the VertexCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DrawIndirectCommand) WithVertexCount(y uint32) DrawIndirectCommand {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.vertexCount = *ptr
+	x.vertexCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -16010,8 +15526,7 @@ func (x DrawIndirectCommand) InstanceCount() uint32 {
 // WithInstanceCount sets the value for the InstanceCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DrawIndirectCommand) WithInstanceCount(y uint32) DrawIndirectCommand {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.instanceCount = *ptr
+	x.instanceCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -16024,8 +15539,7 @@ func (x DrawIndirectCommand) FirstVertex() uint32 {
 // WithFirstVertex sets the value for the FirstVertex on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DrawIndirectCommand) WithFirstVertex(y uint32) DrawIndirectCommand {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.firstVertex = *ptr
+	x.firstVertex = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -16038,8 +15552,7 @@ func (x DrawIndirectCommand) FirstInstance() uint32 {
 // WithFirstInstance sets the value for the FirstInstance on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DrawIndirectCommand) WithFirstInstance(y uint32) DrawIndirectCommand {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.firstInstance = *ptr
+	x.firstInstance = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -16100,8 +15613,7 @@ func (x PipelineTessellationStateCreateInfo) WithDefaultSType() PipelineTessella
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineTessellationStateCreateInfo) WithSType(y StructureType) PipelineTessellationStateCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -16114,8 +15626,7 @@ func (x PipelineTessellationStateCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineTessellationStateCreateInfo) WithPNext(y unsafe.Pointer) PipelineTessellationStateCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -16128,8 +15639,7 @@ func (x PipelineTessellationStateCreateInfo) Flags() PipelineTessellationStateCr
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineTessellationStateCreateInfo) WithFlags(y PipelineTessellationStateCreateFlags) PipelineTessellationStateCreateInfo {
-	ptr := /* typedef */ (*C.VkPipelineTessellationStateCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkPipelineTessellationStateCreateFlags)(&y))
 	return x
 }
 
@@ -16142,8 +15652,7 @@ func (x PipelineTessellationStateCreateInfo) PatchControlPoints() uint32 {
 // WithPatchControlPoints sets the value for the PatchControlPoints on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineTessellationStateCreateInfo) WithPatchControlPoints(y uint32) PipelineTessellationStateCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.patchControlPoints = *ptr
+	x.patchControlPoints = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -16198,8 +15707,7 @@ func (x DrawIndexedIndirectCommand) IndexCount() uint32 {
 // WithIndexCount sets the value for the IndexCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DrawIndexedIndirectCommand) WithIndexCount(y uint32) DrawIndexedIndirectCommand {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.indexCount = *ptr
+	x.indexCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -16212,8 +15720,7 @@ func (x DrawIndexedIndirectCommand) InstanceCount() uint32 {
 // WithInstanceCount sets the value for the InstanceCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DrawIndexedIndirectCommand) WithInstanceCount(y uint32) DrawIndexedIndirectCommand {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.instanceCount = *ptr
+	x.instanceCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -16226,8 +15733,7 @@ func (x DrawIndexedIndirectCommand) FirstIndex() uint32 {
 // WithFirstIndex sets the value for the FirstIndex on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DrawIndexedIndirectCommand) WithFirstIndex(y uint32) DrawIndexedIndirectCommand {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.firstIndex = *ptr
+	x.firstIndex = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -16240,8 +15746,7 @@ func (x DrawIndexedIndirectCommand) VertexOffset() int32 {
 // WithVertexOffset sets the value for the VertexOffset on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DrawIndexedIndirectCommand) WithVertexOffset(y int32) DrawIndexedIndirectCommand {
-	ptr := func(x *int32) *C.int { /* Scalar */ g2c := C.int(*x); return &g2c }(&y)
-	x.vertexOffset = *ptr
+	x.vertexOffset = *(func(x *int32) *C.int { /* Scalar */ g2c := C.int(*x); return &g2c }(&y))
 	return x
 }
 
@@ -16254,8 +15759,7 @@ func (x DrawIndexedIndirectCommand) FirstInstance() uint32 {
 // WithFirstInstance sets the value for the FirstInstance on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DrawIndexedIndirectCommand) WithFirstInstance(y uint32) DrawIndexedIndirectCommand {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.firstInstance = *ptr
+	x.firstInstance = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -16316,8 +15820,7 @@ func (x PipelineVertexInputStateCreateInfo) WithDefaultSType() PipelineVertexInp
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineVertexInputStateCreateInfo) WithSType(y StructureType) PipelineVertexInputStateCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -16330,8 +15833,7 @@ func (x PipelineVertexInputStateCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineVertexInputStateCreateInfo) WithPNext(y unsafe.Pointer) PipelineVertexInputStateCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -16344,8 +15846,7 @@ func (x PipelineVertexInputStateCreateInfo) Flags() PipelineVertexInputStateCrea
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineVertexInputStateCreateInfo) WithFlags(y PipelineVertexInputStateCreateFlags) PipelineVertexInputStateCreateInfo {
-	ptr := /* typedef */ (*C.VkPipelineVertexInputStateCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkPipelineVertexInputStateCreateFlags)(&y))
 	return x
 }
 
@@ -16358,8 +15859,7 @@ func (x PipelineVertexInputStateCreateInfo) VertexBindingDescriptionCount() uint
 // WithVertexBindingDescriptionCount sets the value for the VertexBindingDescriptionCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineVertexInputStateCreateInfo) WithVertexBindingDescriptionCount(y uint32) PipelineVertexInputStateCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.vertexBindingDescriptionCount = *ptr
+	x.vertexBindingDescriptionCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -16378,15 +15878,14 @@ func (x PipelineVertexInputStateCreateInfo) PVertexBindingDescriptions() []Verte
 // The specification defines VertexBindingDescriptionCount as the length of this field.
 // VertexBindingDescriptionCount is updated with the length of the new value.
 func (x PipelineVertexInputStateCreateInfo) WithPVertexBindingDescriptions(y []VertexInputBindingDescription) PipelineVertexInputStateCreateInfo {
-	ptr := func(x *[]VertexInputBindingDescription) **C.struct_VkVertexInputBindingDescription { /* Slice */
+	x.pVertexBindingDescriptions = *(func(x *[]VertexInputBindingDescription) **C.struct_VkVertexInputBindingDescription { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkVertexInputBindingDescription)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkVertexInputBindingDescription)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pVertexBindingDescriptions = *ptr
+	}(&y))
 	return x.WithVertexBindingDescriptionCount(uint32(len(y)))
 }
 
@@ -16399,8 +15898,7 @@ func (x PipelineVertexInputStateCreateInfo) VertexAttributeDescriptionCount() ui
 // WithVertexAttributeDescriptionCount sets the value for the VertexAttributeDescriptionCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineVertexInputStateCreateInfo) WithVertexAttributeDescriptionCount(y uint32) PipelineVertexInputStateCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.vertexAttributeDescriptionCount = *ptr
+	x.vertexAttributeDescriptionCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -16419,15 +15917,14 @@ func (x PipelineVertexInputStateCreateInfo) PVertexAttributeDescriptions() []Ver
 // The specification defines VertexAttributeDescriptionCount as the length of this field.
 // VertexAttributeDescriptionCount is updated with the length of the new value.
 func (x PipelineVertexInputStateCreateInfo) WithPVertexAttributeDescriptions(y []VertexInputAttributeDescription) PipelineVertexInputStateCreateInfo {
-	ptr := func(x *[]VertexInputAttributeDescription) **C.struct_VkVertexInputAttributeDescription { /* Slice */
+	x.pVertexAttributeDescriptions = *(func(x *[]VertexInputAttributeDescription) **C.struct_VkVertexInputAttributeDescription { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkVertexInputAttributeDescription)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkVertexInputAttributeDescription)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pVertexAttributeDescriptions = *ptr
+	}(&y))
 	return x.WithVertexAttributeDescriptionCount(uint32(len(y)))
 }
 
@@ -16482,8 +15979,7 @@ func (x DispatchIndirectCommand) X() uint32 {
 // WithX sets the value for the X on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DispatchIndirectCommand) WithX(y uint32) DispatchIndirectCommand {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.x = *ptr
+	x.x = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -16496,8 +15992,7 @@ func (x DispatchIndirectCommand) Y() uint32 {
 // WithY sets the value for the Y on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DispatchIndirectCommand) WithY(y uint32) DispatchIndirectCommand {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.y = *ptr
+	x.y = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -16510,8 +16005,7 @@ func (x DispatchIndirectCommand) Z() uint32 {
 // WithZ sets the value for the Z on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DispatchIndirectCommand) WithZ(y uint32) DispatchIndirectCommand {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.z = *ptr
+	x.z = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -16572,8 +16066,7 @@ func (x PipelineViewportStateCreateInfo) WithDefaultSType() PipelineViewportStat
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineViewportStateCreateInfo) WithSType(y StructureType) PipelineViewportStateCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -16586,8 +16079,7 @@ func (x PipelineViewportStateCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineViewportStateCreateInfo) WithPNext(y unsafe.Pointer) PipelineViewportStateCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -16600,8 +16092,7 @@ func (x PipelineViewportStateCreateInfo) Flags() PipelineViewportStateCreateFlag
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineViewportStateCreateInfo) WithFlags(y PipelineViewportStateCreateFlags) PipelineViewportStateCreateInfo {
-	ptr := /* typedef */ (*C.VkPipelineViewportStateCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkPipelineViewportStateCreateFlags)(&y))
 	return x
 }
 
@@ -16614,8 +16105,7 @@ func (x PipelineViewportStateCreateInfo) ViewportCount() uint32 {
 // WithViewportCount sets the value for the ViewportCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineViewportStateCreateInfo) WithViewportCount(y uint32) PipelineViewportStateCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.viewportCount = *ptr
+	x.viewportCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -16634,15 +16124,14 @@ func (x PipelineViewportStateCreateInfo) PViewports() []Viewport {
 // The specification defines ViewportCount as the length of this field.
 // ViewportCount is updated with the length of the new value.
 func (x PipelineViewportStateCreateInfo) WithPViewports(y []Viewport) PipelineViewportStateCreateInfo {
-	ptr := func(x *[]Viewport) **C.struct_VkViewport { /* Slice */
+	x.pViewports = *(func(x *[]Viewport) **C.struct_VkViewport { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkViewport)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkViewport)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pViewports = *ptr
+	}(&y))
 	return x.WithViewportCount(uint32(len(y)))
 }
 
@@ -16655,8 +16144,7 @@ func (x PipelineViewportStateCreateInfo) ScissorCount() uint32 {
 // WithScissorCount sets the value for the ScissorCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineViewportStateCreateInfo) WithScissorCount(y uint32) PipelineViewportStateCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.scissorCount = *ptr
+	x.scissorCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -16675,15 +16163,14 @@ func (x PipelineViewportStateCreateInfo) PScissors() []Rect2D {
 // The specification defines ScissorCount as the length of this field.
 // ScissorCount is updated with the length of the new value.
 func (x PipelineViewportStateCreateInfo) WithPScissors(y []Rect2D) PipelineViewportStateCreateInfo {
-	ptr := func(x *[]Rect2D) **C.struct_VkRect2D { /* Slice */
+	x.pScissors = *(func(x *[]Rect2D) **C.struct_VkRect2D { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkRect2D)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkRect2D)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pScissors = *ptr
+	}(&y))
 	return x.WithScissorCount(uint32(len(y)))
 }
 
@@ -16744,8 +16231,7 @@ func (x ImageViewCreateInfo) WithDefaultSType() ImageViewCreateInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageViewCreateInfo) WithSType(y StructureType) ImageViewCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -16758,8 +16244,7 @@ func (x ImageViewCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageViewCreateInfo) WithPNext(y unsafe.Pointer) ImageViewCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -16772,8 +16257,7 @@ func (x ImageViewCreateInfo) Flags() ImageViewCreateFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageViewCreateInfo) WithFlags(y ImageViewCreateFlags) ImageViewCreateInfo {
-	ptr := /* typedef */ (*C.VkImageViewCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkImageViewCreateFlags)(&y))
 	return x
 }
 
@@ -16786,8 +16270,7 @@ func (x ImageViewCreateInfo) Image() Image {
 // WithImage sets the value for the Image on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageViewCreateInfo) WithImage(y Image) ImageViewCreateInfo {
-	ptr := /* handle */ (*C.VkImage)(&y)
-	x.image = *ptr
+	x.image = *( /* handle */ (*C.VkImage)(&y))
 	return x
 }
 
@@ -16800,8 +16283,7 @@ func (x ImageViewCreateInfo) ViewType() ImageViewType {
 // WithViewType sets the value for the ViewType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageViewCreateInfo) WithViewType(y ImageViewType) ImageViewCreateInfo {
-	ptr := /* typedef */ (*C.VkImageViewType)(&y)
-	x.viewType = *ptr
+	x.viewType = *( /* typedef */ (*C.VkImageViewType)(&y))
 	return x
 }
 
@@ -16814,8 +16296,7 @@ func (x ImageViewCreateInfo) Format() Format {
 // WithFormat sets the value for the Format on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageViewCreateInfo) WithFormat(y Format) ImageViewCreateInfo {
-	ptr := /* typedef */ (*C.VkFormat)(&y)
-	x.format = *ptr
+	x.format = *( /* typedef */ (*C.VkFormat)(&y))
 	return x
 }
 
@@ -16828,8 +16309,7 @@ func (x ImageViewCreateInfo) Components() ComponentMapping {
 // WithComponents sets the value for the Components on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageViewCreateInfo) WithComponents(y ComponentMapping) ImageViewCreateInfo {
-	ptr := /* typedef */ (*C.struct_VkComponentMapping)(&y)
-	x.components = *ptr
+	x.components = *( /* typedef */ (*C.struct_VkComponentMapping)(&y))
 	return x
 }
 
@@ -16842,8 +16322,7 @@ func (x ImageViewCreateInfo) SubresourceRange() ImageSubresourceRange {
 // WithSubresourceRange sets the value for the SubresourceRange on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageViewCreateInfo) WithSubresourceRange(y ImageSubresourceRange) ImageViewCreateInfo {
-	ptr := /* typedef */ (*C.struct_VkImageSubresourceRange)(&y)
-	x.subresourceRange = *ptr
+	x.subresourceRange = *( /* typedef */ (*C.struct_VkImageSubresourceRange)(&y))
 	return x
 }
 
@@ -16904,8 +16383,7 @@ func (x BufferMemoryBarrier) WithDefaultSType() BufferMemoryBarrier {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferMemoryBarrier) WithSType(y StructureType) BufferMemoryBarrier {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -16918,8 +16396,7 @@ func (x BufferMemoryBarrier) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferMemoryBarrier) WithPNext(y unsafe.Pointer) BufferMemoryBarrier {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -16932,8 +16409,7 @@ func (x BufferMemoryBarrier) SrcAccessMask() AccessFlags {
 // WithSrcAccessMask sets the value for the SrcAccessMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferMemoryBarrier) WithSrcAccessMask(y AccessFlags) BufferMemoryBarrier {
-	ptr := /* typedef */ (*C.VkAccessFlags)(&y)
-	x.srcAccessMask = *ptr
+	x.srcAccessMask = *( /* typedef */ (*C.VkAccessFlags)(&y))
 	return x
 }
 
@@ -16946,8 +16422,7 @@ func (x BufferMemoryBarrier) DstAccessMask() AccessFlags {
 // WithDstAccessMask sets the value for the DstAccessMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferMemoryBarrier) WithDstAccessMask(y AccessFlags) BufferMemoryBarrier {
-	ptr := /* typedef */ (*C.VkAccessFlags)(&y)
-	x.dstAccessMask = *ptr
+	x.dstAccessMask = *( /* typedef */ (*C.VkAccessFlags)(&y))
 	return x
 }
 
@@ -16960,8 +16435,7 @@ func (x BufferMemoryBarrier) SrcQueueFamilyIndex() uint32 {
 // WithSrcQueueFamilyIndex sets the value for the SrcQueueFamilyIndex on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferMemoryBarrier) WithSrcQueueFamilyIndex(y uint32) BufferMemoryBarrier {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.srcQueueFamilyIndex = *ptr
+	x.srcQueueFamilyIndex = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -16974,8 +16448,7 @@ func (x BufferMemoryBarrier) DstQueueFamilyIndex() uint32 {
 // WithDstQueueFamilyIndex sets the value for the DstQueueFamilyIndex on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferMemoryBarrier) WithDstQueueFamilyIndex(y uint32) BufferMemoryBarrier {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.dstQueueFamilyIndex = *ptr
+	x.dstQueueFamilyIndex = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -16988,8 +16461,7 @@ func (x BufferMemoryBarrier) Buffer() Buffer {
 // WithBuffer sets the value for the Buffer on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferMemoryBarrier) WithBuffer(y Buffer) BufferMemoryBarrier {
-	ptr := /* handle */ (*C.VkBuffer)(&y)
-	x.buffer = *ptr
+	x.buffer = *( /* handle */ (*C.VkBuffer)(&y))
 	return x
 }
 
@@ -17002,8 +16474,7 @@ func (x BufferMemoryBarrier) Offset() DeviceSize {
 // WithOffset sets the value for the Offset on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferMemoryBarrier) WithOffset(y DeviceSize) BufferMemoryBarrier {
-	ptr := /* typedef */ (*C.VkDeviceSize)(&y)
-	x.offset = *ptr
+	x.offset = *( /* typedef */ (*C.VkDeviceSize)(&y))
 	return x
 }
 
@@ -17016,8 +16487,7 @@ func (x BufferMemoryBarrier) Size() DeviceSize {
 // WithSize sets the value for the Size on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferMemoryBarrier) WithSize(y DeviceSize) BufferMemoryBarrier {
-	ptr := /* typedef */ (*C.VkDeviceSize)(&y)
-	x.size = *ptr
+	x.size = *( /* typedef */ (*C.VkDeviceSize)(&y))
 	return x
 }
 
@@ -17072,8 +16542,7 @@ func (x BaseOutStructure) SType() StructureType {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BaseOutStructure) WithSType(y StructureType) BaseOutStructure {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -17089,11 +16558,10 @@ func (x BaseOutStructure) PNext() *BaseOutStructure {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BaseOutStructure) WithPNext(y *BaseOutStructure) BaseOutStructure {
-	ptr := func(x **BaseOutStructure) **C.struct_VkBaseOutStructure { /* Pointer */
+	x.pNext = *(func(x **BaseOutStructure) **C.struct_VkBaseOutStructure { /* Pointer */
 		g2c := (*C.struct_VkBaseOutStructure)(*x)
 		return &g2c
-	}(&y)
-	x.pNext = *ptr
+	}(&y))
 	return x
 }
 
@@ -17148,8 +16616,7 @@ func (x BaseInStructure) SType() StructureType {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BaseInStructure) WithSType(y StructureType) BaseInStructure {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -17165,11 +16632,10 @@ func (x BaseInStructure) PNext() *BaseInStructure {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BaseInStructure) WithPNext(y *BaseInStructure) BaseInStructure {
-	ptr := func(x **BaseInStructure) **C.struct_VkBaseInStructure { /* Pointer */
+	x.pNext = *(func(x **BaseInStructure) **C.struct_VkBaseInStructure { /* Pointer */
 		g2c := (*C.struct_VkBaseInStructure)(*x)
 		return &g2c
-	}(&y)
-	x.pNext = *ptr
+	}(&y))
 	return x
 }
 
@@ -17224,8 +16690,7 @@ func (x Rect2D) Offset() Offset2D {
 // WithOffset sets the value for the Offset on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x Rect2D) WithOffset(y Offset2D) Rect2D {
-	ptr := /* typedef */ (*C.struct_VkOffset2D)(&y)
-	x.offset = *ptr
+	x.offset = *( /* typedef */ (*C.struct_VkOffset2D)(&y))
 	return x
 }
 
@@ -17238,8 +16703,7 @@ func (x Rect2D) Extent() Extent2D {
 // WithExtent sets the value for the Extent on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x Rect2D) WithExtent(y Extent2D) Rect2D {
-	ptr := /* typedef */ (*C.struct_VkExtent2D)(&y)
-	x.extent = *ptr
+	x.extent = *( /* typedef */ (*C.struct_VkExtent2D)(&y))
 	return x
 }
 
@@ -17294,8 +16758,7 @@ func (x SpecializationInfo) MapEntryCount() uint32 {
 // WithMapEntryCount sets the value for the MapEntryCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SpecializationInfo) WithMapEntryCount(y uint32) SpecializationInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.mapEntryCount = *ptr
+	x.mapEntryCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -17314,15 +16777,14 @@ func (x SpecializationInfo) PMapEntries() []SpecializationMapEntry {
 // The specification defines MapEntryCount as the length of this field.
 // MapEntryCount is updated with the length of the new value.
 func (x SpecializationInfo) WithPMapEntries(y []SpecializationMapEntry) SpecializationInfo {
-	ptr := func(x *[]SpecializationMapEntry) **C.struct_VkSpecializationMapEntry { /* Slice */
+	x.pMapEntries = *(func(x *[]SpecializationMapEntry) **C.struct_VkSpecializationMapEntry { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkSpecializationMapEntry)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkSpecializationMapEntry)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pMapEntries = *ptr
+	}(&y))
 	return x.WithMapEntryCount(uint32(len(y)))
 }
 
@@ -17335,8 +16797,7 @@ func (x SpecializationInfo) DataSize() uint64 {
 // WithDataSize sets the value for the DataSize on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SpecializationInfo) WithDataSize(y uint64) SpecializationInfo {
-	ptr := func(x *uint64) *C.ulong { /* Scalar */ g2c := C.ulong(*x); return &g2c }(&y)
-	x.dataSize = *ptr
+	x.dataSize = *(func(x *uint64) *C.ulong { /* Scalar */ g2c := C.ulong(*x); return &g2c }(&y))
 	return x
 }
 
@@ -17349,8 +16810,7 @@ func (x SpecializationInfo) PData() unsafe.Pointer {
 // WithPData sets the value for the PData on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SpecializationInfo) WithPData(y unsafe.Pointer) SpecializationInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pData = *ptr
+	x.pData = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -17405,8 +16865,7 @@ func (x SpecializationMapEntry) ConstantID() uint32 {
 // WithConstantID sets the value for the ConstantID on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SpecializationMapEntry) WithConstantID(y uint32) SpecializationMapEntry {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.constantID = *ptr
+	x.constantID = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -17419,8 +16878,7 @@ func (x SpecializationMapEntry) Offset() uint32 {
 // WithOffset sets the value for the Offset on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SpecializationMapEntry) WithOffset(y uint32) SpecializationMapEntry {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.offset = *ptr
+	x.offset = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -17433,8 +16891,7 @@ func (x SpecializationMapEntry) Size() uint64 {
 // WithSize sets the value for the Size on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SpecializationMapEntry) WithSize(y uint64) SpecializationMapEntry {
-	ptr := func(x *uint64) *C.ulong { /* Scalar */ g2c := C.ulong(*x); return &g2c }(&y)
-	x.size = *ptr
+	x.size = *(func(x *uint64) *C.ulong { /* Scalar */ g2c := C.ulong(*x); return &g2c }(&y))
 	return x
 }
 
@@ -17489,8 +16946,7 @@ func (x Offset3D) X() int32 {
 // WithX sets the value for the X on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x Offset3D) WithX(y int32) Offset3D {
-	ptr := func(x *int32) *C.int { /* Scalar */ g2c := C.int(*x); return &g2c }(&y)
-	x.x = *ptr
+	x.x = *(func(x *int32) *C.int { /* Scalar */ g2c := C.int(*x); return &g2c }(&y))
 	return x
 }
 
@@ -17503,8 +16959,7 @@ func (x Offset3D) Y() int32 {
 // WithY sets the value for the Y on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x Offset3D) WithY(y int32) Offset3D {
-	ptr := func(x *int32) *C.int { /* Scalar */ g2c := C.int(*x); return &g2c }(&y)
-	x.y = *ptr
+	x.y = *(func(x *int32) *C.int { /* Scalar */ g2c := C.int(*x); return &g2c }(&y))
 	return x
 }
 
@@ -17517,8 +16972,7 @@ func (x Offset3D) Z() int32 {
 // WithZ sets the value for the Z on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x Offset3D) WithZ(y int32) Offset3D {
-	ptr := func(x *int32) *C.int { /* Scalar */ g2c := C.int(*x); return &g2c }(&y)
-	x.z = *ptr
+	x.z = *(func(x *int32) *C.int { /* Scalar */ g2c := C.int(*x); return &g2c }(&y))
 	return x
 }
 
@@ -17573,8 +17027,7 @@ func (x StencilOpState) FailOp() StencilOp {
 // WithFailOp sets the value for the FailOp on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x StencilOpState) WithFailOp(y StencilOp) StencilOpState {
-	ptr := /* typedef */ (*C.VkStencilOp)(&y)
-	x.failOp = *ptr
+	x.failOp = *( /* typedef */ (*C.VkStencilOp)(&y))
 	return x
 }
 
@@ -17587,8 +17040,7 @@ func (x StencilOpState) PassOp() StencilOp {
 // WithPassOp sets the value for the PassOp on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x StencilOpState) WithPassOp(y StencilOp) StencilOpState {
-	ptr := /* typedef */ (*C.VkStencilOp)(&y)
-	x.passOp = *ptr
+	x.passOp = *( /* typedef */ (*C.VkStencilOp)(&y))
 	return x
 }
 
@@ -17601,8 +17053,7 @@ func (x StencilOpState) DepthFailOp() StencilOp {
 // WithDepthFailOp sets the value for the DepthFailOp on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x StencilOpState) WithDepthFailOp(y StencilOp) StencilOpState {
-	ptr := /* typedef */ (*C.VkStencilOp)(&y)
-	x.depthFailOp = *ptr
+	x.depthFailOp = *( /* typedef */ (*C.VkStencilOp)(&y))
 	return x
 }
 
@@ -17615,8 +17066,7 @@ func (x StencilOpState) CompareOp() CompareOp {
 // WithCompareOp sets the value for the CompareOp on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x StencilOpState) WithCompareOp(y CompareOp) StencilOpState {
-	ptr := /* typedef */ (*C.VkCompareOp)(&y)
-	x.compareOp = *ptr
+	x.compareOp = *( /* typedef */ (*C.VkCompareOp)(&y))
 	return x
 }
 
@@ -17629,8 +17079,7 @@ func (x StencilOpState) CompareMask() uint32 {
 // WithCompareMask sets the value for the CompareMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x StencilOpState) WithCompareMask(y uint32) StencilOpState {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.compareMask = *ptr
+	x.compareMask = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -17643,8 +17092,7 @@ func (x StencilOpState) WriteMask() uint32 {
 // WithWriteMask sets the value for the WriteMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x StencilOpState) WithWriteMask(y uint32) StencilOpState {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.writeMask = *ptr
+	x.writeMask = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -17657,8 +17105,7 @@ func (x StencilOpState) Reference() uint32 {
 // WithReference sets the value for the Reference on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x StencilOpState) WithReference(y uint32) StencilOpState {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.reference = *ptr
+	x.reference = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -17713,8 +17160,7 @@ func (x VertexInputAttributeDescription) Location() uint32 {
 // WithLocation sets the value for the Location on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x VertexInputAttributeDescription) WithLocation(y uint32) VertexInputAttributeDescription {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.location = *ptr
+	x.location = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -17727,8 +17173,7 @@ func (x VertexInputAttributeDescription) Binding() uint32 {
 // WithBinding sets the value for the Binding on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x VertexInputAttributeDescription) WithBinding(y uint32) VertexInputAttributeDescription {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.binding = *ptr
+	x.binding = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -17741,8 +17186,7 @@ func (x VertexInputAttributeDescription) Format() Format {
 // WithFormat sets the value for the Format on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x VertexInputAttributeDescription) WithFormat(y Format) VertexInputAttributeDescription {
-	ptr := /* typedef */ (*C.VkFormat)(&y)
-	x.format = *ptr
+	x.format = *( /* typedef */ (*C.VkFormat)(&y))
 	return x
 }
 
@@ -17755,8 +17199,7 @@ func (x VertexInputAttributeDescription) Offset() uint32 {
 // WithOffset sets the value for the Offset on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x VertexInputAttributeDescription) WithOffset(y uint32) VertexInputAttributeDescription {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.offset = *ptr
+	x.offset = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -17811,8 +17254,7 @@ func (x VertexInputBindingDescription) Binding() uint32 {
 // WithBinding sets the value for the Binding on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x VertexInputBindingDescription) WithBinding(y uint32) VertexInputBindingDescription {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.binding = *ptr
+	x.binding = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -17825,8 +17267,7 @@ func (x VertexInputBindingDescription) Stride() uint32 {
 // WithStride sets the value for the Stride on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x VertexInputBindingDescription) WithStride(y uint32) VertexInputBindingDescription {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.stride = *ptr
+	x.stride = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -17839,8 +17280,7 @@ func (x VertexInputBindingDescription) InputRate() VertexInputRate {
 // WithInputRate sets the value for the InputRate on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x VertexInputBindingDescription) WithInputRate(y VertexInputRate) VertexInputBindingDescription {
-	ptr := /* typedef */ (*C.VkVertexInputRate)(&y)
-	x.inputRate = *ptr
+	x.inputRate = *( /* typedef */ (*C.VkVertexInputRate)(&y))
 	return x
 }
 
@@ -17895,8 +17335,7 @@ func (x Offset2D) X() int32 {
 // WithX sets the value for the X on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x Offset2D) WithX(y int32) Offset2D {
-	ptr := func(x *int32) *C.int { /* Scalar */ g2c := C.int(*x); return &g2c }(&y)
-	x.x = *ptr
+	x.x = *(func(x *int32) *C.int { /* Scalar */ g2c := C.int(*x); return &g2c }(&y))
 	return x
 }
 
@@ -17909,8 +17348,7 @@ func (x Offset2D) Y() int32 {
 // WithY sets the value for the Y on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x Offset2D) WithY(y int32) Offset2D {
-	ptr := func(x *int32) *C.int { /* Scalar */ g2c := C.int(*x); return &g2c }(&y)
-	x.y = *ptr
+	x.y = *(func(x *int32) *C.int { /* Scalar */ g2c := C.int(*x); return &g2c }(&y))
 	return x
 }
 
@@ -17965,8 +17403,7 @@ func (x Viewport) X() float32 {
 // WithX sets the value for the X on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x Viewport) WithX(y float32) Viewport {
-	ptr := func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y)
-	x.x = *ptr
+	x.x = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
 	return x
 }
 
@@ -17979,8 +17416,7 @@ func (x Viewport) Y() float32 {
 // WithY sets the value for the Y on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x Viewport) WithY(y float32) Viewport {
-	ptr := func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y)
-	x.y = *ptr
+	x.y = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
 	return x
 }
 
@@ -17993,8 +17429,7 @@ func (x Viewport) Width() float32 {
 // WithWidth sets the value for the Width on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x Viewport) WithWidth(y float32) Viewport {
-	ptr := func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y)
-	x.width = *ptr
+	x.width = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
 	return x
 }
 
@@ -18007,8 +17442,7 @@ func (x Viewport) Height() float32 {
 // WithHeight sets the value for the Height on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x Viewport) WithHeight(y float32) Viewport {
-	ptr := func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y)
-	x.height = *ptr
+	x.height = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
 	return x
 }
 
@@ -18021,8 +17455,7 @@ func (x Viewport) MinDepth() float32 {
 // WithMinDepth sets the value for the MinDepth on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x Viewport) WithMinDepth(y float32) Viewport {
-	ptr := func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y)
-	x.minDepth = *ptr
+	x.minDepth = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
 	return x
 }
 
@@ -18035,8 +17468,7 @@ func (x Viewport) MaxDepth() float32 {
 // WithMaxDepth sets the value for the MaxDepth on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x Viewport) WithMaxDepth(y float32) Viewport {
-	ptr := func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y)
-	x.maxDepth = *ptr
+	x.maxDepth = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
 	return x
 }
 
@@ -18097,8 +17529,7 @@ func (x DescriptorPoolCreateInfo) WithDefaultSType() DescriptorPoolCreateInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorPoolCreateInfo) WithSType(y StructureType) DescriptorPoolCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -18111,8 +17542,7 @@ func (x DescriptorPoolCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorPoolCreateInfo) WithPNext(y unsafe.Pointer) DescriptorPoolCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -18125,8 +17555,7 @@ func (x DescriptorPoolCreateInfo) Flags() DescriptorPoolCreateFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorPoolCreateInfo) WithFlags(y DescriptorPoolCreateFlags) DescriptorPoolCreateInfo {
-	ptr := /* typedef */ (*C.VkDescriptorPoolCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkDescriptorPoolCreateFlags)(&y))
 	return x
 }
 
@@ -18139,8 +17568,7 @@ func (x DescriptorPoolCreateInfo) MaxSets() uint32 {
 // WithMaxSets sets the value for the MaxSets on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorPoolCreateInfo) WithMaxSets(y uint32) DescriptorPoolCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.maxSets = *ptr
+	x.maxSets = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -18153,8 +17581,7 @@ func (x DescriptorPoolCreateInfo) PoolSizeCount() uint32 {
 // WithPoolSizeCount sets the value for the PoolSizeCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorPoolCreateInfo) WithPoolSizeCount(y uint32) DescriptorPoolCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.poolSizeCount = *ptr
+	x.poolSizeCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -18173,15 +17600,14 @@ func (x DescriptorPoolCreateInfo) PPoolSizes() []DescriptorPoolSize {
 // The specification defines PoolSizeCount as the length of this field.
 // PoolSizeCount is updated with the length of the new value.
 func (x DescriptorPoolCreateInfo) WithPPoolSizes(y []DescriptorPoolSize) DescriptorPoolCreateInfo {
-	ptr := func(x *[]DescriptorPoolSize) **C.struct_VkDescriptorPoolSize { /* Slice */
+	x.pPoolSizes = *(func(x *[]DescriptorPoolSize) **C.struct_VkDescriptorPoolSize { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkDescriptorPoolSize)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkDescriptorPoolSize)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pPoolSizes = *ptr
+	}(&y))
 	return x.WithPoolSizeCount(uint32(len(y)))
 }
 
@@ -18236,8 +17662,7 @@ func (x Extent3D) Width() uint32 {
 // WithWidth sets the value for the Width on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x Extent3D) WithWidth(y uint32) Extent3D {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.width = *ptr
+	x.width = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -18250,8 +17675,7 @@ func (x Extent3D) Height() uint32 {
 // WithHeight sets the value for the Height on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x Extent3D) WithHeight(y uint32) Extent3D {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.height = *ptr
+	x.height = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -18264,8 +17688,7 @@ func (x Extent3D) Depth() uint32 {
 // WithDepth sets the value for the Depth on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x Extent3D) WithDepth(y uint32) Extent3D {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.depth = *ptr
+	x.depth = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -18320,8 +17743,7 @@ func (x Extent2D) Width() uint32 {
 // WithWidth sets the value for the Width on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x Extent2D) WithWidth(y uint32) Extent2D {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.width = *ptr
+	x.width = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -18334,8 +17756,7 @@ func (x Extent2D) Height() uint32 {
 // WithHeight sets the value for the Height on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x Extent2D) WithHeight(y uint32) Extent2D {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.height = *ptr
+	x.height = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -18396,8 +17817,7 @@ func (x PipelineLayoutCreateInfo) WithDefaultSType() PipelineLayoutCreateInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineLayoutCreateInfo) WithSType(y StructureType) PipelineLayoutCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -18410,8 +17830,7 @@ func (x PipelineLayoutCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineLayoutCreateInfo) WithPNext(y unsafe.Pointer) PipelineLayoutCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -18424,8 +17843,7 @@ func (x PipelineLayoutCreateInfo) Flags() PipelineLayoutCreateFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineLayoutCreateInfo) WithFlags(y PipelineLayoutCreateFlags) PipelineLayoutCreateInfo {
-	ptr := /* typedef */ (*C.VkPipelineLayoutCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkPipelineLayoutCreateFlags)(&y))
 	return x
 }
 
@@ -18438,8 +17856,7 @@ func (x PipelineLayoutCreateInfo) SetLayoutCount() uint32 {
 // WithSetLayoutCount sets the value for the SetLayoutCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineLayoutCreateInfo) WithSetLayoutCount(y uint32) PipelineLayoutCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.setLayoutCount = *ptr
+	x.setLayoutCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -18458,15 +17875,14 @@ func (x PipelineLayoutCreateInfo) PSetLayouts() []DescriptorSetLayout {
 // The specification defines SetLayoutCount as the length of this field.
 // SetLayoutCount is updated with the length of the new value.
 func (x PipelineLayoutCreateInfo) WithPSetLayouts(y []DescriptorSetLayout) PipelineLayoutCreateInfo {
-	ptr := func(x *[]DescriptorSetLayout) **C.VkDescriptorSetLayout { /* Slice */
+	x.pSetLayouts = *(func(x *[]DescriptorSetLayout) **C.VkDescriptorSetLayout { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkDescriptorSetLayout)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.VkDescriptorSetLayout)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pSetLayouts = *ptr
+	}(&y))
 	return x.WithSetLayoutCount(uint32(len(y)))
 }
 
@@ -18479,8 +17895,7 @@ func (x PipelineLayoutCreateInfo) PushConstantRangeCount() uint32 {
 // WithPushConstantRangeCount sets the value for the PushConstantRangeCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineLayoutCreateInfo) WithPushConstantRangeCount(y uint32) PipelineLayoutCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.pushConstantRangeCount = *ptr
+	x.pushConstantRangeCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -18499,15 +17914,14 @@ func (x PipelineLayoutCreateInfo) PPushConstantRanges() []PushConstantRange {
 // The specification defines PushConstantRangeCount as the length of this field.
 // PushConstantRangeCount is updated with the length of the new value.
 func (x PipelineLayoutCreateInfo) WithPPushConstantRanges(y []PushConstantRange) PipelineLayoutCreateInfo {
-	ptr := func(x *[]PushConstantRange) **C.struct_VkPushConstantRange { /* Slice */
+	x.pPushConstantRanges = *(func(x *[]PushConstantRange) **C.struct_VkPushConstantRange { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkPushConstantRange)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkPushConstantRange)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pPushConstantRanges = *ptr
+	}(&y))
 	return x.WithPushConstantRangeCount(uint32(len(y)))
 }
 
@@ -18562,8 +17976,7 @@ func (x PushConstantRange) StageFlags() ShaderStageFlags {
 // WithStageFlags sets the value for the StageFlags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PushConstantRange) WithStageFlags(y ShaderStageFlags) PushConstantRange {
-	ptr := /* typedef */ (*C.VkShaderStageFlags)(&y)
-	x.stageFlags = *ptr
+	x.stageFlags = *( /* typedef */ (*C.VkShaderStageFlags)(&y))
 	return x
 }
 
@@ -18576,8 +17989,7 @@ func (x PushConstantRange) Offset() uint32 {
 // WithOffset sets the value for the Offset on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PushConstantRange) WithOffset(y uint32) PushConstantRange {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.offset = *ptr
+	x.offset = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -18590,8 +18002,7 @@ func (x PushConstantRange) Size() uint32 {
 // WithSize sets the value for the Size on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PushConstantRange) WithSize(y uint32) PushConstantRange {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.size = *ptr
+	x.size = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -18646,8 +18057,7 @@ func (x DescriptorBufferInfo) Buffer() Buffer {
 // WithBuffer sets the value for the Buffer on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorBufferInfo) WithBuffer(y Buffer) DescriptorBufferInfo {
-	ptr := /* handle */ (*C.VkBuffer)(&y)
-	x.buffer = *ptr
+	x.buffer = *( /* handle */ (*C.VkBuffer)(&y))
 	return x
 }
 
@@ -18660,8 +18070,7 @@ func (x DescriptorBufferInfo) Offset() DeviceSize {
 // WithOffset sets the value for the Offset on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorBufferInfo) WithOffset(y DeviceSize) DescriptorBufferInfo {
-	ptr := /* typedef */ (*C.VkDeviceSize)(&y)
-	x.offset = *ptr
+	x.offset = *( /* typedef */ (*C.VkDeviceSize)(&y))
 	return x
 }
 
@@ -18674,8 +18083,7 @@ func (x DescriptorBufferInfo) Range_() DeviceSize {
 // WithRange_ sets the value for the Range_ on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorBufferInfo) WithRange_(y DeviceSize) DescriptorBufferInfo {
-	ptr := /* typedef */ (*C.VkDeviceSize)(&y)
-	x._range = *ptr
+	x._range = *( /* typedef */ (*C.VkDeviceSize)(&y))
 	return x
 }
 
@@ -18683,28 +18091,12 @@ func (x DescriptorBufferInfo) WithRange_(y DeviceSize) DescriptorBufferInfo {
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkClearValue.html
 type ClearValue C.VkClearValue
 
-// Copy the provided byte slice into the structure.
-//
-// Unions are represented as byte arrays in go. Use this method to copy from a source
-// byte slice into the union byte array.
-func (x ClearValue) copy(y []byte) ClearValue {
-	copy(x[:], y)
-	return x
-}
-
 // ClearColorValue union
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkClearColorValue.html
 type ClearColorValue C.VkClearColorValue
 
-// Copy the provided byte slice into the structure.
-//
-// Unions are represented as byte arrays in go. Use this method to copy from a source
-// byte slice into the union byte array.
-func (x ClearColorValue) copy(y []byte) ClearColorValue {
-	copy(x[:], y)
-	return x
-}
-
+// GetPhysicalDeviceImageFormatProperties command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceImageFormatProperties.html
 func (x PhysicalDeviceFacade) GetPhysicalDeviceImageFormatProperties(format Format, type_ ImageType, tiling ImageTiling, usage ImageUsageFlags, flags ImageCreateFlags, pImageFormatProperties *ImageFormatProperties) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -18722,6 +18114,8 @@ func (x PhysicalDeviceFacade) GetPhysicalDeviceImageFormatProperties(format Form
 	return *retPtr
 }
 
+// DestroyDescriptorPool command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyDescriptorPool.html
 func (x DeviceFacade) DestroyDescriptorPool(descriptorPool DescriptorPool, pAllocator *AllocationCallbacks) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -18733,6 +18127,8 @@ func (x DeviceFacade) DestroyDescriptorPool(descriptorPool DescriptorPool, pAllo
 	C.vkDestroyDescriptorPool(addrs, *p0, *p1, *p2)
 }
 
+// ResetDescriptorPool command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkResetDescriptorPool.html
 func (x DeviceFacade) ResetDescriptorPool(descriptorPool DescriptorPool, flags DescriptorPoolResetFlags) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -18743,6 +18139,8 @@ func (x DeviceFacade) ResetDescriptorPool(descriptorPool DescriptorPool, flags D
 	return *retPtr
 }
 
+// AllocateDescriptorSets command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkAllocateDescriptorSets.html
 func (x DeviceFacade) AllocateDescriptorSets(pAllocateInfo *DescriptorSetAllocateInfo, pDescriptorSets []DescriptorSet) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -18763,6 +18161,8 @@ func (x DeviceFacade) AllocateDescriptorSets(pAllocateInfo *DescriptorSetAllocat
 	return *retPtr
 }
 
+// FreeDescriptorSets command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkFreeDescriptorSets.html
 func (x DeviceFacade) FreeDescriptorSets(descriptorPool DescriptorPool, descriptorSetCount uint32, pDescriptorSets []DescriptorSet) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -18781,6 +18181,8 @@ func (x DeviceFacade) FreeDescriptorSets(descriptorPool DescriptorPool, descript
 	return *retPtr
 }
 
+// UpdateDescriptorSets command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkUpdateDescriptorSets.html
 func (x DeviceFacade) UpdateDescriptorSets(descriptorWriteCount uint32, pDescriptorWrites []WriteDescriptorSet, descriptorCopyCount uint32, pDescriptorCopies []CopyDescriptorSet) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -18805,6 +18207,8 @@ func (x DeviceFacade) UpdateDescriptorSets(descriptorWriteCount uint32, pDescrip
 	C.vkUpdateDescriptorSets(addrs, *p0, *p1, *p2, *p3, *p4)
 }
 
+// CreateDescriptorPool command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateDescriptorPool.html
 func (x DeviceFacade) CreateDescriptorPool(pCreateInfo *DescriptorPoolCreateInfo, pAllocator *AllocationCallbacks, pDescriptorPool *DescriptorPool) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -18825,6 +18229,8 @@ func (x DeviceFacade) CreateDescriptorPool(pCreateInfo *DescriptorPoolCreateInfo
 	return *retPtr
 }
 
+// DestroyDescriptorSetLayout command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyDescriptorSetLayout.html
 func (x DeviceFacade) DestroyDescriptorSetLayout(descriptorSetLayout DescriptorSetLayout, pAllocator *AllocationCallbacks) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -18836,6 +18242,8 @@ func (x DeviceFacade) DestroyDescriptorSetLayout(descriptorSetLayout DescriptorS
 	C.vkDestroyDescriptorSetLayout(addrs, *p0, *p1, *p2)
 }
 
+// CreateDescriptorSetLayout command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateDescriptorSetLayout.html
 func (x DeviceFacade) CreateDescriptorSetLayout(pCreateInfo *DescriptorSetLayoutCreateInfo, pAllocator *AllocationCallbacks, pSetLayout *DescriptorSetLayout) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -18856,6 +18264,8 @@ func (x DeviceFacade) CreateDescriptorSetLayout(pCreateInfo *DescriptorSetLayout
 	return *retPtr
 }
 
+// DestroySampler command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroySampler.html
 func (x DeviceFacade) DestroySampler(sampler Sampler, pAllocator *AllocationCallbacks) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -18867,6 +18277,8 @@ func (x DeviceFacade) DestroySampler(sampler Sampler, pAllocator *AllocationCall
 	C.vkDestroySampler(addrs, *p0, *p1, *p2)
 }
 
+// CreateSampler command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateSampler.html
 func (x DeviceFacade) CreateSampler(pCreateInfo *SamplerCreateInfo, pAllocator *AllocationCallbacks, pSampler *Sampler) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -18884,6 +18296,8 @@ func (x DeviceFacade) CreateSampler(pCreateInfo *SamplerCreateInfo, pAllocator *
 	return *retPtr
 }
 
+// DestroyPipelineLayout command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyPipelineLayout.html
 func (x DeviceFacade) DestroyPipelineLayout(pipelineLayout PipelineLayout, pAllocator *AllocationCallbacks) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -18895,6 +18309,8 @@ func (x DeviceFacade) DestroyPipelineLayout(pipelineLayout PipelineLayout, pAllo
 	C.vkDestroyPipelineLayout(addrs, *p0, *p1, *p2)
 }
 
+// CreatePipelineLayout command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreatePipelineLayout.html
 func (x DeviceFacade) CreatePipelineLayout(pCreateInfo *PipelineLayoutCreateInfo, pAllocator *AllocationCallbacks, pPipelineLayout *PipelineLayout) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -18915,6 +18331,8 @@ func (x DeviceFacade) CreatePipelineLayout(pCreateInfo *PipelineLayoutCreateInfo
 	return *retPtr
 }
 
+// DestroyPipeline command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyPipeline.html
 func (x DeviceFacade) DestroyPipeline(pipeline Pipeline, pAllocator *AllocationCallbacks) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -18926,6 +18344,8 @@ func (x DeviceFacade) DestroyPipeline(pipeline Pipeline, pAllocator *AllocationC
 	C.vkDestroyPipeline(addrs, *p0, *p1, *p2)
 }
 
+// CreateComputePipelines command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateComputePipelines.html
 func (x DeviceFacade) CreateComputePipelines(pipelineCache PipelineCache, createInfoCount uint32, pCreateInfos []ComputePipelineCreateInfo, pAllocator *AllocationCallbacks, pPipelines []Pipeline) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -18956,6 +18376,8 @@ func (x DeviceFacade) CreateComputePipelines(pipelineCache PipelineCache, create
 	return *retPtr
 }
 
+// CreateGraphicsPipelines command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateGraphicsPipelines.html
 func (x DeviceFacade) CreateGraphicsPipelines(pipelineCache PipelineCache, createInfoCount uint32, pCreateInfos []GraphicsPipelineCreateInfo, pAllocator *AllocationCallbacks, pPipelines []Pipeline) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -18986,6 +18408,8 @@ func (x DeviceFacade) CreateGraphicsPipelines(pipelineCache PipelineCache, creat
 	return *retPtr
 }
 
+// MergePipelineCaches command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkMergePipelineCaches.html
 func (x DeviceFacade) MergePipelineCaches(dstCache PipelineCache, srcCacheCount uint32, pSrcCaches []PipelineCache) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19004,6 +18428,8 @@ func (x DeviceFacade) MergePipelineCaches(dstCache PipelineCache, srcCacheCount 
 	return *retPtr
 }
 
+// GetPipelineCacheData command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPipelineCacheData.html
 func (x DeviceFacade) GetPipelineCacheData(pipelineCache PipelineCache, pDataSize *uint64, pData unsafe.Pointer) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19015,6 +18441,8 @@ func (x DeviceFacade) GetPipelineCacheData(pipelineCache PipelineCache, pDataSiz
 	return *retPtr
 }
 
+// DestroyPipelineCache command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyPipelineCache.html
 func (x DeviceFacade) DestroyPipelineCache(pipelineCache PipelineCache, pAllocator *AllocationCallbacks) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19026,6 +18454,8 @@ func (x DeviceFacade) DestroyPipelineCache(pipelineCache PipelineCache, pAllocat
 	C.vkDestroyPipelineCache(addrs, *p0, *p1, *p2)
 }
 
+// CreatePipelineCache command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreatePipelineCache.html
 func (x DeviceFacade) CreatePipelineCache(pCreateInfo *PipelineCacheCreateInfo, pAllocator *AllocationCallbacks, pPipelineCache *PipelineCache) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19043,6 +18473,8 @@ func (x DeviceFacade) CreatePipelineCache(pCreateInfo *PipelineCacheCreateInfo, 
 	return *retPtr
 }
 
+// DestroyShaderModule command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyShaderModule.html
 func (x DeviceFacade) DestroyShaderModule(shaderModule ShaderModule, pAllocator *AllocationCallbacks) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19054,6 +18486,8 @@ func (x DeviceFacade) DestroyShaderModule(shaderModule ShaderModule, pAllocator 
 	C.vkDestroyShaderModule(addrs, *p0, *p1, *p2)
 }
 
+// CreateShaderModule command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateShaderModule.html
 func (x DeviceFacade) CreateShaderModule(pCreateInfo *ShaderModuleCreateInfo, pAllocator *AllocationCallbacks, pShaderModule *ShaderModule) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19071,6 +18505,8 @@ func (x DeviceFacade) CreateShaderModule(pCreateInfo *ShaderModuleCreateInfo, pA
 	return *retPtr
 }
 
+// DestroyImageView command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyImageView.html
 func (x DeviceFacade) DestroyImageView(imageView ImageView, pAllocator *AllocationCallbacks) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19082,6 +18518,8 @@ func (x DeviceFacade) DestroyImageView(imageView ImageView, pAllocator *Allocati
 	C.vkDestroyImageView(addrs, *p0, *p1, *p2)
 }
 
+// CreateImageView command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateImageView.html
 func (x DeviceFacade) CreateImageView(pCreateInfo *ImageViewCreateInfo, pAllocator *AllocationCallbacks, pView *ImageView) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19099,6 +18537,8 @@ func (x DeviceFacade) CreateImageView(pCreateInfo *ImageViewCreateInfo, pAllocat
 	return *retPtr
 }
 
+// CreateFramebuffer command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateFramebuffer.html
 func (x DeviceFacade) CreateFramebuffer(pCreateInfo *FramebufferCreateInfo, pAllocator *AllocationCallbacks, pFramebuffer *Framebuffer) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19116,6 +18556,8 @@ func (x DeviceFacade) CreateFramebuffer(pCreateInfo *FramebufferCreateInfo, pAll
 	return *retPtr
 }
 
+// DestroyFramebuffer command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyFramebuffer.html
 func (x DeviceFacade) DestroyFramebuffer(framebuffer Framebuffer, pAllocator *AllocationCallbacks) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19127,6 +18569,8 @@ func (x DeviceFacade) DestroyFramebuffer(framebuffer Framebuffer, pAllocator *Al
 	C.vkDestroyFramebuffer(addrs, *p0, *p1, *p2)
 }
 
+// CreateRenderPass command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateRenderPass.html
 func (x DeviceFacade) CreateRenderPass(pCreateInfo *RenderPassCreateInfo, pAllocator *AllocationCallbacks, pRenderPass *RenderPass) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19144,6 +18588,8 @@ func (x DeviceFacade) CreateRenderPass(pCreateInfo *RenderPassCreateInfo, pAlloc
 	return *retPtr
 }
 
+// DestroyRenderPass command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyRenderPass.html
 func (x DeviceFacade) DestroyRenderPass(renderPass RenderPass, pAllocator *AllocationCallbacks) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19155,6 +18601,8 @@ func (x DeviceFacade) DestroyRenderPass(renderPass RenderPass, pAllocator *Alloc
 	C.vkDestroyRenderPass(addrs, *p0, *p1, *p2)
 }
 
+// GetRenderAreaGranularity command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetRenderAreaGranularity.html
 func (x DeviceFacade) GetRenderAreaGranularity(renderPass RenderPass, pGranularity *Extent2D) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19163,6 +18611,8 @@ func (x DeviceFacade) GetRenderAreaGranularity(renderPass RenderPass, pGranulari
 	C.vkGetRenderAreaGranularity(addrs, *p0, *p1, *p2)
 }
 
+// GetImageSubresourceLayout command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetImageSubresourceLayout.html
 func (x DeviceFacade) GetImageSubresourceLayout(image Image, pSubresource *ImageSubresource, pLayout *SubresourceLayout) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19178,6 +18628,8 @@ func (x DeviceFacade) GetImageSubresourceLayout(image Image, pSubresource *Image
 	C.vkGetImageSubresourceLayout(addrs, *p0, *p1, *p2, *p3)
 }
 
+// DestroyImage command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyImage.html
 func (x DeviceFacade) DestroyImage(image Image, pAllocator *AllocationCallbacks) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19189,6 +18641,8 @@ func (x DeviceFacade) DestroyImage(image Image, pAllocator *AllocationCallbacks)
 	C.vkDestroyImage(addrs, *p0, *p1, *p2)
 }
 
+// CreateImage command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateImage.html
 func (x DeviceFacade) CreateImage(pCreateInfo *ImageCreateInfo, pAllocator *AllocationCallbacks, pImage *Image) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19206,6 +18660,8 @@ func (x DeviceFacade) CreateImage(pCreateInfo *ImageCreateInfo, pAllocator *Allo
 	return *retPtr
 }
 
+// DestroyBufferView command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyBufferView.html
 func (x DeviceFacade) DestroyBufferView(bufferView BufferView, pAllocator *AllocationCallbacks) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19217,6 +18673,8 @@ func (x DeviceFacade) DestroyBufferView(bufferView BufferView, pAllocator *Alloc
 	C.vkDestroyBufferView(addrs, *p0, *p1, *p2)
 }
 
+// CreateBufferView command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateBufferView.html
 func (x DeviceFacade) CreateBufferView(pCreateInfo *BufferViewCreateInfo, pAllocator *AllocationCallbacks, pView *BufferView) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19234,6 +18692,8 @@ func (x DeviceFacade) CreateBufferView(pCreateInfo *BufferViewCreateInfo, pAlloc
 	return *retPtr
 }
 
+// DestroyBuffer command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyBuffer.html
 func (x DeviceFacade) DestroyBuffer(buffer Buffer, pAllocator *AllocationCallbacks) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19245,6 +18705,8 @@ func (x DeviceFacade) DestroyBuffer(buffer Buffer, pAllocator *AllocationCallbac
 	C.vkDestroyBuffer(addrs, *p0, *p1, *p2)
 }
 
+// CreateBuffer command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateBuffer.html
 func (x DeviceFacade) CreateBuffer(pCreateInfo *BufferCreateInfo, pAllocator *AllocationCallbacks, pBuffer *Buffer) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19262,6 +18724,8 @@ func (x DeviceFacade) CreateBuffer(pCreateInfo *BufferCreateInfo, pAllocator *Al
 	return *retPtr
 }
 
+// GetQueryPoolResults command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetQueryPoolResults.html
 func (x DeviceFacade) GetQueryPoolResults(queryPool QueryPool, firstQuery uint32, queryCount uint32, dataSize uint64, pData unsafe.Pointer, stride DeviceSize, flags QueryResultFlags) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19277,6 +18741,8 @@ func (x DeviceFacade) GetQueryPoolResults(queryPool QueryPool, firstQuery uint32
 	return *retPtr
 }
 
+// DestroyQueryPool command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyQueryPool.html
 func (x DeviceFacade) DestroyQueryPool(queryPool QueryPool, pAllocator *AllocationCallbacks) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19288,6 +18754,8 @@ func (x DeviceFacade) DestroyQueryPool(queryPool QueryPool, pAllocator *Allocati
 	C.vkDestroyQueryPool(addrs, *p0, *p1, *p2)
 }
 
+// CreateQueryPool command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateQueryPool.html
 func (x DeviceFacade) CreateQueryPool(pCreateInfo *QueryPoolCreateInfo, pAllocator *AllocationCallbacks, pQueryPool *QueryPool) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19305,6 +18773,8 @@ func (x DeviceFacade) CreateQueryPool(pCreateInfo *QueryPoolCreateInfo, pAllocat
 	return *retPtr
 }
 
+// ResetEvent command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkResetEvent.html
 func (x DeviceFacade) ResetEvent(event Event) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19314,6 +18784,8 @@ func (x DeviceFacade) ResetEvent(event Event) Result {
 	return *retPtr
 }
 
+// SetEvent command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkSetEvent.html
 func (x DeviceFacade) SetEvent(event Event) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19323,6 +18795,8 @@ func (x DeviceFacade) SetEvent(event Event) Result {
 	return *retPtr
 }
 
+// GetEventStatus command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetEventStatus.html
 func (x DeviceFacade) GetEventStatus(event Event) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19332,6 +18806,8 @@ func (x DeviceFacade) GetEventStatus(event Event) Result {
 	return *retPtr
 }
 
+// DestroyEvent command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyEvent.html
 func (x DeviceFacade) DestroyEvent(event Event, pAllocator *AllocationCallbacks) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19343,6 +18819,8 @@ func (x DeviceFacade) DestroyEvent(event Event, pAllocator *AllocationCallbacks)
 	C.vkDestroyEvent(addrs, *p0, *p1, *p2)
 }
 
+// CreateEvent command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateEvent.html
 func (x DeviceFacade) CreateEvent(pCreateInfo *EventCreateInfo, pAllocator *AllocationCallbacks, pEvent *Event) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19360,6 +18838,8 @@ func (x DeviceFacade) CreateEvent(pCreateInfo *EventCreateInfo, pAllocator *Allo
 	return *retPtr
 }
 
+// DestroySemaphore command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroySemaphore.html
 func (x DeviceFacade) DestroySemaphore(semaphore Semaphore, pAllocator *AllocationCallbacks) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19371,6 +18851,8 @@ func (x DeviceFacade) DestroySemaphore(semaphore Semaphore, pAllocator *Allocati
 	C.vkDestroySemaphore(addrs, *p0, *p1, *p2)
 }
 
+// CreateSemaphore command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateSemaphore.html
 func (x DeviceFacade) CreateSemaphore(pCreateInfo *SemaphoreCreateInfo, pAllocator *AllocationCallbacks, pSemaphore *Semaphore) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19388,6 +18870,8 @@ func (x DeviceFacade) CreateSemaphore(pCreateInfo *SemaphoreCreateInfo, pAllocat
 	return *retPtr
 }
 
+// WaitForFences command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkWaitForFences.html
 func (x DeviceFacade) WaitForFences(fenceCount uint32, pFences []Fence, waitAll Bool32, timeout uint64) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19407,6 +18891,8 @@ func (x DeviceFacade) WaitForFences(fenceCount uint32, pFences []Fence, waitAll 
 	return *retPtr
 }
 
+// GetFenceStatus command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetFenceStatus.html
 func (x DeviceFacade) GetFenceStatus(fence Fence) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19416,6 +18902,8 @@ func (x DeviceFacade) GetFenceStatus(fence Fence) Result {
 	return *retPtr
 }
 
+// ResetFences command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkResetFences.html
 func (x DeviceFacade) ResetFences(fenceCount uint32, pFences []Fence) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19433,6 +18921,8 @@ func (x DeviceFacade) ResetFences(fenceCount uint32, pFences []Fence) Result {
 	return *retPtr
 }
 
+// DestroyFence command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyFence.html
 func (x DeviceFacade) DestroyFence(fence Fence, pAllocator *AllocationCallbacks) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19444,6 +18934,8 @@ func (x DeviceFacade) DestroyFence(fence Fence, pAllocator *AllocationCallbacks)
 	C.vkDestroyFence(addrs, *p0, *p1, *p2)
 }
 
+// CreateFence command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateFence.html
 func (x DeviceFacade) CreateFence(pCreateInfo *FenceCreateInfo, pAllocator *AllocationCallbacks, pFence *Fence) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19461,6 +18953,8 @@ func (x DeviceFacade) CreateFence(pCreateInfo *FenceCreateInfo, pAllocator *Allo
 	return *retPtr
 }
 
+// QueueBindSparse command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkQueueBindSparse.html
 func (x QueueFacade) QueueBindSparse(bindInfoCount uint32, pBindInfo []BindSparseInfo, fence Fence) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkQueue)(&x.H)
@@ -19479,6 +18973,8 @@ func (x QueueFacade) QueueBindSparse(bindInfoCount uint32, pBindInfo []BindSpars
 	return *retPtr
 }
 
+// CreateCommandPool command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateCommandPool.html
 func (x DeviceFacade) CreateCommandPool(pCreateInfo *CommandPoolCreateInfo, pAllocator *AllocationCallbacks, pCommandPool *CommandPool) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19496,6 +18992,8 @@ func (x DeviceFacade) CreateCommandPool(pCreateInfo *CommandPoolCreateInfo, pAll
 	return *retPtr
 }
 
+// DestroyCommandPool command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyCommandPool.html
 func (x DeviceFacade) DestroyCommandPool(commandPool CommandPool, pAllocator *AllocationCallbacks) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19507,6 +19005,8 @@ func (x DeviceFacade) DestroyCommandPool(commandPool CommandPool, pAllocator *Al
 	C.vkDestroyCommandPool(addrs, *p0, *p1, *p2)
 }
 
+// ResetCommandPool command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkResetCommandPool.html
 func (x DeviceFacade) ResetCommandPool(commandPool CommandPool, flags CommandPoolResetFlags) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19517,6 +19017,8 @@ func (x DeviceFacade) ResetCommandPool(commandPool CommandPool, flags CommandPoo
 	return *retPtr
 }
 
+// GetPhysicalDeviceSparseImageFormatProperties command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceSparseImageFormatProperties.html
 func (x PhysicalDeviceFacade) GetPhysicalDeviceSparseImageFormatProperties(format Format, type_ ImageType, samples SampleCountFlagBits, usage ImageUsageFlags, tiling ImageTiling, pPropertyCount *uint32, pProperties []SparseImageFormatProperties) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -19537,6 +19039,8 @@ func (x PhysicalDeviceFacade) GetPhysicalDeviceSparseImageFormatProperties(forma
 	C.vkGetPhysicalDeviceSparseImageFormatProperties(addrs, *p0, *p1, *p2, *p3, *p4, *p5, *p6, *p7)
 }
 
+// GetImageSparseMemoryRequirements command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetImageSparseMemoryRequirements.html
 func (x DeviceFacade) GetImageSparseMemoryRequirements(image Image, pSparseMemoryRequirementCount *uint32, pSparseMemoryRequirements []SparseImageMemoryRequirements) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19553,6 +19057,8 @@ func (x DeviceFacade) GetImageSparseMemoryRequirements(image Image, pSparseMemor
 	C.vkGetImageSparseMemoryRequirements(addrs, *p0, *p1, *p2, *p3)
 }
 
+// GetImageMemoryRequirements command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetImageMemoryRequirements.html
 func (x DeviceFacade) GetImageMemoryRequirements(image Image, pMemoryRequirements *MemoryRequirements) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19564,6 +19070,8 @@ func (x DeviceFacade) GetImageMemoryRequirements(image Image, pMemoryRequirement
 	C.vkGetImageMemoryRequirements(addrs, *p0, *p1, *p2)
 }
 
+// GetBufferMemoryRequirements command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetBufferMemoryRequirements.html
 func (x DeviceFacade) GetBufferMemoryRequirements(buffer Buffer, pMemoryRequirements *MemoryRequirements) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19575,6 +19083,8 @@ func (x DeviceFacade) GetBufferMemoryRequirements(buffer Buffer, pMemoryRequirem
 	C.vkGetBufferMemoryRequirements(addrs, *p0, *p1, *p2)
 }
 
+// BindImageMemory command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkBindImageMemory.html
 func (x DeviceFacade) BindImageMemory(image Image, memory DeviceMemory, memoryOffset DeviceSize) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19586,6 +19096,8 @@ func (x DeviceFacade) BindImageMemory(image Image, memory DeviceMemory, memoryOf
 	return *retPtr
 }
 
+// BindBufferMemory command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkBindBufferMemory.html
 func (x DeviceFacade) BindBufferMemory(buffer Buffer, memory DeviceMemory, memoryOffset DeviceSize) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19597,6 +19109,8 @@ func (x DeviceFacade) BindBufferMemory(buffer Buffer, memory DeviceMemory, memor
 	return *retPtr
 }
 
+// AllocateCommandBuffers command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkAllocateCommandBuffers.html
 func (x DeviceFacade) AllocateCommandBuffers(pAllocateInfo *CommandBufferAllocateInfo, pCommandBuffers []CommandBuffer) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19617,6 +19131,8 @@ func (x DeviceFacade) AllocateCommandBuffers(pAllocateInfo *CommandBufferAllocat
 	return *retPtr
 }
 
+// FreeCommandBuffers command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkFreeCommandBuffers.html
 func (x DeviceFacade) FreeCommandBuffers(commandPool CommandPool, commandBufferCount uint32, pCommandBuffers []CommandBuffer) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19633,6 +19149,8 @@ func (x DeviceFacade) FreeCommandBuffers(commandPool CommandPool, commandBufferC
 	C.vkFreeCommandBuffers(addrs, *p0, *p1, *p2, *p3)
 }
 
+// BeginCommandBuffer command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkBeginCommandBuffer.html
 func (x CommandBufferFacade) BeginCommandBuffer(pBeginInfo *CommandBufferBeginInfo) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -19645,6 +19163,8 @@ func (x CommandBufferFacade) BeginCommandBuffer(pBeginInfo *CommandBufferBeginIn
 	return *retPtr
 }
 
+// EndCommandBuffer command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEndCommandBuffer.html
 func (x CommandBufferFacade) EndCommandBuffer() Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -19653,6 +19173,8 @@ func (x CommandBufferFacade) EndCommandBuffer() Result {
 	return *retPtr
 }
 
+// ResetCommandBuffer command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkResetCommandBuffer.html
 func (x CommandBufferFacade) ResetCommandBuffer(flags CommandBufferResetFlags) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -19662,6 +19184,8 @@ func (x CommandBufferFacade) ResetCommandBuffer(flags CommandBufferResetFlags) R
 	return *retPtr
 }
 
+// GetDeviceMemoryCommitment command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetDeviceMemoryCommitment.html
 func (x DeviceFacade) GetDeviceMemoryCommitment(memory DeviceMemory, pCommittedMemoryInBytes *DeviceSize) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19670,6 +19194,8 @@ func (x DeviceFacade) GetDeviceMemoryCommitment(memory DeviceMemory, pCommittedM
 	C.vkGetDeviceMemoryCommitment(addrs, *p0, *p1, *p2)
 }
 
+// InvalidateMappedMemoryRanges command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkInvalidateMappedMemoryRanges.html
 func (x DeviceFacade) InvalidateMappedMemoryRanges(memoryRangeCount uint32, pMemoryRanges []MappedMemoryRange) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19687,6 +19213,8 @@ func (x DeviceFacade) InvalidateMappedMemoryRanges(memoryRangeCount uint32, pMem
 	return *retPtr
 }
 
+// FlushMappedMemoryRanges command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkFlushMappedMemoryRanges.html
 func (x DeviceFacade) FlushMappedMemoryRanges(memoryRangeCount uint32, pMemoryRanges []MappedMemoryRange) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19704,6 +19232,8 @@ func (x DeviceFacade) FlushMappedMemoryRanges(memoryRangeCount uint32, pMemoryRa
 	return *retPtr
 }
 
+// UnmapMemory command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkUnmapMemory.html
 func (x DeviceFacade) UnmapMemory(memory DeviceMemory) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19711,6 +19241,8 @@ func (x DeviceFacade) UnmapMemory(memory DeviceMemory) {
 	C.vkUnmapMemory(addrs, *p0, *p1)
 }
 
+// MapMemory command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkMapMemory.html
 func (x DeviceFacade) MapMemory(memory DeviceMemory, offset DeviceSize, size DeviceSize, flags MemoryMapFlags, ppData *unsafe.Pointer) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19724,6 +19256,8 @@ func (x DeviceFacade) MapMemory(memory DeviceMemory, offset DeviceSize, size Dev
 	return *retPtr
 }
 
+// FreeMemory command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkFreeMemory.html
 func (x DeviceFacade) FreeMemory(memory DeviceMemory, pAllocator *AllocationCallbacks) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19735,6 +19269,8 @@ func (x DeviceFacade) FreeMemory(memory DeviceMemory, pAllocator *AllocationCall
 	C.vkFreeMemory(addrs, *p0, *p1, *p2)
 }
 
+// AllocateMemory command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkAllocateMemory.html
 func (x DeviceFacade) AllocateMemory(pAllocateInfo *MemoryAllocateInfo, pAllocator *AllocationCallbacks, pMemory *DeviceMemory) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19752,6 +19288,8 @@ func (x DeviceFacade) AllocateMemory(pAllocateInfo *MemoryAllocateInfo, pAllocat
 	return *retPtr
 }
 
+// DeviceWaitIdle command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDeviceWaitIdle.html
 func (x DeviceFacade) DeviceWaitIdle() Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19760,6 +19298,8 @@ func (x DeviceFacade) DeviceWaitIdle() Result {
 	return *retPtr
 }
 
+// QueueWaitIdle command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkQueueWaitIdle.html
 func (x QueueFacade) QueueWaitIdle() Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkQueue)(&x.H)
@@ -19768,6 +19308,8 @@ func (x QueueFacade) QueueWaitIdle() Result {
 	return *retPtr
 }
 
+// QueueSubmit command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkQueueSubmit.html
 func (x QueueFacade) QueueSubmit(submitCount uint32, pSubmits []SubmitInfo, fence Fence) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkQueue)(&x.H)
@@ -19786,6 +19328,8 @@ func (x QueueFacade) QueueSubmit(submitCount uint32, pSubmits []SubmitInfo, fenc
 	return *retPtr
 }
 
+// GetDeviceQueue command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetDeviceQueue.html
 func (x DeviceFacade) GetDeviceQueue(queueFamilyIndex uint32, queueIndex uint32, pQueue *Queue) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -19795,6 +19339,8 @@ func (x DeviceFacade) GetDeviceQueue(queueFamilyIndex uint32, queueIndex uint32,
 	C.vkGetDeviceQueue(addrs, *p0, *p1, *p2, *p3)
 }
 
+// CmdBindPipeline command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBindPipeline.html
 func (x CommandBufferFacade) CmdBindPipeline(pipelineBindPoint PipelineBindPoint, pipeline Pipeline) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -19803,6 +19349,8 @@ func (x CommandBufferFacade) CmdBindPipeline(pipelineBindPoint PipelineBindPoint
 	C.vkCmdBindPipeline(addrs, *p0, *p1, *p2)
 }
 
+// CmdSetViewport command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetViewport.html
 func (x CommandBufferFacade) CmdSetViewport(firstViewport uint32, viewportCount uint32, pViewports []Viewport) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -19819,6 +19367,8 @@ func (x CommandBufferFacade) CmdSetViewport(firstViewport uint32, viewportCount 
 	C.vkCmdSetViewport(addrs, *p0, *p1, *p2, *p3)
 }
 
+// CmdSetScissor command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetScissor.html
 func (x CommandBufferFacade) CmdSetScissor(firstScissor uint32, scissorCount uint32, pScissors []Rect2D) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -19835,6 +19385,8 @@ func (x CommandBufferFacade) CmdSetScissor(firstScissor uint32, scissorCount uin
 	C.vkCmdSetScissor(addrs, *p0, *p1, *p2, *p3)
 }
 
+// CmdSetLineWidth command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetLineWidth.html
 func (x CommandBufferFacade) CmdSetLineWidth(lineWidth float32) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -19842,6 +19394,8 @@ func (x CommandBufferFacade) CmdSetLineWidth(lineWidth float32) {
 	C.vkCmdSetLineWidth(addrs, *p0, *p1)
 }
 
+// EnumerateDeviceLayerProperties command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEnumerateDeviceLayerProperties.html
 func (x PhysicalDeviceFacade) EnumerateDeviceLayerProperties(pPropertyCount *uint32, pProperties []LayerProperties) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -19859,6 +19413,8 @@ func (x PhysicalDeviceFacade) EnumerateDeviceLayerProperties(pPropertyCount *uin
 	return *retPtr
 }
 
+// CmdSetBlendConstants command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetBlendConstants.html
 func (x CommandBufferFacade) CmdSetBlendConstants(blendConstants []float32) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -19873,6 +19429,8 @@ func (x CommandBufferFacade) CmdSetBlendConstants(blendConstants []float32) {
 	C.vkCmdSetBlendConstants(addrs, *p0, *p1)
 }
 
+// CmdSetDepthBounds command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetDepthBounds.html
 func (x CommandBufferFacade) CmdSetDepthBounds(minDepthBounds float32, maxDepthBounds float32) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -19881,6 +19439,8 @@ func (x CommandBufferFacade) CmdSetDepthBounds(minDepthBounds float32, maxDepthB
 	C.vkCmdSetDepthBounds(addrs, *p0, *p1, *p2)
 }
 
+// CmdSetStencilCompareMask command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetStencilCompareMask.html
 func (x CommandBufferFacade) CmdSetStencilCompareMask(faceMask StencilFaceFlags, compareMask uint32) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -19889,6 +19449,8 @@ func (x CommandBufferFacade) CmdSetStencilCompareMask(faceMask StencilFaceFlags,
 	C.vkCmdSetStencilCompareMask(addrs, *p0, *p1, *p2)
 }
 
+// CmdSetStencilWriteMask command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetStencilWriteMask.html
 func (x CommandBufferFacade) CmdSetStencilWriteMask(faceMask StencilFaceFlags, writeMask uint32) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -19897,6 +19459,8 @@ func (x CommandBufferFacade) CmdSetStencilWriteMask(faceMask StencilFaceFlags, w
 	C.vkCmdSetStencilWriteMask(addrs, *p0, *p1, *p2)
 }
 
+// CmdSetStencilReference command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetStencilReference.html
 func (x CommandBufferFacade) CmdSetStencilReference(faceMask StencilFaceFlags, reference uint32) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -19905,6 +19469,8 @@ func (x CommandBufferFacade) CmdSetStencilReference(faceMask StencilFaceFlags, r
 	C.vkCmdSetStencilReference(addrs, *p0, *p1, *p2)
 }
 
+// CmdBindDescriptorSets command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBindDescriptorSets.html
 func (x CommandBufferFacade) CmdBindDescriptorSets(pipelineBindPoint PipelineBindPoint, layout PipelineLayout, firstSet uint32, descriptorSetCount uint32, pDescriptorSets []DescriptorSet, dynamicOffsetCount uint32, pDynamicOffsets []uint32) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -19932,6 +19498,8 @@ func (x CommandBufferFacade) CmdBindDescriptorSets(pipelineBindPoint PipelineBin
 	C.vkCmdBindDescriptorSets(addrs, *p0, *p1, *p2, *p3, *p4, *p5, *p6, *p7)
 }
 
+// CmdBindIndexBuffer command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBindIndexBuffer.html
 func (x CommandBufferFacade) CmdBindIndexBuffer(buffer Buffer, offset DeviceSize, indexType IndexType) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -19941,6 +19509,8 @@ func (x CommandBufferFacade) CmdBindIndexBuffer(buffer Buffer, offset DeviceSize
 	C.vkCmdBindIndexBuffer(addrs, *p0, *p1, *p2, *p3)
 }
 
+// CmdBindVertexBuffers command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBindVertexBuffers.html
 func (x CommandBufferFacade) CmdBindVertexBuffers(firstBinding uint32, bindingCount uint32, pBuffers []Buffer, pOffsets []DeviceSize) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -19965,6 +19535,8 @@ func (x CommandBufferFacade) CmdBindVertexBuffers(firstBinding uint32, bindingCo
 	C.vkCmdBindVertexBuffers(addrs, *p0, *p1, *p2, *p3, *p4)
 }
 
+// CmdDraw command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdDraw.html
 func (x CommandBufferFacade) CmdDraw(vertexCount uint32, instanceCount uint32, firstVertex uint32, firstInstance uint32) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -19975,6 +19547,8 @@ func (x CommandBufferFacade) CmdDraw(vertexCount uint32, instanceCount uint32, f
 	C.vkCmdDraw(addrs, *p0, *p1, *p2, *p3, *p4)
 }
 
+// CmdDrawIndexed command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdDrawIndexed.html
 func (x CommandBufferFacade) CmdDrawIndexed(indexCount uint32, instanceCount uint32, firstIndex uint32, vertexOffset int32, firstInstance uint32) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -19986,6 +19560,8 @@ func (x CommandBufferFacade) CmdDrawIndexed(indexCount uint32, instanceCount uin
 	C.vkCmdDrawIndexed(addrs, *p0, *p1, *p2, *p3, *p4, *p5)
 }
 
+// CmdDrawIndirect command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdDrawIndirect.html
 func (x CommandBufferFacade) CmdDrawIndirect(buffer Buffer, offset DeviceSize, drawCount uint32, stride uint32) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -19996,6 +19572,8 @@ func (x CommandBufferFacade) CmdDrawIndirect(buffer Buffer, offset DeviceSize, d
 	C.vkCmdDrawIndirect(addrs, *p0, *p1, *p2, *p3, *p4)
 }
 
+// CmdDrawIndexedIndirect command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdDrawIndexedIndirect.html
 func (x CommandBufferFacade) CmdDrawIndexedIndirect(buffer Buffer, offset DeviceSize, drawCount uint32, stride uint32) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -20006,6 +19584,8 @@ func (x CommandBufferFacade) CmdDrawIndexedIndirect(buffer Buffer, offset Device
 	C.vkCmdDrawIndexedIndirect(addrs, *p0, *p1, *p2, *p3, *p4)
 }
 
+// CmdDispatch command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdDispatch.html
 func (x CommandBufferFacade) CmdDispatch(groupCountX uint32, groupCountY uint32, groupCountZ uint32) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -20015,6 +19595,8 @@ func (x CommandBufferFacade) CmdDispatch(groupCountX uint32, groupCountY uint32,
 	C.vkCmdDispatch(addrs, *p0, *p1, *p2, *p3)
 }
 
+// CmdDispatchIndirect command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdDispatchIndirect.html
 func (x CommandBufferFacade) CmdDispatchIndirect(buffer Buffer, offset DeviceSize) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -20023,6 +19605,8 @@ func (x CommandBufferFacade) CmdDispatchIndirect(buffer Buffer, offset DeviceSiz
 	C.vkCmdDispatchIndirect(addrs, *p0, *p1, *p2)
 }
 
+// CmdCopyBuffer command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdCopyBuffer.html
 func (x CommandBufferFacade) CmdCopyBuffer(srcBuffer Buffer, dstBuffer Buffer, regionCount uint32, pRegions []BufferCopy) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -20040,6 +19624,8 @@ func (x CommandBufferFacade) CmdCopyBuffer(srcBuffer Buffer, dstBuffer Buffer, r
 	C.vkCmdCopyBuffer(addrs, *p0, *p1, *p2, *p3, *p4)
 }
 
+// CmdCopyImage command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdCopyImage.html
 func (x CommandBufferFacade) CmdCopyImage(srcImage Image, srcImageLayout ImageLayout, dstImage Image, dstImageLayout ImageLayout, regionCount uint32, pRegions []ImageCopy) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -20059,6 +19645,8 @@ func (x CommandBufferFacade) CmdCopyImage(srcImage Image, srcImageLayout ImageLa
 	C.vkCmdCopyImage(addrs, *p0, *p1, *p2, *p3, *p4, *p5, *p6)
 }
 
+// CmdBlitImage command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBlitImage.html
 func (x CommandBufferFacade) CmdBlitImage(srcImage Image, srcImageLayout ImageLayout, dstImage Image, dstImageLayout ImageLayout, regionCount uint32, pRegions []ImageBlit, filter Filter) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -20079,6 +19667,8 @@ func (x CommandBufferFacade) CmdBlitImage(srcImage Image, srcImageLayout ImageLa
 	C.vkCmdBlitImage(addrs, *p0, *p1, *p2, *p3, *p4, *p5, *p6, *p7)
 }
 
+// CmdCopyBufferToImage command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdCopyBufferToImage.html
 func (x CommandBufferFacade) CmdCopyBufferToImage(srcBuffer Buffer, dstImage Image, dstImageLayout ImageLayout, regionCount uint32, pRegions []BufferImageCopy) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -20097,6 +19687,8 @@ func (x CommandBufferFacade) CmdCopyBufferToImage(srcBuffer Buffer, dstImage Ima
 	C.vkCmdCopyBufferToImage(addrs, *p0, *p1, *p2, *p3, *p4, *p5)
 }
 
+// CmdCopyImageToBuffer command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdCopyImageToBuffer.html
 func (x CommandBufferFacade) CmdCopyImageToBuffer(srcImage Image, srcImageLayout ImageLayout, dstBuffer Buffer, regionCount uint32, pRegions []BufferImageCopy) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -20115,6 +19707,8 @@ func (x CommandBufferFacade) CmdCopyImageToBuffer(srcImage Image, srcImageLayout
 	C.vkCmdCopyImageToBuffer(addrs, *p0, *p1, *p2, *p3, *p4, *p5)
 }
 
+// CmdUpdateBuffer command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdUpdateBuffer.html
 func (x CommandBufferFacade) CmdUpdateBuffer(dstBuffer Buffer, dstOffset DeviceSize, dataSize DeviceSize, pData unsafe.Pointer) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -20125,6 +19719,8 @@ func (x CommandBufferFacade) CmdUpdateBuffer(dstBuffer Buffer, dstOffset DeviceS
 	C.vkCmdUpdateBuffer(addrs, *p0, *p1, *p2, *p3, *p4)
 }
 
+// CmdFillBuffer command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdFillBuffer.html
 func (x CommandBufferFacade) CmdFillBuffer(dstBuffer Buffer, dstOffset DeviceSize, size DeviceSize, data uint32) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -20135,6 +19731,8 @@ func (x CommandBufferFacade) CmdFillBuffer(dstBuffer Buffer, dstOffset DeviceSiz
 	C.vkCmdFillBuffer(addrs, *p0, *p1, *p2, *p3, *p4)
 }
 
+// CmdClearColorImage command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdClearColorImage.html
 func (x CommandBufferFacade) CmdClearColorImage(image Image, imageLayout ImageLayout, pColor *ClearColorValue, rangeCount uint32, pRanges []ImageSubresourceRange) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -20156,6 +19754,8 @@ func (x CommandBufferFacade) CmdClearColorImage(image Image, imageLayout ImageLa
 	C.vkCmdClearColorImage(addrs, *p0, *p1, *p2, *p3, *p4, *p5)
 }
 
+// CmdClearDepthStencilImage command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdClearDepthStencilImage.html
 func (x CommandBufferFacade) CmdClearDepthStencilImage(image Image, imageLayout ImageLayout, pDepthStencil *ClearDepthStencilValue, rangeCount uint32, pRanges []ImageSubresourceRange) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -20177,6 +19777,8 @@ func (x CommandBufferFacade) CmdClearDepthStencilImage(image Image, imageLayout 
 	C.vkCmdClearDepthStencilImage(addrs, *p0, *p1, *p2, *p3, *p4, *p5)
 }
 
+// CmdClearAttachments command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdClearAttachments.html
 func (x CommandBufferFacade) CmdClearAttachments(attachmentCount uint32, pAttachments []ClearAttachment, rectCount uint32, pRects []ClearRect) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -20201,6 +19803,8 @@ func (x CommandBufferFacade) CmdClearAttachments(attachmentCount uint32, pAttach
 	C.vkCmdClearAttachments(addrs, *p0, *p1, *p2, *p3, *p4)
 }
 
+// CmdResolveImage command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdResolveImage.html
 func (x CommandBufferFacade) CmdResolveImage(srcImage Image, srcImageLayout ImageLayout, dstImage Image, dstImageLayout ImageLayout, regionCount uint32, pRegions []ImageResolve) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -20220,6 +19824,8 @@ func (x CommandBufferFacade) CmdResolveImage(srcImage Image, srcImageLayout Imag
 	C.vkCmdResolveImage(addrs, *p0, *p1, *p2, *p3, *p4, *p5, *p6)
 }
 
+// CmdSetEvent command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetEvent.html
 func (x CommandBufferFacade) CmdSetEvent(event Event, stageMask PipelineStageFlags) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -20228,6 +19834,8 @@ func (x CommandBufferFacade) CmdSetEvent(event Event, stageMask PipelineStageFla
 	C.vkCmdSetEvent(addrs, *p0, *p1, *p2)
 }
 
+// CmdResetEvent command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdResetEvent.html
 func (x CommandBufferFacade) CmdResetEvent(event Event, stageMask PipelineStageFlags) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -20236,6 +19844,8 @@ func (x CommandBufferFacade) CmdResetEvent(event Event, stageMask PipelineStageF
 	C.vkCmdResetEvent(addrs, *p0, *p1, *p2)
 }
 
+// CmdWaitEvents command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdWaitEvents.html
 func (x CommandBufferFacade) CmdWaitEvents(eventCount uint32, pEvents []Event, srcStageMask PipelineStageFlags, dstStageMask PipelineStageFlags, memoryBarrierCount uint32, pMemoryBarriers []MemoryBarrier, bufferMemoryBarrierCount uint32, pBufferMemoryBarriers []BufferMemoryBarrier, imageMemoryBarrierCount uint32, pImageMemoryBarriers []ImageMemoryBarrier) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -20280,6 +19890,8 @@ func (x CommandBufferFacade) CmdWaitEvents(eventCount uint32, pEvents []Event, s
 	C.vkCmdWaitEvents(addrs, *p0, *p1, *p2, *p3, *p4, *p5, *p6, *p7, *p8, *p9, *p10)
 }
 
+// CmdPipelineBarrier command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdPipelineBarrier.html
 func (x CommandBufferFacade) CmdPipelineBarrier(srcStageMask PipelineStageFlags, dstStageMask PipelineStageFlags, dependencyFlags DependencyFlags, memoryBarrierCount uint32, pMemoryBarriers []MemoryBarrier, bufferMemoryBarrierCount uint32, pBufferMemoryBarriers []BufferMemoryBarrier, imageMemoryBarrierCount uint32, pImageMemoryBarriers []ImageMemoryBarrier) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -20316,6 +19928,8 @@ func (x CommandBufferFacade) CmdPipelineBarrier(srcStageMask PipelineStageFlags,
 	C.vkCmdPipelineBarrier(addrs, *p0, *p1, *p2, *p3, *p4, *p5, *p6, *p7, *p8, *p9)
 }
 
+// CmdBeginQuery command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBeginQuery.html
 func (x CommandBufferFacade) CmdBeginQuery(queryPool QueryPool, query uint32, flags QueryControlFlags) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -20325,6 +19939,8 @@ func (x CommandBufferFacade) CmdBeginQuery(queryPool QueryPool, query uint32, fl
 	C.vkCmdBeginQuery(addrs, *p0, *p1, *p2, *p3)
 }
 
+// CmdEndQuery command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdEndQuery.html
 func (x CommandBufferFacade) CmdEndQuery(queryPool QueryPool, query uint32) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -20333,6 +19949,8 @@ func (x CommandBufferFacade) CmdEndQuery(queryPool QueryPool, query uint32) {
 	C.vkCmdEndQuery(addrs, *p0, *p1, *p2)
 }
 
+// CmdResetQueryPool command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdResetQueryPool.html
 func (x CommandBufferFacade) CmdResetQueryPool(queryPool QueryPool, firstQuery uint32, queryCount uint32) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -20342,6 +19960,8 @@ func (x CommandBufferFacade) CmdResetQueryPool(queryPool QueryPool, firstQuery u
 	C.vkCmdResetQueryPool(addrs, *p0, *p1, *p2, *p3)
 }
 
+// CmdWriteTimestamp command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdWriteTimestamp.html
 func (x CommandBufferFacade) CmdWriteTimestamp(pipelineStage PipelineStageFlagBits, queryPool QueryPool, query uint32) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -20351,6 +19971,8 @@ func (x CommandBufferFacade) CmdWriteTimestamp(pipelineStage PipelineStageFlagBi
 	C.vkCmdWriteTimestamp(addrs, *p0, *p1, *p2, *p3)
 }
 
+// CmdCopyQueryPoolResults command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdCopyQueryPoolResults.html
 func (x CommandBufferFacade) CmdCopyQueryPoolResults(queryPool QueryPool, firstQuery uint32, queryCount uint32, dstBuffer Buffer, dstOffset DeviceSize, stride DeviceSize, flags QueryResultFlags) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -20364,6 +19986,8 @@ func (x CommandBufferFacade) CmdCopyQueryPoolResults(queryPool QueryPool, firstQ
 	C.vkCmdCopyQueryPoolResults(addrs, *p0, *p1, *p2, *p3, *p4, *p5, *p6, *p7)
 }
 
+// CmdPushConstants command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdPushConstants.html
 func (x CommandBufferFacade) CmdPushConstants(layout PipelineLayout, stageFlags ShaderStageFlags, offset uint32, size uint32, pValues unsafe.Pointer) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -20375,6 +19999,8 @@ func (x CommandBufferFacade) CmdPushConstants(layout PipelineLayout, stageFlags 
 	C.vkCmdPushConstants(addrs, *p0, *p1, *p2, *p3, *p4, *p5)
 }
 
+// CmdBeginRenderPass command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBeginRenderPass.html
 func (x CommandBufferFacade) CmdBeginRenderPass(pRenderPassBegin *RenderPassBeginInfo, contents SubpassContents) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -20386,6 +20012,8 @@ func (x CommandBufferFacade) CmdBeginRenderPass(pRenderPassBegin *RenderPassBegi
 	C.vkCmdBeginRenderPass(addrs, *p0, *p1, *p2)
 }
 
+// CmdNextSubpass command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdNextSubpass.html
 func (x CommandBufferFacade) CmdNextSubpass(contents SubpassContents) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -20393,12 +20021,16 @@ func (x CommandBufferFacade) CmdNextSubpass(contents SubpassContents) {
 	C.vkCmdNextSubpass(addrs, *p0, *p1)
 }
 
+// CmdEndRenderPass command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdEndRenderPass.html
 func (x CommandBufferFacade) CmdEndRenderPass() {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
 	C.vkCmdEndRenderPass(addrs, *p0)
 }
 
+// CmdExecuteCommands command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdExecuteCommands.html
 func (x CommandBufferFacade) CmdExecuteCommands(commandBufferCount uint32, pCommandBuffers []CommandBuffer) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -20414,6 +20046,8 @@ func (x CommandBufferFacade) CmdExecuteCommands(commandBufferCount uint32, pComm
 	C.vkCmdExecuteCommands(addrs, *p0, *p1, *p2)
 }
 
+// EnumerateInstanceLayerProperties command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEnumerateInstanceLayerProperties.html
 func EnumerateInstanceLayerProperties(pPropertyCount *uint32, pProperties []LayerProperties) Result {
 	addrs := &C.vksProcAddresses
 	p0 := func(x **uint32) **C.uint { /* Pointer */ g2c := (*C.uint)(*x); return &g2c }(&pPropertyCount)
@@ -20430,6 +20064,8 @@ func EnumerateInstanceLayerProperties(pPropertyCount *uint32, pProperties []Laye
 	return *retPtr
 }
 
+// EnumerateDeviceExtensionProperties command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEnumerateDeviceExtensionProperties.html
 func (x PhysicalDeviceFacade) EnumerateDeviceExtensionProperties(pLayerName *byte, pPropertyCount *uint32, pProperties []ExtensionProperties) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -20448,6 +20084,8 @@ func (x PhysicalDeviceFacade) EnumerateDeviceExtensionProperties(pLayerName *byt
 	return *retPtr
 }
 
+// EnumerateInstanceExtensionProperties command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEnumerateInstanceExtensionProperties.html
 func EnumerateInstanceExtensionProperties(pLayerName *byte, pPropertyCount *uint32, pProperties []ExtensionProperties) Result {
 	addrs := &C.vksProcAddresses
 	p0 := func(x **byte) **C.char { /* Pointer */ return (**C.char)(unsafe.Pointer(x)) }(&pLayerName)
@@ -20465,6 +20103,8 @@ func EnumerateInstanceExtensionProperties(pLayerName *byte, pPropertyCount *uint
 	return *retPtr
 }
 
+// DestroyDevice command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyDevice.html
 func (x DeviceFacade) DestroyDevice(pAllocator *AllocationCallbacks) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -20475,6 +20115,8 @@ func (x DeviceFacade) DestroyDevice(pAllocator *AllocationCallbacks) {
 	C.vkDestroyDevice(addrs, *p0, *p1)
 }
 
+// CreateDevice command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateDevice.html
 func (x PhysicalDeviceFacade) CreateDevice(pCreateInfo *DeviceCreateInfo, pAllocator *AllocationCallbacks, pDevice *Device) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -20492,6 +20134,8 @@ func (x PhysicalDeviceFacade) CreateDevice(pCreateInfo *DeviceCreateInfo, pAlloc
 	return *retPtr
 }
 
+// GetDeviceProcAddr command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetDeviceProcAddr.html
 func (x DeviceFacade) GetDeviceProcAddr(pName *byte) PFN_vkVoidFunction {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -20501,6 +20145,8 @@ func (x DeviceFacade) GetDeviceProcAddr(pName *byte) PFN_vkVoidFunction {
 	return *retPtr
 }
 
+// GetInstanceProcAddr command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetInstanceProcAddr.html
 func GetInstanceProcAddr(instance Instance, pName *byte) PFN_vkVoidFunction {
 	addrs := &C.vksProcAddresses
 	p0 := /* handle */ (*C.VkInstance)(&instance)
@@ -20510,6 +20156,8 @@ func GetInstanceProcAddr(instance Instance, pName *byte) PFN_vkVoidFunction {
 	return *retPtr
 }
 
+// GetPhysicalDeviceMemoryProperties command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceMemoryProperties.html
 func (x PhysicalDeviceFacade) GetPhysicalDeviceMemoryProperties(pMemoryProperties *PhysicalDeviceMemoryProperties) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -20520,6 +20168,8 @@ func (x PhysicalDeviceFacade) GetPhysicalDeviceMemoryProperties(pMemoryPropertie
 	C.vkGetPhysicalDeviceMemoryProperties(addrs, *p0, *p1)
 }
 
+// GetPhysicalDeviceQueueFamilyProperties command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceQueueFamilyProperties.html
 func (x PhysicalDeviceFacade) GetPhysicalDeviceQueueFamilyProperties(pQueueFamilyPropertyCount *uint32, pQueueFamilyProperties []QueueFamilyProperties) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -20535,6 +20185,8 @@ func (x PhysicalDeviceFacade) GetPhysicalDeviceQueueFamilyProperties(pQueueFamil
 	C.vkGetPhysicalDeviceQueueFamilyProperties(addrs, *p0, *p1, *p2)
 }
 
+// GetPhysicalDeviceProperties command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceProperties.html
 func (x PhysicalDeviceFacade) GetPhysicalDeviceProperties(pProperties *PhysicalDeviceProperties) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -20545,6 +20197,8 @@ func (x PhysicalDeviceFacade) GetPhysicalDeviceProperties(pProperties *PhysicalD
 	C.vkGetPhysicalDeviceProperties(addrs, *p0, *p1)
 }
 
+// GetPhysicalDeviceFormatProperties command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceFormatProperties.html
 func (x PhysicalDeviceFacade) GetPhysicalDeviceFormatProperties(format Format, pFormatProperties *FormatProperties) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -20556,6 +20210,8 @@ func (x PhysicalDeviceFacade) GetPhysicalDeviceFormatProperties(format Format, p
 	C.vkGetPhysicalDeviceFormatProperties(addrs, *p0, *p1, *p2)
 }
 
+// GetPhysicalDeviceFeatures command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceFeatures.html
 func (x PhysicalDeviceFacade) GetPhysicalDeviceFeatures(pFeatures *PhysicalDeviceFeatures) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -20566,6 +20222,8 @@ func (x PhysicalDeviceFacade) GetPhysicalDeviceFeatures(pFeatures *PhysicalDevic
 	C.vkGetPhysicalDeviceFeatures(addrs, *p0, *p1)
 }
 
+// EnumeratePhysicalDevices command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEnumeratePhysicalDevices.html
 func (x InstanceFacade) EnumeratePhysicalDevices(pPhysicalDeviceCount *uint32, pPhysicalDevices []PhysicalDevice) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkInstance)(&x.H)
@@ -20583,6 +20241,8 @@ func (x InstanceFacade) EnumeratePhysicalDevices(pPhysicalDeviceCount *uint32, p
 	return *retPtr
 }
 
+// DestroyInstance command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyInstance.html
 func (x InstanceFacade) DestroyInstance(pAllocator *AllocationCallbacks) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkInstance)(&x.H)
@@ -20593,6 +20253,8 @@ func (x InstanceFacade) DestroyInstance(pAllocator *AllocationCallbacks) {
 	C.vkDestroyInstance(addrs, *p0, *p1)
 }
 
+// CreateInstance command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateInstance.html
 func CreateInstance(pCreateInfo *InstanceCreateInfo, pAllocator *AllocationCallbacks, pInstance *Instance) Result {
 	addrs := &C.vksProcAddresses
 	p0 := func(x **InstanceCreateInfo) **C.struct_VkInstanceCreateInfo { /* Pointer */
@@ -20609,6 +20271,8 @@ func CreateInstance(pCreateInfo *InstanceCreateInfo, pAllocator *AllocationCallb
 	return *retPtr
 }
 
+// CmdSetDepthBias command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetDepthBias.html
 func (x CommandBufferFacade) CmdSetDepthBias(depthBiasConstantFactor float32, depthBiasClamp float32, depthBiasSlopeFactor float32) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -20636,7 +20300,7 @@ type SamplerYcbcrConversion C.VkSamplerYcbcrConversion
 // NullSamplerYcbcrConversion is a typed Null value for the SamplerYcbcrConversion type.
 var NullSamplerYcbcrConversion SamplerYcbcrConversion
 
-// ExternalFenceHandleTypeFlagBits is an Enum from the Vulkan API.
+// ExternalFenceHandleTypeFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExternalFenceHandleTypeFlagBits.html
 type ExternalFenceHandleTypeFlagBits uint32
 
@@ -20663,7 +20327,7 @@ func (x ExternalFenceHandleTypeFlagBits) String() string {
 	return fmt.Sprintf("ExternalFenceHandleTypeFlagBits=%d", x)
 }
 
-// SubgroupFeatureFlagBits is an Enum from the Vulkan API.
+// SubgroupFeatureFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSubgroupFeatureFlagBits.html
 type SubgroupFeatureFlagBits uint32
 
@@ -20698,7 +20362,7 @@ func (x SubgroupFeatureFlagBits) String() string {
 	return fmt.Sprintf("SubgroupFeatureFlagBits=%d", x)
 }
 
-// ExternalMemoryHandleTypeFlagBits is an Enum from the Vulkan API.
+// ExternalMemoryHandleTypeFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExternalMemoryHandleTypeFlagBits.html
 type ExternalMemoryHandleTypeFlagBits uint32
 
@@ -20731,7 +20395,7 @@ func (x ExternalMemoryHandleTypeFlagBits) String() string {
 	return fmt.Sprintf("ExternalMemoryHandleTypeFlagBits=%d", x)
 }
 
-// ExternalFenceFeatureFlagBits is an Enum from the Vulkan API.
+// ExternalFenceFeatureFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExternalFenceFeatureFlagBits.html
 type ExternalFenceFeatureFlagBits uint32
 
@@ -20754,7 +20418,7 @@ func (x ExternalFenceFeatureFlagBits) String() string {
 	return fmt.Sprintf("ExternalFenceFeatureFlagBits=%d", x)
 }
 
-// DescriptorUpdateTemplateType is an Enum from the Vulkan API.
+// DescriptorUpdateTemplateType enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorUpdateTemplateType.html
 type DescriptorUpdateTemplateType uint32
 
@@ -20775,7 +20439,7 @@ func (x DescriptorUpdateTemplateType) String() string {
 	return fmt.Sprintf("DescriptorUpdateTemplateType=%d", x)
 }
 
-// SamplerYcbcrRange is an Enum from the Vulkan API.
+// SamplerYcbcrRange enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSamplerYcbcrRange.html
 type SamplerYcbcrRange uint32
 
@@ -20798,7 +20462,7 @@ func (x SamplerYcbcrRange) String() string {
 	return fmt.Sprintf("SamplerYcbcrRange=%d", x)
 }
 
-// ExternalSemaphoreHandleTypeFlagBits is an Enum from the Vulkan API.
+// ExternalSemaphoreHandleTypeFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExternalSemaphoreHandleTypeFlagBits.html
 type ExternalSemaphoreHandleTypeFlagBits uint32
 
@@ -20828,7 +20492,7 @@ func (x ExternalSemaphoreHandleTypeFlagBits) String() string {
 	return fmt.Sprintf("ExternalSemaphoreHandleTypeFlagBits=%d", x)
 }
 
-// ChromaLocation is an Enum from the Vulkan API.
+// ChromaLocation enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkChromaLocation.html
 type ChromaLocation uint32
 
@@ -20851,7 +20515,7 @@ func (x ChromaLocation) String() string {
 	return fmt.Sprintf("ChromaLocation=%d", x)
 }
 
-// SamplerYcbcrModelConversion is an Enum from the Vulkan API.
+// SamplerYcbcrModelConversion enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSamplerYcbcrModelConversion.html
 type SamplerYcbcrModelConversion uint32
 
@@ -20880,7 +20544,7 @@ func (x SamplerYcbcrModelConversion) String() string {
 	return fmt.Sprintf("SamplerYcbcrModelConversion=%d", x)
 }
 
-// FenceImportFlagBits is an Enum from the Vulkan API.
+// FenceImportFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFenceImportFlagBits.html
 type FenceImportFlagBits uint32
 
@@ -20901,7 +20565,7 @@ func (x FenceImportFlagBits) String() string {
 	return fmt.Sprintf("FenceImportFlagBits=%d", x)
 }
 
-// PointClippingBehavior is an Enum from the Vulkan API.
+// PointClippingBehavior enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPointClippingBehavior.html
 type PointClippingBehavior uint32
 
@@ -20924,7 +20588,7 @@ func (x PointClippingBehavior) String() string {
 	return fmt.Sprintf("PointClippingBehavior=%d", x)
 }
 
-// ExternalSemaphoreFeatureFlagBits is an Enum from the Vulkan API.
+// ExternalSemaphoreFeatureFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExternalSemaphoreFeatureFlagBits.html
 type ExternalSemaphoreFeatureFlagBits uint32
 
@@ -20947,7 +20611,7 @@ func (x ExternalSemaphoreFeatureFlagBits) String() string {
 	return fmt.Sprintf("ExternalSemaphoreFeatureFlagBits=%d", x)
 }
 
-// TessellationDomainOrigin is an Enum from the Vulkan API.
+// TessellationDomainOrigin enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkTessellationDomainOrigin.html
 type TessellationDomainOrigin uint32
 
@@ -20970,7 +20634,7 @@ func (x TessellationDomainOrigin) String() string {
 	return fmt.Sprintf("TessellationDomainOrigin=%d", x)
 }
 
-// ExternalMemoryFeatureFlagBits is an Enum from the Vulkan API.
+// ExternalMemoryFeatureFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkExternalMemoryFeatureFlagBits.html
 type ExternalMemoryFeatureFlagBits uint32
 
@@ -20995,7 +20659,7 @@ func (x ExternalMemoryFeatureFlagBits) String() string {
 	return fmt.Sprintf("ExternalMemoryFeatureFlagBits=%d", x)
 }
 
-// PeerMemoryFeatureFlagBits is an Enum from the Vulkan API.
+// PeerMemoryFeatureFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPeerMemoryFeatureFlagBits.html
 type PeerMemoryFeatureFlagBits uint32
 
@@ -21022,7 +20686,7 @@ func (x PeerMemoryFeatureFlagBits) String() string {
 	return fmt.Sprintf("PeerMemoryFeatureFlagBits=%d", x)
 }
 
-// MemoryAllocateFlagBits is an Enum from the Vulkan API.
+// MemoryAllocateFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkMemoryAllocateFlagBits.html
 type MemoryAllocateFlagBits uint32
 
@@ -21047,7 +20711,7 @@ func (x MemoryAllocateFlagBits) String() string {
 	return fmt.Sprintf("MemoryAllocateFlagBits=%d", x)
 }
 
-// SemaphoreImportFlagBits is an Enum from the Vulkan API.
+// SemaphoreImportFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSemaphoreImportFlagBits.html
 type SemaphoreImportFlagBits uint32
 
@@ -21177,8 +20841,7 @@ func (x PhysicalDeviceMemoryProperties2) WithDefaultSType() PhysicalDeviceMemory
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceMemoryProperties2) WithSType(y StructureType) PhysicalDeviceMemoryProperties2 {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -21191,8 +20854,7 @@ func (x PhysicalDeviceMemoryProperties2) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceMemoryProperties2) WithPNext(y unsafe.Pointer) PhysicalDeviceMemoryProperties2 {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -21259,8 +20921,7 @@ func (x ImageMemoryRequirementsInfo2) WithDefaultSType() ImageMemoryRequirements
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageMemoryRequirementsInfo2) WithSType(y StructureType) ImageMemoryRequirementsInfo2 {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -21273,8 +20934,7 @@ func (x ImageMemoryRequirementsInfo2) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageMemoryRequirementsInfo2) WithPNext(y unsafe.Pointer) ImageMemoryRequirementsInfo2 {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -21287,8 +20947,7 @@ func (x ImageMemoryRequirementsInfo2) Image() Image {
 // WithImage sets the value for the Image on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageMemoryRequirementsInfo2) WithImage(y Image) ImageMemoryRequirementsInfo2 {
-	ptr := /* handle */ (*C.VkImage)(&y)
-	x.image = *ptr
+	x.image = *( /* handle */ (*C.VkImage)(&y))
 	return x
 }
 
@@ -21349,8 +21008,7 @@ func (x ImageSparseMemoryRequirementsInfo2) WithDefaultSType() ImageSparseMemory
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageSparseMemoryRequirementsInfo2) WithSType(y StructureType) ImageSparseMemoryRequirementsInfo2 {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -21363,8 +21021,7 @@ func (x ImageSparseMemoryRequirementsInfo2) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageSparseMemoryRequirementsInfo2) WithPNext(y unsafe.Pointer) ImageSparseMemoryRequirementsInfo2 {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -21377,8 +21034,7 @@ func (x ImageSparseMemoryRequirementsInfo2) Image() Image {
 // WithImage sets the value for the Image on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageSparseMemoryRequirementsInfo2) WithImage(y Image) ImageSparseMemoryRequirementsInfo2 {
-	ptr := /* handle */ (*C.VkImage)(&y)
-	x.image = *ptr
+	x.image = *( /* handle */ (*C.VkImage)(&y))
 	return x
 }
 
@@ -21439,8 +21095,7 @@ func (x MemoryRequirements2) WithDefaultSType() MemoryRequirements2 {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x MemoryRequirements2) WithSType(y StructureType) MemoryRequirements2 {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -21453,8 +21108,7 @@ func (x MemoryRequirements2) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x MemoryRequirements2) WithPNext(y unsafe.Pointer) MemoryRequirements2 {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -21521,8 +21175,7 @@ func (x SparseImageMemoryRequirements2) WithDefaultSType() SparseImageMemoryRequ
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SparseImageMemoryRequirements2) WithSType(y StructureType) SparseImageMemoryRequirements2 {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -21535,8 +21188,7 @@ func (x SparseImageMemoryRequirements2) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SparseImageMemoryRequirements2) WithPNext(y unsafe.Pointer) SparseImageMemoryRequirements2 {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -21603,8 +21255,7 @@ func (x BufferMemoryRequirementsInfo2) WithDefaultSType() BufferMemoryRequiremen
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferMemoryRequirementsInfo2) WithSType(y StructureType) BufferMemoryRequirementsInfo2 {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -21617,8 +21268,7 @@ func (x BufferMemoryRequirementsInfo2) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferMemoryRequirementsInfo2) WithPNext(y unsafe.Pointer) BufferMemoryRequirementsInfo2 {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -21631,8 +21281,7 @@ func (x BufferMemoryRequirementsInfo2) Buffer() Buffer {
 // WithBuffer sets the value for the Buffer on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferMemoryRequirementsInfo2) WithBuffer(y Buffer) BufferMemoryRequirementsInfo2 {
-	ptr := /* handle */ (*C.VkBuffer)(&y)
-	x.buffer = *ptr
+	x.buffer = *( /* handle */ (*C.VkBuffer)(&y))
 	return x
 }
 
@@ -21693,8 +21342,7 @@ func (x ExportFenceCreateInfo) WithDefaultSType() ExportFenceCreateInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ExportFenceCreateInfo) WithSType(y StructureType) ExportFenceCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -21707,8 +21355,7 @@ func (x ExportFenceCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ExportFenceCreateInfo) WithPNext(y unsafe.Pointer) ExportFenceCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -21721,8 +21368,7 @@ func (x ExportFenceCreateInfo) HandleTypes() ExternalFenceHandleTypeFlags {
 // WithHandleTypes sets the value for the HandleTypes on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ExportFenceCreateInfo) WithHandleTypes(y ExternalFenceHandleTypeFlags) ExportFenceCreateInfo {
-	ptr := /* typedef */ (*C.VkExternalFenceHandleTypeFlags)(&y)
-	x.handleTypes = *ptr
+	x.handleTypes = *( /* typedef */ (*C.VkExternalFenceHandleTypeFlags)(&y))
 	return x
 }
 
@@ -21783,8 +21429,7 @@ func (x ExportSemaphoreCreateInfo) WithDefaultSType() ExportSemaphoreCreateInfo 
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ExportSemaphoreCreateInfo) WithSType(y StructureType) ExportSemaphoreCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -21797,8 +21442,7 @@ func (x ExportSemaphoreCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ExportSemaphoreCreateInfo) WithPNext(y unsafe.Pointer) ExportSemaphoreCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -21811,8 +21455,7 @@ func (x ExportSemaphoreCreateInfo) HandleTypes() ExternalSemaphoreHandleTypeFlag
 // WithHandleTypes sets the value for the HandleTypes on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ExportSemaphoreCreateInfo) WithHandleTypes(y ExternalSemaphoreHandleTypeFlags) ExportSemaphoreCreateInfo {
-	ptr := /* typedef */ (*C.VkExternalSemaphoreHandleTypeFlags)(&y)
-	x.handleTypes = *ptr
+	x.handleTypes = *( /* typedef */ (*C.VkExternalSemaphoreHandleTypeFlags)(&y))
 	return x
 }
 
@@ -21873,8 +21516,7 @@ func (x DeviceGroupDeviceCreateInfo) WithDefaultSType() DeviceGroupDeviceCreateI
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceGroupDeviceCreateInfo) WithSType(y StructureType) DeviceGroupDeviceCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -21887,8 +21529,7 @@ func (x DeviceGroupDeviceCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceGroupDeviceCreateInfo) WithPNext(y unsafe.Pointer) DeviceGroupDeviceCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -21901,8 +21542,7 @@ func (x DeviceGroupDeviceCreateInfo) PhysicalDeviceCount() uint32 {
 // WithPhysicalDeviceCount sets the value for the PhysicalDeviceCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceGroupDeviceCreateInfo) WithPhysicalDeviceCount(y uint32) DeviceGroupDeviceCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.physicalDeviceCount = *ptr
+	x.physicalDeviceCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -21921,15 +21561,14 @@ func (x DeviceGroupDeviceCreateInfo) PPhysicalDevices() []PhysicalDevice {
 // The specification defines PhysicalDeviceCount as the length of this field.
 // PhysicalDeviceCount is updated with the length of the new value.
 func (x DeviceGroupDeviceCreateInfo) WithPPhysicalDevices(y []PhysicalDevice) DeviceGroupDeviceCreateInfo {
-	ptr := func(x *[]PhysicalDevice) **C.VkPhysicalDevice { /* Slice */
+	x.pPhysicalDevices = *(func(x *[]PhysicalDevice) **C.VkPhysicalDevice { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkPhysicalDevice)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.VkPhysicalDevice)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pPhysicalDevices = *ptr
+	}(&y))
 	return x.WithPhysicalDeviceCount(uint32(len(y)))
 }
 
@@ -21990,8 +21629,7 @@ func (x ExternalFenceProperties) WithDefaultSType() ExternalFenceProperties {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ExternalFenceProperties) WithSType(y StructureType) ExternalFenceProperties {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -22004,8 +21642,7 @@ func (x ExternalFenceProperties) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ExternalFenceProperties) WithPNext(y unsafe.Pointer) ExternalFenceProperties {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -22084,8 +21721,7 @@ func (x PhysicalDeviceExternalFenceInfo) WithDefaultSType() PhysicalDeviceExtern
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceExternalFenceInfo) WithSType(y StructureType) PhysicalDeviceExternalFenceInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -22098,8 +21734,7 @@ func (x PhysicalDeviceExternalFenceInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceExternalFenceInfo) WithPNext(y unsafe.Pointer) PhysicalDeviceExternalFenceInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -22112,8 +21747,7 @@ func (x PhysicalDeviceExternalFenceInfo) HandleType() ExternalFenceHandleTypeFla
 // WithHandleType sets the value for the HandleType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceExternalFenceInfo) WithHandleType(y ExternalFenceHandleTypeFlagBits) PhysicalDeviceExternalFenceInfo {
-	ptr := /* typedef */ (*C.VkExternalFenceHandleTypeFlagBits)(&y)
-	x.handleType = *ptr
+	x.handleType = *( /* typedef */ (*C.VkExternalFenceHandleTypeFlagBits)(&y))
 	return x
 }
 
@@ -22174,8 +21808,7 @@ func (x PhysicalDeviceGroupProperties) WithDefaultSType() PhysicalDeviceGroupPro
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceGroupProperties) WithSType(y StructureType) PhysicalDeviceGroupProperties {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -22188,8 +21821,7 @@ func (x PhysicalDeviceGroupProperties) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceGroupProperties) WithPNext(y unsafe.Pointer) PhysicalDeviceGroupProperties {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -22271,8 +21903,7 @@ func (x PhysicalDeviceFeatures2) WithDefaultSType() PhysicalDeviceFeatures2 {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures2) WithSType(y StructureType) PhysicalDeviceFeatures2 {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -22285,8 +21916,7 @@ func (x PhysicalDeviceFeatures2) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures2) WithPNext(y unsafe.Pointer) PhysicalDeviceFeatures2 {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -22299,8 +21929,7 @@ func (x PhysicalDeviceFeatures2) Features() PhysicalDeviceFeatures {
 // WithFeatures sets the value for the Features on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFeatures2) WithFeatures(y PhysicalDeviceFeatures) PhysicalDeviceFeatures2 {
-	ptr := /* typedef */ (*C.struct_VkPhysicalDeviceFeatures)(&y)
-	x.features = *ptr
+	x.features = *( /* typedef */ (*C.struct_VkPhysicalDeviceFeatures)(&y))
 	return x
 }
 
@@ -22361,8 +21990,7 @@ func (x PhysicalDeviceProperties2) WithDefaultSType() PhysicalDeviceProperties2 
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceProperties2) WithSType(y StructureType) PhysicalDeviceProperties2 {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -22375,8 +22003,7 @@ func (x PhysicalDeviceProperties2) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceProperties2) WithPNext(y unsafe.Pointer) PhysicalDeviceProperties2 {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -22443,8 +22070,7 @@ func (x FormatProperties2) WithDefaultSType() FormatProperties2 {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x FormatProperties2) WithSType(y StructureType) FormatProperties2 {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -22457,8 +22083,7 @@ func (x FormatProperties2) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x FormatProperties2) WithPNext(y unsafe.Pointer) FormatProperties2 {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -22525,8 +22150,7 @@ func (x ImageFormatProperties2) WithDefaultSType() ImageFormatProperties2 {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageFormatProperties2) WithSType(y StructureType) ImageFormatProperties2 {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -22539,8 +22163,7 @@ func (x ImageFormatProperties2) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageFormatProperties2) WithPNext(y unsafe.Pointer) ImageFormatProperties2 {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -22607,8 +22230,7 @@ func (x PhysicalDeviceImageFormatInfo2) WithDefaultSType() PhysicalDeviceImageFo
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceImageFormatInfo2) WithSType(y StructureType) PhysicalDeviceImageFormatInfo2 {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -22621,8 +22243,7 @@ func (x PhysicalDeviceImageFormatInfo2) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceImageFormatInfo2) WithPNext(y unsafe.Pointer) PhysicalDeviceImageFormatInfo2 {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -22635,8 +22256,7 @@ func (x PhysicalDeviceImageFormatInfo2) Format() Format {
 // WithFormat sets the value for the Format on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceImageFormatInfo2) WithFormat(y Format) PhysicalDeviceImageFormatInfo2 {
-	ptr := /* typedef */ (*C.VkFormat)(&y)
-	x.format = *ptr
+	x.format = *( /* typedef */ (*C.VkFormat)(&y))
 	return x
 }
 
@@ -22649,8 +22269,7 @@ func (x PhysicalDeviceImageFormatInfo2) Type_() ImageType {
 // WithType_ sets the value for the Type_ on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceImageFormatInfo2) WithType_(y ImageType) PhysicalDeviceImageFormatInfo2 {
-	ptr := /* typedef */ (*C.VkImageType)(&y)
-	x._type = *ptr
+	x._type = *( /* typedef */ (*C.VkImageType)(&y))
 	return x
 }
 
@@ -22663,8 +22282,7 @@ func (x PhysicalDeviceImageFormatInfo2) Tiling() ImageTiling {
 // WithTiling sets the value for the Tiling on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceImageFormatInfo2) WithTiling(y ImageTiling) PhysicalDeviceImageFormatInfo2 {
-	ptr := /* typedef */ (*C.VkImageTiling)(&y)
-	x.tiling = *ptr
+	x.tiling = *( /* typedef */ (*C.VkImageTiling)(&y))
 	return x
 }
 
@@ -22677,8 +22295,7 @@ func (x PhysicalDeviceImageFormatInfo2) Usage() ImageUsageFlags {
 // WithUsage sets the value for the Usage on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceImageFormatInfo2) WithUsage(y ImageUsageFlags) PhysicalDeviceImageFormatInfo2 {
-	ptr := /* typedef */ (*C.VkImageUsageFlags)(&y)
-	x.usage = *ptr
+	x.usage = *( /* typedef */ (*C.VkImageUsageFlags)(&y))
 	return x
 }
 
@@ -22691,8 +22308,7 @@ func (x PhysicalDeviceImageFormatInfo2) Flags() ImageCreateFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceImageFormatInfo2) WithFlags(y ImageCreateFlags) PhysicalDeviceImageFormatInfo2 {
-	ptr := /* typedef */ (*C.VkImageCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkImageCreateFlags)(&y))
 	return x
 }
 
@@ -22753,8 +22369,7 @@ func (x QueueFamilyProperties2) WithDefaultSType() QueueFamilyProperties2 {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x QueueFamilyProperties2) WithSType(y StructureType) QueueFamilyProperties2 {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -22767,8 +22382,7 @@ func (x QueueFamilyProperties2) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x QueueFamilyProperties2) WithPNext(y unsafe.Pointer) QueueFamilyProperties2 {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -22835,8 +22449,7 @@ func (x BindImageMemoryDeviceGroupInfo) WithDefaultSType() BindImageMemoryDevice
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BindImageMemoryDeviceGroupInfo) WithSType(y StructureType) BindImageMemoryDeviceGroupInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -22849,8 +22462,7 @@ func (x BindImageMemoryDeviceGroupInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BindImageMemoryDeviceGroupInfo) WithPNext(y unsafe.Pointer) BindImageMemoryDeviceGroupInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -22863,8 +22475,7 @@ func (x BindImageMemoryDeviceGroupInfo) DeviceIndexCount() uint32 {
 // WithDeviceIndexCount sets the value for the DeviceIndexCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BindImageMemoryDeviceGroupInfo) WithDeviceIndexCount(y uint32) BindImageMemoryDeviceGroupInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.deviceIndexCount = *ptr
+	x.deviceIndexCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -22883,15 +22494,14 @@ func (x BindImageMemoryDeviceGroupInfo) PDeviceIndices() []uint32 {
 // The specification defines DeviceIndexCount as the length of this field.
 // DeviceIndexCount is updated with the length of the new value.
 func (x BindImageMemoryDeviceGroupInfo) WithPDeviceIndices(y []uint32) BindImageMemoryDeviceGroupInfo {
-	ptr := func(x *[]uint32) **C.uint { /* Slice */
+	x.pDeviceIndices = *(func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.uint)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pDeviceIndices = *ptr
+	}(&y))
 	return x.WithDeviceIndexCount(uint32(len(y)))
 }
 
@@ -22904,8 +22514,7 @@ func (x BindImageMemoryDeviceGroupInfo) SplitInstanceBindRegionCount() uint32 {
 // WithSplitInstanceBindRegionCount sets the value for the SplitInstanceBindRegionCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BindImageMemoryDeviceGroupInfo) WithSplitInstanceBindRegionCount(y uint32) BindImageMemoryDeviceGroupInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.splitInstanceBindRegionCount = *ptr
+	x.splitInstanceBindRegionCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -22924,15 +22533,14 @@ func (x BindImageMemoryDeviceGroupInfo) PSplitInstanceBindRegions() []Rect2D {
 // The specification defines SplitInstanceBindRegionCount as the length of this field.
 // SplitInstanceBindRegionCount is updated with the length of the new value.
 func (x BindImageMemoryDeviceGroupInfo) WithPSplitInstanceBindRegions(y []Rect2D) BindImageMemoryDeviceGroupInfo {
-	ptr := func(x *[]Rect2D) **C.struct_VkRect2D { /* Slice */
+	x.pSplitInstanceBindRegions = *(func(x *[]Rect2D) **C.struct_VkRect2D { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkRect2D)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkRect2D)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pSplitInstanceBindRegions = *ptr
+	}(&y))
 	return x.WithSplitInstanceBindRegionCount(uint32(len(y)))
 }
 
@@ -22993,8 +22601,7 @@ func (x SparseImageFormatProperties2) WithDefaultSType() SparseImageFormatProper
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SparseImageFormatProperties2) WithSType(y StructureType) SparseImageFormatProperties2 {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -23007,8 +22614,7 @@ func (x SparseImageFormatProperties2) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SparseImageFormatProperties2) WithPNext(y unsafe.Pointer) SparseImageFormatProperties2 {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -23075,8 +22681,7 @@ func (x PhysicalDeviceSparseImageFormatInfo2) WithDefaultSType() PhysicalDeviceS
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceSparseImageFormatInfo2) WithSType(y StructureType) PhysicalDeviceSparseImageFormatInfo2 {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -23089,8 +22694,7 @@ func (x PhysicalDeviceSparseImageFormatInfo2) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceSparseImageFormatInfo2) WithPNext(y unsafe.Pointer) PhysicalDeviceSparseImageFormatInfo2 {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -23103,8 +22707,7 @@ func (x PhysicalDeviceSparseImageFormatInfo2) Format() Format {
 // WithFormat sets the value for the Format on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceSparseImageFormatInfo2) WithFormat(y Format) PhysicalDeviceSparseImageFormatInfo2 {
-	ptr := /* typedef */ (*C.VkFormat)(&y)
-	x.format = *ptr
+	x.format = *( /* typedef */ (*C.VkFormat)(&y))
 	return x
 }
 
@@ -23117,8 +22720,7 @@ func (x PhysicalDeviceSparseImageFormatInfo2) Type_() ImageType {
 // WithType_ sets the value for the Type_ on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceSparseImageFormatInfo2) WithType_(y ImageType) PhysicalDeviceSparseImageFormatInfo2 {
-	ptr := /* typedef */ (*C.VkImageType)(&y)
-	x._type = *ptr
+	x._type = *( /* typedef */ (*C.VkImageType)(&y))
 	return x
 }
 
@@ -23131,8 +22733,7 @@ func (x PhysicalDeviceSparseImageFormatInfo2) Samples() SampleCountFlagBits {
 // WithSamples sets the value for the Samples on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceSparseImageFormatInfo2) WithSamples(y SampleCountFlagBits) PhysicalDeviceSparseImageFormatInfo2 {
-	ptr := /* typedef */ (*C.VkSampleCountFlagBits)(&y)
-	x.samples = *ptr
+	x.samples = *( /* typedef */ (*C.VkSampleCountFlagBits)(&y))
 	return x
 }
 
@@ -23145,8 +22746,7 @@ func (x PhysicalDeviceSparseImageFormatInfo2) Usage() ImageUsageFlags {
 // WithUsage sets the value for the Usage on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceSparseImageFormatInfo2) WithUsage(y ImageUsageFlags) PhysicalDeviceSparseImageFormatInfo2 {
-	ptr := /* typedef */ (*C.VkImageUsageFlags)(&y)
-	x.usage = *ptr
+	x.usage = *( /* typedef */ (*C.VkImageUsageFlags)(&y))
 	return x
 }
 
@@ -23159,8 +22759,7 @@ func (x PhysicalDeviceSparseImageFormatInfo2) Tiling() ImageTiling {
 // WithTiling sets the value for the Tiling on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceSparseImageFormatInfo2) WithTiling(y ImageTiling) PhysicalDeviceSparseImageFormatInfo2 {
-	ptr := /* typedef */ (*C.VkImageTiling)(&y)
-	x.tiling = *ptr
+	x.tiling = *( /* typedef */ (*C.VkImageTiling)(&y))
 	return x
 }
 
@@ -23221,8 +22820,7 @@ func (x BindBufferMemoryDeviceGroupInfo) WithDefaultSType() BindBufferMemoryDevi
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BindBufferMemoryDeviceGroupInfo) WithSType(y StructureType) BindBufferMemoryDeviceGroupInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -23235,8 +22833,7 @@ func (x BindBufferMemoryDeviceGroupInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BindBufferMemoryDeviceGroupInfo) WithPNext(y unsafe.Pointer) BindBufferMemoryDeviceGroupInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -23249,8 +22846,7 @@ func (x BindBufferMemoryDeviceGroupInfo) DeviceIndexCount() uint32 {
 // WithDeviceIndexCount sets the value for the DeviceIndexCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BindBufferMemoryDeviceGroupInfo) WithDeviceIndexCount(y uint32) BindBufferMemoryDeviceGroupInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.deviceIndexCount = *ptr
+	x.deviceIndexCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -23269,15 +22865,14 @@ func (x BindBufferMemoryDeviceGroupInfo) PDeviceIndices() []uint32 {
 // The specification defines DeviceIndexCount as the length of this field.
 // DeviceIndexCount is updated with the length of the new value.
 func (x BindBufferMemoryDeviceGroupInfo) WithPDeviceIndices(y []uint32) BindBufferMemoryDeviceGroupInfo {
-	ptr := func(x *[]uint32) **C.uint { /* Slice */
+	x.pDeviceIndices = *(func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.uint)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pDeviceIndices = *ptr
+	}(&y))
 	return x.WithDeviceIndexCount(uint32(len(y)))
 }
 
@@ -23338,8 +22933,7 @@ func (x DeviceGroupBindSparseInfo) WithDefaultSType() DeviceGroupBindSparseInfo 
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceGroupBindSparseInfo) WithSType(y StructureType) DeviceGroupBindSparseInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -23352,8 +22946,7 @@ func (x DeviceGroupBindSparseInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceGroupBindSparseInfo) WithPNext(y unsafe.Pointer) DeviceGroupBindSparseInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -23366,8 +22959,7 @@ func (x DeviceGroupBindSparseInfo) ResourceDeviceIndex() uint32 {
 // WithResourceDeviceIndex sets the value for the ResourceDeviceIndex on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceGroupBindSparseInfo) WithResourceDeviceIndex(y uint32) DeviceGroupBindSparseInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.resourceDeviceIndex = *ptr
+	x.resourceDeviceIndex = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -23380,8 +22972,7 @@ func (x DeviceGroupBindSparseInfo) MemoryDeviceIndex() uint32 {
 // WithMemoryDeviceIndex sets the value for the MemoryDeviceIndex on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceGroupBindSparseInfo) WithMemoryDeviceIndex(y uint32) DeviceGroupBindSparseInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.memoryDeviceIndex = *ptr
+	x.memoryDeviceIndex = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -23442,8 +23033,7 @@ func (x PhysicalDevicePointClippingProperties) WithDefaultSType() PhysicalDevice
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDevicePointClippingProperties) WithSType(y StructureType) PhysicalDevicePointClippingProperties {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -23456,8 +23046,7 @@ func (x PhysicalDevicePointClippingProperties) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDevicePointClippingProperties) WithPNext(y unsafe.Pointer) PhysicalDevicePointClippingProperties {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -23524,8 +23113,7 @@ func (x DeviceGroupSubmitInfo) WithDefaultSType() DeviceGroupSubmitInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceGroupSubmitInfo) WithSType(y StructureType) DeviceGroupSubmitInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -23538,8 +23126,7 @@ func (x DeviceGroupSubmitInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceGroupSubmitInfo) WithPNext(y unsafe.Pointer) DeviceGroupSubmitInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -23552,8 +23139,7 @@ func (x DeviceGroupSubmitInfo) WaitSemaphoreCount() uint32 {
 // WithWaitSemaphoreCount sets the value for the WaitSemaphoreCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceGroupSubmitInfo) WithWaitSemaphoreCount(y uint32) DeviceGroupSubmitInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.waitSemaphoreCount = *ptr
+	x.waitSemaphoreCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -23572,15 +23158,14 @@ func (x DeviceGroupSubmitInfo) PWaitSemaphoreDeviceIndices() []uint32 {
 // The specification defines WaitSemaphoreCount as the length of this field.
 // WaitSemaphoreCount is updated with the length of the new value.
 func (x DeviceGroupSubmitInfo) WithPWaitSemaphoreDeviceIndices(y []uint32) DeviceGroupSubmitInfo {
-	ptr := func(x *[]uint32) **C.uint { /* Slice */
+	x.pWaitSemaphoreDeviceIndices = *(func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.uint)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pWaitSemaphoreDeviceIndices = *ptr
+	}(&y))
 	return x.WithWaitSemaphoreCount(uint32(len(y)))
 }
 
@@ -23593,8 +23178,7 @@ func (x DeviceGroupSubmitInfo) CommandBufferCount() uint32 {
 // WithCommandBufferCount sets the value for the CommandBufferCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceGroupSubmitInfo) WithCommandBufferCount(y uint32) DeviceGroupSubmitInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.commandBufferCount = *ptr
+	x.commandBufferCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -23613,15 +23197,14 @@ func (x DeviceGroupSubmitInfo) PCommandBufferDeviceMasks() []uint32 {
 // The specification defines CommandBufferCount as the length of this field.
 // CommandBufferCount is updated with the length of the new value.
 func (x DeviceGroupSubmitInfo) WithPCommandBufferDeviceMasks(y []uint32) DeviceGroupSubmitInfo {
-	ptr := func(x *[]uint32) **C.uint { /* Slice */
+	x.pCommandBufferDeviceMasks = *(func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.uint)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pCommandBufferDeviceMasks = *ptr
+	}(&y))
 	return x.WithCommandBufferCount(uint32(len(y)))
 }
 
@@ -23634,8 +23217,7 @@ func (x DeviceGroupSubmitInfo) SignalSemaphoreCount() uint32 {
 // WithSignalSemaphoreCount sets the value for the SignalSemaphoreCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceGroupSubmitInfo) WithSignalSemaphoreCount(y uint32) DeviceGroupSubmitInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.signalSemaphoreCount = *ptr
+	x.signalSemaphoreCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -23654,15 +23236,14 @@ func (x DeviceGroupSubmitInfo) PSignalSemaphoreDeviceIndices() []uint32 {
 // The specification defines SignalSemaphoreCount as the length of this field.
 // SignalSemaphoreCount is updated with the length of the new value.
 func (x DeviceGroupSubmitInfo) WithPSignalSemaphoreDeviceIndices(y []uint32) DeviceGroupSubmitInfo {
-	ptr := func(x *[]uint32) **C.uint { /* Slice */
+	x.pSignalSemaphoreDeviceIndices = *(func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.uint)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pSignalSemaphoreDeviceIndices = *ptr
+	}(&y))
 	return x.WithSignalSemaphoreCount(uint32(len(y)))
 }
 
@@ -23723,8 +23304,7 @@ func (x RenderPassInputAttachmentAspectCreateInfo) WithDefaultSType() RenderPass
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x RenderPassInputAttachmentAspectCreateInfo) WithSType(y StructureType) RenderPassInputAttachmentAspectCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -23737,8 +23317,7 @@ func (x RenderPassInputAttachmentAspectCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x RenderPassInputAttachmentAspectCreateInfo) WithPNext(y unsafe.Pointer) RenderPassInputAttachmentAspectCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -23751,8 +23330,7 @@ func (x RenderPassInputAttachmentAspectCreateInfo) AspectReferenceCount() uint32
 // WithAspectReferenceCount sets the value for the AspectReferenceCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x RenderPassInputAttachmentAspectCreateInfo) WithAspectReferenceCount(y uint32) RenderPassInputAttachmentAspectCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.aspectReferenceCount = *ptr
+	x.aspectReferenceCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -23771,15 +23349,14 @@ func (x RenderPassInputAttachmentAspectCreateInfo) PAspectReferences() []InputAt
 // The specification defines AspectReferenceCount as the length of this field.
 // AspectReferenceCount is updated with the length of the new value.
 func (x RenderPassInputAttachmentAspectCreateInfo) WithPAspectReferences(y []InputAttachmentAspectReference) RenderPassInputAttachmentAspectCreateInfo {
-	ptr := func(x *[]InputAttachmentAspectReference) **C.struct_VkInputAttachmentAspectReference { /* Slice */
+	x.pAspectReferences = *(func(x *[]InputAttachmentAspectReference) **C.struct_VkInputAttachmentAspectReference { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkInputAttachmentAspectReference)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkInputAttachmentAspectReference)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pAspectReferences = *ptr
+	}(&y))
 	return x.WithAspectReferenceCount(uint32(len(y)))
 }
 
@@ -23834,8 +23411,7 @@ func (x InputAttachmentAspectReference) Subpass() uint32 {
 // WithSubpass sets the value for the Subpass on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x InputAttachmentAspectReference) WithSubpass(y uint32) InputAttachmentAspectReference {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.subpass = *ptr
+	x.subpass = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -23848,8 +23424,7 @@ func (x InputAttachmentAspectReference) InputAttachmentIndex() uint32 {
 // WithInputAttachmentIndex sets the value for the InputAttachmentIndex on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x InputAttachmentAspectReference) WithInputAttachmentIndex(y uint32) InputAttachmentAspectReference {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.inputAttachmentIndex = *ptr
+	x.inputAttachmentIndex = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -23862,8 +23437,7 @@ func (x InputAttachmentAspectReference) AspectMask() ImageAspectFlags {
 // WithAspectMask sets the value for the AspectMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x InputAttachmentAspectReference) WithAspectMask(y ImageAspectFlags) InputAttachmentAspectReference {
-	ptr := /* typedef */ (*C.VkImageAspectFlags)(&y)
-	x.aspectMask = *ptr
+	x.aspectMask = *( /* typedef */ (*C.VkImageAspectFlags)(&y))
 	return x
 }
 
@@ -23924,8 +23498,7 @@ func (x ImageViewUsageCreateInfo) WithDefaultSType() ImageViewUsageCreateInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageViewUsageCreateInfo) WithSType(y StructureType) ImageViewUsageCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -23938,8 +23511,7 @@ func (x ImageViewUsageCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageViewUsageCreateInfo) WithPNext(y unsafe.Pointer) ImageViewUsageCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -23952,8 +23524,7 @@ func (x ImageViewUsageCreateInfo) Usage() ImageUsageFlags {
 // WithUsage sets the value for the Usage on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageViewUsageCreateInfo) WithUsage(y ImageUsageFlags) ImageViewUsageCreateInfo {
-	ptr := /* typedef */ (*C.VkImageUsageFlags)(&y)
-	x.usage = *ptr
+	x.usage = *( /* typedef */ (*C.VkImageUsageFlags)(&y))
 	return x
 }
 
@@ -24014,8 +23585,7 @@ func (x DeviceGroupCommandBufferBeginInfo) WithDefaultSType() DeviceGroupCommand
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceGroupCommandBufferBeginInfo) WithSType(y StructureType) DeviceGroupCommandBufferBeginInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -24028,8 +23598,7 @@ func (x DeviceGroupCommandBufferBeginInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceGroupCommandBufferBeginInfo) WithPNext(y unsafe.Pointer) DeviceGroupCommandBufferBeginInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -24042,8 +23611,7 @@ func (x DeviceGroupCommandBufferBeginInfo) DeviceMask() uint32 {
 // WithDeviceMask sets the value for the DeviceMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceGroupCommandBufferBeginInfo) WithDeviceMask(y uint32) DeviceGroupCommandBufferBeginInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.deviceMask = *ptr
+	x.deviceMask = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -24104,8 +23672,7 @@ func (x PipelineTessellationDomainOriginStateCreateInfo) WithDefaultSType() Pipe
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineTessellationDomainOriginStateCreateInfo) WithSType(y StructureType) PipelineTessellationDomainOriginStateCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -24118,8 +23685,7 @@ func (x PipelineTessellationDomainOriginStateCreateInfo) PNext() unsafe.Pointer 
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineTessellationDomainOriginStateCreateInfo) WithPNext(y unsafe.Pointer) PipelineTessellationDomainOriginStateCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -24132,8 +23698,7 @@ func (x PipelineTessellationDomainOriginStateCreateInfo) DomainOrigin() Tessella
 // WithDomainOrigin sets the value for the DomainOrigin on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineTessellationDomainOriginStateCreateInfo) WithDomainOrigin(y TessellationDomainOrigin) PipelineTessellationDomainOriginStateCreateInfo {
-	ptr := /* typedef */ (*C.VkTessellationDomainOrigin)(&y)
-	x.domainOrigin = *ptr
+	x.domainOrigin = *( /* typedef */ (*C.VkTessellationDomainOrigin)(&y))
 	return x
 }
 
@@ -24194,8 +23759,7 @@ func (x RenderPassMultiviewCreateInfo) WithDefaultSType() RenderPassMultiviewCre
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x RenderPassMultiviewCreateInfo) WithSType(y StructureType) RenderPassMultiviewCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -24208,8 +23772,7 @@ func (x RenderPassMultiviewCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x RenderPassMultiviewCreateInfo) WithPNext(y unsafe.Pointer) RenderPassMultiviewCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -24222,8 +23785,7 @@ func (x RenderPassMultiviewCreateInfo) SubpassCount() uint32 {
 // WithSubpassCount sets the value for the SubpassCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x RenderPassMultiviewCreateInfo) WithSubpassCount(y uint32) RenderPassMultiviewCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.subpassCount = *ptr
+	x.subpassCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -24242,15 +23804,14 @@ func (x RenderPassMultiviewCreateInfo) PViewMasks() []uint32 {
 // The specification defines SubpassCount as the length of this field.
 // SubpassCount is updated with the length of the new value.
 func (x RenderPassMultiviewCreateInfo) WithPViewMasks(y []uint32) RenderPassMultiviewCreateInfo {
-	ptr := func(x *[]uint32) **C.uint { /* Slice */
+	x.pViewMasks = *(func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.uint)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pViewMasks = *ptr
+	}(&y))
 	return x.WithSubpassCount(uint32(len(y)))
 }
 
@@ -24263,8 +23824,7 @@ func (x RenderPassMultiviewCreateInfo) DependencyCount() uint32 {
 // WithDependencyCount sets the value for the DependencyCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x RenderPassMultiviewCreateInfo) WithDependencyCount(y uint32) RenderPassMultiviewCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.dependencyCount = *ptr
+	x.dependencyCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -24283,15 +23843,14 @@ func (x RenderPassMultiviewCreateInfo) PViewOffsets() []int32 {
 // The specification defines DependencyCount as the length of this field.
 // DependencyCount is updated with the length of the new value.
 func (x RenderPassMultiviewCreateInfo) WithPViewOffsets(y []int32) RenderPassMultiviewCreateInfo {
-	ptr := func(x *[]int32) **C.int { /* Slice */
+	x.pViewOffsets = *(func(x *[]int32) **C.int { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.int)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.int)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pViewOffsets = *ptr
+	}(&y))
 	return x.WithDependencyCount(uint32(len(y)))
 }
 
@@ -24304,8 +23863,7 @@ func (x RenderPassMultiviewCreateInfo) CorrelationMaskCount() uint32 {
 // WithCorrelationMaskCount sets the value for the CorrelationMaskCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x RenderPassMultiviewCreateInfo) WithCorrelationMaskCount(y uint32) RenderPassMultiviewCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.correlationMaskCount = *ptr
+	x.correlationMaskCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -24324,15 +23882,14 @@ func (x RenderPassMultiviewCreateInfo) PCorrelationMasks() []uint32 {
 // The specification defines CorrelationMaskCount as the length of this field.
 // CorrelationMaskCount is updated with the length of the new value.
 func (x RenderPassMultiviewCreateInfo) WithPCorrelationMasks(y []uint32) RenderPassMultiviewCreateInfo {
-	ptr := func(x *[]uint32) **C.uint { /* Slice */
+	x.pCorrelationMasks = *(func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.uint)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pCorrelationMasks = *ptr
+	}(&y))
 	return x.WithCorrelationMaskCount(uint32(len(y)))
 }
 
@@ -24393,8 +23950,7 @@ func (x PhysicalDeviceMultiviewFeatures) WithDefaultSType() PhysicalDeviceMultiv
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceMultiviewFeatures) WithSType(y StructureType) PhysicalDeviceMultiviewFeatures {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -24407,8 +23963,7 @@ func (x PhysicalDeviceMultiviewFeatures) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceMultiviewFeatures) WithPNext(y unsafe.Pointer) PhysicalDeviceMultiviewFeatures {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -24421,8 +23976,7 @@ func (x PhysicalDeviceMultiviewFeatures) Multiview() Bool32 {
 // WithMultiview sets the value for the Multiview on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceMultiviewFeatures) WithMultiview(y Bool32) PhysicalDeviceMultiviewFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.multiview = *ptr
+	x.multiview = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -24435,8 +23989,7 @@ func (x PhysicalDeviceMultiviewFeatures) MultiviewGeometryShader() Bool32 {
 // WithMultiviewGeometryShader sets the value for the MultiviewGeometryShader on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceMultiviewFeatures) WithMultiviewGeometryShader(y Bool32) PhysicalDeviceMultiviewFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.multiviewGeometryShader = *ptr
+	x.multiviewGeometryShader = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -24449,8 +24002,7 @@ func (x PhysicalDeviceMultiviewFeatures) MultiviewTessellationShader() Bool32 {
 // WithMultiviewTessellationShader sets the value for the MultiviewTessellationShader on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceMultiviewFeatures) WithMultiviewTessellationShader(y Bool32) PhysicalDeviceMultiviewFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.multiviewTessellationShader = *ptr
+	x.multiviewTessellationShader = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -24511,8 +24063,7 @@ func (x PhysicalDeviceMultiviewProperties) WithDefaultSType() PhysicalDeviceMult
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceMultiviewProperties) WithSType(y StructureType) PhysicalDeviceMultiviewProperties {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -24525,8 +24076,7 @@ func (x PhysicalDeviceMultiviewProperties) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceMultiviewProperties) WithPNext(y unsafe.Pointer) PhysicalDeviceMultiviewProperties {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -24606,8 +24156,7 @@ func (x DeviceGroupRenderPassBeginInfo) WithDefaultSType() DeviceGroupRenderPass
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceGroupRenderPassBeginInfo) WithSType(y StructureType) DeviceGroupRenderPassBeginInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -24620,8 +24169,7 @@ func (x DeviceGroupRenderPassBeginInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceGroupRenderPassBeginInfo) WithPNext(y unsafe.Pointer) DeviceGroupRenderPassBeginInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -24634,8 +24182,7 @@ func (x DeviceGroupRenderPassBeginInfo) DeviceMask() uint32 {
 // WithDeviceMask sets the value for the DeviceMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceGroupRenderPassBeginInfo) WithDeviceMask(y uint32) DeviceGroupRenderPassBeginInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.deviceMask = *ptr
+	x.deviceMask = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -24648,8 +24195,7 @@ func (x DeviceGroupRenderPassBeginInfo) DeviceRenderAreaCount() uint32 {
 // WithDeviceRenderAreaCount sets the value for the DeviceRenderAreaCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceGroupRenderPassBeginInfo) WithDeviceRenderAreaCount(y uint32) DeviceGroupRenderPassBeginInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.deviceRenderAreaCount = *ptr
+	x.deviceRenderAreaCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -24668,15 +24214,14 @@ func (x DeviceGroupRenderPassBeginInfo) PDeviceRenderAreas() []Rect2D {
 // The specification defines DeviceRenderAreaCount as the length of this field.
 // DeviceRenderAreaCount is updated with the length of the new value.
 func (x DeviceGroupRenderPassBeginInfo) WithPDeviceRenderAreas(y []Rect2D) DeviceGroupRenderPassBeginInfo {
-	ptr := func(x *[]Rect2D) **C.struct_VkRect2D { /* Slice */
+	x.pDeviceRenderAreas = *(func(x *[]Rect2D) **C.struct_VkRect2D { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkRect2D)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkRect2D)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pDeviceRenderAreas = *ptr
+	}(&y))
 	return x.WithDeviceRenderAreaCount(uint32(len(y)))
 }
 
@@ -24737,8 +24282,7 @@ func (x MemoryAllocateFlagsInfo) WithDefaultSType() MemoryAllocateFlagsInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x MemoryAllocateFlagsInfo) WithSType(y StructureType) MemoryAllocateFlagsInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -24751,8 +24295,7 @@ func (x MemoryAllocateFlagsInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x MemoryAllocateFlagsInfo) WithPNext(y unsafe.Pointer) MemoryAllocateFlagsInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -24765,8 +24308,7 @@ func (x MemoryAllocateFlagsInfo) Flags() MemoryAllocateFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x MemoryAllocateFlagsInfo) WithFlags(y MemoryAllocateFlags) MemoryAllocateFlagsInfo {
-	ptr := /* typedef */ (*C.VkMemoryAllocateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkMemoryAllocateFlags)(&y))
 	return x
 }
 
@@ -24779,8 +24321,7 @@ func (x MemoryAllocateFlagsInfo) DeviceMask() uint32 {
 // WithDeviceMask sets the value for the DeviceMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x MemoryAllocateFlagsInfo) WithDeviceMask(y uint32) MemoryAllocateFlagsInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.deviceMask = *ptr
+	x.deviceMask = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -24841,8 +24382,7 @@ func (x PhysicalDeviceProtectedMemoryFeatures) WithDefaultSType() PhysicalDevice
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceProtectedMemoryFeatures) WithSType(y StructureType) PhysicalDeviceProtectedMemoryFeatures {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -24855,8 +24395,7 @@ func (x PhysicalDeviceProtectedMemoryFeatures) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceProtectedMemoryFeatures) WithPNext(y unsafe.Pointer) PhysicalDeviceProtectedMemoryFeatures {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -24869,8 +24408,7 @@ func (x PhysicalDeviceProtectedMemoryFeatures) ProtectedMemory() Bool32 {
 // WithProtectedMemory sets the value for the ProtectedMemory on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceProtectedMemoryFeatures) WithProtectedMemory(y Bool32) PhysicalDeviceProtectedMemoryFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.protectedMemory = *ptr
+	x.protectedMemory = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -24931,8 +24469,7 @@ func (x PhysicalDeviceProtectedMemoryProperties) WithDefaultSType() PhysicalDevi
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceProtectedMemoryProperties) WithSType(y StructureType) PhysicalDeviceProtectedMemoryProperties {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -24945,8 +24482,7 @@ func (x PhysicalDeviceProtectedMemoryProperties) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceProtectedMemoryProperties) WithPNext(y unsafe.Pointer) PhysicalDeviceProtectedMemoryProperties {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -25013,8 +24549,7 @@ func (x DeviceQueueInfo2) WithDefaultSType() DeviceQueueInfo2 {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceQueueInfo2) WithSType(y StructureType) DeviceQueueInfo2 {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -25027,8 +24562,7 @@ func (x DeviceQueueInfo2) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceQueueInfo2) WithPNext(y unsafe.Pointer) DeviceQueueInfo2 {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -25041,8 +24575,7 @@ func (x DeviceQueueInfo2) Flags() DeviceQueueCreateFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceQueueInfo2) WithFlags(y DeviceQueueCreateFlags) DeviceQueueInfo2 {
-	ptr := /* typedef */ (*C.VkDeviceQueueCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkDeviceQueueCreateFlags)(&y))
 	return x
 }
 
@@ -25055,8 +24588,7 @@ func (x DeviceQueueInfo2) QueueFamilyIndex() uint32 {
 // WithQueueFamilyIndex sets the value for the QueueFamilyIndex on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceQueueInfo2) WithQueueFamilyIndex(y uint32) DeviceQueueInfo2 {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.queueFamilyIndex = *ptr
+	x.queueFamilyIndex = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -25069,8 +24601,7 @@ func (x DeviceQueueInfo2) QueueIndex() uint32 {
 // WithQueueIndex sets the value for the QueueIndex on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceQueueInfo2) WithQueueIndex(y uint32) DeviceQueueInfo2 {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.queueIndex = *ptr
+	x.queueIndex = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -25131,8 +24662,7 @@ func (x ProtectedSubmitInfo) WithDefaultSType() ProtectedSubmitInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ProtectedSubmitInfo) WithSType(y StructureType) ProtectedSubmitInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -25145,8 +24675,7 @@ func (x ProtectedSubmitInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ProtectedSubmitInfo) WithPNext(y unsafe.Pointer) ProtectedSubmitInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -25159,8 +24688,7 @@ func (x ProtectedSubmitInfo) ProtectedSubmit() Bool32 {
 // WithProtectedSubmit sets the value for the ProtectedSubmit on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ProtectedSubmitInfo) WithProtectedSubmit(y Bool32) ProtectedSubmitInfo {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.protectedSubmit = *ptr
+	x.protectedSubmit = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -25221,8 +24749,7 @@ func (x PhysicalDeviceExternalSemaphoreInfo) WithDefaultSType() PhysicalDeviceEx
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceExternalSemaphoreInfo) WithSType(y StructureType) PhysicalDeviceExternalSemaphoreInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -25235,8 +24762,7 @@ func (x PhysicalDeviceExternalSemaphoreInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceExternalSemaphoreInfo) WithPNext(y unsafe.Pointer) PhysicalDeviceExternalSemaphoreInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -25249,8 +24775,7 @@ func (x PhysicalDeviceExternalSemaphoreInfo) HandleType() ExternalSemaphoreHandl
 // WithHandleType sets the value for the HandleType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceExternalSemaphoreInfo) WithHandleType(y ExternalSemaphoreHandleTypeFlagBits) PhysicalDeviceExternalSemaphoreInfo {
-	ptr := /* typedef */ (*C.VkExternalSemaphoreHandleTypeFlagBits)(&y)
-	x.handleType = *ptr
+	x.handleType = *( /* typedef */ (*C.VkExternalSemaphoreHandleTypeFlagBits)(&y))
 	return x
 }
 
@@ -25311,8 +24836,7 @@ func (x ExportMemoryAllocateInfo) WithDefaultSType() ExportMemoryAllocateInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ExportMemoryAllocateInfo) WithSType(y StructureType) ExportMemoryAllocateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -25325,8 +24849,7 @@ func (x ExportMemoryAllocateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ExportMemoryAllocateInfo) WithPNext(y unsafe.Pointer) ExportMemoryAllocateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -25339,8 +24862,7 @@ func (x ExportMemoryAllocateInfo) HandleTypes() ExternalMemoryHandleTypeFlags {
 // WithHandleTypes sets the value for the HandleTypes on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ExportMemoryAllocateInfo) WithHandleTypes(y ExternalMemoryHandleTypeFlags) ExportMemoryAllocateInfo {
-	ptr := /* typedef */ (*C.VkExternalMemoryHandleTypeFlags)(&y)
-	x.handleTypes = *ptr
+	x.handleTypes = *( /* typedef */ (*C.VkExternalMemoryHandleTypeFlags)(&y))
 	return x
 }
 
@@ -25401,8 +24923,7 @@ func (x SamplerYcbcrConversionCreateInfo) WithDefaultSType() SamplerYcbcrConvers
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerYcbcrConversionCreateInfo) WithSType(y StructureType) SamplerYcbcrConversionCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -25415,8 +24936,7 @@ func (x SamplerYcbcrConversionCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerYcbcrConversionCreateInfo) WithPNext(y unsafe.Pointer) SamplerYcbcrConversionCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -25429,8 +24949,7 @@ func (x SamplerYcbcrConversionCreateInfo) Format() Format {
 // WithFormat sets the value for the Format on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerYcbcrConversionCreateInfo) WithFormat(y Format) SamplerYcbcrConversionCreateInfo {
-	ptr := /* typedef */ (*C.VkFormat)(&y)
-	x.format = *ptr
+	x.format = *( /* typedef */ (*C.VkFormat)(&y))
 	return x
 }
 
@@ -25443,8 +24962,7 @@ func (x SamplerYcbcrConversionCreateInfo) YcbcrModel() SamplerYcbcrModelConversi
 // WithYcbcrModel sets the value for the YcbcrModel on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerYcbcrConversionCreateInfo) WithYcbcrModel(y SamplerYcbcrModelConversion) SamplerYcbcrConversionCreateInfo {
-	ptr := /* typedef */ (*C.VkSamplerYcbcrModelConversion)(&y)
-	x.ycbcrModel = *ptr
+	x.ycbcrModel = *( /* typedef */ (*C.VkSamplerYcbcrModelConversion)(&y))
 	return x
 }
 
@@ -25457,8 +24975,7 @@ func (x SamplerYcbcrConversionCreateInfo) YcbcrRange() SamplerYcbcrRange {
 // WithYcbcrRange sets the value for the YcbcrRange on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerYcbcrConversionCreateInfo) WithYcbcrRange(y SamplerYcbcrRange) SamplerYcbcrConversionCreateInfo {
-	ptr := /* typedef */ (*C.VkSamplerYcbcrRange)(&y)
-	x.ycbcrRange = *ptr
+	x.ycbcrRange = *( /* typedef */ (*C.VkSamplerYcbcrRange)(&y))
 	return x
 }
 
@@ -25471,8 +24988,7 @@ func (x SamplerYcbcrConversionCreateInfo) Components() ComponentMapping {
 // WithComponents sets the value for the Components on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerYcbcrConversionCreateInfo) WithComponents(y ComponentMapping) SamplerYcbcrConversionCreateInfo {
-	ptr := /* typedef */ (*C.struct_VkComponentMapping)(&y)
-	x.components = *ptr
+	x.components = *( /* typedef */ (*C.struct_VkComponentMapping)(&y))
 	return x
 }
 
@@ -25485,8 +25001,7 @@ func (x SamplerYcbcrConversionCreateInfo) XChromaOffset() ChromaLocation {
 // WithXChromaOffset sets the value for the XChromaOffset on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerYcbcrConversionCreateInfo) WithXChromaOffset(y ChromaLocation) SamplerYcbcrConversionCreateInfo {
-	ptr := /* typedef */ (*C.VkChromaLocation)(&y)
-	x.xChromaOffset = *ptr
+	x.xChromaOffset = *( /* typedef */ (*C.VkChromaLocation)(&y))
 	return x
 }
 
@@ -25499,8 +25014,7 @@ func (x SamplerYcbcrConversionCreateInfo) YChromaOffset() ChromaLocation {
 // WithYChromaOffset sets the value for the YChromaOffset on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerYcbcrConversionCreateInfo) WithYChromaOffset(y ChromaLocation) SamplerYcbcrConversionCreateInfo {
-	ptr := /* typedef */ (*C.VkChromaLocation)(&y)
-	x.yChromaOffset = *ptr
+	x.yChromaOffset = *( /* typedef */ (*C.VkChromaLocation)(&y))
 	return x
 }
 
@@ -25513,8 +25027,7 @@ func (x SamplerYcbcrConversionCreateInfo) ChromaFilter() Filter {
 // WithChromaFilter sets the value for the ChromaFilter on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerYcbcrConversionCreateInfo) WithChromaFilter(y Filter) SamplerYcbcrConversionCreateInfo {
-	ptr := /* typedef */ (*C.VkFilter)(&y)
-	x.chromaFilter = *ptr
+	x.chromaFilter = *( /* typedef */ (*C.VkFilter)(&y))
 	return x
 }
 
@@ -25527,8 +25040,7 @@ func (x SamplerYcbcrConversionCreateInfo) ForceExplicitReconstruction() Bool32 {
 // WithForceExplicitReconstruction sets the value for the ForceExplicitReconstruction on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerYcbcrConversionCreateInfo) WithForceExplicitReconstruction(y Bool32) SamplerYcbcrConversionCreateInfo {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.forceExplicitReconstruction = *ptr
+	x.forceExplicitReconstruction = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -25589,8 +25101,7 @@ func (x SamplerYcbcrConversionInfo) WithDefaultSType() SamplerYcbcrConversionInf
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerYcbcrConversionInfo) WithSType(y StructureType) SamplerYcbcrConversionInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -25603,8 +25114,7 @@ func (x SamplerYcbcrConversionInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerYcbcrConversionInfo) WithPNext(y unsafe.Pointer) SamplerYcbcrConversionInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -25617,8 +25127,7 @@ func (x SamplerYcbcrConversionInfo) Conversion() SamplerYcbcrConversion {
 // WithConversion sets the value for the Conversion on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerYcbcrConversionInfo) WithConversion(y SamplerYcbcrConversion) SamplerYcbcrConversionInfo {
-	ptr := /* handle */ (*C.VkSamplerYcbcrConversion)(&y)
-	x.conversion = *ptr
+	x.conversion = *( /* handle */ (*C.VkSamplerYcbcrConversion)(&y))
 	return x
 }
 
@@ -25679,8 +25188,7 @@ func (x BindImagePlaneMemoryInfo) WithDefaultSType() BindImagePlaneMemoryInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BindImagePlaneMemoryInfo) WithSType(y StructureType) BindImagePlaneMemoryInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -25693,8 +25201,7 @@ func (x BindImagePlaneMemoryInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BindImagePlaneMemoryInfo) WithPNext(y unsafe.Pointer) BindImagePlaneMemoryInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -25707,8 +25214,7 @@ func (x BindImagePlaneMemoryInfo) PlaneAspect() ImageAspectFlagBits {
 // WithPlaneAspect sets the value for the PlaneAspect on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BindImagePlaneMemoryInfo) WithPlaneAspect(y ImageAspectFlagBits) BindImagePlaneMemoryInfo {
-	ptr := /* typedef */ (*C.VkImageAspectFlagBits)(&y)
-	x.planeAspect = *ptr
+	x.planeAspect = *( /* typedef */ (*C.VkImageAspectFlagBits)(&y))
 	return x
 }
 
@@ -25769,8 +25275,7 @@ func (x ImagePlaneMemoryRequirementsInfo) WithDefaultSType() ImagePlaneMemoryReq
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImagePlaneMemoryRequirementsInfo) WithSType(y StructureType) ImagePlaneMemoryRequirementsInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -25783,8 +25288,7 @@ func (x ImagePlaneMemoryRequirementsInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImagePlaneMemoryRequirementsInfo) WithPNext(y unsafe.Pointer) ImagePlaneMemoryRequirementsInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -25797,8 +25301,7 @@ func (x ImagePlaneMemoryRequirementsInfo) PlaneAspect() ImageAspectFlagBits {
 // WithPlaneAspect sets the value for the PlaneAspect on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImagePlaneMemoryRequirementsInfo) WithPlaneAspect(y ImageAspectFlagBits) ImagePlaneMemoryRequirementsInfo {
-	ptr := /* typedef */ (*C.VkImageAspectFlagBits)(&y)
-	x.planeAspect = *ptr
+	x.planeAspect = *( /* typedef */ (*C.VkImageAspectFlagBits)(&y))
 	return x
 }
 
@@ -25859,8 +25362,7 @@ func (x PhysicalDeviceSamplerYcbcrConversionFeatures) WithDefaultSType() Physica
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceSamplerYcbcrConversionFeatures) WithSType(y StructureType) PhysicalDeviceSamplerYcbcrConversionFeatures {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -25873,8 +25375,7 @@ func (x PhysicalDeviceSamplerYcbcrConversionFeatures) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceSamplerYcbcrConversionFeatures) WithPNext(y unsafe.Pointer) PhysicalDeviceSamplerYcbcrConversionFeatures {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -25887,8 +25388,7 @@ func (x PhysicalDeviceSamplerYcbcrConversionFeatures) SamplerYcbcrConversion() B
 // WithSamplerYcbcrConversion sets the value for the SamplerYcbcrConversion on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceSamplerYcbcrConversionFeatures) WithSamplerYcbcrConversion(y Bool32) PhysicalDeviceSamplerYcbcrConversionFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.samplerYcbcrConversion = *ptr
+	x.samplerYcbcrConversion = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -25949,8 +25449,7 @@ func (x SamplerYcbcrConversionImageFormatProperties) WithDefaultSType() SamplerY
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerYcbcrConversionImageFormatProperties) WithSType(y StructureType) SamplerYcbcrConversionImageFormatProperties {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -25963,8 +25462,7 @@ func (x SamplerYcbcrConversionImageFormatProperties) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerYcbcrConversionImageFormatProperties) WithPNext(y unsafe.Pointer) SamplerYcbcrConversionImageFormatProperties {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -26031,8 +25529,7 @@ func (x ExternalSemaphoreProperties) WithDefaultSType() ExternalSemaphorePropert
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ExternalSemaphoreProperties) WithSType(y StructureType) ExternalSemaphoreProperties {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -26045,8 +25542,7 @@ func (x ExternalSemaphoreProperties) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ExternalSemaphoreProperties) WithPNext(y unsafe.Pointer) ExternalSemaphoreProperties {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -26125,8 +25621,7 @@ func (x MemoryDedicatedAllocateInfo) WithDefaultSType() MemoryDedicatedAllocateI
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x MemoryDedicatedAllocateInfo) WithSType(y StructureType) MemoryDedicatedAllocateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -26139,8 +25634,7 @@ func (x MemoryDedicatedAllocateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x MemoryDedicatedAllocateInfo) WithPNext(y unsafe.Pointer) MemoryDedicatedAllocateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -26153,8 +25647,7 @@ func (x MemoryDedicatedAllocateInfo) Image() Image {
 // WithImage sets the value for the Image on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x MemoryDedicatedAllocateInfo) WithImage(y Image) MemoryDedicatedAllocateInfo {
-	ptr := /* handle */ (*C.VkImage)(&y)
-	x.image = *ptr
+	x.image = *( /* handle */ (*C.VkImage)(&y))
 	return x
 }
 
@@ -26167,8 +25660,7 @@ func (x MemoryDedicatedAllocateInfo) Buffer() Buffer {
 // WithBuffer sets the value for the Buffer on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x MemoryDedicatedAllocateInfo) WithBuffer(y Buffer) MemoryDedicatedAllocateInfo {
-	ptr := /* handle */ (*C.VkBuffer)(&y)
-	x.buffer = *ptr
+	x.buffer = *( /* handle */ (*C.VkBuffer)(&y))
 	return x
 }
 
@@ -26229,8 +25721,7 @@ func (x PhysicalDeviceVariablePointersFeatures) WithDefaultSType() PhysicalDevic
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVariablePointersFeatures) WithSType(y StructureType) PhysicalDeviceVariablePointersFeatures {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -26243,8 +25734,7 @@ func (x PhysicalDeviceVariablePointersFeatures) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVariablePointersFeatures) WithPNext(y unsafe.Pointer) PhysicalDeviceVariablePointersFeatures {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -26257,8 +25747,7 @@ func (x PhysicalDeviceVariablePointersFeatures) VariablePointersStorageBuffer() 
 // WithVariablePointersStorageBuffer sets the value for the VariablePointersStorageBuffer on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVariablePointersFeatures) WithVariablePointersStorageBuffer(y Bool32) PhysicalDeviceVariablePointersFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.variablePointersStorageBuffer = *ptr
+	x.variablePointersStorageBuffer = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -26271,8 +25760,7 @@ func (x PhysicalDeviceVariablePointersFeatures) VariablePointers() Bool32 {
 // WithVariablePointers sets the value for the VariablePointers on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVariablePointersFeatures) WithVariablePointers(y Bool32) PhysicalDeviceVariablePointersFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.variablePointers = *ptr
+	x.variablePointers = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -26333,8 +25821,7 @@ func (x MemoryDedicatedRequirements) WithDefaultSType() MemoryDedicatedRequireme
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x MemoryDedicatedRequirements) WithSType(y StructureType) MemoryDedicatedRequirements {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -26347,8 +25834,7 @@ func (x MemoryDedicatedRequirements) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x MemoryDedicatedRequirements) WithPNext(y unsafe.Pointer) MemoryDedicatedRequirements {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -26421,8 +25907,7 @@ func (x ExternalMemoryBufferCreateInfo) WithDefaultSType() ExternalMemoryBufferC
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ExternalMemoryBufferCreateInfo) WithSType(y StructureType) ExternalMemoryBufferCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -26435,8 +25920,7 @@ func (x ExternalMemoryBufferCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ExternalMemoryBufferCreateInfo) WithPNext(y unsafe.Pointer) ExternalMemoryBufferCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -26449,8 +25933,7 @@ func (x ExternalMemoryBufferCreateInfo) HandleTypes() ExternalMemoryHandleTypeFl
 // WithHandleTypes sets the value for the HandleTypes on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ExternalMemoryBufferCreateInfo) WithHandleTypes(y ExternalMemoryHandleTypeFlags) ExternalMemoryBufferCreateInfo {
-	ptr := /* typedef */ (*C.VkExternalMemoryHandleTypeFlags)(&y)
-	x.handleTypes = *ptr
+	x.handleTypes = *( /* typedef */ (*C.VkExternalMemoryHandleTypeFlags)(&y))
 	return x
 }
 
@@ -26511,8 +25994,7 @@ func (x ExternalMemoryImageCreateInfo) WithDefaultSType() ExternalMemoryImageCre
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ExternalMemoryImageCreateInfo) WithSType(y StructureType) ExternalMemoryImageCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -26525,8 +26007,7 @@ func (x ExternalMemoryImageCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ExternalMemoryImageCreateInfo) WithPNext(y unsafe.Pointer) ExternalMemoryImageCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -26539,8 +26020,7 @@ func (x ExternalMemoryImageCreateInfo) HandleTypes() ExternalMemoryHandleTypeFla
 // WithHandleTypes sets the value for the HandleTypes on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ExternalMemoryImageCreateInfo) WithHandleTypes(y ExternalMemoryHandleTypeFlags) ExternalMemoryImageCreateInfo {
-	ptr := /* typedef */ (*C.VkExternalMemoryHandleTypeFlags)(&y)
-	x.handleTypes = *ptr
+	x.handleTypes = *( /* typedef */ (*C.VkExternalMemoryHandleTypeFlags)(&y))
 	return x
 }
 
@@ -26601,8 +26081,7 @@ func (x PhysicalDeviceIDProperties) WithDefaultSType() PhysicalDeviceIDPropertie
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceIDProperties) WithSType(y StructureType) PhysicalDeviceIDProperties {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -26615,8 +26094,7 @@ func (x PhysicalDeviceIDProperties) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceIDProperties) WithPNext(y unsafe.Pointer) PhysicalDeviceIDProperties {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -26716,8 +26194,7 @@ func (x PhysicalDevice16BitStorageFeatures) WithDefaultSType() PhysicalDevice16B
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDevice16BitStorageFeatures) WithSType(y StructureType) PhysicalDevice16BitStorageFeatures {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -26730,8 +26207,7 @@ func (x PhysicalDevice16BitStorageFeatures) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDevice16BitStorageFeatures) WithPNext(y unsafe.Pointer) PhysicalDevice16BitStorageFeatures {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -26744,8 +26220,7 @@ func (x PhysicalDevice16BitStorageFeatures) StorageBuffer16BitAccess() Bool32 {
 // WithStorageBuffer16BitAccess sets the value for the StorageBuffer16BitAccess on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDevice16BitStorageFeatures) WithStorageBuffer16BitAccess(y Bool32) PhysicalDevice16BitStorageFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.storageBuffer16BitAccess = *ptr
+	x.storageBuffer16BitAccess = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -26758,8 +26233,7 @@ func (x PhysicalDevice16BitStorageFeatures) UniformAndStorageBuffer16BitAccess()
 // WithUniformAndStorageBuffer16BitAccess sets the value for the UniformAndStorageBuffer16BitAccess on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDevice16BitStorageFeatures) WithUniformAndStorageBuffer16BitAccess(y Bool32) PhysicalDevice16BitStorageFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.uniformAndStorageBuffer16BitAccess = *ptr
+	x.uniformAndStorageBuffer16BitAccess = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -26772,8 +26246,7 @@ func (x PhysicalDevice16BitStorageFeatures) StoragePushConstant16() Bool32 {
 // WithStoragePushConstant16 sets the value for the StoragePushConstant16 on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDevice16BitStorageFeatures) WithStoragePushConstant16(y Bool32) PhysicalDevice16BitStorageFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.storagePushConstant16 = *ptr
+	x.storagePushConstant16 = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -26786,8 +26259,7 @@ func (x PhysicalDevice16BitStorageFeatures) StorageInputOutput16() Bool32 {
 // WithStorageInputOutput16 sets the value for the StorageInputOutput16 on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDevice16BitStorageFeatures) WithStorageInputOutput16(y Bool32) PhysicalDevice16BitStorageFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.storageInputOutput16 = *ptr
+	x.storageInputOutput16 = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -26848,8 +26320,7 @@ func (x BindImageMemoryInfo) WithDefaultSType() BindImageMemoryInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BindImageMemoryInfo) WithSType(y StructureType) BindImageMemoryInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -26862,8 +26333,7 @@ func (x BindImageMemoryInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BindImageMemoryInfo) WithPNext(y unsafe.Pointer) BindImageMemoryInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -26876,8 +26346,7 @@ func (x BindImageMemoryInfo) Image() Image {
 // WithImage sets the value for the Image on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BindImageMemoryInfo) WithImage(y Image) BindImageMemoryInfo {
-	ptr := /* handle */ (*C.VkImage)(&y)
-	x.image = *ptr
+	x.image = *( /* handle */ (*C.VkImage)(&y))
 	return x
 }
 
@@ -26890,8 +26359,7 @@ func (x BindImageMemoryInfo) Memory() DeviceMemory {
 // WithMemory sets the value for the Memory on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BindImageMemoryInfo) WithMemory(y DeviceMemory) BindImageMemoryInfo {
-	ptr := /* handle */ (*C.VkDeviceMemory)(&y)
-	x.memory = *ptr
+	x.memory = *( /* handle */ (*C.VkDeviceMemory)(&y))
 	return x
 }
 
@@ -26904,8 +26372,7 @@ func (x BindImageMemoryInfo) MemoryOffset() DeviceSize {
 // WithMemoryOffset sets the value for the MemoryOffset on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BindImageMemoryInfo) WithMemoryOffset(y DeviceSize) BindImageMemoryInfo {
-	ptr := /* typedef */ (*C.VkDeviceSize)(&y)
-	x.memoryOffset = *ptr
+	x.memoryOffset = *( /* typedef */ (*C.VkDeviceSize)(&y))
 	return x
 }
 
@@ -26966,8 +26433,7 @@ func (x BindBufferMemoryInfo) WithDefaultSType() BindBufferMemoryInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BindBufferMemoryInfo) WithSType(y StructureType) BindBufferMemoryInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -26980,8 +26446,7 @@ func (x BindBufferMemoryInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BindBufferMemoryInfo) WithPNext(y unsafe.Pointer) BindBufferMemoryInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -26994,8 +26459,7 @@ func (x BindBufferMemoryInfo) Buffer() Buffer {
 // WithBuffer sets the value for the Buffer on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BindBufferMemoryInfo) WithBuffer(y Buffer) BindBufferMemoryInfo {
-	ptr := /* handle */ (*C.VkBuffer)(&y)
-	x.buffer = *ptr
+	x.buffer = *( /* handle */ (*C.VkBuffer)(&y))
 	return x
 }
 
@@ -27008,8 +26472,7 @@ func (x BindBufferMemoryInfo) Memory() DeviceMemory {
 // WithMemory sets the value for the Memory on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BindBufferMemoryInfo) WithMemory(y DeviceMemory) BindBufferMemoryInfo {
-	ptr := /* handle */ (*C.VkDeviceMemory)(&y)
-	x.memory = *ptr
+	x.memory = *( /* handle */ (*C.VkDeviceMemory)(&y))
 	return x
 }
 
@@ -27022,8 +26485,7 @@ func (x BindBufferMemoryInfo) MemoryOffset() DeviceSize {
 // WithMemoryOffset sets the value for the MemoryOffset on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BindBufferMemoryInfo) WithMemoryOffset(y DeviceSize) BindBufferMemoryInfo {
-	ptr := /* typedef */ (*C.VkDeviceSize)(&y)
-	x.memoryOffset = *ptr
+	x.memoryOffset = *( /* typedef */ (*C.VkDeviceSize)(&y))
 	return x
 }
 
@@ -27078,8 +26540,7 @@ func (x DescriptorUpdateTemplateEntry) DstBinding() uint32 {
 // WithDstBinding sets the value for the DstBinding on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorUpdateTemplateEntry) WithDstBinding(y uint32) DescriptorUpdateTemplateEntry {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.dstBinding = *ptr
+	x.dstBinding = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -27092,8 +26553,7 @@ func (x DescriptorUpdateTemplateEntry) DstArrayElement() uint32 {
 // WithDstArrayElement sets the value for the DstArrayElement on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorUpdateTemplateEntry) WithDstArrayElement(y uint32) DescriptorUpdateTemplateEntry {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.dstArrayElement = *ptr
+	x.dstArrayElement = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -27106,8 +26566,7 @@ func (x DescriptorUpdateTemplateEntry) DescriptorCount() uint32 {
 // WithDescriptorCount sets the value for the DescriptorCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorUpdateTemplateEntry) WithDescriptorCount(y uint32) DescriptorUpdateTemplateEntry {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.descriptorCount = *ptr
+	x.descriptorCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -27120,8 +26579,7 @@ func (x DescriptorUpdateTemplateEntry) DescriptorType() DescriptorType {
 // WithDescriptorType sets the value for the DescriptorType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorUpdateTemplateEntry) WithDescriptorType(y DescriptorType) DescriptorUpdateTemplateEntry {
-	ptr := /* typedef */ (*C.VkDescriptorType)(&y)
-	x.descriptorType = *ptr
+	x.descriptorType = *( /* typedef */ (*C.VkDescriptorType)(&y))
 	return x
 }
 
@@ -27134,8 +26592,7 @@ func (x DescriptorUpdateTemplateEntry) Offset() uint64 {
 // WithOffset sets the value for the Offset on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorUpdateTemplateEntry) WithOffset(y uint64) DescriptorUpdateTemplateEntry {
-	ptr := func(x *uint64) *C.ulong { /* Scalar */ g2c := C.ulong(*x); return &g2c }(&y)
-	x.offset = *ptr
+	x.offset = *(func(x *uint64) *C.ulong { /* Scalar */ g2c := C.ulong(*x); return &g2c }(&y))
 	return x
 }
 
@@ -27148,8 +26605,7 @@ func (x DescriptorUpdateTemplateEntry) Stride() uint64 {
 // WithStride sets the value for the Stride on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorUpdateTemplateEntry) WithStride(y uint64) DescriptorUpdateTemplateEntry {
-	ptr := func(x *uint64) *C.ulong { /* Scalar */ g2c := C.ulong(*x); return &g2c }(&y)
-	x.stride = *ptr
+	x.stride = *(func(x *uint64) *C.ulong { /* Scalar */ g2c := C.ulong(*x); return &g2c }(&y))
 	return x
 }
 
@@ -27210,8 +26666,7 @@ func (x DescriptorUpdateTemplateCreateInfo) WithDefaultSType() DescriptorUpdateT
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorUpdateTemplateCreateInfo) WithSType(y StructureType) DescriptorUpdateTemplateCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -27224,8 +26679,7 @@ func (x DescriptorUpdateTemplateCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorUpdateTemplateCreateInfo) WithPNext(y unsafe.Pointer) DescriptorUpdateTemplateCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -27238,8 +26692,7 @@ func (x DescriptorUpdateTemplateCreateInfo) Flags() DescriptorUpdateTemplateCrea
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorUpdateTemplateCreateInfo) WithFlags(y DescriptorUpdateTemplateCreateFlags) DescriptorUpdateTemplateCreateInfo {
-	ptr := /* typedef */ (*C.VkDescriptorUpdateTemplateCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkDescriptorUpdateTemplateCreateFlags)(&y))
 	return x
 }
 
@@ -27252,8 +26705,7 @@ func (x DescriptorUpdateTemplateCreateInfo) DescriptorUpdateEntryCount() uint32 
 // WithDescriptorUpdateEntryCount sets the value for the DescriptorUpdateEntryCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorUpdateTemplateCreateInfo) WithDescriptorUpdateEntryCount(y uint32) DescriptorUpdateTemplateCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.descriptorUpdateEntryCount = *ptr
+	x.descriptorUpdateEntryCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -27272,15 +26724,14 @@ func (x DescriptorUpdateTemplateCreateInfo) PDescriptorUpdateEntries() []Descrip
 // The specification defines DescriptorUpdateEntryCount as the length of this field.
 // DescriptorUpdateEntryCount is updated with the length of the new value.
 func (x DescriptorUpdateTemplateCreateInfo) WithPDescriptorUpdateEntries(y []DescriptorUpdateTemplateEntry) DescriptorUpdateTemplateCreateInfo {
-	ptr := func(x *[]DescriptorUpdateTemplateEntry) **C.struct_VkDescriptorUpdateTemplateEntry { /* Slice */
+	x.pDescriptorUpdateEntries = *(func(x *[]DescriptorUpdateTemplateEntry) **C.struct_VkDescriptorUpdateTemplateEntry { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkDescriptorUpdateTemplateEntry)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkDescriptorUpdateTemplateEntry)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pDescriptorUpdateEntries = *ptr
+	}(&y))
 	return x.WithDescriptorUpdateEntryCount(uint32(len(y)))
 }
 
@@ -27293,8 +26744,7 @@ func (x DescriptorUpdateTemplateCreateInfo) TemplateType() DescriptorUpdateTempl
 // WithTemplateType sets the value for the TemplateType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorUpdateTemplateCreateInfo) WithTemplateType(y DescriptorUpdateTemplateType) DescriptorUpdateTemplateCreateInfo {
-	ptr := /* typedef */ (*C.VkDescriptorUpdateTemplateType)(&y)
-	x.templateType = *ptr
+	x.templateType = *( /* typedef */ (*C.VkDescriptorUpdateTemplateType)(&y))
 	return x
 }
 
@@ -27307,8 +26757,7 @@ func (x DescriptorUpdateTemplateCreateInfo) DescriptorSetLayout() DescriptorSetL
 // WithDescriptorSetLayout sets the value for the DescriptorSetLayout on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorUpdateTemplateCreateInfo) WithDescriptorSetLayout(y DescriptorSetLayout) DescriptorUpdateTemplateCreateInfo {
-	ptr := /* handle */ (*C.VkDescriptorSetLayout)(&y)
-	x.descriptorSetLayout = *ptr
+	x.descriptorSetLayout = *( /* handle */ (*C.VkDescriptorSetLayout)(&y))
 	return x
 }
 
@@ -27321,8 +26770,7 @@ func (x DescriptorUpdateTemplateCreateInfo) PipelineBindPoint() PipelineBindPoin
 // WithPipelineBindPoint sets the value for the PipelineBindPoint on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorUpdateTemplateCreateInfo) WithPipelineBindPoint(y PipelineBindPoint) DescriptorUpdateTemplateCreateInfo {
-	ptr := /* typedef */ (*C.VkPipelineBindPoint)(&y)
-	x.pipelineBindPoint = *ptr
+	x.pipelineBindPoint = *( /* typedef */ (*C.VkPipelineBindPoint)(&y))
 	return x
 }
 
@@ -27335,8 +26783,7 @@ func (x DescriptorUpdateTemplateCreateInfo) PipelineLayout() PipelineLayout {
 // WithPipelineLayout sets the value for the PipelineLayout on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorUpdateTemplateCreateInfo) WithPipelineLayout(y PipelineLayout) DescriptorUpdateTemplateCreateInfo {
-	ptr := /* handle */ (*C.VkPipelineLayout)(&y)
-	x.pipelineLayout = *ptr
+	x.pipelineLayout = *( /* handle */ (*C.VkPipelineLayout)(&y))
 	return x
 }
 
@@ -27349,8 +26796,7 @@ func (x DescriptorUpdateTemplateCreateInfo) Set() uint32 {
 // WithSet sets the value for the Set on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorUpdateTemplateCreateInfo) WithSet(y uint32) DescriptorUpdateTemplateCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.set = *ptr
+	x.set = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -27411,8 +26857,7 @@ func (x ExternalBufferProperties) WithDefaultSType() ExternalBufferProperties {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ExternalBufferProperties) WithSType(y StructureType) ExternalBufferProperties {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -27425,8 +26870,7 @@ func (x ExternalBufferProperties) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ExternalBufferProperties) WithPNext(y unsafe.Pointer) ExternalBufferProperties {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -27493,8 +26937,7 @@ func (x PhysicalDeviceMaintenance3Properties) WithDefaultSType() PhysicalDeviceM
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceMaintenance3Properties) WithSType(y StructureType) PhysicalDeviceMaintenance3Properties {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -27507,8 +26950,7 @@ func (x PhysicalDeviceMaintenance3Properties) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceMaintenance3Properties) WithPNext(y unsafe.Pointer) PhysicalDeviceMaintenance3Properties {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -27581,8 +27023,7 @@ func (x DescriptorSetLayoutSupport) WithDefaultSType() DescriptorSetLayoutSuppor
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorSetLayoutSupport) WithSType(y StructureType) DescriptorSetLayoutSupport {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -27595,8 +27036,7 @@ func (x DescriptorSetLayoutSupport) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorSetLayoutSupport) WithPNext(y unsafe.Pointer) DescriptorSetLayoutSupport {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -27663,8 +27103,7 @@ func (x PhysicalDeviceSubgroupProperties) WithDefaultSType() PhysicalDeviceSubgr
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceSubgroupProperties) WithSType(y StructureType) PhysicalDeviceSubgroupProperties {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -27677,8 +27116,7 @@ func (x PhysicalDeviceSubgroupProperties) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceSubgroupProperties) WithPNext(y unsafe.Pointer) PhysicalDeviceSubgroupProperties {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -27830,8 +27268,7 @@ func (x PhysicalDeviceExternalImageFormatInfo) WithDefaultSType() PhysicalDevice
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceExternalImageFormatInfo) WithSType(y StructureType) PhysicalDeviceExternalImageFormatInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -27844,8 +27281,7 @@ func (x PhysicalDeviceExternalImageFormatInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceExternalImageFormatInfo) WithPNext(y unsafe.Pointer) PhysicalDeviceExternalImageFormatInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -27858,8 +27294,7 @@ func (x PhysicalDeviceExternalImageFormatInfo) HandleType() ExternalMemoryHandle
 // WithHandleType sets the value for the HandleType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceExternalImageFormatInfo) WithHandleType(y ExternalMemoryHandleTypeFlagBits) PhysicalDeviceExternalImageFormatInfo {
-	ptr := /* typedef */ (*C.VkExternalMemoryHandleTypeFlagBits)(&y)
-	x.handleType = *ptr
+	x.handleType = *( /* typedef */ (*C.VkExternalMemoryHandleTypeFlagBits)(&y))
 	return x
 }
 
@@ -27920,8 +27355,7 @@ func (x ExternalImageFormatProperties) WithDefaultSType() ExternalImageFormatPro
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ExternalImageFormatProperties) WithSType(y StructureType) ExternalImageFormatProperties {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -27934,8 +27368,7 @@ func (x ExternalImageFormatProperties) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ExternalImageFormatProperties) WithPNext(y unsafe.Pointer) ExternalImageFormatProperties {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -28002,8 +27435,7 @@ func (x PhysicalDeviceExternalBufferInfo) WithDefaultSType() PhysicalDeviceExter
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceExternalBufferInfo) WithSType(y StructureType) PhysicalDeviceExternalBufferInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -28016,8 +27448,7 @@ func (x PhysicalDeviceExternalBufferInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceExternalBufferInfo) WithPNext(y unsafe.Pointer) PhysicalDeviceExternalBufferInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -28030,8 +27461,7 @@ func (x PhysicalDeviceExternalBufferInfo) Flags() BufferCreateFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceExternalBufferInfo) WithFlags(y BufferCreateFlags) PhysicalDeviceExternalBufferInfo {
-	ptr := /* typedef */ (*C.VkBufferCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkBufferCreateFlags)(&y))
 	return x
 }
 
@@ -28044,8 +27474,7 @@ func (x PhysicalDeviceExternalBufferInfo) Usage() BufferUsageFlags {
 // WithUsage sets the value for the Usage on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceExternalBufferInfo) WithUsage(y BufferUsageFlags) PhysicalDeviceExternalBufferInfo {
-	ptr := /* typedef */ (*C.VkBufferUsageFlags)(&y)
-	x.usage = *ptr
+	x.usage = *( /* typedef */ (*C.VkBufferUsageFlags)(&y))
 	return x
 }
 
@@ -28058,8 +27487,7 @@ func (x PhysicalDeviceExternalBufferInfo) HandleType() ExternalMemoryHandleTypeF
 // WithHandleType sets the value for the HandleType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceExternalBufferInfo) WithHandleType(y ExternalMemoryHandleTypeFlagBits) PhysicalDeviceExternalBufferInfo {
-	ptr := /* typedef */ (*C.VkExternalMemoryHandleTypeFlagBits)(&y)
-	x.handleType = *ptr
+	x.handleType = *( /* typedef */ (*C.VkExternalMemoryHandleTypeFlagBits)(&y))
 	return x
 }
 
@@ -28120,8 +27548,7 @@ func (x PhysicalDeviceShaderDrawParametersFeatures) WithDefaultSType() PhysicalD
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceShaderDrawParametersFeatures) WithSType(y StructureType) PhysicalDeviceShaderDrawParametersFeatures {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -28134,8 +27561,7 @@ func (x PhysicalDeviceShaderDrawParametersFeatures) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceShaderDrawParametersFeatures) WithPNext(y unsafe.Pointer) PhysicalDeviceShaderDrawParametersFeatures {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -28148,11 +27574,12 @@ func (x PhysicalDeviceShaderDrawParametersFeatures) ShaderDrawParameters() Bool3
 // WithShaderDrawParameters sets the value for the ShaderDrawParameters on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceShaderDrawParametersFeatures) WithShaderDrawParameters(y Bool32) PhysicalDeviceShaderDrawParametersFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderDrawParameters = *ptr
+	x.shaderDrawParameters = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
+// UpdateDescriptorSetWithTemplate command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkUpdateDescriptorSetWithTemplate.html
 func (x DeviceFacade) UpdateDescriptorSetWithTemplate(descriptorSet DescriptorSet, descriptorUpdateTemplate DescriptorUpdateTemplate, pData unsafe.Pointer) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -28162,6 +27589,8 @@ func (x DeviceFacade) UpdateDescriptorSetWithTemplate(descriptorSet DescriptorSe
 	C.vkUpdateDescriptorSetWithTemplate(addrs, *p0, *p1, *p2, *p3)
 }
 
+// DestroySamplerYcbcrConversion command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroySamplerYcbcrConversion.html
 func (x DeviceFacade) DestroySamplerYcbcrConversion(ycbcrConversion SamplerYcbcrConversion, pAllocator *AllocationCallbacks) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -28173,6 +27602,8 @@ func (x DeviceFacade) DestroySamplerYcbcrConversion(ycbcrConversion SamplerYcbcr
 	C.vkDestroySamplerYcbcrConversion(addrs, *p0, *p1, *p2)
 }
 
+// CreateDescriptorUpdateTemplate command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateDescriptorUpdateTemplate.html
 func (x DeviceFacade) CreateDescriptorUpdateTemplate(pCreateInfo *DescriptorUpdateTemplateCreateInfo, pAllocator *AllocationCallbacks, pDescriptorUpdateTemplate *DescriptorUpdateTemplate) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -28193,6 +27624,8 @@ func (x DeviceFacade) CreateDescriptorUpdateTemplate(pCreateInfo *DescriptorUpda
 	return *retPtr
 }
 
+// GetPhysicalDeviceExternalFenceProperties command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceExternalFenceProperties.html
 func (x PhysicalDeviceFacade) GetPhysicalDeviceExternalFenceProperties(pExternalFenceInfo *PhysicalDeviceExternalFenceInfo, pExternalFenceProperties *ExternalFenceProperties) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -28207,6 +27640,8 @@ func (x PhysicalDeviceFacade) GetPhysicalDeviceExternalFenceProperties(pExternal
 	C.vkGetPhysicalDeviceExternalFenceProperties(addrs, *p0, *p1, *p2)
 }
 
+// CreateSamplerYcbcrConversion command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateSamplerYcbcrConversion.html
 func (x DeviceFacade) CreateSamplerYcbcrConversion(pCreateInfo *SamplerYcbcrConversionCreateInfo, pAllocator *AllocationCallbacks, pYcbcrConversion *SamplerYcbcrConversion) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -28227,6 +27662,8 @@ func (x DeviceFacade) CreateSamplerYcbcrConversion(pCreateInfo *SamplerYcbcrConv
 	return *retPtr
 }
 
+// GetDeviceQueue2 command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetDeviceQueue2.html
 func (x DeviceFacade) GetDeviceQueue2(pQueueInfo *DeviceQueueInfo2, pQueue *Queue) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -28238,6 +27675,8 @@ func (x DeviceFacade) GetDeviceQueue2(pQueueInfo *DeviceQueueInfo2, pQueue *Queu
 	C.vkGetDeviceQueue2(addrs, *p0, *p1, *p2)
 }
 
+// TrimCommandPool command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkTrimCommandPool.html
 func (x DeviceFacade) TrimCommandPool(commandPool CommandPool, flags CommandPoolTrimFlags) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -28246,6 +27685,8 @@ func (x DeviceFacade) TrimCommandPool(commandPool CommandPool, flags CommandPool
 	C.vkTrimCommandPool(addrs, *p0, *p1, *p2)
 }
 
+// GetPhysicalDeviceSparseImageFormatProperties2 command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceSparseImageFormatProperties2.html
 func (x PhysicalDeviceFacade) GetPhysicalDeviceSparseImageFormatProperties2(pFormatInfo *PhysicalDeviceSparseImageFormatInfo2, pPropertyCount *uint32, pProperties []SparseImageFormatProperties2) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -28265,6 +27706,8 @@ func (x PhysicalDeviceFacade) GetPhysicalDeviceSparseImageFormatProperties2(pFor
 	C.vkGetPhysicalDeviceSparseImageFormatProperties2(addrs, *p0, *p1, *p2, *p3)
 }
 
+// GetPhysicalDeviceMemoryProperties2 command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceMemoryProperties2.html
 func (x PhysicalDeviceFacade) GetPhysicalDeviceMemoryProperties2(pMemoryProperties *PhysicalDeviceMemoryProperties2) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -28275,6 +27718,8 @@ func (x PhysicalDeviceFacade) GetPhysicalDeviceMemoryProperties2(pMemoryProperti
 	C.vkGetPhysicalDeviceMemoryProperties2(addrs, *p0, *p1)
 }
 
+// GetPhysicalDeviceQueueFamilyProperties2 command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceQueueFamilyProperties2.html
 func (x PhysicalDeviceFacade) GetPhysicalDeviceQueueFamilyProperties2(pQueueFamilyPropertyCount *uint32, pQueueFamilyProperties []QueueFamilyProperties2) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -28290,6 +27735,8 @@ func (x PhysicalDeviceFacade) GetPhysicalDeviceQueueFamilyProperties2(pQueueFami
 	C.vkGetPhysicalDeviceQueueFamilyProperties2(addrs, *p0, *p1, *p2)
 }
 
+// GetPhysicalDeviceImageFormatProperties2 command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceImageFormatProperties2.html
 func (x PhysicalDeviceFacade) GetPhysicalDeviceImageFormatProperties2(pImageFormatInfo *PhysicalDeviceImageFormatInfo2, pImageFormatProperties *ImageFormatProperties2) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -28306,6 +27753,8 @@ func (x PhysicalDeviceFacade) GetPhysicalDeviceImageFormatProperties2(pImageForm
 	return *retPtr
 }
 
+// GetPhysicalDeviceFormatProperties2 command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceFormatProperties2.html
 func (x PhysicalDeviceFacade) GetPhysicalDeviceFormatProperties2(format Format, pFormatProperties *FormatProperties2) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -28317,6 +27766,8 @@ func (x PhysicalDeviceFacade) GetPhysicalDeviceFormatProperties2(format Format, 
 	C.vkGetPhysicalDeviceFormatProperties2(addrs, *p0, *p1, *p2)
 }
 
+// GetPhysicalDeviceProperties2 command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceProperties2.html
 func (x PhysicalDeviceFacade) GetPhysicalDeviceProperties2(pProperties *PhysicalDeviceProperties2) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -28327,6 +27778,8 @@ func (x PhysicalDeviceFacade) GetPhysicalDeviceProperties2(pProperties *Physical
 	C.vkGetPhysicalDeviceProperties2(addrs, *p0, *p1)
 }
 
+// GetPhysicalDeviceFeatures2 command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceFeatures2.html
 func (x PhysicalDeviceFacade) GetPhysicalDeviceFeatures2(pFeatures *PhysicalDeviceFeatures2) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -28337,6 +27790,8 @@ func (x PhysicalDeviceFacade) GetPhysicalDeviceFeatures2(pFeatures *PhysicalDevi
 	C.vkGetPhysicalDeviceFeatures2(addrs, *p0, *p1)
 }
 
+// GetImageSparseMemoryRequirements2 command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetImageSparseMemoryRequirements2.html
 func (x DeviceFacade) GetImageSparseMemoryRequirements2(pInfo *ImageSparseMemoryRequirementsInfo2, pSparseMemoryRequirementCount *uint32, pSparseMemoryRequirements []SparseImageMemoryRequirements2) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -28356,6 +27811,8 @@ func (x DeviceFacade) GetImageSparseMemoryRequirements2(pInfo *ImageSparseMemory
 	C.vkGetImageSparseMemoryRequirements2(addrs, *p0, *p1, *p2, *p3)
 }
 
+// GetBufferMemoryRequirements2 command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetBufferMemoryRequirements2.html
 func (x DeviceFacade) GetBufferMemoryRequirements2(pInfo *BufferMemoryRequirementsInfo2, pMemoryRequirements *MemoryRequirements2) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -28370,6 +27827,8 @@ func (x DeviceFacade) GetBufferMemoryRequirements2(pInfo *BufferMemoryRequiremen
 	C.vkGetBufferMemoryRequirements2(addrs, *p0, *p1, *p2)
 }
 
+// GetPhysicalDeviceExternalSemaphoreProperties command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceExternalSemaphoreProperties.html
 func (x PhysicalDeviceFacade) GetPhysicalDeviceExternalSemaphoreProperties(pExternalSemaphoreInfo *PhysicalDeviceExternalSemaphoreInfo, pExternalSemaphoreProperties *ExternalSemaphoreProperties) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -28384,6 +27843,8 @@ func (x PhysicalDeviceFacade) GetPhysicalDeviceExternalSemaphoreProperties(pExte
 	C.vkGetPhysicalDeviceExternalSemaphoreProperties(addrs, *p0, *p1, *p2)
 }
 
+// GetImageMemoryRequirements2 command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetImageMemoryRequirements2.html
 func (x DeviceFacade) GetImageMemoryRequirements2(pInfo *ImageMemoryRequirementsInfo2, pMemoryRequirements *MemoryRequirements2) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -28398,6 +27859,8 @@ func (x DeviceFacade) GetImageMemoryRequirements2(pInfo *ImageMemoryRequirements
 	C.vkGetImageMemoryRequirements2(addrs, *p0, *p1, *p2)
 }
 
+// DestroyDescriptorUpdateTemplate command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyDescriptorUpdateTemplate.html
 func (x DeviceFacade) DestroyDescriptorUpdateTemplate(descriptorUpdateTemplate DescriptorUpdateTemplate, pAllocator *AllocationCallbacks) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -28409,6 +27872,8 @@ func (x DeviceFacade) DestroyDescriptorUpdateTemplate(descriptorUpdateTemplate D
 	C.vkDestroyDescriptorUpdateTemplate(addrs, *p0, *p1, *p2)
 }
 
+// EnumeratePhysicalDeviceGroups command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEnumeratePhysicalDeviceGroups.html
 func (x InstanceFacade) EnumeratePhysicalDeviceGroups(pPhysicalDeviceGroupCount *uint32, pPhysicalDeviceGroupProperties []PhysicalDeviceGroupProperties) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkInstance)(&x.H)
@@ -28426,6 +27891,8 @@ func (x InstanceFacade) EnumeratePhysicalDeviceGroups(pPhysicalDeviceGroupCount 
 	return *retPtr
 }
 
+// CmdDispatchBase command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdDispatchBase.html
 func (x CommandBufferFacade) CmdDispatchBase(baseGroupX uint32, baseGroupY uint32, baseGroupZ uint32, groupCountX uint32, groupCountY uint32, groupCountZ uint32) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -28438,6 +27905,8 @@ func (x CommandBufferFacade) CmdDispatchBase(baseGroupX uint32, baseGroupY uint3
 	C.vkCmdDispatchBase(addrs, *p0, *p1, *p2, *p3, *p4, *p5, *p6)
 }
 
+// CmdSetDeviceMask command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdSetDeviceMask.html
 func (x CommandBufferFacade) CmdSetDeviceMask(deviceMask uint32) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -28445,6 +27914,8 @@ func (x CommandBufferFacade) CmdSetDeviceMask(deviceMask uint32) {
 	C.vkCmdSetDeviceMask(addrs, *p0, *p1)
 }
 
+// GetDeviceGroupPeerMemoryFeatures command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetDeviceGroupPeerMemoryFeatures.html
 func (x DeviceFacade) GetDeviceGroupPeerMemoryFeatures(heapIndex uint32, localDeviceIndex uint32, remoteDeviceIndex uint32, pPeerMemoryFeatures *PeerMemoryFeatureFlags) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -28458,6 +27929,8 @@ func (x DeviceFacade) GetDeviceGroupPeerMemoryFeatures(heapIndex uint32, localDe
 	C.vkGetDeviceGroupPeerMemoryFeatures(addrs, *p0, *p1, *p2, *p3, *p4)
 }
 
+// GetDescriptorSetLayoutSupport command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetDescriptorSetLayoutSupport.html
 func (x DeviceFacade) GetDescriptorSetLayoutSupport(pCreateInfo *DescriptorSetLayoutCreateInfo, pSupport *DescriptorSetLayoutSupport) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -28472,6 +27945,8 @@ func (x DeviceFacade) GetDescriptorSetLayoutSupport(pCreateInfo *DescriptorSetLa
 	C.vkGetDescriptorSetLayoutSupport(addrs, *p0, *p1, *p2)
 }
 
+// BindImageMemory2 command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkBindImageMemory2.html
 func (x DeviceFacade) BindImageMemory2(bindInfoCount uint32, pBindInfos []BindImageMemoryInfo) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -28489,6 +27964,8 @@ func (x DeviceFacade) BindImageMemory2(bindInfoCount uint32, pBindInfos []BindIm
 	return *retPtr
 }
 
+// BindBufferMemory2 command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkBindBufferMemory2.html
 func (x DeviceFacade) BindBufferMemory2(bindInfoCount uint32, pBindInfos []BindBufferMemoryInfo) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -28506,6 +27983,8 @@ func (x DeviceFacade) BindBufferMemory2(bindInfoCount uint32, pBindInfos []BindB
 	return *retPtr
 }
 
+// EnumerateInstanceVersion command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEnumerateInstanceVersion.html
 func EnumerateInstanceVersion(pApiVersion *uint32) Result {
 	addrs := &C.vksProcAddresses
 	p0 := func(x **uint32) **C.uint { /* Pointer */ g2c := (*C.uint)(*x); return &g2c }(&pApiVersion)
@@ -28514,6 +27993,8 @@ func EnumerateInstanceVersion(pApiVersion *uint32) Result {
 	return *retPtr
 }
 
+// GetPhysicalDeviceExternalBufferProperties command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceExternalBufferProperties.html
 func (x PhysicalDeviceFacade) GetPhysicalDeviceExternalBufferProperties(pExternalBufferInfo *PhysicalDeviceExternalBufferInfo, pExternalBufferProperties *ExternalBufferProperties) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -28528,7 +28009,7 @@ func (x PhysicalDeviceFacade) GetPhysicalDeviceExternalBufferProperties(pExterna
 	C.vkGetPhysicalDeviceExternalBufferProperties(addrs, *p0, *p1, *p2)
 }
 
-// DriverId is an Enum from the Vulkan API.
+// DriverId enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDriverId.html
 type DriverId uint32
 
@@ -28587,7 +28068,7 @@ func (x DriverId) String() string {
 	return fmt.Sprintf("DriverId=%d", x)
 }
 
-// SamplerReductionMode is an Enum from the Vulkan API.
+// SamplerReductionMode enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSamplerReductionMode.html
 type SamplerReductionMode uint32
 
@@ -28612,7 +28093,7 @@ func (x SamplerReductionMode) String() string {
 	return fmt.Sprintf("SamplerReductionMode=%d", x)
 }
 
-// SemaphoreWaitFlagBits is an Enum from the Vulkan API.
+// SemaphoreWaitFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSemaphoreWaitFlagBits.html
 type SemaphoreWaitFlagBits uint32
 
@@ -28633,7 +28114,7 @@ func (x SemaphoreWaitFlagBits) String() string {
 	return fmt.Sprintf("SemaphoreWaitFlagBits=%d", x)
 }
 
-// DescriptorBindingFlagBits is an Enum from the Vulkan API.
+// DescriptorBindingFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDescriptorBindingFlagBits.html
 type DescriptorBindingFlagBits uint32
 
@@ -28660,7 +28141,7 @@ func (x DescriptorBindingFlagBits) String() string {
 	return fmt.Sprintf("DescriptorBindingFlagBits=%d", x)
 }
 
-// ResolveModeFlagBits is an Enum from the Vulkan API.
+// ResolveModeFlagBits enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkResolveModeFlagBits.html
 type ResolveModeFlagBits uint32
 
@@ -28689,7 +28170,7 @@ func (x ResolveModeFlagBits) String() string {
 	return fmt.Sprintf("ResolveModeFlagBits=%d", x)
 }
 
-// ShaderFloatControlsIndependence is an Enum from the Vulkan API.
+// ShaderFloatControlsIndependence enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkShaderFloatControlsIndependence.html
 type ShaderFloatControlsIndependence uint32
 
@@ -28714,7 +28195,7 @@ func (x ShaderFloatControlsIndependence) String() string {
 	return fmt.Sprintf("ShaderFloatControlsIndependence=%d", x)
 }
 
-// SemaphoreType is an Enum from the Vulkan API.
+// SemaphoreType enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSemaphoreType.html
 type SemaphoreType uint32
 
@@ -28806,8 +28287,7 @@ func (x SubpassEndInfo) WithDefaultSType() SubpassEndInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassEndInfo) WithSType(y StructureType) SubpassEndInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -28820,8 +28300,7 @@ func (x SubpassEndInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassEndInfo) WithPNext(y unsafe.Pointer) SubpassEndInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -28882,8 +28361,7 @@ func (x RenderPassCreateInfo2) WithDefaultSType() RenderPassCreateInfo2 {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x RenderPassCreateInfo2) WithSType(y StructureType) RenderPassCreateInfo2 {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -28896,8 +28374,7 @@ func (x RenderPassCreateInfo2) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x RenderPassCreateInfo2) WithPNext(y unsafe.Pointer) RenderPassCreateInfo2 {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -28910,8 +28387,7 @@ func (x RenderPassCreateInfo2) Flags() RenderPassCreateFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x RenderPassCreateInfo2) WithFlags(y RenderPassCreateFlags) RenderPassCreateInfo2 {
-	ptr := /* typedef */ (*C.VkRenderPassCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkRenderPassCreateFlags)(&y))
 	return x
 }
 
@@ -28924,8 +28400,7 @@ func (x RenderPassCreateInfo2) AttachmentCount() uint32 {
 // WithAttachmentCount sets the value for the AttachmentCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x RenderPassCreateInfo2) WithAttachmentCount(y uint32) RenderPassCreateInfo2 {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.attachmentCount = *ptr
+	x.attachmentCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -28944,15 +28419,14 @@ func (x RenderPassCreateInfo2) PAttachments() []AttachmentDescription2 {
 // The specification defines AttachmentCount as the length of this field.
 // AttachmentCount is updated with the length of the new value.
 func (x RenderPassCreateInfo2) WithPAttachments(y []AttachmentDescription2) RenderPassCreateInfo2 {
-	ptr := func(x *[]AttachmentDescription2) **C.struct_VkAttachmentDescription2 { /* Slice */
+	x.pAttachments = *(func(x *[]AttachmentDescription2) **C.struct_VkAttachmentDescription2 { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkAttachmentDescription2)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkAttachmentDescription2)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pAttachments = *ptr
+	}(&y))
 	return x.WithAttachmentCount(uint32(len(y)))
 }
 
@@ -28965,8 +28439,7 @@ func (x RenderPassCreateInfo2) SubpassCount() uint32 {
 // WithSubpassCount sets the value for the SubpassCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x RenderPassCreateInfo2) WithSubpassCount(y uint32) RenderPassCreateInfo2 {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.subpassCount = *ptr
+	x.subpassCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -28985,15 +28458,14 @@ func (x RenderPassCreateInfo2) PSubpasses() []SubpassDescription2 {
 // The specification defines SubpassCount as the length of this field.
 // SubpassCount is updated with the length of the new value.
 func (x RenderPassCreateInfo2) WithPSubpasses(y []SubpassDescription2) RenderPassCreateInfo2 {
-	ptr := func(x *[]SubpassDescription2) **C.struct_VkSubpassDescription2 { /* Slice */
+	x.pSubpasses = *(func(x *[]SubpassDescription2) **C.struct_VkSubpassDescription2 { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkSubpassDescription2)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkSubpassDescription2)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pSubpasses = *ptr
+	}(&y))
 	return x.WithSubpassCount(uint32(len(y)))
 }
 
@@ -29006,8 +28478,7 @@ func (x RenderPassCreateInfo2) DependencyCount() uint32 {
 // WithDependencyCount sets the value for the DependencyCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x RenderPassCreateInfo2) WithDependencyCount(y uint32) RenderPassCreateInfo2 {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.dependencyCount = *ptr
+	x.dependencyCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -29026,15 +28497,14 @@ func (x RenderPassCreateInfo2) PDependencies() []SubpassDependency2 {
 // The specification defines DependencyCount as the length of this field.
 // DependencyCount is updated with the length of the new value.
 func (x RenderPassCreateInfo2) WithPDependencies(y []SubpassDependency2) RenderPassCreateInfo2 {
-	ptr := func(x *[]SubpassDependency2) **C.struct_VkSubpassDependency2 { /* Slice */
+	x.pDependencies = *(func(x *[]SubpassDependency2) **C.struct_VkSubpassDependency2 { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkSubpassDependency2)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkSubpassDependency2)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pDependencies = *ptr
+	}(&y))
 	return x.WithDependencyCount(uint32(len(y)))
 }
 
@@ -29047,8 +28517,7 @@ func (x RenderPassCreateInfo2) CorrelatedViewMaskCount() uint32 {
 // WithCorrelatedViewMaskCount sets the value for the CorrelatedViewMaskCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x RenderPassCreateInfo2) WithCorrelatedViewMaskCount(y uint32) RenderPassCreateInfo2 {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.correlatedViewMaskCount = *ptr
+	x.correlatedViewMaskCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -29067,15 +28536,14 @@ func (x RenderPassCreateInfo2) PCorrelatedViewMasks() []uint32 {
 // The specification defines CorrelatedViewMaskCount as the length of this field.
 // CorrelatedViewMaskCount is updated with the length of the new value.
 func (x RenderPassCreateInfo2) WithPCorrelatedViewMasks(y []uint32) RenderPassCreateInfo2 {
-	ptr := func(x *[]uint32) **C.uint { /* Slice */
+	x.pCorrelatedViewMasks = *(func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.uint)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pCorrelatedViewMasks = *ptr
+	}(&y))
 	return x.WithCorrelatedViewMaskCount(uint32(len(y)))
 }
 
@@ -29136,8 +28604,7 @@ func (x AttachmentDescription2) WithDefaultSType() AttachmentDescription2 {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentDescription2) WithSType(y StructureType) AttachmentDescription2 {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -29150,8 +28617,7 @@ func (x AttachmentDescription2) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentDescription2) WithPNext(y unsafe.Pointer) AttachmentDescription2 {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -29164,8 +28630,7 @@ func (x AttachmentDescription2) Flags() AttachmentDescriptionFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentDescription2) WithFlags(y AttachmentDescriptionFlags) AttachmentDescription2 {
-	ptr := /* typedef */ (*C.VkAttachmentDescriptionFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkAttachmentDescriptionFlags)(&y))
 	return x
 }
 
@@ -29178,8 +28643,7 @@ func (x AttachmentDescription2) Format() Format {
 // WithFormat sets the value for the Format on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentDescription2) WithFormat(y Format) AttachmentDescription2 {
-	ptr := /* typedef */ (*C.VkFormat)(&y)
-	x.format = *ptr
+	x.format = *( /* typedef */ (*C.VkFormat)(&y))
 	return x
 }
 
@@ -29192,8 +28656,7 @@ func (x AttachmentDescription2) Samples() SampleCountFlagBits {
 // WithSamples sets the value for the Samples on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentDescription2) WithSamples(y SampleCountFlagBits) AttachmentDescription2 {
-	ptr := /* typedef */ (*C.VkSampleCountFlagBits)(&y)
-	x.samples = *ptr
+	x.samples = *( /* typedef */ (*C.VkSampleCountFlagBits)(&y))
 	return x
 }
 
@@ -29206,8 +28669,7 @@ func (x AttachmentDescription2) LoadOp() AttachmentLoadOp {
 // WithLoadOp sets the value for the LoadOp on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentDescription2) WithLoadOp(y AttachmentLoadOp) AttachmentDescription2 {
-	ptr := /* typedef */ (*C.VkAttachmentLoadOp)(&y)
-	x.loadOp = *ptr
+	x.loadOp = *( /* typedef */ (*C.VkAttachmentLoadOp)(&y))
 	return x
 }
 
@@ -29220,8 +28682,7 @@ func (x AttachmentDescription2) StoreOp() AttachmentStoreOp {
 // WithStoreOp sets the value for the StoreOp on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentDescription2) WithStoreOp(y AttachmentStoreOp) AttachmentDescription2 {
-	ptr := /* typedef */ (*C.VkAttachmentStoreOp)(&y)
-	x.storeOp = *ptr
+	x.storeOp = *( /* typedef */ (*C.VkAttachmentStoreOp)(&y))
 	return x
 }
 
@@ -29234,8 +28695,7 @@ func (x AttachmentDescription2) StencilLoadOp() AttachmentLoadOp {
 // WithStencilLoadOp sets the value for the StencilLoadOp on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentDescription2) WithStencilLoadOp(y AttachmentLoadOp) AttachmentDescription2 {
-	ptr := /* typedef */ (*C.VkAttachmentLoadOp)(&y)
-	x.stencilLoadOp = *ptr
+	x.stencilLoadOp = *( /* typedef */ (*C.VkAttachmentLoadOp)(&y))
 	return x
 }
 
@@ -29248,8 +28708,7 @@ func (x AttachmentDescription2) StencilStoreOp() AttachmentStoreOp {
 // WithStencilStoreOp sets the value for the StencilStoreOp on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentDescription2) WithStencilStoreOp(y AttachmentStoreOp) AttachmentDescription2 {
-	ptr := /* typedef */ (*C.VkAttachmentStoreOp)(&y)
-	x.stencilStoreOp = *ptr
+	x.stencilStoreOp = *( /* typedef */ (*C.VkAttachmentStoreOp)(&y))
 	return x
 }
 
@@ -29262,8 +28721,7 @@ func (x AttachmentDescription2) InitialLayout() ImageLayout {
 // WithInitialLayout sets the value for the InitialLayout on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentDescription2) WithInitialLayout(y ImageLayout) AttachmentDescription2 {
-	ptr := /* typedef */ (*C.VkImageLayout)(&y)
-	x.initialLayout = *ptr
+	x.initialLayout = *( /* typedef */ (*C.VkImageLayout)(&y))
 	return x
 }
 
@@ -29276,8 +28734,7 @@ func (x AttachmentDescription2) FinalLayout() ImageLayout {
 // WithFinalLayout sets the value for the FinalLayout on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentDescription2) WithFinalLayout(y ImageLayout) AttachmentDescription2 {
-	ptr := /* typedef */ (*C.VkImageLayout)(&y)
-	x.finalLayout = *ptr
+	x.finalLayout = *( /* typedef */ (*C.VkImageLayout)(&y))
 	return x
 }
 
@@ -29338,8 +28795,7 @@ func (x AttachmentReference2) WithDefaultSType() AttachmentReference2 {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentReference2) WithSType(y StructureType) AttachmentReference2 {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -29352,8 +28808,7 @@ func (x AttachmentReference2) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentReference2) WithPNext(y unsafe.Pointer) AttachmentReference2 {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -29366,8 +28821,7 @@ func (x AttachmentReference2) Attachment() uint32 {
 // WithAttachment sets the value for the Attachment on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentReference2) WithAttachment(y uint32) AttachmentReference2 {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.attachment = *ptr
+	x.attachment = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -29380,8 +28834,7 @@ func (x AttachmentReference2) Layout() ImageLayout {
 // WithLayout sets the value for the Layout on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentReference2) WithLayout(y ImageLayout) AttachmentReference2 {
-	ptr := /* typedef */ (*C.VkImageLayout)(&y)
-	x.layout = *ptr
+	x.layout = *( /* typedef */ (*C.VkImageLayout)(&y))
 	return x
 }
 
@@ -29394,8 +28847,7 @@ func (x AttachmentReference2) AspectMask() ImageAspectFlags {
 // WithAspectMask sets the value for the AspectMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentReference2) WithAspectMask(y ImageAspectFlags) AttachmentReference2 {
-	ptr := /* typedef */ (*C.VkImageAspectFlags)(&y)
-	x.aspectMask = *ptr
+	x.aspectMask = *( /* typedef */ (*C.VkImageAspectFlags)(&y))
 	return x
 }
 
@@ -29456,8 +28908,7 @@ func (x SubpassDescription2) WithDefaultSType() SubpassDescription2 {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDescription2) WithSType(y StructureType) SubpassDescription2 {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -29470,8 +28921,7 @@ func (x SubpassDescription2) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDescription2) WithPNext(y unsafe.Pointer) SubpassDescription2 {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -29484,8 +28934,7 @@ func (x SubpassDescription2) Flags() SubpassDescriptionFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDescription2) WithFlags(y SubpassDescriptionFlags) SubpassDescription2 {
-	ptr := /* typedef */ (*C.VkSubpassDescriptionFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkSubpassDescriptionFlags)(&y))
 	return x
 }
 
@@ -29498,8 +28947,7 @@ func (x SubpassDescription2) PipelineBindPoint() PipelineBindPoint {
 // WithPipelineBindPoint sets the value for the PipelineBindPoint on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDescription2) WithPipelineBindPoint(y PipelineBindPoint) SubpassDescription2 {
-	ptr := /* typedef */ (*C.VkPipelineBindPoint)(&y)
-	x.pipelineBindPoint = *ptr
+	x.pipelineBindPoint = *( /* typedef */ (*C.VkPipelineBindPoint)(&y))
 	return x
 }
 
@@ -29512,8 +28960,7 @@ func (x SubpassDescription2) ViewMask() uint32 {
 // WithViewMask sets the value for the ViewMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDescription2) WithViewMask(y uint32) SubpassDescription2 {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.viewMask = *ptr
+	x.viewMask = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -29526,8 +28973,7 @@ func (x SubpassDescription2) InputAttachmentCount() uint32 {
 // WithInputAttachmentCount sets the value for the InputAttachmentCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDescription2) WithInputAttachmentCount(y uint32) SubpassDescription2 {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.inputAttachmentCount = *ptr
+	x.inputAttachmentCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -29546,15 +28992,14 @@ func (x SubpassDescription2) PInputAttachments() []AttachmentReference2 {
 // The specification defines InputAttachmentCount as the length of this field.
 // InputAttachmentCount is updated with the length of the new value.
 func (x SubpassDescription2) WithPInputAttachments(y []AttachmentReference2) SubpassDescription2 {
-	ptr := func(x *[]AttachmentReference2) **C.struct_VkAttachmentReference2 { /* Slice */
+	x.pInputAttachments = *(func(x *[]AttachmentReference2) **C.struct_VkAttachmentReference2 { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkAttachmentReference2)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkAttachmentReference2)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pInputAttachments = *ptr
+	}(&y))
 	return x.WithInputAttachmentCount(uint32(len(y)))
 }
 
@@ -29567,8 +29012,7 @@ func (x SubpassDescription2) ColorAttachmentCount() uint32 {
 // WithColorAttachmentCount sets the value for the ColorAttachmentCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDescription2) WithColorAttachmentCount(y uint32) SubpassDescription2 {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.colorAttachmentCount = *ptr
+	x.colorAttachmentCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -29587,15 +29031,14 @@ func (x SubpassDescription2) PColorAttachments() []AttachmentReference2 {
 // The specification defines ColorAttachmentCount as the length of this field.
 // ColorAttachmentCount is updated with the length of the new value.
 func (x SubpassDescription2) WithPColorAttachments(y []AttachmentReference2) SubpassDescription2 {
-	ptr := func(x *[]AttachmentReference2) **C.struct_VkAttachmentReference2 { /* Slice */
+	x.pColorAttachments = *(func(x *[]AttachmentReference2) **C.struct_VkAttachmentReference2 { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkAttachmentReference2)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkAttachmentReference2)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pColorAttachments = *ptr
+	}(&y))
 	return x.WithColorAttachmentCount(uint32(len(y)))
 }
 
@@ -29614,15 +29057,14 @@ func (x SubpassDescription2) PResolveAttachments() []AttachmentReference2 {
 // The specification defines ColorAttachmentCount as the length of this field.
 // ColorAttachmentCount is updated with the length of the new value.
 func (x SubpassDescription2) WithPResolveAttachments(y []AttachmentReference2) SubpassDescription2 {
-	ptr := func(x *[]AttachmentReference2) **C.struct_VkAttachmentReference2 { /* Slice */
+	x.pResolveAttachments = *(func(x *[]AttachmentReference2) **C.struct_VkAttachmentReference2 { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkAttachmentReference2)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkAttachmentReference2)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pResolveAttachments = *ptr
+	}(&y))
 	return x.WithColorAttachmentCount(uint32(len(y)))
 }
 
@@ -29638,11 +29080,10 @@ func (x SubpassDescription2) PDepthStencilAttachment() *AttachmentReference2 {
 // WithPDepthStencilAttachment sets the value for the PDepthStencilAttachment on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDescription2) WithPDepthStencilAttachment(y *AttachmentReference2) SubpassDescription2 {
-	ptr := func(x **AttachmentReference2) **C.struct_VkAttachmentReference2 { /* Pointer */
+	x.pDepthStencilAttachment = *(func(x **AttachmentReference2) **C.struct_VkAttachmentReference2 { /* Pointer */
 		g2c := (*C.struct_VkAttachmentReference2)(*x)
 		return &g2c
-	}(&y)
-	x.pDepthStencilAttachment = *ptr
+	}(&y))
 	return x
 }
 
@@ -29655,8 +29096,7 @@ func (x SubpassDescription2) PreserveAttachmentCount() uint32 {
 // WithPreserveAttachmentCount sets the value for the PreserveAttachmentCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDescription2) WithPreserveAttachmentCount(y uint32) SubpassDescription2 {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.preserveAttachmentCount = *ptr
+	x.preserveAttachmentCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -29675,15 +29115,14 @@ func (x SubpassDescription2) PPreserveAttachments() []uint32 {
 // The specification defines PreserveAttachmentCount as the length of this field.
 // PreserveAttachmentCount is updated with the length of the new value.
 func (x SubpassDescription2) WithPPreserveAttachments(y []uint32) SubpassDescription2 {
-	ptr := func(x *[]uint32) **C.uint { /* Slice */
+	x.pPreserveAttachments = *(func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.uint)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pPreserveAttachments = *ptr
+	}(&y))
 	return x.WithPreserveAttachmentCount(uint32(len(y)))
 }
 
@@ -29744,8 +29183,7 @@ func (x SubpassDependency2) WithDefaultSType() SubpassDependency2 {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDependency2) WithSType(y StructureType) SubpassDependency2 {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -29758,8 +29196,7 @@ func (x SubpassDependency2) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDependency2) WithPNext(y unsafe.Pointer) SubpassDependency2 {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -29772,8 +29209,7 @@ func (x SubpassDependency2) SrcSubpass() uint32 {
 // WithSrcSubpass sets the value for the SrcSubpass on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDependency2) WithSrcSubpass(y uint32) SubpassDependency2 {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.srcSubpass = *ptr
+	x.srcSubpass = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -29786,8 +29222,7 @@ func (x SubpassDependency2) DstSubpass() uint32 {
 // WithDstSubpass sets the value for the DstSubpass on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDependency2) WithDstSubpass(y uint32) SubpassDependency2 {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.dstSubpass = *ptr
+	x.dstSubpass = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -29800,8 +29235,7 @@ func (x SubpassDependency2) SrcStageMask() PipelineStageFlags {
 // WithSrcStageMask sets the value for the SrcStageMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDependency2) WithSrcStageMask(y PipelineStageFlags) SubpassDependency2 {
-	ptr := /* typedef */ (*C.VkPipelineStageFlags)(&y)
-	x.srcStageMask = *ptr
+	x.srcStageMask = *( /* typedef */ (*C.VkPipelineStageFlags)(&y))
 	return x
 }
 
@@ -29814,8 +29248,7 @@ func (x SubpassDependency2) DstStageMask() PipelineStageFlags {
 // WithDstStageMask sets the value for the DstStageMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDependency2) WithDstStageMask(y PipelineStageFlags) SubpassDependency2 {
-	ptr := /* typedef */ (*C.VkPipelineStageFlags)(&y)
-	x.dstStageMask = *ptr
+	x.dstStageMask = *( /* typedef */ (*C.VkPipelineStageFlags)(&y))
 	return x
 }
 
@@ -29828,8 +29261,7 @@ func (x SubpassDependency2) SrcAccessMask() AccessFlags {
 // WithSrcAccessMask sets the value for the SrcAccessMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDependency2) WithSrcAccessMask(y AccessFlags) SubpassDependency2 {
-	ptr := /* typedef */ (*C.VkAccessFlags)(&y)
-	x.srcAccessMask = *ptr
+	x.srcAccessMask = *( /* typedef */ (*C.VkAccessFlags)(&y))
 	return x
 }
 
@@ -29842,8 +29274,7 @@ func (x SubpassDependency2) DstAccessMask() AccessFlags {
 // WithDstAccessMask sets the value for the DstAccessMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDependency2) WithDstAccessMask(y AccessFlags) SubpassDependency2 {
-	ptr := /* typedef */ (*C.VkAccessFlags)(&y)
-	x.dstAccessMask = *ptr
+	x.dstAccessMask = *( /* typedef */ (*C.VkAccessFlags)(&y))
 	return x
 }
 
@@ -29856,8 +29287,7 @@ func (x SubpassDependency2) DependencyFlags() DependencyFlags {
 // WithDependencyFlags sets the value for the DependencyFlags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDependency2) WithDependencyFlags(y DependencyFlags) SubpassDependency2 {
-	ptr := /* typedef */ (*C.VkDependencyFlags)(&y)
-	x.dependencyFlags = *ptr
+	x.dependencyFlags = *( /* typedef */ (*C.VkDependencyFlags)(&y))
 	return x
 }
 
@@ -29870,8 +29300,7 @@ func (x SubpassDependency2) ViewOffset() int32 {
 // WithViewOffset sets the value for the ViewOffset on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDependency2) WithViewOffset(y int32) SubpassDependency2 {
-	ptr := func(x *int32) *C.int { /* Scalar */ g2c := C.int(*x); return &g2c }(&y)
-	x.viewOffset = *ptr
+	x.viewOffset = *(func(x *int32) *C.int { /* Scalar */ g2c := C.int(*x); return &g2c }(&y))
 	return x
 }
 
@@ -29932,8 +29361,7 @@ func (x SubpassBeginInfo) WithDefaultSType() SubpassBeginInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassBeginInfo) WithSType(y StructureType) SubpassBeginInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -29946,8 +29374,7 @@ func (x SubpassBeginInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassBeginInfo) WithPNext(y unsafe.Pointer) SubpassBeginInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -29960,8 +29387,7 @@ func (x SubpassBeginInfo) Contents() SubpassContents {
 // WithContents sets the value for the Contents on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassBeginInfo) WithContents(y SubpassContents) SubpassBeginInfo {
-	ptr := /* typedef */ (*C.VkSubpassContents)(&y)
-	x.contents = *ptr
+	x.contents = *( /* typedef */ (*C.VkSubpassContents)(&y))
 	return x
 }
 
@@ -30022,8 +29448,7 @@ func (x SemaphoreWaitInfo) WithDefaultSType() SemaphoreWaitInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SemaphoreWaitInfo) WithSType(y StructureType) SemaphoreWaitInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -30036,8 +29461,7 @@ func (x SemaphoreWaitInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SemaphoreWaitInfo) WithPNext(y unsafe.Pointer) SemaphoreWaitInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -30050,8 +29474,7 @@ func (x SemaphoreWaitInfo) Flags() SemaphoreWaitFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SemaphoreWaitInfo) WithFlags(y SemaphoreWaitFlags) SemaphoreWaitInfo {
-	ptr := /* typedef */ (*C.VkSemaphoreWaitFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkSemaphoreWaitFlags)(&y))
 	return x
 }
 
@@ -30064,8 +29487,7 @@ func (x SemaphoreWaitInfo) SemaphoreCount() uint32 {
 // WithSemaphoreCount sets the value for the SemaphoreCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SemaphoreWaitInfo) WithSemaphoreCount(y uint32) SemaphoreWaitInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.semaphoreCount = *ptr
+	x.semaphoreCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -30084,15 +29506,14 @@ func (x SemaphoreWaitInfo) PSemaphores() []Semaphore {
 // The specification defines SemaphoreCount as the length of this field.
 // SemaphoreCount is updated with the length of the new value.
 func (x SemaphoreWaitInfo) WithPSemaphores(y []Semaphore) SemaphoreWaitInfo {
-	ptr := func(x *[]Semaphore) **C.VkSemaphore { /* Slice */
+	x.pSemaphores = *(func(x *[]Semaphore) **C.VkSemaphore { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkSemaphore)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.VkSemaphore)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pSemaphores = *ptr
+	}(&y))
 	return x.WithSemaphoreCount(uint32(len(y)))
 }
 
@@ -30111,15 +29532,14 @@ func (x SemaphoreWaitInfo) PValues() []uint64 {
 // The specification defines SemaphoreCount as the length of this field.
 // SemaphoreCount is updated with the length of the new value.
 func (x SemaphoreWaitInfo) WithPValues(y []uint64) SemaphoreWaitInfo {
-	ptr := func(x *[]uint64) **C.ulonglong { /* Slice */
+	x.pValues = *(func(x *[]uint64) **C.ulonglong { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.ulonglong)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.ulonglong)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pValues = *ptr
+	}(&y))
 	return x.WithSemaphoreCount(uint32(len(y)))
 }
 
@@ -30180,8 +29600,7 @@ func (x PhysicalDevice8BitStorageFeatures) WithDefaultSType() PhysicalDevice8Bit
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDevice8BitStorageFeatures) WithSType(y StructureType) PhysicalDevice8BitStorageFeatures {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -30194,8 +29613,7 @@ func (x PhysicalDevice8BitStorageFeatures) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDevice8BitStorageFeatures) WithPNext(y unsafe.Pointer) PhysicalDevice8BitStorageFeatures {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -30208,8 +29626,7 @@ func (x PhysicalDevice8BitStorageFeatures) StorageBuffer8BitAccess() Bool32 {
 // WithStorageBuffer8BitAccess sets the value for the StorageBuffer8BitAccess on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDevice8BitStorageFeatures) WithStorageBuffer8BitAccess(y Bool32) PhysicalDevice8BitStorageFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.storageBuffer8BitAccess = *ptr
+	x.storageBuffer8BitAccess = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -30222,8 +29639,7 @@ func (x PhysicalDevice8BitStorageFeatures) UniformAndStorageBuffer8BitAccess() B
 // WithUniformAndStorageBuffer8BitAccess sets the value for the UniformAndStorageBuffer8BitAccess on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDevice8BitStorageFeatures) WithUniformAndStorageBuffer8BitAccess(y Bool32) PhysicalDevice8BitStorageFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.uniformAndStorageBuffer8BitAccess = *ptr
+	x.uniformAndStorageBuffer8BitAccess = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -30236,8 +29652,7 @@ func (x PhysicalDevice8BitStorageFeatures) StoragePushConstant8() Bool32 {
 // WithStoragePushConstant8 sets the value for the StoragePushConstant8 on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDevice8BitStorageFeatures) WithStoragePushConstant8(y Bool32) PhysicalDevice8BitStorageFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.storagePushConstant8 = *ptr
+	x.storagePushConstant8 = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -30298,8 +29713,7 @@ func (x SemaphoreSignalInfo) WithDefaultSType() SemaphoreSignalInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SemaphoreSignalInfo) WithSType(y StructureType) SemaphoreSignalInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -30312,8 +29726,7 @@ func (x SemaphoreSignalInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SemaphoreSignalInfo) WithPNext(y unsafe.Pointer) SemaphoreSignalInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -30326,8 +29739,7 @@ func (x SemaphoreSignalInfo) Semaphore() Semaphore {
 // WithSemaphore sets the value for the Semaphore on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SemaphoreSignalInfo) WithSemaphore(y Semaphore) SemaphoreSignalInfo {
-	ptr := /* handle */ (*C.VkSemaphore)(&y)
-	x.semaphore = *ptr
+	x.semaphore = *( /* handle */ (*C.VkSemaphore)(&y))
 	return x
 }
 
@@ -30340,8 +29752,7 @@ func (x SemaphoreSignalInfo) Value() uint64 {
 // WithValue sets the value for the Value on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SemaphoreSignalInfo) WithValue(y uint64) SemaphoreSignalInfo {
-	ptr := func(x *uint64) *C.ulonglong { /* Scalar */ g2c := C.ulonglong(*x); return &g2c }(&y)
-	x.value = *ptr
+	x.value = *(func(x *uint64) *C.ulonglong { /* Scalar */ g2c := C.ulonglong(*x); return &g2c }(&y))
 	return x
 }
 
@@ -30396,8 +29807,7 @@ func (x ConformanceVersion) Major() byte {
 // WithMajor sets the value for the Major on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ConformanceVersion) WithMajor(y byte) ConformanceVersion {
-	ptr := func(x *byte) *C.uchar { /* Scalar */ g2c := C.uchar(*x); return &g2c }(&y)
-	x.major = *ptr
+	x.major = *(func(x *byte) *C.uchar { /* Scalar */ g2c := C.uchar(*x); return &g2c }(&y))
 	return x
 }
 
@@ -30410,8 +29820,7 @@ func (x ConformanceVersion) Minor() byte {
 // WithMinor sets the value for the Minor on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ConformanceVersion) WithMinor(y byte) ConformanceVersion {
-	ptr := func(x *byte) *C.uchar { /* Scalar */ g2c := C.uchar(*x); return &g2c }(&y)
-	x.minor = *ptr
+	x.minor = *(func(x *byte) *C.uchar { /* Scalar */ g2c := C.uchar(*x); return &g2c }(&y))
 	return x
 }
 
@@ -30424,8 +29833,7 @@ func (x ConformanceVersion) Subminor() byte {
 // WithSubminor sets the value for the Subminor on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ConformanceVersion) WithSubminor(y byte) ConformanceVersion {
-	ptr := func(x *byte) *C.uchar { /* Scalar */ g2c := C.uchar(*x); return &g2c }(&y)
-	x.subminor = *ptr
+	x.subminor = *(func(x *byte) *C.uchar { /* Scalar */ g2c := C.uchar(*x); return &g2c }(&y))
 	return x
 }
 
@@ -30438,8 +29846,7 @@ func (x ConformanceVersion) Patch() byte {
 // WithPatch sets the value for the Patch on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ConformanceVersion) WithPatch(y byte) ConformanceVersion {
-	ptr := func(x *byte) *C.uchar { /* Scalar */ g2c := C.uchar(*x); return &g2c }(&y)
-	x.patch = *ptr
+	x.patch = *(func(x *byte) *C.uchar { /* Scalar */ g2c := C.uchar(*x); return &g2c }(&y))
 	return x
 }
 
@@ -30500,8 +29907,7 @@ func (x PhysicalDeviceDriverProperties) WithDefaultSType() PhysicalDeviceDriverP
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceDriverProperties) WithSType(y StructureType) PhysicalDeviceDriverProperties {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -30514,8 +29920,7 @@ func (x PhysicalDeviceDriverProperties) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceDriverProperties) WithPNext(y unsafe.Pointer) PhysicalDeviceDriverProperties {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -30606,8 +30011,7 @@ func (x PhysicalDeviceBufferDeviceAddressFeatures) WithDefaultSType() PhysicalDe
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceBufferDeviceAddressFeatures) WithSType(y StructureType) PhysicalDeviceBufferDeviceAddressFeatures {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -30620,8 +30024,7 @@ func (x PhysicalDeviceBufferDeviceAddressFeatures) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceBufferDeviceAddressFeatures) WithPNext(y unsafe.Pointer) PhysicalDeviceBufferDeviceAddressFeatures {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -30634,8 +30037,7 @@ func (x PhysicalDeviceBufferDeviceAddressFeatures) BufferDeviceAddress() Bool32 
 // WithBufferDeviceAddress sets the value for the BufferDeviceAddress on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceBufferDeviceAddressFeatures) WithBufferDeviceAddress(y Bool32) PhysicalDeviceBufferDeviceAddressFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.bufferDeviceAddress = *ptr
+	x.bufferDeviceAddress = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -30648,8 +30050,7 @@ func (x PhysicalDeviceBufferDeviceAddressFeatures) BufferDeviceAddressCaptureRep
 // WithBufferDeviceAddressCaptureReplay sets the value for the BufferDeviceAddressCaptureReplay on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceBufferDeviceAddressFeatures) WithBufferDeviceAddressCaptureReplay(y Bool32) PhysicalDeviceBufferDeviceAddressFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.bufferDeviceAddressCaptureReplay = *ptr
+	x.bufferDeviceAddressCaptureReplay = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -30662,8 +30063,7 @@ func (x PhysicalDeviceBufferDeviceAddressFeatures) BufferDeviceAddressMultiDevic
 // WithBufferDeviceAddressMultiDevice sets the value for the BufferDeviceAddressMultiDevice on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceBufferDeviceAddressFeatures) WithBufferDeviceAddressMultiDevice(y Bool32) PhysicalDeviceBufferDeviceAddressFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.bufferDeviceAddressMultiDevice = *ptr
+	x.bufferDeviceAddressMultiDevice = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -30724,8 +30124,7 @@ func (x BufferDeviceAddressInfo) WithDefaultSType() BufferDeviceAddressInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferDeviceAddressInfo) WithSType(y StructureType) BufferDeviceAddressInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -30738,8 +30137,7 @@ func (x BufferDeviceAddressInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferDeviceAddressInfo) WithPNext(y unsafe.Pointer) BufferDeviceAddressInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -30752,8 +30150,7 @@ func (x BufferDeviceAddressInfo) Buffer() Buffer {
 // WithBuffer sets the value for the Buffer on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferDeviceAddressInfo) WithBuffer(y Buffer) BufferDeviceAddressInfo {
-	ptr := /* handle */ (*C.VkBuffer)(&y)
-	x.buffer = *ptr
+	x.buffer = *( /* handle */ (*C.VkBuffer)(&y))
 	return x
 }
 
@@ -30814,8 +30211,7 @@ func (x PhysicalDeviceShaderAtomicInt64Features) WithDefaultSType() PhysicalDevi
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceShaderAtomicInt64Features) WithSType(y StructureType) PhysicalDeviceShaderAtomicInt64Features {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -30828,8 +30224,7 @@ func (x PhysicalDeviceShaderAtomicInt64Features) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceShaderAtomicInt64Features) WithPNext(y unsafe.Pointer) PhysicalDeviceShaderAtomicInt64Features {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -30842,8 +30237,7 @@ func (x PhysicalDeviceShaderAtomicInt64Features) ShaderBufferInt64Atomics() Bool
 // WithShaderBufferInt64Atomics sets the value for the ShaderBufferInt64Atomics on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceShaderAtomicInt64Features) WithShaderBufferInt64Atomics(y Bool32) PhysicalDeviceShaderAtomicInt64Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderBufferInt64Atomics = *ptr
+	x.shaderBufferInt64Atomics = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -30856,8 +30250,7 @@ func (x PhysicalDeviceShaderAtomicInt64Features) ShaderSharedInt64Atomics() Bool
 // WithShaderSharedInt64Atomics sets the value for the ShaderSharedInt64Atomics on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceShaderAtomicInt64Features) WithShaderSharedInt64Atomics(y Bool32) PhysicalDeviceShaderAtomicInt64Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderSharedInt64Atomics = *ptr
+	x.shaderSharedInt64Atomics = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -30918,8 +30311,7 @@ func (x PhysicalDeviceShaderFloat16Int8Features) WithDefaultSType() PhysicalDevi
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceShaderFloat16Int8Features) WithSType(y StructureType) PhysicalDeviceShaderFloat16Int8Features {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -30932,8 +30324,7 @@ func (x PhysicalDeviceShaderFloat16Int8Features) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceShaderFloat16Int8Features) WithPNext(y unsafe.Pointer) PhysicalDeviceShaderFloat16Int8Features {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -30946,8 +30337,7 @@ func (x PhysicalDeviceShaderFloat16Int8Features) ShaderFloat16() Bool32 {
 // WithShaderFloat16 sets the value for the ShaderFloat16 on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceShaderFloat16Int8Features) WithShaderFloat16(y Bool32) PhysicalDeviceShaderFloat16Int8Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderFloat16 = *ptr
+	x.shaderFloat16 = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -30960,8 +30350,7 @@ func (x PhysicalDeviceShaderFloat16Int8Features) ShaderInt8() Bool32 {
 // WithShaderInt8 sets the value for the ShaderInt8 on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceShaderFloat16Int8Features) WithShaderInt8(y Bool32) PhysicalDeviceShaderFloat16Int8Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderInt8 = *ptr
+	x.shaderInt8 = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -31022,8 +30411,7 @@ func (x PhysicalDeviceFloatControlsProperties) WithDefaultSType() PhysicalDevice
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFloatControlsProperties) WithSType(y StructureType) PhysicalDeviceFloatControlsProperties {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -31036,8 +30424,7 @@ func (x PhysicalDeviceFloatControlsProperties) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceFloatControlsProperties) WithPNext(y unsafe.Pointer) PhysicalDeviceFloatControlsProperties {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -31200,8 +30587,7 @@ func (x BufferOpaqueCaptureAddressCreateInfo) WithDefaultSType() BufferOpaqueCap
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferOpaqueCaptureAddressCreateInfo) WithSType(y StructureType) BufferOpaqueCaptureAddressCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -31214,8 +30600,7 @@ func (x BufferOpaqueCaptureAddressCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferOpaqueCaptureAddressCreateInfo) WithPNext(y unsafe.Pointer) BufferOpaqueCaptureAddressCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -31228,8 +30613,7 @@ func (x BufferOpaqueCaptureAddressCreateInfo) OpaqueCaptureAddress() uint64 {
 // WithOpaqueCaptureAddress sets the value for the OpaqueCaptureAddress on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferOpaqueCaptureAddressCreateInfo) WithOpaqueCaptureAddress(y uint64) BufferOpaqueCaptureAddressCreateInfo {
-	ptr := func(x *uint64) *C.ulonglong { /* Scalar */ g2c := C.ulonglong(*x); return &g2c }(&y)
-	x.opaqueCaptureAddress = *ptr
+	x.opaqueCaptureAddress = *(func(x *uint64) *C.ulonglong { /* Scalar */ g2c := C.ulonglong(*x); return &g2c }(&y))
 	return x
 }
 
@@ -31290,8 +30674,7 @@ func (x MemoryOpaqueCaptureAddressAllocateInfo) WithDefaultSType() MemoryOpaqueC
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x MemoryOpaqueCaptureAddressAllocateInfo) WithSType(y StructureType) MemoryOpaqueCaptureAddressAllocateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -31304,8 +30687,7 @@ func (x MemoryOpaqueCaptureAddressAllocateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x MemoryOpaqueCaptureAddressAllocateInfo) WithPNext(y unsafe.Pointer) MemoryOpaqueCaptureAddressAllocateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -31318,8 +30700,7 @@ func (x MemoryOpaqueCaptureAddressAllocateInfo) OpaqueCaptureAddress() uint64 {
 // WithOpaqueCaptureAddress sets the value for the OpaqueCaptureAddress on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x MemoryOpaqueCaptureAddressAllocateInfo) WithOpaqueCaptureAddress(y uint64) MemoryOpaqueCaptureAddressAllocateInfo {
-	ptr := func(x *uint64) *C.ulonglong { /* Scalar */ g2c := C.ulonglong(*x); return &g2c }(&y)
-	x.opaqueCaptureAddress = *ptr
+	x.opaqueCaptureAddress = *(func(x *uint64) *C.ulonglong { /* Scalar */ g2c := C.ulonglong(*x); return &g2c }(&y))
 	return x
 }
 
@@ -31380,8 +30761,7 @@ func (x PhysicalDeviceDescriptorIndexingFeatures) WithDefaultSType() PhysicalDev
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceDescriptorIndexingFeatures) WithSType(y StructureType) PhysicalDeviceDescriptorIndexingFeatures {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -31394,8 +30774,7 @@ func (x PhysicalDeviceDescriptorIndexingFeatures) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceDescriptorIndexingFeatures) WithPNext(y unsafe.Pointer) PhysicalDeviceDescriptorIndexingFeatures {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -31408,8 +30787,7 @@ func (x PhysicalDeviceDescriptorIndexingFeatures) ShaderInputAttachmentArrayDyna
 // WithShaderInputAttachmentArrayDynamicIndexing sets the value for the ShaderInputAttachmentArrayDynamicIndexing on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceDescriptorIndexingFeatures) WithShaderInputAttachmentArrayDynamicIndexing(y Bool32) PhysicalDeviceDescriptorIndexingFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderInputAttachmentArrayDynamicIndexing = *ptr
+	x.shaderInputAttachmentArrayDynamicIndexing = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -31422,8 +30800,7 @@ func (x PhysicalDeviceDescriptorIndexingFeatures) ShaderUniformTexelBufferArrayD
 // WithShaderUniformTexelBufferArrayDynamicIndexing sets the value for the ShaderUniformTexelBufferArrayDynamicIndexing on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceDescriptorIndexingFeatures) WithShaderUniformTexelBufferArrayDynamicIndexing(y Bool32) PhysicalDeviceDescriptorIndexingFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderUniformTexelBufferArrayDynamicIndexing = *ptr
+	x.shaderUniformTexelBufferArrayDynamicIndexing = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -31436,8 +30813,7 @@ func (x PhysicalDeviceDescriptorIndexingFeatures) ShaderStorageTexelBufferArrayD
 // WithShaderStorageTexelBufferArrayDynamicIndexing sets the value for the ShaderStorageTexelBufferArrayDynamicIndexing on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceDescriptorIndexingFeatures) WithShaderStorageTexelBufferArrayDynamicIndexing(y Bool32) PhysicalDeviceDescriptorIndexingFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderStorageTexelBufferArrayDynamicIndexing = *ptr
+	x.shaderStorageTexelBufferArrayDynamicIndexing = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -31450,8 +30826,7 @@ func (x PhysicalDeviceDescriptorIndexingFeatures) ShaderUniformBufferArrayNonUni
 // WithShaderUniformBufferArrayNonUniformIndexing sets the value for the ShaderUniformBufferArrayNonUniformIndexing on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceDescriptorIndexingFeatures) WithShaderUniformBufferArrayNonUniformIndexing(y Bool32) PhysicalDeviceDescriptorIndexingFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderUniformBufferArrayNonUniformIndexing = *ptr
+	x.shaderUniformBufferArrayNonUniformIndexing = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -31464,8 +30839,7 @@ func (x PhysicalDeviceDescriptorIndexingFeatures) ShaderSampledImageArrayNonUnif
 // WithShaderSampledImageArrayNonUniformIndexing sets the value for the ShaderSampledImageArrayNonUniformIndexing on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceDescriptorIndexingFeatures) WithShaderSampledImageArrayNonUniformIndexing(y Bool32) PhysicalDeviceDescriptorIndexingFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderSampledImageArrayNonUniformIndexing = *ptr
+	x.shaderSampledImageArrayNonUniformIndexing = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -31478,8 +30852,7 @@ func (x PhysicalDeviceDescriptorIndexingFeatures) ShaderStorageBufferArrayNonUni
 // WithShaderStorageBufferArrayNonUniformIndexing sets the value for the ShaderStorageBufferArrayNonUniformIndexing on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceDescriptorIndexingFeatures) WithShaderStorageBufferArrayNonUniformIndexing(y Bool32) PhysicalDeviceDescriptorIndexingFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderStorageBufferArrayNonUniformIndexing = *ptr
+	x.shaderStorageBufferArrayNonUniformIndexing = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -31492,8 +30865,7 @@ func (x PhysicalDeviceDescriptorIndexingFeatures) ShaderStorageImageArrayNonUnif
 // WithShaderStorageImageArrayNonUniformIndexing sets the value for the ShaderStorageImageArrayNonUniformIndexing on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceDescriptorIndexingFeatures) WithShaderStorageImageArrayNonUniformIndexing(y Bool32) PhysicalDeviceDescriptorIndexingFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderStorageImageArrayNonUniformIndexing = *ptr
+	x.shaderStorageImageArrayNonUniformIndexing = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -31506,8 +30878,7 @@ func (x PhysicalDeviceDescriptorIndexingFeatures) ShaderInputAttachmentArrayNonU
 // WithShaderInputAttachmentArrayNonUniformIndexing sets the value for the ShaderInputAttachmentArrayNonUniformIndexing on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceDescriptorIndexingFeatures) WithShaderInputAttachmentArrayNonUniformIndexing(y Bool32) PhysicalDeviceDescriptorIndexingFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderInputAttachmentArrayNonUniformIndexing = *ptr
+	x.shaderInputAttachmentArrayNonUniformIndexing = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -31520,8 +30891,7 @@ func (x PhysicalDeviceDescriptorIndexingFeatures) ShaderUniformTexelBufferArrayN
 // WithShaderUniformTexelBufferArrayNonUniformIndexing sets the value for the ShaderUniformTexelBufferArrayNonUniformIndexing on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceDescriptorIndexingFeatures) WithShaderUniformTexelBufferArrayNonUniformIndexing(y Bool32) PhysicalDeviceDescriptorIndexingFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderUniformTexelBufferArrayNonUniformIndexing = *ptr
+	x.shaderUniformTexelBufferArrayNonUniformIndexing = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -31534,8 +30904,7 @@ func (x PhysicalDeviceDescriptorIndexingFeatures) ShaderStorageTexelBufferArrayN
 // WithShaderStorageTexelBufferArrayNonUniformIndexing sets the value for the ShaderStorageTexelBufferArrayNonUniformIndexing on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceDescriptorIndexingFeatures) WithShaderStorageTexelBufferArrayNonUniformIndexing(y Bool32) PhysicalDeviceDescriptorIndexingFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderStorageTexelBufferArrayNonUniformIndexing = *ptr
+	x.shaderStorageTexelBufferArrayNonUniformIndexing = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -31548,8 +30917,7 @@ func (x PhysicalDeviceDescriptorIndexingFeatures) DescriptorBindingUniformBuffer
 // WithDescriptorBindingUniformBufferUpdateAfterBind sets the value for the DescriptorBindingUniformBufferUpdateAfterBind on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceDescriptorIndexingFeatures) WithDescriptorBindingUniformBufferUpdateAfterBind(y Bool32) PhysicalDeviceDescriptorIndexingFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.descriptorBindingUniformBufferUpdateAfterBind = *ptr
+	x.descriptorBindingUniformBufferUpdateAfterBind = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -31562,8 +30930,7 @@ func (x PhysicalDeviceDescriptorIndexingFeatures) DescriptorBindingSampledImageU
 // WithDescriptorBindingSampledImageUpdateAfterBind sets the value for the DescriptorBindingSampledImageUpdateAfterBind on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceDescriptorIndexingFeatures) WithDescriptorBindingSampledImageUpdateAfterBind(y Bool32) PhysicalDeviceDescriptorIndexingFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.descriptorBindingSampledImageUpdateAfterBind = *ptr
+	x.descriptorBindingSampledImageUpdateAfterBind = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -31576,8 +30943,7 @@ func (x PhysicalDeviceDescriptorIndexingFeatures) DescriptorBindingStorageImageU
 // WithDescriptorBindingStorageImageUpdateAfterBind sets the value for the DescriptorBindingStorageImageUpdateAfterBind on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceDescriptorIndexingFeatures) WithDescriptorBindingStorageImageUpdateAfterBind(y Bool32) PhysicalDeviceDescriptorIndexingFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.descriptorBindingStorageImageUpdateAfterBind = *ptr
+	x.descriptorBindingStorageImageUpdateAfterBind = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -31590,8 +30956,7 @@ func (x PhysicalDeviceDescriptorIndexingFeatures) DescriptorBindingStorageBuffer
 // WithDescriptorBindingStorageBufferUpdateAfterBind sets the value for the DescriptorBindingStorageBufferUpdateAfterBind on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceDescriptorIndexingFeatures) WithDescriptorBindingStorageBufferUpdateAfterBind(y Bool32) PhysicalDeviceDescriptorIndexingFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.descriptorBindingStorageBufferUpdateAfterBind = *ptr
+	x.descriptorBindingStorageBufferUpdateAfterBind = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -31604,8 +30969,7 @@ func (x PhysicalDeviceDescriptorIndexingFeatures) DescriptorBindingUniformTexelB
 // WithDescriptorBindingUniformTexelBufferUpdateAfterBind sets the value for the DescriptorBindingUniformTexelBufferUpdateAfterBind on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceDescriptorIndexingFeatures) WithDescriptorBindingUniformTexelBufferUpdateAfterBind(y Bool32) PhysicalDeviceDescriptorIndexingFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.descriptorBindingUniformTexelBufferUpdateAfterBind = *ptr
+	x.descriptorBindingUniformTexelBufferUpdateAfterBind = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -31618,8 +30982,7 @@ func (x PhysicalDeviceDescriptorIndexingFeatures) DescriptorBindingStorageTexelB
 // WithDescriptorBindingStorageTexelBufferUpdateAfterBind sets the value for the DescriptorBindingStorageTexelBufferUpdateAfterBind on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceDescriptorIndexingFeatures) WithDescriptorBindingStorageTexelBufferUpdateAfterBind(y Bool32) PhysicalDeviceDescriptorIndexingFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.descriptorBindingStorageTexelBufferUpdateAfterBind = *ptr
+	x.descriptorBindingStorageTexelBufferUpdateAfterBind = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -31632,8 +30995,7 @@ func (x PhysicalDeviceDescriptorIndexingFeatures) DescriptorBindingUpdateUnusedW
 // WithDescriptorBindingUpdateUnusedWhilePending sets the value for the DescriptorBindingUpdateUnusedWhilePending on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceDescriptorIndexingFeatures) WithDescriptorBindingUpdateUnusedWhilePending(y Bool32) PhysicalDeviceDescriptorIndexingFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.descriptorBindingUpdateUnusedWhilePending = *ptr
+	x.descriptorBindingUpdateUnusedWhilePending = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -31646,8 +31008,7 @@ func (x PhysicalDeviceDescriptorIndexingFeatures) DescriptorBindingPartiallyBoun
 // WithDescriptorBindingPartiallyBound sets the value for the DescriptorBindingPartiallyBound on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceDescriptorIndexingFeatures) WithDescriptorBindingPartiallyBound(y Bool32) PhysicalDeviceDescriptorIndexingFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.descriptorBindingPartiallyBound = *ptr
+	x.descriptorBindingPartiallyBound = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -31660,8 +31021,7 @@ func (x PhysicalDeviceDescriptorIndexingFeatures) DescriptorBindingVariableDescr
 // WithDescriptorBindingVariableDescriptorCount sets the value for the DescriptorBindingVariableDescriptorCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceDescriptorIndexingFeatures) WithDescriptorBindingVariableDescriptorCount(y Bool32) PhysicalDeviceDescriptorIndexingFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.descriptorBindingVariableDescriptorCount = *ptr
+	x.descriptorBindingVariableDescriptorCount = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -31674,8 +31034,7 @@ func (x PhysicalDeviceDescriptorIndexingFeatures) RuntimeDescriptorArray() Bool3
 // WithRuntimeDescriptorArray sets the value for the RuntimeDescriptorArray on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceDescriptorIndexingFeatures) WithRuntimeDescriptorArray(y Bool32) PhysicalDeviceDescriptorIndexingFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.runtimeDescriptorArray = *ptr
+	x.runtimeDescriptorArray = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -31736,8 +31095,7 @@ func (x PhysicalDeviceDescriptorIndexingProperties) WithDefaultSType() PhysicalD
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceDescriptorIndexingProperties) WithSType(y StructureType) PhysicalDeviceDescriptorIndexingProperties {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -31750,8 +31108,7 @@ func (x PhysicalDeviceDescriptorIndexingProperties) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceDescriptorIndexingProperties) WithPNext(y unsafe.Pointer) PhysicalDeviceDescriptorIndexingProperties {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -31950,8 +31307,7 @@ func (x DescriptorSetVariableDescriptorCountAllocateInfo) WithDefaultSType() Des
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorSetVariableDescriptorCountAllocateInfo) WithSType(y StructureType) DescriptorSetVariableDescriptorCountAllocateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -31964,8 +31320,7 @@ func (x DescriptorSetVariableDescriptorCountAllocateInfo) PNext() unsafe.Pointer
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorSetVariableDescriptorCountAllocateInfo) WithPNext(y unsafe.Pointer) DescriptorSetVariableDescriptorCountAllocateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -31978,8 +31333,7 @@ func (x DescriptorSetVariableDescriptorCountAllocateInfo) DescriptorSetCount() u
 // WithDescriptorSetCount sets the value for the DescriptorSetCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorSetVariableDescriptorCountAllocateInfo) WithDescriptorSetCount(y uint32) DescriptorSetVariableDescriptorCountAllocateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.descriptorSetCount = *ptr
+	x.descriptorSetCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -31998,15 +31352,14 @@ func (x DescriptorSetVariableDescriptorCountAllocateInfo) PDescriptorCounts() []
 // The specification defines DescriptorSetCount as the length of this field.
 // DescriptorSetCount is updated with the length of the new value.
 func (x DescriptorSetVariableDescriptorCountAllocateInfo) WithPDescriptorCounts(y []uint32) DescriptorSetVariableDescriptorCountAllocateInfo {
-	ptr := func(x *[]uint32) **C.uint { /* Slice */
+	x.pDescriptorCounts = *(func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.uint)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pDescriptorCounts = *ptr
+	}(&y))
 	return x.WithDescriptorSetCount(uint32(len(y)))
 }
 
@@ -32067,8 +31420,7 @@ func (x DescriptorSetVariableDescriptorCountLayoutSupport) WithDefaultSType() De
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorSetVariableDescriptorCountLayoutSupport) WithSType(y StructureType) DescriptorSetVariableDescriptorCountLayoutSupport {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -32081,8 +31433,7 @@ func (x DescriptorSetVariableDescriptorCountLayoutSupport) PNext() unsafe.Pointe
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorSetVariableDescriptorCountLayoutSupport) WithPNext(y unsafe.Pointer) DescriptorSetVariableDescriptorCountLayoutSupport {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -32149,8 +31500,7 @@ func (x ImageFormatListCreateInfo) WithDefaultSType() ImageFormatListCreateInfo 
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageFormatListCreateInfo) WithSType(y StructureType) ImageFormatListCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -32163,8 +31513,7 @@ func (x ImageFormatListCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageFormatListCreateInfo) WithPNext(y unsafe.Pointer) ImageFormatListCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -32177,8 +31526,7 @@ func (x ImageFormatListCreateInfo) ViewFormatCount() uint32 {
 // WithViewFormatCount sets the value for the ViewFormatCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageFormatListCreateInfo) WithViewFormatCount(y uint32) ImageFormatListCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.viewFormatCount = *ptr
+	x.viewFormatCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -32197,15 +31545,14 @@ func (x ImageFormatListCreateInfo) PViewFormats() []Format {
 // The specification defines ViewFormatCount as the length of this field.
 // ViewFormatCount is updated with the length of the new value.
 func (x ImageFormatListCreateInfo) WithPViewFormats(y []Format) ImageFormatListCreateInfo {
-	ptr := func(x *[]Format) **C.VkFormat { /* Slice */
+	x.pViewFormats = *(func(x *[]Format) **C.VkFormat { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkFormat)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.VkFormat)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pViewFormats = *ptr
+	}(&y))
 	return x.WithViewFormatCount(uint32(len(y)))
 }
 
@@ -32266,8 +31613,7 @@ func (x PhysicalDeviceVulkan12Properties) WithDefaultSType() PhysicalDeviceVulka
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Properties) WithSType(y StructureType) PhysicalDeviceVulkan12Properties {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -32280,8 +31626,7 @@ func (x PhysicalDeviceVulkan12Properties) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Properties) WithPNext(y unsafe.Pointer) PhysicalDeviceVulkan12Properties {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -32660,8 +32005,7 @@ func (x SubpassDescriptionDepthStencilResolve) WithDefaultSType() SubpassDescrip
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDescriptionDepthStencilResolve) WithSType(y StructureType) SubpassDescriptionDepthStencilResolve {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -32674,8 +32018,7 @@ func (x SubpassDescriptionDepthStencilResolve) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDescriptionDepthStencilResolve) WithPNext(y unsafe.Pointer) SubpassDescriptionDepthStencilResolve {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -32688,8 +32031,7 @@ func (x SubpassDescriptionDepthStencilResolve) DepthResolveMode() ResolveModeFla
 // WithDepthResolveMode sets the value for the DepthResolveMode on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDescriptionDepthStencilResolve) WithDepthResolveMode(y ResolveModeFlagBits) SubpassDescriptionDepthStencilResolve {
-	ptr := /* typedef */ (*C.VkResolveModeFlagBits)(&y)
-	x.depthResolveMode = *ptr
+	x.depthResolveMode = *( /* typedef */ (*C.VkResolveModeFlagBits)(&y))
 	return x
 }
 
@@ -32702,8 +32044,7 @@ func (x SubpassDescriptionDepthStencilResolve) StencilResolveMode() ResolveModeF
 // WithStencilResolveMode sets the value for the StencilResolveMode on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDescriptionDepthStencilResolve) WithStencilResolveMode(y ResolveModeFlagBits) SubpassDescriptionDepthStencilResolve {
-	ptr := /* typedef */ (*C.VkResolveModeFlagBits)(&y)
-	x.stencilResolveMode = *ptr
+	x.stencilResolveMode = *( /* typedef */ (*C.VkResolveModeFlagBits)(&y))
 	return x
 }
 
@@ -32719,11 +32060,10 @@ func (x SubpassDescriptionDepthStencilResolve) PDepthStencilResolveAttachment() 
 // WithPDepthStencilResolveAttachment sets the value for the PDepthStencilResolveAttachment on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDescriptionDepthStencilResolve) WithPDepthStencilResolveAttachment(y *AttachmentReference2) SubpassDescriptionDepthStencilResolve {
-	ptr := func(x **AttachmentReference2) **C.struct_VkAttachmentReference2 { /* Pointer */
+	x.pDepthStencilResolveAttachment = *(func(x **AttachmentReference2) **C.struct_VkAttachmentReference2 { /* Pointer */
 		g2c := (*C.struct_VkAttachmentReference2)(*x)
 		return &g2c
-	}(&y)
-	x.pDepthStencilResolveAttachment = *ptr
+	}(&y))
 	return x
 }
 
@@ -32784,8 +32124,7 @@ func (x PhysicalDeviceDepthStencilResolveProperties) WithDefaultSType() Physical
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceDepthStencilResolveProperties) WithSType(y StructureType) PhysicalDeviceDepthStencilResolveProperties {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -32798,8 +32137,7 @@ func (x PhysicalDeviceDepthStencilResolveProperties) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceDepthStencilResolveProperties) WithPNext(y unsafe.Pointer) PhysicalDeviceDepthStencilResolveProperties {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -32884,8 +32222,7 @@ func (x PhysicalDeviceVulkan12Features) WithDefaultSType() PhysicalDeviceVulkan1
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithSType(y StructureType) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -32898,8 +32235,7 @@ func (x PhysicalDeviceVulkan12Features) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithPNext(y unsafe.Pointer) PhysicalDeviceVulkan12Features {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -32912,8 +32248,7 @@ func (x PhysicalDeviceVulkan12Features) SamplerMirrorClampToEdge() Bool32 {
 // WithSamplerMirrorClampToEdge sets the value for the SamplerMirrorClampToEdge on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithSamplerMirrorClampToEdge(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.samplerMirrorClampToEdge = *ptr
+	x.samplerMirrorClampToEdge = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -32926,8 +32261,7 @@ func (x PhysicalDeviceVulkan12Features) DrawIndirectCount() Bool32 {
 // WithDrawIndirectCount sets the value for the DrawIndirectCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithDrawIndirectCount(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.drawIndirectCount = *ptr
+	x.drawIndirectCount = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -32940,8 +32274,7 @@ func (x PhysicalDeviceVulkan12Features) StorageBuffer8BitAccess() Bool32 {
 // WithStorageBuffer8BitAccess sets the value for the StorageBuffer8BitAccess on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithStorageBuffer8BitAccess(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.storageBuffer8BitAccess = *ptr
+	x.storageBuffer8BitAccess = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -32954,8 +32287,7 @@ func (x PhysicalDeviceVulkan12Features) UniformAndStorageBuffer8BitAccess() Bool
 // WithUniformAndStorageBuffer8BitAccess sets the value for the UniformAndStorageBuffer8BitAccess on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithUniformAndStorageBuffer8BitAccess(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.uniformAndStorageBuffer8BitAccess = *ptr
+	x.uniformAndStorageBuffer8BitAccess = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -32968,8 +32300,7 @@ func (x PhysicalDeviceVulkan12Features) StoragePushConstant8() Bool32 {
 // WithStoragePushConstant8 sets the value for the StoragePushConstant8 on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithStoragePushConstant8(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.storagePushConstant8 = *ptr
+	x.storagePushConstant8 = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -32982,8 +32313,7 @@ func (x PhysicalDeviceVulkan12Features) ShaderBufferInt64Atomics() Bool32 {
 // WithShaderBufferInt64Atomics sets the value for the ShaderBufferInt64Atomics on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithShaderBufferInt64Atomics(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderBufferInt64Atomics = *ptr
+	x.shaderBufferInt64Atomics = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -32996,8 +32326,7 @@ func (x PhysicalDeviceVulkan12Features) ShaderSharedInt64Atomics() Bool32 {
 // WithShaderSharedInt64Atomics sets the value for the ShaderSharedInt64Atomics on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithShaderSharedInt64Atomics(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderSharedInt64Atomics = *ptr
+	x.shaderSharedInt64Atomics = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33010,8 +32339,7 @@ func (x PhysicalDeviceVulkan12Features) ShaderFloat16() Bool32 {
 // WithShaderFloat16 sets the value for the ShaderFloat16 on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithShaderFloat16(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderFloat16 = *ptr
+	x.shaderFloat16 = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33024,8 +32352,7 @@ func (x PhysicalDeviceVulkan12Features) ShaderInt8() Bool32 {
 // WithShaderInt8 sets the value for the ShaderInt8 on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithShaderInt8(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderInt8 = *ptr
+	x.shaderInt8 = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33038,8 +32365,7 @@ func (x PhysicalDeviceVulkan12Features) DescriptorIndexing() Bool32 {
 // WithDescriptorIndexing sets the value for the DescriptorIndexing on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithDescriptorIndexing(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.descriptorIndexing = *ptr
+	x.descriptorIndexing = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33052,8 +32378,7 @@ func (x PhysicalDeviceVulkan12Features) ShaderInputAttachmentArrayDynamicIndexin
 // WithShaderInputAttachmentArrayDynamicIndexing sets the value for the ShaderInputAttachmentArrayDynamicIndexing on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithShaderInputAttachmentArrayDynamicIndexing(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderInputAttachmentArrayDynamicIndexing = *ptr
+	x.shaderInputAttachmentArrayDynamicIndexing = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33066,8 +32391,7 @@ func (x PhysicalDeviceVulkan12Features) ShaderUniformTexelBufferArrayDynamicInde
 // WithShaderUniformTexelBufferArrayDynamicIndexing sets the value for the ShaderUniformTexelBufferArrayDynamicIndexing on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithShaderUniformTexelBufferArrayDynamicIndexing(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderUniformTexelBufferArrayDynamicIndexing = *ptr
+	x.shaderUniformTexelBufferArrayDynamicIndexing = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33080,8 +32404,7 @@ func (x PhysicalDeviceVulkan12Features) ShaderStorageTexelBufferArrayDynamicInde
 // WithShaderStorageTexelBufferArrayDynamicIndexing sets the value for the ShaderStorageTexelBufferArrayDynamicIndexing on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithShaderStorageTexelBufferArrayDynamicIndexing(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderStorageTexelBufferArrayDynamicIndexing = *ptr
+	x.shaderStorageTexelBufferArrayDynamicIndexing = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33094,8 +32417,7 @@ func (x PhysicalDeviceVulkan12Features) ShaderUniformBufferArrayNonUniformIndexi
 // WithShaderUniformBufferArrayNonUniformIndexing sets the value for the ShaderUniformBufferArrayNonUniformIndexing on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithShaderUniformBufferArrayNonUniformIndexing(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderUniformBufferArrayNonUniformIndexing = *ptr
+	x.shaderUniformBufferArrayNonUniformIndexing = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33108,8 +32430,7 @@ func (x PhysicalDeviceVulkan12Features) ShaderSampledImageArrayNonUniformIndexin
 // WithShaderSampledImageArrayNonUniformIndexing sets the value for the ShaderSampledImageArrayNonUniformIndexing on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithShaderSampledImageArrayNonUniformIndexing(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderSampledImageArrayNonUniformIndexing = *ptr
+	x.shaderSampledImageArrayNonUniformIndexing = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33122,8 +32443,7 @@ func (x PhysicalDeviceVulkan12Features) ShaderStorageBufferArrayNonUniformIndexi
 // WithShaderStorageBufferArrayNonUniformIndexing sets the value for the ShaderStorageBufferArrayNonUniformIndexing on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithShaderStorageBufferArrayNonUniformIndexing(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderStorageBufferArrayNonUniformIndexing = *ptr
+	x.shaderStorageBufferArrayNonUniformIndexing = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33136,8 +32456,7 @@ func (x PhysicalDeviceVulkan12Features) ShaderStorageImageArrayNonUniformIndexin
 // WithShaderStorageImageArrayNonUniformIndexing sets the value for the ShaderStorageImageArrayNonUniformIndexing on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithShaderStorageImageArrayNonUniformIndexing(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderStorageImageArrayNonUniformIndexing = *ptr
+	x.shaderStorageImageArrayNonUniformIndexing = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33150,8 +32469,7 @@ func (x PhysicalDeviceVulkan12Features) ShaderInputAttachmentArrayNonUniformInde
 // WithShaderInputAttachmentArrayNonUniformIndexing sets the value for the ShaderInputAttachmentArrayNonUniformIndexing on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithShaderInputAttachmentArrayNonUniformIndexing(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderInputAttachmentArrayNonUniformIndexing = *ptr
+	x.shaderInputAttachmentArrayNonUniformIndexing = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33164,8 +32482,7 @@ func (x PhysicalDeviceVulkan12Features) ShaderUniformTexelBufferArrayNonUniformI
 // WithShaderUniformTexelBufferArrayNonUniformIndexing sets the value for the ShaderUniformTexelBufferArrayNonUniformIndexing on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithShaderUniformTexelBufferArrayNonUniformIndexing(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderUniformTexelBufferArrayNonUniformIndexing = *ptr
+	x.shaderUniformTexelBufferArrayNonUniformIndexing = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33178,8 +32495,7 @@ func (x PhysicalDeviceVulkan12Features) ShaderStorageTexelBufferArrayNonUniformI
 // WithShaderStorageTexelBufferArrayNonUniformIndexing sets the value for the ShaderStorageTexelBufferArrayNonUniformIndexing on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithShaderStorageTexelBufferArrayNonUniformIndexing(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderStorageTexelBufferArrayNonUniformIndexing = *ptr
+	x.shaderStorageTexelBufferArrayNonUniformIndexing = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33192,8 +32508,7 @@ func (x PhysicalDeviceVulkan12Features) DescriptorBindingUniformBufferUpdateAfte
 // WithDescriptorBindingUniformBufferUpdateAfterBind sets the value for the DescriptorBindingUniformBufferUpdateAfterBind on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithDescriptorBindingUniformBufferUpdateAfterBind(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.descriptorBindingUniformBufferUpdateAfterBind = *ptr
+	x.descriptorBindingUniformBufferUpdateAfterBind = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33206,8 +32521,7 @@ func (x PhysicalDeviceVulkan12Features) DescriptorBindingSampledImageUpdateAfter
 // WithDescriptorBindingSampledImageUpdateAfterBind sets the value for the DescriptorBindingSampledImageUpdateAfterBind on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithDescriptorBindingSampledImageUpdateAfterBind(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.descriptorBindingSampledImageUpdateAfterBind = *ptr
+	x.descriptorBindingSampledImageUpdateAfterBind = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33220,8 +32534,7 @@ func (x PhysicalDeviceVulkan12Features) DescriptorBindingStorageImageUpdateAfter
 // WithDescriptorBindingStorageImageUpdateAfterBind sets the value for the DescriptorBindingStorageImageUpdateAfterBind on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithDescriptorBindingStorageImageUpdateAfterBind(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.descriptorBindingStorageImageUpdateAfterBind = *ptr
+	x.descriptorBindingStorageImageUpdateAfterBind = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33234,8 +32547,7 @@ func (x PhysicalDeviceVulkan12Features) DescriptorBindingStorageBufferUpdateAfte
 // WithDescriptorBindingStorageBufferUpdateAfterBind sets the value for the DescriptorBindingStorageBufferUpdateAfterBind on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithDescriptorBindingStorageBufferUpdateAfterBind(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.descriptorBindingStorageBufferUpdateAfterBind = *ptr
+	x.descriptorBindingStorageBufferUpdateAfterBind = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33248,8 +32560,7 @@ func (x PhysicalDeviceVulkan12Features) DescriptorBindingUniformTexelBufferUpdat
 // WithDescriptorBindingUniformTexelBufferUpdateAfterBind sets the value for the DescriptorBindingUniformTexelBufferUpdateAfterBind on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithDescriptorBindingUniformTexelBufferUpdateAfterBind(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.descriptorBindingUniformTexelBufferUpdateAfterBind = *ptr
+	x.descriptorBindingUniformTexelBufferUpdateAfterBind = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33262,8 +32573,7 @@ func (x PhysicalDeviceVulkan12Features) DescriptorBindingStorageTexelBufferUpdat
 // WithDescriptorBindingStorageTexelBufferUpdateAfterBind sets the value for the DescriptorBindingStorageTexelBufferUpdateAfterBind on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithDescriptorBindingStorageTexelBufferUpdateAfterBind(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.descriptorBindingStorageTexelBufferUpdateAfterBind = *ptr
+	x.descriptorBindingStorageTexelBufferUpdateAfterBind = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33276,8 +32586,7 @@ func (x PhysicalDeviceVulkan12Features) DescriptorBindingUpdateUnusedWhilePendin
 // WithDescriptorBindingUpdateUnusedWhilePending sets the value for the DescriptorBindingUpdateUnusedWhilePending on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithDescriptorBindingUpdateUnusedWhilePending(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.descriptorBindingUpdateUnusedWhilePending = *ptr
+	x.descriptorBindingUpdateUnusedWhilePending = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33290,8 +32599,7 @@ func (x PhysicalDeviceVulkan12Features) DescriptorBindingPartiallyBound() Bool32
 // WithDescriptorBindingPartiallyBound sets the value for the DescriptorBindingPartiallyBound on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithDescriptorBindingPartiallyBound(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.descriptorBindingPartiallyBound = *ptr
+	x.descriptorBindingPartiallyBound = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33304,8 +32612,7 @@ func (x PhysicalDeviceVulkan12Features) DescriptorBindingVariableDescriptorCount
 // WithDescriptorBindingVariableDescriptorCount sets the value for the DescriptorBindingVariableDescriptorCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithDescriptorBindingVariableDescriptorCount(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.descriptorBindingVariableDescriptorCount = *ptr
+	x.descriptorBindingVariableDescriptorCount = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33318,8 +32625,7 @@ func (x PhysicalDeviceVulkan12Features) RuntimeDescriptorArray() Bool32 {
 // WithRuntimeDescriptorArray sets the value for the RuntimeDescriptorArray on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithRuntimeDescriptorArray(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.runtimeDescriptorArray = *ptr
+	x.runtimeDescriptorArray = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33332,8 +32638,7 @@ func (x PhysicalDeviceVulkan12Features) SamplerFilterMinmax() Bool32 {
 // WithSamplerFilterMinmax sets the value for the SamplerFilterMinmax on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithSamplerFilterMinmax(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.samplerFilterMinmax = *ptr
+	x.samplerFilterMinmax = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33346,8 +32651,7 @@ func (x PhysicalDeviceVulkan12Features) ScalarBlockLayout() Bool32 {
 // WithScalarBlockLayout sets the value for the ScalarBlockLayout on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithScalarBlockLayout(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.scalarBlockLayout = *ptr
+	x.scalarBlockLayout = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33360,8 +32664,7 @@ func (x PhysicalDeviceVulkan12Features) ImagelessFramebuffer() Bool32 {
 // WithImagelessFramebuffer sets the value for the ImagelessFramebuffer on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithImagelessFramebuffer(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.imagelessFramebuffer = *ptr
+	x.imagelessFramebuffer = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33374,8 +32677,7 @@ func (x PhysicalDeviceVulkan12Features) UniformBufferStandardLayout() Bool32 {
 // WithUniformBufferStandardLayout sets the value for the UniformBufferStandardLayout on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithUniformBufferStandardLayout(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.uniformBufferStandardLayout = *ptr
+	x.uniformBufferStandardLayout = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33388,8 +32690,7 @@ func (x PhysicalDeviceVulkan12Features) ShaderSubgroupExtendedTypes() Bool32 {
 // WithShaderSubgroupExtendedTypes sets the value for the ShaderSubgroupExtendedTypes on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithShaderSubgroupExtendedTypes(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderSubgroupExtendedTypes = *ptr
+	x.shaderSubgroupExtendedTypes = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33402,8 +32703,7 @@ func (x PhysicalDeviceVulkan12Features) SeparateDepthStencilLayouts() Bool32 {
 // WithSeparateDepthStencilLayouts sets the value for the SeparateDepthStencilLayouts on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithSeparateDepthStencilLayouts(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.separateDepthStencilLayouts = *ptr
+	x.separateDepthStencilLayouts = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33416,8 +32716,7 @@ func (x PhysicalDeviceVulkan12Features) HostQueryReset() Bool32 {
 // WithHostQueryReset sets the value for the HostQueryReset on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithHostQueryReset(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.hostQueryReset = *ptr
+	x.hostQueryReset = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33430,8 +32729,7 @@ func (x PhysicalDeviceVulkan12Features) TimelineSemaphore() Bool32 {
 // WithTimelineSemaphore sets the value for the TimelineSemaphore on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithTimelineSemaphore(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.timelineSemaphore = *ptr
+	x.timelineSemaphore = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33444,8 +32742,7 @@ func (x PhysicalDeviceVulkan12Features) BufferDeviceAddress() Bool32 {
 // WithBufferDeviceAddress sets the value for the BufferDeviceAddress on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithBufferDeviceAddress(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.bufferDeviceAddress = *ptr
+	x.bufferDeviceAddress = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33458,8 +32755,7 @@ func (x PhysicalDeviceVulkan12Features) BufferDeviceAddressCaptureReplay() Bool3
 // WithBufferDeviceAddressCaptureReplay sets the value for the BufferDeviceAddressCaptureReplay on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithBufferDeviceAddressCaptureReplay(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.bufferDeviceAddressCaptureReplay = *ptr
+	x.bufferDeviceAddressCaptureReplay = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33472,8 +32768,7 @@ func (x PhysicalDeviceVulkan12Features) BufferDeviceAddressMultiDevice() Bool32 
 // WithBufferDeviceAddressMultiDevice sets the value for the BufferDeviceAddressMultiDevice on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithBufferDeviceAddressMultiDevice(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.bufferDeviceAddressMultiDevice = *ptr
+	x.bufferDeviceAddressMultiDevice = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33486,8 +32781,7 @@ func (x PhysicalDeviceVulkan12Features) VulkanMemoryModel() Bool32 {
 // WithVulkanMemoryModel sets the value for the VulkanMemoryModel on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithVulkanMemoryModel(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.vulkanMemoryModel = *ptr
+	x.vulkanMemoryModel = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33500,8 +32794,7 @@ func (x PhysicalDeviceVulkan12Features) VulkanMemoryModelDeviceScope() Bool32 {
 // WithVulkanMemoryModelDeviceScope sets the value for the VulkanMemoryModelDeviceScope on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithVulkanMemoryModelDeviceScope(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.vulkanMemoryModelDeviceScope = *ptr
+	x.vulkanMemoryModelDeviceScope = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33514,8 +32807,7 @@ func (x PhysicalDeviceVulkan12Features) VulkanMemoryModelAvailabilityVisibilityC
 // WithVulkanMemoryModelAvailabilityVisibilityChains sets the value for the VulkanMemoryModelAvailabilityVisibilityChains on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithVulkanMemoryModelAvailabilityVisibilityChains(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.vulkanMemoryModelAvailabilityVisibilityChains = *ptr
+	x.vulkanMemoryModelAvailabilityVisibilityChains = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33528,8 +32820,7 @@ func (x PhysicalDeviceVulkan12Features) ShaderOutputViewportIndex() Bool32 {
 // WithShaderOutputViewportIndex sets the value for the ShaderOutputViewportIndex on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithShaderOutputViewportIndex(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderOutputViewportIndex = *ptr
+	x.shaderOutputViewportIndex = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33542,8 +32833,7 @@ func (x PhysicalDeviceVulkan12Features) ShaderOutputLayer() Bool32 {
 // WithShaderOutputLayer sets the value for the ShaderOutputLayer on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithShaderOutputLayer(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderOutputLayer = *ptr
+	x.shaderOutputLayer = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33556,8 +32846,7 @@ func (x PhysicalDeviceVulkan12Features) SubgroupBroadcastDynamicId() Bool32 {
 // WithSubgroupBroadcastDynamicId sets the value for the SubgroupBroadcastDynamicId on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan12Features) WithSubgroupBroadcastDynamicId(y Bool32) PhysicalDeviceVulkan12Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.subgroupBroadcastDynamicId = *ptr
+	x.subgroupBroadcastDynamicId = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33618,8 +32907,7 @@ func (x PhysicalDeviceVulkan11Properties) WithDefaultSType() PhysicalDeviceVulka
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan11Properties) WithSType(y StructureType) PhysicalDeviceVulkan11Properties {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -33632,8 +32920,7 @@ func (x PhysicalDeviceVulkan11Properties) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan11Properties) WithPNext(y unsafe.Pointer) PhysicalDeviceVulkan11Properties {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -33793,8 +33080,7 @@ func (x PhysicalDeviceScalarBlockLayoutFeatures) WithDefaultSType() PhysicalDevi
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceScalarBlockLayoutFeatures) WithSType(y StructureType) PhysicalDeviceScalarBlockLayoutFeatures {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -33807,8 +33093,7 @@ func (x PhysicalDeviceScalarBlockLayoutFeatures) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceScalarBlockLayoutFeatures) WithPNext(y unsafe.Pointer) PhysicalDeviceScalarBlockLayoutFeatures {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -33821,8 +33106,7 @@ func (x PhysicalDeviceScalarBlockLayoutFeatures) ScalarBlockLayout() Bool32 {
 // WithScalarBlockLayout sets the value for the ScalarBlockLayout on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceScalarBlockLayoutFeatures) WithScalarBlockLayout(y Bool32) PhysicalDeviceScalarBlockLayoutFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.scalarBlockLayout = *ptr
+	x.scalarBlockLayout = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -33883,8 +33167,7 @@ func (x ImageStencilUsageCreateInfo) WithDefaultSType() ImageStencilUsageCreateI
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageStencilUsageCreateInfo) WithSType(y StructureType) ImageStencilUsageCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -33897,8 +33180,7 @@ func (x ImageStencilUsageCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageStencilUsageCreateInfo) WithPNext(y unsafe.Pointer) ImageStencilUsageCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -33911,8 +33193,7 @@ func (x ImageStencilUsageCreateInfo) StencilUsage() ImageUsageFlags {
 // WithStencilUsage sets the value for the StencilUsage on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageStencilUsageCreateInfo) WithStencilUsage(y ImageUsageFlags) ImageStencilUsageCreateInfo {
-	ptr := /* typedef */ (*C.VkImageUsageFlags)(&y)
-	x.stencilUsage = *ptr
+	x.stencilUsage = *( /* typedef */ (*C.VkImageUsageFlags)(&y))
 	return x
 }
 
@@ -33973,8 +33254,7 @@ func (x PhysicalDeviceVulkan11Features) WithDefaultSType() PhysicalDeviceVulkan1
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan11Features) WithSType(y StructureType) PhysicalDeviceVulkan11Features {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -33987,8 +33267,7 @@ func (x PhysicalDeviceVulkan11Features) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan11Features) WithPNext(y unsafe.Pointer) PhysicalDeviceVulkan11Features {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -34001,8 +33280,7 @@ func (x PhysicalDeviceVulkan11Features) StorageBuffer16BitAccess() Bool32 {
 // WithStorageBuffer16BitAccess sets the value for the StorageBuffer16BitAccess on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan11Features) WithStorageBuffer16BitAccess(y Bool32) PhysicalDeviceVulkan11Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.storageBuffer16BitAccess = *ptr
+	x.storageBuffer16BitAccess = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -34015,8 +33293,7 @@ func (x PhysicalDeviceVulkan11Features) UniformAndStorageBuffer16BitAccess() Boo
 // WithUniformAndStorageBuffer16BitAccess sets the value for the UniformAndStorageBuffer16BitAccess on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan11Features) WithUniformAndStorageBuffer16BitAccess(y Bool32) PhysicalDeviceVulkan11Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.uniformAndStorageBuffer16BitAccess = *ptr
+	x.uniformAndStorageBuffer16BitAccess = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -34029,8 +33306,7 @@ func (x PhysicalDeviceVulkan11Features) StoragePushConstant16() Bool32 {
 // WithStoragePushConstant16 sets the value for the StoragePushConstant16 on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan11Features) WithStoragePushConstant16(y Bool32) PhysicalDeviceVulkan11Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.storagePushConstant16 = *ptr
+	x.storagePushConstant16 = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -34043,8 +33319,7 @@ func (x PhysicalDeviceVulkan11Features) StorageInputOutput16() Bool32 {
 // WithStorageInputOutput16 sets the value for the StorageInputOutput16 on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan11Features) WithStorageInputOutput16(y Bool32) PhysicalDeviceVulkan11Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.storageInputOutput16 = *ptr
+	x.storageInputOutput16 = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -34057,8 +33332,7 @@ func (x PhysicalDeviceVulkan11Features) Multiview() Bool32 {
 // WithMultiview sets the value for the Multiview on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan11Features) WithMultiview(y Bool32) PhysicalDeviceVulkan11Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.multiview = *ptr
+	x.multiview = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -34071,8 +33345,7 @@ func (x PhysicalDeviceVulkan11Features) MultiviewGeometryShader() Bool32 {
 // WithMultiviewGeometryShader sets the value for the MultiviewGeometryShader on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan11Features) WithMultiviewGeometryShader(y Bool32) PhysicalDeviceVulkan11Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.multiviewGeometryShader = *ptr
+	x.multiviewGeometryShader = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -34085,8 +33358,7 @@ func (x PhysicalDeviceVulkan11Features) MultiviewTessellationShader() Bool32 {
 // WithMultiviewTessellationShader sets the value for the MultiviewTessellationShader on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan11Features) WithMultiviewTessellationShader(y Bool32) PhysicalDeviceVulkan11Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.multiviewTessellationShader = *ptr
+	x.multiviewTessellationShader = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -34099,8 +33371,7 @@ func (x PhysicalDeviceVulkan11Features) VariablePointersStorageBuffer() Bool32 {
 // WithVariablePointersStorageBuffer sets the value for the VariablePointersStorageBuffer on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan11Features) WithVariablePointersStorageBuffer(y Bool32) PhysicalDeviceVulkan11Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.variablePointersStorageBuffer = *ptr
+	x.variablePointersStorageBuffer = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -34113,8 +33384,7 @@ func (x PhysicalDeviceVulkan11Features) VariablePointers() Bool32 {
 // WithVariablePointers sets the value for the VariablePointers on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan11Features) WithVariablePointers(y Bool32) PhysicalDeviceVulkan11Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.variablePointers = *ptr
+	x.variablePointers = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -34127,8 +33397,7 @@ func (x PhysicalDeviceVulkan11Features) ProtectedMemory() Bool32 {
 // WithProtectedMemory sets the value for the ProtectedMemory on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan11Features) WithProtectedMemory(y Bool32) PhysicalDeviceVulkan11Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.protectedMemory = *ptr
+	x.protectedMemory = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -34141,8 +33410,7 @@ func (x PhysicalDeviceVulkan11Features) SamplerYcbcrConversion() Bool32 {
 // WithSamplerYcbcrConversion sets the value for the SamplerYcbcrConversion on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan11Features) WithSamplerYcbcrConversion(y Bool32) PhysicalDeviceVulkan11Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.samplerYcbcrConversion = *ptr
+	x.samplerYcbcrConversion = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -34155,8 +33423,7 @@ func (x PhysicalDeviceVulkan11Features) ShaderDrawParameters() Bool32 {
 // WithShaderDrawParameters sets the value for the ShaderDrawParameters on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan11Features) WithShaderDrawParameters(y Bool32) PhysicalDeviceVulkan11Features {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderDrawParameters = *ptr
+	x.shaderDrawParameters = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -34217,8 +33484,7 @@ func (x SamplerReductionModeCreateInfo) WithDefaultSType() SamplerReductionModeC
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerReductionModeCreateInfo) WithSType(y StructureType) SamplerReductionModeCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -34231,8 +33497,7 @@ func (x SamplerReductionModeCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerReductionModeCreateInfo) WithPNext(y unsafe.Pointer) SamplerReductionModeCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -34245,8 +33510,7 @@ func (x SamplerReductionModeCreateInfo) ReductionMode() SamplerReductionMode {
 // WithReductionMode sets the value for the ReductionMode on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SamplerReductionModeCreateInfo) WithReductionMode(y SamplerReductionMode) SamplerReductionModeCreateInfo {
-	ptr := /* typedef */ (*C.VkSamplerReductionMode)(&y)
-	x.reductionMode = *ptr
+	x.reductionMode = *( /* typedef */ (*C.VkSamplerReductionMode)(&y))
 	return x
 }
 
@@ -34307,8 +33571,7 @@ func (x PhysicalDeviceSamplerFilterMinmaxProperties) WithDefaultSType() Physical
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceSamplerFilterMinmaxProperties) WithSType(y StructureType) PhysicalDeviceSamplerFilterMinmaxProperties {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -34321,8 +33584,7 @@ func (x PhysicalDeviceSamplerFilterMinmaxProperties) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceSamplerFilterMinmaxProperties) WithPNext(y unsafe.Pointer) PhysicalDeviceSamplerFilterMinmaxProperties {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -34395,8 +33657,7 @@ func (x PhysicalDeviceVulkanMemoryModelFeatures) WithDefaultSType() PhysicalDevi
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkanMemoryModelFeatures) WithSType(y StructureType) PhysicalDeviceVulkanMemoryModelFeatures {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -34409,8 +33670,7 @@ func (x PhysicalDeviceVulkanMemoryModelFeatures) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkanMemoryModelFeatures) WithPNext(y unsafe.Pointer) PhysicalDeviceVulkanMemoryModelFeatures {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -34423,8 +33683,7 @@ func (x PhysicalDeviceVulkanMemoryModelFeatures) VulkanMemoryModel() Bool32 {
 // WithVulkanMemoryModel sets the value for the VulkanMemoryModel on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkanMemoryModelFeatures) WithVulkanMemoryModel(y Bool32) PhysicalDeviceVulkanMemoryModelFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.vulkanMemoryModel = *ptr
+	x.vulkanMemoryModel = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -34437,8 +33696,7 @@ func (x PhysicalDeviceVulkanMemoryModelFeatures) VulkanMemoryModelDeviceScope() 
 // WithVulkanMemoryModelDeviceScope sets the value for the VulkanMemoryModelDeviceScope on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkanMemoryModelFeatures) WithVulkanMemoryModelDeviceScope(y Bool32) PhysicalDeviceVulkanMemoryModelFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.vulkanMemoryModelDeviceScope = *ptr
+	x.vulkanMemoryModelDeviceScope = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -34451,8 +33709,7 @@ func (x PhysicalDeviceVulkanMemoryModelFeatures) VulkanMemoryModelAvailabilityVi
 // WithVulkanMemoryModelAvailabilityVisibilityChains sets the value for the VulkanMemoryModelAvailabilityVisibilityChains on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkanMemoryModelFeatures) WithVulkanMemoryModelAvailabilityVisibilityChains(y Bool32) PhysicalDeviceVulkanMemoryModelFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.vulkanMemoryModelAvailabilityVisibilityChains = *ptr
+	x.vulkanMemoryModelAvailabilityVisibilityChains = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -34513,8 +33770,7 @@ func (x PhysicalDeviceImagelessFramebufferFeatures) WithDefaultSType() PhysicalD
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceImagelessFramebufferFeatures) WithSType(y StructureType) PhysicalDeviceImagelessFramebufferFeatures {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -34527,8 +33783,7 @@ func (x PhysicalDeviceImagelessFramebufferFeatures) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceImagelessFramebufferFeatures) WithPNext(y unsafe.Pointer) PhysicalDeviceImagelessFramebufferFeatures {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -34541,8 +33796,7 @@ func (x PhysicalDeviceImagelessFramebufferFeatures) ImagelessFramebuffer() Bool3
 // WithImagelessFramebuffer sets the value for the ImagelessFramebuffer on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceImagelessFramebufferFeatures) WithImagelessFramebuffer(y Bool32) PhysicalDeviceImagelessFramebufferFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.imagelessFramebuffer = *ptr
+	x.imagelessFramebuffer = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -34603,8 +33857,7 @@ func (x FramebufferAttachmentsCreateInfo) WithDefaultSType() FramebufferAttachme
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x FramebufferAttachmentsCreateInfo) WithSType(y StructureType) FramebufferAttachmentsCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -34617,8 +33870,7 @@ func (x FramebufferAttachmentsCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x FramebufferAttachmentsCreateInfo) WithPNext(y unsafe.Pointer) FramebufferAttachmentsCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -34631,8 +33883,7 @@ func (x FramebufferAttachmentsCreateInfo) AttachmentImageInfoCount() uint32 {
 // WithAttachmentImageInfoCount sets the value for the AttachmentImageInfoCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x FramebufferAttachmentsCreateInfo) WithAttachmentImageInfoCount(y uint32) FramebufferAttachmentsCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.attachmentImageInfoCount = *ptr
+	x.attachmentImageInfoCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -34651,15 +33902,14 @@ func (x FramebufferAttachmentsCreateInfo) PAttachmentImageInfos() []FramebufferA
 // The specification defines AttachmentImageInfoCount as the length of this field.
 // AttachmentImageInfoCount is updated with the length of the new value.
 func (x FramebufferAttachmentsCreateInfo) WithPAttachmentImageInfos(y []FramebufferAttachmentImageInfo) FramebufferAttachmentsCreateInfo {
-	ptr := func(x *[]FramebufferAttachmentImageInfo) **C.struct_VkFramebufferAttachmentImageInfo { /* Slice */
+	x.pAttachmentImageInfos = *(func(x *[]FramebufferAttachmentImageInfo) **C.struct_VkFramebufferAttachmentImageInfo { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.struct_VkFramebufferAttachmentImageInfo)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.struct_VkFramebufferAttachmentImageInfo)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pAttachmentImageInfos = *ptr
+	}(&y))
 	return x.WithAttachmentImageInfoCount(uint32(len(y)))
 }
 
@@ -34720,8 +33970,7 @@ func (x FramebufferAttachmentImageInfo) WithDefaultSType() FramebufferAttachment
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x FramebufferAttachmentImageInfo) WithSType(y StructureType) FramebufferAttachmentImageInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -34734,8 +33983,7 @@ func (x FramebufferAttachmentImageInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x FramebufferAttachmentImageInfo) WithPNext(y unsafe.Pointer) FramebufferAttachmentImageInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -34748,8 +33996,7 @@ func (x FramebufferAttachmentImageInfo) Flags() ImageCreateFlags {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x FramebufferAttachmentImageInfo) WithFlags(y ImageCreateFlags) FramebufferAttachmentImageInfo {
-	ptr := /* typedef */ (*C.VkImageCreateFlags)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkImageCreateFlags)(&y))
 	return x
 }
 
@@ -34762,8 +34009,7 @@ func (x FramebufferAttachmentImageInfo) Usage() ImageUsageFlags {
 // WithUsage sets the value for the Usage on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x FramebufferAttachmentImageInfo) WithUsage(y ImageUsageFlags) FramebufferAttachmentImageInfo {
-	ptr := /* typedef */ (*C.VkImageUsageFlags)(&y)
-	x.usage = *ptr
+	x.usage = *( /* typedef */ (*C.VkImageUsageFlags)(&y))
 	return x
 }
 
@@ -34776,8 +34022,7 @@ func (x FramebufferAttachmentImageInfo) Width() uint32 {
 // WithWidth sets the value for the Width on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x FramebufferAttachmentImageInfo) WithWidth(y uint32) FramebufferAttachmentImageInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.width = *ptr
+	x.width = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -34790,8 +34035,7 @@ func (x FramebufferAttachmentImageInfo) Height() uint32 {
 // WithHeight sets the value for the Height on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x FramebufferAttachmentImageInfo) WithHeight(y uint32) FramebufferAttachmentImageInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.height = *ptr
+	x.height = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -34804,8 +34048,7 @@ func (x FramebufferAttachmentImageInfo) LayerCount() uint32 {
 // WithLayerCount sets the value for the LayerCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x FramebufferAttachmentImageInfo) WithLayerCount(y uint32) FramebufferAttachmentImageInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.layerCount = *ptr
+	x.layerCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -34818,8 +34061,7 @@ func (x FramebufferAttachmentImageInfo) ViewFormatCount() uint32 {
 // WithViewFormatCount sets the value for the ViewFormatCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x FramebufferAttachmentImageInfo) WithViewFormatCount(y uint32) FramebufferAttachmentImageInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.viewFormatCount = *ptr
+	x.viewFormatCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -34838,15 +34080,14 @@ func (x FramebufferAttachmentImageInfo) PViewFormats() []Format {
 // The specification defines ViewFormatCount as the length of this field.
 // ViewFormatCount is updated with the length of the new value.
 func (x FramebufferAttachmentImageInfo) WithPViewFormats(y []Format) FramebufferAttachmentImageInfo {
-	ptr := func(x *[]Format) **C.VkFormat { /* Slice */
+	x.pViewFormats = *(func(x *[]Format) **C.VkFormat { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkFormat)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.VkFormat)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pViewFormats = *ptr
+	}(&y))
 	return x.WithViewFormatCount(uint32(len(y)))
 }
 
@@ -34907,8 +34148,7 @@ func (x RenderPassAttachmentBeginInfo) WithDefaultSType() RenderPassAttachmentBe
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x RenderPassAttachmentBeginInfo) WithSType(y StructureType) RenderPassAttachmentBeginInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -34921,8 +34161,7 @@ func (x RenderPassAttachmentBeginInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x RenderPassAttachmentBeginInfo) WithPNext(y unsafe.Pointer) RenderPassAttachmentBeginInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -34935,8 +34174,7 @@ func (x RenderPassAttachmentBeginInfo) AttachmentCount() uint32 {
 // WithAttachmentCount sets the value for the AttachmentCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x RenderPassAttachmentBeginInfo) WithAttachmentCount(y uint32) RenderPassAttachmentBeginInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.attachmentCount = *ptr
+	x.attachmentCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -34955,15 +34193,14 @@ func (x RenderPassAttachmentBeginInfo) PAttachments() []ImageView {
 // The specification defines AttachmentCount as the length of this field.
 // AttachmentCount is updated with the length of the new value.
 func (x RenderPassAttachmentBeginInfo) WithPAttachments(y []ImageView) RenderPassAttachmentBeginInfo {
-	ptr := func(x *[]ImageView) **C.VkImageView { /* Slice */
+	x.pAttachments = *(func(x *[]ImageView) **C.VkImageView { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkImageView)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.VkImageView)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pAttachments = *ptr
+	}(&y))
 	return x.WithAttachmentCount(uint32(len(y)))
 }
 
@@ -35024,8 +34261,7 @@ func (x PhysicalDeviceUniformBufferStandardLayoutFeatures) WithDefaultSType() Ph
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceUniformBufferStandardLayoutFeatures) WithSType(y StructureType) PhysicalDeviceUniformBufferStandardLayoutFeatures {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -35038,8 +34274,7 @@ func (x PhysicalDeviceUniformBufferStandardLayoutFeatures) PNext() unsafe.Pointe
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceUniformBufferStandardLayoutFeatures) WithPNext(y unsafe.Pointer) PhysicalDeviceUniformBufferStandardLayoutFeatures {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -35052,8 +34287,7 @@ func (x PhysicalDeviceUniformBufferStandardLayoutFeatures) UniformBufferStandard
 // WithUniformBufferStandardLayout sets the value for the UniformBufferStandardLayout on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceUniformBufferStandardLayoutFeatures) WithUniformBufferStandardLayout(y Bool32) PhysicalDeviceUniformBufferStandardLayoutFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.uniformBufferStandardLayout = *ptr
+	x.uniformBufferStandardLayout = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -35114,8 +34348,7 @@ func (x PhysicalDeviceShaderSubgroupExtendedTypesFeatures) WithDefaultSType() Ph
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceShaderSubgroupExtendedTypesFeatures) WithSType(y StructureType) PhysicalDeviceShaderSubgroupExtendedTypesFeatures {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -35128,8 +34361,7 @@ func (x PhysicalDeviceShaderSubgroupExtendedTypesFeatures) PNext() unsafe.Pointe
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceShaderSubgroupExtendedTypesFeatures) WithPNext(y unsafe.Pointer) PhysicalDeviceShaderSubgroupExtendedTypesFeatures {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -35142,8 +34374,7 @@ func (x PhysicalDeviceShaderSubgroupExtendedTypesFeatures) ShaderSubgroupExtende
 // WithShaderSubgroupExtendedTypes sets the value for the ShaderSubgroupExtendedTypes on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceShaderSubgroupExtendedTypesFeatures) WithShaderSubgroupExtendedTypes(y Bool32) PhysicalDeviceShaderSubgroupExtendedTypesFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderSubgroupExtendedTypes = *ptr
+	x.shaderSubgroupExtendedTypes = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -35204,8 +34435,7 @@ func (x PhysicalDeviceSeparateDepthStencilLayoutsFeatures) WithDefaultSType() Ph
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceSeparateDepthStencilLayoutsFeatures) WithSType(y StructureType) PhysicalDeviceSeparateDepthStencilLayoutsFeatures {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -35218,8 +34448,7 @@ func (x PhysicalDeviceSeparateDepthStencilLayoutsFeatures) PNext() unsafe.Pointe
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceSeparateDepthStencilLayoutsFeatures) WithPNext(y unsafe.Pointer) PhysicalDeviceSeparateDepthStencilLayoutsFeatures {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -35232,8 +34461,7 @@ func (x PhysicalDeviceSeparateDepthStencilLayoutsFeatures) SeparateDepthStencilL
 // WithSeparateDepthStencilLayouts sets the value for the SeparateDepthStencilLayouts on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceSeparateDepthStencilLayoutsFeatures) WithSeparateDepthStencilLayouts(y Bool32) PhysicalDeviceSeparateDepthStencilLayoutsFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.separateDepthStencilLayouts = *ptr
+	x.separateDepthStencilLayouts = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -35294,8 +34522,7 @@ func (x AttachmentReferenceStencilLayout) WithDefaultSType() AttachmentReference
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentReferenceStencilLayout) WithSType(y StructureType) AttachmentReferenceStencilLayout {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -35308,8 +34535,7 @@ func (x AttachmentReferenceStencilLayout) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentReferenceStencilLayout) WithPNext(y unsafe.Pointer) AttachmentReferenceStencilLayout {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -35322,8 +34548,7 @@ func (x AttachmentReferenceStencilLayout) StencilLayout() ImageLayout {
 // WithStencilLayout sets the value for the StencilLayout on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentReferenceStencilLayout) WithStencilLayout(y ImageLayout) AttachmentReferenceStencilLayout {
-	ptr := /* typedef */ (*C.VkImageLayout)(&y)
-	x.stencilLayout = *ptr
+	x.stencilLayout = *( /* typedef */ (*C.VkImageLayout)(&y))
 	return x
 }
 
@@ -35384,8 +34609,7 @@ func (x AttachmentDescriptionStencilLayout) WithDefaultSType() AttachmentDescrip
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentDescriptionStencilLayout) WithSType(y StructureType) AttachmentDescriptionStencilLayout {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -35398,8 +34622,7 @@ func (x AttachmentDescriptionStencilLayout) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentDescriptionStencilLayout) WithPNext(y unsafe.Pointer) AttachmentDescriptionStencilLayout {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -35412,8 +34635,7 @@ func (x AttachmentDescriptionStencilLayout) StencilInitialLayout() ImageLayout {
 // WithStencilInitialLayout sets the value for the StencilInitialLayout on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentDescriptionStencilLayout) WithStencilInitialLayout(y ImageLayout) AttachmentDescriptionStencilLayout {
-	ptr := /* typedef */ (*C.VkImageLayout)(&y)
-	x.stencilInitialLayout = *ptr
+	x.stencilInitialLayout = *( /* typedef */ (*C.VkImageLayout)(&y))
 	return x
 }
 
@@ -35426,8 +34648,7 @@ func (x AttachmentDescriptionStencilLayout) StencilFinalLayout() ImageLayout {
 // WithStencilFinalLayout sets the value for the StencilFinalLayout on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AttachmentDescriptionStencilLayout) WithStencilFinalLayout(y ImageLayout) AttachmentDescriptionStencilLayout {
-	ptr := /* typedef */ (*C.VkImageLayout)(&y)
-	x.stencilFinalLayout = *ptr
+	x.stencilFinalLayout = *( /* typedef */ (*C.VkImageLayout)(&y))
 	return x
 }
 
@@ -35488,8 +34709,7 @@ func (x TimelineSemaphoreSubmitInfo) WithDefaultSType() TimelineSemaphoreSubmitI
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x TimelineSemaphoreSubmitInfo) WithSType(y StructureType) TimelineSemaphoreSubmitInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -35502,8 +34722,7 @@ func (x TimelineSemaphoreSubmitInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x TimelineSemaphoreSubmitInfo) WithPNext(y unsafe.Pointer) TimelineSemaphoreSubmitInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -35516,8 +34735,7 @@ func (x TimelineSemaphoreSubmitInfo) WaitSemaphoreValueCount() uint32 {
 // WithWaitSemaphoreValueCount sets the value for the WaitSemaphoreValueCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x TimelineSemaphoreSubmitInfo) WithWaitSemaphoreValueCount(y uint32) TimelineSemaphoreSubmitInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.waitSemaphoreValueCount = *ptr
+	x.waitSemaphoreValueCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -35536,15 +34754,14 @@ func (x TimelineSemaphoreSubmitInfo) PWaitSemaphoreValues() []uint64 {
 // The specification defines WaitSemaphoreValueCount as the length of this field.
 // WaitSemaphoreValueCount is updated with the length of the new value.
 func (x TimelineSemaphoreSubmitInfo) WithPWaitSemaphoreValues(y []uint64) TimelineSemaphoreSubmitInfo {
-	ptr := func(x *[]uint64) **C.ulonglong { /* Slice */
+	x.pWaitSemaphoreValues = *(func(x *[]uint64) **C.ulonglong { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.ulonglong)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.ulonglong)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pWaitSemaphoreValues = *ptr
+	}(&y))
 	return x.WithWaitSemaphoreValueCount(uint32(len(y)))
 }
 
@@ -35557,8 +34774,7 @@ func (x TimelineSemaphoreSubmitInfo) SignalSemaphoreValueCount() uint32 {
 // WithSignalSemaphoreValueCount sets the value for the SignalSemaphoreValueCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x TimelineSemaphoreSubmitInfo) WithSignalSemaphoreValueCount(y uint32) TimelineSemaphoreSubmitInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.signalSemaphoreValueCount = *ptr
+	x.signalSemaphoreValueCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -35577,15 +34793,14 @@ func (x TimelineSemaphoreSubmitInfo) PSignalSemaphoreValues() []uint64 {
 // The specification defines SignalSemaphoreValueCount as the length of this field.
 // SignalSemaphoreValueCount is updated with the length of the new value.
 func (x TimelineSemaphoreSubmitInfo) WithPSignalSemaphoreValues(y []uint64) TimelineSemaphoreSubmitInfo {
-	ptr := func(x *[]uint64) **C.ulonglong { /* Slice */
+	x.pSignalSemaphoreValues = *(func(x *[]uint64) **C.ulonglong { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.ulonglong)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.ulonglong)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pSignalSemaphoreValues = *ptr
+	}(&y))
 	return x.WithSignalSemaphoreValueCount(uint32(len(y)))
 }
 
@@ -35646,8 +34861,7 @@ func (x PhysicalDeviceHostQueryResetFeatures) WithDefaultSType() PhysicalDeviceH
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceHostQueryResetFeatures) WithSType(y StructureType) PhysicalDeviceHostQueryResetFeatures {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -35660,8 +34874,7 @@ func (x PhysicalDeviceHostQueryResetFeatures) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceHostQueryResetFeatures) WithPNext(y unsafe.Pointer) PhysicalDeviceHostQueryResetFeatures {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -35674,8 +34887,7 @@ func (x PhysicalDeviceHostQueryResetFeatures) HostQueryReset() Bool32 {
 // WithHostQueryReset sets the value for the HostQueryReset on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceHostQueryResetFeatures) WithHostQueryReset(y Bool32) PhysicalDeviceHostQueryResetFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.hostQueryReset = *ptr
+	x.hostQueryReset = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -35736,8 +34948,7 @@ func (x SemaphoreTypeCreateInfo) WithDefaultSType() SemaphoreTypeCreateInfo {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SemaphoreTypeCreateInfo) WithSType(y StructureType) SemaphoreTypeCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -35750,8 +34961,7 @@ func (x SemaphoreTypeCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SemaphoreTypeCreateInfo) WithPNext(y unsafe.Pointer) SemaphoreTypeCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -35764,8 +34974,7 @@ func (x SemaphoreTypeCreateInfo) SemaphoreType() SemaphoreType {
 // WithSemaphoreType sets the value for the SemaphoreType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SemaphoreTypeCreateInfo) WithSemaphoreType(y SemaphoreType) SemaphoreTypeCreateInfo {
-	ptr := /* typedef */ (*C.VkSemaphoreType)(&y)
-	x.semaphoreType = *ptr
+	x.semaphoreType = *( /* typedef */ (*C.VkSemaphoreType)(&y))
 	return x
 }
 
@@ -35778,8 +34987,7 @@ func (x SemaphoreTypeCreateInfo) InitialValue() uint64 {
 // WithInitialValue sets the value for the InitialValue on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SemaphoreTypeCreateInfo) WithInitialValue(y uint64) SemaphoreTypeCreateInfo {
-	ptr := func(x *uint64) *C.ulonglong { /* Scalar */ g2c := C.ulonglong(*x); return &g2c }(&y)
-	x.initialValue = *ptr
+	x.initialValue = *(func(x *uint64) *C.ulonglong { /* Scalar */ g2c := C.ulonglong(*x); return &g2c }(&y))
 	return x
 }
 
@@ -35840,8 +35048,7 @@ func (x PhysicalDeviceTimelineSemaphoreProperties) WithDefaultSType() PhysicalDe
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceTimelineSemaphoreProperties) WithSType(y StructureType) PhysicalDeviceTimelineSemaphoreProperties {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -35854,8 +35061,7 @@ func (x PhysicalDeviceTimelineSemaphoreProperties) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceTimelineSemaphoreProperties) WithPNext(y unsafe.Pointer) PhysicalDeviceTimelineSemaphoreProperties {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -35922,8 +35128,7 @@ func (x PhysicalDeviceTimelineSemaphoreFeatures) WithDefaultSType() PhysicalDevi
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceTimelineSemaphoreFeatures) WithSType(y StructureType) PhysicalDeviceTimelineSemaphoreFeatures {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -35936,8 +35141,7 @@ func (x PhysicalDeviceTimelineSemaphoreFeatures) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceTimelineSemaphoreFeatures) WithPNext(y unsafe.Pointer) PhysicalDeviceTimelineSemaphoreFeatures {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -35950,8 +35154,7 @@ func (x PhysicalDeviceTimelineSemaphoreFeatures) TimelineSemaphore() Bool32 {
 // WithTimelineSemaphore sets the value for the TimelineSemaphore on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceTimelineSemaphoreFeatures) WithTimelineSemaphore(y Bool32) PhysicalDeviceTimelineSemaphoreFeatures {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.timelineSemaphore = *ptr
+	x.timelineSemaphore = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -36012,8 +35215,7 @@ func (x DescriptorSetLayoutBindingFlagsCreateInfo) WithDefaultSType() Descriptor
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorSetLayoutBindingFlagsCreateInfo) WithSType(y StructureType) DescriptorSetLayoutBindingFlagsCreateInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -36026,8 +35228,7 @@ func (x DescriptorSetLayoutBindingFlagsCreateInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorSetLayoutBindingFlagsCreateInfo) WithPNext(y unsafe.Pointer) DescriptorSetLayoutBindingFlagsCreateInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -36040,8 +35241,7 @@ func (x DescriptorSetLayoutBindingFlagsCreateInfo) BindingCount() uint32 {
 // WithBindingCount sets the value for the BindingCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorSetLayoutBindingFlagsCreateInfo) WithBindingCount(y uint32) DescriptorSetLayoutBindingFlagsCreateInfo {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.bindingCount = *ptr
+	x.bindingCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -36060,15 +35260,14 @@ func (x DescriptorSetLayoutBindingFlagsCreateInfo) PBindingFlags() []DescriptorB
 // The specification defines BindingCount as the length of this field.
 // BindingCount is updated with the length of the new value.
 func (x DescriptorSetLayoutBindingFlagsCreateInfo) WithPBindingFlags(y []DescriptorBindingFlags) DescriptorSetLayoutBindingFlagsCreateInfo {
-	ptr := func(x *[]DescriptorBindingFlags) **C.VkDescriptorBindingFlags { /* Slice */
+	x.pBindingFlags = *(func(x *[]DescriptorBindingFlags) **C.VkDescriptorBindingFlags { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkDescriptorBindingFlags)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.VkDescriptorBindingFlags)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pBindingFlags = *ptr
+	}(&y))
 	return x.WithBindingCount(uint32(len(y)))
 }
 
@@ -36129,8 +35328,7 @@ func (x DeviceMemoryOpaqueCaptureAddressInfo) WithDefaultSType() DeviceMemoryOpa
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceMemoryOpaqueCaptureAddressInfo) WithSType(y StructureType) DeviceMemoryOpaqueCaptureAddressInfo {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -36143,8 +35341,7 @@ func (x DeviceMemoryOpaqueCaptureAddressInfo) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceMemoryOpaqueCaptureAddressInfo) WithPNext(y unsafe.Pointer) DeviceMemoryOpaqueCaptureAddressInfo {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -36157,11 +35354,12 @@ func (x DeviceMemoryOpaqueCaptureAddressInfo) Memory() DeviceMemory {
 // WithMemory sets the value for the Memory on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceMemoryOpaqueCaptureAddressInfo) WithMemory(y DeviceMemory) DeviceMemoryOpaqueCaptureAddressInfo {
-	ptr := /* handle */ (*C.VkDeviceMemory)(&y)
-	x.memory = *ptr
+	x.memory = *( /* handle */ (*C.VkDeviceMemory)(&y))
 	return x
 }
 
+// WaitSemaphores command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkWaitSemaphores.html
 func (x DeviceFacade) WaitSemaphores(pWaitInfo *SemaphoreWaitInfo, timeout uint64) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -36175,6 +35373,8 @@ func (x DeviceFacade) WaitSemaphores(pWaitInfo *SemaphoreWaitInfo, timeout uint6
 	return *retPtr
 }
 
+// ResetQueryPool command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkResetQueryPool.html
 func (x DeviceFacade) ResetQueryPool(queryPool QueryPool, firstQuery uint32, queryCount uint32) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -36184,6 +35384,8 @@ func (x DeviceFacade) ResetQueryPool(queryPool QueryPool, firstQuery uint32, que
 	C.vkResetQueryPool(addrs, *p0, *p1, *p2, *p3)
 }
 
+// GetSemaphoreCounterValue command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetSemaphoreCounterValue.html
 func (x DeviceFacade) GetSemaphoreCounterValue(semaphore Semaphore, pValue *uint64) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -36194,6 +35396,8 @@ func (x DeviceFacade) GetSemaphoreCounterValue(semaphore Semaphore, pValue *uint
 	return *retPtr
 }
 
+// CmdBeginRenderPass2 command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBeginRenderPass2.html
 func (x CommandBufferFacade) CmdBeginRenderPass2(pRenderPassBegin *RenderPassBeginInfo, pSubpassBeginInfo *SubpassBeginInfo) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -36208,6 +35412,8 @@ func (x CommandBufferFacade) CmdBeginRenderPass2(pRenderPassBegin *RenderPassBeg
 	C.vkCmdBeginRenderPass2(addrs, *p0, *p1, *p2)
 }
 
+// CmdEndRenderPass2 command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdEndRenderPass2.html
 func (x CommandBufferFacade) CmdEndRenderPass2(pSubpassEndInfo *SubpassEndInfo) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -36218,6 +35424,8 @@ func (x CommandBufferFacade) CmdEndRenderPass2(pSubpassEndInfo *SubpassEndInfo) 
 	C.vkCmdEndRenderPass2(addrs, *p0, *p1)
 }
 
+// GetBufferDeviceAddress command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetBufferDeviceAddress.html
 func (x DeviceFacade) GetBufferDeviceAddress(pInfo *BufferDeviceAddressInfo) DeviceAddress {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -36230,6 +35438,8 @@ func (x DeviceFacade) GetBufferDeviceAddress(pInfo *BufferDeviceAddressInfo) Dev
 	return *retPtr
 }
 
+// GetBufferOpaqueCaptureAddress command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetBufferOpaqueCaptureAddress.html
 func (x DeviceFacade) GetBufferOpaqueCaptureAddress(pInfo *BufferDeviceAddressInfo) uint64 {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -36242,6 +35452,8 @@ func (x DeviceFacade) GetBufferOpaqueCaptureAddress(pInfo *BufferDeviceAddressIn
 	return *retPtr
 }
 
+// GetDeviceMemoryOpaqueCaptureAddress command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetDeviceMemoryOpaqueCaptureAddress.html
 func (x DeviceFacade) GetDeviceMemoryOpaqueCaptureAddress(pInfo *DeviceMemoryOpaqueCaptureAddressInfo) uint64 {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -36254,6 +35466,8 @@ func (x DeviceFacade) GetDeviceMemoryOpaqueCaptureAddress(pInfo *DeviceMemoryOpa
 	return *retPtr
 }
 
+// CmdNextSubpass2 command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdNextSubpass2.html
 func (x CommandBufferFacade) CmdNextSubpass2(pSubpassBeginInfo *SubpassBeginInfo, pSubpassEndInfo *SubpassEndInfo) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -36268,6 +35482,8 @@ func (x CommandBufferFacade) CmdNextSubpass2(pSubpassBeginInfo *SubpassBeginInfo
 	C.vkCmdNextSubpass2(addrs, *p0, *p1, *p2)
 }
 
+// CreateRenderPass2 command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateRenderPass2.html
 func (x DeviceFacade) CreateRenderPass2(pCreateInfo *RenderPassCreateInfo2, pAllocator *AllocationCallbacks, pRenderPass *RenderPass) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -36285,6 +35501,8 @@ func (x DeviceFacade) CreateRenderPass2(pCreateInfo *RenderPassCreateInfo2, pAll
 	return *retPtr
 }
 
+// CmdDrawIndexedIndirectCount command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdDrawIndexedIndirectCount.html
 func (x CommandBufferFacade) CmdDrawIndexedIndirectCount(buffer Buffer, offset DeviceSize, countBuffer Buffer, countBufferOffset DeviceSize, maxDrawCount uint32, stride uint32) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -36297,6 +35515,8 @@ func (x CommandBufferFacade) CmdDrawIndexedIndirectCount(buffer Buffer, offset D
 	C.vkCmdDrawIndexedIndirectCount(addrs, *p0, *p1, *p2, *p3, *p4, *p5, *p6)
 }
 
+// CmdDrawIndirectCount command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdDrawIndirectCount.html
 func (x CommandBufferFacade) CmdDrawIndirectCount(buffer Buffer, offset DeviceSize, countBuffer Buffer, countBufferOffset DeviceSize, maxDrawCount uint32, stride uint32) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkCommandBuffer)(&x.H)
@@ -36309,6 +35529,8 @@ func (x CommandBufferFacade) CmdDrawIndirectCount(buffer Buffer, offset DeviceSi
 	C.vkCmdDrawIndirectCount(addrs, *p0, *p1, *p2, *p3, *p4, *p5, *p6)
 }
 
+// SignalSemaphore command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkSignalSemaphore.html
 func (x DeviceFacade) SignalSemaphore(pSignalInfo *SemaphoreSignalInfo) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -36330,7 +35552,7 @@ type SurfaceKHR C.VkSurfaceKHR
 // NullSurfaceKHR is a typed Null value for the SurfaceKHR type.
 var NullSurfaceKHR SurfaceKHR
 
-// PresentModeKHR is an Enum from the Vulkan API.
+// PresentModeKHR enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkPresentModeKHR.html
 type PresentModeKHR uint32
 
@@ -36357,7 +35579,7 @@ func (x PresentModeKHR) String() string {
 	return fmt.Sprintf("PresentModeKHR=%d", x)
 }
 
-// CompositeAlphaFlagBitsKHR is an Enum from the Vulkan API.
+// CompositeAlphaFlagBitsKHR enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCompositeAlphaFlagBitsKHR.html
 type CompositeAlphaFlagBitsKHR uint32
 
@@ -36384,7 +35606,7 @@ func (x CompositeAlphaFlagBitsKHR) String() string {
 	return fmt.Sprintf("CompositeAlphaFlagBitsKHR=%d", x)
 }
 
-// ColorSpaceKHR is an Enum from the Vulkan API.
+// ColorSpaceKHR enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkColorSpaceKHR.html
 type ColorSpaceKHR uint32
 
@@ -36406,7 +35628,7 @@ func (x ColorSpaceKHR) String() string {
 	return fmt.Sprintf("ColorSpaceKHR=%d", x)
 }
 
-// SurfaceTransformFlagBitsKHR is an Enum from the Vulkan API.
+// SurfaceTransformFlagBitsKHR enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSurfaceTransformFlagBitsKHR.html
 type SurfaceTransformFlagBitsKHR uint32
 
@@ -36607,6 +35829,8 @@ func (x SurfaceFormatKHR) ColorSpace() ColorSpaceKHR {
 	return *ptr
 }
 
+// GetPhysicalDeviceSurfacePresentModesKHR command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceSurfacePresentModesKHR.html
 func (x PhysicalDeviceFacade) GetPhysicalDeviceSurfacePresentModesKHR(surface SurfaceKHR, pPresentModeCount *uint32, pPresentModes []PresentModeKHR) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -36625,6 +35849,8 @@ func (x PhysicalDeviceFacade) GetPhysicalDeviceSurfacePresentModesKHR(surface Su
 	return *retPtr
 }
 
+// GetPhysicalDeviceSurfaceFormatsKHR command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceSurfaceFormatsKHR.html
 func (x PhysicalDeviceFacade) GetPhysicalDeviceSurfaceFormatsKHR(surface SurfaceKHR, pSurfaceFormatCount *uint32, pSurfaceFormats []SurfaceFormatKHR) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -36643,6 +35869,8 @@ func (x PhysicalDeviceFacade) GetPhysicalDeviceSurfaceFormatsKHR(surface Surface
 	return *retPtr
 }
 
+// GetPhysicalDeviceSurfaceCapabilitiesKHR command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceSurfaceCapabilitiesKHR.html
 func (x PhysicalDeviceFacade) GetPhysicalDeviceSurfaceCapabilitiesKHR(surface SurfaceKHR, pSurfaceCapabilities *SurfaceCapabilitiesKHR) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -36656,6 +35884,8 @@ func (x PhysicalDeviceFacade) GetPhysicalDeviceSurfaceCapabilitiesKHR(surface Su
 	return *retPtr
 }
 
+// GetPhysicalDeviceSurfaceSupportKHR command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceSurfaceSupportKHR.html
 func (x PhysicalDeviceFacade) GetPhysicalDeviceSurfaceSupportKHR(queueFamilyIndex uint32, surface SurfaceKHR, pSupported *Bool32) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -36667,6 +35897,8 @@ func (x PhysicalDeviceFacade) GetPhysicalDeviceSurfaceSupportKHR(queueFamilyInde
 	return *retPtr
 }
 
+// DestroySurfaceKHR command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroySurfaceKHR.html
 func (x InstanceFacade) DestroySurfaceKHR(surface SurfaceKHR, pAllocator *AllocationCallbacks) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkInstance)(&x.H)
@@ -36735,8 +35967,7 @@ func (x PhysicalDeviceSurfaceInfo2KHR) WithDefaultSType() PhysicalDeviceSurfaceI
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceSurfaceInfo2KHR) WithSType(y StructureType) PhysicalDeviceSurfaceInfo2KHR {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -36749,8 +35980,7 @@ func (x PhysicalDeviceSurfaceInfo2KHR) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceSurfaceInfo2KHR) WithPNext(y unsafe.Pointer) PhysicalDeviceSurfaceInfo2KHR {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -36763,8 +35993,7 @@ func (x PhysicalDeviceSurfaceInfo2KHR) Surface() SurfaceKHR {
 // WithSurface sets the value for the Surface on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceSurfaceInfo2KHR) WithSurface(y SurfaceKHR) PhysicalDeviceSurfaceInfo2KHR {
-	ptr := /* handle */ (*C.VkSurfaceKHR)(&y)
-	x.surface = *ptr
+	x.surface = *( /* handle */ (*C.VkSurfaceKHR)(&y))
 	return x
 }
 
@@ -36825,8 +36054,7 @@ func (x SurfaceCapabilities2KHR) WithDefaultSType() SurfaceCapabilities2KHR {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SurfaceCapabilities2KHR) WithSType(y StructureType) SurfaceCapabilities2KHR {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -36839,8 +36067,7 @@ func (x SurfaceCapabilities2KHR) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SurfaceCapabilities2KHR) WithPNext(y unsafe.Pointer) SurfaceCapabilities2KHR {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -36907,8 +36134,7 @@ func (x SurfaceFormat2KHR) WithDefaultSType() SurfaceFormat2KHR {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SurfaceFormat2KHR) WithSType(y StructureType) SurfaceFormat2KHR {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -36921,8 +36147,7 @@ func (x SurfaceFormat2KHR) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SurfaceFormat2KHR) WithPNext(y unsafe.Pointer) SurfaceFormat2KHR {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -36932,6 +36157,8 @@ func (x SurfaceFormat2KHR) SurfaceFormat() SurfaceFormatKHR {
 	return *ptr
 }
 
+// GetPhysicalDeviceSurfaceCapabilities2KHR command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceSurfaceCapabilities2KHR.html
 func (x PhysicalDeviceFacade) GetPhysicalDeviceSurfaceCapabilities2KHR(pSurfaceInfo *PhysicalDeviceSurfaceInfo2KHR, pSurfaceCapabilities *SurfaceCapabilities2KHR) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -36948,6 +36175,8 @@ func (x PhysicalDeviceFacade) GetPhysicalDeviceSurfaceCapabilities2KHR(pSurfaceI
 	return *retPtr
 }
 
+// GetPhysicalDeviceSurfaceFormats2KHR command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceSurfaceFormats2KHR.html
 func (x PhysicalDeviceFacade) GetPhysicalDeviceSurfaceFormats2KHR(pSurfaceInfo *PhysicalDeviceSurfaceInfo2KHR, pSurfaceFormatCount *uint32, pSurfaceFormats []SurfaceFormat2KHR) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -37026,8 +36255,7 @@ func (x SurfaceProtectedCapabilitiesKHR) WithDefaultSType() SurfaceProtectedCapa
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SurfaceProtectedCapabilitiesKHR) WithSType(y StructureType) SurfaceProtectedCapabilitiesKHR {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -37040,8 +36268,7 @@ func (x SurfaceProtectedCapabilitiesKHR) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SurfaceProtectedCapabilitiesKHR) WithPNext(y unsafe.Pointer) SurfaceProtectedCapabilitiesKHR {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -37054,8 +36281,7 @@ func (x SurfaceProtectedCapabilitiesKHR) SupportsProtected() Bool32 {
 // WithSupportsProtected sets the value for the SupportsProtected on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SurfaceProtectedCapabilitiesKHR) WithSupportsProtected(y Bool32) SurfaceProtectedCapabilitiesKHR {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.supportsProtected = *ptr
+	x.supportsProtected = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -37068,7 +36294,7 @@ type SwapchainKHR C.VkSwapchainKHR
 // NullSwapchainKHR is a typed Null value for the SwapchainKHR type.
 var NullSwapchainKHR SwapchainKHR
 
-// SwapchainCreateFlagBitsKHR is an Enum from the Vulkan API.
+// SwapchainCreateFlagBitsKHR enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSwapchainCreateFlagBitsKHR.html
 type SwapchainCreateFlagBitsKHR uint32
 
@@ -37091,7 +36317,7 @@ func (x SwapchainCreateFlagBitsKHR) String() string {
 	return fmt.Sprintf("SwapchainCreateFlagBitsKHR=%d", x)
 }
 
-// DeviceGroupPresentModeFlagBitsKHR is an Enum from the Vulkan API.
+// DeviceGroupPresentModeFlagBitsKHR enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceGroupPresentModeFlagBitsKHR.html
 type DeviceGroupPresentModeFlagBitsKHR uint32
 
@@ -37183,8 +36409,7 @@ func (x BindImageMemorySwapchainInfoKHR) WithDefaultSType() BindImageMemorySwapc
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BindImageMemorySwapchainInfoKHR) WithSType(y StructureType) BindImageMemorySwapchainInfoKHR {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -37197,8 +36422,7 @@ func (x BindImageMemorySwapchainInfoKHR) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BindImageMemorySwapchainInfoKHR) WithPNext(y unsafe.Pointer) BindImageMemorySwapchainInfoKHR {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -37211,8 +36435,7 @@ func (x BindImageMemorySwapchainInfoKHR) Swapchain() SwapchainKHR {
 // WithSwapchain sets the value for the Swapchain on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BindImageMemorySwapchainInfoKHR) WithSwapchain(y SwapchainKHR) BindImageMemorySwapchainInfoKHR {
-	ptr := /* handle */ (*C.VkSwapchainKHR)(&y)
-	x.swapchain = *ptr
+	x.swapchain = *( /* handle */ (*C.VkSwapchainKHR)(&y))
 	return x
 }
 
@@ -37225,8 +36448,7 @@ func (x BindImageMemorySwapchainInfoKHR) ImageIndex() uint32 {
 // WithImageIndex sets the value for the ImageIndex on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x BindImageMemorySwapchainInfoKHR) WithImageIndex(y uint32) BindImageMemorySwapchainInfoKHR {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.imageIndex = *ptr
+	x.imageIndex = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -37287,8 +36509,7 @@ func (x SwapchainCreateInfoKHR) WithDefaultSType() SwapchainCreateInfoKHR {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SwapchainCreateInfoKHR) WithSType(y StructureType) SwapchainCreateInfoKHR {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -37301,8 +36522,7 @@ func (x SwapchainCreateInfoKHR) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SwapchainCreateInfoKHR) WithPNext(y unsafe.Pointer) SwapchainCreateInfoKHR {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -37315,8 +36535,7 @@ func (x SwapchainCreateInfoKHR) Flags() SwapchainCreateFlagsKHR {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SwapchainCreateInfoKHR) WithFlags(y SwapchainCreateFlagsKHR) SwapchainCreateInfoKHR {
-	ptr := /* typedef */ (*C.VkSwapchainCreateFlagsKHR)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkSwapchainCreateFlagsKHR)(&y))
 	return x
 }
 
@@ -37329,8 +36548,7 @@ func (x SwapchainCreateInfoKHR) Surface() SurfaceKHR {
 // WithSurface sets the value for the Surface on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SwapchainCreateInfoKHR) WithSurface(y SurfaceKHR) SwapchainCreateInfoKHR {
-	ptr := /* handle */ (*C.VkSurfaceKHR)(&y)
-	x.surface = *ptr
+	x.surface = *( /* handle */ (*C.VkSurfaceKHR)(&y))
 	return x
 }
 
@@ -37343,8 +36561,7 @@ func (x SwapchainCreateInfoKHR) MinImageCount() uint32 {
 // WithMinImageCount sets the value for the MinImageCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SwapchainCreateInfoKHR) WithMinImageCount(y uint32) SwapchainCreateInfoKHR {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.minImageCount = *ptr
+	x.minImageCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -37357,8 +36574,7 @@ func (x SwapchainCreateInfoKHR) ImageFormat() Format {
 // WithImageFormat sets the value for the ImageFormat on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SwapchainCreateInfoKHR) WithImageFormat(y Format) SwapchainCreateInfoKHR {
-	ptr := /* typedef */ (*C.VkFormat)(&y)
-	x.imageFormat = *ptr
+	x.imageFormat = *( /* typedef */ (*C.VkFormat)(&y))
 	return x
 }
 
@@ -37371,8 +36587,7 @@ func (x SwapchainCreateInfoKHR) ImageColorSpace() ColorSpaceKHR {
 // WithImageColorSpace sets the value for the ImageColorSpace on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SwapchainCreateInfoKHR) WithImageColorSpace(y ColorSpaceKHR) SwapchainCreateInfoKHR {
-	ptr := /* typedef */ (*C.VkColorSpaceKHR)(&y)
-	x.imageColorSpace = *ptr
+	x.imageColorSpace = *( /* typedef */ (*C.VkColorSpaceKHR)(&y))
 	return x
 }
 
@@ -37385,8 +36600,7 @@ func (x SwapchainCreateInfoKHR) ImageExtent() Extent2D {
 // WithImageExtent sets the value for the ImageExtent on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SwapchainCreateInfoKHR) WithImageExtent(y Extent2D) SwapchainCreateInfoKHR {
-	ptr := /* typedef */ (*C.struct_VkExtent2D)(&y)
-	x.imageExtent = *ptr
+	x.imageExtent = *( /* typedef */ (*C.struct_VkExtent2D)(&y))
 	return x
 }
 
@@ -37399,8 +36613,7 @@ func (x SwapchainCreateInfoKHR) ImageArrayLayers() uint32 {
 // WithImageArrayLayers sets the value for the ImageArrayLayers on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SwapchainCreateInfoKHR) WithImageArrayLayers(y uint32) SwapchainCreateInfoKHR {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.imageArrayLayers = *ptr
+	x.imageArrayLayers = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -37413,8 +36626,7 @@ func (x SwapchainCreateInfoKHR) ImageUsage() ImageUsageFlags {
 // WithImageUsage sets the value for the ImageUsage on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SwapchainCreateInfoKHR) WithImageUsage(y ImageUsageFlags) SwapchainCreateInfoKHR {
-	ptr := /* typedef */ (*C.VkImageUsageFlags)(&y)
-	x.imageUsage = *ptr
+	x.imageUsage = *( /* typedef */ (*C.VkImageUsageFlags)(&y))
 	return x
 }
 
@@ -37427,8 +36639,7 @@ func (x SwapchainCreateInfoKHR) ImageSharingMode() SharingMode {
 // WithImageSharingMode sets the value for the ImageSharingMode on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SwapchainCreateInfoKHR) WithImageSharingMode(y SharingMode) SwapchainCreateInfoKHR {
-	ptr := /* typedef */ (*C.VkSharingMode)(&y)
-	x.imageSharingMode = *ptr
+	x.imageSharingMode = *( /* typedef */ (*C.VkSharingMode)(&y))
 	return x
 }
 
@@ -37441,8 +36652,7 @@ func (x SwapchainCreateInfoKHR) QueueFamilyIndexCount() uint32 {
 // WithQueueFamilyIndexCount sets the value for the QueueFamilyIndexCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SwapchainCreateInfoKHR) WithQueueFamilyIndexCount(y uint32) SwapchainCreateInfoKHR {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.queueFamilyIndexCount = *ptr
+	x.queueFamilyIndexCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -37461,15 +36671,14 @@ func (x SwapchainCreateInfoKHR) PQueueFamilyIndices() []uint32 {
 // The specification defines QueueFamilyIndexCount as the length of this field.
 // QueueFamilyIndexCount is updated with the length of the new value.
 func (x SwapchainCreateInfoKHR) WithPQueueFamilyIndices(y []uint32) SwapchainCreateInfoKHR {
-	ptr := func(x *[]uint32) **C.uint { /* Slice */
+	x.pQueueFamilyIndices = *(func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.uint)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pQueueFamilyIndices = *ptr
+	}(&y))
 	return x.WithQueueFamilyIndexCount(uint32(len(y)))
 }
 
@@ -37482,8 +36691,7 @@ func (x SwapchainCreateInfoKHR) PreTransform() SurfaceTransformFlagBitsKHR {
 // WithPreTransform sets the value for the PreTransform on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SwapchainCreateInfoKHR) WithPreTransform(y SurfaceTransformFlagBitsKHR) SwapchainCreateInfoKHR {
-	ptr := /* typedef */ (*C.VkSurfaceTransformFlagBitsKHR)(&y)
-	x.preTransform = *ptr
+	x.preTransform = *( /* typedef */ (*C.VkSurfaceTransformFlagBitsKHR)(&y))
 	return x
 }
 
@@ -37496,8 +36704,7 @@ func (x SwapchainCreateInfoKHR) CompositeAlpha() CompositeAlphaFlagBitsKHR {
 // WithCompositeAlpha sets the value for the CompositeAlpha on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SwapchainCreateInfoKHR) WithCompositeAlpha(y CompositeAlphaFlagBitsKHR) SwapchainCreateInfoKHR {
-	ptr := /* typedef */ (*C.VkCompositeAlphaFlagBitsKHR)(&y)
-	x.compositeAlpha = *ptr
+	x.compositeAlpha = *( /* typedef */ (*C.VkCompositeAlphaFlagBitsKHR)(&y))
 	return x
 }
 
@@ -37510,8 +36717,7 @@ func (x SwapchainCreateInfoKHR) PresentMode() PresentModeKHR {
 // WithPresentMode sets the value for the PresentMode on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SwapchainCreateInfoKHR) WithPresentMode(y PresentModeKHR) SwapchainCreateInfoKHR {
-	ptr := /* typedef */ (*C.VkPresentModeKHR)(&y)
-	x.presentMode = *ptr
+	x.presentMode = *( /* typedef */ (*C.VkPresentModeKHR)(&y))
 	return x
 }
 
@@ -37524,8 +36730,7 @@ func (x SwapchainCreateInfoKHR) Clipped() Bool32 {
 // WithClipped sets the value for the Clipped on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SwapchainCreateInfoKHR) WithClipped(y Bool32) SwapchainCreateInfoKHR {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.clipped = *ptr
+	x.clipped = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -37538,8 +36743,7 @@ func (x SwapchainCreateInfoKHR) OldSwapchain() SwapchainKHR {
 // WithOldSwapchain sets the value for the OldSwapchain on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SwapchainCreateInfoKHR) WithOldSwapchain(y SwapchainKHR) SwapchainCreateInfoKHR {
-	ptr := /* handle */ (*C.VkSwapchainKHR)(&y)
-	x.oldSwapchain = *ptr
+	x.oldSwapchain = *( /* handle */ (*C.VkSwapchainKHR)(&y))
 	return x
 }
 
@@ -37600,8 +36804,7 @@ func (x PresentInfoKHR) WithDefaultSType() PresentInfoKHR {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PresentInfoKHR) WithSType(y StructureType) PresentInfoKHR {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -37614,8 +36817,7 @@ func (x PresentInfoKHR) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PresentInfoKHR) WithPNext(y unsafe.Pointer) PresentInfoKHR {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -37628,8 +36830,7 @@ func (x PresentInfoKHR) WaitSemaphoreCount() uint32 {
 // WithWaitSemaphoreCount sets the value for the WaitSemaphoreCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PresentInfoKHR) WithWaitSemaphoreCount(y uint32) PresentInfoKHR {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.waitSemaphoreCount = *ptr
+	x.waitSemaphoreCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -37648,15 +36849,14 @@ func (x PresentInfoKHR) PWaitSemaphores() []Semaphore {
 // The specification defines WaitSemaphoreCount as the length of this field.
 // WaitSemaphoreCount is updated with the length of the new value.
 func (x PresentInfoKHR) WithPWaitSemaphores(y []Semaphore) PresentInfoKHR {
-	ptr := func(x *[]Semaphore) **C.VkSemaphore { /* Slice */
+	x.pWaitSemaphores = *(func(x *[]Semaphore) **C.VkSemaphore { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkSemaphore)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.VkSemaphore)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pWaitSemaphores = *ptr
+	}(&y))
 	return x.WithWaitSemaphoreCount(uint32(len(y)))
 }
 
@@ -37669,8 +36869,7 @@ func (x PresentInfoKHR) SwapchainCount() uint32 {
 // WithSwapchainCount sets the value for the SwapchainCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PresentInfoKHR) WithSwapchainCount(y uint32) PresentInfoKHR {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.swapchainCount = *ptr
+	x.swapchainCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -37689,15 +36888,14 @@ func (x PresentInfoKHR) PSwapchains() []SwapchainKHR {
 // The specification defines SwapchainCount as the length of this field.
 // SwapchainCount is updated with the length of the new value.
 func (x PresentInfoKHR) WithPSwapchains(y []SwapchainKHR) PresentInfoKHR {
-	ptr := func(x *[]SwapchainKHR) **C.VkSwapchainKHR { /* Slice */
+	x.pSwapchains = *(func(x *[]SwapchainKHR) **C.VkSwapchainKHR { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkSwapchainKHR)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.VkSwapchainKHR)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pSwapchains = *ptr
+	}(&y))
 	return x.WithSwapchainCount(uint32(len(y)))
 }
 
@@ -37716,15 +36914,14 @@ func (x PresentInfoKHR) PImageIndices() []uint32 {
 // The specification defines SwapchainCount as the length of this field.
 // SwapchainCount is updated with the length of the new value.
 func (x PresentInfoKHR) WithPImageIndices(y []uint32) PresentInfoKHR {
-	ptr := func(x *[]uint32) **C.uint { /* Slice */
+	x.pImageIndices = *(func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.uint)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pImageIndices = *ptr
+	}(&y))
 	return x.WithSwapchainCount(uint32(len(y)))
 }
 
@@ -37743,15 +36940,14 @@ func (x PresentInfoKHR) PResults() []Result {
 // The specification defines SwapchainCount as the length of this field.
 // SwapchainCount is updated with the length of the new value.
 func (x PresentInfoKHR) WithPResults(y []Result) PresentInfoKHR {
-	ptr := func(x *[]Result) **C.VkResult { /* Slice */
+	x.pResults = *(func(x *[]Result) **C.VkResult { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.VkResult)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.VkResult)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pResults = *ptr
+	}(&y))
 	return x.WithSwapchainCount(uint32(len(y)))
 }
 
@@ -37812,8 +37008,7 @@ func (x DeviceGroupPresentCapabilitiesKHR) WithDefaultSType() DeviceGroupPresent
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceGroupPresentCapabilitiesKHR) WithSType(y StructureType) DeviceGroupPresentCapabilitiesKHR {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -37826,8 +37021,7 @@ func (x DeviceGroupPresentCapabilitiesKHR) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceGroupPresentCapabilitiesKHR) WithPNext(y unsafe.Pointer) DeviceGroupPresentCapabilitiesKHR {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -37903,8 +37097,7 @@ func (x DeviceGroupPresentInfoKHR) WithDefaultSType() DeviceGroupPresentInfoKHR 
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceGroupPresentInfoKHR) WithSType(y StructureType) DeviceGroupPresentInfoKHR {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -37917,8 +37110,7 @@ func (x DeviceGroupPresentInfoKHR) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceGroupPresentInfoKHR) WithPNext(y unsafe.Pointer) DeviceGroupPresentInfoKHR {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -37931,8 +37123,7 @@ func (x DeviceGroupPresentInfoKHR) SwapchainCount() uint32 {
 // WithSwapchainCount sets the value for the SwapchainCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceGroupPresentInfoKHR) WithSwapchainCount(y uint32) DeviceGroupPresentInfoKHR {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.swapchainCount = *ptr
+	x.swapchainCount = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -37951,15 +37142,14 @@ func (x DeviceGroupPresentInfoKHR) PDeviceMasks() []uint32 {
 // The specification defines SwapchainCount as the length of this field.
 // SwapchainCount is updated with the length of the new value.
 func (x DeviceGroupPresentInfoKHR) WithPDeviceMasks(y []uint32) DeviceGroupPresentInfoKHR {
-	ptr := func(x *[]uint32) **C.uint { /* Slice */
+	x.pDeviceMasks = *(func(x *[]uint32) **C.uint { /* Slice */
 		if len(*x) > 0 {
 			slc := (*C.uint)(unsafe.Pointer(&((*x)[0])))
 			return &slc
 		}
 		var ptr unsafe.Pointer
 		return (**C.uint)(unsafe.Pointer((&ptr)))
-	}(&y)
-	x.pDeviceMasks = *ptr
+	}(&y))
 	return x.WithSwapchainCount(uint32(len(y)))
 }
 
@@ -37972,8 +37162,7 @@ func (x DeviceGroupPresentInfoKHR) Mode() DeviceGroupPresentModeFlagBitsKHR {
 // WithMode sets the value for the Mode on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceGroupPresentInfoKHR) WithMode(y DeviceGroupPresentModeFlagBitsKHR) DeviceGroupPresentInfoKHR {
-	ptr := /* typedef */ (*C.VkDeviceGroupPresentModeFlagBitsKHR)(&y)
-	x.mode = *ptr
+	x.mode = *( /* typedef */ (*C.VkDeviceGroupPresentModeFlagBitsKHR)(&y))
 	return x
 }
 
@@ -38034,8 +37223,7 @@ func (x DeviceGroupSwapchainCreateInfoKHR) WithDefaultSType() DeviceGroupSwapcha
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceGroupSwapchainCreateInfoKHR) WithSType(y StructureType) DeviceGroupSwapchainCreateInfoKHR {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -38048,8 +37236,7 @@ func (x DeviceGroupSwapchainCreateInfoKHR) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceGroupSwapchainCreateInfoKHR) WithPNext(y unsafe.Pointer) DeviceGroupSwapchainCreateInfoKHR {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -38062,8 +37249,7 @@ func (x DeviceGroupSwapchainCreateInfoKHR) Modes() DeviceGroupPresentModeFlagsKH
 // WithModes sets the value for the Modes on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DeviceGroupSwapchainCreateInfoKHR) WithModes(y DeviceGroupPresentModeFlagsKHR) DeviceGroupSwapchainCreateInfoKHR {
-	ptr := /* typedef */ (*C.VkDeviceGroupPresentModeFlagsKHR)(&y)
-	x.modes = *ptr
+	x.modes = *( /* typedef */ (*C.VkDeviceGroupPresentModeFlagsKHR)(&y))
 	return x
 }
 
@@ -38124,8 +37310,7 @@ func (x AcquireNextImageInfoKHR) WithDefaultSType() AcquireNextImageInfoKHR {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AcquireNextImageInfoKHR) WithSType(y StructureType) AcquireNextImageInfoKHR {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -38138,8 +37323,7 @@ func (x AcquireNextImageInfoKHR) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AcquireNextImageInfoKHR) WithPNext(y unsafe.Pointer) AcquireNextImageInfoKHR {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -38152,8 +37336,7 @@ func (x AcquireNextImageInfoKHR) Swapchain() SwapchainKHR {
 // WithSwapchain sets the value for the Swapchain on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AcquireNextImageInfoKHR) WithSwapchain(y SwapchainKHR) AcquireNextImageInfoKHR {
-	ptr := /* handle */ (*C.VkSwapchainKHR)(&y)
-	x.swapchain = *ptr
+	x.swapchain = *( /* handle */ (*C.VkSwapchainKHR)(&y))
 	return x
 }
 
@@ -38166,8 +37349,7 @@ func (x AcquireNextImageInfoKHR) Timeout() uint64 {
 // WithTimeout sets the value for the Timeout on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AcquireNextImageInfoKHR) WithTimeout(y uint64) AcquireNextImageInfoKHR {
-	ptr := func(x *uint64) *C.ulonglong { /* Scalar */ g2c := C.ulonglong(*x); return &g2c }(&y)
-	x.timeout = *ptr
+	x.timeout = *(func(x *uint64) *C.ulonglong { /* Scalar */ g2c := C.ulonglong(*x); return &g2c }(&y))
 	return x
 }
 
@@ -38180,8 +37362,7 @@ func (x AcquireNextImageInfoKHR) Semaphore() Semaphore {
 // WithSemaphore sets the value for the Semaphore on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AcquireNextImageInfoKHR) WithSemaphore(y Semaphore) AcquireNextImageInfoKHR {
-	ptr := /* handle */ (*C.VkSemaphore)(&y)
-	x.semaphore = *ptr
+	x.semaphore = *( /* handle */ (*C.VkSemaphore)(&y))
 	return x
 }
 
@@ -38194,8 +37375,7 @@ func (x AcquireNextImageInfoKHR) Fence() Fence {
 // WithFence sets the value for the Fence on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AcquireNextImageInfoKHR) WithFence(y Fence) AcquireNextImageInfoKHR {
-	ptr := /* handle */ (*C.VkFence)(&y)
-	x.fence = *ptr
+	x.fence = *( /* handle */ (*C.VkFence)(&y))
 	return x
 }
 
@@ -38208,8 +37388,7 @@ func (x AcquireNextImageInfoKHR) DeviceMask() uint32 {
 // WithDeviceMask sets the value for the DeviceMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x AcquireNextImageInfoKHR) WithDeviceMask(y uint32) AcquireNextImageInfoKHR {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.deviceMask = *ptr
+	x.deviceMask = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -38270,8 +37449,7 @@ func (x ImageSwapchainCreateInfoKHR) WithDefaultSType() ImageSwapchainCreateInfo
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageSwapchainCreateInfoKHR) WithSType(y StructureType) ImageSwapchainCreateInfoKHR {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -38284,8 +37462,7 @@ func (x ImageSwapchainCreateInfoKHR) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageSwapchainCreateInfoKHR) WithPNext(y unsafe.Pointer) ImageSwapchainCreateInfoKHR {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -38298,11 +37475,12 @@ func (x ImageSwapchainCreateInfoKHR) Swapchain() SwapchainKHR {
 // WithSwapchain sets the value for the Swapchain on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ImageSwapchainCreateInfoKHR) WithSwapchain(y SwapchainKHR) ImageSwapchainCreateInfoKHR {
-	ptr := /* handle */ (*C.VkSwapchainKHR)(&y)
-	x.swapchain = *ptr
+	x.swapchain = *( /* handle */ (*C.VkSwapchainKHR)(&y))
 	return x
 }
 
+// GetPhysicalDevicePresentRectanglesKHR command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDevicePresentRectanglesKHR.html
 func (x PhysicalDeviceFacade) GetPhysicalDevicePresentRectanglesKHR(surface SurfaceKHR, pRectCount *uint32, pRects []Rect2D) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -38321,6 +37499,8 @@ func (x PhysicalDeviceFacade) GetPhysicalDevicePresentRectanglesKHR(surface Surf
 	return *retPtr
 }
 
+// AcquireNextImage2KHR command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkAcquireNextImage2KHR.html
 func (x DeviceFacade) AcquireNextImage2KHR(pAcquireInfo *AcquireNextImageInfoKHR, pImageIndex *uint32) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -38334,6 +37514,8 @@ func (x DeviceFacade) AcquireNextImage2KHR(pAcquireInfo *AcquireNextImageInfoKHR
 	return *retPtr
 }
 
+// GetDeviceGroupSurfacePresentModesKHR command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetDeviceGroupSurfacePresentModesKHR.html
 func (x DeviceFacade) GetDeviceGroupSurfacePresentModesKHR(surface SurfaceKHR, pModes *DeviceGroupPresentModeFlagsKHR) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -38347,6 +37529,8 @@ func (x DeviceFacade) GetDeviceGroupSurfacePresentModesKHR(surface SurfaceKHR, p
 	return *retPtr
 }
 
+// GetDeviceGroupPresentCapabilitiesKHR command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetDeviceGroupPresentCapabilitiesKHR.html
 func (x DeviceFacade) GetDeviceGroupPresentCapabilitiesKHR(pDeviceGroupPresentCapabilities *DeviceGroupPresentCapabilitiesKHR) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -38359,6 +37543,8 @@ func (x DeviceFacade) GetDeviceGroupPresentCapabilitiesKHR(pDeviceGroupPresentCa
 	return *retPtr
 }
 
+// QueuePresentKHR command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkQueuePresentKHR.html
 func (x QueueFacade) QueuePresentKHR(pPresentInfo *PresentInfoKHR) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkQueue)(&x.H)
@@ -38371,6 +37557,8 @@ func (x QueueFacade) QueuePresentKHR(pPresentInfo *PresentInfoKHR) Result {
 	return *retPtr
 }
 
+// AcquireNextImageKHR command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkAcquireNextImageKHR.html
 func (x DeviceFacade) AcquireNextImageKHR(swapchain SwapchainKHR, timeout uint64, semaphore Semaphore, fence Fence, pImageIndex *uint32) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -38384,6 +37572,8 @@ func (x DeviceFacade) AcquireNextImageKHR(swapchain SwapchainKHR, timeout uint64
 	return *retPtr
 }
 
+// GetSwapchainImagesKHR command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetSwapchainImagesKHR.html
 func (x DeviceFacade) GetSwapchainImagesKHR(swapchain SwapchainKHR, pSwapchainImageCount *uint32, pSwapchainImages []Image) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -38402,6 +37592,8 @@ func (x DeviceFacade) GetSwapchainImagesKHR(swapchain SwapchainKHR, pSwapchainIm
 	return *retPtr
 }
 
+// DestroySwapchainKHR command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroySwapchainKHR.html
 func (x DeviceFacade) DestroySwapchainKHR(swapchain SwapchainKHR, pAllocator *AllocationCallbacks) {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -38413,6 +37605,8 @@ func (x DeviceFacade) DestroySwapchainKHR(swapchain SwapchainKHR, pAllocator *Al
 	C.vkDestroySwapchainKHR(addrs, *p0, *p1, *p2)
 }
 
+// CreateSwapchainKHR command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateSwapchainKHR.html
 func (x DeviceFacade) CreateSwapchainKHR(pCreateInfo *SwapchainCreateInfoKHR, pAllocator *AllocationCallbacks, pSwapchain *SwapchainKHR) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -38448,7 +37642,7 @@ type DisplayModeKHR C.VkDisplayModeKHR
 // NullDisplayModeKHR is a typed Null value for the DisplayModeKHR type.
 var NullDisplayModeKHR DisplayModeKHR
 
-// DisplayPlaneAlphaFlagBitsKHR is an Enum from the Vulkan API.
+// DisplayPlaneAlphaFlagBitsKHR enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDisplayPlaneAlphaFlagBitsKHR.html
 type DisplayPlaneAlphaFlagBitsKHR uint32
 
@@ -38736,8 +37930,7 @@ func (x DisplayModeCreateInfoKHR) WithDefaultSType() DisplayModeCreateInfoKHR {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DisplayModeCreateInfoKHR) WithSType(y StructureType) DisplayModeCreateInfoKHR {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -38750,8 +37943,7 @@ func (x DisplayModeCreateInfoKHR) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DisplayModeCreateInfoKHR) WithPNext(y unsafe.Pointer) DisplayModeCreateInfoKHR {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -38764,8 +37956,7 @@ func (x DisplayModeCreateInfoKHR) Flags() DisplayModeCreateFlagsKHR {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DisplayModeCreateInfoKHR) WithFlags(y DisplayModeCreateFlagsKHR) DisplayModeCreateInfoKHR {
-	ptr := /* typedef */ (*C.VkDisplayModeCreateFlagsKHR)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkDisplayModeCreateFlagsKHR)(&y))
 	return x
 }
 
@@ -38778,8 +37969,7 @@ func (x DisplayModeCreateInfoKHR) Parameters() DisplayModeParametersKHR {
 // WithParameters sets the value for the Parameters on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DisplayModeCreateInfoKHR) WithParameters(y DisplayModeParametersKHR) DisplayModeCreateInfoKHR {
-	ptr := /* typedef */ (*C.struct_VkDisplayModeParametersKHR)(&y)
-	x.parameters = *ptr
+	x.parameters = *( /* typedef */ (*C.struct_VkDisplayModeParametersKHR)(&y))
 	return x
 }
 
@@ -38930,8 +38120,7 @@ func (x DisplayModeParametersKHR) VisibleRegion() Extent2D {
 // WithVisibleRegion sets the value for the VisibleRegion on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DisplayModeParametersKHR) WithVisibleRegion(y Extent2D) DisplayModeParametersKHR {
-	ptr := /* typedef */ (*C.struct_VkExtent2D)(&y)
-	x.visibleRegion = *ptr
+	x.visibleRegion = *( /* typedef */ (*C.struct_VkExtent2D)(&y))
 	return x
 }
 
@@ -38944,8 +38133,7 @@ func (x DisplayModeParametersKHR) RefreshRate() uint32 {
 // WithRefreshRate sets the value for the RefreshRate on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DisplayModeParametersKHR) WithRefreshRate(y uint32) DisplayModeParametersKHR {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.refreshRate = *ptr
+	x.refreshRate = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -39006,8 +38194,7 @@ func (x DisplaySurfaceCreateInfoKHR) WithDefaultSType() DisplaySurfaceCreateInfo
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DisplaySurfaceCreateInfoKHR) WithSType(y StructureType) DisplaySurfaceCreateInfoKHR {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -39020,8 +38207,7 @@ func (x DisplaySurfaceCreateInfoKHR) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DisplaySurfaceCreateInfoKHR) WithPNext(y unsafe.Pointer) DisplaySurfaceCreateInfoKHR {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -39034,8 +38220,7 @@ func (x DisplaySurfaceCreateInfoKHR) Flags() DisplaySurfaceCreateFlagsKHR {
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DisplaySurfaceCreateInfoKHR) WithFlags(y DisplaySurfaceCreateFlagsKHR) DisplaySurfaceCreateInfoKHR {
-	ptr := /* typedef */ (*C.VkDisplaySurfaceCreateFlagsKHR)(&y)
-	x.flags = *ptr
+	x.flags = *( /* typedef */ (*C.VkDisplaySurfaceCreateFlagsKHR)(&y))
 	return x
 }
 
@@ -39048,8 +38233,7 @@ func (x DisplaySurfaceCreateInfoKHR) DisplayMode() DisplayModeKHR {
 // WithDisplayMode sets the value for the DisplayMode on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DisplaySurfaceCreateInfoKHR) WithDisplayMode(y DisplayModeKHR) DisplaySurfaceCreateInfoKHR {
-	ptr := /* handle */ (*C.VkDisplayModeKHR)(&y)
-	x.displayMode = *ptr
+	x.displayMode = *( /* handle */ (*C.VkDisplayModeKHR)(&y))
 	return x
 }
 
@@ -39062,8 +38246,7 @@ func (x DisplaySurfaceCreateInfoKHR) PlaneIndex() uint32 {
 // WithPlaneIndex sets the value for the PlaneIndex on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DisplaySurfaceCreateInfoKHR) WithPlaneIndex(y uint32) DisplaySurfaceCreateInfoKHR {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.planeIndex = *ptr
+	x.planeIndex = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -39076,8 +38259,7 @@ func (x DisplaySurfaceCreateInfoKHR) PlaneStackIndex() uint32 {
 // WithPlaneStackIndex sets the value for the PlaneStackIndex on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DisplaySurfaceCreateInfoKHR) WithPlaneStackIndex(y uint32) DisplaySurfaceCreateInfoKHR {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.planeStackIndex = *ptr
+	x.planeStackIndex = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -39090,8 +38272,7 @@ func (x DisplaySurfaceCreateInfoKHR) Transform() SurfaceTransformFlagBitsKHR {
 // WithTransform sets the value for the Transform on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DisplaySurfaceCreateInfoKHR) WithTransform(y SurfaceTransformFlagBitsKHR) DisplaySurfaceCreateInfoKHR {
-	ptr := /* typedef */ (*C.VkSurfaceTransformFlagBitsKHR)(&y)
-	x.transform = *ptr
+	x.transform = *( /* typedef */ (*C.VkSurfaceTransformFlagBitsKHR)(&y))
 	return x
 }
 
@@ -39104,8 +38285,7 @@ func (x DisplaySurfaceCreateInfoKHR) GlobalAlpha() float32 {
 // WithGlobalAlpha sets the value for the GlobalAlpha on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DisplaySurfaceCreateInfoKHR) WithGlobalAlpha(y float32) DisplaySurfaceCreateInfoKHR {
-	ptr := func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y)
-	x.globalAlpha = *ptr
+	x.globalAlpha = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
 	return x
 }
 
@@ -39118,8 +38298,7 @@ func (x DisplaySurfaceCreateInfoKHR) AlphaMode() DisplayPlaneAlphaFlagBitsKHR {
 // WithAlphaMode sets the value for the AlphaMode on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DisplaySurfaceCreateInfoKHR) WithAlphaMode(y DisplayPlaneAlphaFlagBitsKHR) DisplaySurfaceCreateInfoKHR {
-	ptr := /* typedef */ (*C.VkDisplayPlaneAlphaFlagBitsKHR)(&y)
-	x.alphaMode = *ptr
+	x.alphaMode = *( /* typedef */ (*C.VkDisplayPlaneAlphaFlagBitsKHR)(&y))
 	return x
 }
 
@@ -39132,11 +38311,12 @@ func (x DisplaySurfaceCreateInfoKHR) ImageExtent() Extent2D {
 // WithImageExtent sets the value for the ImageExtent on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DisplaySurfaceCreateInfoKHR) WithImageExtent(y Extent2D) DisplaySurfaceCreateInfoKHR {
-	ptr := /* typedef */ (*C.struct_VkExtent2D)(&y)
-	x.imageExtent = *ptr
+	x.imageExtent = *( /* typedef */ (*C.struct_VkExtent2D)(&y))
 	return x
 }
 
+// CreateDisplayPlaneSurfaceKHR command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateDisplayPlaneSurfaceKHR.html
 func (x InstanceFacade) CreateDisplayPlaneSurfaceKHR(pCreateInfo *DisplaySurfaceCreateInfoKHR, pAllocator *AllocationCallbacks, pSurface *SurfaceKHR) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkInstance)(&x.H)
@@ -39154,6 +38334,8 @@ func (x InstanceFacade) CreateDisplayPlaneSurfaceKHR(pCreateInfo *DisplaySurface
 	return *retPtr
 }
 
+// GetDisplayPlaneCapabilitiesKHR command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetDisplayPlaneCapabilitiesKHR.html
 func (x PhysicalDeviceFacade) GetDisplayPlaneCapabilitiesKHR(mode DisplayModeKHR, planeIndex uint32, pCapabilities *DisplayPlaneCapabilitiesKHR) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -39168,6 +38350,8 @@ func (x PhysicalDeviceFacade) GetDisplayPlaneCapabilitiesKHR(mode DisplayModeKHR
 	return *retPtr
 }
 
+// CreateDisplayModeKHR command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateDisplayModeKHR.html
 func (x PhysicalDeviceFacade) CreateDisplayModeKHR(display DisplayKHR, pCreateInfo *DisplayModeCreateInfoKHR, pAllocator *AllocationCallbacks, pMode *DisplayModeKHR) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -39189,6 +38373,8 @@ func (x PhysicalDeviceFacade) CreateDisplayModeKHR(display DisplayKHR, pCreateIn
 	return *retPtr
 }
 
+// GetDisplayModePropertiesKHR command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetDisplayModePropertiesKHR.html
 func (x PhysicalDeviceFacade) GetDisplayModePropertiesKHR(display DisplayKHR, pPropertyCount *uint32, pProperties []DisplayModePropertiesKHR) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -39207,6 +38393,8 @@ func (x PhysicalDeviceFacade) GetDisplayModePropertiesKHR(display DisplayKHR, pP
 	return *retPtr
 }
 
+// GetDisplayPlaneSupportedDisplaysKHR command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetDisplayPlaneSupportedDisplaysKHR.html
 func (x PhysicalDeviceFacade) GetDisplayPlaneSupportedDisplaysKHR(planeIndex uint32, pDisplayCount *uint32, pDisplays []DisplayKHR) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -39225,6 +38413,8 @@ func (x PhysicalDeviceFacade) GetDisplayPlaneSupportedDisplaysKHR(planeIndex uin
 	return *retPtr
 }
 
+// GetPhysicalDeviceDisplayPlanePropertiesKHR command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceDisplayPlanePropertiesKHR.html
 func (x PhysicalDeviceFacade) GetPhysicalDeviceDisplayPlanePropertiesKHR(pPropertyCount *uint32, pProperties []DisplayPlanePropertiesKHR) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -39242,6 +38432,8 @@ func (x PhysicalDeviceFacade) GetPhysicalDeviceDisplayPlanePropertiesKHR(pProper
 	return *retPtr
 }
 
+// GetPhysicalDeviceDisplayPropertiesKHR command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceDisplayPropertiesKHR.html
 func (x PhysicalDeviceFacade) GetPhysicalDeviceDisplayPropertiesKHR(pPropertyCount *uint32, pProperties []DisplayPropertiesKHR) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -39316,8 +38508,7 @@ func (x DisplayModeProperties2KHR) WithDefaultSType() DisplayModeProperties2KHR 
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DisplayModeProperties2KHR) WithSType(y StructureType) DisplayModeProperties2KHR {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -39330,8 +38521,7 @@ func (x DisplayModeProperties2KHR) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DisplayModeProperties2KHR) WithPNext(y unsafe.Pointer) DisplayModeProperties2KHR {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -39398,8 +38588,7 @@ func (x DisplayPlaneInfo2KHR) WithDefaultSType() DisplayPlaneInfo2KHR {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DisplayPlaneInfo2KHR) WithSType(y StructureType) DisplayPlaneInfo2KHR {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -39412,8 +38601,7 @@ func (x DisplayPlaneInfo2KHR) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DisplayPlaneInfo2KHR) WithPNext(y unsafe.Pointer) DisplayPlaneInfo2KHR {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -39426,8 +38614,7 @@ func (x DisplayPlaneInfo2KHR) Mode() DisplayModeKHR {
 // WithMode sets the value for the Mode on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DisplayPlaneInfo2KHR) WithMode(y DisplayModeKHR) DisplayPlaneInfo2KHR {
-	ptr := /* handle */ (*C.VkDisplayModeKHR)(&y)
-	x.mode = *ptr
+	x.mode = *( /* handle */ (*C.VkDisplayModeKHR)(&y))
 	return x
 }
 
@@ -39440,8 +38627,7 @@ func (x DisplayPlaneInfo2KHR) PlaneIndex() uint32 {
 // WithPlaneIndex sets the value for the PlaneIndex on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DisplayPlaneInfo2KHR) WithPlaneIndex(y uint32) DisplayPlaneInfo2KHR {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.planeIndex = *ptr
+	x.planeIndex = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 
@@ -39502,8 +38688,7 @@ func (x DisplayPlaneCapabilities2KHR) WithDefaultSType() DisplayPlaneCapabilitie
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DisplayPlaneCapabilities2KHR) WithSType(y StructureType) DisplayPlaneCapabilities2KHR {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -39516,8 +38701,7 @@ func (x DisplayPlaneCapabilities2KHR) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DisplayPlaneCapabilities2KHR) WithPNext(y unsafe.Pointer) DisplayPlaneCapabilities2KHR {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -39584,8 +38768,7 @@ func (x DisplayProperties2KHR) WithDefaultSType() DisplayProperties2KHR {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DisplayProperties2KHR) WithSType(y StructureType) DisplayProperties2KHR {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -39598,8 +38781,7 @@ func (x DisplayProperties2KHR) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DisplayProperties2KHR) WithPNext(y unsafe.Pointer) DisplayProperties2KHR {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -39666,8 +38848,7 @@ func (x DisplayPlaneProperties2KHR) WithDefaultSType() DisplayPlaneProperties2KH
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DisplayPlaneProperties2KHR) WithSType(y StructureType) DisplayPlaneProperties2KHR {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -39680,8 +38861,7 @@ func (x DisplayPlaneProperties2KHR) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DisplayPlaneProperties2KHR) WithPNext(y unsafe.Pointer) DisplayPlaneProperties2KHR {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -39691,6 +38871,8 @@ func (x DisplayPlaneProperties2KHR) DisplayPlaneProperties() DisplayPlanePropert
 	return *ptr
 }
 
+// GetDisplayPlaneCapabilities2KHR command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetDisplayPlaneCapabilities2KHR.html
 func (x PhysicalDeviceFacade) GetDisplayPlaneCapabilities2KHR(pDisplayPlaneInfo *DisplayPlaneInfo2KHR, pCapabilities *DisplayPlaneCapabilities2KHR) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -39707,6 +38889,8 @@ func (x PhysicalDeviceFacade) GetDisplayPlaneCapabilities2KHR(pDisplayPlaneInfo 
 	return *retPtr
 }
 
+// GetPhysicalDeviceDisplayProperties2KHR command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceDisplayProperties2KHR.html
 func (x PhysicalDeviceFacade) GetPhysicalDeviceDisplayProperties2KHR(pPropertyCount *uint32, pProperties []DisplayProperties2KHR) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -39724,6 +38908,8 @@ func (x PhysicalDeviceFacade) GetPhysicalDeviceDisplayProperties2KHR(pPropertyCo
 	return *retPtr
 }
 
+// GetPhysicalDeviceDisplayPlaneProperties2KHR command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetPhysicalDeviceDisplayPlaneProperties2KHR.html
 func (x PhysicalDeviceFacade) GetPhysicalDeviceDisplayPlaneProperties2KHR(pPropertyCount *uint32, pProperties []DisplayPlaneProperties2KHR) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -39741,6 +38927,8 @@ func (x PhysicalDeviceFacade) GetPhysicalDeviceDisplayPlaneProperties2KHR(pPrope
 	return *retPtr
 }
 
+// GetDisplayModeProperties2KHR command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetDisplayModeProperties2KHR.html
 func (x PhysicalDeviceFacade) GetDisplayModeProperties2KHR(display DisplayKHR, pPropertyCount *uint32, pProperties []DisplayModeProperties2KHR) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
@@ -39816,8 +39004,7 @@ func (x DisplayPresentInfoKHR) WithDefaultSType() DisplayPresentInfoKHR {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DisplayPresentInfoKHR) WithSType(y StructureType) DisplayPresentInfoKHR {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -39830,8 +39017,7 @@ func (x DisplayPresentInfoKHR) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DisplayPresentInfoKHR) WithPNext(y unsafe.Pointer) DisplayPresentInfoKHR {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -39844,8 +39030,7 @@ func (x DisplayPresentInfoKHR) SrcRect() Rect2D {
 // WithSrcRect sets the value for the SrcRect on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DisplayPresentInfoKHR) WithSrcRect(y Rect2D) DisplayPresentInfoKHR {
-	ptr := /* typedef */ (*C.struct_VkRect2D)(&y)
-	x.srcRect = *ptr
+	x.srcRect = *( /* typedef */ (*C.struct_VkRect2D)(&y))
 	return x
 }
 
@@ -39858,8 +39043,7 @@ func (x DisplayPresentInfoKHR) DstRect() Rect2D {
 // WithDstRect sets the value for the DstRect on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DisplayPresentInfoKHR) WithDstRect(y Rect2D) DisplayPresentInfoKHR {
-	ptr := /* typedef */ (*C.struct_VkRect2D)(&y)
-	x.dstRect = *ptr
+	x.dstRect = *( /* typedef */ (*C.struct_VkRect2D)(&y))
 	return x
 }
 
@@ -39872,11 +39056,12 @@ func (x DisplayPresentInfoKHR) Persistent() Bool32 {
 // WithPersistent sets the value for the Persistent on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DisplayPresentInfoKHR) WithPersistent(y Bool32) DisplayPresentInfoKHR {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.persistent = *ptr
+	x.persistent = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
+// CreateSharedSwapchainsKHR command
+// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateSharedSwapchainsKHR.html
 func (x DeviceFacade) CreateSharedSwapchainsKHR(swapchainCount uint32, pCreateInfos []SwapchainCreateInfoKHR, pAllocator *AllocationCallbacks, pSwapchains []SwapchainKHR) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
@@ -39906,7 +39091,7 @@ func (x DeviceFacade) CreateSharedSwapchainsKHR(swapchainCount uint32, pCreateIn
 	return *retPtr
 }
 
-// FormatFeatureFlagBits2KHR is an Enum from the Vulkan API.
+// FormatFeatureFlagBits2KHR enum/enums
 // https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkFormatFeatureFlagBits2KHR.html
 type FormatFeatureFlagBits2KHR uint64
 
@@ -40044,8 +39229,7 @@ func (x FormatProperties3KHR) WithDefaultSType() FormatProperties3KHR {
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x FormatProperties3KHR) WithSType(y StructureType) FormatProperties3KHR {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -40058,8 +39242,7 @@ func (x FormatProperties3KHR) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x FormatProperties3KHR) WithPNext(y unsafe.Pointer) FormatProperties3KHR {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -40138,8 +39321,7 @@ func (x PhysicalDevicePortabilitySubsetFeaturesKHR) WithDefaultSType() PhysicalD
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDevicePortabilitySubsetFeaturesKHR) WithSType(y StructureType) PhysicalDevicePortabilitySubsetFeaturesKHR {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -40152,8 +39334,7 @@ func (x PhysicalDevicePortabilitySubsetFeaturesKHR) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDevicePortabilitySubsetFeaturesKHR) WithPNext(y unsafe.Pointer) PhysicalDevicePortabilitySubsetFeaturesKHR {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -40166,8 +39347,7 @@ func (x PhysicalDevicePortabilitySubsetFeaturesKHR) ConstantAlphaColorBlendFacto
 // WithConstantAlphaColorBlendFactors sets the value for the ConstantAlphaColorBlendFactors on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDevicePortabilitySubsetFeaturesKHR) WithConstantAlphaColorBlendFactors(y Bool32) PhysicalDevicePortabilitySubsetFeaturesKHR {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.constantAlphaColorBlendFactors = *ptr
+	x.constantAlphaColorBlendFactors = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -40180,8 +39360,7 @@ func (x PhysicalDevicePortabilitySubsetFeaturesKHR) Events() Bool32 {
 // WithEvents sets the value for the Events on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDevicePortabilitySubsetFeaturesKHR) WithEvents(y Bool32) PhysicalDevicePortabilitySubsetFeaturesKHR {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.events = *ptr
+	x.events = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -40194,8 +39373,7 @@ func (x PhysicalDevicePortabilitySubsetFeaturesKHR) ImageViewFormatReinterpretat
 // WithImageViewFormatReinterpretation sets the value for the ImageViewFormatReinterpretation on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDevicePortabilitySubsetFeaturesKHR) WithImageViewFormatReinterpretation(y Bool32) PhysicalDevicePortabilitySubsetFeaturesKHR {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.imageViewFormatReinterpretation = *ptr
+	x.imageViewFormatReinterpretation = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -40208,8 +39386,7 @@ func (x PhysicalDevicePortabilitySubsetFeaturesKHR) ImageViewFormatSwizzle() Boo
 // WithImageViewFormatSwizzle sets the value for the ImageViewFormatSwizzle on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDevicePortabilitySubsetFeaturesKHR) WithImageViewFormatSwizzle(y Bool32) PhysicalDevicePortabilitySubsetFeaturesKHR {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.imageViewFormatSwizzle = *ptr
+	x.imageViewFormatSwizzle = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -40222,8 +39399,7 @@ func (x PhysicalDevicePortabilitySubsetFeaturesKHR) ImageView2DOn3DImage() Bool3
 // WithImageView2DOn3DImage sets the value for the ImageView2DOn3DImage on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDevicePortabilitySubsetFeaturesKHR) WithImageView2DOn3DImage(y Bool32) PhysicalDevicePortabilitySubsetFeaturesKHR {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.imageView2DOn3DImage = *ptr
+	x.imageView2DOn3DImage = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -40236,8 +39412,7 @@ func (x PhysicalDevicePortabilitySubsetFeaturesKHR) MultisampleArrayImage() Bool
 // WithMultisampleArrayImage sets the value for the MultisampleArrayImage on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDevicePortabilitySubsetFeaturesKHR) WithMultisampleArrayImage(y Bool32) PhysicalDevicePortabilitySubsetFeaturesKHR {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.multisampleArrayImage = *ptr
+	x.multisampleArrayImage = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -40250,8 +39425,7 @@ func (x PhysicalDevicePortabilitySubsetFeaturesKHR) MutableComparisonSamplers() 
 // WithMutableComparisonSamplers sets the value for the MutableComparisonSamplers on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDevicePortabilitySubsetFeaturesKHR) WithMutableComparisonSamplers(y Bool32) PhysicalDevicePortabilitySubsetFeaturesKHR {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.mutableComparisonSamplers = *ptr
+	x.mutableComparisonSamplers = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -40264,8 +39438,7 @@ func (x PhysicalDevicePortabilitySubsetFeaturesKHR) PointPolygons() Bool32 {
 // WithPointPolygons sets the value for the PointPolygons on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDevicePortabilitySubsetFeaturesKHR) WithPointPolygons(y Bool32) PhysicalDevicePortabilitySubsetFeaturesKHR {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.pointPolygons = *ptr
+	x.pointPolygons = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -40278,8 +39451,7 @@ func (x PhysicalDevicePortabilitySubsetFeaturesKHR) SamplerMipLodBias() Bool32 {
 // WithSamplerMipLodBias sets the value for the SamplerMipLodBias on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDevicePortabilitySubsetFeaturesKHR) WithSamplerMipLodBias(y Bool32) PhysicalDevicePortabilitySubsetFeaturesKHR {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.samplerMipLodBias = *ptr
+	x.samplerMipLodBias = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -40292,8 +39464,7 @@ func (x PhysicalDevicePortabilitySubsetFeaturesKHR) SeparateStencilMaskRef() Boo
 // WithSeparateStencilMaskRef sets the value for the SeparateStencilMaskRef on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDevicePortabilitySubsetFeaturesKHR) WithSeparateStencilMaskRef(y Bool32) PhysicalDevicePortabilitySubsetFeaturesKHR {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.separateStencilMaskRef = *ptr
+	x.separateStencilMaskRef = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -40306,8 +39477,7 @@ func (x PhysicalDevicePortabilitySubsetFeaturesKHR) ShaderSampleRateInterpolatio
 // WithShaderSampleRateInterpolationFunctions sets the value for the ShaderSampleRateInterpolationFunctions on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDevicePortabilitySubsetFeaturesKHR) WithShaderSampleRateInterpolationFunctions(y Bool32) PhysicalDevicePortabilitySubsetFeaturesKHR {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.shaderSampleRateInterpolationFunctions = *ptr
+	x.shaderSampleRateInterpolationFunctions = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -40320,8 +39490,7 @@ func (x PhysicalDevicePortabilitySubsetFeaturesKHR) TessellationIsolines() Bool3
 // WithTessellationIsolines sets the value for the TessellationIsolines on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDevicePortabilitySubsetFeaturesKHR) WithTessellationIsolines(y Bool32) PhysicalDevicePortabilitySubsetFeaturesKHR {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.tessellationIsolines = *ptr
+	x.tessellationIsolines = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -40334,8 +39503,7 @@ func (x PhysicalDevicePortabilitySubsetFeaturesKHR) TessellationPointMode() Bool
 // WithTessellationPointMode sets the value for the TessellationPointMode on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDevicePortabilitySubsetFeaturesKHR) WithTessellationPointMode(y Bool32) PhysicalDevicePortabilitySubsetFeaturesKHR {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.tessellationPointMode = *ptr
+	x.tessellationPointMode = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -40348,8 +39516,7 @@ func (x PhysicalDevicePortabilitySubsetFeaturesKHR) TriangleFans() Bool32 {
 // WithTriangleFans sets the value for the TriangleFans on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDevicePortabilitySubsetFeaturesKHR) WithTriangleFans(y Bool32) PhysicalDevicePortabilitySubsetFeaturesKHR {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.triangleFans = *ptr
+	x.triangleFans = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -40362,8 +39529,7 @@ func (x PhysicalDevicePortabilitySubsetFeaturesKHR) VertexAttributeAccessBeyondS
 // WithVertexAttributeAccessBeyondStride sets the value for the VertexAttributeAccessBeyondStride on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDevicePortabilitySubsetFeaturesKHR) WithVertexAttributeAccessBeyondStride(y Bool32) PhysicalDevicePortabilitySubsetFeaturesKHR {
-	ptr := /* typedef */ (*C.VkBool32)(&y)
-	x.vertexAttributeAccessBeyondStride = *ptr
+	x.vertexAttributeAccessBeyondStride = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -40424,8 +39590,7 @@ func (x PhysicalDevicePortabilitySubsetPropertiesKHR) WithDefaultSType() Physica
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDevicePortabilitySubsetPropertiesKHR) WithSType(y StructureType) PhysicalDevicePortabilitySubsetPropertiesKHR {
-	ptr := /* typedef */ (*C.VkStructureType)(&y)
-	x.sType = *ptr
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
@@ -40438,8 +39603,7 @@ func (x PhysicalDevicePortabilitySubsetPropertiesKHR) PNext() unsafe.Pointer {
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDevicePortabilitySubsetPropertiesKHR) WithPNext(y unsafe.Pointer) PhysicalDevicePortabilitySubsetPropertiesKHR {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y)
-	x.pNext = *ptr
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
@@ -40452,8 +39616,7 @@ func (x PhysicalDevicePortabilitySubsetPropertiesKHR) MinVertexInputBindingStrid
 // WithMinVertexInputBindingStrideAlignment sets the value for the MinVertexInputBindingStrideAlignment on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDevicePortabilitySubsetPropertiesKHR) WithMinVertexInputBindingStrideAlignment(y uint32) PhysicalDevicePortabilitySubsetPropertiesKHR {
-	ptr := func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y)
-	x.minVertexInputBindingStrideAlignment = *ptr
+	x.minVertexInputBindingStrideAlignment = *(func(x *uint32) *C.uint { /* Scalar */ g2c := C.uint(*x); return &g2c }(&y))
 	return x
 }
 

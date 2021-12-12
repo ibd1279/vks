@@ -198,7 +198,7 @@ type {{.Name.GoFacade}} struct {
 	procs *C.vksProcAddr // The addresses for commands.
 }{{end}}
 
-{{end}}{{define "enum"}}// {{.Name.Go}} is an Enum from the Vulkan API.
+{{end}}{{define "enum"}}// {{.Name.Go}} enum/enums
 // {{template "docurl" .Name.C}}
 type {{.Name.Go}} {{.Type.Go}}{{if gt (len .Values) 0}}
 
@@ -207,7 +207,7 @@ const ({{range .Values}}
 )
 
 var (
-	reverse{{.Name.Go}} map[{{.Name.Go}}]string = map[{{.Name.Go}}]string{ {{range .Values}}{{if eq .Alias false}}
+	reverse{{.Name.Go}} map[{{.Name.Go}}]string = map[{{.Name.Go}}]string{ {{range .Values}}{{if not .Alias}}
 		{{.Name.Go}}: "{{.Name.Go}}",{{end}}{{end}}
 	}
 )
@@ -226,17 +226,10 @@ type {{.Name.Go}} {{.Name.CGo}}
 {{end}}{{define "union"}}// {{.Name.Go}} union
 // {{template "docurl" .Name.C}}
 type {{.Name.Go}} {{.Name.CGo}}
-
-// Copy the provided byte slice into the structure.
-//
-// Unions are represented as byte arrays in go. Use this method to copy from a source
-// byte slice into the union byte array.
-func (x {{.Name.Go}}) copy(y []byte) {{.Name.Go}} {
-	copy(x[:], y)
-	return x
-}
 {{end}}`
-const goCommandTemplate = `{{define "command"}}func {{if eq (isGlobal .Name) false}}(x {{.Parent.GoFacade}}){{end}}{{.Name.Go}}({{range ooParams .Name .Parameters}}{{.Name.Go}} {{.Type.Go}}, {{end}}) {{if ne .Return.Go "void"}}{{.Return.Go}} {{end}}{
+const goCommandTemplate = `{{define "command"}}// {{.Name.Go}} command
+// {{template "docurl" .Name.C}}
+func {{if eq (isGlobal .Name) false}}(x {{.Parent.GoFacade}}){{end}}{{.Name.Go}}({{range ooParams .Name .Parameters}}{{.Name.Go}} {{.Type.Go}}, {{end}}) {{if ne .Return.Go "void"}}{{.Return.Go}} {{end}}{
 	addrs := {{if isGlobal .Name}}&C.vksProcAddresses{{else}}x.procs{{end}}{{$cmd := .Name}}{{range $key, $val := .Parameters}}
 	p{{$key}} := {{$val.Type.GoToC}}(&{{if or (isGlobal $cmd) (ne $key 0)}}{{$val.Name.Go}}{{else}}x.H{{end}}){{end}}
 	{{if ne .Return.Go "void"}}ret := {{end}}{{.Name.CGo}}(addrs{{range $key, $val := .Parameters}}, *p{{$key}}{{end}})
@@ -303,12 +296,14 @@ func (x {{$struct.Name.Go}}) WithDefault{{.Name.Go}}() {{$struct.Name.Go}} {
 // 
 // The specification defines {{.Length.Name.Go}} as the length of this field.
 // {{.Length.Name.Go}} is updated with the length of the new value.{{end}}
-func (x {{$struct.Name.Go}}) With{{.Name.Go}}(y {{.Type.Go}}) {{$struct.Name.Go}} {
+func (x {{$struct.Name.Go}}) With{{.Name.Go}}(y {{.Type.Go}}) {{$struct.Name.Go}} { {{- if .Copy}}
 	ptr := {{.Type.GoToC}}(&y)
-	{{if .Copy}}copy(x.{{.Name.CGo}}[:], unsafe.Slice(*ptr, len(y))){{else}}x.{{.Name.CGo}} = *ptr{{end}}
+	copy(x.{{.Name.CGo}}[:], unsafe.Slice(*ptr, len(y))){{else}}
+	x.{{.Name.CGo}} = *({{.Type.GoToC}}(&y)){{end}}
 	return x{{if ne .Length nil}}.With{{.Length.Name.Go}}({{.Length.Type.Go}}(len(y))){{end}}
 }{{end}}{{end}}
-{{end}}{{end}}{{define "structalias"}}//{{.Name.Go}} is an alias to {{.Alias.Go}}.
+{{end}}{{end}}
+{{define "structalias"}}//{{.Name.Go}} is an alias to {{.Alias.Go}}.
 // {{template "docurl" .Name.C}}
 //
 // Deprecated: Most Aliases in the Vulkan spec are for compatibility purposes as extensions get
