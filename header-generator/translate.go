@@ -246,10 +246,18 @@ func (xl8r *PointerConverter) C() string   { return fmt.Sprintf("%s*", xl8r.orig
 func (xl8r *PointerConverter) CGo() string { return fmt.Sprintf("*%s", xl8r.orig.CGo()) }
 func (xl8r *PointerConverter) Go() string  { return fmt.Sprintf("*%s", xl8r.orig.Go()) }
 func (xl8r *PointerConverter) CToGo() string {
-	return fmt.Sprintf("func(x *%s) *%s { /* Pointer */ return (*%s)(unsafe.Pointer(x)) }", xl8r.CGo(), xl8r.Go(), xl8r.Go())
+	if xl8r.CGo() == "*C.char" && xl8r.Go() == "*byte" {
+		// Special case to get around "cannot convert *x (type *_Ctype_char) to type *byte"
+		return fmt.Sprintf("func(x *%s) *%s { /* Pointer */ return (*%s)(unsafe.Pointer(x)) }", xl8r.CGo(), xl8r.Go(), xl8r.Go())
+	}
+	return fmt.Sprintf("func(x *%s) *%s { /* Pointer */ c2g := (%s)(*x); return &c2g }", xl8r.CGo(), xl8r.Go(), xl8r.Go())
 }
 func (xl8r *PointerConverter) GoToC() string {
-	return fmt.Sprintf("func(x *%s) *%s { /* Pointer */ return (*%s)(unsafe.Pointer(x)) }", xl8r.Go(), xl8r.CGo(), xl8r.CGo())
+	if xl8r.CGo() == "*C.char" && xl8r.Go() == "*byte" {
+		// Special case to get around "cannot convert *x (type *byte) to type *_Ctype_char"
+		return fmt.Sprintf("func(x *%s) *%s { /* Pointer */ return (*%s)(unsafe.Pointer(x)) }", xl8r.Go(), xl8r.CGo(), xl8r.CGo())
+	}
+	return fmt.Sprintf("func(x *%s) *%s { /* Pointer */ g2c := (%s)(*x); return &g2c }", xl8r.Go(), xl8r.CGo(), xl8r.CGo())
 }
 
 // SliceConverter wraps an existing translator to be treated like a slice.
