@@ -1136,7 +1136,6 @@ func (graph RegistryGraph) applyRequiresElement(element RequireElement, extensio
 // graph for generating the output file.
 func (graph RegistryGraph) DepthFirstSearch(starts []string, collect func([]*RegistryNode)) {
 	tracker := map[*RegistryNode]bool{}
-	enqueued := map[*RegistryNode]bool{}
 	root := NewVirtualNode()
 	for _, start := range starts {
 		if node, ok := graph[start]; ok {
@@ -1152,7 +1151,13 @@ func (graph RegistryGraph) DepthFirstSearch(starts []string, collect func([]*Reg
 		var unvisitedParents RegistryNodeParents
 		if !current.Terminal() {
 			for _, v := range current.Parents {
-				if !enqueued[v] {
+				var seen bool
+				for h := range currentPath {
+					if currentPath[h] == v {
+						seen = true
+					}
+				}
+				if !seen && !tracker[v] {
 					unvisitedParents = append(unvisitedParents, v)
 				}
 			}
@@ -1166,7 +1171,6 @@ func (graph RegistryGraph) DepthFirstSearch(starts []string, collect func([]*Reg
 			sort.Sort(unvisitedParents)
 			head := make([]RegistryNodeParents, len(unvisitedParents), len(stack)+len(unvisitedParents))
 			for k, v := range unvisitedParents {
-				enqueued[v] = true
 				head[k] = append(currentPath, v)
 			}
 			stack = append(head, stack...)

@@ -48,7 +48,7 @@ func main() {
 		WithDefaultSType().
 		WithApplication("Test", vks.MakeApiVersion(0, 1, 0, 0)).
 		WithEngine("NoEngine", vks.MakeApiVersion(0, 1, 0, 0)).
-		WithApiVersion(uint32(vks.VK_API_VERSION_1_0)).
+		WithApiVersion(uint32(vks.VK_API_VERSION_1_3)).
 		AsCPtr()
 	createInfo := vks.InstanceCreateInfo{}.
 		WithDefaultSType().

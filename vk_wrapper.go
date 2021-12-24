@@ -96,6 +96,10 @@ const (
 	VK_KHR_PORTABILITY_SUBSET_EXTENSION_NAME               = "VK_KHR_portability_subset"
 )
 
+// HeaderVersion is the version of the vk specification used to generate this.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VK_API_VERSION.html
+const HeaderVersion = 224
+
 // ApiVersion is an implementation of the Vulkan Make Api Version
 // defines. See
 // https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VK_MAKE_API_VERSION.html
@@ -123,10 +127,6 @@ var (
 	VK_HEADER_VERSION_COMPLETE ApiVersion = MakeApiVersion(0, 1, 3, HeaderVersion)
 )
 
-// HeaderVersion is the version of the vk specification used to generate this.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VK_API_VERSION.html
-const HeaderVersion = 220
-
 // SampleMask basetype
 // https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkSampleMask.html
 type SampleMask uint32
@@ -146,36 +146,6 @@ type Bool32 uint32
 // DeviceAddress basetype
 // https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkDeviceAddress.html
 type DeviceAddress uint64
-
-// CommandBuffer is a Handle to a vulkan resource.
-// CommandBuffer is a child of CommandPool.
-//
-// Use CommandPoolFacade.MakeCommandBufferFacade to create a facade around this object to invoke methods.
-//
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkCommandBuffer.html
-type CommandBuffer C.VkCommandBuffer
-
-// NullCommandBuffer is a typed Null value for the CommandBuffer type.
-var NullCommandBuffer CommandBuffer
-
-// MakeCommandBufferFacadeprovides a facade interface to the handle. It requires
-// the parent facade to copy the proc addresses.
-func (parent CommandPoolFacade) MakeCommandBufferFacade(x CommandBuffer) CommandBufferFacade {
-	return CommandBufferFacade{
-		H:     x,
-		procs: parent.procs,
-	}
-}
-
-// CommandBufferFacade is a CommandBuffer handle with the proc addresses pointer. It allows
-// the invocation of methods against the handle. In the vulkan spec, these would be the functions
-// that take the handle as the first parameter.
-//
-// Use the H field to get the handle back.
-type CommandBufferFacade struct {
-	H     CommandBuffer  // The vulkan Handle
-	procs *C.vksProcAddr // The addresses for commands.
-}
 
 // Instance is a Handle to a vulkan resource.
 //
@@ -208,32 +178,65 @@ type InstanceFacade struct {
 	procs *C.vksProcAddr // The addresses for commands.
 }
 
-// Sampler is a Handle to a vulkan resource.
-// Sampler is a child of Device.
+// PhysicalDevice is a Handle to a vulkan resource.
+// PhysicalDevice is a child of Instance.
 //
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkSampler.html
-type Sampler C.VkSampler
-
-// NullSampler is a typed Null value for the Sampler type.
-var NullSampler Sampler
-
-// Fence is a Handle to a vulkan resource.
-// Fence is a child of Device.
+// Use InstanceFacade.MakePhysicalDeviceFacade to create a facade around this object to invoke methods.
 //
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkFence.html
-type Fence C.VkFence
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPhysicalDevice.html
+type PhysicalDevice C.VkPhysicalDevice
 
-// NullFence is a typed Null value for the Fence type.
-var NullFence Fence
+// NullPhysicalDevice is a typed Null value for the PhysicalDevice type.
+var NullPhysicalDevice PhysicalDevice
 
-// BufferView is a Handle to a vulkan resource.
-// BufferView is a child of Device.
+// MakePhysicalDeviceFacadeprovides a facade interface to the handle. It requires
+// the parent facade to copy the proc addresses.
+func (parent InstanceFacade) MakePhysicalDeviceFacade(x PhysicalDevice) PhysicalDeviceFacade {
+	return PhysicalDeviceFacade{
+		H:     x,
+		procs: parent.procs,
+	}
+}
+
+// PhysicalDeviceFacade is a PhysicalDevice handle with the proc addresses pointer. It allows
+// the invocation of methods against the handle. In the vulkan spec, these would be the functions
+// that take the handle as the first parameter.
 //
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkBufferView.html
-type BufferView C.VkBufferView
+// Use the H field to get the handle back.
+type PhysicalDeviceFacade struct {
+	H     PhysicalDevice // The vulkan Handle
+	procs *C.vksProcAddr // The addresses for commands.
+}
 
-// NullBufferView is a typed Null value for the BufferView type.
-var NullBufferView BufferView
+// Device is a Handle to a vulkan resource.
+// Device is a child of PhysicalDevice.
+//
+// Use PhysicalDeviceFacade.MakeDeviceFacade to create a facade around this object to invoke methods.
+//
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkDevice.html
+type Device C.VkDevice
+
+// NullDevice is a typed Null value for the Device type.
+var NullDevice Device
+
+// MakeDeviceFacadeprovides a facade interface to the handle. It requires
+// the parent facade to copy the proc addresses.
+func (parent PhysicalDeviceFacade) MakeDeviceFacade(x Device) DeviceFacade {
+	return DeviceFacade{
+		H:     x,
+		procs: parent.procs,
+	}
+}
+
+// DeviceFacade is a Device handle with the proc addresses pointer. It allows
+// the invocation of methods against the handle. In the vulkan spec, these would be the functions
+// that take the handle as the first parameter.
+//
+// Use the H field to get the handle back.
+type DeviceFacade struct {
+	H     Device         // The vulkan Handle
+	procs *C.vksProcAddr // The addresses for commands.
+}
 
 // CommandPool is a Handle to a vulkan resource.
 // CommandPool is a child of Device.
@@ -264,6 +267,63 @@ type CommandPoolFacade struct {
 	H     CommandPool    // The vulkan Handle
 	procs *C.vksProcAddr // The addresses for commands.
 }
+
+// CommandBuffer is a Handle to a vulkan resource.
+// CommandBuffer is a child of CommandPool.
+//
+// Use CommandPoolFacade.MakeCommandBufferFacade to create a facade around this object to invoke methods.
+//
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkCommandBuffer.html
+type CommandBuffer C.VkCommandBuffer
+
+// NullCommandBuffer is a typed Null value for the CommandBuffer type.
+var NullCommandBuffer CommandBuffer
+
+// MakeCommandBufferFacadeprovides a facade interface to the handle. It requires
+// the parent facade to copy the proc addresses.
+func (parent CommandPoolFacade) MakeCommandBufferFacade(x CommandBuffer) CommandBufferFacade {
+	return CommandBufferFacade{
+		H:     x,
+		procs: parent.procs,
+	}
+}
+
+// CommandBufferFacade is a CommandBuffer handle with the proc addresses pointer. It allows
+// the invocation of methods against the handle. In the vulkan spec, these would be the functions
+// that take the handle as the first parameter.
+//
+// Use the H field to get the handle back.
+type CommandBufferFacade struct {
+	H     CommandBuffer  // The vulkan Handle
+	procs *C.vksProcAddr // The addresses for commands.
+}
+
+// Sampler is a Handle to a vulkan resource.
+// Sampler is a child of Device.
+//
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkSampler.html
+type Sampler C.VkSampler
+
+// NullSampler is a typed Null value for the Sampler type.
+var NullSampler Sampler
+
+// Fence is a Handle to a vulkan resource.
+// Fence is a child of Device.
+//
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkFence.html
+type Fence C.VkFence
+
+// NullFence is a typed Null value for the Fence type.
+var NullFence Fence
+
+// BufferView is a Handle to a vulkan resource.
+// BufferView is a child of Device.
+//
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkBufferView.html
+type BufferView C.VkBufferView
+
+// NullBufferView is a typed Null value for the BufferView type.
+var NullBufferView BufferView
 
 // ImageView is a Handle to a vulkan resource.
 // ImageView is a child of Device.
@@ -363,66 +423,6 @@ type PipelineLayout C.VkPipelineLayout
 
 // NullPipelineLayout is a typed Null value for the PipelineLayout type.
 var NullPipelineLayout PipelineLayout
-
-// Device is a Handle to a vulkan resource.
-// Device is a child of PhysicalDevice.
-//
-// Use PhysicalDeviceFacade.MakeDeviceFacade to create a facade around this object to invoke methods.
-//
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkDevice.html
-type Device C.VkDevice
-
-// NullDevice is a typed Null value for the Device type.
-var NullDevice Device
-
-// MakeDeviceFacadeprovides a facade interface to the handle. It requires
-// the parent facade to copy the proc addresses.
-func (parent PhysicalDeviceFacade) MakeDeviceFacade(x Device) DeviceFacade {
-	return DeviceFacade{
-		H:     x,
-		procs: parent.procs,
-	}
-}
-
-// DeviceFacade is a Device handle with the proc addresses pointer. It allows
-// the invocation of methods against the handle. In the vulkan spec, these would be the functions
-// that take the handle as the first parameter.
-//
-// Use the H field to get the handle back.
-type DeviceFacade struct {
-	H     Device         // The vulkan Handle
-	procs *C.vksProcAddr // The addresses for commands.
-}
-
-// PhysicalDevice is a Handle to a vulkan resource.
-// PhysicalDevice is a child of Instance.
-//
-// Use InstanceFacade.MakePhysicalDeviceFacade to create a facade around this object to invoke methods.
-//
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPhysicalDevice.html
-type PhysicalDevice C.VkPhysicalDevice
-
-// NullPhysicalDevice is a typed Null value for the PhysicalDevice type.
-var NullPhysicalDevice PhysicalDevice
-
-// MakePhysicalDeviceFacadeprovides a facade interface to the handle. It requires
-// the parent facade to copy the proc addresses.
-func (parent InstanceFacade) MakePhysicalDeviceFacade(x PhysicalDevice) PhysicalDeviceFacade {
-	return PhysicalDeviceFacade{
-		H:     x,
-		procs: parent.procs,
-	}
-}
-
-// PhysicalDeviceFacade is a PhysicalDevice handle with the proc addresses pointer. It allows
-// the invocation of methods against the handle. In the vulkan spec, these would be the functions
-// that take the handle as the first parameter.
-//
-// Use the H field to get the handle back.
-type PhysicalDeviceFacade struct {
-	H     PhysicalDevice // The vulkan Handle
-	procs *C.vksProcAddr // The addresses for commands.
-}
 
 // DeviceMemory is a Handle to a vulkan resource.
 // DeviceMemory is a child of Device.
@@ -4226,6 +4226,262 @@ func (x CopyDescriptorSet) WithDescriptorCount(y uint32) CopyDescriptorSet {
 	return x
 }
 
+// Extent3D provides a go interface for VkExtent3D.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkExtent3D.html
+type Extent3D C.struct_VkExtent3D
+
+// SizeofExtent3D is the memory size of a Extent3D
+var SizeofExtent3D int = int(unsafe.Sizeof(Extent3D{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *Extent3D) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x Extent3D) AsCPtr() *Extent3D {
+	clone := (*Extent3D)(newCBlock(C.ulong(SizeofExtent3D)))
+	*clone = x
+	return clone
+}
+
+// Extent3DFreeCSlice releases the memory allocated by Extent3DMakeCSlice.
+// It does not free pointers stored inside the slice.
+func Extent3DFreeCSlice(x []Extent3D) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// Extent3DMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. Extent3DFreeCSlice must be called on the returned slice.
+func Extent3DMakeCSlice(x ...Extent3D) []Extent3D {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofExtent3D * len(x)
+	dst := unsafe.Slice((*Extent3D)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// Width returns the value of width from VkExtent3D
+func (x Extent3D) Width() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.width)
+	return *ptr
+}
+
+// WithWidth sets the value for the Width on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x Extent3D) WithWidth(y uint32) Extent3D {
+	x.width = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// Height returns the value of height from VkExtent3D
+func (x Extent3D) Height() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.height)
+	return *ptr
+}
+
+// WithHeight sets the value for the Height on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x Extent3D) WithHeight(y uint32) Extent3D {
+	x.height = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// Depth returns the value of depth from VkExtent3D
+func (x Extent3D) Depth() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.depth)
+	return *ptr
+}
+
+// WithDepth sets the value for the Depth on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x Extent3D) WithDepth(y uint32) Extent3D {
+	x.depth = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// Offset3D provides a go interface for VkOffset3D.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkOffset3D.html
+type Offset3D C.struct_VkOffset3D
+
+// SizeofOffset3D is the memory size of a Offset3D
+var SizeofOffset3D int = int(unsafe.Sizeof(Offset3D{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *Offset3D) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x Offset3D) AsCPtr() *Offset3D {
+	clone := (*Offset3D)(newCBlock(C.ulong(SizeofOffset3D)))
+	*clone = x
+	return clone
+}
+
+// Offset3DFreeCSlice releases the memory allocated by Offset3DMakeCSlice.
+// It does not free pointers stored inside the slice.
+func Offset3DFreeCSlice(x []Offset3D) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// Offset3DMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. Offset3DFreeCSlice must be called on the returned slice.
+func Offset3DMakeCSlice(x ...Offset3D) []Offset3D {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofOffset3D * len(x)
+	dst := unsafe.Slice((*Offset3D)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// X returns the value of x from VkOffset3D
+func (x Offset3D) X() int32 {
+	ptr := func(x *C.int32_t) *int32 { /* Scalar */ c2g := int32(*x); return &c2g }(&x.x)
+	return *ptr
+}
+
+// WithX sets the value for the X on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x Offset3D) WithX(y int32) Offset3D {
+	x.x = *(func(x *int32) *C.int32_t { /* Scalar */ g2c := C.int32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// Y returns the value of y from VkOffset3D
+func (x Offset3D) Y() int32 {
+	ptr := func(x *C.int32_t) *int32 { /* Scalar */ c2g := int32(*x); return &c2g }(&x.y)
+	return *ptr
+}
+
+// WithY sets the value for the Y on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x Offset3D) WithY(y int32) Offset3D {
+	x.y = *(func(x *int32) *C.int32_t { /* Scalar */ g2c := C.int32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// Z returns the value of z from VkOffset3D
+func (x Offset3D) Z() int32 {
+	ptr := func(x *C.int32_t) *int32 { /* Scalar */ c2g := int32(*x); return &c2g }(&x.z)
+	return *ptr
+}
+
+// WithZ sets the value for the Z on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x Offset3D) WithZ(y int32) Offset3D {
+	x.z = *(func(x *int32) *C.int32_t { /* Scalar */ g2c := C.int32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// ImageSubresourceLayers provides a go interface for VkImageSubresourceLayers.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkImageSubresourceLayers.html
+type ImageSubresourceLayers C.struct_VkImageSubresourceLayers
+
+// SizeofImageSubresourceLayers is the memory size of a ImageSubresourceLayers
+var SizeofImageSubresourceLayers int = int(unsafe.Sizeof(ImageSubresourceLayers{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *ImageSubresourceLayers) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x ImageSubresourceLayers) AsCPtr() *ImageSubresourceLayers {
+	clone := (*ImageSubresourceLayers)(newCBlock(C.ulong(SizeofImageSubresourceLayers)))
+	*clone = x
+	return clone
+}
+
+// ImageSubresourceLayersFreeCSlice releases the memory allocated by ImageSubresourceLayersMakeCSlice.
+// It does not free pointers stored inside the slice.
+func ImageSubresourceLayersFreeCSlice(x []ImageSubresourceLayers) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// ImageSubresourceLayersMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. ImageSubresourceLayersFreeCSlice must be called on the returned slice.
+func ImageSubresourceLayersMakeCSlice(x ...ImageSubresourceLayers) []ImageSubresourceLayers {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofImageSubresourceLayers * len(x)
+	dst := unsafe.Slice((*ImageSubresourceLayers)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// AspectMask returns the value of aspectMask from VkImageSubresourceLayers
+func (x ImageSubresourceLayers) AspectMask() ImageAspectFlags {
+	ptr := /* typedef */ (*ImageAspectFlags)(&x.aspectMask)
+	return *ptr
+}
+
+// WithAspectMask sets the value for the AspectMask on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x ImageSubresourceLayers) WithAspectMask(y ImageAspectFlags) ImageSubresourceLayers {
+	x.aspectMask = *( /* typedef */ (*C.VkImageAspectFlags)(&y))
+	return x
+}
+
+// MipLevel returns the value of mipLevel from VkImageSubresourceLayers
+func (x ImageSubresourceLayers) MipLevel() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.mipLevel)
+	return *ptr
+}
+
+// WithMipLevel sets the value for the MipLevel on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x ImageSubresourceLayers) WithMipLevel(y uint32) ImageSubresourceLayers {
+	x.mipLevel = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// BaseArrayLayer returns the value of baseArrayLayer from VkImageSubresourceLayers
+func (x ImageSubresourceLayers) BaseArrayLayer() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.baseArrayLayer)
+	return *ptr
+}
+
+// WithBaseArrayLayer sets the value for the BaseArrayLayer on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x ImageSubresourceLayers) WithBaseArrayLayer(y uint32) ImageSubresourceLayers {
+	x.baseArrayLayer = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// LayerCount returns the value of layerCount from VkImageSubresourceLayers
+func (x ImageSubresourceLayers) LayerCount() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.layerCount)
+	return *ptr
+}
+
+// WithLayerCount sets the value for the LayerCount on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x ImageSubresourceLayers) WithLayerCount(y uint32) ImageSubresourceLayers {
+	x.layerCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
 // ImageResolve provides a go interface for VkImageResolve.
 // https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkImageResolve.html
 type ImageResolve C.struct_VkImageResolve
@@ -4937,6 +5193,210 @@ func (x QueryPoolCreateInfo) WithPipelineStatistics(y QueryPipelineStatisticFlag
 	return x
 }
 
+// Offset2D provides a go interface for VkOffset2D.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkOffset2D.html
+type Offset2D C.struct_VkOffset2D
+
+// SizeofOffset2D is the memory size of a Offset2D
+var SizeofOffset2D int = int(unsafe.Sizeof(Offset2D{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *Offset2D) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x Offset2D) AsCPtr() *Offset2D {
+	clone := (*Offset2D)(newCBlock(C.ulong(SizeofOffset2D)))
+	*clone = x
+	return clone
+}
+
+// Offset2DFreeCSlice releases the memory allocated by Offset2DMakeCSlice.
+// It does not free pointers stored inside the slice.
+func Offset2DFreeCSlice(x []Offset2D) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// Offset2DMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. Offset2DFreeCSlice must be called on the returned slice.
+func Offset2DMakeCSlice(x ...Offset2D) []Offset2D {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofOffset2D * len(x)
+	dst := unsafe.Slice((*Offset2D)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// X returns the value of x from VkOffset2D
+func (x Offset2D) X() int32 {
+	ptr := func(x *C.int32_t) *int32 { /* Scalar */ c2g := int32(*x); return &c2g }(&x.x)
+	return *ptr
+}
+
+// WithX sets the value for the X on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x Offset2D) WithX(y int32) Offset2D {
+	x.x = *(func(x *int32) *C.int32_t { /* Scalar */ g2c := C.int32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// Y returns the value of y from VkOffset2D
+func (x Offset2D) Y() int32 {
+	ptr := func(x *C.int32_t) *int32 { /* Scalar */ c2g := int32(*x); return &c2g }(&x.y)
+	return *ptr
+}
+
+// WithY sets the value for the Y on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x Offset2D) WithY(y int32) Offset2D {
+	x.y = *(func(x *int32) *C.int32_t { /* Scalar */ g2c := C.int32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// Extent2D provides a go interface for VkExtent2D.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkExtent2D.html
+type Extent2D C.struct_VkExtent2D
+
+// SizeofExtent2D is the memory size of a Extent2D
+var SizeofExtent2D int = int(unsafe.Sizeof(Extent2D{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *Extent2D) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x Extent2D) AsCPtr() *Extent2D {
+	clone := (*Extent2D)(newCBlock(C.ulong(SizeofExtent2D)))
+	*clone = x
+	return clone
+}
+
+// Extent2DFreeCSlice releases the memory allocated by Extent2DMakeCSlice.
+// It does not free pointers stored inside the slice.
+func Extent2DFreeCSlice(x []Extent2D) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// Extent2DMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. Extent2DFreeCSlice must be called on the returned slice.
+func Extent2DMakeCSlice(x ...Extent2D) []Extent2D {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofExtent2D * len(x)
+	dst := unsafe.Slice((*Extent2D)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// Width returns the value of width from VkExtent2D
+func (x Extent2D) Width() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.width)
+	return *ptr
+}
+
+// WithWidth sets the value for the Width on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x Extent2D) WithWidth(y uint32) Extent2D {
+	x.width = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// Height returns the value of height from VkExtent2D
+func (x Extent2D) Height() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.height)
+	return *ptr
+}
+
+// WithHeight sets the value for the Height on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x Extent2D) WithHeight(y uint32) Extent2D {
+	x.height = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// Rect2D provides a go interface for VkRect2D.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkRect2D.html
+type Rect2D C.struct_VkRect2D
+
+// SizeofRect2D is the memory size of a Rect2D
+var SizeofRect2D int = int(unsafe.Sizeof(Rect2D{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *Rect2D) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x Rect2D) AsCPtr() *Rect2D {
+	clone := (*Rect2D)(newCBlock(C.ulong(SizeofRect2D)))
+	*clone = x
+	return clone
+}
+
+// Rect2DFreeCSlice releases the memory allocated by Rect2DMakeCSlice.
+// It does not free pointers stored inside the slice.
+func Rect2DFreeCSlice(x []Rect2D) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// Rect2DMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. Rect2DFreeCSlice must be called on the returned slice.
+func Rect2DMakeCSlice(x ...Rect2D) []Rect2D {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofRect2D * len(x)
+	dst := unsafe.Slice((*Rect2D)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// Offset returns the value of offset from VkRect2D
+func (x Rect2D) Offset() Offset2D {
+	ptr := /* typedef */ (*Offset2D)(&x.offset)
+	return *ptr
+}
+
+// WithOffset sets the value for the Offset on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x Rect2D) WithOffset(y Offset2D) Rect2D {
+	x.offset = *( /* typedef */ (*C.struct_VkOffset2D)(&y))
+	return x
+}
+
+// Extent returns the value of extent from VkRect2D
+func (x Rect2D) Extent() Extent2D {
+	ptr := /* typedef */ (*Extent2D)(&x.extent)
+	return *ptr
+}
+
+// WithExtent sets the value for the Extent on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x Rect2D) WithExtent(y Extent2D) Rect2D {
+	x.extent = *( /* typedef */ (*C.struct_VkExtent2D)(&y))
+	return x
+}
+
 // ClearRect provides a go interface for VkClearRect.
 // https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkClearRect.html
 type ClearRect C.struct_VkClearRect
@@ -5203,6 +5663,14 @@ func (x PipelineCacheHeaderVersionOne) WithPipelineCacheUUID(y []byte) PipelineC
 	copy(x.pipelineCacheUUID[:], unsafe.Slice(*ptr, len(y)))
 	return x
 }
+
+// ClearColorValue union
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkClearColorValue.html
+type ClearColorValue C.VkClearColorValue
+
+// ClearValue union
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkClearValue.html
+type ClearValue C.VkClearValue
 
 // ClearAttachment provides a go interface for VkClearAttachment.
 // https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkClearAttachment.html
@@ -5852,6 +6320,66 @@ func (x BufferCreateInfo) WithPQueueFamilyIndices(y []uint32) BufferCreateInfo {
 	return x.WithQueueFamilyIndexCount(uint32(len(y)))
 }
 
+// SparseImageFormatProperties provides a go interface for VkSparseImageFormatProperties.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkSparseImageFormatProperties.html
+type SparseImageFormatProperties C.struct_VkSparseImageFormatProperties
+
+// SizeofSparseImageFormatProperties is the memory size of a SparseImageFormatProperties
+var SizeofSparseImageFormatProperties int = int(unsafe.Sizeof(SparseImageFormatProperties{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *SparseImageFormatProperties) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x SparseImageFormatProperties) AsCPtr() *SparseImageFormatProperties {
+	clone := (*SparseImageFormatProperties)(newCBlock(C.ulong(SizeofSparseImageFormatProperties)))
+	*clone = x
+	return clone
+}
+
+// SparseImageFormatPropertiesFreeCSlice releases the memory allocated by SparseImageFormatPropertiesMakeCSlice.
+// It does not free pointers stored inside the slice.
+func SparseImageFormatPropertiesFreeCSlice(x []SparseImageFormatProperties) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// SparseImageFormatPropertiesMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. SparseImageFormatPropertiesFreeCSlice must be called on the returned slice.
+func SparseImageFormatPropertiesMakeCSlice(x ...SparseImageFormatProperties) []SparseImageFormatProperties {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofSparseImageFormatProperties * len(x)
+	dst := unsafe.Slice((*SparseImageFormatProperties)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// AspectMask returns the value of aspectMask from VkSparseImageFormatProperties
+func (x SparseImageFormatProperties) AspectMask() ImageAspectFlags {
+	ptr := /* typedef */ (*ImageAspectFlags)(&x.aspectMask)
+	return *ptr
+}
+
+// ImageGranularity returns the value of imageGranularity from VkSparseImageFormatProperties
+func (x SparseImageFormatProperties) ImageGranularity() Extent3D {
+	ptr := /* typedef */ (*Extent3D)(&x.imageGranularity)
+	return *ptr
+}
+
+// Flags returns the value of flags from VkSparseImageFormatProperties
+func (x SparseImageFormatProperties) Flags() SparseImageFormatFlags {
+	ptr := /* typedef */ (*SparseImageFormatFlags)(&x.flags)
+	return *ptr
+}
+
 // SparseImageMemoryRequirements provides a go interface for VkSparseImageMemoryRequirements.
 // https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkSparseImageMemoryRequirements.html
 type SparseImageMemoryRequirements C.struct_VkSparseImageMemoryRequirements
@@ -5924,98 +6452,85 @@ func (x SparseImageMemoryRequirements) ImageMipTailStride() DeviceSize {
 	return *ptr
 }
 
-// SparseImageMemoryBindInfo provides a go interface for VkSparseImageMemoryBindInfo.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkSparseImageMemoryBindInfo.html
-type SparseImageMemoryBindInfo C.struct_VkSparseImageMemoryBindInfo
+// ImageSubresource provides a go interface for VkImageSubresource.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkImageSubresource.html
+type ImageSubresource C.struct_VkImageSubresource
 
-// SizeofSparseImageMemoryBindInfo is the memory size of a SparseImageMemoryBindInfo
-var SizeofSparseImageMemoryBindInfo int = int(unsafe.Sizeof(SparseImageMemoryBindInfo{}))
+// SizeofImageSubresource is the memory size of a ImageSubresource
+var SizeofImageSubresource int = int(unsafe.Sizeof(ImageSubresource{}))
 
 // Free releases the memory allocated by AsCPtr.
 // It does not free pointers stored in the structure.
-func (x *SparseImageMemoryBindInfo) Free() {
+func (x *ImageSubresource) Free() {
 	C.free(unsafe.Pointer(x))
 }
 
 // AsCPtr copies the object to the C heap and returns the pointer.
 // Free must be explicitly called on the returned pointer.
-func (x SparseImageMemoryBindInfo) AsCPtr() *SparseImageMemoryBindInfo {
-	clone := (*SparseImageMemoryBindInfo)(newCBlock(C.ulong(SizeofSparseImageMemoryBindInfo)))
+func (x ImageSubresource) AsCPtr() *ImageSubresource {
+	clone := (*ImageSubresource)(newCBlock(C.ulong(SizeofImageSubresource)))
 	*clone = x
 	return clone
 }
 
-// SparseImageMemoryBindInfoFreeCSlice releases the memory allocated by SparseImageMemoryBindInfoMakeCSlice.
+// ImageSubresourceFreeCSlice releases the memory allocated by ImageSubresourceMakeCSlice.
 // It does not free pointers stored inside the slice.
-func SparseImageMemoryBindInfoFreeCSlice(x []SparseImageMemoryBindInfo) {
+func ImageSubresourceFreeCSlice(x []ImageSubresource) {
 	if len(x) > 0 {
 		C.free(unsafe.Pointer(&x[0]))
 	}
 }
 
-// SparseImageMemoryBindInfoMakeCSlice allocates memory for the passed arguments on the C heap,
+// ImageSubresourceMakeCSlice allocates memory for the passed arguments on the C heap,
 // copies their values to the allocated memory, and creates a slice around the
-// C memory. SparseImageMemoryBindInfoFreeCSlice must be called on the returned slice.
-func SparseImageMemoryBindInfoMakeCSlice(x ...SparseImageMemoryBindInfo) []SparseImageMemoryBindInfo {
+// C memory. ImageSubresourceFreeCSlice must be called on the returned slice.
+func ImageSubresourceMakeCSlice(x ...ImageSubresource) []ImageSubresource {
 	if len(x) == 0 {
 		return nil
 	}
-	sz := SizeofSparseImageMemoryBindInfo * len(x)
-	dst := unsafe.Slice((*SparseImageMemoryBindInfo)(newCBlock(C.ulong(sz))), len(x))
+	sz := SizeofImageSubresource * len(x)
+	dst := unsafe.Slice((*ImageSubresource)(newCBlock(C.ulong(sz))), len(x))
 	copy(dst, x)
 	return dst
 }
 
-// Image returns the value of image from VkSparseImageMemoryBindInfo
-func (x SparseImageMemoryBindInfo) Image() Image {
-	ptr := /* handle */ (*Image)(&x.image)
+// AspectMask returns the value of aspectMask from VkImageSubresource
+func (x ImageSubresource) AspectMask() ImageAspectFlags {
+	ptr := /* typedef */ (*ImageAspectFlags)(&x.aspectMask)
 	return *ptr
 }
 
-// WithImage sets the value for the Image on the underlying C structure.
+// WithAspectMask sets the value for the AspectMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x SparseImageMemoryBindInfo) WithImage(y Image) SparseImageMemoryBindInfo {
-	x.image = *( /* handle */ (*C.VkImage)(&y))
+func (x ImageSubresource) WithAspectMask(y ImageAspectFlags) ImageSubresource {
+	x.aspectMask = *( /* typedef */ (*C.VkImageAspectFlags)(&y))
 	return x
 }
 
-// BindCount returns the value of bindCount from VkSparseImageMemoryBindInfo
-func (x SparseImageMemoryBindInfo) BindCount() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.bindCount)
+// MipLevel returns the value of mipLevel from VkImageSubresource
+func (x ImageSubresource) MipLevel() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.mipLevel)
 	return *ptr
 }
 
-// WithBindCount sets the value for the BindCount on the underlying C structure.
+// WithMipLevel sets the value for the MipLevel on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x SparseImageMemoryBindInfo) WithBindCount(y uint32) SparseImageMemoryBindInfo {
-	x.bindCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+func (x ImageSubresource) WithMipLevel(y uint32) ImageSubresource {
+	x.mipLevel = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
 	return x
 }
 
-// PBinds returns the value of pBinds from VkSparseImageMemoryBindInfo
-func (x SparseImageMemoryBindInfo) PBinds() []SparseImageMemoryBind {
-	ptr := func(x **C.struct_VkSparseImageMemoryBind) *[]SparseImageMemoryBind { /* Slice */
-		slc := unsafe.Slice((*SparseImageMemoryBind)(unsafe.Pointer(x)), (1 << 31))
-		return &slc
-	}(&x.pBinds)
+// ArrayLayer returns the value of arrayLayer from VkImageSubresource
+func (x ImageSubresource) ArrayLayer() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.arrayLayer)
 	return *ptr
 }
 
-// WithPBinds sets the value for the PBinds on the underlying C structure.
+// WithArrayLayer sets the value for the ArrayLayer on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-//
-// The specification defines BindCount as the length of this field.
-// BindCount is updated with the length of the new value.
-func (x SparseImageMemoryBindInfo) WithPBinds(y []SparseImageMemoryBind) SparseImageMemoryBindInfo {
-	x.pBinds = *(func(x *[]SparseImageMemoryBind) **C.struct_VkSparseImageMemoryBind { /* Slice */
-		if len(*x) > 0 {
-			slc := (*C.struct_VkSparseImageMemoryBind)(unsafe.Pointer(&((*x)[0])))
-			return &slc
-		}
-		var ptr unsafe.Pointer
-		return (**C.struct_VkSparseImageMemoryBind)(unsafe.Pointer((&ptr)))
-	}(&y))
-	return x.WithBindCount(uint32(len(y)))
+func (x ImageSubresource) WithArrayLayer(y uint32) ImageSubresource {
+	x.arrayLayer = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
 }
 
 // SparseImageMemoryBind provides a go interface for VkSparseImageMemoryBind.
@@ -6138,239 +6653,98 @@ func (x SparseImageMemoryBind) WithFlags(y SparseMemoryBindFlags) SparseImageMem
 	return x
 }
 
-// ImageSubresourceLayers provides a go interface for VkImageSubresourceLayers.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkImageSubresourceLayers.html
-type ImageSubresourceLayers C.struct_VkImageSubresourceLayers
+// SparseImageMemoryBindInfo provides a go interface for VkSparseImageMemoryBindInfo.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkSparseImageMemoryBindInfo.html
+type SparseImageMemoryBindInfo C.struct_VkSparseImageMemoryBindInfo
 
-// SizeofImageSubresourceLayers is the memory size of a ImageSubresourceLayers
-var SizeofImageSubresourceLayers int = int(unsafe.Sizeof(ImageSubresourceLayers{}))
+// SizeofSparseImageMemoryBindInfo is the memory size of a SparseImageMemoryBindInfo
+var SizeofSparseImageMemoryBindInfo int = int(unsafe.Sizeof(SparseImageMemoryBindInfo{}))
 
 // Free releases the memory allocated by AsCPtr.
 // It does not free pointers stored in the structure.
-func (x *ImageSubresourceLayers) Free() {
+func (x *SparseImageMemoryBindInfo) Free() {
 	C.free(unsafe.Pointer(x))
 }
 
 // AsCPtr copies the object to the C heap and returns the pointer.
 // Free must be explicitly called on the returned pointer.
-func (x ImageSubresourceLayers) AsCPtr() *ImageSubresourceLayers {
-	clone := (*ImageSubresourceLayers)(newCBlock(C.ulong(SizeofImageSubresourceLayers)))
+func (x SparseImageMemoryBindInfo) AsCPtr() *SparseImageMemoryBindInfo {
+	clone := (*SparseImageMemoryBindInfo)(newCBlock(C.ulong(SizeofSparseImageMemoryBindInfo)))
 	*clone = x
 	return clone
 }
 
-// ImageSubresourceLayersFreeCSlice releases the memory allocated by ImageSubresourceLayersMakeCSlice.
+// SparseImageMemoryBindInfoFreeCSlice releases the memory allocated by SparseImageMemoryBindInfoMakeCSlice.
 // It does not free pointers stored inside the slice.
-func ImageSubresourceLayersFreeCSlice(x []ImageSubresourceLayers) {
+func SparseImageMemoryBindInfoFreeCSlice(x []SparseImageMemoryBindInfo) {
 	if len(x) > 0 {
 		C.free(unsafe.Pointer(&x[0]))
 	}
 }
 
-// ImageSubresourceLayersMakeCSlice allocates memory for the passed arguments on the C heap,
+// SparseImageMemoryBindInfoMakeCSlice allocates memory for the passed arguments on the C heap,
 // copies their values to the allocated memory, and creates a slice around the
-// C memory. ImageSubresourceLayersFreeCSlice must be called on the returned slice.
-func ImageSubresourceLayersMakeCSlice(x ...ImageSubresourceLayers) []ImageSubresourceLayers {
+// C memory. SparseImageMemoryBindInfoFreeCSlice must be called on the returned slice.
+func SparseImageMemoryBindInfoMakeCSlice(x ...SparseImageMemoryBindInfo) []SparseImageMemoryBindInfo {
 	if len(x) == 0 {
 		return nil
 	}
-	sz := SizeofImageSubresourceLayers * len(x)
-	dst := unsafe.Slice((*ImageSubresourceLayers)(newCBlock(C.ulong(sz))), len(x))
+	sz := SizeofSparseImageMemoryBindInfo * len(x)
+	dst := unsafe.Slice((*SparseImageMemoryBindInfo)(newCBlock(C.ulong(sz))), len(x))
 	copy(dst, x)
 	return dst
 }
 
-// AspectMask returns the value of aspectMask from VkImageSubresourceLayers
-func (x ImageSubresourceLayers) AspectMask() ImageAspectFlags {
-	ptr := /* typedef */ (*ImageAspectFlags)(&x.aspectMask)
+// Image returns the value of image from VkSparseImageMemoryBindInfo
+func (x SparseImageMemoryBindInfo) Image() Image {
+	ptr := /* handle */ (*Image)(&x.image)
 	return *ptr
 }
 
-// WithAspectMask sets the value for the AspectMask on the underlying C structure.
+// WithImage sets the value for the Image on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x ImageSubresourceLayers) WithAspectMask(y ImageAspectFlags) ImageSubresourceLayers {
-	x.aspectMask = *( /* typedef */ (*C.VkImageAspectFlags)(&y))
+func (x SparseImageMemoryBindInfo) WithImage(y Image) SparseImageMemoryBindInfo {
+	x.image = *( /* handle */ (*C.VkImage)(&y))
 	return x
 }
 
-// MipLevel returns the value of mipLevel from VkImageSubresourceLayers
-func (x ImageSubresourceLayers) MipLevel() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.mipLevel)
+// BindCount returns the value of bindCount from VkSparseImageMemoryBindInfo
+func (x SparseImageMemoryBindInfo) BindCount() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.bindCount)
 	return *ptr
 }
 
-// WithMipLevel sets the value for the MipLevel on the underlying C structure.
+// WithBindCount sets the value for the BindCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x ImageSubresourceLayers) WithMipLevel(y uint32) ImageSubresourceLayers {
-	x.mipLevel = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+func (x SparseImageMemoryBindInfo) WithBindCount(y uint32) SparseImageMemoryBindInfo {
+	x.bindCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
 	return x
 }
 
-// BaseArrayLayer returns the value of baseArrayLayer from VkImageSubresourceLayers
-func (x ImageSubresourceLayers) BaseArrayLayer() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.baseArrayLayer)
+// PBinds returns the value of pBinds from VkSparseImageMemoryBindInfo
+func (x SparseImageMemoryBindInfo) PBinds() []SparseImageMemoryBind {
+	ptr := func(x **C.struct_VkSparseImageMemoryBind) *[]SparseImageMemoryBind { /* Slice */
+		slc := unsafe.Slice((*SparseImageMemoryBind)(unsafe.Pointer(x)), (1 << 31))
+		return &slc
+	}(&x.pBinds)
 	return *ptr
 }
 
-// WithBaseArrayLayer sets the value for the BaseArrayLayer on the underlying C structure.
+// WithPBinds sets the value for the PBinds on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x ImageSubresourceLayers) WithBaseArrayLayer(y uint32) ImageSubresourceLayers {
-	x.baseArrayLayer = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// LayerCount returns the value of layerCount from VkImageSubresourceLayers
-func (x ImageSubresourceLayers) LayerCount() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.layerCount)
-	return *ptr
-}
-
-// WithLayerCount sets the value for the LayerCount on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x ImageSubresourceLayers) WithLayerCount(y uint32) ImageSubresourceLayers {
-	x.layerCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// Offset3D provides a go interface for VkOffset3D.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkOffset3D.html
-type Offset3D C.struct_VkOffset3D
-
-// SizeofOffset3D is the memory size of a Offset3D
-var SizeofOffset3D int = int(unsafe.Sizeof(Offset3D{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *Offset3D) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x Offset3D) AsCPtr() *Offset3D {
-	clone := (*Offset3D)(newCBlock(C.ulong(SizeofOffset3D)))
-	*clone = x
-	return clone
-}
-
-// Offset3DFreeCSlice releases the memory allocated by Offset3DMakeCSlice.
-// It does not free pointers stored inside the slice.
-func Offset3DFreeCSlice(x []Offset3D) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// Offset3DMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. Offset3DFreeCSlice must be called on the returned slice.
-func Offset3DMakeCSlice(x ...Offset3D) []Offset3D {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofOffset3D * len(x)
-	dst := unsafe.Slice((*Offset3D)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// X returns the value of x from VkOffset3D
-func (x Offset3D) X() int32 {
-	ptr := func(x *C.int32_t) *int32 { /* Scalar */ c2g := int32(*x); return &c2g }(&x.x)
-	return *ptr
-}
-
-// WithX sets the value for the X on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x Offset3D) WithX(y int32) Offset3D {
-	x.x = *(func(x *int32) *C.int32_t { /* Scalar */ g2c := C.int32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// Y returns the value of y from VkOffset3D
-func (x Offset3D) Y() int32 {
-	ptr := func(x *C.int32_t) *int32 { /* Scalar */ c2g := int32(*x); return &c2g }(&x.y)
-	return *ptr
-}
-
-// WithY sets the value for the Y on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x Offset3D) WithY(y int32) Offset3D {
-	x.y = *(func(x *int32) *C.int32_t { /* Scalar */ g2c := C.int32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// Z returns the value of z from VkOffset3D
-func (x Offset3D) Z() int32 {
-	ptr := func(x *C.int32_t) *int32 { /* Scalar */ c2g := int32(*x); return &c2g }(&x.z)
-	return *ptr
-}
-
-// WithZ sets the value for the Z on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x Offset3D) WithZ(y int32) Offset3D {
-	x.z = *(func(x *int32) *C.int32_t { /* Scalar */ g2c := C.int32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// SparseImageFormatProperties provides a go interface for VkSparseImageFormatProperties.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkSparseImageFormatProperties.html
-type SparseImageFormatProperties C.struct_VkSparseImageFormatProperties
-
-// SizeofSparseImageFormatProperties is the memory size of a SparseImageFormatProperties
-var SizeofSparseImageFormatProperties int = int(unsafe.Sizeof(SparseImageFormatProperties{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *SparseImageFormatProperties) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x SparseImageFormatProperties) AsCPtr() *SparseImageFormatProperties {
-	clone := (*SparseImageFormatProperties)(newCBlock(C.ulong(SizeofSparseImageFormatProperties)))
-	*clone = x
-	return clone
-}
-
-// SparseImageFormatPropertiesFreeCSlice releases the memory allocated by SparseImageFormatPropertiesMakeCSlice.
-// It does not free pointers stored inside the slice.
-func SparseImageFormatPropertiesFreeCSlice(x []SparseImageFormatProperties) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// SparseImageFormatPropertiesMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. SparseImageFormatPropertiesFreeCSlice must be called on the returned slice.
-func SparseImageFormatPropertiesMakeCSlice(x ...SparseImageFormatProperties) []SparseImageFormatProperties {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofSparseImageFormatProperties * len(x)
-	dst := unsafe.Slice((*SparseImageFormatProperties)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// AspectMask returns the value of aspectMask from VkSparseImageFormatProperties
-func (x SparseImageFormatProperties) AspectMask() ImageAspectFlags {
-	ptr := /* typedef */ (*ImageAspectFlags)(&x.aspectMask)
-	return *ptr
-}
-
-// ImageGranularity returns the value of imageGranularity from VkSparseImageFormatProperties
-func (x SparseImageFormatProperties) ImageGranularity() Extent3D {
-	ptr := /* typedef */ (*Extent3D)(&x.imageGranularity)
-	return *ptr
-}
-
-// Flags returns the value of flags from VkSparseImageFormatProperties
-func (x SparseImageFormatProperties) Flags() SparseImageFormatFlags {
-	ptr := /* typedef */ (*SparseImageFormatFlags)(&x.flags)
-	return *ptr
+//
+// The specification defines BindCount as the length of this field.
+// BindCount is updated with the length of the new value.
+func (x SparseImageMemoryBindInfo) WithPBinds(y []SparseImageMemoryBind) SparseImageMemoryBindInfo {
+	x.pBinds = *(func(x *[]SparseImageMemoryBind) **C.struct_VkSparseImageMemoryBind { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.struct_VkSparseImageMemoryBind)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.struct_VkSparseImageMemoryBind)(unsafe.Pointer((&ptr)))
+	}(&y))
+	return x.WithBindCount(uint32(len(y)))
 }
 
 // SparseBufferMemoryBindInfo provides a go interface for VkSparseBufferMemoryBindInfo.
@@ -6603,74 +6977,6 @@ func (x BufferViewCreateInfo) Range_() DeviceSize {
 // It performs whatever conversions are necessary to match the C API.
 func (x BufferViewCreateInfo) WithRange_(y DeviceSize) BufferViewCreateInfo {
 	x._range = *( /* typedef */ (*C.VkDeviceSize)(&y))
-	return x
-}
-
-// Rect2D provides a go interface for VkRect2D.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkRect2D.html
-type Rect2D C.struct_VkRect2D
-
-// SizeofRect2D is the memory size of a Rect2D
-var SizeofRect2D int = int(unsafe.Sizeof(Rect2D{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *Rect2D) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x Rect2D) AsCPtr() *Rect2D {
-	clone := (*Rect2D)(newCBlock(C.ulong(SizeofRect2D)))
-	*clone = x
-	return clone
-}
-
-// Rect2DFreeCSlice releases the memory allocated by Rect2DMakeCSlice.
-// It does not free pointers stored inside the slice.
-func Rect2DFreeCSlice(x []Rect2D) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// Rect2DMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. Rect2DFreeCSlice must be called on the returned slice.
-func Rect2DMakeCSlice(x ...Rect2D) []Rect2D {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofRect2D * len(x)
-	dst := unsafe.Slice((*Rect2D)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// Offset returns the value of offset from VkRect2D
-func (x Rect2D) Offset() Offset2D {
-	ptr := /* typedef */ (*Offset2D)(&x.offset)
-	return *ptr
-}
-
-// WithOffset sets the value for the Offset on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x Rect2D) WithOffset(y Offset2D) Rect2D {
-	x.offset = *( /* typedef */ (*C.struct_VkOffset2D)(&y))
-	return x
-}
-
-// Extent returns the value of extent from VkRect2D
-func (x Rect2D) Extent() Extent2D {
-	ptr := /* typedef */ (*Extent2D)(&x.extent)
-	return *ptr
-}
-
-// WithExtent sets the value for the Extent on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x Rect2D) WithExtent(y Extent2D) Rect2D {
-	x.extent = *( /* typedef */ (*C.struct_VkExtent2D)(&y))
 	return x
 }
 
@@ -7040,87 +7346,6 @@ func (x EventCreateInfo) Flags() EventCreateFlags {
 // It performs whatever conversions are necessary to match the C API.
 func (x EventCreateInfo) WithFlags(y EventCreateFlags) EventCreateInfo {
 	x.flags = *( /* typedef */ (*C.VkEventCreateFlags)(&y))
-	return x
-}
-
-// ImageSubresource provides a go interface for VkImageSubresource.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkImageSubresource.html
-type ImageSubresource C.struct_VkImageSubresource
-
-// SizeofImageSubresource is the memory size of a ImageSubresource
-var SizeofImageSubresource int = int(unsafe.Sizeof(ImageSubresource{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *ImageSubresource) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x ImageSubresource) AsCPtr() *ImageSubresource {
-	clone := (*ImageSubresource)(newCBlock(C.ulong(SizeofImageSubresource)))
-	*clone = x
-	return clone
-}
-
-// ImageSubresourceFreeCSlice releases the memory allocated by ImageSubresourceMakeCSlice.
-// It does not free pointers stored inside the slice.
-func ImageSubresourceFreeCSlice(x []ImageSubresource) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// ImageSubresourceMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. ImageSubresourceFreeCSlice must be called on the returned slice.
-func ImageSubresourceMakeCSlice(x ...ImageSubresource) []ImageSubresource {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofImageSubresource * len(x)
-	dst := unsafe.Slice((*ImageSubresource)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// AspectMask returns the value of aspectMask from VkImageSubresource
-func (x ImageSubresource) AspectMask() ImageAspectFlags {
-	ptr := /* typedef */ (*ImageAspectFlags)(&x.aspectMask)
-	return *ptr
-}
-
-// WithAspectMask sets the value for the AspectMask on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x ImageSubresource) WithAspectMask(y ImageAspectFlags) ImageSubresource {
-	x.aspectMask = *( /* typedef */ (*C.VkImageAspectFlags)(&y))
-	return x
-}
-
-// MipLevel returns the value of mipLevel from VkImageSubresource
-func (x ImageSubresource) MipLevel() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.mipLevel)
-	return *ptr
-}
-
-// WithMipLevel sets the value for the MipLevel on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x ImageSubresource) WithMipLevel(y uint32) ImageSubresource {
-	x.mipLevel = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// ArrayLayer returns the value of arrayLayer from VkImageSubresource
-func (x ImageSubresource) ArrayLayer() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.arrayLayer)
-	return *ptr
-}
-
-// WithArrayLayer sets the value for the ArrayLayer on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x ImageSubresource) WithArrayLayer(y uint32) ImageSubresource {
-	x.arrayLayer = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
 	return x
 }
 
@@ -9452,74 +9677,6 @@ func (x DescriptorImageInfo) WithImageLayout(y ImageLayout) DescriptorImageInfo 
 	return x
 }
 
-// Offset2D provides a go interface for VkOffset2D.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkOffset2D.html
-type Offset2D C.struct_VkOffset2D
-
-// SizeofOffset2D is the memory size of a Offset2D
-var SizeofOffset2D int = int(unsafe.Sizeof(Offset2D{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *Offset2D) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x Offset2D) AsCPtr() *Offset2D {
-	clone := (*Offset2D)(newCBlock(C.ulong(SizeofOffset2D)))
-	*clone = x
-	return clone
-}
-
-// Offset2DFreeCSlice releases the memory allocated by Offset2DMakeCSlice.
-// It does not free pointers stored inside the slice.
-func Offset2DFreeCSlice(x []Offset2D) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// Offset2DMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. Offset2DFreeCSlice must be called on the returned slice.
-func Offset2DMakeCSlice(x ...Offset2D) []Offset2D {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofOffset2D * len(x)
-	dst := unsafe.Slice((*Offset2D)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// X returns the value of x from VkOffset2D
-func (x Offset2D) X() int32 {
-	ptr := func(x *C.int32_t) *int32 { /* Scalar */ c2g := int32(*x); return &c2g }(&x.x)
-	return *ptr
-}
-
-// WithX sets the value for the X on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x Offset2D) WithX(y int32) Offset2D {
-	x.x = *(func(x *int32) *C.int32_t { /* Scalar */ g2c := C.int32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// Y returns the value of y from VkOffset2D
-func (x Offset2D) Y() int32 {
-	ptr := func(x *C.int32_t) *int32 { /* Scalar */ c2g := int32(*x); return &c2g }(&x.y)
-	return *ptr
-}
-
-// WithY sets the value for the Y on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x Offset2D) WithY(y int32) Offset2D {
-	x.y = *(func(x *int32) *C.int32_t { /* Scalar */ g2c := C.int32_t(*x); return &g2c }(&y))
-	return x
-}
-
 // PushConstantRange provides a go interface for VkPushConstantRange.
 // https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPushConstantRange.html
 type PushConstantRange C.struct_VkPushConstantRange
@@ -10033,6 +10190,74 @@ func (x PipelineCacheCreateInfo) WithPInitialData(y unsafe.Pointer) PipelineCach
 	return x
 }
 
+// AttachmentReference provides a go interface for VkAttachmentReference.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkAttachmentReference.html
+type AttachmentReference C.struct_VkAttachmentReference
+
+// SizeofAttachmentReference is the memory size of a AttachmentReference
+var SizeofAttachmentReference int = int(unsafe.Sizeof(AttachmentReference{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *AttachmentReference) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x AttachmentReference) AsCPtr() *AttachmentReference {
+	clone := (*AttachmentReference)(newCBlock(C.ulong(SizeofAttachmentReference)))
+	*clone = x
+	return clone
+}
+
+// AttachmentReferenceFreeCSlice releases the memory allocated by AttachmentReferenceMakeCSlice.
+// It does not free pointers stored inside the slice.
+func AttachmentReferenceFreeCSlice(x []AttachmentReference) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// AttachmentReferenceMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. AttachmentReferenceFreeCSlice must be called on the returned slice.
+func AttachmentReferenceMakeCSlice(x ...AttachmentReference) []AttachmentReference {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofAttachmentReference * len(x)
+	dst := unsafe.Slice((*AttachmentReference)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// Attachment returns the value of attachment from VkAttachmentReference
+func (x AttachmentReference) Attachment() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.attachment)
+	return *ptr
+}
+
+// WithAttachment sets the value for the Attachment on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x AttachmentReference) WithAttachment(y uint32) AttachmentReference {
+	x.attachment = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// Layout returns the value of layout from VkAttachmentReference
+func (x AttachmentReference) Layout() ImageLayout {
+	ptr := /* typedef */ (*ImageLayout)(&x.layout)
+	return *ptr
+}
+
+// WithLayout sets the value for the Layout on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x AttachmentReference) WithLayout(y ImageLayout) AttachmentReference {
+	x.layout = *( /* typedef */ (*C.VkImageLayout)(&y))
+	return x
+}
+
 // SubpassDescription provides a go interface for VkSubpassDescription.
 // https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkSubpassDescription.html
 type SubpassDescription C.struct_VkSubpassDescription
@@ -10393,6 +10618,165 @@ func (x SubpassDependency) DependencyFlags() DependencyFlags {
 // It performs whatever conversions are necessary to match the C API.
 func (x SubpassDependency) WithDependencyFlags(y DependencyFlags) SubpassDependency {
 	x.dependencyFlags = *( /* typedef */ (*C.VkDependencyFlags)(&y))
+	return x
+}
+
+// AttachmentDescription provides a go interface for VkAttachmentDescription.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkAttachmentDescription.html
+type AttachmentDescription C.struct_VkAttachmentDescription
+
+// SizeofAttachmentDescription is the memory size of a AttachmentDescription
+var SizeofAttachmentDescription int = int(unsafe.Sizeof(AttachmentDescription{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *AttachmentDescription) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x AttachmentDescription) AsCPtr() *AttachmentDescription {
+	clone := (*AttachmentDescription)(newCBlock(C.ulong(SizeofAttachmentDescription)))
+	*clone = x
+	return clone
+}
+
+// AttachmentDescriptionFreeCSlice releases the memory allocated by AttachmentDescriptionMakeCSlice.
+// It does not free pointers stored inside the slice.
+func AttachmentDescriptionFreeCSlice(x []AttachmentDescription) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// AttachmentDescriptionMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. AttachmentDescriptionFreeCSlice must be called on the returned slice.
+func AttachmentDescriptionMakeCSlice(x ...AttachmentDescription) []AttachmentDescription {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofAttachmentDescription * len(x)
+	dst := unsafe.Slice((*AttachmentDescription)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// Flags returns the value of flags from VkAttachmentDescription
+func (x AttachmentDescription) Flags() AttachmentDescriptionFlags {
+	ptr := /* typedef */ (*AttachmentDescriptionFlags)(&x.flags)
+	return *ptr
+}
+
+// WithFlags sets the value for the Flags on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x AttachmentDescription) WithFlags(y AttachmentDescriptionFlags) AttachmentDescription {
+	x.flags = *( /* typedef */ (*C.VkAttachmentDescriptionFlags)(&y))
+	return x
+}
+
+// Format returns the value of format from VkAttachmentDescription
+func (x AttachmentDescription) Format() Format {
+	ptr := /* typedef */ (*Format)(&x.format)
+	return *ptr
+}
+
+// WithFormat sets the value for the Format on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x AttachmentDescription) WithFormat(y Format) AttachmentDescription {
+	x.format = *( /* typedef */ (*C.VkFormat)(&y))
+	return x
+}
+
+// Samples returns the value of samples from VkAttachmentDescription
+func (x AttachmentDescription) Samples() SampleCountFlagBits {
+	ptr := /* typedef */ (*SampleCountFlagBits)(&x.samples)
+	return *ptr
+}
+
+// WithSamples sets the value for the Samples on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x AttachmentDescription) WithSamples(y SampleCountFlagBits) AttachmentDescription {
+	x.samples = *( /* typedef */ (*C.VkSampleCountFlagBits)(&y))
+	return x
+}
+
+// LoadOp returns the value of loadOp from VkAttachmentDescription
+func (x AttachmentDescription) LoadOp() AttachmentLoadOp {
+	ptr := /* typedef */ (*AttachmentLoadOp)(&x.loadOp)
+	return *ptr
+}
+
+// WithLoadOp sets the value for the LoadOp on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x AttachmentDescription) WithLoadOp(y AttachmentLoadOp) AttachmentDescription {
+	x.loadOp = *( /* typedef */ (*C.VkAttachmentLoadOp)(&y))
+	return x
+}
+
+// StoreOp returns the value of storeOp from VkAttachmentDescription
+func (x AttachmentDescription) StoreOp() AttachmentStoreOp {
+	ptr := /* typedef */ (*AttachmentStoreOp)(&x.storeOp)
+	return *ptr
+}
+
+// WithStoreOp sets the value for the StoreOp on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x AttachmentDescription) WithStoreOp(y AttachmentStoreOp) AttachmentDescription {
+	x.storeOp = *( /* typedef */ (*C.VkAttachmentStoreOp)(&y))
+	return x
+}
+
+// StencilLoadOp returns the value of stencilLoadOp from VkAttachmentDescription
+func (x AttachmentDescription) StencilLoadOp() AttachmentLoadOp {
+	ptr := /* typedef */ (*AttachmentLoadOp)(&x.stencilLoadOp)
+	return *ptr
+}
+
+// WithStencilLoadOp sets the value for the StencilLoadOp on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x AttachmentDescription) WithStencilLoadOp(y AttachmentLoadOp) AttachmentDescription {
+	x.stencilLoadOp = *( /* typedef */ (*C.VkAttachmentLoadOp)(&y))
+	return x
+}
+
+// StencilStoreOp returns the value of stencilStoreOp from VkAttachmentDescription
+func (x AttachmentDescription) StencilStoreOp() AttachmentStoreOp {
+	ptr := /* typedef */ (*AttachmentStoreOp)(&x.stencilStoreOp)
+	return *ptr
+}
+
+// WithStencilStoreOp sets the value for the StencilStoreOp on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x AttachmentDescription) WithStencilStoreOp(y AttachmentStoreOp) AttachmentDescription {
+	x.stencilStoreOp = *( /* typedef */ (*C.VkAttachmentStoreOp)(&y))
+	return x
+}
+
+// InitialLayout returns the value of initialLayout from VkAttachmentDescription
+func (x AttachmentDescription) InitialLayout() ImageLayout {
+	ptr := /* typedef */ (*ImageLayout)(&x.initialLayout)
+	return *ptr
+}
+
+// WithInitialLayout sets the value for the InitialLayout on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x AttachmentDescription) WithInitialLayout(y ImageLayout) AttachmentDescription {
+	x.initialLayout = *( /* typedef */ (*C.VkImageLayout)(&y))
+	return x
+}
+
+// FinalLayout returns the value of finalLayout from VkAttachmentDescription
+func (x AttachmentDescription) FinalLayout() ImageLayout {
+	ptr := /* typedef */ (*ImageLayout)(&x.finalLayout)
+	return *ptr
+}
+
+// WithFinalLayout sets the value for the FinalLayout on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x AttachmentDescription) WithFinalLayout(y ImageLayout) AttachmentDescription {
+	x.finalLayout = *( /* typedef */ (*C.VkImageLayout)(&y))
 	return x
 }
 
@@ -11158,6 +11542,339 @@ func (x BufferMemoryBarrier) WithSize(y DeviceSize) BufferMemoryBarrier {
 	return x
 }
 
+// SpecializationMapEntry provides a go interface for VkSpecializationMapEntry.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkSpecializationMapEntry.html
+type SpecializationMapEntry C.struct_VkSpecializationMapEntry
+
+// SizeofSpecializationMapEntry is the memory size of a SpecializationMapEntry
+var SizeofSpecializationMapEntry int = int(unsafe.Sizeof(SpecializationMapEntry{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *SpecializationMapEntry) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x SpecializationMapEntry) AsCPtr() *SpecializationMapEntry {
+	clone := (*SpecializationMapEntry)(newCBlock(C.ulong(SizeofSpecializationMapEntry)))
+	*clone = x
+	return clone
+}
+
+// SpecializationMapEntryFreeCSlice releases the memory allocated by SpecializationMapEntryMakeCSlice.
+// It does not free pointers stored inside the slice.
+func SpecializationMapEntryFreeCSlice(x []SpecializationMapEntry) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// SpecializationMapEntryMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. SpecializationMapEntryFreeCSlice must be called on the returned slice.
+func SpecializationMapEntryMakeCSlice(x ...SpecializationMapEntry) []SpecializationMapEntry {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofSpecializationMapEntry * len(x)
+	dst := unsafe.Slice((*SpecializationMapEntry)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// ConstantID returns the value of constantID from VkSpecializationMapEntry
+func (x SpecializationMapEntry) ConstantID() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.constantID)
+	return *ptr
+}
+
+// WithConstantID sets the value for the ConstantID on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x SpecializationMapEntry) WithConstantID(y uint32) SpecializationMapEntry {
+	x.constantID = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// Offset returns the value of offset from VkSpecializationMapEntry
+func (x SpecializationMapEntry) Offset() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.offset)
+	return *ptr
+}
+
+// WithOffset sets the value for the Offset on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x SpecializationMapEntry) WithOffset(y uint32) SpecializationMapEntry {
+	x.offset = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// Size returns the value of size from VkSpecializationMapEntry
+func (x SpecializationMapEntry) Size() uint64 {
+	ptr := func(x *C.size_t) *uint64 { /* Scalar */ c2g := uint64(*x); return &c2g }(&x.size)
+	return *ptr
+}
+
+// WithSize sets the value for the Size on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x SpecializationMapEntry) WithSize(y uint64) SpecializationMapEntry {
+	x.size = *(func(x *uint64) *C.size_t { /* Scalar */ g2c := C.size_t(*x); return &g2c }(&y))
+	return x
+}
+
+// SpecializationInfo provides a go interface for VkSpecializationInfo.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkSpecializationInfo.html
+type SpecializationInfo C.struct_VkSpecializationInfo
+
+// SizeofSpecializationInfo is the memory size of a SpecializationInfo
+var SizeofSpecializationInfo int = int(unsafe.Sizeof(SpecializationInfo{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *SpecializationInfo) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x SpecializationInfo) AsCPtr() *SpecializationInfo {
+	clone := (*SpecializationInfo)(newCBlock(C.ulong(SizeofSpecializationInfo)))
+	*clone = x
+	return clone
+}
+
+// SpecializationInfoFreeCSlice releases the memory allocated by SpecializationInfoMakeCSlice.
+// It does not free pointers stored inside the slice.
+func SpecializationInfoFreeCSlice(x []SpecializationInfo) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// SpecializationInfoMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. SpecializationInfoFreeCSlice must be called on the returned slice.
+func SpecializationInfoMakeCSlice(x ...SpecializationInfo) []SpecializationInfo {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofSpecializationInfo * len(x)
+	dst := unsafe.Slice((*SpecializationInfo)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// MapEntryCount returns the value of mapEntryCount from VkSpecializationInfo
+func (x SpecializationInfo) MapEntryCount() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.mapEntryCount)
+	return *ptr
+}
+
+// WithMapEntryCount sets the value for the MapEntryCount on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x SpecializationInfo) WithMapEntryCount(y uint32) SpecializationInfo {
+	x.mapEntryCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// PMapEntries returns the value of pMapEntries from VkSpecializationInfo
+func (x SpecializationInfo) PMapEntries() []SpecializationMapEntry {
+	ptr := func(x **C.struct_VkSpecializationMapEntry) *[]SpecializationMapEntry { /* Slice */
+		slc := unsafe.Slice((*SpecializationMapEntry)(unsafe.Pointer(x)), (1 << 31))
+		return &slc
+	}(&x.pMapEntries)
+	return *ptr
+}
+
+// WithPMapEntries sets the value for the PMapEntries on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+//
+// The specification defines MapEntryCount as the length of this field.
+// MapEntryCount is updated with the length of the new value.
+func (x SpecializationInfo) WithPMapEntries(y []SpecializationMapEntry) SpecializationInfo {
+	x.pMapEntries = *(func(x *[]SpecializationMapEntry) **C.struct_VkSpecializationMapEntry { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.struct_VkSpecializationMapEntry)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.struct_VkSpecializationMapEntry)(unsafe.Pointer((&ptr)))
+	}(&y))
+	return x.WithMapEntryCount(uint32(len(y)))
+}
+
+// DataSize returns the value of dataSize from VkSpecializationInfo
+func (x SpecializationInfo) DataSize() uint64 {
+	ptr := func(x *C.size_t) *uint64 { /* Scalar */ c2g := uint64(*x); return &c2g }(&x.dataSize)
+	return *ptr
+}
+
+// WithDataSize sets the value for the DataSize on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x SpecializationInfo) WithDataSize(y uint64) SpecializationInfo {
+	x.dataSize = *(func(x *uint64) *C.size_t { /* Scalar */ g2c := C.size_t(*x); return &g2c }(&y))
+	return x
+}
+
+// PData returns the value of pData from VkSpecializationInfo
+func (x SpecializationInfo) PData() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pData)
+	return *ptr
+}
+
+// WithPData sets the value for the PData on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x SpecializationInfo) WithPData(y unsafe.Pointer) SpecializationInfo {
+	x.pData = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
+	return x
+}
+
+// PipelineShaderStageCreateInfo provides a go interface for VkPipelineShaderStageCreateInfo.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPipelineShaderStageCreateInfo.html
+type PipelineShaderStageCreateInfo C.struct_VkPipelineShaderStageCreateInfo
+
+// SizeofPipelineShaderStageCreateInfo is the memory size of a PipelineShaderStageCreateInfo
+var SizeofPipelineShaderStageCreateInfo int = int(unsafe.Sizeof(PipelineShaderStageCreateInfo{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *PipelineShaderStageCreateInfo) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x PipelineShaderStageCreateInfo) AsCPtr() *PipelineShaderStageCreateInfo {
+	clone := (*PipelineShaderStageCreateInfo)(newCBlock(C.ulong(SizeofPipelineShaderStageCreateInfo)))
+	*clone = x
+	return clone
+}
+
+// PipelineShaderStageCreateInfoFreeCSlice releases the memory allocated by PipelineShaderStageCreateInfoMakeCSlice.
+// It does not free pointers stored inside the slice.
+func PipelineShaderStageCreateInfoFreeCSlice(x []PipelineShaderStageCreateInfo) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// PipelineShaderStageCreateInfoMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. PipelineShaderStageCreateInfoFreeCSlice must be called on the returned slice.
+func PipelineShaderStageCreateInfoMakeCSlice(x ...PipelineShaderStageCreateInfo) []PipelineShaderStageCreateInfo {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofPipelineShaderStageCreateInfo * len(x)
+	dst := unsafe.Slice((*PipelineShaderStageCreateInfo)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// SType returns the value of sType from VkPipelineShaderStageCreateInfo
+func (x PipelineShaderStageCreateInfo) SType() StructureType {
+	ptr := /* typedef */ (*StructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification. This method only exists if there is a single value in the specification.
+func (x PipelineShaderStageCreateInfo) WithDefaultSType() PipelineShaderStageCreateInfo {
+	return x.WithSType(VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO)
+}
+
+// WithSType sets the value for the SType on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineShaderStageCreateInfo) WithSType(y StructureType) PipelineShaderStageCreateInfo {
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
+	return x
+}
+
+// PNext returns the value of pNext from VkPipelineShaderStageCreateInfo
+func (x PipelineShaderStageCreateInfo) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext sets the value for the PNext on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineShaderStageCreateInfo) WithPNext(y unsafe.Pointer) PipelineShaderStageCreateInfo {
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
+	return x
+}
+
+// Flags returns the value of flags from VkPipelineShaderStageCreateInfo
+func (x PipelineShaderStageCreateInfo) Flags() PipelineShaderStageCreateFlags {
+	ptr := /* typedef */ (*PipelineShaderStageCreateFlags)(&x.flags)
+	return *ptr
+}
+
+// WithFlags sets the value for the Flags on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineShaderStageCreateInfo) WithFlags(y PipelineShaderStageCreateFlags) PipelineShaderStageCreateInfo {
+	x.flags = *( /* typedef */ (*C.VkPipelineShaderStageCreateFlags)(&y))
+	return x
+}
+
+// Stage returns the value of stage from VkPipelineShaderStageCreateInfo
+func (x PipelineShaderStageCreateInfo) Stage() ShaderStageFlagBits {
+	ptr := /* typedef */ (*ShaderStageFlagBits)(&x.stage)
+	return *ptr
+}
+
+// WithStage sets the value for the Stage on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineShaderStageCreateInfo) WithStage(y ShaderStageFlagBits) PipelineShaderStageCreateInfo {
+	x.stage = *( /* typedef */ (*C.VkShaderStageFlagBits)(&y))
+	return x
+}
+
+// Module returns the value of module from VkPipelineShaderStageCreateInfo
+func (x PipelineShaderStageCreateInfo) Module() ShaderModule {
+	ptr := /* handle */ (*ShaderModule)(&x.module)
+	return *ptr
+}
+
+// WithModule sets the value for the Module on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineShaderStageCreateInfo) WithModule(y ShaderModule) PipelineShaderStageCreateInfo {
+	x.module = *( /* handle */ (*C.VkShaderModule)(&y))
+	return x
+}
+
+// PName returns the value of pName from VkPipelineShaderStageCreateInfo
+func (x PipelineShaderStageCreateInfo) PName() *byte {
+	ptr := func(x **C.char) **byte { /* Pointer */ return (**byte)(unsafe.Pointer(x)) }(&x.pName)
+	return *ptr
+}
+
+// WithPName sets the value for the PName on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineShaderStageCreateInfo) WithPName(y *byte) PipelineShaderStageCreateInfo {
+	x.pName = *(func(x **byte) **C.char { /* Pointer */ return (**C.char)(unsafe.Pointer(x)) }(&y))
+	return x
+}
+
+// PSpecializationInfo returns the value of pSpecializationInfo from VkPipelineShaderStageCreateInfo
+func (x PipelineShaderStageCreateInfo) PSpecializationInfo() *SpecializationInfo {
+	ptr := func(x **C.struct_VkSpecializationInfo) **SpecializationInfo { /* Pointer */
+		c2g := (*SpecializationInfo)(*x)
+		return &c2g
+	}(&x.pSpecializationInfo)
+	return *ptr
+}
+
+// WithPSpecializationInfo sets the value for the PSpecializationInfo on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineShaderStageCreateInfo) WithPSpecializationInfo(y *SpecializationInfo) PipelineShaderStageCreateInfo {
+	x.pSpecializationInfo = *(func(x **SpecializationInfo) **C.struct_VkSpecializationInfo { /* Pointer */
+		g2c := (*C.struct_VkSpecializationInfo)(*x)
+		return &g2c
+	}(&y))
+	return x
+}
+
 // ComputePipelineCreateInfo provides a go interface for VkComputePipelineCreateInfo.
 // https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkComputePipelineCreateInfo.html
 type ComputePipelineCreateInfo C.struct_VkComputePipelineCreateInfo
@@ -11880,6 +12597,2021 @@ func (x SubmitInfo) WithPSignalSemaphores(y []Semaphore) SubmitInfo {
 	return x.WithSignalSemaphoreCount(uint32(len(y)))
 }
 
+// PipelineDynamicStateCreateInfo provides a go interface for VkPipelineDynamicStateCreateInfo.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPipelineDynamicStateCreateInfo.html
+type PipelineDynamicStateCreateInfo C.struct_VkPipelineDynamicStateCreateInfo
+
+// SizeofPipelineDynamicStateCreateInfo is the memory size of a PipelineDynamicStateCreateInfo
+var SizeofPipelineDynamicStateCreateInfo int = int(unsafe.Sizeof(PipelineDynamicStateCreateInfo{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *PipelineDynamicStateCreateInfo) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x PipelineDynamicStateCreateInfo) AsCPtr() *PipelineDynamicStateCreateInfo {
+	clone := (*PipelineDynamicStateCreateInfo)(newCBlock(C.ulong(SizeofPipelineDynamicStateCreateInfo)))
+	*clone = x
+	return clone
+}
+
+// PipelineDynamicStateCreateInfoFreeCSlice releases the memory allocated by PipelineDynamicStateCreateInfoMakeCSlice.
+// It does not free pointers stored inside the slice.
+func PipelineDynamicStateCreateInfoFreeCSlice(x []PipelineDynamicStateCreateInfo) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// PipelineDynamicStateCreateInfoMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. PipelineDynamicStateCreateInfoFreeCSlice must be called on the returned slice.
+func PipelineDynamicStateCreateInfoMakeCSlice(x ...PipelineDynamicStateCreateInfo) []PipelineDynamicStateCreateInfo {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofPipelineDynamicStateCreateInfo * len(x)
+	dst := unsafe.Slice((*PipelineDynamicStateCreateInfo)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// SType returns the value of sType from VkPipelineDynamicStateCreateInfo
+func (x PipelineDynamicStateCreateInfo) SType() StructureType {
+	ptr := /* typedef */ (*StructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification. This method only exists if there is a single value in the specification.
+func (x PipelineDynamicStateCreateInfo) WithDefaultSType() PipelineDynamicStateCreateInfo {
+	return x.WithSType(VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO)
+}
+
+// WithSType sets the value for the SType on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineDynamicStateCreateInfo) WithSType(y StructureType) PipelineDynamicStateCreateInfo {
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
+	return x
+}
+
+// PNext returns the value of pNext from VkPipelineDynamicStateCreateInfo
+func (x PipelineDynamicStateCreateInfo) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext sets the value for the PNext on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineDynamicStateCreateInfo) WithPNext(y unsafe.Pointer) PipelineDynamicStateCreateInfo {
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
+	return x
+}
+
+// Flags returns the value of flags from VkPipelineDynamicStateCreateInfo
+func (x PipelineDynamicStateCreateInfo) Flags() PipelineDynamicStateCreateFlags {
+	ptr := /* typedef */ (*PipelineDynamicStateCreateFlags)(&x.flags)
+	return *ptr
+}
+
+// WithFlags sets the value for the Flags on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineDynamicStateCreateInfo) WithFlags(y PipelineDynamicStateCreateFlags) PipelineDynamicStateCreateInfo {
+	x.flags = *( /* typedef */ (*C.VkPipelineDynamicStateCreateFlags)(&y))
+	return x
+}
+
+// DynamicStateCount returns the value of dynamicStateCount from VkPipelineDynamicStateCreateInfo
+func (x PipelineDynamicStateCreateInfo) DynamicStateCount() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.dynamicStateCount)
+	return *ptr
+}
+
+// WithDynamicStateCount sets the value for the DynamicStateCount on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineDynamicStateCreateInfo) WithDynamicStateCount(y uint32) PipelineDynamicStateCreateInfo {
+	x.dynamicStateCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// PDynamicStates returns the value of pDynamicStates from VkPipelineDynamicStateCreateInfo
+func (x PipelineDynamicStateCreateInfo) PDynamicStates() []DynamicState {
+	ptr := func(x **C.VkDynamicState) *[]DynamicState { /* Slice */
+		slc := unsafe.Slice((*DynamicState)(unsafe.Pointer(x)), (1 << 31))
+		return &slc
+	}(&x.pDynamicStates)
+	return *ptr
+}
+
+// WithPDynamicStates sets the value for the PDynamicStates on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+//
+// The specification defines DynamicStateCount as the length of this field.
+// DynamicStateCount is updated with the length of the new value.
+func (x PipelineDynamicStateCreateInfo) WithPDynamicStates(y []DynamicState) PipelineDynamicStateCreateInfo {
+	x.pDynamicStates = *(func(x *[]DynamicState) **C.VkDynamicState { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.VkDynamicState)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.VkDynamicState)(unsafe.Pointer((&ptr)))
+	}(&y))
+	return x.WithDynamicStateCount(uint32(len(y)))
+}
+
+// PipelineColorBlendAttachmentState provides a go interface for VkPipelineColorBlendAttachmentState.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPipelineColorBlendAttachmentState.html
+type PipelineColorBlendAttachmentState C.struct_VkPipelineColorBlendAttachmentState
+
+// SizeofPipelineColorBlendAttachmentState is the memory size of a PipelineColorBlendAttachmentState
+var SizeofPipelineColorBlendAttachmentState int = int(unsafe.Sizeof(PipelineColorBlendAttachmentState{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *PipelineColorBlendAttachmentState) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x PipelineColorBlendAttachmentState) AsCPtr() *PipelineColorBlendAttachmentState {
+	clone := (*PipelineColorBlendAttachmentState)(newCBlock(C.ulong(SizeofPipelineColorBlendAttachmentState)))
+	*clone = x
+	return clone
+}
+
+// PipelineColorBlendAttachmentStateFreeCSlice releases the memory allocated by PipelineColorBlendAttachmentStateMakeCSlice.
+// It does not free pointers stored inside the slice.
+func PipelineColorBlendAttachmentStateFreeCSlice(x []PipelineColorBlendAttachmentState) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// PipelineColorBlendAttachmentStateMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. PipelineColorBlendAttachmentStateFreeCSlice must be called on the returned slice.
+func PipelineColorBlendAttachmentStateMakeCSlice(x ...PipelineColorBlendAttachmentState) []PipelineColorBlendAttachmentState {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofPipelineColorBlendAttachmentState * len(x)
+	dst := unsafe.Slice((*PipelineColorBlendAttachmentState)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// BlendEnable returns the value of blendEnable from VkPipelineColorBlendAttachmentState
+func (x PipelineColorBlendAttachmentState) BlendEnable() Bool32 {
+	ptr := /* typedef */ (*Bool32)(&x.blendEnable)
+	return *ptr
+}
+
+// WithBlendEnable sets the value for the BlendEnable on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineColorBlendAttachmentState) WithBlendEnable(y Bool32) PipelineColorBlendAttachmentState {
+	x.blendEnable = *( /* typedef */ (*C.VkBool32)(&y))
+	return x
+}
+
+// SrcColorBlendFactor returns the value of srcColorBlendFactor from VkPipelineColorBlendAttachmentState
+func (x PipelineColorBlendAttachmentState) SrcColorBlendFactor() BlendFactor {
+	ptr := /* typedef */ (*BlendFactor)(&x.srcColorBlendFactor)
+	return *ptr
+}
+
+// WithSrcColorBlendFactor sets the value for the SrcColorBlendFactor on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineColorBlendAttachmentState) WithSrcColorBlendFactor(y BlendFactor) PipelineColorBlendAttachmentState {
+	x.srcColorBlendFactor = *( /* typedef */ (*C.VkBlendFactor)(&y))
+	return x
+}
+
+// DstColorBlendFactor returns the value of dstColorBlendFactor from VkPipelineColorBlendAttachmentState
+func (x PipelineColorBlendAttachmentState) DstColorBlendFactor() BlendFactor {
+	ptr := /* typedef */ (*BlendFactor)(&x.dstColorBlendFactor)
+	return *ptr
+}
+
+// WithDstColorBlendFactor sets the value for the DstColorBlendFactor on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineColorBlendAttachmentState) WithDstColorBlendFactor(y BlendFactor) PipelineColorBlendAttachmentState {
+	x.dstColorBlendFactor = *( /* typedef */ (*C.VkBlendFactor)(&y))
+	return x
+}
+
+// ColorBlendOp returns the value of colorBlendOp from VkPipelineColorBlendAttachmentState
+func (x PipelineColorBlendAttachmentState) ColorBlendOp() BlendOp {
+	ptr := /* typedef */ (*BlendOp)(&x.colorBlendOp)
+	return *ptr
+}
+
+// WithColorBlendOp sets the value for the ColorBlendOp on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineColorBlendAttachmentState) WithColorBlendOp(y BlendOp) PipelineColorBlendAttachmentState {
+	x.colorBlendOp = *( /* typedef */ (*C.VkBlendOp)(&y))
+	return x
+}
+
+// SrcAlphaBlendFactor returns the value of srcAlphaBlendFactor from VkPipelineColorBlendAttachmentState
+func (x PipelineColorBlendAttachmentState) SrcAlphaBlendFactor() BlendFactor {
+	ptr := /* typedef */ (*BlendFactor)(&x.srcAlphaBlendFactor)
+	return *ptr
+}
+
+// WithSrcAlphaBlendFactor sets the value for the SrcAlphaBlendFactor on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineColorBlendAttachmentState) WithSrcAlphaBlendFactor(y BlendFactor) PipelineColorBlendAttachmentState {
+	x.srcAlphaBlendFactor = *( /* typedef */ (*C.VkBlendFactor)(&y))
+	return x
+}
+
+// DstAlphaBlendFactor returns the value of dstAlphaBlendFactor from VkPipelineColorBlendAttachmentState
+func (x PipelineColorBlendAttachmentState) DstAlphaBlendFactor() BlendFactor {
+	ptr := /* typedef */ (*BlendFactor)(&x.dstAlphaBlendFactor)
+	return *ptr
+}
+
+// WithDstAlphaBlendFactor sets the value for the DstAlphaBlendFactor on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineColorBlendAttachmentState) WithDstAlphaBlendFactor(y BlendFactor) PipelineColorBlendAttachmentState {
+	x.dstAlphaBlendFactor = *( /* typedef */ (*C.VkBlendFactor)(&y))
+	return x
+}
+
+// AlphaBlendOp returns the value of alphaBlendOp from VkPipelineColorBlendAttachmentState
+func (x PipelineColorBlendAttachmentState) AlphaBlendOp() BlendOp {
+	ptr := /* typedef */ (*BlendOp)(&x.alphaBlendOp)
+	return *ptr
+}
+
+// WithAlphaBlendOp sets the value for the AlphaBlendOp on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineColorBlendAttachmentState) WithAlphaBlendOp(y BlendOp) PipelineColorBlendAttachmentState {
+	x.alphaBlendOp = *( /* typedef */ (*C.VkBlendOp)(&y))
+	return x
+}
+
+// ColorWriteMask returns the value of colorWriteMask from VkPipelineColorBlendAttachmentState
+func (x PipelineColorBlendAttachmentState) ColorWriteMask() ColorComponentFlags {
+	ptr := /* typedef */ (*ColorComponentFlags)(&x.colorWriteMask)
+	return *ptr
+}
+
+// WithColorWriteMask sets the value for the ColorWriteMask on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineColorBlendAttachmentState) WithColorWriteMask(y ColorComponentFlags) PipelineColorBlendAttachmentState {
+	x.colorWriteMask = *( /* typedef */ (*C.VkColorComponentFlags)(&y))
+	return x
+}
+
+// PipelineColorBlendStateCreateInfo provides a go interface for VkPipelineColorBlendStateCreateInfo.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPipelineColorBlendStateCreateInfo.html
+type PipelineColorBlendStateCreateInfo C.struct_VkPipelineColorBlendStateCreateInfo
+
+// SizeofPipelineColorBlendStateCreateInfo is the memory size of a PipelineColorBlendStateCreateInfo
+var SizeofPipelineColorBlendStateCreateInfo int = int(unsafe.Sizeof(PipelineColorBlendStateCreateInfo{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *PipelineColorBlendStateCreateInfo) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x PipelineColorBlendStateCreateInfo) AsCPtr() *PipelineColorBlendStateCreateInfo {
+	clone := (*PipelineColorBlendStateCreateInfo)(newCBlock(C.ulong(SizeofPipelineColorBlendStateCreateInfo)))
+	*clone = x
+	return clone
+}
+
+// PipelineColorBlendStateCreateInfoFreeCSlice releases the memory allocated by PipelineColorBlendStateCreateInfoMakeCSlice.
+// It does not free pointers stored inside the slice.
+func PipelineColorBlendStateCreateInfoFreeCSlice(x []PipelineColorBlendStateCreateInfo) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// PipelineColorBlendStateCreateInfoMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. PipelineColorBlendStateCreateInfoFreeCSlice must be called on the returned slice.
+func PipelineColorBlendStateCreateInfoMakeCSlice(x ...PipelineColorBlendStateCreateInfo) []PipelineColorBlendStateCreateInfo {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofPipelineColorBlendStateCreateInfo * len(x)
+	dst := unsafe.Slice((*PipelineColorBlendStateCreateInfo)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// SType returns the value of sType from VkPipelineColorBlendStateCreateInfo
+func (x PipelineColorBlendStateCreateInfo) SType() StructureType {
+	ptr := /* typedef */ (*StructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification. This method only exists if there is a single value in the specification.
+func (x PipelineColorBlendStateCreateInfo) WithDefaultSType() PipelineColorBlendStateCreateInfo {
+	return x.WithSType(VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO)
+}
+
+// WithSType sets the value for the SType on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineColorBlendStateCreateInfo) WithSType(y StructureType) PipelineColorBlendStateCreateInfo {
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
+	return x
+}
+
+// PNext returns the value of pNext from VkPipelineColorBlendStateCreateInfo
+func (x PipelineColorBlendStateCreateInfo) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext sets the value for the PNext on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineColorBlendStateCreateInfo) WithPNext(y unsafe.Pointer) PipelineColorBlendStateCreateInfo {
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
+	return x
+}
+
+// Flags returns the value of flags from VkPipelineColorBlendStateCreateInfo
+func (x PipelineColorBlendStateCreateInfo) Flags() PipelineColorBlendStateCreateFlags {
+	ptr := /* typedef */ (*PipelineColorBlendStateCreateFlags)(&x.flags)
+	return *ptr
+}
+
+// WithFlags sets the value for the Flags on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineColorBlendStateCreateInfo) WithFlags(y PipelineColorBlendStateCreateFlags) PipelineColorBlendStateCreateInfo {
+	x.flags = *( /* typedef */ (*C.VkPipelineColorBlendStateCreateFlags)(&y))
+	return x
+}
+
+// LogicOpEnable returns the value of logicOpEnable from VkPipelineColorBlendStateCreateInfo
+func (x PipelineColorBlendStateCreateInfo) LogicOpEnable() Bool32 {
+	ptr := /* typedef */ (*Bool32)(&x.logicOpEnable)
+	return *ptr
+}
+
+// WithLogicOpEnable sets the value for the LogicOpEnable on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineColorBlendStateCreateInfo) WithLogicOpEnable(y Bool32) PipelineColorBlendStateCreateInfo {
+	x.logicOpEnable = *( /* typedef */ (*C.VkBool32)(&y))
+	return x
+}
+
+// LogicOp returns the value of logicOp from VkPipelineColorBlendStateCreateInfo
+func (x PipelineColorBlendStateCreateInfo) LogicOp() LogicOp {
+	ptr := /* typedef */ (*LogicOp)(&x.logicOp)
+	return *ptr
+}
+
+// WithLogicOp sets the value for the LogicOp on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineColorBlendStateCreateInfo) WithLogicOp(y LogicOp) PipelineColorBlendStateCreateInfo {
+	x.logicOp = *( /* typedef */ (*C.VkLogicOp)(&y))
+	return x
+}
+
+// AttachmentCount returns the value of attachmentCount from VkPipelineColorBlendStateCreateInfo
+func (x PipelineColorBlendStateCreateInfo) AttachmentCount() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.attachmentCount)
+	return *ptr
+}
+
+// WithAttachmentCount sets the value for the AttachmentCount on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineColorBlendStateCreateInfo) WithAttachmentCount(y uint32) PipelineColorBlendStateCreateInfo {
+	x.attachmentCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// PAttachments returns the value of pAttachments from VkPipelineColorBlendStateCreateInfo
+func (x PipelineColorBlendStateCreateInfo) PAttachments() []PipelineColorBlendAttachmentState {
+	ptr := func(x **C.struct_VkPipelineColorBlendAttachmentState) *[]PipelineColorBlendAttachmentState { /* Slice */
+		slc := unsafe.Slice((*PipelineColorBlendAttachmentState)(unsafe.Pointer(x)), (1 << 31))
+		return &slc
+	}(&x.pAttachments)
+	return *ptr
+}
+
+// WithPAttachments sets the value for the PAttachments on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+//
+// The specification defines AttachmentCount as the length of this field.
+// AttachmentCount is updated with the length of the new value.
+func (x PipelineColorBlendStateCreateInfo) WithPAttachments(y []PipelineColorBlendAttachmentState) PipelineColorBlendStateCreateInfo {
+	x.pAttachments = *(func(x *[]PipelineColorBlendAttachmentState) **C.struct_VkPipelineColorBlendAttachmentState { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.struct_VkPipelineColorBlendAttachmentState)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.struct_VkPipelineColorBlendAttachmentState)(unsafe.Pointer((&ptr)))
+	}(&y))
+	return x.WithAttachmentCount(uint32(len(y)))
+}
+
+// BlendConstants returns the value of blendConstants from VkPipelineColorBlendStateCreateInfo
+func (x PipelineColorBlendStateCreateInfo) BlendConstants() []float32 {
+	ptr := func(x *[4]C.float) *[]float32 { /* Array */
+		slc := unsafe.Slice((*float32)(unsafe.Pointer(x)), 4)
+		return &slc
+	}(&x.blendConstants)
+	return *ptr
+}
+
+// WithBlendConstants sets the value for the BlendConstants on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineColorBlendStateCreateInfo) WithBlendConstants(y []float32) PipelineColorBlendStateCreateInfo {
+	ptr := func(x *[]float32) **C.float { /* Array */
+		if len(*x) > 0 {
+			slc := (*C.float)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.float)(unsafe.Pointer((&ptr)))
+	}(&y)
+	copy(x.blendConstants[:], unsafe.Slice(*ptr, len(y)))
+	return x
+}
+
+// StencilOpState provides a go interface for VkStencilOpState.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkStencilOpState.html
+type StencilOpState C.struct_VkStencilOpState
+
+// SizeofStencilOpState is the memory size of a StencilOpState
+var SizeofStencilOpState int = int(unsafe.Sizeof(StencilOpState{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *StencilOpState) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x StencilOpState) AsCPtr() *StencilOpState {
+	clone := (*StencilOpState)(newCBlock(C.ulong(SizeofStencilOpState)))
+	*clone = x
+	return clone
+}
+
+// StencilOpStateFreeCSlice releases the memory allocated by StencilOpStateMakeCSlice.
+// It does not free pointers stored inside the slice.
+func StencilOpStateFreeCSlice(x []StencilOpState) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// StencilOpStateMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. StencilOpStateFreeCSlice must be called on the returned slice.
+func StencilOpStateMakeCSlice(x ...StencilOpState) []StencilOpState {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofStencilOpState * len(x)
+	dst := unsafe.Slice((*StencilOpState)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// FailOp returns the value of failOp from VkStencilOpState
+func (x StencilOpState) FailOp() StencilOp {
+	ptr := /* typedef */ (*StencilOp)(&x.failOp)
+	return *ptr
+}
+
+// WithFailOp sets the value for the FailOp on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x StencilOpState) WithFailOp(y StencilOp) StencilOpState {
+	x.failOp = *( /* typedef */ (*C.VkStencilOp)(&y))
+	return x
+}
+
+// PassOp returns the value of passOp from VkStencilOpState
+func (x StencilOpState) PassOp() StencilOp {
+	ptr := /* typedef */ (*StencilOp)(&x.passOp)
+	return *ptr
+}
+
+// WithPassOp sets the value for the PassOp on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x StencilOpState) WithPassOp(y StencilOp) StencilOpState {
+	x.passOp = *( /* typedef */ (*C.VkStencilOp)(&y))
+	return x
+}
+
+// DepthFailOp returns the value of depthFailOp from VkStencilOpState
+func (x StencilOpState) DepthFailOp() StencilOp {
+	ptr := /* typedef */ (*StencilOp)(&x.depthFailOp)
+	return *ptr
+}
+
+// WithDepthFailOp sets the value for the DepthFailOp on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x StencilOpState) WithDepthFailOp(y StencilOp) StencilOpState {
+	x.depthFailOp = *( /* typedef */ (*C.VkStencilOp)(&y))
+	return x
+}
+
+// CompareOp returns the value of compareOp from VkStencilOpState
+func (x StencilOpState) CompareOp() CompareOp {
+	ptr := /* typedef */ (*CompareOp)(&x.compareOp)
+	return *ptr
+}
+
+// WithCompareOp sets the value for the CompareOp on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x StencilOpState) WithCompareOp(y CompareOp) StencilOpState {
+	x.compareOp = *( /* typedef */ (*C.VkCompareOp)(&y))
+	return x
+}
+
+// CompareMask returns the value of compareMask from VkStencilOpState
+func (x StencilOpState) CompareMask() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.compareMask)
+	return *ptr
+}
+
+// WithCompareMask sets the value for the CompareMask on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x StencilOpState) WithCompareMask(y uint32) StencilOpState {
+	x.compareMask = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// WriteMask returns the value of writeMask from VkStencilOpState
+func (x StencilOpState) WriteMask() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.writeMask)
+	return *ptr
+}
+
+// WithWriteMask sets the value for the WriteMask on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x StencilOpState) WithWriteMask(y uint32) StencilOpState {
+	x.writeMask = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// Reference returns the value of reference from VkStencilOpState
+func (x StencilOpState) Reference() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.reference)
+	return *ptr
+}
+
+// WithReference sets the value for the Reference on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x StencilOpState) WithReference(y uint32) StencilOpState {
+	x.reference = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// PipelineDepthStencilStateCreateInfo provides a go interface for VkPipelineDepthStencilStateCreateInfo.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPipelineDepthStencilStateCreateInfo.html
+type PipelineDepthStencilStateCreateInfo C.struct_VkPipelineDepthStencilStateCreateInfo
+
+// SizeofPipelineDepthStencilStateCreateInfo is the memory size of a PipelineDepthStencilStateCreateInfo
+var SizeofPipelineDepthStencilStateCreateInfo int = int(unsafe.Sizeof(PipelineDepthStencilStateCreateInfo{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *PipelineDepthStencilStateCreateInfo) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x PipelineDepthStencilStateCreateInfo) AsCPtr() *PipelineDepthStencilStateCreateInfo {
+	clone := (*PipelineDepthStencilStateCreateInfo)(newCBlock(C.ulong(SizeofPipelineDepthStencilStateCreateInfo)))
+	*clone = x
+	return clone
+}
+
+// PipelineDepthStencilStateCreateInfoFreeCSlice releases the memory allocated by PipelineDepthStencilStateCreateInfoMakeCSlice.
+// It does not free pointers stored inside the slice.
+func PipelineDepthStencilStateCreateInfoFreeCSlice(x []PipelineDepthStencilStateCreateInfo) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// PipelineDepthStencilStateCreateInfoMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. PipelineDepthStencilStateCreateInfoFreeCSlice must be called on the returned slice.
+func PipelineDepthStencilStateCreateInfoMakeCSlice(x ...PipelineDepthStencilStateCreateInfo) []PipelineDepthStencilStateCreateInfo {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofPipelineDepthStencilStateCreateInfo * len(x)
+	dst := unsafe.Slice((*PipelineDepthStencilStateCreateInfo)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// SType returns the value of sType from VkPipelineDepthStencilStateCreateInfo
+func (x PipelineDepthStencilStateCreateInfo) SType() StructureType {
+	ptr := /* typedef */ (*StructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification. This method only exists if there is a single value in the specification.
+func (x PipelineDepthStencilStateCreateInfo) WithDefaultSType() PipelineDepthStencilStateCreateInfo {
+	return x.WithSType(VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO)
+}
+
+// WithSType sets the value for the SType on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineDepthStencilStateCreateInfo) WithSType(y StructureType) PipelineDepthStencilStateCreateInfo {
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
+	return x
+}
+
+// PNext returns the value of pNext from VkPipelineDepthStencilStateCreateInfo
+func (x PipelineDepthStencilStateCreateInfo) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext sets the value for the PNext on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineDepthStencilStateCreateInfo) WithPNext(y unsafe.Pointer) PipelineDepthStencilStateCreateInfo {
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
+	return x
+}
+
+// Flags returns the value of flags from VkPipelineDepthStencilStateCreateInfo
+func (x PipelineDepthStencilStateCreateInfo) Flags() PipelineDepthStencilStateCreateFlags {
+	ptr := /* typedef */ (*PipelineDepthStencilStateCreateFlags)(&x.flags)
+	return *ptr
+}
+
+// WithFlags sets the value for the Flags on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineDepthStencilStateCreateInfo) WithFlags(y PipelineDepthStencilStateCreateFlags) PipelineDepthStencilStateCreateInfo {
+	x.flags = *( /* typedef */ (*C.VkPipelineDepthStencilStateCreateFlags)(&y))
+	return x
+}
+
+// DepthTestEnable returns the value of depthTestEnable from VkPipelineDepthStencilStateCreateInfo
+func (x PipelineDepthStencilStateCreateInfo) DepthTestEnable() Bool32 {
+	ptr := /* typedef */ (*Bool32)(&x.depthTestEnable)
+	return *ptr
+}
+
+// WithDepthTestEnable sets the value for the DepthTestEnable on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineDepthStencilStateCreateInfo) WithDepthTestEnable(y Bool32) PipelineDepthStencilStateCreateInfo {
+	x.depthTestEnable = *( /* typedef */ (*C.VkBool32)(&y))
+	return x
+}
+
+// DepthWriteEnable returns the value of depthWriteEnable from VkPipelineDepthStencilStateCreateInfo
+func (x PipelineDepthStencilStateCreateInfo) DepthWriteEnable() Bool32 {
+	ptr := /* typedef */ (*Bool32)(&x.depthWriteEnable)
+	return *ptr
+}
+
+// WithDepthWriteEnable sets the value for the DepthWriteEnable on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineDepthStencilStateCreateInfo) WithDepthWriteEnable(y Bool32) PipelineDepthStencilStateCreateInfo {
+	x.depthWriteEnable = *( /* typedef */ (*C.VkBool32)(&y))
+	return x
+}
+
+// DepthCompareOp returns the value of depthCompareOp from VkPipelineDepthStencilStateCreateInfo
+func (x PipelineDepthStencilStateCreateInfo) DepthCompareOp() CompareOp {
+	ptr := /* typedef */ (*CompareOp)(&x.depthCompareOp)
+	return *ptr
+}
+
+// WithDepthCompareOp sets the value for the DepthCompareOp on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineDepthStencilStateCreateInfo) WithDepthCompareOp(y CompareOp) PipelineDepthStencilStateCreateInfo {
+	x.depthCompareOp = *( /* typedef */ (*C.VkCompareOp)(&y))
+	return x
+}
+
+// DepthBoundsTestEnable returns the value of depthBoundsTestEnable from VkPipelineDepthStencilStateCreateInfo
+func (x PipelineDepthStencilStateCreateInfo) DepthBoundsTestEnable() Bool32 {
+	ptr := /* typedef */ (*Bool32)(&x.depthBoundsTestEnable)
+	return *ptr
+}
+
+// WithDepthBoundsTestEnable sets the value for the DepthBoundsTestEnable on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineDepthStencilStateCreateInfo) WithDepthBoundsTestEnable(y Bool32) PipelineDepthStencilStateCreateInfo {
+	x.depthBoundsTestEnable = *( /* typedef */ (*C.VkBool32)(&y))
+	return x
+}
+
+// StencilTestEnable returns the value of stencilTestEnable from VkPipelineDepthStencilStateCreateInfo
+func (x PipelineDepthStencilStateCreateInfo) StencilTestEnable() Bool32 {
+	ptr := /* typedef */ (*Bool32)(&x.stencilTestEnable)
+	return *ptr
+}
+
+// WithStencilTestEnable sets the value for the StencilTestEnable on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineDepthStencilStateCreateInfo) WithStencilTestEnable(y Bool32) PipelineDepthStencilStateCreateInfo {
+	x.stencilTestEnable = *( /* typedef */ (*C.VkBool32)(&y))
+	return x
+}
+
+// Front returns the value of front from VkPipelineDepthStencilStateCreateInfo
+func (x PipelineDepthStencilStateCreateInfo) Front() StencilOpState {
+	ptr := /* typedef */ (*StencilOpState)(&x.front)
+	return *ptr
+}
+
+// WithFront sets the value for the Front on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineDepthStencilStateCreateInfo) WithFront(y StencilOpState) PipelineDepthStencilStateCreateInfo {
+	x.front = *( /* typedef */ (*C.struct_VkStencilOpState)(&y))
+	return x
+}
+
+// Back returns the value of back from VkPipelineDepthStencilStateCreateInfo
+func (x PipelineDepthStencilStateCreateInfo) Back() StencilOpState {
+	ptr := /* typedef */ (*StencilOpState)(&x.back)
+	return *ptr
+}
+
+// WithBack sets the value for the Back on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineDepthStencilStateCreateInfo) WithBack(y StencilOpState) PipelineDepthStencilStateCreateInfo {
+	x.back = *( /* typedef */ (*C.struct_VkStencilOpState)(&y))
+	return x
+}
+
+// MinDepthBounds returns the value of minDepthBounds from VkPipelineDepthStencilStateCreateInfo
+func (x PipelineDepthStencilStateCreateInfo) MinDepthBounds() float32 {
+	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.minDepthBounds)
+	return *ptr
+}
+
+// WithMinDepthBounds sets the value for the MinDepthBounds on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineDepthStencilStateCreateInfo) WithMinDepthBounds(y float32) PipelineDepthStencilStateCreateInfo {
+	x.minDepthBounds = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
+	return x
+}
+
+// MaxDepthBounds returns the value of maxDepthBounds from VkPipelineDepthStencilStateCreateInfo
+func (x PipelineDepthStencilStateCreateInfo) MaxDepthBounds() float32 {
+	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.maxDepthBounds)
+	return *ptr
+}
+
+// WithMaxDepthBounds sets the value for the MaxDepthBounds on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineDepthStencilStateCreateInfo) WithMaxDepthBounds(y float32) PipelineDepthStencilStateCreateInfo {
+	x.maxDepthBounds = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
+	return x
+}
+
+// PipelineMultisampleStateCreateInfo provides a go interface for VkPipelineMultisampleStateCreateInfo.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPipelineMultisampleStateCreateInfo.html
+type PipelineMultisampleStateCreateInfo C.struct_VkPipelineMultisampleStateCreateInfo
+
+// SizeofPipelineMultisampleStateCreateInfo is the memory size of a PipelineMultisampleStateCreateInfo
+var SizeofPipelineMultisampleStateCreateInfo int = int(unsafe.Sizeof(PipelineMultisampleStateCreateInfo{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *PipelineMultisampleStateCreateInfo) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x PipelineMultisampleStateCreateInfo) AsCPtr() *PipelineMultisampleStateCreateInfo {
+	clone := (*PipelineMultisampleStateCreateInfo)(newCBlock(C.ulong(SizeofPipelineMultisampleStateCreateInfo)))
+	*clone = x
+	return clone
+}
+
+// PipelineMultisampleStateCreateInfoFreeCSlice releases the memory allocated by PipelineMultisampleStateCreateInfoMakeCSlice.
+// It does not free pointers stored inside the slice.
+func PipelineMultisampleStateCreateInfoFreeCSlice(x []PipelineMultisampleStateCreateInfo) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// PipelineMultisampleStateCreateInfoMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. PipelineMultisampleStateCreateInfoFreeCSlice must be called on the returned slice.
+func PipelineMultisampleStateCreateInfoMakeCSlice(x ...PipelineMultisampleStateCreateInfo) []PipelineMultisampleStateCreateInfo {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofPipelineMultisampleStateCreateInfo * len(x)
+	dst := unsafe.Slice((*PipelineMultisampleStateCreateInfo)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// SType returns the value of sType from VkPipelineMultisampleStateCreateInfo
+func (x PipelineMultisampleStateCreateInfo) SType() StructureType {
+	ptr := /* typedef */ (*StructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification. This method only exists if there is a single value in the specification.
+func (x PipelineMultisampleStateCreateInfo) WithDefaultSType() PipelineMultisampleStateCreateInfo {
+	return x.WithSType(VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO)
+}
+
+// WithSType sets the value for the SType on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineMultisampleStateCreateInfo) WithSType(y StructureType) PipelineMultisampleStateCreateInfo {
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
+	return x
+}
+
+// PNext returns the value of pNext from VkPipelineMultisampleStateCreateInfo
+func (x PipelineMultisampleStateCreateInfo) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext sets the value for the PNext on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineMultisampleStateCreateInfo) WithPNext(y unsafe.Pointer) PipelineMultisampleStateCreateInfo {
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
+	return x
+}
+
+// Flags returns the value of flags from VkPipelineMultisampleStateCreateInfo
+func (x PipelineMultisampleStateCreateInfo) Flags() PipelineMultisampleStateCreateFlags {
+	ptr := /* typedef */ (*PipelineMultisampleStateCreateFlags)(&x.flags)
+	return *ptr
+}
+
+// WithFlags sets the value for the Flags on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineMultisampleStateCreateInfo) WithFlags(y PipelineMultisampleStateCreateFlags) PipelineMultisampleStateCreateInfo {
+	x.flags = *( /* typedef */ (*C.VkPipelineMultisampleStateCreateFlags)(&y))
+	return x
+}
+
+// RasterizationSamples returns the value of rasterizationSamples from VkPipelineMultisampleStateCreateInfo
+func (x PipelineMultisampleStateCreateInfo) RasterizationSamples() SampleCountFlagBits {
+	ptr := /* typedef */ (*SampleCountFlagBits)(&x.rasterizationSamples)
+	return *ptr
+}
+
+// WithRasterizationSamples sets the value for the RasterizationSamples on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineMultisampleStateCreateInfo) WithRasterizationSamples(y SampleCountFlagBits) PipelineMultisampleStateCreateInfo {
+	x.rasterizationSamples = *( /* typedef */ (*C.VkSampleCountFlagBits)(&y))
+	return x
+}
+
+// SampleShadingEnable returns the value of sampleShadingEnable from VkPipelineMultisampleStateCreateInfo
+func (x PipelineMultisampleStateCreateInfo) SampleShadingEnable() Bool32 {
+	ptr := /* typedef */ (*Bool32)(&x.sampleShadingEnable)
+	return *ptr
+}
+
+// WithSampleShadingEnable sets the value for the SampleShadingEnable on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineMultisampleStateCreateInfo) WithSampleShadingEnable(y Bool32) PipelineMultisampleStateCreateInfo {
+	x.sampleShadingEnable = *( /* typedef */ (*C.VkBool32)(&y))
+	return x
+}
+
+// MinSampleShading returns the value of minSampleShading from VkPipelineMultisampleStateCreateInfo
+func (x PipelineMultisampleStateCreateInfo) MinSampleShading() float32 {
+	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.minSampleShading)
+	return *ptr
+}
+
+// WithMinSampleShading sets the value for the MinSampleShading on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineMultisampleStateCreateInfo) WithMinSampleShading(y float32) PipelineMultisampleStateCreateInfo {
+	x.minSampleShading = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
+	return x
+}
+
+// PSampleMask returns the value of pSampleMask from VkPipelineMultisampleStateCreateInfo
+func (x PipelineMultisampleStateCreateInfo) PSampleMask() []SampleMask {
+	ptr := func(x **C.VkSampleMask) *[]SampleMask { /* Slice */
+		slc := unsafe.Slice((*SampleMask)(unsafe.Pointer(x)), (1 << 31))
+		return &slc
+	}(&x.pSampleMask)
+	return *ptr
+}
+
+// WithPSampleMask sets the value for the PSampleMask on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineMultisampleStateCreateInfo) WithPSampleMask(y []SampleMask) PipelineMultisampleStateCreateInfo {
+	x.pSampleMask = *(func(x *[]SampleMask) **C.VkSampleMask { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.VkSampleMask)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.VkSampleMask)(unsafe.Pointer((&ptr)))
+	}(&y))
+	return x
+}
+
+// AlphaToCoverageEnable returns the value of alphaToCoverageEnable from VkPipelineMultisampleStateCreateInfo
+func (x PipelineMultisampleStateCreateInfo) AlphaToCoverageEnable() Bool32 {
+	ptr := /* typedef */ (*Bool32)(&x.alphaToCoverageEnable)
+	return *ptr
+}
+
+// WithAlphaToCoverageEnable sets the value for the AlphaToCoverageEnable on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineMultisampleStateCreateInfo) WithAlphaToCoverageEnable(y Bool32) PipelineMultisampleStateCreateInfo {
+	x.alphaToCoverageEnable = *( /* typedef */ (*C.VkBool32)(&y))
+	return x
+}
+
+// AlphaToOneEnable returns the value of alphaToOneEnable from VkPipelineMultisampleStateCreateInfo
+func (x PipelineMultisampleStateCreateInfo) AlphaToOneEnable() Bool32 {
+	ptr := /* typedef */ (*Bool32)(&x.alphaToOneEnable)
+	return *ptr
+}
+
+// WithAlphaToOneEnable sets the value for the AlphaToOneEnable on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineMultisampleStateCreateInfo) WithAlphaToOneEnable(y Bool32) PipelineMultisampleStateCreateInfo {
+	x.alphaToOneEnable = *( /* typedef */ (*C.VkBool32)(&y))
+	return x
+}
+
+// PipelineRasterizationStateCreateInfo provides a go interface for VkPipelineRasterizationStateCreateInfo.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPipelineRasterizationStateCreateInfo.html
+type PipelineRasterizationStateCreateInfo C.struct_VkPipelineRasterizationStateCreateInfo
+
+// SizeofPipelineRasterizationStateCreateInfo is the memory size of a PipelineRasterizationStateCreateInfo
+var SizeofPipelineRasterizationStateCreateInfo int = int(unsafe.Sizeof(PipelineRasterizationStateCreateInfo{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *PipelineRasterizationStateCreateInfo) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x PipelineRasterizationStateCreateInfo) AsCPtr() *PipelineRasterizationStateCreateInfo {
+	clone := (*PipelineRasterizationStateCreateInfo)(newCBlock(C.ulong(SizeofPipelineRasterizationStateCreateInfo)))
+	*clone = x
+	return clone
+}
+
+// PipelineRasterizationStateCreateInfoFreeCSlice releases the memory allocated by PipelineRasterizationStateCreateInfoMakeCSlice.
+// It does not free pointers stored inside the slice.
+func PipelineRasterizationStateCreateInfoFreeCSlice(x []PipelineRasterizationStateCreateInfo) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// PipelineRasterizationStateCreateInfoMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. PipelineRasterizationStateCreateInfoFreeCSlice must be called on the returned slice.
+func PipelineRasterizationStateCreateInfoMakeCSlice(x ...PipelineRasterizationStateCreateInfo) []PipelineRasterizationStateCreateInfo {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofPipelineRasterizationStateCreateInfo * len(x)
+	dst := unsafe.Slice((*PipelineRasterizationStateCreateInfo)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// SType returns the value of sType from VkPipelineRasterizationStateCreateInfo
+func (x PipelineRasterizationStateCreateInfo) SType() StructureType {
+	ptr := /* typedef */ (*StructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification. This method only exists if there is a single value in the specification.
+func (x PipelineRasterizationStateCreateInfo) WithDefaultSType() PipelineRasterizationStateCreateInfo {
+	return x.WithSType(VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO)
+}
+
+// WithSType sets the value for the SType on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineRasterizationStateCreateInfo) WithSType(y StructureType) PipelineRasterizationStateCreateInfo {
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
+	return x
+}
+
+// PNext returns the value of pNext from VkPipelineRasterizationStateCreateInfo
+func (x PipelineRasterizationStateCreateInfo) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext sets the value for the PNext on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineRasterizationStateCreateInfo) WithPNext(y unsafe.Pointer) PipelineRasterizationStateCreateInfo {
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
+	return x
+}
+
+// Flags returns the value of flags from VkPipelineRasterizationStateCreateInfo
+func (x PipelineRasterizationStateCreateInfo) Flags() PipelineRasterizationStateCreateFlags {
+	ptr := /* typedef */ (*PipelineRasterizationStateCreateFlags)(&x.flags)
+	return *ptr
+}
+
+// WithFlags sets the value for the Flags on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineRasterizationStateCreateInfo) WithFlags(y PipelineRasterizationStateCreateFlags) PipelineRasterizationStateCreateInfo {
+	x.flags = *( /* typedef */ (*C.VkPipelineRasterizationStateCreateFlags)(&y))
+	return x
+}
+
+// DepthClampEnable returns the value of depthClampEnable from VkPipelineRasterizationStateCreateInfo
+func (x PipelineRasterizationStateCreateInfo) DepthClampEnable() Bool32 {
+	ptr := /* typedef */ (*Bool32)(&x.depthClampEnable)
+	return *ptr
+}
+
+// WithDepthClampEnable sets the value for the DepthClampEnable on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineRasterizationStateCreateInfo) WithDepthClampEnable(y Bool32) PipelineRasterizationStateCreateInfo {
+	x.depthClampEnable = *( /* typedef */ (*C.VkBool32)(&y))
+	return x
+}
+
+// RasterizerDiscardEnable returns the value of rasterizerDiscardEnable from VkPipelineRasterizationStateCreateInfo
+func (x PipelineRasterizationStateCreateInfo) RasterizerDiscardEnable() Bool32 {
+	ptr := /* typedef */ (*Bool32)(&x.rasterizerDiscardEnable)
+	return *ptr
+}
+
+// WithRasterizerDiscardEnable sets the value for the RasterizerDiscardEnable on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineRasterizationStateCreateInfo) WithRasterizerDiscardEnable(y Bool32) PipelineRasterizationStateCreateInfo {
+	x.rasterizerDiscardEnable = *( /* typedef */ (*C.VkBool32)(&y))
+	return x
+}
+
+// PolygonMode returns the value of polygonMode from VkPipelineRasterizationStateCreateInfo
+func (x PipelineRasterizationStateCreateInfo) PolygonMode() PolygonMode {
+	ptr := /* typedef */ (*PolygonMode)(&x.polygonMode)
+	return *ptr
+}
+
+// WithPolygonMode sets the value for the PolygonMode on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineRasterizationStateCreateInfo) WithPolygonMode(y PolygonMode) PipelineRasterizationStateCreateInfo {
+	x.polygonMode = *( /* typedef */ (*C.VkPolygonMode)(&y))
+	return x
+}
+
+// CullMode returns the value of cullMode from VkPipelineRasterizationStateCreateInfo
+func (x PipelineRasterizationStateCreateInfo) CullMode() CullModeFlags {
+	ptr := /* typedef */ (*CullModeFlags)(&x.cullMode)
+	return *ptr
+}
+
+// WithCullMode sets the value for the CullMode on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineRasterizationStateCreateInfo) WithCullMode(y CullModeFlags) PipelineRasterizationStateCreateInfo {
+	x.cullMode = *( /* typedef */ (*C.VkCullModeFlags)(&y))
+	return x
+}
+
+// FrontFace returns the value of frontFace from VkPipelineRasterizationStateCreateInfo
+func (x PipelineRasterizationStateCreateInfo) FrontFace() FrontFace {
+	ptr := /* typedef */ (*FrontFace)(&x.frontFace)
+	return *ptr
+}
+
+// WithFrontFace sets the value for the FrontFace on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineRasterizationStateCreateInfo) WithFrontFace(y FrontFace) PipelineRasterizationStateCreateInfo {
+	x.frontFace = *( /* typedef */ (*C.VkFrontFace)(&y))
+	return x
+}
+
+// DepthBiasEnable returns the value of depthBiasEnable from VkPipelineRasterizationStateCreateInfo
+func (x PipelineRasterizationStateCreateInfo) DepthBiasEnable() Bool32 {
+	ptr := /* typedef */ (*Bool32)(&x.depthBiasEnable)
+	return *ptr
+}
+
+// WithDepthBiasEnable sets the value for the DepthBiasEnable on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineRasterizationStateCreateInfo) WithDepthBiasEnable(y Bool32) PipelineRasterizationStateCreateInfo {
+	x.depthBiasEnable = *( /* typedef */ (*C.VkBool32)(&y))
+	return x
+}
+
+// DepthBiasConstantFactor returns the value of depthBiasConstantFactor from VkPipelineRasterizationStateCreateInfo
+func (x PipelineRasterizationStateCreateInfo) DepthBiasConstantFactor() float32 {
+	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.depthBiasConstantFactor)
+	return *ptr
+}
+
+// WithDepthBiasConstantFactor sets the value for the DepthBiasConstantFactor on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineRasterizationStateCreateInfo) WithDepthBiasConstantFactor(y float32) PipelineRasterizationStateCreateInfo {
+	x.depthBiasConstantFactor = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
+	return x
+}
+
+// DepthBiasClamp returns the value of depthBiasClamp from VkPipelineRasterizationStateCreateInfo
+func (x PipelineRasterizationStateCreateInfo) DepthBiasClamp() float32 {
+	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.depthBiasClamp)
+	return *ptr
+}
+
+// WithDepthBiasClamp sets the value for the DepthBiasClamp on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineRasterizationStateCreateInfo) WithDepthBiasClamp(y float32) PipelineRasterizationStateCreateInfo {
+	x.depthBiasClamp = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
+	return x
+}
+
+// DepthBiasSlopeFactor returns the value of depthBiasSlopeFactor from VkPipelineRasterizationStateCreateInfo
+func (x PipelineRasterizationStateCreateInfo) DepthBiasSlopeFactor() float32 {
+	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.depthBiasSlopeFactor)
+	return *ptr
+}
+
+// WithDepthBiasSlopeFactor sets the value for the DepthBiasSlopeFactor on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineRasterizationStateCreateInfo) WithDepthBiasSlopeFactor(y float32) PipelineRasterizationStateCreateInfo {
+	x.depthBiasSlopeFactor = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
+	return x
+}
+
+// LineWidth returns the value of lineWidth from VkPipelineRasterizationStateCreateInfo
+func (x PipelineRasterizationStateCreateInfo) LineWidth() float32 {
+	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.lineWidth)
+	return *ptr
+}
+
+// WithLineWidth sets the value for the LineWidth on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineRasterizationStateCreateInfo) WithLineWidth(y float32) PipelineRasterizationStateCreateInfo {
+	x.lineWidth = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
+	return x
+}
+
+// Viewport provides a go interface for VkViewport.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkViewport.html
+type Viewport C.struct_VkViewport
+
+// SizeofViewport is the memory size of a Viewport
+var SizeofViewport int = int(unsafe.Sizeof(Viewport{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *Viewport) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x Viewport) AsCPtr() *Viewport {
+	clone := (*Viewport)(newCBlock(C.ulong(SizeofViewport)))
+	*clone = x
+	return clone
+}
+
+// ViewportFreeCSlice releases the memory allocated by ViewportMakeCSlice.
+// It does not free pointers stored inside the slice.
+func ViewportFreeCSlice(x []Viewport) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// ViewportMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. ViewportFreeCSlice must be called on the returned slice.
+func ViewportMakeCSlice(x ...Viewport) []Viewport {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofViewport * len(x)
+	dst := unsafe.Slice((*Viewport)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// X returns the value of x from VkViewport
+func (x Viewport) X() float32 {
+	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.x)
+	return *ptr
+}
+
+// WithX sets the value for the X on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x Viewport) WithX(y float32) Viewport {
+	x.x = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
+	return x
+}
+
+// Y returns the value of y from VkViewport
+func (x Viewport) Y() float32 {
+	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.y)
+	return *ptr
+}
+
+// WithY sets the value for the Y on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x Viewport) WithY(y float32) Viewport {
+	x.y = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
+	return x
+}
+
+// Width returns the value of width from VkViewport
+func (x Viewport) Width() float32 {
+	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.width)
+	return *ptr
+}
+
+// WithWidth sets the value for the Width on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x Viewport) WithWidth(y float32) Viewport {
+	x.width = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
+	return x
+}
+
+// Height returns the value of height from VkViewport
+func (x Viewport) Height() float32 {
+	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.height)
+	return *ptr
+}
+
+// WithHeight sets the value for the Height on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x Viewport) WithHeight(y float32) Viewport {
+	x.height = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
+	return x
+}
+
+// MinDepth returns the value of minDepth from VkViewport
+func (x Viewport) MinDepth() float32 {
+	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.minDepth)
+	return *ptr
+}
+
+// WithMinDepth sets the value for the MinDepth on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x Viewport) WithMinDepth(y float32) Viewport {
+	x.minDepth = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
+	return x
+}
+
+// MaxDepth returns the value of maxDepth from VkViewport
+func (x Viewport) MaxDepth() float32 {
+	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.maxDepth)
+	return *ptr
+}
+
+// WithMaxDepth sets the value for the MaxDepth on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x Viewport) WithMaxDepth(y float32) Viewport {
+	x.maxDepth = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
+	return x
+}
+
+// PipelineViewportStateCreateInfo provides a go interface for VkPipelineViewportStateCreateInfo.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPipelineViewportStateCreateInfo.html
+type PipelineViewportStateCreateInfo C.struct_VkPipelineViewportStateCreateInfo
+
+// SizeofPipelineViewportStateCreateInfo is the memory size of a PipelineViewportStateCreateInfo
+var SizeofPipelineViewportStateCreateInfo int = int(unsafe.Sizeof(PipelineViewportStateCreateInfo{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *PipelineViewportStateCreateInfo) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x PipelineViewportStateCreateInfo) AsCPtr() *PipelineViewportStateCreateInfo {
+	clone := (*PipelineViewportStateCreateInfo)(newCBlock(C.ulong(SizeofPipelineViewportStateCreateInfo)))
+	*clone = x
+	return clone
+}
+
+// PipelineViewportStateCreateInfoFreeCSlice releases the memory allocated by PipelineViewportStateCreateInfoMakeCSlice.
+// It does not free pointers stored inside the slice.
+func PipelineViewportStateCreateInfoFreeCSlice(x []PipelineViewportStateCreateInfo) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// PipelineViewportStateCreateInfoMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. PipelineViewportStateCreateInfoFreeCSlice must be called on the returned slice.
+func PipelineViewportStateCreateInfoMakeCSlice(x ...PipelineViewportStateCreateInfo) []PipelineViewportStateCreateInfo {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofPipelineViewportStateCreateInfo * len(x)
+	dst := unsafe.Slice((*PipelineViewportStateCreateInfo)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// SType returns the value of sType from VkPipelineViewportStateCreateInfo
+func (x PipelineViewportStateCreateInfo) SType() StructureType {
+	ptr := /* typedef */ (*StructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification. This method only exists if there is a single value in the specification.
+func (x PipelineViewportStateCreateInfo) WithDefaultSType() PipelineViewportStateCreateInfo {
+	return x.WithSType(VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO)
+}
+
+// WithSType sets the value for the SType on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineViewportStateCreateInfo) WithSType(y StructureType) PipelineViewportStateCreateInfo {
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
+	return x
+}
+
+// PNext returns the value of pNext from VkPipelineViewportStateCreateInfo
+func (x PipelineViewportStateCreateInfo) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext sets the value for the PNext on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineViewportStateCreateInfo) WithPNext(y unsafe.Pointer) PipelineViewportStateCreateInfo {
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
+	return x
+}
+
+// Flags returns the value of flags from VkPipelineViewportStateCreateInfo
+func (x PipelineViewportStateCreateInfo) Flags() PipelineViewportStateCreateFlags {
+	ptr := /* typedef */ (*PipelineViewportStateCreateFlags)(&x.flags)
+	return *ptr
+}
+
+// WithFlags sets the value for the Flags on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineViewportStateCreateInfo) WithFlags(y PipelineViewportStateCreateFlags) PipelineViewportStateCreateInfo {
+	x.flags = *( /* typedef */ (*C.VkPipelineViewportStateCreateFlags)(&y))
+	return x
+}
+
+// ViewportCount returns the value of viewportCount from VkPipelineViewportStateCreateInfo
+func (x PipelineViewportStateCreateInfo) ViewportCount() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.viewportCount)
+	return *ptr
+}
+
+// WithViewportCount sets the value for the ViewportCount on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineViewportStateCreateInfo) WithViewportCount(y uint32) PipelineViewportStateCreateInfo {
+	x.viewportCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// PViewports returns the value of pViewports from VkPipelineViewportStateCreateInfo
+func (x PipelineViewportStateCreateInfo) PViewports() []Viewport {
+	ptr := func(x **C.struct_VkViewport) *[]Viewport { /* Slice */
+		slc := unsafe.Slice((*Viewport)(unsafe.Pointer(x)), (1 << 31))
+		return &slc
+	}(&x.pViewports)
+	return *ptr
+}
+
+// WithPViewports sets the value for the PViewports on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+//
+// The specification defines ViewportCount as the length of this field.
+// ViewportCount is updated with the length of the new value.
+func (x PipelineViewportStateCreateInfo) WithPViewports(y []Viewport) PipelineViewportStateCreateInfo {
+	x.pViewports = *(func(x *[]Viewport) **C.struct_VkViewport { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.struct_VkViewport)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.struct_VkViewport)(unsafe.Pointer((&ptr)))
+	}(&y))
+	return x.WithViewportCount(uint32(len(y)))
+}
+
+// ScissorCount returns the value of scissorCount from VkPipelineViewportStateCreateInfo
+func (x PipelineViewportStateCreateInfo) ScissorCount() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.scissorCount)
+	return *ptr
+}
+
+// WithScissorCount sets the value for the ScissorCount on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineViewportStateCreateInfo) WithScissorCount(y uint32) PipelineViewportStateCreateInfo {
+	x.scissorCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// PScissors returns the value of pScissors from VkPipelineViewportStateCreateInfo
+func (x PipelineViewportStateCreateInfo) PScissors() []Rect2D {
+	ptr := func(x **C.struct_VkRect2D) *[]Rect2D { /* Slice */
+		slc := unsafe.Slice((*Rect2D)(unsafe.Pointer(x)), (1 << 31))
+		return &slc
+	}(&x.pScissors)
+	return *ptr
+}
+
+// WithPScissors sets the value for the PScissors on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+//
+// The specification defines ScissorCount as the length of this field.
+// ScissorCount is updated with the length of the new value.
+func (x PipelineViewportStateCreateInfo) WithPScissors(y []Rect2D) PipelineViewportStateCreateInfo {
+	x.pScissors = *(func(x *[]Rect2D) **C.struct_VkRect2D { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.struct_VkRect2D)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.struct_VkRect2D)(unsafe.Pointer((&ptr)))
+	}(&y))
+	return x.WithScissorCount(uint32(len(y)))
+}
+
+// PipelineTessellationStateCreateInfo provides a go interface for VkPipelineTessellationStateCreateInfo.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPipelineTessellationStateCreateInfo.html
+type PipelineTessellationStateCreateInfo C.struct_VkPipelineTessellationStateCreateInfo
+
+// SizeofPipelineTessellationStateCreateInfo is the memory size of a PipelineTessellationStateCreateInfo
+var SizeofPipelineTessellationStateCreateInfo int = int(unsafe.Sizeof(PipelineTessellationStateCreateInfo{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *PipelineTessellationStateCreateInfo) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x PipelineTessellationStateCreateInfo) AsCPtr() *PipelineTessellationStateCreateInfo {
+	clone := (*PipelineTessellationStateCreateInfo)(newCBlock(C.ulong(SizeofPipelineTessellationStateCreateInfo)))
+	*clone = x
+	return clone
+}
+
+// PipelineTessellationStateCreateInfoFreeCSlice releases the memory allocated by PipelineTessellationStateCreateInfoMakeCSlice.
+// It does not free pointers stored inside the slice.
+func PipelineTessellationStateCreateInfoFreeCSlice(x []PipelineTessellationStateCreateInfo) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// PipelineTessellationStateCreateInfoMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. PipelineTessellationStateCreateInfoFreeCSlice must be called on the returned slice.
+func PipelineTessellationStateCreateInfoMakeCSlice(x ...PipelineTessellationStateCreateInfo) []PipelineTessellationStateCreateInfo {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofPipelineTessellationStateCreateInfo * len(x)
+	dst := unsafe.Slice((*PipelineTessellationStateCreateInfo)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// SType returns the value of sType from VkPipelineTessellationStateCreateInfo
+func (x PipelineTessellationStateCreateInfo) SType() StructureType {
+	ptr := /* typedef */ (*StructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification. This method only exists if there is a single value in the specification.
+func (x PipelineTessellationStateCreateInfo) WithDefaultSType() PipelineTessellationStateCreateInfo {
+	return x.WithSType(VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_STATE_CREATE_INFO)
+}
+
+// WithSType sets the value for the SType on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineTessellationStateCreateInfo) WithSType(y StructureType) PipelineTessellationStateCreateInfo {
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
+	return x
+}
+
+// PNext returns the value of pNext from VkPipelineTessellationStateCreateInfo
+func (x PipelineTessellationStateCreateInfo) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext sets the value for the PNext on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineTessellationStateCreateInfo) WithPNext(y unsafe.Pointer) PipelineTessellationStateCreateInfo {
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
+	return x
+}
+
+// Flags returns the value of flags from VkPipelineTessellationStateCreateInfo
+func (x PipelineTessellationStateCreateInfo) Flags() PipelineTessellationStateCreateFlags {
+	ptr := /* typedef */ (*PipelineTessellationStateCreateFlags)(&x.flags)
+	return *ptr
+}
+
+// WithFlags sets the value for the Flags on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineTessellationStateCreateInfo) WithFlags(y PipelineTessellationStateCreateFlags) PipelineTessellationStateCreateInfo {
+	x.flags = *( /* typedef */ (*C.VkPipelineTessellationStateCreateFlags)(&y))
+	return x
+}
+
+// PatchControlPoints returns the value of patchControlPoints from VkPipelineTessellationStateCreateInfo
+func (x PipelineTessellationStateCreateInfo) PatchControlPoints() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.patchControlPoints)
+	return *ptr
+}
+
+// WithPatchControlPoints sets the value for the PatchControlPoints on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineTessellationStateCreateInfo) WithPatchControlPoints(y uint32) PipelineTessellationStateCreateInfo {
+	x.patchControlPoints = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// PipelineInputAssemblyStateCreateInfo provides a go interface for VkPipelineInputAssemblyStateCreateInfo.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPipelineInputAssemblyStateCreateInfo.html
+type PipelineInputAssemblyStateCreateInfo C.struct_VkPipelineInputAssemblyStateCreateInfo
+
+// SizeofPipelineInputAssemblyStateCreateInfo is the memory size of a PipelineInputAssemblyStateCreateInfo
+var SizeofPipelineInputAssemblyStateCreateInfo int = int(unsafe.Sizeof(PipelineInputAssemblyStateCreateInfo{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *PipelineInputAssemblyStateCreateInfo) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x PipelineInputAssemblyStateCreateInfo) AsCPtr() *PipelineInputAssemblyStateCreateInfo {
+	clone := (*PipelineInputAssemblyStateCreateInfo)(newCBlock(C.ulong(SizeofPipelineInputAssemblyStateCreateInfo)))
+	*clone = x
+	return clone
+}
+
+// PipelineInputAssemblyStateCreateInfoFreeCSlice releases the memory allocated by PipelineInputAssemblyStateCreateInfoMakeCSlice.
+// It does not free pointers stored inside the slice.
+func PipelineInputAssemblyStateCreateInfoFreeCSlice(x []PipelineInputAssemblyStateCreateInfo) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// PipelineInputAssemblyStateCreateInfoMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. PipelineInputAssemblyStateCreateInfoFreeCSlice must be called on the returned slice.
+func PipelineInputAssemblyStateCreateInfoMakeCSlice(x ...PipelineInputAssemblyStateCreateInfo) []PipelineInputAssemblyStateCreateInfo {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofPipelineInputAssemblyStateCreateInfo * len(x)
+	dst := unsafe.Slice((*PipelineInputAssemblyStateCreateInfo)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// SType returns the value of sType from VkPipelineInputAssemblyStateCreateInfo
+func (x PipelineInputAssemblyStateCreateInfo) SType() StructureType {
+	ptr := /* typedef */ (*StructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification. This method only exists if there is a single value in the specification.
+func (x PipelineInputAssemblyStateCreateInfo) WithDefaultSType() PipelineInputAssemblyStateCreateInfo {
+	return x.WithSType(VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO)
+}
+
+// WithSType sets the value for the SType on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineInputAssemblyStateCreateInfo) WithSType(y StructureType) PipelineInputAssemblyStateCreateInfo {
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
+	return x
+}
+
+// PNext returns the value of pNext from VkPipelineInputAssemblyStateCreateInfo
+func (x PipelineInputAssemblyStateCreateInfo) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext sets the value for the PNext on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineInputAssemblyStateCreateInfo) WithPNext(y unsafe.Pointer) PipelineInputAssemblyStateCreateInfo {
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
+	return x
+}
+
+// Flags returns the value of flags from VkPipelineInputAssemblyStateCreateInfo
+func (x PipelineInputAssemblyStateCreateInfo) Flags() PipelineInputAssemblyStateCreateFlags {
+	ptr := /* typedef */ (*PipelineInputAssemblyStateCreateFlags)(&x.flags)
+	return *ptr
+}
+
+// WithFlags sets the value for the Flags on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineInputAssemblyStateCreateInfo) WithFlags(y PipelineInputAssemblyStateCreateFlags) PipelineInputAssemblyStateCreateInfo {
+	x.flags = *( /* typedef */ (*C.VkPipelineInputAssemblyStateCreateFlags)(&y))
+	return x
+}
+
+// Topology returns the value of topology from VkPipelineInputAssemblyStateCreateInfo
+func (x PipelineInputAssemblyStateCreateInfo) Topology() PrimitiveTopology {
+	ptr := /* typedef */ (*PrimitiveTopology)(&x.topology)
+	return *ptr
+}
+
+// WithTopology sets the value for the Topology on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineInputAssemblyStateCreateInfo) WithTopology(y PrimitiveTopology) PipelineInputAssemblyStateCreateInfo {
+	x.topology = *( /* typedef */ (*C.VkPrimitiveTopology)(&y))
+	return x
+}
+
+// PrimitiveRestartEnable returns the value of primitiveRestartEnable from VkPipelineInputAssemblyStateCreateInfo
+func (x PipelineInputAssemblyStateCreateInfo) PrimitiveRestartEnable() Bool32 {
+	ptr := /* typedef */ (*Bool32)(&x.primitiveRestartEnable)
+	return *ptr
+}
+
+// WithPrimitiveRestartEnable sets the value for the PrimitiveRestartEnable on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineInputAssemblyStateCreateInfo) WithPrimitiveRestartEnable(y Bool32) PipelineInputAssemblyStateCreateInfo {
+	x.primitiveRestartEnable = *( /* typedef */ (*C.VkBool32)(&y))
+	return x
+}
+
+// VertexInputBindingDescription provides a go interface for VkVertexInputBindingDescription.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkVertexInputBindingDescription.html
+type VertexInputBindingDescription C.struct_VkVertexInputBindingDescription
+
+// SizeofVertexInputBindingDescription is the memory size of a VertexInputBindingDescription
+var SizeofVertexInputBindingDescription int = int(unsafe.Sizeof(VertexInputBindingDescription{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *VertexInputBindingDescription) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x VertexInputBindingDescription) AsCPtr() *VertexInputBindingDescription {
+	clone := (*VertexInputBindingDescription)(newCBlock(C.ulong(SizeofVertexInputBindingDescription)))
+	*clone = x
+	return clone
+}
+
+// VertexInputBindingDescriptionFreeCSlice releases the memory allocated by VertexInputBindingDescriptionMakeCSlice.
+// It does not free pointers stored inside the slice.
+func VertexInputBindingDescriptionFreeCSlice(x []VertexInputBindingDescription) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// VertexInputBindingDescriptionMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. VertexInputBindingDescriptionFreeCSlice must be called on the returned slice.
+func VertexInputBindingDescriptionMakeCSlice(x ...VertexInputBindingDescription) []VertexInputBindingDescription {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofVertexInputBindingDescription * len(x)
+	dst := unsafe.Slice((*VertexInputBindingDescription)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// Binding returns the value of binding from VkVertexInputBindingDescription
+func (x VertexInputBindingDescription) Binding() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.binding)
+	return *ptr
+}
+
+// WithBinding sets the value for the Binding on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x VertexInputBindingDescription) WithBinding(y uint32) VertexInputBindingDescription {
+	x.binding = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// Stride returns the value of stride from VkVertexInputBindingDescription
+func (x VertexInputBindingDescription) Stride() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.stride)
+	return *ptr
+}
+
+// WithStride sets the value for the Stride on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x VertexInputBindingDescription) WithStride(y uint32) VertexInputBindingDescription {
+	x.stride = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// InputRate returns the value of inputRate from VkVertexInputBindingDescription
+func (x VertexInputBindingDescription) InputRate() VertexInputRate {
+	ptr := /* typedef */ (*VertexInputRate)(&x.inputRate)
+	return *ptr
+}
+
+// WithInputRate sets the value for the InputRate on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x VertexInputBindingDescription) WithInputRate(y VertexInputRate) VertexInputBindingDescription {
+	x.inputRate = *( /* typedef */ (*C.VkVertexInputRate)(&y))
+	return x
+}
+
+// VertexInputAttributeDescription provides a go interface for VkVertexInputAttributeDescription.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkVertexInputAttributeDescription.html
+type VertexInputAttributeDescription C.struct_VkVertexInputAttributeDescription
+
+// SizeofVertexInputAttributeDescription is the memory size of a VertexInputAttributeDescription
+var SizeofVertexInputAttributeDescription int = int(unsafe.Sizeof(VertexInputAttributeDescription{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *VertexInputAttributeDescription) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x VertexInputAttributeDescription) AsCPtr() *VertexInputAttributeDescription {
+	clone := (*VertexInputAttributeDescription)(newCBlock(C.ulong(SizeofVertexInputAttributeDescription)))
+	*clone = x
+	return clone
+}
+
+// VertexInputAttributeDescriptionFreeCSlice releases the memory allocated by VertexInputAttributeDescriptionMakeCSlice.
+// It does not free pointers stored inside the slice.
+func VertexInputAttributeDescriptionFreeCSlice(x []VertexInputAttributeDescription) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// VertexInputAttributeDescriptionMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. VertexInputAttributeDescriptionFreeCSlice must be called on the returned slice.
+func VertexInputAttributeDescriptionMakeCSlice(x ...VertexInputAttributeDescription) []VertexInputAttributeDescription {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofVertexInputAttributeDescription * len(x)
+	dst := unsafe.Slice((*VertexInputAttributeDescription)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// Location returns the value of location from VkVertexInputAttributeDescription
+func (x VertexInputAttributeDescription) Location() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.location)
+	return *ptr
+}
+
+// WithLocation sets the value for the Location on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x VertexInputAttributeDescription) WithLocation(y uint32) VertexInputAttributeDescription {
+	x.location = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// Binding returns the value of binding from VkVertexInputAttributeDescription
+func (x VertexInputAttributeDescription) Binding() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.binding)
+	return *ptr
+}
+
+// WithBinding sets the value for the Binding on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x VertexInputAttributeDescription) WithBinding(y uint32) VertexInputAttributeDescription {
+	x.binding = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// Format returns the value of format from VkVertexInputAttributeDescription
+func (x VertexInputAttributeDescription) Format() Format {
+	ptr := /* typedef */ (*Format)(&x.format)
+	return *ptr
+}
+
+// WithFormat sets the value for the Format on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x VertexInputAttributeDescription) WithFormat(y Format) VertexInputAttributeDescription {
+	x.format = *( /* typedef */ (*C.VkFormat)(&y))
+	return x
+}
+
+// Offset returns the value of offset from VkVertexInputAttributeDescription
+func (x VertexInputAttributeDescription) Offset() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.offset)
+	return *ptr
+}
+
+// WithOffset sets the value for the Offset on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x VertexInputAttributeDescription) WithOffset(y uint32) VertexInputAttributeDescription {
+	x.offset = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// PipelineVertexInputStateCreateInfo provides a go interface for VkPipelineVertexInputStateCreateInfo.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPipelineVertexInputStateCreateInfo.html
+type PipelineVertexInputStateCreateInfo C.struct_VkPipelineVertexInputStateCreateInfo
+
+// SizeofPipelineVertexInputStateCreateInfo is the memory size of a PipelineVertexInputStateCreateInfo
+var SizeofPipelineVertexInputStateCreateInfo int = int(unsafe.Sizeof(PipelineVertexInputStateCreateInfo{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *PipelineVertexInputStateCreateInfo) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x PipelineVertexInputStateCreateInfo) AsCPtr() *PipelineVertexInputStateCreateInfo {
+	clone := (*PipelineVertexInputStateCreateInfo)(newCBlock(C.ulong(SizeofPipelineVertexInputStateCreateInfo)))
+	*clone = x
+	return clone
+}
+
+// PipelineVertexInputStateCreateInfoFreeCSlice releases the memory allocated by PipelineVertexInputStateCreateInfoMakeCSlice.
+// It does not free pointers stored inside the slice.
+func PipelineVertexInputStateCreateInfoFreeCSlice(x []PipelineVertexInputStateCreateInfo) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// PipelineVertexInputStateCreateInfoMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. PipelineVertexInputStateCreateInfoFreeCSlice must be called on the returned slice.
+func PipelineVertexInputStateCreateInfoMakeCSlice(x ...PipelineVertexInputStateCreateInfo) []PipelineVertexInputStateCreateInfo {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofPipelineVertexInputStateCreateInfo * len(x)
+	dst := unsafe.Slice((*PipelineVertexInputStateCreateInfo)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// SType returns the value of sType from VkPipelineVertexInputStateCreateInfo
+func (x PipelineVertexInputStateCreateInfo) SType() StructureType {
+	ptr := /* typedef */ (*StructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification. This method only exists if there is a single value in the specification.
+func (x PipelineVertexInputStateCreateInfo) WithDefaultSType() PipelineVertexInputStateCreateInfo {
+	return x.WithSType(VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO)
+}
+
+// WithSType sets the value for the SType on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineVertexInputStateCreateInfo) WithSType(y StructureType) PipelineVertexInputStateCreateInfo {
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
+	return x
+}
+
+// PNext returns the value of pNext from VkPipelineVertexInputStateCreateInfo
+func (x PipelineVertexInputStateCreateInfo) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext sets the value for the PNext on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineVertexInputStateCreateInfo) WithPNext(y unsafe.Pointer) PipelineVertexInputStateCreateInfo {
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
+	return x
+}
+
+// Flags returns the value of flags from VkPipelineVertexInputStateCreateInfo
+func (x PipelineVertexInputStateCreateInfo) Flags() PipelineVertexInputStateCreateFlags {
+	ptr := /* typedef */ (*PipelineVertexInputStateCreateFlags)(&x.flags)
+	return *ptr
+}
+
+// WithFlags sets the value for the Flags on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineVertexInputStateCreateInfo) WithFlags(y PipelineVertexInputStateCreateFlags) PipelineVertexInputStateCreateInfo {
+	x.flags = *( /* typedef */ (*C.VkPipelineVertexInputStateCreateFlags)(&y))
+	return x
+}
+
+// VertexBindingDescriptionCount returns the value of vertexBindingDescriptionCount from VkPipelineVertexInputStateCreateInfo
+func (x PipelineVertexInputStateCreateInfo) VertexBindingDescriptionCount() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.vertexBindingDescriptionCount)
+	return *ptr
+}
+
+// WithVertexBindingDescriptionCount sets the value for the VertexBindingDescriptionCount on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineVertexInputStateCreateInfo) WithVertexBindingDescriptionCount(y uint32) PipelineVertexInputStateCreateInfo {
+	x.vertexBindingDescriptionCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// PVertexBindingDescriptions returns the value of pVertexBindingDescriptions from VkPipelineVertexInputStateCreateInfo
+func (x PipelineVertexInputStateCreateInfo) PVertexBindingDescriptions() []VertexInputBindingDescription {
+	ptr := func(x **C.struct_VkVertexInputBindingDescription) *[]VertexInputBindingDescription { /* Slice */
+		slc := unsafe.Slice((*VertexInputBindingDescription)(unsafe.Pointer(x)), (1 << 31))
+		return &slc
+	}(&x.pVertexBindingDescriptions)
+	return *ptr
+}
+
+// WithPVertexBindingDescriptions sets the value for the PVertexBindingDescriptions on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+//
+// The specification defines VertexBindingDescriptionCount as the length of this field.
+// VertexBindingDescriptionCount is updated with the length of the new value.
+func (x PipelineVertexInputStateCreateInfo) WithPVertexBindingDescriptions(y []VertexInputBindingDescription) PipelineVertexInputStateCreateInfo {
+	x.pVertexBindingDescriptions = *(func(x *[]VertexInputBindingDescription) **C.struct_VkVertexInputBindingDescription { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.struct_VkVertexInputBindingDescription)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.struct_VkVertexInputBindingDescription)(unsafe.Pointer((&ptr)))
+	}(&y))
+	return x.WithVertexBindingDescriptionCount(uint32(len(y)))
+}
+
+// VertexAttributeDescriptionCount returns the value of vertexAttributeDescriptionCount from VkPipelineVertexInputStateCreateInfo
+func (x PipelineVertexInputStateCreateInfo) VertexAttributeDescriptionCount() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.vertexAttributeDescriptionCount)
+	return *ptr
+}
+
+// WithVertexAttributeDescriptionCount sets the value for the VertexAttributeDescriptionCount on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PipelineVertexInputStateCreateInfo) WithVertexAttributeDescriptionCount(y uint32) PipelineVertexInputStateCreateInfo {
+	x.vertexAttributeDescriptionCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// PVertexAttributeDescriptions returns the value of pVertexAttributeDescriptions from VkPipelineVertexInputStateCreateInfo
+func (x PipelineVertexInputStateCreateInfo) PVertexAttributeDescriptions() []VertexInputAttributeDescription {
+	ptr := func(x **C.struct_VkVertexInputAttributeDescription) *[]VertexInputAttributeDescription { /* Slice */
+		slc := unsafe.Slice((*VertexInputAttributeDescription)(unsafe.Pointer(x)), (1 << 31))
+		return &slc
+	}(&x.pVertexAttributeDescriptions)
+	return *ptr
+}
+
+// WithPVertexAttributeDescriptions sets the value for the PVertexAttributeDescriptions on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+//
+// The specification defines VertexAttributeDescriptionCount as the length of this field.
+// VertexAttributeDescriptionCount is updated with the length of the new value.
+func (x PipelineVertexInputStateCreateInfo) WithPVertexAttributeDescriptions(y []VertexInputAttributeDescription) PipelineVertexInputStateCreateInfo {
+	x.pVertexAttributeDescriptions = *(func(x *[]VertexInputAttributeDescription) **C.struct_VkVertexInputAttributeDescription { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.struct_VkVertexInputAttributeDescription)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.struct_VkVertexInputAttributeDescription)(unsafe.Pointer((&ptr)))
+	}(&y))
+	return x.WithVertexAttributeDescriptionCount(uint32(len(y)))
+}
+
 // GraphicsPipelineCreateInfo provides a go interface for VkGraphicsPipelineCreateInfo.
 // https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkGraphicsPipelineCreateInfo.html
 type GraphicsPipelineCreateInfo C.struct_VkGraphicsPipelineCreateInfo
@@ -12514,152 +15246,6 @@ func (x ImageMemoryBarrier) WithSubresourceRange(y ImageSubresourceRange) ImageM
 	return x
 }
 
-// PipelineColorBlendAttachmentState provides a go interface for VkPipelineColorBlendAttachmentState.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPipelineColorBlendAttachmentState.html
-type PipelineColorBlendAttachmentState C.struct_VkPipelineColorBlendAttachmentState
-
-// SizeofPipelineColorBlendAttachmentState is the memory size of a PipelineColorBlendAttachmentState
-var SizeofPipelineColorBlendAttachmentState int = int(unsafe.Sizeof(PipelineColorBlendAttachmentState{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *PipelineColorBlendAttachmentState) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x PipelineColorBlendAttachmentState) AsCPtr() *PipelineColorBlendAttachmentState {
-	clone := (*PipelineColorBlendAttachmentState)(newCBlock(C.ulong(SizeofPipelineColorBlendAttachmentState)))
-	*clone = x
-	return clone
-}
-
-// PipelineColorBlendAttachmentStateFreeCSlice releases the memory allocated by PipelineColorBlendAttachmentStateMakeCSlice.
-// It does not free pointers stored inside the slice.
-func PipelineColorBlendAttachmentStateFreeCSlice(x []PipelineColorBlendAttachmentState) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// PipelineColorBlendAttachmentStateMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. PipelineColorBlendAttachmentStateFreeCSlice must be called on the returned slice.
-func PipelineColorBlendAttachmentStateMakeCSlice(x ...PipelineColorBlendAttachmentState) []PipelineColorBlendAttachmentState {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofPipelineColorBlendAttachmentState * len(x)
-	dst := unsafe.Slice((*PipelineColorBlendAttachmentState)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// BlendEnable returns the value of blendEnable from VkPipelineColorBlendAttachmentState
-func (x PipelineColorBlendAttachmentState) BlendEnable() Bool32 {
-	ptr := /* typedef */ (*Bool32)(&x.blendEnable)
-	return *ptr
-}
-
-// WithBlendEnable sets the value for the BlendEnable on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineColorBlendAttachmentState) WithBlendEnable(y Bool32) PipelineColorBlendAttachmentState {
-	x.blendEnable = *( /* typedef */ (*C.VkBool32)(&y))
-	return x
-}
-
-// SrcColorBlendFactor returns the value of srcColorBlendFactor from VkPipelineColorBlendAttachmentState
-func (x PipelineColorBlendAttachmentState) SrcColorBlendFactor() BlendFactor {
-	ptr := /* typedef */ (*BlendFactor)(&x.srcColorBlendFactor)
-	return *ptr
-}
-
-// WithSrcColorBlendFactor sets the value for the SrcColorBlendFactor on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineColorBlendAttachmentState) WithSrcColorBlendFactor(y BlendFactor) PipelineColorBlendAttachmentState {
-	x.srcColorBlendFactor = *( /* typedef */ (*C.VkBlendFactor)(&y))
-	return x
-}
-
-// DstColorBlendFactor returns the value of dstColorBlendFactor from VkPipelineColorBlendAttachmentState
-func (x PipelineColorBlendAttachmentState) DstColorBlendFactor() BlendFactor {
-	ptr := /* typedef */ (*BlendFactor)(&x.dstColorBlendFactor)
-	return *ptr
-}
-
-// WithDstColorBlendFactor sets the value for the DstColorBlendFactor on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineColorBlendAttachmentState) WithDstColorBlendFactor(y BlendFactor) PipelineColorBlendAttachmentState {
-	x.dstColorBlendFactor = *( /* typedef */ (*C.VkBlendFactor)(&y))
-	return x
-}
-
-// ColorBlendOp returns the value of colorBlendOp from VkPipelineColorBlendAttachmentState
-func (x PipelineColorBlendAttachmentState) ColorBlendOp() BlendOp {
-	ptr := /* typedef */ (*BlendOp)(&x.colorBlendOp)
-	return *ptr
-}
-
-// WithColorBlendOp sets the value for the ColorBlendOp on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineColorBlendAttachmentState) WithColorBlendOp(y BlendOp) PipelineColorBlendAttachmentState {
-	x.colorBlendOp = *( /* typedef */ (*C.VkBlendOp)(&y))
-	return x
-}
-
-// SrcAlphaBlendFactor returns the value of srcAlphaBlendFactor from VkPipelineColorBlendAttachmentState
-func (x PipelineColorBlendAttachmentState) SrcAlphaBlendFactor() BlendFactor {
-	ptr := /* typedef */ (*BlendFactor)(&x.srcAlphaBlendFactor)
-	return *ptr
-}
-
-// WithSrcAlphaBlendFactor sets the value for the SrcAlphaBlendFactor on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineColorBlendAttachmentState) WithSrcAlphaBlendFactor(y BlendFactor) PipelineColorBlendAttachmentState {
-	x.srcAlphaBlendFactor = *( /* typedef */ (*C.VkBlendFactor)(&y))
-	return x
-}
-
-// DstAlphaBlendFactor returns the value of dstAlphaBlendFactor from VkPipelineColorBlendAttachmentState
-func (x PipelineColorBlendAttachmentState) DstAlphaBlendFactor() BlendFactor {
-	ptr := /* typedef */ (*BlendFactor)(&x.dstAlphaBlendFactor)
-	return *ptr
-}
-
-// WithDstAlphaBlendFactor sets the value for the DstAlphaBlendFactor on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineColorBlendAttachmentState) WithDstAlphaBlendFactor(y BlendFactor) PipelineColorBlendAttachmentState {
-	x.dstAlphaBlendFactor = *( /* typedef */ (*C.VkBlendFactor)(&y))
-	return x
-}
-
-// AlphaBlendOp returns the value of alphaBlendOp from VkPipelineColorBlendAttachmentState
-func (x PipelineColorBlendAttachmentState) AlphaBlendOp() BlendOp {
-	ptr := /* typedef */ (*BlendOp)(&x.alphaBlendOp)
-	return *ptr
-}
-
-// WithAlphaBlendOp sets the value for the AlphaBlendOp on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineColorBlendAttachmentState) WithAlphaBlendOp(y BlendOp) PipelineColorBlendAttachmentState {
-	x.alphaBlendOp = *( /* typedef */ (*C.VkBlendOp)(&y))
-	return x
-}
-
-// ColorWriteMask returns the value of colorWriteMask from VkPipelineColorBlendAttachmentState
-func (x PipelineColorBlendAttachmentState) ColorWriteMask() ColorComponentFlags {
-	ptr := /* typedef */ (*ColorComponentFlags)(&x.colorWriteMask)
-	return *ptr
-}
-
-// WithColorWriteMask sets the value for the ColorWriteMask on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineColorBlendAttachmentState) WithColorWriteMask(y ColorComponentFlags) PipelineColorBlendAttachmentState {
-	x.colorWriteMask = *( /* typedef */ (*C.VkColorComponentFlags)(&y))
-	return x
-}
-
 // MemoryBarrier provides a go interface for VkMemoryBarrier.
 // https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkMemoryBarrier.html
 type MemoryBarrier C.struct_VkMemoryBarrier
@@ -12760,250 +15346,6 @@ func (x MemoryBarrier) WithDstAccessMask(y AccessFlags) MemoryBarrier {
 	return x
 }
 
-// PipelineColorBlendStateCreateInfo provides a go interface for VkPipelineColorBlendStateCreateInfo.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPipelineColorBlendStateCreateInfo.html
-type PipelineColorBlendStateCreateInfo C.struct_VkPipelineColorBlendStateCreateInfo
-
-// SizeofPipelineColorBlendStateCreateInfo is the memory size of a PipelineColorBlendStateCreateInfo
-var SizeofPipelineColorBlendStateCreateInfo int = int(unsafe.Sizeof(PipelineColorBlendStateCreateInfo{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *PipelineColorBlendStateCreateInfo) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x PipelineColorBlendStateCreateInfo) AsCPtr() *PipelineColorBlendStateCreateInfo {
-	clone := (*PipelineColorBlendStateCreateInfo)(newCBlock(C.ulong(SizeofPipelineColorBlendStateCreateInfo)))
-	*clone = x
-	return clone
-}
-
-// PipelineColorBlendStateCreateInfoFreeCSlice releases the memory allocated by PipelineColorBlendStateCreateInfoMakeCSlice.
-// It does not free pointers stored inside the slice.
-func PipelineColorBlendStateCreateInfoFreeCSlice(x []PipelineColorBlendStateCreateInfo) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// PipelineColorBlendStateCreateInfoMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. PipelineColorBlendStateCreateInfoFreeCSlice must be called on the returned slice.
-func PipelineColorBlendStateCreateInfoMakeCSlice(x ...PipelineColorBlendStateCreateInfo) []PipelineColorBlendStateCreateInfo {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofPipelineColorBlendStateCreateInfo * len(x)
-	dst := unsafe.Slice((*PipelineColorBlendStateCreateInfo)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// SType returns the value of sType from VkPipelineColorBlendStateCreateInfo
-func (x PipelineColorBlendStateCreateInfo) SType() StructureType {
-	ptr := /* typedef */ (*StructureType)(&x.sType)
-	return *ptr
-}
-
-// WithDefaultSType sets the value of SType to the value provided in the
-// specification. This method only exists if there is a single value in the specification.
-func (x PipelineColorBlendStateCreateInfo) WithDefaultSType() PipelineColorBlendStateCreateInfo {
-	return x.WithSType(VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO)
-}
-
-// WithSType sets the value for the SType on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineColorBlendStateCreateInfo) WithSType(y StructureType) PipelineColorBlendStateCreateInfo {
-	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
-	return x
-}
-
-// PNext returns the value of pNext from VkPipelineColorBlendStateCreateInfo
-func (x PipelineColorBlendStateCreateInfo) PNext() unsafe.Pointer {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
-	return *ptr
-}
-
-// WithPNext sets the value for the PNext on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineColorBlendStateCreateInfo) WithPNext(y unsafe.Pointer) PipelineColorBlendStateCreateInfo {
-	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
-	return x
-}
-
-// Flags returns the value of flags from VkPipelineColorBlendStateCreateInfo
-func (x PipelineColorBlendStateCreateInfo) Flags() PipelineColorBlendStateCreateFlags {
-	ptr := /* typedef */ (*PipelineColorBlendStateCreateFlags)(&x.flags)
-	return *ptr
-}
-
-// WithFlags sets the value for the Flags on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineColorBlendStateCreateInfo) WithFlags(y PipelineColorBlendStateCreateFlags) PipelineColorBlendStateCreateInfo {
-	x.flags = *( /* typedef */ (*C.VkPipelineColorBlendStateCreateFlags)(&y))
-	return x
-}
-
-// LogicOpEnable returns the value of logicOpEnable from VkPipelineColorBlendStateCreateInfo
-func (x PipelineColorBlendStateCreateInfo) LogicOpEnable() Bool32 {
-	ptr := /* typedef */ (*Bool32)(&x.logicOpEnable)
-	return *ptr
-}
-
-// WithLogicOpEnable sets the value for the LogicOpEnable on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineColorBlendStateCreateInfo) WithLogicOpEnable(y Bool32) PipelineColorBlendStateCreateInfo {
-	x.logicOpEnable = *( /* typedef */ (*C.VkBool32)(&y))
-	return x
-}
-
-// LogicOp returns the value of logicOp from VkPipelineColorBlendStateCreateInfo
-func (x PipelineColorBlendStateCreateInfo) LogicOp() LogicOp {
-	ptr := /* typedef */ (*LogicOp)(&x.logicOp)
-	return *ptr
-}
-
-// WithLogicOp sets the value for the LogicOp on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineColorBlendStateCreateInfo) WithLogicOp(y LogicOp) PipelineColorBlendStateCreateInfo {
-	x.logicOp = *( /* typedef */ (*C.VkLogicOp)(&y))
-	return x
-}
-
-// AttachmentCount returns the value of attachmentCount from VkPipelineColorBlendStateCreateInfo
-func (x PipelineColorBlendStateCreateInfo) AttachmentCount() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.attachmentCount)
-	return *ptr
-}
-
-// WithAttachmentCount sets the value for the AttachmentCount on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineColorBlendStateCreateInfo) WithAttachmentCount(y uint32) PipelineColorBlendStateCreateInfo {
-	x.attachmentCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// PAttachments returns the value of pAttachments from VkPipelineColorBlendStateCreateInfo
-func (x PipelineColorBlendStateCreateInfo) PAttachments() []PipelineColorBlendAttachmentState {
-	ptr := func(x **C.struct_VkPipelineColorBlendAttachmentState) *[]PipelineColorBlendAttachmentState { /* Slice */
-		slc := unsafe.Slice((*PipelineColorBlendAttachmentState)(unsafe.Pointer(x)), (1 << 31))
-		return &slc
-	}(&x.pAttachments)
-	return *ptr
-}
-
-// WithPAttachments sets the value for the PAttachments on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-//
-// The specification defines AttachmentCount as the length of this field.
-// AttachmentCount is updated with the length of the new value.
-func (x PipelineColorBlendStateCreateInfo) WithPAttachments(y []PipelineColorBlendAttachmentState) PipelineColorBlendStateCreateInfo {
-	x.pAttachments = *(func(x *[]PipelineColorBlendAttachmentState) **C.struct_VkPipelineColorBlendAttachmentState { /* Slice */
-		if len(*x) > 0 {
-			slc := (*C.struct_VkPipelineColorBlendAttachmentState)(unsafe.Pointer(&((*x)[0])))
-			return &slc
-		}
-		var ptr unsafe.Pointer
-		return (**C.struct_VkPipelineColorBlendAttachmentState)(unsafe.Pointer((&ptr)))
-	}(&y))
-	return x.WithAttachmentCount(uint32(len(y)))
-}
-
-// BlendConstants returns the value of blendConstants from VkPipelineColorBlendStateCreateInfo
-func (x PipelineColorBlendStateCreateInfo) BlendConstants() []float32 {
-	ptr := func(x *[4]C.float) *[]float32 { /* Array */
-		slc := unsafe.Slice((*float32)(unsafe.Pointer(x)), 4)
-		return &slc
-	}(&x.blendConstants)
-	return *ptr
-}
-
-// WithBlendConstants sets the value for the BlendConstants on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineColorBlendStateCreateInfo) WithBlendConstants(y []float32) PipelineColorBlendStateCreateInfo {
-	ptr := func(x *[]float32) **C.float { /* Array */
-		if len(*x) > 0 {
-			slc := (*C.float)(unsafe.Pointer(&((*x)[0])))
-			return &slc
-		}
-		var ptr unsafe.Pointer
-		return (**C.float)(unsafe.Pointer((&ptr)))
-	}(&y)
-	copy(x.blendConstants[:], unsafe.Slice(*ptr, len(y)))
-	return x
-}
-
-// AttachmentReference provides a go interface for VkAttachmentReference.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkAttachmentReference.html
-type AttachmentReference C.struct_VkAttachmentReference
-
-// SizeofAttachmentReference is the memory size of a AttachmentReference
-var SizeofAttachmentReference int = int(unsafe.Sizeof(AttachmentReference{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *AttachmentReference) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x AttachmentReference) AsCPtr() *AttachmentReference {
-	clone := (*AttachmentReference)(newCBlock(C.ulong(SizeofAttachmentReference)))
-	*clone = x
-	return clone
-}
-
-// AttachmentReferenceFreeCSlice releases the memory allocated by AttachmentReferenceMakeCSlice.
-// It does not free pointers stored inside the slice.
-func AttachmentReferenceFreeCSlice(x []AttachmentReference) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// AttachmentReferenceMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. AttachmentReferenceFreeCSlice must be called on the returned slice.
-func AttachmentReferenceMakeCSlice(x ...AttachmentReference) []AttachmentReference {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofAttachmentReference * len(x)
-	dst := unsafe.Slice((*AttachmentReference)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// Attachment returns the value of attachment from VkAttachmentReference
-func (x AttachmentReference) Attachment() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.attachment)
-	return *ptr
-}
-
-// WithAttachment sets the value for the Attachment on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x AttachmentReference) WithAttachment(y uint32) AttachmentReference {
-	x.attachment = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// Layout returns the value of layout from VkAttachmentReference
-func (x AttachmentReference) Layout() ImageLayout {
-	ptr := /* typedef */ (*ImageLayout)(&x.layout)
-	return *ptr
-}
-
-// WithLayout sets the value for the Layout on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x AttachmentReference) WithLayout(y ImageLayout) AttachmentReference {
-	x.layout = *( /* typedef */ (*C.VkImageLayout)(&y))
-	return x
-}
-
 // LayerProperties provides a go interface for VkLayerProperties.
 // https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkLayerProperties.html
 type LayerProperties C.struct_VkLayerProperties
@@ -13074,291 +15416,6 @@ func (x LayerProperties) Description() []byte {
 		return &slc
 	}(&x.description)
 	return *ptr
-}
-
-// Extent3D provides a go interface for VkExtent3D.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkExtent3D.html
-type Extent3D C.struct_VkExtent3D
-
-// SizeofExtent3D is the memory size of a Extent3D
-var SizeofExtent3D int = int(unsafe.Sizeof(Extent3D{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *Extent3D) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x Extent3D) AsCPtr() *Extent3D {
-	clone := (*Extent3D)(newCBlock(C.ulong(SizeofExtent3D)))
-	*clone = x
-	return clone
-}
-
-// Extent3DFreeCSlice releases the memory allocated by Extent3DMakeCSlice.
-// It does not free pointers stored inside the slice.
-func Extent3DFreeCSlice(x []Extent3D) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// Extent3DMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. Extent3DFreeCSlice must be called on the returned slice.
-func Extent3DMakeCSlice(x ...Extent3D) []Extent3D {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofExtent3D * len(x)
-	dst := unsafe.Slice((*Extent3D)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// Width returns the value of width from VkExtent3D
-func (x Extent3D) Width() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.width)
-	return *ptr
-}
-
-// WithWidth sets the value for the Width on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x Extent3D) WithWidth(y uint32) Extent3D {
-	x.width = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// Height returns the value of height from VkExtent3D
-func (x Extent3D) Height() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.height)
-	return *ptr
-}
-
-// WithHeight sets the value for the Height on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x Extent3D) WithHeight(y uint32) Extent3D {
-	x.height = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// Depth returns the value of depth from VkExtent3D
-func (x Extent3D) Depth() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.depth)
-	return *ptr
-}
-
-// WithDepth sets the value for the Depth on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x Extent3D) WithDepth(y uint32) Extent3D {
-	x.depth = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// PipelineDepthStencilStateCreateInfo provides a go interface for VkPipelineDepthStencilStateCreateInfo.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPipelineDepthStencilStateCreateInfo.html
-type PipelineDepthStencilStateCreateInfo C.struct_VkPipelineDepthStencilStateCreateInfo
-
-// SizeofPipelineDepthStencilStateCreateInfo is the memory size of a PipelineDepthStencilStateCreateInfo
-var SizeofPipelineDepthStencilStateCreateInfo int = int(unsafe.Sizeof(PipelineDepthStencilStateCreateInfo{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *PipelineDepthStencilStateCreateInfo) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x PipelineDepthStencilStateCreateInfo) AsCPtr() *PipelineDepthStencilStateCreateInfo {
-	clone := (*PipelineDepthStencilStateCreateInfo)(newCBlock(C.ulong(SizeofPipelineDepthStencilStateCreateInfo)))
-	*clone = x
-	return clone
-}
-
-// PipelineDepthStencilStateCreateInfoFreeCSlice releases the memory allocated by PipelineDepthStencilStateCreateInfoMakeCSlice.
-// It does not free pointers stored inside the slice.
-func PipelineDepthStencilStateCreateInfoFreeCSlice(x []PipelineDepthStencilStateCreateInfo) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// PipelineDepthStencilStateCreateInfoMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. PipelineDepthStencilStateCreateInfoFreeCSlice must be called on the returned slice.
-func PipelineDepthStencilStateCreateInfoMakeCSlice(x ...PipelineDepthStencilStateCreateInfo) []PipelineDepthStencilStateCreateInfo {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofPipelineDepthStencilStateCreateInfo * len(x)
-	dst := unsafe.Slice((*PipelineDepthStencilStateCreateInfo)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// SType returns the value of sType from VkPipelineDepthStencilStateCreateInfo
-func (x PipelineDepthStencilStateCreateInfo) SType() StructureType {
-	ptr := /* typedef */ (*StructureType)(&x.sType)
-	return *ptr
-}
-
-// WithDefaultSType sets the value of SType to the value provided in the
-// specification. This method only exists if there is a single value in the specification.
-func (x PipelineDepthStencilStateCreateInfo) WithDefaultSType() PipelineDepthStencilStateCreateInfo {
-	return x.WithSType(VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO)
-}
-
-// WithSType sets the value for the SType on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineDepthStencilStateCreateInfo) WithSType(y StructureType) PipelineDepthStencilStateCreateInfo {
-	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
-	return x
-}
-
-// PNext returns the value of pNext from VkPipelineDepthStencilStateCreateInfo
-func (x PipelineDepthStencilStateCreateInfo) PNext() unsafe.Pointer {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
-	return *ptr
-}
-
-// WithPNext sets the value for the PNext on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineDepthStencilStateCreateInfo) WithPNext(y unsafe.Pointer) PipelineDepthStencilStateCreateInfo {
-	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
-	return x
-}
-
-// Flags returns the value of flags from VkPipelineDepthStencilStateCreateInfo
-func (x PipelineDepthStencilStateCreateInfo) Flags() PipelineDepthStencilStateCreateFlags {
-	ptr := /* typedef */ (*PipelineDepthStencilStateCreateFlags)(&x.flags)
-	return *ptr
-}
-
-// WithFlags sets the value for the Flags on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineDepthStencilStateCreateInfo) WithFlags(y PipelineDepthStencilStateCreateFlags) PipelineDepthStencilStateCreateInfo {
-	x.flags = *( /* typedef */ (*C.VkPipelineDepthStencilStateCreateFlags)(&y))
-	return x
-}
-
-// DepthTestEnable returns the value of depthTestEnable from VkPipelineDepthStencilStateCreateInfo
-func (x PipelineDepthStencilStateCreateInfo) DepthTestEnable() Bool32 {
-	ptr := /* typedef */ (*Bool32)(&x.depthTestEnable)
-	return *ptr
-}
-
-// WithDepthTestEnable sets the value for the DepthTestEnable on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineDepthStencilStateCreateInfo) WithDepthTestEnable(y Bool32) PipelineDepthStencilStateCreateInfo {
-	x.depthTestEnable = *( /* typedef */ (*C.VkBool32)(&y))
-	return x
-}
-
-// DepthWriteEnable returns the value of depthWriteEnable from VkPipelineDepthStencilStateCreateInfo
-func (x PipelineDepthStencilStateCreateInfo) DepthWriteEnable() Bool32 {
-	ptr := /* typedef */ (*Bool32)(&x.depthWriteEnable)
-	return *ptr
-}
-
-// WithDepthWriteEnable sets the value for the DepthWriteEnable on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineDepthStencilStateCreateInfo) WithDepthWriteEnable(y Bool32) PipelineDepthStencilStateCreateInfo {
-	x.depthWriteEnable = *( /* typedef */ (*C.VkBool32)(&y))
-	return x
-}
-
-// DepthCompareOp returns the value of depthCompareOp from VkPipelineDepthStencilStateCreateInfo
-func (x PipelineDepthStencilStateCreateInfo) DepthCompareOp() CompareOp {
-	ptr := /* typedef */ (*CompareOp)(&x.depthCompareOp)
-	return *ptr
-}
-
-// WithDepthCompareOp sets the value for the DepthCompareOp on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineDepthStencilStateCreateInfo) WithDepthCompareOp(y CompareOp) PipelineDepthStencilStateCreateInfo {
-	x.depthCompareOp = *( /* typedef */ (*C.VkCompareOp)(&y))
-	return x
-}
-
-// DepthBoundsTestEnable returns the value of depthBoundsTestEnable from VkPipelineDepthStencilStateCreateInfo
-func (x PipelineDepthStencilStateCreateInfo) DepthBoundsTestEnable() Bool32 {
-	ptr := /* typedef */ (*Bool32)(&x.depthBoundsTestEnable)
-	return *ptr
-}
-
-// WithDepthBoundsTestEnable sets the value for the DepthBoundsTestEnable on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineDepthStencilStateCreateInfo) WithDepthBoundsTestEnable(y Bool32) PipelineDepthStencilStateCreateInfo {
-	x.depthBoundsTestEnable = *( /* typedef */ (*C.VkBool32)(&y))
-	return x
-}
-
-// StencilTestEnable returns the value of stencilTestEnable from VkPipelineDepthStencilStateCreateInfo
-func (x PipelineDepthStencilStateCreateInfo) StencilTestEnable() Bool32 {
-	ptr := /* typedef */ (*Bool32)(&x.stencilTestEnable)
-	return *ptr
-}
-
-// WithStencilTestEnable sets the value for the StencilTestEnable on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineDepthStencilStateCreateInfo) WithStencilTestEnable(y Bool32) PipelineDepthStencilStateCreateInfo {
-	x.stencilTestEnable = *( /* typedef */ (*C.VkBool32)(&y))
-	return x
-}
-
-// Front returns the value of front from VkPipelineDepthStencilStateCreateInfo
-func (x PipelineDepthStencilStateCreateInfo) Front() StencilOpState {
-	ptr := /* typedef */ (*StencilOpState)(&x.front)
-	return *ptr
-}
-
-// WithFront sets the value for the Front on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineDepthStencilStateCreateInfo) WithFront(y StencilOpState) PipelineDepthStencilStateCreateInfo {
-	x.front = *( /* typedef */ (*C.struct_VkStencilOpState)(&y))
-	return x
-}
-
-// Back returns the value of back from VkPipelineDepthStencilStateCreateInfo
-func (x PipelineDepthStencilStateCreateInfo) Back() StencilOpState {
-	ptr := /* typedef */ (*StencilOpState)(&x.back)
-	return *ptr
-}
-
-// WithBack sets the value for the Back on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineDepthStencilStateCreateInfo) WithBack(y StencilOpState) PipelineDepthStencilStateCreateInfo {
-	x.back = *( /* typedef */ (*C.struct_VkStencilOpState)(&y))
-	return x
-}
-
-// MinDepthBounds returns the value of minDepthBounds from VkPipelineDepthStencilStateCreateInfo
-func (x PipelineDepthStencilStateCreateInfo) MinDepthBounds() float32 {
-	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.minDepthBounds)
-	return *ptr
-}
-
-// WithMinDepthBounds sets the value for the MinDepthBounds on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineDepthStencilStateCreateInfo) WithMinDepthBounds(y float32) PipelineDepthStencilStateCreateInfo {
-	x.minDepthBounds = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
-	return x
-}
-
-// MaxDepthBounds returns the value of maxDepthBounds from VkPipelineDepthStencilStateCreateInfo
-func (x PipelineDepthStencilStateCreateInfo) MaxDepthBounds() float32 {
-	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.maxDepthBounds)
-	return *ptr
-}
-
-// WithMaxDepthBounds sets the value for the MaxDepthBounds on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineDepthStencilStateCreateInfo) WithMaxDepthBounds(y float32) PipelineDepthStencilStateCreateInfo {
-	x.maxDepthBounds = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
-	return x
 }
 
 // WriteDescriptorSet provides a go interface for VkWriteDescriptorSet.
@@ -13578,132 +15635,6 @@ func (x WriteDescriptorSet) WithPTexelBufferView(y []BufferView) WriteDescriptor
 	return x.WithDescriptorCount(uint32(len(y)))
 }
 
-// PipelineDynamicStateCreateInfo provides a go interface for VkPipelineDynamicStateCreateInfo.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPipelineDynamicStateCreateInfo.html
-type PipelineDynamicStateCreateInfo C.struct_VkPipelineDynamicStateCreateInfo
-
-// SizeofPipelineDynamicStateCreateInfo is the memory size of a PipelineDynamicStateCreateInfo
-var SizeofPipelineDynamicStateCreateInfo int = int(unsafe.Sizeof(PipelineDynamicStateCreateInfo{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *PipelineDynamicStateCreateInfo) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x PipelineDynamicStateCreateInfo) AsCPtr() *PipelineDynamicStateCreateInfo {
-	clone := (*PipelineDynamicStateCreateInfo)(newCBlock(C.ulong(SizeofPipelineDynamicStateCreateInfo)))
-	*clone = x
-	return clone
-}
-
-// PipelineDynamicStateCreateInfoFreeCSlice releases the memory allocated by PipelineDynamicStateCreateInfoMakeCSlice.
-// It does not free pointers stored inside the slice.
-func PipelineDynamicStateCreateInfoFreeCSlice(x []PipelineDynamicStateCreateInfo) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// PipelineDynamicStateCreateInfoMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. PipelineDynamicStateCreateInfoFreeCSlice must be called on the returned slice.
-func PipelineDynamicStateCreateInfoMakeCSlice(x ...PipelineDynamicStateCreateInfo) []PipelineDynamicStateCreateInfo {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofPipelineDynamicStateCreateInfo * len(x)
-	dst := unsafe.Slice((*PipelineDynamicStateCreateInfo)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// SType returns the value of sType from VkPipelineDynamicStateCreateInfo
-func (x PipelineDynamicStateCreateInfo) SType() StructureType {
-	ptr := /* typedef */ (*StructureType)(&x.sType)
-	return *ptr
-}
-
-// WithDefaultSType sets the value of SType to the value provided in the
-// specification. This method only exists if there is a single value in the specification.
-func (x PipelineDynamicStateCreateInfo) WithDefaultSType() PipelineDynamicStateCreateInfo {
-	return x.WithSType(VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO)
-}
-
-// WithSType sets the value for the SType on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineDynamicStateCreateInfo) WithSType(y StructureType) PipelineDynamicStateCreateInfo {
-	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
-	return x
-}
-
-// PNext returns the value of pNext from VkPipelineDynamicStateCreateInfo
-func (x PipelineDynamicStateCreateInfo) PNext() unsafe.Pointer {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
-	return *ptr
-}
-
-// WithPNext sets the value for the PNext on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineDynamicStateCreateInfo) WithPNext(y unsafe.Pointer) PipelineDynamicStateCreateInfo {
-	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
-	return x
-}
-
-// Flags returns the value of flags from VkPipelineDynamicStateCreateInfo
-func (x PipelineDynamicStateCreateInfo) Flags() PipelineDynamicStateCreateFlags {
-	ptr := /* typedef */ (*PipelineDynamicStateCreateFlags)(&x.flags)
-	return *ptr
-}
-
-// WithFlags sets the value for the Flags on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineDynamicStateCreateInfo) WithFlags(y PipelineDynamicStateCreateFlags) PipelineDynamicStateCreateInfo {
-	x.flags = *( /* typedef */ (*C.VkPipelineDynamicStateCreateFlags)(&y))
-	return x
-}
-
-// DynamicStateCount returns the value of dynamicStateCount from VkPipelineDynamicStateCreateInfo
-func (x PipelineDynamicStateCreateInfo) DynamicStateCount() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.dynamicStateCount)
-	return *ptr
-}
-
-// WithDynamicStateCount sets the value for the DynamicStateCount on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineDynamicStateCreateInfo) WithDynamicStateCount(y uint32) PipelineDynamicStateCreateInfo {
-	x.dynamicStateCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// PDynamicStates returns the value of pDynamicStates from VkPipelineDynamicStateCreateInfo
-func (x PipelineDynamicStateCreateInfo) PDynamicStates() []DynamicState {
-	ptr := func(x **C.VkDynamicState) *[]DynamicState { /* Slice */
-		slc := unsafe.Slice((*DynamicState)(unsafe.Pointer(x)), (1 << 31))
-		return &slc
-	}(&x.pDynamicStates)
-	return *ptr
-}
-
-// WithPDynamicStates sets the value for the PDynamicStates on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-//
-// The specification defines DynamicStateCount as the length of this field.
-// DynamicStateCount is updated with the length of the new value.
-func (x PipelineDynamicStateCreateInfo) WithPDynamicStates(y []DynamicState) PipelineDynamicStateCreateInfo {
-	x.pDynamicStates = *(func(x *[]DynamicState) **C.VkDynamicState { /* Slice */
-		if len(*x) > 0 {
-			slc := (*C.VkDynamicState)(unsafe.Pointer(&((*x)[0])))
-			return &slc
-		}
-		var ptr unsafe.Pointer
-		return (**C.VkDynamicState)(unsafe.Pointer((&ptr)))
-	}(&y))
-	return x.WithDynamicStateCount(uint32(len(y)))
-}
-
 // ExtensionProperties provides a go interface for VkExtensionProperties.
 // https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkExtensionProperties.html
 type ExtensionProperties C.struct_VkExtensionProperties
@@ -13761,117 +15692,124 @@ func (x ExtensionProperties) SpecVersion() uint32 {
 	return *ptr
 }
 
-// PipelineInputAssemblyStateCreateInfo provides a go interface for VkPipelineInputAssemblyStateCreateInfo.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPipelineInputAssemblyStateCreateInfo.html
-type PipelineInputAssemblyStateCreateInfo C.struct_VkPipelineInputAssemblyStateCreateInfo
+// DescriptorSetLayoutBinding provides a go interface for VkDescriptorSetLayoutBinding.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkDescriptorSetLayoutBinding.html
+type DescriptorSetLayoutBinding C.struct_VkDescriptorSetLayoutBinding
 
-// SizeofPipelineInputAssemblyStateCreateInfo is the memory size of a PipelineInputAssemblyStateCreateInfo
-var SizeofPipelineInputAssemblyStateCreateInfo int = int(unsafe.Sizeof(PipelineInputAssemblyStateCreateInfo{}))
+// SizeofDescriptorSetLayoutBinding is the memory size of a DescriptorSetLayoutBinding
+var SizeofDescriptorSetLayoutBinding int = int(unsafe.Sizeof(DescriptorSetLayoutBinding{}))
 
 // Free releases the memory allocated by AsCPtr.
 // It does not free pointers stored in the structure.
-func (x *PipelineInputAssemblyStateCreateInfo) Free() {
+func (x *DescriptorSetLayoutBinding) Free() {
 	C.free(unsafe.Pointer(x))
 }
 
 // AsCPtr copies the object to the C heap and returns the pointer.
 // Free must be explicitly called on the returned pointer.
-func (x PipelineInputAssemblyStateCreateInfo) AsCPtr() *PipelineInputAssemblyStateCreateInfo {
-	clone := (*PipelineInputAssemblyStateCreateInfo)(newCBlock(C.ulong(SizeofPipelineInputAssemblyStateCreateInfo)))
+func (x DescriptorSetLayoutBinding) AsCPtr() *DescriptorSetLayoutBinding {
+	clone := (*DescriptorSetLayoutBinding)(newCBlock(C.ulong(SizeofDescriptorSetLayoutBinding)))
 	*clone = x
 	return clone
 }
 
-// PipelineInputAssemblyStateCreateInfoFreeCSlice releases the memory allocated by PipelineInputAssemblyStateCreateInfoMakeCSlice.
+// DescriptorSetLayoutBindingFreeCSlice releases the memory allocated by DescriptorSetLayoutBindingMakeCSlice.
 // It does not free pointers stored inside the slice.
-func PipelineInputAssemblyStateCreateInfoFreeCSlice(x []PipelineInputAssemblyStateCreateInfo) {
+func DescriptorSetLayoutBindingFreeCSlice(x []DescriptorSetLayoutBinding) {
 	if len(x) > 0 {
 		C.free(unsafe.Pointer(&x[0]))
 	}
 }
 
-// PipelineInputAssemblyStateCreateInfoMakeCSlice allocates memory for the passed arguments on the C heap,
+// DescriptorSetLayoutBindingMakeCSlice allocates memory for the passed arguments on the C heap,
 // copies their values to the allocated memory, and creates a slice around the
-// C memory. PipelineInputAssemblyStateCreateInfoFreeCSlice must be called on the returned slice.
-func PipelineInputAssemblyStateCreateInfoMakeCSlice(x ...PipelineInputAssemblyStateCreateInfo) []PipelineInputAssemblyStateCreateInfo {
+// C memory. DescriptorSetLayoutBindingFreeCSlice must be called on the returned slice.
+func DescriptorSetLayoutBindingMakeCSlice(x ...DescriptorSetLayoutBinding) []DescriptorSetLayoutBinding {
 	if len(x) == 0 {
 		return nil
 	}
-	sz := SizeofPipelineInputAssemblyStateCreateInfo * len(x)
-	dst := unsafe.Slice((*PipelineInputAssemblyStateCreateInfo)(newCBlock(C.ulong(sz))), len(x))
+	sz := SizeofDescriptorSetLayoutBinding * len(x)
+	dst := unsafe.Slice((*DescriptorSetLayoutBinding)(newCBlock(C.ulong(sz))), len(x))
 	copy(dst, x)
 	return dst
 }
 
-// SType returns the value of sType from VkPipelineInputAssemblyStateCreateInfo
-func (x PipelineInputAssemblyStateCreateInfo) SType() StructureType {
-	ptr := /* typedef */ (*StructureType)(&x.sType)
+// Binding returns the value of binding from VkDescriptorSetLayoutBinding
+func (x DescriptorSetLayoutBinding) Binding() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.binding)
 	return *ptr
 }
 
-// WithDefaultSType sets the value of SType to the value provided in the
-// specification. This method only exists if there is a single value in the specification.
-func (x PipelineInputAssemblyStateCreateInfo) WithDefaultSType() PipelineInputAssemblyStateCreateInfo {
-	return x.WithSType(VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO)
-}
-
-// WithSType sets the value for the SType on the underlying C structure.
+// WithBinding sets the value for the Binding on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x PipelineInputAssemblyStateCreateInfo) WithSType(y StructureType) PipelineInputAssemblyStateCreateInfo {
-	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
+func (x DescriptorSetLayoutBinding) WithBinding(y uint32) DescriptorSetLayoutBinding {
+	x.binding = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
 	return x
 }
 
-// PNext returns the value of pNext from VkPipelineInputAssemblyStateCreateInfo
-func (x PipelineInputAssemblyStateCreateInfo) PNext() unsafe.Pointer {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
+// DescriptorType returns the value of descriptorType from VkDescriptorSetLayoutBinding
+func (x DescriptorSetLayoutBinding) DescriptorType() DescriptorType {
+	ptr := /* typedef */ (*DescriptorType)(&x.descriptorType)
 	return *ptr
 }
 
-// WithPNext sets the value for the PNext on the underlying C structure.
+// WithDescriptorType sets the value for the DescriptorType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x PipelineInputAssemblyStateCreateInfo) WithPNext(y unsafe.Pointer) PipelineInputAssemblyStateCreateInfo {
-	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
+func (x DescriptorSetLayoutBinding) WithDescriptorType(y DescriptorType) DescriptorSetLayoutBinding {
+	x.descriptorType = *( /* typedef */ (*C.VkDescriptorType)(&y))
 	return x
 }
 
-// Flags returns the value of flags from VkPipelineInputAssemblyStateCreateInfo
-func (x PipelineInputAssemblyStateCreateInfo) Flags() PipelineInputAssemblyStateCreateFlags {
-	ptr := /* typedef */ (*PipelineInputAssemblyStateCreateFlags)(&x.flags)
+// DescriptorCount returns the value of descriptorCount from VkDescriptorSetLayoutBinding
+func (x DescriptorSetLayoutBinding) DescriptorCount() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.descriptorCount)
 	return *ptr
 }
 
-// WithFlags sets the value for the Flags on the underlying C structure.
+// WithDescriptorCount sets the value for the DescriptorCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x PipelineInputAssemblyStateCreateInfo) WithFlags(y PipelineInputAssemblyStateCreateFlags) PipelineInputAssemblyStateCreateInfo {
-	x.flags = *( /* typedef */ (*C.VkPipelineInputAssemblyStateCreateFlags)(&y))
+func (x DescriptorSetLayoutBinding) WithDescriptorCount(y uint32) DescriptorSetLayoutBinding {
+	x.descriptorCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
 	return x
 }
 
-// Topology returns the value of topology from VkPipelineInputAssemblyStateCreateInfo
-func (x PipelineInputAssemblyStateCreateInfo) Topology() PrimitiveTopology {
-	ptr := /* typedef */ (*PrimitiveTopology)(&x.topology)
+// StageFlags returns the value of stageFlags from VkDescriptorSetLayoutBinding
+func (x DescriptorSetLayoutBinding) StageFlags() ShaderStageFlags {
+	ptr := /* typedef */ (*ShaderStageFlags)(&x.stageFlags)
 	return *ptr
 }
 
-// WithTopology sets the value for the Topology on the underlying C structure.
+// WithStageFlags sets the value for the StageFlags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x PipelineInputAssemblyStateCreateInfo) WithTopology(y PrimitiveTopology) PipelineInputAssemblyStateCreateInfo {
-	x.topology = *( /* typedef */ (*C.VkPrimitiveTopology)(&y))
+func (x DescriptorSetLayoutBinding) WithStageFlags(y ShaderStageFlags) DescriptorSetLayoutBinding {
+	x.stageFlags = *( /* typedef */ (*C.VkShaderStageFlags)(&y))
 	return x
 }
 
-// PrimitiveRestartEnable returns the value of primitiveRestartEnable from VkPipelineInputAssemblyStateCreateInfo
-func (x PipelineInputAssemblyStateCreateInfo) PrimitiveRestartEnable() Bool32 {
-	ptr := /* typedef */ (*Bool32)(&x.primitiveRestartEnable)
+// PImmutableSamplers returns the value of pImmutableSamplers from VkDescriptorSetLayoutBinding
+func (x DescriptorSetLayoutBinding) PImmutableSamplers() []Sampler {
+	ptr := func(x **C.VkSampler) *[]Sampler { /* Slice */
+		slc := unsafe.Slice((*Sampler)(unsafe.Pointer(x)), (1 << 31))
+		return &slc
+	}(&x.pImmutableSamplers)
 	return *ptr
 }
 
-// WithPrimitiveRestartEnable sets the value for the PrimitiveRestartEnable on the underlying C structure.
+// WithPImmutableSamplers sets the value for the PImmutableSamplers on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x PipelineInputAssemblyStateCreateInfo) WithPrimitiveRestartEnable(y Bool32) PipelineInputAssemblyStateCreateInfo {
-	x.primitiveRestartEnable = *( /* typedef */ (*C.VkBool32)(&y))
-	return x
+//
+// The specification defines DescriptorCount as the length of this field.
+// DescriptorCount is updated with the length of the new value.
+func (x DescriptorSetLayoutBinding) WithPImmutableSamplers(y []Sampler) DescriptorSetLayoutBinding {
+	x.pImmutableSamplers = *(func(x *[]Sampler) **C.VkSampler { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.VkSampler)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.VkSampler)(unsafe.Pointer((&ptr)))
+	}(&y))
+	return x.WithDescriptorCount(uint32(len(y)))
 }
 
 // DescriptorSetLayoutCreateInfo provides a go interface for VkDescriptorSetLayoutCreateInfo.
@@ -13998,301 +15936,6 @@ func (x DescriptorSetLayoutCreateInfo) WithPBindings(y []DescriptorSetLayoutBind
 		return (**C.struct_VkDescriptorSetLayoutBinding)(unsafe.Pointer((&ptr)))
 	}(&y))
 	return x.WithBindingCount(uint32(len(y)))
-}
-
-// DescriptorSetLayoutBinding provides a go interface for VkDescriptorSetLayoutBinding.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkDescriptorSetLayoutBinding.html
-type DescriptorSetLayoutBinding C.struct_VkDescriptorSetLayoutBinding
-
-// SizeofDescriptorSetLayoutBinding is the memory size of a DescriptorSetLayoutBinding
-var SizeofDescriptorSetLayoutBinding int = int(unsafe.Sizeof(DescriptorSetLayoutBinding{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *DescriptorSetLayoutBinding) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x DescriptorSetLayoutBinding) AsCPtr() *DescriptorSetLayoutBinding {
-	clone := (*DescriptorSetLayoutBinding)(newCBlock(C.ulong(SizeofDescriptorSetLayoutBinding)))
-	*clone = x
-	return clone
-}
-
-// DescriptorSetLayoutBindingFreeCSlice releases the memory allocated by DescriptorSetLayoutBindingMakeCSlice.
-// It does not free pointers stored inside the slice.
-func DescriptorSetLayoutBindingFreeCSlice(x []DescriptorSetLayoutBinding) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// DescriptorSetLayoutBindingMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. DescriptorSetLayoutBindingFreeCSlice must be called on the returned slice.
-func DescriptorSetLayoutBindingMakeCSlice(x ...DescriptorSetLayoutBinding) []DescriptorSetLayoutBinding {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofDescriptorSetLayoutBinding * len(x)
-	dst := unsafe.Slice((*DescriptorSetLayoutBinding)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// Binding returns the value of binding from VkDescriptorSetLayoutBinding
-func (x DescriptorSetLayoutBinding) Binding() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.binding)
-	return *ptr
-}
-
-// WithBinding sets the value for the Binding on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x DescriptorSetLayoutBinding) WithBinding(y uint32) DescriptorSetLayoutBinding {
-	x.binding = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// DescriptorType returns the value of descriptorType from VkDescriptorSetLayoutBinding
-func (x DescriptorSetLayoutBinding) DescriptorType() DescriptorType {
-	ptr := /* typedef */ (*DescriptorType)(&x.descriptorType)
-	return *ptr
-}
-
-// WithDescriptorType sets the value for the DescriptorType on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x DescriptorSetLayoutBinding) WithDescriptorType(y DescriptorType) DescriptorSetLayoutBinding {
-	x.descriptorType = *( /* typedef */ (*C.VkDescriptorType)(&y))
-	return x
-}
-
-// DescriptorCount returns the value of descriptorCount from VkDescriptorSetLayoutBinding
-func (x DescriptorSetLayoutBinding) DescriptorCount() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.descriptorCount)
-	return *ptr
-}
-
-// WithDescriptorCount sets the value for the DescriptorCount on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x DescriptorSetLayoutBinding) WithDescriptorCount(y uint32) DescriptorSetLayoutBinding {
-	x.descriptorCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// StageFlags returns the value of stageFlags from VkDescriptorSetLayoutBinding
-func (x DescriptorSetLayoutBinding) StageFlags() ShaderStageFlags {
-	ptr := /* typedef */ (*ShaderStageFlags)(&x.stageFlags)
-	return *ptr
-}
-
-// WithStageFlags sets the value for the StageFlags on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x DescriptorSetLayoutBinding) WithStageFlags(y ShaderStageFlags) DescriptorSetLayoutBinding {
-	x.stageFlags = *( /* typedef */ (*C.VkShaderStageFlags)(&y))
-	return x
-}
-
-// PImmutableSamplers returns the value of pImmutableSamplers from VkDescriptorSetLayoutBinding
-func (x DescriptorSetLayoutBinding) PImmutableSamplers() []Sampler {
-	ptr := func(x **C.VkSampler) *[]Sampler { /* Slice */
-		slc := unsafe.Slice((*Sampler)(unsafe.Pointer(x)), (1 << 31))
-		return &slc
-	}(&x.pImmutableSamplers)
-	return *ptr
-}
-
-// WithPImmutableSamplers sets the value for the PImmutableSamplers on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-//
-// The specification defines DescriptorCount as the length of this field.
-// DescriptorCount is updated with the length of the new value.
-func (x DescriptorSetLayoutBinding) WithPImmutableSamplers(y []Sampler) DescriptorSetLayoutBinding {
-	x.pImmutableSamplers = *(func(x *[]Sampler) **C.VkSampler { /* Slice */
-		if len(*x) > 0 {
-			slc := (*C.VkSampler)(unsafe.Pointer(&((*x)[0])))
-			return &slc
-		}
-		var ptr unsafe.Pointer
-		return (**C.VkSampler)(unsafe.Pointer((&ptr)))
-	}(&y))
-	return x.WithDescriptorCount(uint32(len(y)))
-}
-
-// PipelineMultisampleStateCreateInfo provides a go interface for VkPipelineMultisampleStateCreateInfo.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPipelineMultisampleStateCreateInfo.html
-type PipelineMultisampleStateCreateInfo C.struct_VkPipelineMultisampleStateCreateInfo
-
-// SizeofPipelineMultisampleStateCreateInfo is the memory size of a PipelineMultisampleStateCreateInfo
-var SizeofPipelineMultisampleStateCreateInfo int = int(unsafe.Sizeof(PipelineMultisampleStateCreateInfo{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *PipelineMultisampleStateCreateInfo) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x PipelineMultisampleStateCreateInfo) AsCPtr() *PipelineMultisampleStateCreateInfo {
-	clone := (*PipelineMultisampleStateCreateInfo)(newCBlock(C.ulong(SizeofPipelineMultisampleStateCreateInfo)))
-	*clone = x
-	return clone
-}
-
-// PipelineMultisampleStateCreateInfoFreeCSlice releases the memory allocated by PipelineMultisampleStateCreateInfoMakeCSlice.
-// It does not free pointers stored inside the slice.
-func PipelineMultisampleStateCreateInfoFreeCSlice(x []PipelineMultisampleStateCreateInfo) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// PipelineMultisampleStateCreateInfoMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. PipelineMultisampleStateCreateInfoFreeCSlice must be called on the returned slice.
-func PipelineMultisampleStateCreateInfoMakeCSlice(x ...PipelineMultisampleStateCreateInfo) []PipelineMultisampleStateCreateInfo {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofPipelineMultisampleStateCreateInfo * len(x)
-	dst := unsafe.Slice((*PipelineMultisampleStateCreateInfo)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// SType returns the value of sType from VkPipelineMultisampleStateCreateInfo
-func (x PipelineMultisampleStateCreateInfo) SType() StructureType {
-	ptr := /* typedef */ (*StructureType)(&x.sType)
-	return *ptr
-}
-
-// WithDefaultSType sets the value of SType to the value provided in the
-// specification. This method only exists if there is a single value in the specification.
-func (x PipelineMultisampleStateCreateInfo) WithDefaultSType() PipelineMultisampleStateCreateInfo {
-	return x.WithSType(VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO)
-}
-
-// WithSType sets the value for the SType on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineMultisampleStateCreateInfo) WithSType(y StructureType) PipelineMultisampleStateCreateInfo {
-	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
-	return x
-}
-
-// PNext returns the value of pNext from VkPipelineMultisampleStateCreateInfo
-func (x PipelineMultisampleStateCreateInfo) PNext() unsafe.Pointer {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
-	return *ptr
-}
-
-// WithPNext sets the value for the PNext on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineMultisampleStateCreateInfo) WithPNext(y unsafe.Pointer) PipelineMultisampleStateCreateInfo {
-	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
-	return x
-}
-
-// Flags returns the value of flags from VkPipelineMultisampleStateCreateInfo
-func (x PipelineMultisampleStateCreateInfo) Flags() PipelineMultisampleStateCreateFlags {
-	ptr := /* typedef */ (*PipelineMultisampleStateCreateFlags)(&x.flags)
-	return *ptr
-}
-
-// WithFlags sets the value for the Flags on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineMultisampleStateCreateInfo) WithFlags(y PipelineMultisampleStateCreateFlags) PipelineMultisampleStateCreateInfo {
-	x.flags = *( /* typedef */ (*C.VkPipelineMultisampleStateCreateFlags)(&y))
-	return x
-}
-
-// RasterizationSamples returns the value of rasterizationSamples from VkPipelineMultisampleStateCreateInfo
-func (x PipelineMultisampleStateCreateInfo) RasterizationSamples() SampleCountFlagBits {
-	ptr := /* typedef */ (*SampleCountFlagBits)(&x.rasterizationSamples)
-	return *ptr
-}
-
-// WithRasterizationSamples sets the value for the RasterizationSamples on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineMultisampleStateCreateInfo) WithRasterizationSamples(y SampleCountFlagBits) PipelineMultisampleStateCreateInfo {
-	x.rasterizationSamples = *( /* typedef */ (*C.VkSampleCountFlagBits)(&y))
-	return x
-}
-
-// SampleShadingEnable returns the value of sampleShadingEnable from VkPipelineMultisampleStateCreateInfo
-func (x PipelineMultisampleStateCreateInfo) SampleShadingEnable() Bool32 {
-	ptr := /* typedef */ (*Bool32)(&x.sampleShadingEnable)
-	return *ptr
-}
-
-// WithSampleShadingEnable sets the value for the SampleShadingEnable on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineMultisampleStateCreateInfo) WithSampleShadingEnable(y Bool32) PipelineMultisampleStateCreateInfo {
-	x.sampleShadingEnable = *( /* typedef */ (*C.VkBool32)(&y))
-	return x
-}
-
-// MinSampleShading returns the value of minSampleShading from VkPipelineMultisampleStateCreateInfo
-func (x PipelineMultisampleStateCreateInfo) MinSampleShading() float32 {
-	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.minSampleShading)
-	return *ptr
-}
-
-// WithMinSampleShading sets the value for the MinSampleShading on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineMultisampleStateCreateInfo) WithMinSampleShading(y float32) PipelineMultisampleStateCreateInfo {
-	x.minSampleShading = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
-	return x
-}
-
-// PSampleMask returns the value of pSampleMask from VkPipelineMultisampleStateCreateInfo
-func (x PipelineMultisampleStateCreateInfo) PSampleMask() []SampleMask {
-	ptr := func(x **C.VkSampleMask) *[]SampleMask { /* Slice */
-		slc := unsafe.Slice((*SampleMask)(unsafe.Pointer(x)), (1 << 31))
-		return &slc
-	}(&x.pSampleMask)
-	return *ptr
-}
-
-// WithPSampleMask sets the value for the PSampleMask on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineMultisampleStateCreateInfo) WithPSampleMask(y []SampleMask) PipelineMultisampleStateCreateInfo {
-	x.pSampleMask = *(func(x *[]SampleMask) **C.VkSampleMask { /* Slice */
-		if len(*x) > 0 {
-			slc := (*C.VkSampleMask)(unsafe.Pointer(&((*x)[0])))
-			return &slc
-		}
-		var ptr unsafe.Pointer
-		return (**C.VkSampleMask)(unsafe.Pointer((&ptr)))
-	}(&y))
-	return x
-}
-
-// AlphaToCoverageEnable returns the value of alphaToCoverageEnable from VkPipelineMultisampleStateCreateInfo
-func (x PipelineMultisampleStateCreateInfo) AlphaToCoverageEnable() Bool32 {
-	ptr := /* typedef */ (*Bool32)(&x.alphaToCoverageEnable)
-	return *ptr
-}
-
-// WithAlphaToCoverageEnable sets the value for the AlphaToCoverageEnable on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineMultisampleStateCreateInfo) WithAlphaToCoverageEnable(y Bool32) PipelineMultisampleStateCreateInfo {
-	x.alphaToCoverageEnable = *( /* typedef */ (*C.VkBool32)(&y))
-	return x
-}
-
-// AlphaToOneEnable returns the value of alphaToOneEnable from VkPipelineMultisampleStateCreateInfo
-func (x PipelineMultisampleStateCreateInfo) AlphaToOneEnable() Bool32 {
-	ptr := /* typedef */ (*Bool32)(&x.alphaToOneEnable)
-	return *ptr
-}
-
-// WithAlphaToOneEnable sets the value for the AlphaToOneEnable on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineMultisampleStateCreateInfo) WithAlphaToOneEnable(y Bool32) PipelineMultisampleStateCreateInfo {
-	x.alphaToOneEnable = *( /* typedef */ (*C.VkBool32)(&y))
-	return x
 }
 
 // DeviceQueueCreateInfo provides a go interface for VkDeviceQueueCreateInfo.
@@ -14432,2612 +16075,6 @@ func (x DeviceQueueCreateInfo) WithPQueuePriorities(y []float32) DeviceQueueCrea
 		return (**C.float)(unsafe.Pointer((&ptr)))
 	}(&y))
 	return x.WithQueueCount(uint32(len(y)))
-}
-
-// PipelineRasterizationStateCreateInfo provides a go interface for VkPipelineRasterizationStateCreateInfo.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPipelineRasterizationStateCreateInfo.html
-type PipelineRasterizationStateCreateInfo C.struct_VkPipelineRasterizationStateCreateInfo
-
-// SizeofPipelineRasterizationStateCreateInfo is the memory size of a PipelineRasterizationStateCreateInfo
-var SizeofPipelineRasterizationStateCreateInfo int = int(unsafe.Sizeof(PipelineRasterizationStateCreateInfo{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *PipelineRasterizationStateCreateInfo) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x PipelineRasterizationStateCreateInfo) AsCPtr() *PipelineRasterizationStateCreateInfo {
-	clone := (*PipelineRasterizationStateCreateInfo)(newCBlock(C.ulong(SizeofPipelineRasterizationStateCreateInfo)))
-	*clone = x
-	return clone
-}
-
-// PipelineRasterizationStateCreateInfoFreeCSlice releases the memory allocated by PipelineRasterizationStateCreateInfoMakeCSlice.
-// It does not free pointers stored inside the slice.
-func PipelineRasterizationStateCreateInfoFreeCSlice(x []PipelineRasterizationStateCreateInfo) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// PipelineRasterizationStateCreateInfoMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. PipelineRasterizationStateCreateInfoFreeCSlice must be called on the returned slice.
-func PipelineRasterizationStateCreateInfoMakeCSlice(x ...PipelineRasterizationStateCreateInfo) []PipelineRasterizationStateCreateInfo {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofPipelineRasterizationStateCreateInfo * len(x)
-	dst := unsafe.Slice((*PipelineRasterizationStateCreateInfo)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// SType returns the value of sType from VkPipelineRasterizationStateCreateInfo
-func (x PipelineRasterizationStateCreateInfo) SType() StructureType {
-	ptr := /* typedef */ (*StructureType)(&x.sType)
-	return *ptr
-}
-
-// WithDefaultSType sets the value of SType to the value provided in the
-// specification. This method only exists if there is a single value in the specification.
-func (x PipelineRasterizationStateCreateInfo) WithDefaultSType() PipelineRasterizationStateCreateInfo {
-	return x.WithSType(VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO)
-}
-
-// WithSType sets the value for the SType on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineRasterizationStateCreateInfo) WithSType(y StructureType) PipelineRasterizationStateCreateInfo {
-	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
-	return x
-}
-
-// PNext returns the value of pNext from VkPipelineRasterizationStateCreateInfo
-func (x PipelineRasterizationStateCreateInfo) PNext() unsafe.Pointer {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
-	return *ptr
-}
-
-// WithPNext sets the value for the PNext on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineRasterizationStateCreateInfo) WithPNext(y unsafe.Pointer) PipelineRasterizationStateCreateInfo {
-	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
-	return x
-}
-
-// Flags returns the value of flags from VkPipelineRasterizationStateCreateInfo
-func (x PipelineRasterizationStateCreateInfo) Flags() PipelineRasterizationStateCreateFlags {
-	ptr := /* typedef */ (*PipelineRasterizationStateCreateFlags)(&x.flags)
-	return *ptr
-}
-
-// WithFlags sets the value for the Flags on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineRasterizationStateCreateInfo) WithFlags(y PipelineRasterizationStateCreateFlags) PipelineRasterizationStateCreateInfo {
-	x.flags = *( /* typedef */ (*C.VkPipelineRasterizationStateCreateFlags)(&y))
-	return x
-}
-
-// DepthClampEnable returns the value of depthClampEnable from VkPipelineRasterizationStateCreateInfo
-func (x PipelineRasterizationStateCreateInfo) DepthClampEnable() Bool32 {
-	ptr := /* typedef */ (*Bool32)(&x.depthClampEnable)
-	return *ptr
-}
-
-// WithDepthClampEnable sets the value for the DepthClampEnable on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineRasterizationStateCreateInfo) WithDepthClampEnable(y Bool32) PipelineRasterizationStateCreateInfo {
-	x.depthClampEnable = *( /* typedef */ (*C.VkBool32)(&y))
-	return x
-}
-
-// RasterizerDiscardEnable returns the value of rasterizerDiscardEnable from VkPipelineRasterizationStateCreateInfo
-func (x PipelineRasterizationStateCreateInfo) RasterizerDiscardEnable() Bool32 {
-	ptr := /* typedef */ (*Bool32)(&x.rasterizerDiscardEnable)
-	return *ptr
-}
-
-// WithRasterizerDiscardEnable sets the value for the RasterizerDiscardEnable on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineRasterizationStateCreateInfo) WithRasterizerDiscardEnable(y Bool32) PipelineRasterizationStateCreateInfo {
-	x.rasterizerDiscardEnable = *( /* typedef */ (*C.VkBool32)(&y))
-	return x
-}
-
-// PolygonMode returns the value of polygonMode from VkPipelineRasterizationStateCreateInfo
-func (x PipelineRasterizationStateCreateInfo) PolygonMode() PolygonMode {
-	ptr := /* typedef */ (*PolygonMode)(&x.polygonMode)
-	return *ptr
-}
-
-// WithPolygonMode sets the value for the PolygonMode on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineRasterizationStateCreateInfo) WithPolygonMode(y PolygonMode) PipelineRasterizationStateCreateInfo {
-	x.polygonMode = *( /* typedef */ (*C.VkPolygonMode)(&y))
-	return x
-}
-
-// CullMode returns the value of cullMode from VkPipelineRasterizationStateCreateInfo
-func (x PipelineRasterizationStateCreateInfo) CullMode() CullModeFlags {
-	ptr := /* typedef */ (*CullModeFlags)(&x.cullMode)
-	return *ptr
-}
-
-// WithCullMode sets the value for the CullMode on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineRasterizationStateCreateInfo) WithCullMode(y CullModeFlags) PipelineRasterizationStateCreateInfo {
-	x.cullMode = *( /* typedef */ (*C.VkCullModeFlags)(&y))
-	return x
-}
-
-// FrontFace returns the value of frontFace from VkPipelineRasterizationStateCreateInfo
-func (x PipelineRasterizationStateCreateInfo) FrontFace() FrontFace {
-	ptr := /* typedef */ (*FrontFace)(&x.frontFace)
-	return *ptr
-}
-
-// WithFrontFace sets the value for the FrontFace on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineRasterizationStateCreateInfo) WithFrontFace(y FrontFace) PipelineRasterizationStateCreateInfo {
-	x.frontFace = *( /* typedef */ (*C.VkFrontFace)(&y))
-	return x
-}
-
-// DepthBiasEnable returns the value of depthBiasEnable from VkPipelineRasterizationStateCreateInfo
-func (x PipelineRasterizationStateCreateInfo) DepthBiasEnable() Bool32 {
-	ptr := /* typedef */ (*Bool32)(&x.depthBiasEnable)
-	return *ptr
-}
-
-// WithDepthBiasEnable sets the value for the DepthBiasEnable on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineRasterizationStateCreateInfo) WithDepthBiasEnable(y Bool32) PipelineRasterizationStateCreateInfo {
-	x.depthBiasEnable = *( /* typedef */ (*C.VkBool32)(&y))
-	return x
-}
-
-// DepthBiasConstantFactor returns the value of depthBiasConstantFactor from VkPipelineRasterizationStateCreateInfo
-func (x PipelineRasterizationStateCreateInfo) DepthBiasConstantFactor() float32 {
-	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.depthBiasConstantFactor)
-	return *ptr
-}
-
-// WithDepthBiasConstantFactor sets the value for the DepthBiasConstantFactor on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineRasterizationStateCreateInfo) WithDepthBiasConstantFactor(y float32) PipelineRasterizationStateCreateInfo {
-	x.depthBiasConstantFactor = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
-	return x
-}
-
-// DepthBiasClamp returns the value of depthBiasClamp from VkPipelineRasterizationStateCreateInfo
-func (x PipelineRasterizationStateCreateInfo) DepthBiasClamp() float32 {
-	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.depthBiasClamp)
-	return *ptr
-}
-
-// WithDepthBiasClamp sets the value for the DepthBiasClamp on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineRasterizationStateCreateInfo) WithDepthBiasClamp(y float32) PipelineRasterizationStateCreateInfo {
-	x.depthBiasClamp = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
-	return x
-}
-
-// DepthBiasSlopeFactor returns the value of depthBiasSlopeFactor from VkPipelineRasterizationStateCreateInfo
-func (x PipelineRasterizationStateCreateInfo) DepthBiasSlopeFactor() float32 {
-	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.depthBiasSlopeFactor)
-	return *ptr
-}
-
-// WithDepthBiasSlopeFactor sets the value for the DepthBiasSlopeFactor on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineRasterizationStateCreateInfo) WithDepthBiasSlopeFactor(y float32) PipelineRasterizationStateCreateInfo {
-	x.depthBiasSlopeFactor = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
-	return x
-}
-
-// LineWidth returns the value of lineWidth from VkPipelineRasterizationStateCreateInfo
-func (x PipelineRasterizationStateCreateInfo) LineWidth() float32 {
-	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.lineWidth)
-	return *ptr
-}
-
-// WithLineWidth sets the value for the LineWidth on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineRasterizationStateCreateInfo) WithLineWidth(y float32) PipelineRasterizationStateCreateInfo {
-	x.lineWidth = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
-	return x
-}
-
-// DeviceCreateInfo provides a go interface for VkDeviceCreateInfo.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkDeviceCreateInfo.html
-type DeviceCreateInfo C.struct_VkDeviceCreateInfo
-
-// SizeofDeviceCreateInfo is the memory size of a DeviceCreateInfo
-var SizeofDeviceCreateInfo int = int(unsafe.Sizeof(DeviceCreateInfo{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *DeviceCreateInfo) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x DeviceCreateInfo) AsCPtr() *DeviceCreateInfo {
-	clone := (*DeviceCreateInfo)(newCBlock(C.ulong(SizeofDeviceCreateInfo)))
-	*clone = x
-	return clone
-}
-
-// DeviceCreateInfoFreeCSlice releases the memory allocated by DeviceCreateInfoMakeCSlice.
-// It does not free pointers stored inside the slice.
-func DeviceCreateInfoFreeCSlice(x []DeviceCreateInfo) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// DeviceCreateInfoMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. DeviceCreateInfoFreeCSlice must be called on the returned slice.
-func DeviceCreateInfoMakeCSlice(x ...DeviceCreateInfo) []DeviceCreateInfo {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofDeviceCreateInfo * len(x)
-	dst := unsafe.Slice((*DeviceCreateInfo)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// SType returns the value of sType from VkDeviceCreateInfo
-func (x DeviceCreateInfo) SType() StructureType {
-	ptr := /* typedef */ (*StructureType)(&x.sType)
-	return *ptr
-}
-
-// WithDefaultSType sets the value of SType to the value provided in the
-// specification. This method only exists if there is a single value in the specification.
-func (x DeviceCreateInfo) WithDefaultSType() DeviceCreateInfo {
-	return x.WithSType(VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO)
-}
-
-// WithSType sets the value for the SType on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x DeviceCreateInfo) WithSType(y StructureType) DeviceCreateInfo {
-	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
-	return x
-}
-
-// PNext returns the value of pNext from VkDeviceCreateInfo
-func (x DeviceCreateInfo) PNext() unsafe.Pointer {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
-	return *ptr
-}
-
-// WithPNext sets the value for the PNext on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x DeviceCreateInfo) WithPNext(y unsafe.Pointer) DeviceCreateInfo {
-	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
-	return x
-}
-
-// Flags returns the value of flags from VkDeviceCreateInfo
-func (x DeviceCreateInfo) Flags() DeviceCreateFlags {
-	ptr := /* typedef */ (*DeviceCreateFlags)(&x.flags)
-	return *ptr
-}
-
-// WithFlags sets the value for the Flags on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x DeviceCreateInfo) WithFlags(y DeviceCreateFlags) DeviceCreateInfo {
-	x.flags = *( /* typedef */ (*C.VkDeviceCreateFlags)(&y))
-	return x
-}
-
-// QueueCreateInfoCount returns the value of queueCreateInfoCount from VkDeviceCreateInfo
-func (x DeviceCreateInfo) QueueCreateInfoCount() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.queueCreateInfoCount)
-	return *ptr
-}
-
-// WithQueueCreateInfoCount sets the value for the QueueCreateInfoCount on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x DeviceCreateInfo) WithQueueCreateInfoCount(y uint32) DeviceCreateInfo {
-	x.queueCreateInfoCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// PQueueCreateInfos returns the value of pQueueCreateInfos from VkDeviceCreateInfo
-func (x DeviceCreateInfo) PQueueCreateInfos() []DeviceQueueCreateInfo {
-	ptr := func(x **C.struct_VkDeviceQueueCreateInfo) *[]DeviceQueueCreateInfo { /* Slice */
-		slc := unsafe.Slice((*DeviceQueueCreateInfo)(unsafe.Pointer(x)), (1 << 31))
-		return &slc
-	}(&x.pQueueCreateInfos)
-	return *ptr
-}
-
-// WithPQueueCreateInfos sets the value for the PQueueCreateInfos on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-//
-// The specification defines QueueCreateInfoCount as the length of this field.
-// QueueCreateInfoCount is updated with the length of the new value.
-func (x DeviceCreateInfo) WithPQueueCreateInfos(y []DeviceQueueCreateInfo) DeviceCreateInfo {
-	x.pQueueCreateInfos = *(func(x *[]DeviceQueueCreateInfo) **C.struct_VkDeviceQueueCreateInfo { /* Slice */
-		if len(*x) > 0 {
-			slc := (*C.struct_VkDeviceQueueCreateInfo)(unsafe.Pointer(&((*x)[0])))
-			return &slc
-		}
-		var ptr unsafe.Pointer
-		return (**C.struct_VkDeviceQueueCreateInfo)(unsafe.Pointer((&ptr)))
-	}(&y))
-	return x.WithQueueCreateInfoCount(uint32(len(y)))
-}
-
-// EnabledLayerCount returns the value of enabledLayerCount from VkDeviceCreateInfo
-func (x DeviceCreateInfo) EnabledLayerCount() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.enabledLayerCount)
-	return *ptr
-}
-
-// WithEnabledLayerCount sets the value for the EnabledLayerCount on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x DeviceCreateInfo) WithEnabledLayerCount(y uint32) DeviceCreateInfo {
-	x.enabledLayerCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// PpEnabledLayerNames returns the value of ppEnabledLayerNames from VkDeviceCreateInfo
-func (x DeviceCreateInfo) PpEnabledLayerNames() []*byte {
-	ptr := func(x ***C.char) *[]*byte { /* Slice */
-		slc := unsafe.Slice((**byte)(unsafe.Pointer(x)), (1 << 31))
-		return &slc
-	}(&x.ppEnabledLayerNames)
-	return *ptr
-}
-
-// WithPpEnabledLayerNames sets the value for the PpEnabledLayerNames on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x DeviceCreateInfo) WithPpEnabledLayerNames(y []*byte) DeviceCreateInfo {
-	x.ppEnabledLayerNames = *(func(x *[]*byte) ***C.char { /* Slice */
-		if len(*x) > 0 {
-			slc := (**C.char)(unsafe.Pointer(&((*x)[0])))
-			return &slc
-		}
-		var ptr unsafe.Pointer
-		return (***C.char)(unsafe.Pointer((&ptr)))
-	}(&y))
-	return x
-}
-
-// EnabledExtensionCount returns the value of enabledExtensionCount from VkDeviceCreateInfo
-func (x DeviceCreateInfo) EnabledExtensionCount() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.enabledExtensionCount)
-	return *ptr
-}
-
-// WithEnabledExtensionCount sets the value for the EnabledExtensionCount on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x DeviceCreateInfo) WithEnabledExtensionCount(y uint32) DeviceCreateInfo {
-	x.enabledExtensionCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// PpEnabledExtensionNames returns the value of ppEnabledExtensionNames from VkDeviceCreateInfo
-func (x DeviceCreateInfo) PpEnabledExtensionNames() []*byte {
-	ptr := func(x ***C.char) *[]*byte { /* Slice */
-		slc := unsafe.Slice((**byte)(unsafe.Pointer(x)), (1 << 31))
-		return &slc
-	}(&x.ppEnabledExtensionNames)
-	return *ptr
-}
-
-// WithPpEnabledExtensionNames sets the value for the PpEnabledExtensionNames on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x DeviceCreateInfo) WithPpEnabledExtensionNames(y []*byte) DeviceCreateInfo {
-	x.ppEnabledExtensionNames = *(func(x *[]*byte) ***C.char { /* Slice */
-		if len(*x) > 0 {
-			slc := (**C.char)(unsafe.Pointer(&((*x)[0])))
-			return &slc
-		}
-		var ptr unsafe.Pointer
-		return (***C.char)(unsafe.Pointer((&ptr)))
-	}(&y))
-	return x
-}
-
-// PEnabledFeatures returns the value of pEnabledFeatures from VkDeviceCreateInfo
-func (x DeviceCreateInfo) PEnabledFeatures() *PhysicalDeviceFeatures {
-	ptr := func(x **C.struct_VkPhysicalDeviceFeatures) **PhysicalDeviceFeatures { /* Pointer */
-		c2g := (*PhysicalDeviceFeatures)(*x)
-		return &c2g
-	}(&x.pEnabledFeatures)
-	return *ptr
-}
-
-// WithPEnabledFeatures sets the value for the PEnabledFeatures on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x DeviceCreateInfo) WithPEnabledFeatures(y *PhysicalDeviceFeatures) DeviceCreateInfo {
-	x.pEnabledFeatures = *(func(x **PhysicalDeviceFeatures) **C.struct_VkPhysicalDeviceFeatures { /* Pointer */
-		g2c := (*C.struct_VkPhysicalDeviceFeatures)(*x)
-		return &g2c
-	}(&y))
-	return x
-}
-
-// DescriptorSetAllocateInfo provides a go interface for VkDescriptorSetAllocateInfo.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkDescriptorSetAllocateInfo.html
-type DescriptorSetAllocateInfo C.struct_VkDescriptorSetAllocateInfo
-
-// SizeofDescriptorSetAllocateInfo is the memory size of a DescriptorSetAllocateInfo
-var SizeofDescriptorSetAllocateInfo int = int(unsafe.Sizeof(DescriptorSetAllocateInfo{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *DescriptorSetAllocateInfo) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x DescriptorSetAllocateInfo) AsCPtr() *DescriptorSetAllocateInfo {
-	clone := (*DescriptorSetAllocateInfo)(newCBlock(C.ulong(SizeofDescriptorSetAllocateInfo)))
-	*clone = x
-	return clone
-}
-
-// DescriptorSetAllocateInfoFreeCSlice releases the memory allocated by DescriptorSetAllocateInfoMakeCSlice.
-// It does not free pointers stored inside the slice.
-func DescriptorSetAllocateInfoFreeCSlice(x []DescriptorSetAllocateInfo) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// DescriptorSetAllocateInfoMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. DescriptorSetAllocateInfoFreeCSlice must be called on the returned slice.
-func DescriptorSetAllocateInfoMakeCSlice(x ...DescriptorSetAllocateInfo) []DescriptorSetAllocateInfo {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofDescriptorSetAllocateInfo * len(x)
-	dst := unsafe.Slice((*DescriptorSetAllocateInfo)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// SType returns the value of sType from VkDescriptorSetAllocateInfo
-func (x DescriptorSetAllocateInfo) SType() StructureType {
-	ptr := /* typedef */ (*StructureType)(&x.sType)
-	return *ptr
-}
-
-// WithDefaultSType sets the value of SType to the value provided in the
-// specification. This method only exists if there is a single value in the specification.
-func (x DescriptorSetAllocateInfo) WithDefaultSType() DescriptorSetAllocateInfo {
-	return x.WithSType(VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO)
-}
-
-// WithSType sets the value for the SType on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x DescriptorSetAllocateInfo) WithSType(y StructureType) DescriptorSetAllocateInfo {
-	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
-	return x
-}
-
-// PNext returns the value of pNext from VkDescriptorSetAllocateInfo
-func (x DescriptorSetAllocateInfo) PNext() unsafe.Pointer {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
-	return *ptr
-}
-
-// WithPNext sets the value for the PNext on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x DescriptorSetAllocateInfo) WithPNext(y unsafe.Pointer) DescriptorSetAllocateInfo {
-	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
-	return x
-}
-
-// DescriptorPool returns the value of descriptorPool from VkDescriptorSetAllocateInfo
-func (x DescriptorSetAllocateInfo) DescriptorPool() DescriptorPool {
-	ptr := /* handle */ (*DescriptorPool)(&x.descriptorPool)
-	return *ptr
-}
-
-// WithDescriptorPool sets the value for the DescriptorPool on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x DescriptorSetAllocateInfo) WithDescriptorPool(y DescriptorPool) DescriptorSetAllocateInfo {
-	x.descriptorPool = *( /* handle */ (*C.VkDescriptorPool)(&y))
-	return x
-}
-
-// DescriptorSetCount returns the value of descriptorSetCount from VkDescriptorSetAllocateInfo
-func (x DescriptorSetAllocateInfo) DescriptorSetCount() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.descriptorSetCount)
-	return *ptr
-}
-
-// WithDescriptorSetCount sets the value for the DescriptorSetCount on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x DescriptorSetAllocateInfo) WithDescriptorSetCount(y uint32) DescriptorSetAllocateInfo {
-	x.descriptorSetCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// PSetLayouts returns the value of pSetLayouts from VkDescriptorSetAllocateInfo
-func (x DescriptorSetAllocateInfo) PSetLayouts() []DescriptorSetLayout {
-	ptr := func(x **C.VkDescriptorSetLayout) *[]DescriptorSetLayout { /* Slice */
-		slc := unsafe.Slice((*DescriptorSetLayout)(unsafe.Pointer(x)), (1 << 31))
-		return &slc
-	}(&x.pSetLayouts)
-	return *ptr
-}
-
-// WithPSetLayouts sets the value for the PSetLayouts on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-//
-// The specification defines DescriptorSetCount as the length of this field.
-// DescriptorSetCount is updated with the length of the new value.
-func (x DescriptorSetAllocateInfo) WithPSetLayouts(y []DescriptorSetLayout) DescriptorSetAllocateInfo {
-	x.pSetLayouts = *(func(x *[]DescriptorSetLayout) **C.VkDescriptorSetLayout { /* Slice */
-		if len(*x) > 0 {
-			slc := (*C.VkDescriptorSetLayout)(unsafe.Pointer(&((*x)[0])))
-			return &slc
-		}
-		var ptr unsafe.Pointer
-		return (**C.VkDescriptorSetLayout)(unsafe.Pointer((&ptr)))
-	}(&y))
-	return x.WithDescriptorSetCount(uint32(len(y)))
-}
-
-// PipelineShaderStageCreateInfo provides a go interface for VkPipelineShaderStageCreateInfo.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPipelineShaderStageCreateInfo.html
-type PipelineShaderStageCreateInfo C.struct_VkPipelineShaderStageCreateInfo
-
-// SizeofPipelineShaderStageCreateInfo is the memory size of a PipelineShaderStageCreateInfo
-var SizeofPipelineShaderStageCreateInfo int = int(unsafe.Sizeof(PipelineShaderStageCreateInfo{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *PipelineShaderStageCreateInfo) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x PipelineShaderStageCreateInfo) AsCPtr() *PipelineShaderStageCreateInfo {
-	clone := (*PipelineShaderStageCreateInfo)(newCBlock(C.ulong(SizeofPipelineShaderStageCreateInfo)))
-	*clone = x
-	return clone
-}
-
-// PipelineShaderStageCreateInfoFreeCSlice releases the memory allocated by PipelineShaderStageCreateInfoMakeCSlice.
-// It does not free pointers stored inside the slice.
-func PipelineShaderStageCreateInfoFreeCSlice(x []PipelineShaderStageCreateInfo) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// PipelineShaderStageCreateInfoMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. PipelineShaderStageCreateInfoFreeCSlice must be called on the returned slice.
-func PipelineShaderStageCreateInfoMakeCSlice(x ...PipelineShaderStageCreateInfo) []PipelineShaderStageCreateInfo {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofPipelineShaderStageCreateInfo * len(x)
-	dst := unsafe.Slice((*PipelineShaderStageCreateInfo)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// SType returns the value of sType from VkPipelineShaderStageCreateInfo
-func (x PipelineShaderStageCreateInfo) SType() StructureType {
-	ptr := /* typedef */ (*StructureType)(&x.sType)
-	return *ptr
-}
-
-// WithDefaultSType sets the value of SType to the value provided in the
-// specification. This method only exists if there is a single value in the specification.
-func (x PipelineShaderStageCreateInfo) WithDefaultSType() PipelineShaderStageCreateInfo {
-	return x.WithSType(VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO)
-}
-
-// WithSType sets the value for the SType on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineShaderStageCreateInfo) WithSType(y StructureType) PipelineShaderStageCreateInfo {
-	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
-	return x
-}
-
-// PNext returns the value of pNext from VkPipelineShaderStageCreateInfo
-func (x PipelineShaderStageCreateInfo) PNext() unsafe.Pointer {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
-	return *ptr
-}
-
-// WithPNext sets the value for the PNext on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineShaderStageCreateInfo) WithPNext(y unsafe.Pointer) PipelineShaderStageCreateInfo {
-	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
-	return x
-}
-
-// Flags returns the value of flags from VkPipelineShaderStageCreateInfo
-func (x PipelineShaderStageCreateInfo) Flags() PipelineShaderStageCreateFlags {
-	ptr := /* typedef */ (*PipelineShaderStageCreateFlags)(&x.flags)
-	return *ptr
-}
-
-// WithFlags sets the value for the Flags on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineShaderStageCreateInfo) WithFlags(y PipelineShaderStageCreateFlags) PipelineShaderStageCreateInfo {
-	x.flags = *( /* typedef */ (*C.VkPipelineShaderStageCreateFlags)(&y))
-	return x
-}
-
-// Stage returns the value of stage from VkPipelineShaderStageCreateInfo
-func (x PipelineShaderStageCreateInfo) Stage() ShaderStageFlagBits {
-	ptr := /* typedef */ (*ShaderStageFlagBits)(&x.stage)
-	return *ptr
-}
-
-// WithStage sets the value for the Stage on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineShaderStageCreateInfo) WithStage(y ShaderStageFlagBits) PipelineShaderStageCreateInfo {
-	x.stage = *( /* typedef */ (*C.VkShaderStageFlagBits)(&y))
-	return x
-}
-
-// Module returns the value of module from VkPipelineShaderStageCreateInfo
-func (x PipelineShaderStageCreateInfo) Module() ShaderModule {
-	ptr := /* handle */ (*ShaderModule)(&x.module)
-	return *ptr
-}
-
-// WithModule sets the value for the Module on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineShaderStageCreateInfo) WithModule(y ShaderModule) PipelineShaderStageCreateInfo {
-	x.module = *( /* handle */ (*C.VkShaderModule)(&y))
-	return x
-}
-
-// PName returns the value of pName from VkPipelineShaderStageCreateInfo
-func (x PipelineShaderStageCreateInfo) PName() *byte {
-	ptr := func(x **C.char) **byte { /* Pointer */ return (**byte)(unsafe.Pointer(x)) }(&x.pName)
-	return *ptr
-}
-
-// WithPName sets the value for the PName on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineShaderStageCreateInfo) WithPName(y *byte) PipelineShaderStageCreateInfo {
-	x.pName = *(func(x **byte) **C.char { /* Pointer */ return (**C.char)(unsafe.Pointer(x)) }(&y))
-	return x
-}
-
-// PSpecializationInfo returns the value of pSpecializationInfo from VkPipelineShaderStageCreateInfo
-func (x PipelineShaderStageCreateInfo) PSpecializationInfo() *SpecializationInfo {
-	ptr := func(x **C.struct_VkSpecializationInfo) **SpecializationInfo { /* Pointer */
-		c2g := (*SpecializationInfo)(*x)
-		return &c2g
-	}(&x.pSpecializationInfo)
-	return *ptr
-}
-
-// WithPSpecializationInfo sets the value for the PSpecializationInfo on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineShaderStageCreateInfo) WithPSpecializationInfo(y *SpecializationInfo) PipelineShaderStageCreateInfo {
-	x.pSpecializationInfo = *(func(x **SpecializationInfo) **C.struct_VkSpecializationInfo { /* Pointer */
-		g2c := (*C.struct_VkSpecializationInfo)(*x)
-		return &g2c
-	}(&y))
-	return x
-}
-
-// DescriptorPoolSize provides a go interface for VkDescriptorPoolSize.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkDescriptorPoolSize.html
-type DescriptorPoolSize C.struct_VkDescriptorPoolSize
-
-// SizeofDescriptorPoolSize is the memory size of a DescriptorPoolSize
-var SizeofDescriptorPoolSize int = int(unsafe.Sizeof(DescriptorPoolSize{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *DescriptorPoolSize) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x DescriptorPoolSize) AsCPtr() *DescriptorPoolSize {
-	clone := (*DescriptorPoolSize)(newCBlock(C.ulong(SizeofDescriptorPoolSize)))
-	*clone = x
-	return clone
-}
-
-// DescriptorPoolSizeFreeCSlice releases the memory allocated by DescriptorPoolSizeMakeCSlice.
-// It does not free pointers stored inside the slice.
-func DescriptorPoolSizeFreeCSlice(x []DescriptorPoolSize) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// DescriptorPoolSizeMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. DescriptorPoolSizeFreeCSlice must be called on the returned slice.
-func DescriptorPoolSizeMakeCSlice(x ...DescriptorPoolSize) []DescriptorPoolSize {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofDescriptorPoolSize * len(x)
-	dst := unsafe.Slice((*DescriptorPoolSize)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// Type_ returns the value of type from VkDescriptorPoolSize
-func (x DescriptorPoolSize) Type_() DescriptorType {
-	ptr := /* typedef */ (*DescriptorType)(&x._type)
-	return *ptr
-}
-
-// WithType_ sets the value for the Type_ on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x DescriptorPoolSize) WithType_(y DescriptorType) DescriptorPoolSize {
-	x._type = *( /* typedef */ (*C.VkDescriptorType)(&y))
-	return x
-}
-
-// DescriptorCount returns the value of descriptorCount from VkDescriptorPoolSize
-func (x DescriptorPoolSize) DescriptorCount() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.descriptorCount)
-	return *ptr
-}
-
-// WithDescriptorCount sets the value for the DescriptorCount on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x DescriptorPoolSize) WithDescriptorCount(y uint32) DescriptorPoolSize {
-	x.descriptorCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// PipelineTessellationStateCreateInfo provides a go interface for VkPipelineTessellationStateCreateInfo.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPipelineTessellationStateCreateInfo.html
-type PipelineTessellationStateCreateInfo C.struct_VkPipelineTessellationStateCreateInfo
-
-// SizeofPipelineTessellationStateCreateInfo is the memory size of a PipelineTessellationStateCreateInfo
-var SizeofPipelineTessellationStateCreateInfo int = int(unsafe.Sizeof(PipelineTessellationStateCreateInfo{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *PipelineTessellationStateCreateInfo) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x PipelineTessellationStateCreateInfo) AsCPtr() *PipelineTessellationStateCreateInfo {
-	clone := (*PipelineTessellationStateCreateInfo)(newCBlock(C.ulong(SizeofPipelineTessellationStateCreateInfo)))
-	*clone = x
-	return clone
-}
-
-// PipelineTessellationStateCreateInfoFreeCSlice releases the memory allocated by PipelineTessellationStateCreateInfoMakeCSlice.
-// It does not free pointers stored inside the slice.
-func PipelineTessellationStateCreateInfoFreeCSlice(x []PipelineTessellationStateCreateInfo) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// PipelineTessellationStateCreateInfoMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. PipelineTessellationStateCreateInfoFreeCSlice must be called on the returned slice.
-func PipelineTessellationStateCreateInfoMakeCSlice(x ...PipelineTessellationStateCreateInfo) []PipelineTessellationStateCreateInfo {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofPipelineTessellationStateCreateInfo * len(x)
-	dst := unsafe.Slice((*PipelineTessellationStateCreateInfo)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// SType returns the value of sType from VkPipelineTessellationStateCreateInfo
-func (x PipelineTessellationStateCreateInfo) SType() StructureType {
-	ptr := /* typedef */ (*StructureType)(&x.sType)
-	return *ptr
-}
-
-// WithDefaultSType sets the value of SType to the value provided in the
-// specification. This method only exists if there is a single value in the specification.
-func (x PipelineTessellationStateCreateInfo) WithDefaultSType() PipelineTessellationStateCreateInfo {
-	return x.WithSType(VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_STATE_CREATE_INFO)
-}
-
-// WithSType sets the value for the SType on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineTessellationStateCreateInfo) WithSType(y StructureType) PipelineTessellationStateCreateInfo {
-	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
-	return x
-}
-
-// PNext returns the value of pNext from VkPipelineTessellationStateCreateInfo
-func (x PipelineTessellationStateCreateInfo) PNext() unsafe.Pointer {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
-	return *ptr
-}
-
-// WithPNext sets the value for the PNext on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineTessellationStateCreateInfo) WithPNext(y unsafe.Pointer) PipelineTessellationStateCreateInfo {
-	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
-	return x
-}
-
-// Flags returns the value of flags from VkPipelineTessellationStateCreateInfo
-func (x PipelineTessellationStateCreateInfo) Flags() PipelineTessellationStateCreateFlags {
-	ptr := /* typedef */ (*PipelineTessellationStateCreateFlags)(&x.flags)
-	return *ptr
-}
-
-// WithFlags sets the value for the Flags on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineTessellationStateCreateInfo) WithFlags(y PipelineTessellationStateCreateFlags) PipelineTessellationStateCreateInfo {
-	x.flags = *( /* typedef */ (*C.VkPipelineTessellationStateCreateFlags)(&y))
-	return x
-}
-
-// PatchControlPoints returns the value of patchControlPoints from VkPipelineTessellationStateCreateInfo
-func (x PipelineTessellationStateCreateInfo) PatchControlPoints() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.patchControlPoints)
-	return *ptr
-}
-
-// WithPatchControlPoints sets the value for the PatchControlPoints on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineTessellationStateCreateInfo) WithPatchControlPoints(y uint32) PipelineTessellationStateCreateInfo {
-	x.patchControlPoints = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// Extent2D provides a go interface for VkExtent2D.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkExtent2D.html
-type Extent2D C.struct_VkExtent2D
-
-// SizeofExtent2D is the memory size of a Extent2D
-var SizeofExtent2D int = int(unsafe.Sizeof(Extent2D{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *Extent2D) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x Extent2D) AsCPtr() *Extent2D {
-	clone := (*Extent2D)(newCBlock(C.ulong(SizeofExtent2D)))
-	*clone = x
-	return clone
-}
-
-// Extent2DFreeCSlice releases the memory allocated by Extent2DMakeCSlice.
-// It does not free pointers stored inside the slice.
-func Extent2DFreeCSlice(x []Extent2D) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// Extent2DMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. Extent2DFreeCSlice must be called on the returned slice.
-func Extent2DMakeCSlice(x ...Extent2D) []Extent2D {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofExtent2D * len(x)
-	dst := unsafe.Slice((*Extent2D)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// Width returns the value of width from VkExtent2D
-func (x Extent2D) Width() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.width)
-	return *ptr
-}
-
-// WithWidth sets the value for the Width on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x Extent2D) WithWidth(y uint32) Extent2D {
-	x.width = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// Height returns the value of height from VkExtent2D
-func (x Extent2D) Height() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.height)
-	return *ptr
-}
-
-// WithHeight sets the value for the Height on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x Extent2D) WithHeight(y uint32) Extent2D {
-	x.height = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// PipelineVertexInputStateCreateInfo provides a go interface for VkPipelineVertexInputStateCreateInfo.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPipelineVertexInputStateCreateInfo.html
-type PipelineVertexInputStateCreateInfo C.struct_VkPipelineVertexInputStateCreateInfo
-
-// SizeofPipelineVertexInputStateCreateInfo is the memory size of a PipelineVertexInputStateCreateInfo
-var SizeofPipelineVertexInputStateCreateInfo int = int(unsafe.Sizeof(PipelineVertexInputStateCreateInfo{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *PipelineVertexInputStateCreateInfo) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x PipelineVertexInputStateCreateInfo) AsCPtr() *PipelineVertexInputStateCreateInfo {
-	clone := (*PipelineVertexInputStateCreateInfo)(newCBlock(C.ulong(SizeofPipelineVertexInputStateCreateInfo)))
-	*clone = x
-	return clone
-}
-
-// PipelineVertexInputStateCreateInfoFreeCSlice releases the memory allocated by PipelineVertexInputStateCreateInfoMakeCSlice.
-// It does not free pointers stored inside the slice.
-func PipelineVertexInputStateCreateInfoFreeCSlice(x []PipelineVertexInputStateCreateInfo) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// PipelineVertexInputStateCreateInfoMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. PipelineVertexInputStateCreateInfoFreeCSlice must be called on the returned slice.
-func PipelineVertexInputStateCreateInfoMakeCSlice(x ...PipelineVertexInputStateCreateInfo) []PipelineVertexInputStateCreateInfo {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofPipelineVertexInputStateCreateInfo * len(x)
-	dst := unsafe.Slice((*PipelineVertexInputStateCreateInfo)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// SType returns the value of sType from VkPipelineVertexInputStateCreateInfo
-func (x PipelineVertexInputStateCreateInfo) SType() StructureType {
-	ptr := /* typedef */ (*StructureType)(&x.sType)
-	return *ptr
-}
-
-// WithDefaultSType sets the value of SType to the value provided in the
-// specification. This method only exists if there is a single value in the specification.
-func (x PipelineVertexInputStateCreateInfo) WithDefaultSType() PipelineVertexInputStateCreateInfo {
-	return x.WithSType(VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO)
-}
-
-// WithSType sets the value for the SType on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineVertexInputStateCreateInfo) WithSType(y StructureType) PipelineVertexInputStateCreateInfo {
-	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
-	return x
-}
-
-// PNext returns the value of pNext from VkPipelineVertexInputStateCreateInfo
-func (x PipelineVertexInputStateCreateInfo) PNext() unsafe.Pointer {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
-	return *ptr
-}
-
-// WithPNext sets the value for the PNext on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineVertexInputStateCreateInfo) WithPNext(y unsafe.Pointer) PipelineVertexInputStateCreateInfo {
-	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
-	return x
-}
-
-// Flags returns the value of flags from VkPipelineVertexInputStateCreateInfo
-func (x PipelineVertexInputStateCreateInfo) Flags() PipelineVertexInputStateCreateFlags {
-	ptr := /* typedef */ (*PipelineVertexInputStateCreateFlags)(&x.flags)
-	return *ptr
-}
-
-// WithFlags sets the value for the Flags on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineVertexInputStateCreateInfo) WithFlags(y PipelineVertexInputStateCreateFlags) PipelineVertexInputStateCreateInfo {
-	x.flags = *( /* typedef */ (*C.VkPipelineVertexInputStateCreateFlags)(&y))
-	return x
-}
-
-// VertexBindingDescriptionCount returns the value of vertexBindingDescriptionCount from VkPipelineVertexInputStateCreateInfo
-func (x PipelineVertexInputStateCreateInfo) VertexBindingDescriptionCount() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.vertexBindingDescriptionCount)
-	return *ptr
-}
-
-// WithVertexBindingDescriptionCount sets the value for the VertexBindingDescriptionCount on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineVertexInputStateCreateInfo) WithVertexBindingDescriptionCount(y uint32) PipelineVertexInputStateCreateInfo {
-	x.vertexBindingDescriptionCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// PVertexBindingDescriptions returns the value of pVertexBindingDescriptions from VkPipelineVertexInputStateCreateInfo
-func (x PipelineVertexInputStateCreateInfo) PVertexBindingDescriptions() []VertexInputBindingDescription {
-	ptr := func(x **C.struct_VkVertexInputBindingDescription) *[]VertexInputBindingDescription { /* Slice */
-		slc := unsafe.Slice((*VertexInputBindingDescription)(unsafe.Pointer(x)), (1 << 31))
-		return &slc
-	}(&x.pVertexBindingDescriptions)
-	return *ptr
-}
-
-// WithPVertexBindingDescriptions sets the value for the PVertexBindingDescriptions on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-//
-// The specification defines VertexBindingDescriptionCount as the length of this field.
-// VertexBindingDescriptionCount is updated with the length of the new value.
-func (x PipelineVertexInputStateCreateInfo) WithPVertexBindingDescriptions(y []VertexInputBindingDescription) PipelineVertexInputStateCreateInfo {
-	x.pVertexBindingDescriptions = *(func(x *[]VertexInputBindingDescription) **C.struct_VkVertexInputBindingDescription { /* Slice */
-		if len(*x) > 0 {
-			slc := (*C.struct_VkVertexInputBindingDescription)(unsafe.Pointer(&((*x)[0])))
-			return &slc
-		}
-		var ptr unsafe.Pointer
-		return (**C.struct_VkVertexInputBindingDescription)(unsafe.Pointer((&ptr)))
-	}(&y))
-	return x.WithVertexBindingDescriptionCount(uint32(len(y)))
-}
-
-// VertexAttributeDescriptionCount returns the value of vertexAttributeDescriptionCount from VkPipelineVertexInputStateCreateInfo
-func (x PipelineVertexInputStateCreateInfo) VertexAttributeDescriptionCount() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.vertexAttributeDescriptionCount)
-	return *ptr
-}
-
-// WithVertexAttributeDescriptionCount sets the value for the VertexAttributeDescriptionCount on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineVertexInputStateCreateInfo) WithVertexAttributeDescriptionCount(y uint32) PipelineVertexInputStateCreateInfo {
-	x.vertexAttributeDescriptionCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// PVertexAttributeDescriptions returns the value of pVertexAttributeDescriptions from VkPipelineVertexInputStateCreateInfo
-func (x PipelineVertexInputStateCreateInfo) PVertexAttributeDescriptions() []VertexInputAttributeDescription {
-	ptr := func(x **C.struct_VkVertexInputAttributeDescription) *[]VertexInputAttributeDescription { /* Slice */
-		slc := unsafe.Slice((*VertexInputAttributeDescription)(unsafe.Pointer(x)), (1 << 31))
-		return &slc
-	}(&x.pVertexAttributeDescriptions)
-	return *ptr
-}
-
-// WithPVertexAttributeDescriptions sets the value for the PVertexAttributeDescriptions on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-//
-// The specification defines VertexAttributeDescriptionCount as the length of this field.
-// VertexAttributeDescriptionCount is updated with the length of the new value.
-func (x PipelineVertexInputStateCreateInfo) WithPVertexAttributeDescriptions(y []VertexInputAttributeDescription) PipelineVertexInputStateCreateInfo {
-	x.pVertexAttributeDescriptions = *(func(x *[]VertexInputAttributeDescription) **C.struct_VkVertexInputAttributeDescription { /* Slice */
-		if len(*x) > 0 {
-			slc := (*C.struct_VkVertexInputAttributeDescription)(unsafe.Pointer(&((*x)[0])))
-			return &slc
-		}
-		var ptr unsafe.Pointer
-		return (**C.struct_VkVertexInputAttributeDescription)(unsafe.Pointer((&ptr)))
-	}(&y))
-	return x.WithVertexAttributeDescriptionCount(uint32(len(y)))
-}
-
-// DescriptorPoolCreateInfo provides a go interface for VkDescriptorPoolCreateInfo.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkDescriptorPoolCreateInfo.html
-type DescriptorPoolCreateInfo C.struct_VkDescriptorPoolCreateInfo
-
-// SizeofDescriptorPoolCreateInfo is the memory size of a DescriptorPoolCreateInfo
-var SizeofDescriptorPoolCreateInfo int = int(unsafe.Sizeof(DescriptorPoolCreateInfo{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *DescriptorPoolCreateInfo) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x DescriptorPoolCreateInfo) AsCPtr() *DescriptorPoolCreateInfo {
-	clone := (*DescriptorPoolCreateInfo)(newCBlock(C.ulong(SizeofDescriptorPoolCreateInfo)))
-	*clone = x
-	return clone
-}
-
-// DescriptorPoolCreateInfoFreeCSlice releases the memory allocated by DescriptorPoolCreateInfoMakeCSlice.
-// It does not free pointers stored inside the slice.
-func DescriptorPoolCreateInfoFreeCSlice(x []DescriptorPoolCreateInfo) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// DescriptorPoolCreateInfoMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. DescriptorPoolCreateInfoFreeCSlice must be called on the returned slice.
-func DescriptorPoolCreateInfoMakeCSlice(x ...DescriptorPoolCreateInfo) []DescriptorPoolCreateInfo {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofDescriptorPoolCreateInfo * len(x)
-	dst := unsafe.Slice((*DescriptorPoolCreateInfo)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// SType returns the value of sType from VkDescriptorPoolCreateInfo
-func (x DescriptorPoolCreateInfo) SType() StructureType {
-	ptr := /* typedef */ (*StructureType)(&x.sType)
-	return *ptr
-}
-
-// WithDefaultSType sets the value of SType to the value provided in the
-// specification. This method only exists if there is a single value in the specification.
-func (x DescriptorPoolCreateInfo) WithDefaultSType() DescriptorPoolCreateInfo {
-	return x.WithSType(VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO)
-}
-
-// WithSType sets the value for the SType on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x DescriptorPoolCreateInfo) WithSType(y StructureType) DescriptorPoolCreateInfo {
-	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
-	return x
-}
-
-// PNext returns the value of pNext from VkDescriptorPoolCreateInfo
-func (x DescriptorPoolCreateInfo) PNext() unsafe.Pointer {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
-	return *ptr
-}
-
-// WithPNext sets the value for the PNext on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x DescriptorPoolCreateInfo) WithPNext(y unsafe.Pointer) DescriptorPoolCreateInfo {
-	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
-	return x
-}
-
-// Flags returns the value of flags from VkDescriptorPoolCreateInfo
-func (x DescriptorPoolCreateInfo) Flags() DescriptorPoolCreateFlags {
-	ptr := /* typedef */ (*DescriptorPoolCreateFlags)(&x.flags)
-	return *ptr
-}
-
-// WithFlags sets the value for the Flags on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x DescriptorPoolCreateInfo) WithFlags(y DescriptorPoolCreateFlags) DescriptorPoolCreateInfo {
-	x.flags = *( /* typedef */ (*C.VkDescriptorPoolCreateFlags)(&y))
-	return x
-}
-
-// MaxSets returns the value of maxSets from VkDescriptorPoolCreateInfo
-func (x DescriptorPoolCreateInfo) MaxSets() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxSets)
-	return *ptr
-}
-
-// WithMaxSets sets the value for the MaxSets on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x DescriptorPoolCreateInfo) WithMaxSets(y uint32) DescriptorPoolCreateInfo {
-	x.maxSets = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// PoolSizeCount returns the value of poolSizeCount from VkDescriptorPoolCreateInfo
-func (x DescriptorPoolCreateInfo) PoolSizeCount() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.poolSizeCount)
-	return *ptr
-}
-
-// WithPoolSizeCount sets the value for the PoolSizeCount on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x DescriptorPoolCreateInfo) WithPoolSizeCount(y uint32) DescriptorPoolCreateInfo {
-	x.poolSizeCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// PPoolSizes returns the value of pPoolSizes from VkDescriptorPoolCreateInfo
-func (x DescriptorPoolCreateInfo) PPoolSizes() []DescriptorPoolSize {
-	ptr := func(x **C.struct_VkDescriptorPoolSize) *[]DescriptorPoolSize { /* Slice */
-		slc := unsafe.Slice((*DescriptorPoolSize)(unsafe.Pointer(x)), (1 << 31))
-		return &slc
-	}(&x.pPoolSizes)
-	return *ptr
-}
-
-// WithPPoolSizes sets the value for the PPoolSizes on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-//
-// The specification defines PoolSizeCount as the length of this field.
-// PoolSizeCount is updated with the length of the new value.
-func (x DescriptorPoolCreateInfo) WithPPoolSizes(y []DescriptorPoolSize) DescriptorPoolCreateInfo {
-	x.pPoolSizes = *(func(x *[]DescriptorPoolSize) **C.struct_VkDescriptorPoolSize { /* Slice */
-		if len(*x) > 0 {
-			slc := (*C.struct_VkDescriptorPoolSize)(unsafe.Pointer(&((*x)[0])))
-			return &slc
-		}
-		var ptr unsafe.Pointer
-		return (**C.struct_VkDescriptorPoolSize)(unsafe.Pointer((&ptr)))
-	}(&y))
-	return x.WithPoolSizeCount(uint32(len(y)))
-}
-
-// PipelineViewportStateCreateInfo provides a go interface for VkPipelineViewportStateCreateInfo.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPipelineViewportStateCreateInfo.html
-type PipelineViewportStateCreateInfo C.struct_VkPipelineViewportStateCreateInfo
-
-// SizeofPipelineViewportStateCreateInfo is the memory size of a PipelineViewportStateCreateInfo
-var SizeofPipelineViewportStateCreateInfo int = int(unsafe.Sizeof(PipelineViewportStateCreateInfo{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *PipelineViewportStateCreateInfo) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x PipelineViewportStateCreateInfo) AsCPtr() *PipelineViewportStateCreateInfo {
-	clone := (*PipelineViewportStateCreateInfo)(newCBlock(C.ulong(SizeofPipelineViewportStateCreateInfo)))
-	*clone = x
-	return clone
-}
-
-// PipelineViewportStateCreateInfoFreeCSlice releases the memory allocated by PipelineViewportStateCreateInfoMakeCSlice.
-// It does not free pointers stored inside the slice.
-func PipelineViewportStateCreateInfoFreeCSlice(x []PipelineViewportStateCreateInfo) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// PipelineViewportStateCreateInfoMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. PipelineViewportStateCreateInfoFreeCSlice must be called on the returned slice.
-func PipelineViewportStateCreateInfoMakeCSlice(x ...PipelineViewportStateCreateInfo) []PipelineViewportStateCreateInfo {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofPipelineViewportStateCreateInfo * len(x)
-	dst := unsafe.Slice((*PipelineViewportStateCreateInfo)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// SType returns the value of sType from VkPipelineViewportStateCreateInfo
-func (x PipelineViewportStateCreateInfo) SType() StructureType {
-	ptr := /* typedef */ (*StructureType)(&x.sType)
-	return *ptr
-}
-
-// WithDefaultSType sets the value of SType to the value provided in the
-// specification. This method only exists if there is a single value in the specification.
-func (x PipelineViewportStateCreateInfo) WithDefaultSType() PipelineViewportStateCreateInfo {
-	return x.WithSType(VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO)
-}
-
-// WithSType sets the value for the SType on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineViewportStateCreateInfo) WithSType(y StructureType) PipelineViewportStateCreateInfo {
-	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
-	return x
-}
-
-// PNext returns the value of pNext from VkPipelineViewportStateCreateInfo
-func (x PipelineViewportStateCreateInfo) PNext() unsafe.Pointer {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
-	return *ptr
-}
-
-// WithPNext sets the value for the PNext on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineViewportStateCreateInfo) WithPNext(y unsafe.Pointer) PipelineViewportStateCreateInfo {
-	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
-	return x
-}
-
-// Flags returns the value of flags from VkPipelineViewportStateCreateInfo
-func (x PipelineViewportStateCreateInfo) Flags() PipelineViewportStateCreateFlags {
-	ptr := /* typedef */ (*PipelineViewportStateCreateFlags)(&x.flags)
-	return *ptr
-}
-
-// WithFlags sets the value for the Flags on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineViewportStateCreateInfo) WithFlags(y PipelineViewportStateCreateFlags) PipelineViewportStateCreateInfo {
-	x.flags = *( /* typedef */ (*C.VkPipelineViewportStateCreateFlags)(&y))
-	return x
-}
-
-// ViewportCount returns the value of viewportCount from VkPipelineViewportStateCreateInfo
-func (x PipelineViewportStateCreateInfo) ViewportCount() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.viewportCount)
-	return *ptr
-}
-
-// WithViewportCount sets the value for the ViewportCount on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineViewportStateCreateInfo) WithViewportCount(y uint32) PipelineViewportStateCreateInfo {
-	x.viewportCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// PViewports returns the value of pViewports from VkPipelineViewportStateCreateInfo
-func (x PipelineViewportStateCreateInfo) PViewports() []Viewport {
-	ptr := func(x **C.struct_VkViewport) *[]Viewport { /* Slice */
-		slc := unsafe.Slice((*Viewport)(unsafe.Pointer(x)), (1 << 31))
-		return &slc
-	}(&x.pViewports)
-	return *ptr
-}
-
-// WithPViewports sets the value for the PViewports on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-//
-// The specification defines ViewportCount as the length of this field.
-// ViewportCount is updated with the length of the new value.
-func (x PipelineViewportStateCreateInfo) WithPViewports(y []Viewport) PipelineViewportStateCreateInfo {
-	x.pViewports = *(func(x *[]Viewport) **C.struct_VkViewport { /* Slice */
-		if len(*x) > 0 {
-			slc := (*C.struct_VkViewport)(unsafe.Pointer(&((*x)[0])))
-			return &slc
-		}
-		var ptr unsafe.Pointer
-		return (**C.struct_VkViewport)(unsafe.Pointer((&ptr)))
-	}(&y))
-	return x.WithViewportCount(uint32(len(y)))
-}
-
-// ScissorCount returns the value of scissorCount from VkPipelineViewportStateCreateInfo
-func (x PipelineViewportStateCreateInfo) ScissorCount() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.scissorCount)
-	return *ptr
-}
-
-// WithScissorCount sets the value for the ScissorCount on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PipelineViewportStateCreateInfo) WithScissorCount(y uint32) PipelineViewportStateCreateInfo {
-	x.scissorCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// PScissors returns the value of pScissors from VkPipelineViewportStateCreateInfo
-func (x PipelineViewportStateCreateInfo) PScissors() []Rect2D {
-	ptr := func(x **C.struct_VkRect2D) *[]Rect2D { /* Slice */
-		slc := unsafe.Slice((*Rect2D)(unsafe.Pointer(x)), (1 << 31))
-		return &slc
-	}(&x.pScissors)
-	return *ptr
-}
-
-// WithPScissors sets the value for the PScissors on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-//
-// The specification defines ScissorCount as the length of this field.
-// ScissorCount is updated with the length of the new value.
-func (x PipelineViewportStateCreateInfo) WithPScissors(y []Rect2D) PipelineViewportStateCreateInfo {
-	x.pScissors = *(func(x *[]Rect2D) **C.struct_VkRect2D { /* Slice */
-		if len(*x) > 0 {
-			slc := (*C.struct_VkRect2D)(unsafe.Pointer(&((*x)[0])))
-			return &slc
-		}
-		var ptr unsafe.Pointer
-		return (**C.struct_VkRect2D)(unsafe.Pointer((&ptr)))
-	}(&y))
-	return x.WithScissorCount(uint32(len(y)))
-}
-
-// QueueFamilyProperties provides a go interface for VkQueueFamilyProperties.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkQueueFamilyProperties.html
-type QueueFamilyProperties C.struct_VkQueueFamilyProperties
-
-// SizeofQueueFamilyProperties is the memory size of a QueueFamilyProperties
-var SizeofQueueFamilyProperties int = int(unsafe.Sizeof(QueueFamilyProperties{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *QueueFamilyProperties) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x QueueFamilyProperties) AsCPtr() *QueueFamilyProperties {
-	clone := (*QueueFamilyProperties)(newCBlock(C.ulong(SizeofQueueFamilyProperties)))
-	*clone = x
-	return clone
-}
-
-// QueueFamilyPropertiesFreeCSlice releases the memory allocated by QueueFamilyPropertiesMakeCSlice.
-// It does not free pointers stored inside the slice.
-func QueueFamilyPropertiesFreeCSlice(x []QueueFamilyProperties) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// QueueFamilyPropertiesMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. QueueFamilyPropertiesFreeCSlice must be called on the returned slice.
-func QueueFamilyPropertiesMakeCSlice(x ...QueueFamilyProperties) []QueueFamilyProperties {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofQueueFamilyProperties * len(x)
-	dst := unsafe.Slice((*QueueFamilyProperties)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// QueueFlags returns the value of queueFlags from VkQueueFamilyProperties
-func (x QueueFamilyProperties) QueueFlags() QueueFlags {
-	ptr := /* typedef */ (*QueueFlags)(&x.queueFlags)
-	return *ptr
-}
-
-// QueueCount returns the value of queueCount from VkQueueFamilyProperties
-func (x QueueFamilyProperties) QueueCount() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.queueCount)
-	return *ptr
-}
-
-// TimestampValidBits returns the value of timestampValidBits from VkQueueFamilyProperties
-func (x QueueFamilyProperties) TimestampValidBits() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.timestampValidBits)
-	return *ptr
-}
-
-// MinImageTransferGranularity returns the value of minImageTransferGranularity from VkQueueFamilyProperties
-func (x QueueFamilyProperties) MinImageTransferGranularity() Extent3D {
-	ptr := /* typedef */ (*Extent3D)(&x.minImageTransferGranularity)
-	return *ptr
-}
-
-// PhysicalDeviceSparseProperties provides a go interface for VkPhysicalDeviceSparseProperties.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceSparseProperties.html
-type PhysicalDeviceSparseProperties C.struct_VkPhysicalDeviceSparseProperties
-
-// SizeofPhysicalDeviceSparseProperties is the memory size of a PhysicalDeviceSparseProperties
-var SizeofPhysicalDeviceSparseProperties int = int(unsafe.Sizeof(PhysicalDeviceSparseProperties{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *PhysicalDeviceSparseProperties) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x PhysicalDeviceSparseProperties) AsCPtr() *PhysicalDeviceSparseProperties {
-	clone := (*PhysicalDeviceSparseProperties)(newCBlock(C.ulong(SizeofPhysicalDeviceSparseProperties)))
-	*clone = x
-	return clone
-}
-
-// PhysicalDeviceSparsePropertiesFreeCSlice releases the memory allocated by PhysicalDeviceSparsePropertiesMakeCSlice.
-// It does not free pointers stored inside the slice.
-func PhysicalDeviceSparsePropertiesFreeCSlice(x []PhysicalDeviceSparseProperties) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// PhysicalDeviceSparsePropertiesMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. PhysicalDeviceSparsePropertiesFreeCSlice must be called on the returned slice.
-func PhysicalDeviceSparsePropertiesMakeCSlice(x ...PhysicalDeviceSparseProperties) []PhysicalDeviceSparseProperties {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofPhysicalDeviceSparseProperties * len(x)
-	dst := unsafe.Slice((*PhysicalDeviceSparseProperties)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// ResidencyStandard2DBlockShape returns the value of residencyStandard2DBlockShape from VkPhysicalDeviceSparseProperties
-func (x PhysicalDeviceSparseProperties) ResidencyStandard2DBlockShape() Bool32 {
-	ptr := /* typedef */ (*Bool32)(&x.residencyStandard2DBlockShape)
-	return *ptr
-}
-
-// ResidencyStandard2DMultisampleBlockShape returns the value of residencyStandard2DMultisampleBlockShape from VkPhysicalDeviceSparseProperties
-func (x PhysicalDeviceSparseProperties) ResidencyStandard2DMultisampleBlockShape() Bool32 {
-	ptr := /* typedef */ (*Bool32)(&x.residencyStandard2DMultisampleBlockShape)
-	return *ptr
-}
-
-// ResidencyStandard3DBlockShape returns the value of residencyStandard3DBlockShape from VkPhysicalDeviceSparseProperties
-func (x PhysicalDeviceSparseProperties) ResidencyStandard3DBlockShape() Bool32 {
-	ptr := /* typedef */ (*Bool32)(&x.residencyStandard3DBlockShape)
-	return *ptr
-}
-
-// ResidencyAlignedMipSize returns the value of residencyAlignedMipSize from VkPhysicalDeviceSparseProperties
-func (x PhysicalDeviceSparseProperties) ResidencyAlignedMipSize() Bool32 {
-	ptr := /* typedef */ (*Bool32)(&x.residencyAlignedMipSize)
-	return *ptr
-}
-
-// ResidencyNonResidentStrict returns the value of residencyNonResidentStrict from VkPhysicalDeviceSparseProperties
-func (x PhysicalDeviceSparseProperties) ResidencyNonResidentStrict() Bool32 {
-	ptr := /* typedef */ (*Bool32)(&x.residencyNonResidentStrict)
-	return *ptr
-}
-
-// PhysicalDeviceProperties provides a go interface for VkPhysicalDeviceProperties.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceProperties.html
-type PhysicalDeviceProperties C.struct_VkPhysicalDeviceProperties
-
-// SizeofPhysicalDeviceProperties is the memory size of a PhysicalDeviceProperties
-var SizeofPhysicalDeviceProperties int = int(unsafe.Sizeof(PhysicalDeviceProperties{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *PhysicalDeviceProperties) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x PhysicalDeviceProperties) AsCPtr() *PhysicalDeviceProperties {
-	clone := (*PhysicalDeviceProperties)(newCBlock(C.ulong(SizeofPhysicalDeviceProperties)))
-	*clone = x
-	return clone
-}
-
-// PhysicalDevicePropertiesFreeCSlice releases the memory allocated by PhysicalDevicePropertiesMakeCSlice.
-// It does not free pointers stored inside the slice.
-func PhysicalDevicePropertiesFreeCSlice(x []PhysicalDeviceProperties) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// PhysicalDevicePropertiesMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. PhysicalDevicePropertiesFreeCSlice must be called on the returned slice.
-func PhysicalDevicePropertiesMakeCSlice(x ...PhysicalDeviceProperties) []PhysicalDeviceProperties {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofPhysicalDeviceProperties * len(x)
-	dst := unsafe.Slice((*PhysicalDeviceProperties)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// ApiVersion returns the value of apiVersion from VkPhysicalDeviceProperties
-func (x PhysicalDeviceProperties) ApiVersion() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.apiVersion)
-	return *ptr
-}
-
-// DriverVersion returns the value of driverVersion from VkPhysicalDeviceProperties
-func (x PhysicalDeviceProperties) DriverVersion() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.driverVersion)
-	return *ptr
-}
-
-// VendorID returns the value of vendorID from VkPhysicalDeviceProperties
-func (x PhysicalDeviceProperties) VendorID() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.vendorID)
-	return *ptr
-}
-
-// DeviceID returns the value of deviceID from VkPhysicalDeviceProperties
-func (x PhysicalDeviceProperties) DeviceID() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.deviceID)
-	return *ptr
-}
-
-// DeviceType returns the value of deviceType from VkPhysicalDeviceProperties
-func (x PhysicalDeviceProperties) DeviceType() PhysicalDeviceType {
-	ptr := /* typedef */ (*PhysicalDeviceType)(&x.deviceType)
-	return *ptr
-}
-
-// DeviceName returns the value of deviceName from VkPhysicalDeviceProperties
-func (x PhysicalDeviceProperties) DeviceName() []byte {
-	ptr := func(x *[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]C.char) *[]byte { /* Array */
-		slc := unsafe.Slice((*byte)(unsafe.Pointer(x)), VK_MAX_PHYSICAL_DEVICE_NAME_SIZE)
-		return &slc
-	}(&x.deviceName)
-	return *ptr
-}
-
-// PipelineCacheUUID returns the value of pipelineCacheUUID from VkPhysicalDeviceProperties
-func (x PhysicalDeviceProperties) PipelineCacheUUID() []byte {
-	ptr := func(x *[VK_UUID_SIZE]C.uint8_t) *[]byte { /* Array */
-		slc := unsafe.Slice((*byte)(unsafe.Pointer(x)), VK_UUID_SIZE)
-		return &slc
-	}(&x.pipelineCacheUUID)
-	return *ptr
-}
-
-// Limits returns the value of limits from VkPhysicalDeviceProperties
-func (x PhysicalDeviceProperties) Limits() PhysicalDeviceLimits {
-	ptr := /* typedef */ (*PhysicalDeviceLimits)(&x.limits)
-	return *ptr
-}
-
-// SparseProperties returns the value of sparseProperties from VkPhysicalDeviceProperties
-func (x PhysicalDeviceProperties) SparseProperties() PhysicalDeviceSparseProperties {
-	ptr := /* typedef */ (*PhysicalDeviceSparseProperties)(&x.sparseProperties)
-	return *ptr
-}
-
-// PhysicalDeviceMemoryProperties provides a go interface for VkPhysicalDeviceMemoryProperties.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceMemoryProperties.html
-type PhysicalDeviceMemoryProperties C.struct_VkPhysicalDeviceMemoryProperties
-
-// SizeofPhysicalDeviceMemoryProperties is the memory size of a PhysicalDeviceMemoryProperties
-var SizeofPhysicalDeviceMemoryProperties int = int(unsafe.Sizeof(PhysicalDeviceMemoryProperties{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *PhysicalDeviceMemoryProperties) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x PhysicalDeviceMemoryProperties) AsCPtr() *PhysicalDeviceMemoryProperties {
-	clone := (*PhysicalDeviceMemoryProperties)(newCBlock(C.ulong(SizeofPhysicalDeviceMemoryProperties)))
-	*clone = x
-	return clone
-}
-
-// PhysicalDeviceMemoryPropertiesFreeCSlice releases the memory allocated by PhysicalDeviceMemoryPropertiesMakeCSlice.
-// It does not free pointers stored inside the slice.
-func PhysicalDeviceMemoryPropertiesFreeCSlice(x []PhysicalDeviceMemoryProperties) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// PhysicalDeviceMemoryPropertiesMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. PhysicalDeviceMemoryPropertiesFreeCSlice must be called on the returned slice.
-func PhysicalDeviceMemoryPropertiesMakeCSlice(x ...PhysicalDeviceMemoryProperties) []PhysicalDeviceMemoryProperties {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofPhysicalDeviceMemoryProperties * len(x)
-	dst := unsafe.Slice((*PhysicalDeviceMemoryProperties)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// MemoryTypeCount returns the value of memoryTypeCount from VkPhysicalDeviceMemoryProperties
-func (x PhysicalDeviceMemoryProperties) MemoryTypeCount() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.memoryTypeCount)
-	return *ptr
-}
-
-// MemoryTypes returns the value of memoryTypes from VkPhysicalDeviceMemoryProperties
-func (x PhysicalDeviceMemoryProperties) MemoryTypes() []MemoryType {
-	ptr := func(x *[VK_MAX_MEMORY_TYPES]C.struct_VkMemoryType) *[]MemoryType { /* Array */
-		slc := unsafe.Slice((*MemoryType)(unsafe.Pointer(x)), VK_MAX_MEMORY_TYPES)
-		return &slc
-	}(&x.memoryTypes)
-	return *ptr
-}
-
-// MemoryHeapCount returns the value of memoryHeapCount from VkPhysicalDeviceMemoryProperties
-func (x PhysicalDeviceMemoryProperties) MemoryHeapCount() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.memoryHeapCount)
-	return *ptr
-}
-
-// MemoryHeaps returns the value of memoryHeaps from VkPhysicalDeviceMemoryProperties
-func (x PhysicalDeviceMemoryProperties) MemoryHeaps() []MemoryHeap {
-	ptr := func(x *[VK_MAX_MEMORY_HEAPS]C.struct_VkMemoryHeap) *[]MemoryHeap { /* Array */
-		slc := unsafe.Slice((*MemoryHeap)(unsafe.Pointer(x)), VK_MAX_MEMORY_HEAPS)
-		return &slc
-	}(&x.memoryHeaps)
-	return *ptr
-}
-
-// PhysicalDeviceLimits provides a go interface for VkPhysicalDeviceLimits.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceLimits.html
-type PhysicalDeviceLimits C.struct_VkPhysicalDeviceLimits
-
-// SizeofPhysicalDeviceLimits is the memory size of a PhysicalDeviceLimits
-var SizeofPhysicalDeviceLimits int = int(unsafe.Sizeof(PhysicalDeviceLimits{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *PhysicalDeviceLimits) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x PhysicalDeviceLimits) AsCPtr() *PhysicalDeviceLimits {
-	clone := (*PhysicalDeviceLimits)(newCBlock(C.ulong(SizeofPhysicalDeviceLimits)))
-	*clone = x
-	return clone
-}
-
-// PhysicalDeviceLimitsFreeCSlice releases the memory allocated by PhysicalDeviceLimitsMakeCSlice.
-// It does not free pointers stored inside the slice.
-func PhysicalDeviceLimitsFreeCSlice(x []PhysicalDeviceLimits) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// PhysicalDeviceLimitsMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. PhysicalDeviceLimitsFreeCSlice must be called on the returned slice.
-func PhysicalDeviceLimitsMakeCSlice(x ...PhysicalDeviceLimits) []PhysicalDeviceLimits {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofPhysicalDeviceLimits * len(x)
-	dst := unsafe.Slice((*PhysicalDeviceLimits)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// MaxImageDimension1D returns the value of maxImageDimension1D from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxImageDimension1D() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxImageDimension1D)
-	return *ptr
-}
-
-// MaxImageDimension2D returns the value of maxImageDimension2D from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxImageDimension2D() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxImageDimension2D)
-	return *ptr
-}
-
-// MaxImageDimension3D returns the value of maxImageDimension3D from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxImageDimension3D() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxImageDimension3D)
-	return *ptr
-}
-
-// MaxImageDimensionCube returns the value of maxImageDimensionCube from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxImageDimensionCube() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxImageDimensionCube)
-	return *ptr
-}
-
-// MaxImageArrayLayers returns the value of maxImageArrayLayers from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxImageArrayLayers() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxImageArrayLayers)
-	return *ptr
-}
-
-// MaxTexelBufferElements returns the value of maxTexelBufferElements from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxTexelBufferElements() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxTexelBufferElements)
-	return *ptr
-}
-
-// MaxUniformBufferRange returns the value of maxUniformBufferRange from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxUniformBufferRange() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxUniformBufferRange)
-	return *ptr
-}
-
-// MaxStorageBufferRange returns the value of maxStorageBufferRange from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxStorageBufferRange() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxStorageBufferRange)
-	return *ptr
-}
-
-// MaxPushConstantsSize returns the value of maxPushConstantsSize from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxPushConstantsSize() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxPushConstantsSize)
-	return *ptr
-}
-
-// MaxMemoryAllocationCount returns the value of maxMemoryAllocationCount from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxMemoryAllocationCount() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxMemoryAllocationCount)
-	return *ptr
-}
-
-// MaxSamplerAllocationCount returns the value of maxSamplerAllocationCount from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxSamplerAllocationCount() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxSamplerAllocationCount)
-	return *ptr
-}
-
-// BufferImageGranularity returns the value of bufferImageGranularity from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) BufferImageGranularity() DeviceSize {
-	ptr := /* typedef */ (*DeviceSize)(&x.bufferImageGranularity)
-	return *ptr
-}
-
-// SparseAddressSpaceSize returns the value of sparseAddressSpaceSize from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) SparseAddressSpaceSize() DeviceSize {
-	ptr := /* typedef */ (*DeviceSize)(&x.sparseAddressSpaceSize)
-	return *ptr
-}
-
-// MaxBoundDescriptorSets returns the value of maxBoundDescriptorSets from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxBoundDescriptorSets() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxBoundDescriptorSets)
-	return *ptr
-}
-
-// MaxPerStageDescriptorSamplers returns the value of maxPerStageDescriptorSamplers from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxPerStageDescriptorSamplers() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxPerStageDescriptorSamplers)
-	return *ptr
-}
-
-// MaxPerStageDescriptorUniformBuffers returns the value of maxPerStageDescriptorUniformBuffers from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxPerStageDescriptorUniformBuffers() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxPerStageDescriptorUniformBuffers)
-	return *ptr
-}
-
-// MaxPerStageDescriptorStorageBuffers returns the value of maxPerStageDescriptorStorageBuffers from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxPerStageDescriptorStorageBuffers() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxPerStageDescriptorStorageBuffers)
-	return *ptr
-}
-
-// MaxPerStageDescriptorSampledImages returns the value of maxPerStageDescriptorSampledImages from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxPerStageDescriptorSampledImages() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxPerStageDescriptorSampledImages)
-	return *ptr
-}
-
-// MaxPerStageDescriptorStorageImages returns the value of maxPerStageDescriptorStorageImages from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxPerStageDescriptorStorageImages() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxPerStageDescriptorStorageImages)
-	return *ptr
-}
-
-// MaxPerStageDescriptorInputAttachments returns the value of maxPerStageDescriptorInputAttachments from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxPerStageDescriptorInputAttachments() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxPerStageDescriptorInputAttachments)
-	return *ptr
-}
-
-// MaxPerStageResources returns the value of maxPerStageResources from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxPerStageResources() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxPerStageResources)
-	return *ptr
-}
-
-// MaxDescriptorSetSamplers returns the value of maxDescriptorSetSamplers from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxDescriptorSetSamplers() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxDescriptorSetSamplers)
-	return *ptr
-}
-
-// MaxDescriptorSetUniformBuffers returns the value of maxDescriptorSetUniformBuffers from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxDescriptorSetUniformBuffers() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxDescriptorSetUniformBuffers)
-	return *ptr
-}
-
-// MaxDescriptorSetUniformBuffersDynamic returns the value of maxDescriptorSetUniformBuffersDynamic from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxDescriptorSetUniformBuffersDynamic() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxDescriptorSetUniformBuffersDynamic)
-	return *ptr
-}
-
-// MaxDescriptorSetStorageBuffers returns the value of maxDescriptorSetStorageBuffers from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxDescriptorSetStorageBuffers() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxDescriptorSetStorageBuffers)
-	return *ptr
-}
-
-// MaxDescriptorSetStorageBuffersDynamic returns the value of maxDescriptorSetStorageBuffersDynamic from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxDescriptorSetStorageBuffersDynamic() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxDescriptorSetStorageBuffersDynamic)
-	return *ptr
-}
-
-// MaxDescriptorSetSampledImages returns the value of maxDescriptorSetSampledImages from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxDescriptorSetSampledImages() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxDescriptorSetSampledImages)
-	return *ptr
-}
-
-// MaxDescriptorSetStorageImages returns the value of maxDescriptorSetStorageImages from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxDescriptorSetStorageImages() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxDescriptorSetStorageImages)
-	return *ptr
-}
-
-// MaxDescriptorSetInputAttachments returns the value of maxDescriptorSetInputAttachments from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxDescriptorSetInputAttachments() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxDescriptorSetInputAttachments)
-	return *ptr
-}
-
-// MaxVertexInputAttributes returns the value of maxVertexInputAttributes from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxVertexInputAttributes() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxVertexInputAttributes)
-	return *ptr
-}
-
-// MaxVertexInputBindings returns the value of maxVertexInputBindings from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxVertexInputBindings() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxVertexInputBindings)
-	return *ptr
-}
-
-// MaxVertexInputAttributeOffset returns the value of maxVertexInputAttributeOffset from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxVertexInputAttributeOffset() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxVertexInputAttributeOffset)
-	return *ptr
-}
-
-// MaxVertexInputBindingStride returns the value of maxVertexInputBindingStride from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxVertexInputBindingStride() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxVertexInputBindingStride)
-	return *ptr
-}
-
-// MaxVertexOutputComponents returns the value of maxVertexOutputComponents from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxVertexOutputComponents() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxVertexOutputComponents)
-	return *ptr
-}
-
-// MaxTessellationGenerationLevel returns the value of maxTessellationGenerationLevel from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxTessellationGenerationLevel() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxTessellationGenerationLevel)
-	return *ptr
-}
-
-// MaxTessellationPatchSize returns the value of maxTessellationPatchSize from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxTessellationPatchSize() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxTessellationPatchSize)
-	return *ptr
-}
-
-// MaxTessellationControlPerVertexInputComponents returns the value of maxTessellationControlPerVertexInputComponents from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxTessellationControlPerVertexInputComponents() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxTessellationControlPerVertexInputComponents)
-	return *ptr
-}
-
-// MaxTessellationControlPerVertexOutputComponents returns the value of maxTessellationControlPerVertexOutputComponents from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxTessellationControlPerVertexOutputComponents() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxTessellationControlPerVertexOutputComponents)
-	return *ptr
-}
-
-// MaxTessellationControlPerPatchOutputComponents returns the value of maxTessellationControlPerPatchOutputComponents from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxTessellationControlPerPatchOutputComponents() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxTessellationControlPerPatchOutputComponents)
-	return *ptr
-}
-
-// MaxTessellationControlTotalOutputComponents returns the value of maxTessellationControlTotalOutputComponents from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxTessellationControlTotalOutputComponents() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxTessellationControlTotalOutputComponents)
-	return *ptr
-}
-
-// MaxTessellationEvaluationInputComponents returns the value of maxTessellationEvaluationInputComponents from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxTessellationEvaluationInputComponents() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxTessellationEvaluationInputComponents)
-	return *ptr
-}
-
-// MaxTessellationEvaluationOutputComponents returns the value of maxTessellationEvaluationOutputComponents from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxTessellationEvaluationOutputComponents() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxTessellationEvaluationOutputComponents)
-	return *ptr
-}
-
-// MaxGeometryShaderInvocations returns the value of maxGeometryShaderInvocations from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxGeometryShaderInvocations() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxGeometryShaderInvocations)
-	return *ptr
-}
-
-// MaxGeometryInputComponents returns the value of maxGeometryInputComponents from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxGeometryInputComponents() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxGeometryInputComponents)
-	return *ptr
-}
-
-// MaxGeometryOutputComponents returns the value of maxGeometryOutputComponents from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxGeometryOutputComponents() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxGeometryOutputComponents)
-	return *ptr
-}
-
-// MaxGeometryOutputVertices returns the value of maxGeometryOutputVertices from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxGeometryOutputVertices() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxGeometryOutputVertices)
-	return *ptr
-}
-
-// MaxGeometryTotalOutputComponents returns the value of maxGeometryTotalOutputComponents from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxGeometryTotalOutputComponents() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxGeometryTotalOutputComponents)
-	return *ptr
-}
-
-// MaxFragmentInputComponents returns the value of maxFragmentInputComponents from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxFragmentInputComponents() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxFragmentInputComponents)
-	return *ptr
-}
-
-// MaxFragmentOutputAttachments returns the value of maxFragmentOutputAttachments from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxFragmentOutputAttachments() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxFragmentOutputAttachments)
-	return *ptr
-}
-
-// MaxFragmentDualSrcAttachments returns the value of maxFragmentDualSrcAttachments from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxFragmentDualSrcAttachments() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxFragmentDualSrcAttachments)
-	return *ptr
-}
-
-// MaxFragmentCombinedOutputResources returns the value of maxFragmentCombinedOutputResources from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxFragmentCombinedOutputResources() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxFragmentCombinedOutputResources)
-	return *ptr
-}
-
-// MaxComputeSharedMemorySize returns the value of maxComputeSharedMemorySize from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxComputeSharedMemorySize() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxComputeSharedMemorySize)
-	return *ptr
-}
-
-// MaxComputeWorkGroupCount returns the value of maxComputeWorkGroupCount from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxComputeWorkGroupCount() []uint32 {
-	ptr := func(x *[3]C.uint32_t) *[]uint32 { /* Array */
-		slc := unsafe.Slice((*uint32)(unsafe.Pointer(x)), 3)
-		return &slc
-	}(&x.maxComputeWorkGroupCount)
-	return *ptr
-}
-
-// MaxComputeWorkGroupInvocations returns the value of maxComputeWorkGroupInvocations from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxComputeWorkGroupInvocations() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxComputeWorkGroupInvocations)
-	return *ptr
-}
-
-// MaxComputeWorkGroupSize returns the value of maxComputeWorkGroupSize from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxComputeWorkGroupSize() []uint32 {
-	ptr := func(x *[3]C.uint32_t) *[]uint32 { /* Array */
-		slc := unsafe.Slice((*uint32)(unsafe.Pointer(x)), 3)
-		return &slc
-	}(&x.maxComputeWorkGroupSize)
-	return *ptr
-}
-
-// SubPixelPrecisionBits returns the value of subPixelPrecisionBits from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) SubPixelPrecisionBits() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.subPixelPrecisionBits)
-	return *ptr
-}
-
-// SubTexelPrecisionBits returns the value of subTexelPrecisionBits from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) SubTexelPrecisionBits() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.subTexelPrecisionBits)
-	return *ptr
-}
-
-// MipmapPrecisionBits returns the value of mipmapPrecisionBits from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MipmapPrecisionBits() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.mipmapPrecisionBits)
-	return *ptr
-}
-
-// MaxDrawIndexedIndexValue returns the value of maxDrawIndexedIndexValue from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxDrawIndexedIndexValue() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxDrawIndexedIndexValue)
-	return *ptr
-}
-
-// MaxDrawIndirectCount returns the value of maxDrawIndirectCount from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxDrawIndirectCount() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxDrawIndirectCount)
-	return *ptr
-}
-
-// MaxSamplerLodBias returns the value of maxSamplerLodBias from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxSamplerLodBias() float32 {
-	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.maxSamplerLodBias)
-	return *ptr
-}
-
-// MaxSamplerAnisotropy returns the value of maxSamplerAnisotropy from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxSamplerAnisotropy() float32 {
-	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.maxSamplerAnisotropy)
-	return *ptr
-}
-
-// MaxViewports returns the value of maxViewports from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxViewports() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxViewports)
-	return *ptr
-}
-
-// MaxViewportDimensions returns the value of maxViewportDimensions from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxViewportDimensions() []uint32 {
-	ptr := func(x *[2]C.uint32_t) *[]uint32 { /* Array */
-		slc := unsafe.Slice((*uint32)(unsafe.Pointer(x)), 2)
-		return &slc
-	}(&x.maxViewportDimensions)
-	return *ptr
-}
-
-// ViewportBoundsRange returns the value of viewportBoundsRange from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) ViewportBoundsRange() []float32 {
-	ptr := func(x *[2]C.float) *[]float32 { /* Array */
-		slc := unsafe.Slice((*float32)(unsafe.Pointer(x)), 2)
-		return &slc
-	}(&x.viewportBoundsRange)
-	return *ptr
-}
-
-// ViewportSubPixelBits returns the value of viewportSubPixelBits from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) ViewportSubPixelBits() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.viewportSubPixelBits)
-	return *ptr
-}
-
-// MinMemoryMapAlignment returns the value of minMemoryMapAlignment from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MinMemoryMapAlignment() uint64 {
-	ptr := func(x *C.size_t) *uint64 { /* Scalar */ c2g := uint64(*x); return &c2g }(&x.minMemoryMapAlignment)
-	return *ptr
-}
-
-// MinTexelBufferOffsetAlignment returns the value of minTexelBufferOffsetAlignment from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MinTexelBufferOffsetAlignment() DeviceSize {
-	ptr := /* typedef */ (*DeviceSize)(&x.minTexelBufferOffsetAlignment)
-	return *ptr
-}
-
-// MinUniformBufferOffsetAlignment returns the value of minUniformBufferOffsetAlignment from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MinUniformBufferOffsetAlignment() DeviceSize {
-	ptr := /* typedef */ (*DeviceSize)(&x.minUniformBufferOffsetAlignment)
-	return *ptr
-}
-
-// MinStorageBufferOffsetAlignment returns the value of minStorageBufferOffsetAlignment from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MinStorageBufferOffsetAlignment() DeviceSize {
-	ptr := /* typedef */ (*DeviceSize)(&x.minStorageBufferOffsetAlignment)
-	return *ptr
-}
-
-// MinTexelOffset returns the value of minTexelOffset from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MinTexelOffset() int32 {
-	ptr := func(x *C.int32_t) *int32 { /* Scalar */ c2g := int32(*x); return &c2g }(&x.minTexelOffset)
-	return *ptr
-}
-
-// MaxTexelOffset returns the value of maxTexelOffset from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxTexelOffset() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxTexelOffset)
-	return *ptr
-}
-
-// MinTexelGatherOffset returns the value of minTexelGatherOffset from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MinTexelGatherOffset() int32 {
-	ptr := func(x *C.int32_t) *int32 { /* Scalar */ c2g := int32(*x); return &c2g }(&x.minTexelGatherOffset)
-	return *ptr
-}
-
-// MaxTexelGatherOffset returns the value of maxTexelGatherOffset from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxTexelGatherOffset() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxTexelGatherOffset)
-	return *ptr
-}
-
-// MinInterpolationOffset returns the value of minInterpolationOffset from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MinInterpolationOffset() float32 {
-	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.minInterpolationOffset)
-	return *ptr
-}
-
-// MaxInterpolationOffset returns the value of maxInterpolationOffset from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxInterpolationOffset() float32 {
-	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.maxInterpolationOffset)
-	return *ptr
-}
-
-// SubPixelInterpolationOffsetBits returns the value of subPixelInterpolationOffsetBits from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) SubPixelInterpolationOffsetBits() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.subPixelInterpolationOffsetBits)
-	return *ptr
-}
-
-// MaxFramebufferWidth returns the value of maxFramebufferWidth from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxFramebufferWidth() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxFramebufferWidth)
-	return *ptr
-}
-
-// MaxFramebufferHeight returns the value of maxFramebufferHeight from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxFramebufferHeight() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxFramebufferHeight)
-	return *ptr
-}
-
-// MaxFramebufferLayers returns the value of maxFramebufferLayers from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxFramebufferLayers() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxFramebufferLayers)
-	return *ptr
-}
-
-// FramebufferColorSampleCounts returns the value of framebufferColorSampleCounts from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) FramebufferColorSampleCounts() SampleCountFlags {
-	ptr := /* typedef */ (*SampleCountFlags)(&x.framebufferColorSampleCounts)
-	return *ptr
-}
-
-// FramebufferDepthSampleCounts returns the value of framebufferDepthSampleCounts from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) FramebufferDepthSampleCounts() SampleCountFlags {
-	ptr := /* typedef */ (*SampleCountFlags)(&x.framebufferDepthSampleCounts)
-	return *ptr
-}
-
-// FramebufferStencilSampleCounts returns the value of framebufferStencilSampleCounts from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) FramebufferStencilSampleCounts() SampleCountFlags {
-	ptr := /* typedef */ (*SampleCountFlags)(&x.framebufferStencilSampleCounts)
-	return *ptr
-}
-
-// FramebufferNoAttachmentsSampleCounts returns the value of framebufferNoAttachmentsSampleCounts from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) FramebufferNoAttachmentsSampleCounts() SampleCountFlags {
-	ptr := /* typedef */ (*SampleCountFlags)(&x.framebufferNoAttachmentsSampleCounts)
-	return *ptr
-}
-
-// MaxColorAttachments returns the value of maxColorAttachments from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxColorAttachments() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxColorAttachments)
-	return *ptr
-}
-
-// SampledImageColorSampleCounts returns the value of sampledImageColorSampleCounts from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) SampledImageColorSampleCounts() SampleCountFlags {
-	ptr := /* typedef */ (*SampleCountFlags)(&x.sampledImageColorSampleCounts)
-	return *ptr
-}
-
-// SampledImageIntegerSampleCounts returns the value of sampledImageIntegerSampleCounts from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) SampledImageIntegerSampleCounts() SampleCountFlags {
-	ptr := /* typedef */ (*SampleCountFlags)(&x.sampledImageIntegerSampleCounts)
-	return *ptr
-}
-
-// SampledImageDepthSampleCounts returns the value of sampledImageDepthSampleCounts from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) SampledImageDepthSampleCounts() SampleCountFlags {
-	ptr := /* typedef */ (*SampleCountFlags)(&x.sampledImageDepthSampleCounts)
-	return *ptr
-}
-
-// SampledImageStencilSampleCounts returns the value of sampledImageStencilSampleCounts from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) SampledImageStencilSampleCounts() SampleCountFlags {
-	ptr := /* typedef */ (*SampleCountFlags)(&x.sampledImageStencilSampleCounts)
-	return *ptr
-}
-
-// StorageImageSampleCounts returns the value of storageImageSampleCounts from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) StorageImageSampleCounts() SampleCountFlags {
-	ptr := /* typedef */ (*SampleCountFlags)(&x.storageImageSampleCounts)
-	return *ptr
-}
-
-// MaxSampleMaskWords returns the value of maxSampleMaskWords from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxSampleMaskWords() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxSampleMaskWords)
-	return *ptr
-}
-
-// TimestampComputeAndGraphics returns the value of timestampComputeAndGraphics from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) TimestampComputeAndGraphics() Bool32 {
-	ptr := /* typedef */ (*Bool32)(&x.timestampComputeAndGraphics)
-	return *ptr
-}
-
-// TimestampPeriod returns the value of timestampPeriod from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) TimestampPeriod() float32 {
-	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.timestampPeriod)
-	return *ptr
-}
-
-// MaxClipDistances returns the value of maxClipDistances from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxClipDistances() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxClipDistances)
-	return *ptr
-}
-
-// MaxCullDistances returns the value of maxCullDistances from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxCullDistances() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxCullDistances)
-	return *ptr
-}
-
-// MaxCombinedClipAndCullDistances returns the value of maxCombinedClipAndCullDistances from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) MaxCombinedClipAndCullDistances() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxCombinedClipAndCullDistances)
-	return *ptr
-}
-
-// DiscreteQueuePriorities returns the value of discreteQueuePriorities from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) DiscreteQueuePriorities() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.discreteQueuePriorities)
-	return *ptr
-}
-
-// PointSizeRange returns the value of pointSizeRange from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) PointSizeRange() []float32 {
-	ptr := func(x *[2]C.float) *[]float32 { /* Array */
-		slc := unsafe.Slice((*float32)(unsafe.Pointer(x)), 2)
-		return &slc
-	}(&x.pointSizeRange)
-	return *ptr
-}
-
-// LineWidthRange returns the value of lineWidthRange from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) LineWidthRange() []float32 {
-	ptr := func(x *[2]C.float) *[]float32 { /* Array */
-		slc := unsafe.Slice((*float32)(unsafe.Pointer(x)), 2)
-		return &slc
-	}(&x.lineWidthRange)
-	return *ptr
-}
-
-// PointSizeGranularity returns the value of pointSizeGranularity from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) PointSizeGranularity() float32 {
-	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.pointSizeGranularity)
-	return *ptr
-}
-
-// LineWidthGranularity returns the value of lineWidthGranularity from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) LineWidthGranularity() float32 {
-	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.lineWidthGranularity)
-	return *ptr
-}
-
-// StrictLines returns the value of strictLines from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) StrictLines() Bool32 {
-	ptr := /* typedef */ (*Bool32)(&x.strictLines)
-	return *ptr
-}
-
-// StandardSampleLocations returns the value of standardSampleLocations from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) StandardSampleLocations() Bool32 {
-	ptr := /* typedef */ (*Bool32)(&x.standardSampleLocations)
-	return *ptr
-}
-
-// OptimalBufferCopyOffsetAlignment returns the value of optimalBufferCopyOffsetAlignment from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) OptimalBufferCopyOffsetAlignment() DeviceSize {
-	ptr := /* typedef */ (*DeviceSize)(&x.optimalBufferCopyOffsetAlignment)
-	return *ptr
-}
-
-// OptimalBufferCopyRowPitchAlignment returns the value of optimalBufferCopyRowPitchAlignment from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) OptimalBufferCopyRowPitchAlignment() DeviceSize {
-	ptr := /* typedef */ (*DeviceSize)(&x.optimalBufferCopyRowPitchAlignment)
-	return *ptr
-}
-
-// NonCoherentAtomSize returns the value of nonCoherentAtomSize from VkPhysicalDeviceLimits
-func (x PhysicalDeviceLimits) NonCoherentAtomSize() DeviceSize {
-	ptr := /* typedef */ (*DeviceSize)(&x.nonCoherentAtomSize)
-	return *ptr
-}
-
-// SpecializationInfo provides a go interface for VkSpecializationInfo.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkSpecializationInfo.html
-type SpecializationInfo C.struct_VkSpecializationInfo
-
-// SizeofSpecializationInfo is the memory size of a SpecializationInfo
-var SizeofSpecializationInfo int = int(unsafe.Sizeof(SpecializationInfo{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *SpecializationInfo) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x SpecializationInfo) AsCPtr() *SpecializationInfo {
-	clone := (*SpecializationInfo)(newCBlock(C.ulong(SizeofSpecializationInfo)))
-	*clone = x
-	return clone
-}
-
-// SpecializationInfoFreeCSlice releases the memory allocated by SpecializationInfoMakeCSlice.
-// It does not free pointers stored inside the slice.
-func SpecializationInfoFreeCSlice(x []SpecializationInfo) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// SpecializationInfoMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. SpecializationInfoFreeCSlice must be called on the returned slice.
-func SpecializationInfoMakeCSlice(x ...SpecializationInfo) []SpecializationInfo {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofSpecializationInfo * len(x)
-	dst := unsafe.Slice((*SpecializationInfo)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// MapEntryCount returns the value of mapEntryCount from VkSpecializationInfo
-func (x SpecializationInfo) MapEntryCount() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.mapEntryCount)
-	return *ptr
-}
-
-// WithMapEntryCount sets the value for the MapEntryCount on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x SpecializationInfo) WithMapEntryCount(y uint32) SpecializationInfo {
-	x.mapEntryCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// PMapEntries returns the value of pMapEntries from VkSpecializationInfo
-func (x SpecializationInfo) PMapEntries() []SpecializationMapEntry {
-	ptr := func(x **C.struct_VkSpecializationMapEntry) *[]SpecializationMapEntry { /* Slice */
-		slc := unsafe.Slice((*SpecializationMapEntry)(unsafe.Pointer(x)), (1 << 31))
-		return &slc
-	}(&x.pMapEntries)
-	return *ptr
-}
-
-// WithPMapEntries sets the value for the PMapEntries on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-//
-// The specification defines MapEntryCount as the length of this field.
-// MapEntryCount is updated with the length of the new value.
-func (x SpecializationInfo) WithPMapEntries(y []SpecializationMapEntry) SpecializationInfo {
-	x.pMapEntries = *(func(x *[]SpecializationMapEntry) **C.struct_VkSpecializationMapEntry { /* Slice */
-		if len(*x) > 0 {
-			slc := (*C.struct_VkSpecializationMapEntry)(unsafe.Pointer(&((*x)[0])))
-			return &slc
-		}
-		var ptr unsafe.Pointer
-		return (**C.struct_VkSpecializationMapEntry)(unsafe.Pointer((&ptr)))
-	}(&y))
-	return x.WithMapEntryCount(uint32(len(y)))
-}
-
-// DataSize returns the value of dataSize from VkSpecializationInfo
-func (x SpecializationInfo) DataSize() uint64 {
-	ptr := func(x *C.size_t) *uint64 { /* Scalar */ c2g := uint64(*x); return &c2g }(&x.dataSize)
-	return *ptr
-}
-
-// WithDataSize sets the value for the DataSize on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x SpecializationInfo) WithDataSize(y uint64) SpecializationInfo {
-	x.dataSize = *(func(x *uint64) *C.size_t { /* Scalar */ g2c := C.size_t(*x); return &g2c }(&y))
-	return x
-}
-
-// PData returns the value of pData from VkSpecializationInfo
-func (x SpecializationInfo) PData() unsafe.Pointer {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pData)
-	return *ptr
-}
-
-// WithPData sets the value for the PData on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x SpecializationInfo) WithPData(y unsafe.Pointer) SpecializationInfo {
-	x.pData = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
-	return x
-}
-
-// SpecializationMapEntry provides a go interface for VkSpecializationMapEntry.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkSpecializationMapEntry.html
-type SpecializationMapEntry C.struct_VkSpecializationMapEntry
-
-// SizeofSpecializationMapEntry is the memory size of a SpecializationMapEntry
-var SizeofSpecializationMapEntry int = int(unsafe.Sizeof(SpecializationMapEntry{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *SpecializationMapEntry) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x SpecializationMapEntry) AsCPtr() *SpecializationMapEntry {
-	clone := (*SpecializationMapEntry)(newCBlock(C.ulong(SizeofSpecializationMapEntry)))
-	*clone = x
-	return clone
-}
-
-// SpecializationMapEntryFreeCSlice releases the memory allocated by SpecializationMapEntryMakeCSlice.
-// It does not free pointers stored inside the slice.
-func SpecializationMapEntryFreeCSlice(x []SpecializationMapEntry) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// SpecializationMapEntryMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. SpecializationMapEntryFreeCSlice must be called on the returned slice.
-func SpecializationMapEntryMakeCSlice(x ...SpecializationMapEntry) []SpecializationMapEntry {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofSpecializationMapEntry * len(x)
-	dst := unsafe.Slice((*SpecializationMapEntry)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// ConstantID returns the value of constantID from VkSpecializationMapEntry
-func (x SpecializationMapEntry) ConstantID() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.constantID)
-	return *ptr
-}
-
-// WithConstantID sets the value for the ConstantID on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x SpecializationMapEntry) WithConstantID(y uint32) SpecializationMapEntry {
-	x.constantID = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// Offset returns the value of offset from VkSpecializationMapEntry
-func (x SpecializationMapEntry) Offset() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.offset)
-	return *ptr
-}
-
-// WithOffset sets the value for the Offset on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x SpecializationMapEntry) WithOffset(y uint32) SpecializationMapEntry {
-	x.offset = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// Size returns the value of size from VkSpecializationMapEntry
-func (x SpecializationMapEntry) Size() uint64 {
-	ptr := func(x *C.size_t) *uint64 { /* Scalar */ c2g := uint64(*x); return &c2g }(&x.size)
-	return *ptr
-}
-
-// WithSize sets the value for the Size on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x SpecializationMapEntry) WithSize(y uint64) SpecializationMapEntry {
-	x.size = *(func(x *uint64) *C.size_t { /* Scalar */ g2c := C.size_t(*x); return &g2c }(&y))
-	return x
 }
 
 // PhysicalDeviceFeatures provides a go interface for VkPhysicalDeviceFeatures.
@@ -17797,600 +16834,1563 @@ func (x PhysicalDeviceFeatures) WithInheritedQueries(y Bool32) PhysicalDeviceFea
 	return x
 }
 
-// StencilOpState provides a go interface for VkStencilOpState.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkStencilOpState.html
-type StencilOpState C.struct_VkStencilOpState
+// DeviceCreateInfo provides a go interface for VkDeviceCreateInfo.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkDeviceCreateInfo.html
+type DeviceCreateInfo C.struct_VkDeviceCreateInfo
 
-// SizeofStencilOpState is the memory size of a StencilOpState
-var SizeofStencilOpState int = int(unsafe.Sizeof(StencilOpState{}))
+// SizeofDeviceCreateInfo is the memory size of a DeviceCreateInfo
+var SizeofDeviceCreateInfo int = int(unsafe.Sizeof(DeviceCreateInfo{}))
 
 // Free releases the memory allocated by AsCPtr.
 // It does not free pointers stored in the structure.
-func (x *StencilOpState) Free() {
+func (x *DeviceCreateInfo) Free() {
 	C.free(unsafe.Pointer(x))
 }
 
 // AsCPtr copies the object to the C heap and returns the pointer.
 // Free must be explicitly called on the returned pointer.
-func (x StencilOpState) AsCPtr() *StencilOpState {
-	clone := (*StencilOpState)(newCBlock(C.ulong(SizeofStencilOpState)))
+func (x DeviceCreateInfo) AsCPtr() *DeviceCreateInfo {
+	clone := (*DeviceCreateInfo)(newCBlock(C.ulong(SizeofDeviceCreateInfo)))
 	*clone = x
 	return clone
 }
 
-// StencilOpStateFreeCSlice releases the memory allocated by StencilOpStateMakeCSlice.
+// DeviceCreateInfoFreeCSlice releases the memory allocated by DeviceCreateInfoMakeCSlice.
 // It does not free pointers stored inside the slice.
-func StencilOpStateFreeCSlice(x []StencilOpState) {
+func DeviceCreateInfoFreeCSlice(x []DeviceCreateInfo) {
 	if len(x) > 0 {
 		C.free(unsafe.Pointer(&x[0]))
 	}
 }
 
-// StencilOpStateMakeCSlice allocates memory for the passed arguments on the C heap,
+// DeviceCreateInfoMakeCSlice allocates memory for the passed arguments on the C heap,
 // copies their values to the allocated memory, and creates a slice around the
-// C memory. StencilOpStateFreeCSlice must be called on the returned slice.
-func StencilOpStateMakeCSlice(x ...StencilOpState) []StencilOpState {
+// C memory. DeviceCreateInfoFreeCSlice must be called on the returned slice.
+func DeviceCreateInfoMakeCSlice(x ...DeviceCreateInfo) []DeviceCreateInfo {
 	if len(x) == 0 {
 		return nil
 	}
-	sz := SizeofStencilOpState * len(x)
-	dst := unsafe.Slice((*StencilOpState)(newCBlock(C.ulong(sz))), len(x))
+	sz := SizeofDeviceCreateInfo * len(x)
+	dst := unsafe.Slice((*DeviceCreateInfo)(newCBlock(C.ulong(sz))), len(x))
 	copy(dst, x)
 	return dst
 }
 
-// FailOp returns the value of failOp from VkStencilOpState
-func (x StencilOpState) FailOp() StencilOp {
-	ptr := /* typedef */ (*StencilOp)(&x.failOp)
+// SType returns the value of sType from VkDeviceCreateInfo
+func (x DeviceCreateInfo) SType() StructureType {
+	ptr := /* typedef */ (*StructureType)(&x.sType)
 	return *ptr
 }
 
-// WithFailOp sets the value for the FailOp on the underlying C structure.
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification. This method only exists if there is a single value in the specification.
+func (x DeviceCreateInfo) WithDefaultSType() DeviceCreateInfo {
+	return x.WithSType(VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO)
+}
+
+// WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x StencilOpState) WithFailOp(y StencilOp) StencilOpState {
-	x.failOp = *( /* typedef */ (*C.VkStencilOp)(&y))
+func (x DeviceCreateInfo) WithSType(y StructureType) DeviceCreateInfo {
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
-// PassOp returns the value of passOp from VkStencilOpState
-func (x StencilOpState) PassOp() StencilOp {
-	ptr := /* typedef */ (*StencilOp)(&x.passOp)
+// PNext returns the value of pNext from VkDeviceCreateInfo
+func (x DeviceCreateInfo) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
 	return *ptr
 }
 
-// WithPassOp sets the value for the PassOp on the underlying C structure.
+// WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x StencilOpState) WithPassOp(y StencilOp) StencilOpState {
-	x.passOp = *( /* typedef */ (*C.VkStencilOp)(&y))
+func (x DeviceCreateInfo) WithPNext(y unsafe.Pointer) DeviceCreateInfo {
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
-// DepthFailOp returns the value of depthFailOp from VkStencilOpState
-func (x StencilOpState) DepthFailOp() StencilOp {
-	ptr := /* typedef */ (*StencilOp)(&x.depthFailOp)
-	return *ptr
-}
-
-// WithDepthFailOp sets the value for the DepthFailOp on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x StencilOpState) WithDepthFailOp(y StencilOp) StencilOpState {
-	x.depthFailOp = *( /* typedef */ (*C.VkStencilOp)(&y))
-	return x
-}
-
-// CompareOp returns the value of compareOp from VkStencilOpState
-func (x StencilOpState) CompareOp() CompareOp {
-	ptr := /* typedef */ (*CompareOp)(&x.compareOp)
-	return *ptr
-}
-
-// WithCompareOp sets the value for the CompareOp on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x StencilOpState) WithCompareOp(y CompareOp) StencilOpState {
-	x.compareOp = *( /* typedef */ (*C.VkCompareOp)(&y))
-	return x
-}
-
-// CompareMask returns the value of compareMask from VkStencilOpState
-func (x StencilOpState) CompareMask() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.compareMask)
-	return *ptr
-}
-
-// WithCompareMask sets the value for the CompareMask on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x StencilOpState) WithCompareMask(y uint32) StencilOpState {
-	x.compareMask = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// WriteMask returns the value of writeMask from VkStencilOpState
-func (x StencilOpState) WriteMask() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.writeMask)
-	return *ptr
-}
-
-// WithWriteMask sets the value for the WriteMask on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x StencilOpState) WithWriteMask(y uint32) StencilOpState {
-	x.writeMask = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// Reference returns the value of reference from VkStencilOpState
-func (x StencilOpState) Reference() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.reference)
-	return *ptr
-}
-
-// WithReference sets the value for the Reference on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x StencilOpState) WithReference(y uint32) StencilOpState {
-	x.reference = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// VertexInputAttributeDescription provides a go interface for VkVertexInputAttributeDescription.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkVertexInputAttributeDescription.html
-type VertexInputAttributeDescription C.struct_VkVertexInputAttributeDescription
-
-// SizeofVertexInputAttributeDescription is the memory size of a VertexInputAttributeDescription
-var SizeofVertexInputAttributeDescription int = int(unsafe.Sizeof(VertexInputAttributeDescription{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *VertexInputAttributeDescription) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x VertexInputAttributeDescription) AsCPtr() *VertexInputAttributeDescription {
-	clone := (*VertexInputAttributeDescription)(newCBlock(C.ulong(SizeofVertexInputAttributeDescription)))
-	*clone = x
-	return clone
-}
-
-// VertexInputAttributeDescriptionFreeCSlice releases the memory allocated by VertexInputAttributeDescriptionMakeCSlice.
-// It does not free pointers stored inside the slice.
-func VertexInputAttributeDescriptionFreeCSlice(x []VertexInputAttributeDescription) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// VertexInputAttributeDescriptionMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. VertexInputAttributeDescriptionFreeCSlice must be called on the returned slice.
-func VertexInputAttributeDescriptionMakeCSlice(x ...VertexInputAttributeDescription) []VertexInputAttributeDescription {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofVertexInputAttributeDescription * len(x)
-	dst := unsafe.Slice((*VertexInputAttributeDescription)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// Location returns the value of location from VkVertexInputAttributeDescription
-func (x VertexInputAttributeDescription) Location() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.location)
-	return *ptr
-}
-
-// WithLocation sets the value for the Location on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x VertexInputAttributeDescription) WithLocation(y uint32) VertexInputAttributeDescription {
-	x.location = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// Binding returns the value of binding from VkVertexInputAttributeDescription
-func (x VertexInputAttributeDescription) Binding() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.binding)
-	return *ptr
-}
-
-// WithBinding sets the value for the Binding on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x VertexInputAttributeDescription) WithBinding(y uint32) VertexInputAttributeDescription {
-	x.binding = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// Format returns the value of format from VkVertexInputAttributeDescription
-func (x VertexInputAttributeDescription) Format() Format {
-	ptr := /* typedef */ (*Format)(&x.format)
-	return *ptr
-}
-
-// WithFormat sets the value for the Format on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x VertexInputAttributeDescription) WithFormat(y Format) VertexInputAttributeDescription {
-	x.format = *( /* typedef */ (*C.VkFormat)(&y))
-	return x
-}
-
-// Offset returns the value of offset from VkVertexInputAttributeDescription
-func (x VertexInputAttributeDescription) Offset() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.offset)
-	return *ptr
-}
-
-// WithOffset sets the value for the Offset on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x VertexInputAttributeDescription) WithOffset(y uint32) VertexInputAttributeDescription {
-	x.offset = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// VertexInputBindingDescription provides a go interface for VkVertexInputBindingDescription.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkVertexInputBindingDescription.html
-type VertexInputBindingDescription C.struct_VkVertexInputBindingDescription
-
-// SizeofVertexInputBindingDescription is the memory size of a VertexInputBindingDescription
-var SizeofVertexInputBindingDescription int = int(unsafe.Sizeof(VertexInputBindingDescription{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *VertexInputBindingDescription) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x VertexInputBindingDescription) AsCPtr() *VertexInputBindingDescription {
-	clone := (*VertexInputBindingDescription)(newCBlock(C.ulong(SizeofVertexInputBindingDescription)))
-	*clone = x
-	return clone
-}
-
-// VertexInputBindingDescriptionFreeCSlice releases the memory allocated by VertexInputBindingDescriptionMakeCSlice.
-// It does not free pointers stored inside the slice.
-func VertexInputBindingDescriptionFreeCSlice(x []VertexInputBindingDescription) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// VertexInputBindingDescriptionMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. VertexInputBindingDescriptionFreeCSlice must be called on the returned slice.
-func VertexInputBindingDescriptionMakeCSlice(x ...VertexInputBindingDescription) []VertexInputBindingDescription {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofVertexInputBindingDescription * len(x)
-	dst := unsafe.Slice((*VertexInputBindingDescription)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// Binding returns the value of binding from VkVertexInputBindingDescription
-func (x VertexInputBindingDescription) Binding() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.binding)
-	return *ptr
-}
-
-// WithBinding sets the value for the Binding on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x VertexInputBindingDescription) WithBinding(y uint32) VertexInputBindingDescription {
-	x.binding = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// Stride returns the value of stride from VkVertexInputBindingDescription
-func (x VertexInputBindingDescription) Stride() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.stride)
-	return *ptr
-}
-
-// WithStride sets the value for the Stride on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x VertexInputBindingDescription) WithStride(y uint32) VertexInputBindingDescription {
-	x.stride = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// InputRate returns the value of inputRate from VkVertexInputBindingDescription
-func (x VertexInputBindingDescription) InputRate() VertexInputRate {
-	ptr := /* typedef */ (*VertexInputRate)(&x.inputRate)
-	return *ptr
-}
-
-// WithInputRate sets the value for the InputRate on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x VertexInputBindingDescription) WithInputRate(y VertexInputRate) VertexInputBindingDescription {
-	x.inputRate = *( /* typedef */ (*C.VkVertexInputRate)(&y))
-	return x
-}
-
-// AttachmentDescription provides a go interface for VkAttachmentDescription.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkAttachmentDescription.html
-type AttachmentDescription C.struct_VkAttachmentDescription
-
-// SizeofAttachmentDescription is the memory size of a AttachmentDescription
-var SizeofAttachmentDescription int = int(unsafe.Sizeof(AttachmentDescription{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *AttachmentDescription) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x AttachmentDescription) AsCPtr() *AttachmentDescription {
-	clone := (*AttachmentDescription)(newCBlock(C.ulong(SizeofAttachmentDescription)))
-	*clone = x
-	return clone
-}
-
-// AttachmentDescriptionFreeCSlice releases the memory allocated by AttachmentDescriptionMakeCSlice.
-// It does not free pointers stored inside the slice.
-func AttachmentDescriptionFreeCSlice(x []AttachmentDescription) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// AttachmentDescriptionMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. AttachmentDescriptionFreeCSlice must be called on the returned slice.
-func AttachmentDescriptionMakeCSlice(x ...AttachmentDescription) []AttachmentDescription {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofAttachmentDescription * len(x)
-	dst := unsafe.Slice((*AttachmentDescription)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// Flags returns the value of flags from VkAttachmentDescription
-func (x AttachmentDescription) Flags() AttachmentDescriptionFlags {
-	ptr := /* typedef */ (*AttachmentDescriptionFlags)(&x.flags)
+// Flags returns the value of flags from VkDeviceCreateInfo
+func (x DeviceCreateInfo) Flags() DeviceCreateFlags {
+	ptr := /* typedef */ (*DeviceCreateFlags)(&x.flags)
 	return *ptr
 }
 
 // WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x AttachmentDescription) WithFlags(y AttachmentDescriptionFlags) AttachmentDescription {
-	x.flags = *( /* typedef */ (*C.VkAttachmentDescriptionFlags)(&y))
+func (x DeviceCreateInfo) WithFlags(y DeviceCreateFlags) DeviceCreateInfo {
+	x.flags = *( /* typedef */ (*C.VkDeviceCreateFlags)(&y))
 	return x
 }
 
-// Format returns the value of format from VkAttachmentDescription
-func (x AttachmentDescription) Format() Format {
-	ptr := /* typedef */ (*Format)(&x.format)
+// QueueCreateInfoCount returns the value of queueCreateInfoCount from VkDeviceCreateInfo
+func (x DeviceCreateInfo) QueueCreateInfoCount() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.queueCreateInfoCount)
 	return *ptr
 }
 
-// WithFormat sets the value for the Format on the underlying C structure.
+// WithQueueCreateInfoCount sets the value for the QueueCreateInfoCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x AttachmentDescription) WithFormat(y Format) AttachmentDescription {
-	x.format = *( /* typedef */ (*C.VkFormat)(&y))
+func (x DeviceCreateInfo) WithQueueCreateInfoCount(y uint32) DeviceCreateInfo {
+	x.queueCreateInfoCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
 	return x
 }
 
-// Samples returns the value of samples from VkAttachmentDescription
-func (x AttachmentDescription) Samples() SampleCountFlagBits {
-	ptr := /* typedef */ (*SampleCountFlagBits)(&x.samples)
+// PQueueCreateInfos returns the value of pQueueCreateInfos from VkDeviceCreateInfo
+func (x DeviceCreateInfo) PQueueCreateInfos() []DeviceQueueCreateInfo {
+	ptr := func(x **C.struct_VkDeviceQueueCreateInfo) *[]DeviceQueueCreateInfo { /* Slice */
+		slc := unsafe.Slice((*DeviceQueueCreateInfo)(unsafe.Pointer(x)), (1 << 31))
+		return &slc
+	}(&x.pQueueCreateInfos)
 	return *ptr
 }
 
-// WithSamples sets the value for the Samples on the underlying C structure.
+// WithPQueueCreateInfos sets the value for the PQueueCreateInfos on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x AttachmentDescription) WithSamples(y SampleCountFlagBits) AttachmentDescription {
-	x.samples = *( /* typedef */ (*C.VkSampleCountFlagBits)(&y))
-	return x
+//
+// The specification defines QueueCreateInfoCount as the length of this field.
+// QueueCreateInfoCount is updated with the length of the new value.
+func (x DeviceCreateInfo) WithPQueueCreateInfos(y []DeviceQueueCreateInfo) DeviceCreateInfo {
+	x.pQueueCreateInfos = *(func(x *[]DeviceQueueCreateInfo) **C.struct_VkDeviceQueueCreateInfo { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.struct_VkDeviceQueueCreateInfo)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.struct_VkDeviceQueueCreateInfo)(unsafe.Pointer((&ptr)))
+	}(&y))
+	return x.WithQueueCreateInfoCount(uint32(len(y)))
 }
 
-// LoadOp returns the value of loadOp from VkAttachmentDescription
-func (x AttachmentDescription) LoadOp() AttachmentLoadOp {
-	ptr := /* typedef */ (*AttachmentLoadOp)(&x.loadOp)
+// EnabledLayerCount returns the value of enabledLayerCount from VkDeviceCreateInfo
+func (x DeviceCreateInfo) EnabledLayerCount() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.enabledLayerCount)
 	return *ptr
 }
 
-// WithLoadOp sets the value for the LoadOp on the underlying C structure.
+// WithEnabledLayerCount sets the value for the EnabledLayerCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x AttachmentDescription) WithLoadOp(y AttachmentLoadOp) AttachmentDescription {
-	x.loadOp = *( /* typedef */ (*C.VkAttachmentLoadOp)(&y))
+func (x DeviceCreateInfo) WithEnabledLayerCount(y uint32) DeviceCreateInfo {
+	x.enabledLayerCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
 	return x
 }
 
-// StoreOp returns the value of storeOp from VkAttachmentDescription
-func (x AttachmentDescription) StoreOp() AttachmentStoreOp {
-	ptr := /* typedef */ (*AttachmentStoreOp)(&x.storeOp)
+// PpEnabledLayerNames returns the value of ppEnabledLayerNames from VkDeviceCreateInfo
+func (x DeviceCreateInfo) PpEnabledLayerNames() []*byte {
+	ptr := func(x ***C.char) *[]*byte { /* Slice */
+		slc := unsafe.Slice((**byte)(unsafe.Pointer(x)), (1 << 31))
+		return &slc
+	}(&x.ppEnabledLayerNames)
 	return *ptr
 }
 
-// WithStoreOp sets the value for the StoreOp on the underlying C structure.
+// WithPpEnabledLayerNames sets the value for the PpEnabledLayerNames on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x AttachmentDescription) WithStoreOp(y AttachmentStoreOp) AttachmentDescription {
-	x.storeOp = *( /* typedef */ (*C.VkAttachmentStoreOp)(&y))
+func (x DeviceCreateInfo) WithPpEnabledLayerNames(y []*byte) DeviceCreateInfo {
+	x.ppEnabledLayerNames = *(func(x *[]*byte) ***C.char { /* Slice */
+		if len(*x) > 0 {
+			slc := (**C.char)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (***C.char)(unsafe.Pointer((&ptr)))
+	}(&y))
 	return x
 }
 
-// StencilLoadOp returns the value of stencilLoadOp from VkAttachmentDescription
-func (x AttachmentDescription) StencilLoadOp() AttachmentLoadOp {
-	ptr := /* typedef */ (*AttachmentLoadOp)(&x.stencilLoadOp)
+// EnabledExtensionCount returns the value of enabledExtensionCount from VkDeviceCreateInfo
+func (x DeviceCreateInfo) EnabledExtensionCount() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.enabledExtensionCount)
 	return *ptr
 }
 
-// WithStencilLoadOp sets the value for the StencilLoadOp on the underlying C structure.
+// WithEnabledExtensionCount sets the value for the EnabledExtensionCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x AttachmentDescription) WithStencilLoadOp(y AttachmentLoadOp) AttachmentDescription {
-	x.stencilLoadOp = *( /* typedef */ (*C.VkAttachmentLoadOp)(&y))
+func (x DeviceCreateInfo) WithEnabledExtensionCount(y uint32) DeviceCreateInfo {
+	x.enabledExtensionCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
 	return x
 }
 
-// StencilStoreOp returns the value of stencilStoreOp from VkAttachmentDescription
-func (x AttachmentDescription) StencilStoreOp() AttachmentStoreOp {
-	ptr := /* typedef */ (*AttachmentStoreOp)(&x.stencilStoreOp)
+// PpEnabledExtensionNames returns the value of ppEnabledExtensionNames from VkDeviceCreateInfo
+func (x DeviceCreateInfo) PpEnabledExtensionNames() []*byte {
+	ptr := func(x ***C.char) *[]*byte { /* Slice */
+		slc := unsafe.Slice((**byte)(unsafe.Pointer(x)), (1 << 31))
+		return &slc
+	}(&x.ppEnabledExtensionNames)
 	return *ptr
 }
 
-// WithStencilStoreOp sets the value for the StencilStoreOp on the underlying C structure.
+// WithPpEnabledExtensionNames sets the value for the PpEnabledExtensionNames on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x AttachmentDescription) WithStencilStoreOp(y AttachmentStoreOp) AttachmentDescription {
-	x.stencilStoreOp = *( /* typedef */ (*C.VkAttachmentStoreOp)(&y))
+func (x DeviceCreateInfo) WithPpEnabledExtensionNames(y []*byte) DeviceCreateInfo {
+	x.ppEnabledExtensionNames = *(func(x *[]*byte) ***C.char { /* Slice */
+		if len(*x) > 0 {
+			slc := (**C.char)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (***C.char)(unsafe.Pointer((&ptr)))
+	}(&y))
 	return x
 }
 
-// InitialLayout returns the value of initialLayout from VkAttachmentDescription
-func (x AttachmentDescription) InitialLayout() ImageLayout {
-	ptr := /* typedef */ (*ImageLayout)(&x.initialLayout)
+// PEnabledFeatures returns the value of pEnabledFeatures from VkDeviceCreateInfo
+func (x DeviceCreateInfo) PEnabledFeatures() *PhysicalDeviceFeatures {
+	ptr := func(x **C.struct_VkPhysicalDeviceFeatures) **PhysicalDeviceFeatures { /* Pointer */
+		c2g := (*PhysicalDeviceFeatures)(*x)
+		return &c2g
+	}(&x.pEnabledFeatures)
 	return *ptr
 }
 
-// WithInitialLayout sets the value for the InitialLayout on the underlying C structure.
+// WithPEnabledFeatures sets the value for the PEnabledFeatures on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x AttachmentDescription) WithInitialLayout(y ImageLayout) AttachmentDescription {
-	x.initialLayout = *( /* typedef */ (*C.VkImageLayout)(&y))
+func (x DeviceCreateInfo) WithPEnabledFeatures(y *PhysicalDeviceFeatures) DeviceCreateInfo {
+	x.pEnabledFeatures = *(func(x **PhysicalDeviceFeatures) **C.struct_VkPhysicalDeviceFeatures { /* Pointer */
+		g2c := (*C.struct_VkPhysicalDeviceFeatures)(*x)
+		return &g2c
+	}(&y))
 	return x
 }
 
-// FinalLayout returns the value of finalLayout from VkAttachmentDescription
-func (x AttachmentDescription) FinalLayout() ImageLayout {
-	ptr := /* typedef */ (*ImageLayout)(&x.finalLayout)
-	return *ptr
-}
+// DescriptorSetAllocateInfo provides a go interface for VkDescriptorSetAllocateInfo.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkDescriptorSetAllocateInfo.html
+type DescriptorSetAllocateInfo C.struct_VkDescriptorSetAllocateInfo
 
-// WithFinalLayout sets the value for the FinalLayout on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x AttachmentDescription) WithFinalLayout(y ImageLayout) AttachmentDescription {
-	x.finalLayout = *( /* typedef */ (*C.VkImageLayout)(&y))
-	return x
-}
-
-// Viewport provides a go interface for VkViewport.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkViewport.html
-type Viewport C.struct_VkViewport
-
-// SizeofViewport is the memory size of a Viewport
-var SizeofViewport int = int(unsafe.Sizeof(Viewport{}))
+// SizeofDescriptorSetAllocateInfo is the memory size of a DescriptorSetAllocateInfo
+var SizeofDescriptorSetAllocateInfo int = int(unsafe.Sizeof(DescriptorSetAllocateInfo{}))
 
 // Free releases the memory allocated by AsCPtr.
 // It does not free pointers stored in the structure.
-func (x *Viewport) Free() {
+func (x *DescriptorSetAllocateInfo) Free() {
 	C.free(unsafe.Pointer(x))
 }
 
 // AsCPtr copies the object to the C heap and returns the pointer.
 // Free must be explicitly called on the returned pointer.
-func (x Viewport) AsCPtr() *Viewport {
-	clone := (*Viewport)(newCBlock(C.ulong(SizeofViewport)))
+func (x DescriptorSetAllocateInfo) AsCPtr() *DescriptorSetAllocateInfo {
+	clone := (*DescriptorSetAllocateInfo)(newCBlock(C.ulong(SizeofDescriptorSetAllocateInfo)))
 	*clone = x
 	return clone
 }
 
-// ViewportFreeCSlice releases the memory allocated by ViewportMakeCSlice.
+// DescriptorSetAllocateInfoFreeCSlice releases the memory allocated by DescriptorSetAllocateInfoMakeCSlice.
 // It does not free pointers stored inside the slice.
-func ViewportFreeCSlice(x []Viewport) {
+func DescriptorSetAllocateInfoFreeCSlice(x []DescriptorSetAllocateInfo) {
 	if len(x) > 0 {
 		C.free(unsafe.Pointer(&x[0]))
 	}
 }
 
-// ViewportMakeCSlice allocates memory for the passed arguments on the C heap,
+// DescriptorSetAllocateInfoMakeCSlice allocates memory for the passed arguments on the C heap,
 // copies their values to the allocated memory, and creates a slice around the
-// C memory. ViewportFreeCSlice must be called on the returned slice.
-func ViewportMakeCSlice(x ...Viewport) []Viewport {
+// C memory. DescriptorSetAllocateInfoFreeCSlice must be called on the returned slice.
+func DescriptorSetAllocateInfoMakeCSlice(x ...DescriptorSetAllocateInfo) []DescriptorSetAllocateInfo {
 	if len(x) == 0 {
 		return nil
 	}
-	sz := SizeofViewport * len(x)
-	dst := unsafe.Slice((*Viewport)(newCBlock(C.ulong(sz))), len(x))
+	sz := SizeofDescriptorSetAllocateInfo * len(x)
+	dst := unsafe.Slice((*DescriptorSetAllocateInfo)(newCBlock(C.ulong(sz))), len(x))
 	copy(dst, x)
 	return dst
 }
 
-// X returns the value of x from VkViewport
-func (x Viewport) X() float32 {
-	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.x)
+// SType returns the value of sType from VkDescriptorSetAllocateInfo
+func (x DescriptorSetAllocateInfo) SType() StructureType {
+	ptr := /* typedef */ (*StructureType)(&x.sType)
 	return *ptr
 }
 
-// WithX sets the value for the X on the underlying C structure.
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification. This method only exists if there is a single value in the specification.
+func (x DescriptorSetAllocateInfo) WithDefaultSType() DescriptorSetAllocateInfo {
+	return x.WithSType(VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO)
+}
+
+// WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x Viewport) WithX(y float32) Viewport {
-	x.x = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
+func (x DescriptorSetAllocateInfo) WithSType(y StructureType) DescriptorSetAllocateInfo {
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
-// Y returns the value of y from VkViewport
-func (x Viewport) Y() float32 {
-	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.y)
+// PNext returns the value of pNext from VkDescriptorSetAllocateInfo
+func (x DescriptorSetAllocateInfo) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
 	return *ptr
 }
 
-// WithY sets the value for the Y on the underlying C structure.
+// WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x Viewport) WithY(y float32) Viewport {
-	x.y = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
+func (x DescriptorSetAllocateInfo) WithPNext(y unsafe.Pointer) DescriptorSetAllocateInfo {
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
-// Width returns the value of width from VkViewport
-func (x Viewport) Width() float32 {
-	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.width)
+// DescriptorPool returns the value of descriptorPool from VkDescriptorSetAllocateInfo
+func (x DescriptorSetAllocateInfo) DescriptorPool() DescriptorPool {
+	ptr := /* handle */ (*DescriptorPool)(&x.descriptorPool)
 	return *ptr
 }
 
-// WithWidth sets the value for the Width on the underlying C structure.
+// WithDescriptorPool sets the value for the DescriptorPool on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x Viewport) WithWidth(y float32) Viewport {
-	x.width = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
+func (x DescriptorSetAllocateInfo) WithDescriptorPool(y DescriptorPool) DescriptorSetAllocateInfo {
+	x.descriptorPool = *( /* handle */ (*C.VkDescriptorPool)(&y))
 	return x
 }
 
-// Height returns the value of height from VkViewport
-func (x Viewport) Height() float32 {
-	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.height)
+// DescriptorSetCount returns the value of descriptorSetCount from VkDescriptorSetAllocateInfo
+func (x DescriptorSetAllocateInfo) DescriptorSetCount() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.descriptorSetCount)
 	return *ptr
 }
 
-// WithHeight sets the value for the Height on the underlying C structure.
+// WithDescriptorSetCount sets the value for the DescriptorSetCount on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x Viewport) WithHeight(y float32) Viewport {
-	x.height = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
+func (x DescriptorSetAllocateInfo) WithDescriptorSetCount(y uint32) DescriptorSetAllocateInfo {
+	x.descriptorSetCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
 	return x
 }
 
-// MinDepth returns the value of minDepth from VkViewport
-func (x Viewport) MinDepth() float32 {
-	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.minDepth)
+// PSetLayouts returns the value of pSetLayouts from VkDescriptorSetAllocateInfo
+func (x DescriptorSetAllocateInfo) PSetLayouts() []DescriptorSetLayout {
+	ptr := func(x **C.VkDescriptorSetLayout) *[]DescriptorSetLayout { /* Slice */
+		slc := unsafe.Slice((*DescriptorSetLayout)(unsafe.Pointer(x)), (1 << 31))
+		return &slc
+	}(&x.pSetLayouts)
 	return *ptr
 }
 
-// WithMinDepth sets the value for the MinDepth on the underlying C structure.
+// WithPSetLayouts sets the value for the PSetLayouts on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x Viewport) WithMinDepth(y float32) Viewport {
-	x.minDepth = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
-	return x
+//
+// The specification defines DescriptorSetCount as the length of this field.
+// DescriptorSetCount is updated with the length of the new value.
+func (x DescriptorSetAllocateInfo) WithPSetLayouts(y []DescriptorSetLayout) DescriptorSetAllocateInfo {
+	x.pSetLayouts = *(func(x *[]DescriptorSetLayout) **C.VkDescriptorSetLayout { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.VkDescriptorSetLayout)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.VkDescriptorSetLayout)(unsafe.Pointer((&ptr)))
+	}(&y))
+	return x.WithDescriptorSetCount(uint32(len(y)))
 }
 
-// MaxDepth returns the value of maxDepth from VkViewport
-func (x Viewport) MaxDepth() float32 {
-	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.maxDepth)
+// DescriptorPoolSize provides a go interface for VkDescriptorPoolSize.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkDescriptorPoolSize.html
+type DescriptorPoolSize C.struct_VkDescriptorPoolSize
+
+// SizeofDescriptorPoolSize is the memory size of a DescriptorPoolSize
+var SizeofDescriptorPoolSize int = int(unsafe.Sizeof(DescriptorPoolSize{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *DescriptorPoolSize) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x DescriptorPoolSize) AsCPtr() *DescriptorPoolSize {
+	clone := (*DescriptorPoolSize)(newCBlock(C.ulong(SizeofDescriptorPoolSize)))
+	*clone = x
+	return clone
+}
+
+// DescriptorPoolSizeFreeCSlice releases the memory allocated by DescriptorPoolSizeMakeCSlice.
+// It does not free pointers stored inside the slice.
+func DescriptorPoolSizeFreeCSlice(x []DescriptorPoolSize) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// DescriptorPoolSizeMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. DescriptorPoolSizeFreeCSlice must be called on the returned slice.
+func DescriptorPoolSizeMakeCSlice(x ...DescriptorPoolSize) []DescriptorPoolSize {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofDescriptorPoolSize * len(x)
+	dst := unsafe.Slice((*DescriptorPoolSize)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// Type_ returns the value of type from VkDescriptorPoolSize
+func (x DescriptorPoolSize) Type_() DescriptorType {
+	ptr := /* typedef */ (*DescriptorType)(&x._type)
 	return *ptr
 }
 
-// WithMaxDepth sets the value for the MaxDepth on the underlying C structure.
+// WithType_ sets the value for the Type_ on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x Viewport) WithMaxDepth(y float32) Viewport {
-	x.maxDepth = *(func(x *float32) *C.float { /* Scalar */ g2c := C.float(*x); return &g2c }(&y))
+func (x DescriptorPoolSize) WithType_(y DescriptorType) DescriptorPoolSize {
+	x._type = *( /* typedef */ (*C.VkDescriptorType)(&y))
 	return x
 }
 
-// ClearColorValue union
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkClearColorValue.html
-type ClearColorValue C.VkClearColorValue
+// DescriptorCount returns the value of descriptorCount from VkDescriptorPoolSize
+func (x DescriptorPoolSize) DescriptorCount() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.descriptorCount)
+	return *ptr
+}
 
-// ClearValue union
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkClearValue.html
-type ClearValue C.VkClearValue
+// WithDescriptorCount sets the value for the DescriptorCount on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x DescriptorPoolSize) WithDescriptorCount(y uint32) DescriptorPoolSize {
+	x.descriptorCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// DescriptorPoolCreateInfo provides a go interface for VkDescriptorPoolCreateInfo.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkDescriptorPoolCreateInfo.html
+type DescriptorPoolCreateInfo C.struct_VkDescriptorPoolCreateInfo
+
+// SizeofDescriptorPoolCreateInfo is the memory size of a DescriptorPoolCreateInfo
+var SizeofDescriptorPoolCreateInfo int = int(unsafe.Sizeof(DescriptorPoolCreateInfo{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *DescriptorPoolCreateInfo) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x DescriptorPoolCreateInfo) AsCPtr() *DescriptorPoolCreateInfo {
+	clone := (*DescriptorPoolCreateInfo)(newCBlock(C.ulong(SizeofDescriptorPoolCreateInfo)))
+	*clone = x
+	return clone
+}
+
+// DescriptorPoolCreateInfoFreeCSlice releases the memory allocated by DescriptorPoolCreateInfoMakeCSlice.
+// It does not free pointers stored inside the slice.
+func DescriptorPoolCreateInfoFreeCSlice(x []DescriptorPoolCreateInfo) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// DescriptorPoolCreateInfoMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. DescriptorPoolCreateInfoFreeCSlice must be called on the returned slice.
+func DescriptorPoolCreateInfoMakeCSlice(x ...DescriptorPoolCreateInfo) []DescriptorPoolCreateInfo {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofDescriptorPoolCreateInfo * len(x)
+	dst := unsafe.Slice((*DescriptorPoolCreateInfo)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// SType returns the value of sType from VkDescriptorPoolCreateInfo
+func (x DescriptorPoolCreateInfo) SType() StructureType {
+	ptr := /* typedef */ (*StructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification. This method only exists if there is a single value in the specification.
+func (x DescriptorPoolCreateInfo) WithDefaultSType() DescriptorPoolCreateInfo {
+	return x.WithSType(VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO)
+}
+
+// WithSType sets the value for the SType on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x DescriptorPoolCreateInfo) WithSType(y StructureType) DescriptorPoolCreateInfo {
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
+	return x
+}
+
+// PNext returns the value of pNext from VkDescriptorPoolCreateInfo
+func (x DescriptorPoolCreateInfo) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext sets the value for the PNext on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x DescriptorPoolCreateInfo) WithPNext(y unsafe.Pointer) DescriptorPoolCreateInfo {
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
+	return x
+}
+
+// Flags returns the value of flags from VkDescriptorPoolCreateInfo
+func (x DescriptorPoolCreateInfo) Flags() DescriptorPoolCreateFlags {
+	ptr := /* typedef */ (*DescriptorPoolCreateFlags)(&x.flags)
+	return *ptr
+}
+
+// WithFlags sets the value for the Flags on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x DescriptorPoolCreateInfo) WithFlags(y DescriptorPoolCreateFlags) DescriptorPoolCreateInfo {
+	x.flags = *( /* typedef */ (*C.VkDescriptorPoolCreateFlags)(&y))
+	return x
+}
+
+// MaxSets returns the value of maxSets from VkDescriptorPoolCreateInfo
+func (x DescriptorPoolCreateInfo) MaxSets() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxSets)
+	return *ptr
+}
+
+// WithMaxSets sets the value for the MaxSets on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x DescriptorPoolCreateInfo) WithMaxSets(y uint32) DescriptorPoolCreateInfo {
+	x.maxSets = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// PoolSizeCount returns the value of poolSizeCount from VkDescriptorPoolCreateInfo
+func (x DescriptorPoolCreateInfo) PoolSizeCount() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.poolSizeCount)
+	return *ptr
+}
+
+// WithPoolSizeCount sets the value for the PoolSizeCount on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x DescriptorPoolCreateInfo) WithPoolSizeCount(y uint32) DescriptorPoolCreateInfo {
+	x.poolSizeCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// PPoolSizes returns the value of pPoolSizes from VkDescriptorPoolCreateInfo
+func (x DescriptorPoolCreateInfo) PPoolSizes() []DescriptorPoolSize {
+	ptr := func(x **C.struct_VkDescriptorPoolSize) *[]DescriptorPoolSize { /* Slice */
+		slc := unsafe.Slice((*DescriptorPoolSize)(unsafe.Pointer(x)), (1 << 31))
+		return &slc
+	}(&x.pPoolSizes)
+	return *ptr
+}
+
+// WithPPoolSizes sets the value for the PPoolSizes on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+//
+// The specification defines PoolSizeCount as the length of this field.
+// PoolSizeCount is updated with the length of the new value.
+func (x DescriptorPoolCreateInfo) WithPPoolSizes(y []DescriptorPoolSize) DescriptorPoolCreateInfo {
+	x.pPoolSizes = *(func(x *[]DescriptorPoolSize) **C.struct_VkDescriptorPoolSize { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.struct_VkDescriptorPoolSize)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.struct_VkDescriptorPoolSize)(unsafe.Pointer((&ptr)))
+	}(&y))
+	return x.WithPoolSizeCount(uint32(len(y)))
+}
+
+// QueueFamilyProperties provides a go interface for VkQueueFamilyProperties.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkQueueFamilyProperties.html
+type QueueFamilyProperties C.struct_VkQueueFamilyProperties
+
+// SizeofQueueFamilyProperties is the memory size of a QueueFamilyProperties
+var SizeofQueueFamilyProperties int = int(unsafe.Sizeof(QueueFamilyProperties{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *QueueFamilyProperties) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x QueueFamilyProperties) AsCPtr() *QueueFamilyProperties {
+	clone := (*QueueFamilyProperties)(newCBlock(C.ulong(SizeofQueueFamilyProperties)))
+	*clone = x
+	return clone
+}
+
+// QueueFamilyPropertiesFreeCSlice releases the memory allocated by QueueFamilyPropertiesMakeCSlice.
+// It does not free pointers stored inside the slice.
+func QueueFamilyPropertiesFreeCSlice(x []QueueFamilyProperties) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// QueueFamilyPropertiesMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. QueueFamilyPropertiesFreeCSlice must be called on the returned slice.
+func QueueFamilyPropertiesMakeCSlice(x ...QueueFamilyProperties) []QueueFamilyProperties {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofQueueFamilyProperties * len(x)
+	dst := unsafe.Slice((*QueueFamilyProperties)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// QueueFlags returns the value of queueFlags from VkQueueFamilyProperties
+func (x QueueFamilyProperties) QueueFlags() QueueFlags {
+	ptr := /* typedef */ (*QueueFlags)(&x.queueFlags)
+	return *ptr
+}
+
+// QueueCount returns the value of queueCount from VkQueueFamilyProperties
+func (x QueueFamilyProperties) QueueCount() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.queueCount)
+	return *ptr
+}
+
+// TimestampValidBits returns the value of timestampValidBits from VkQueueFamilyProperties
+func (x QueueFamilyProperties) TimestampValidBits() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.timestampValidBits)
+	return *ptr
+}
+
+// MinImageTransferGranularity returns the value of minImageTransferGranularity from VkQueueFamilyProperties
+func (x QueueFamilyProperties) MinImageTransferGranularity() Extent3D {
+	ptr := /* typedef */ (*Extent3D)(&x.minImageTransferGranularity)
+	return *ptr
+}
+
+// PhysicalDeviceSparseProperties provides a go interface for VkPhysicalDeviceSparseProperties.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceSparseProperties.html
+type PhysicalDeviceSparseProperties C.struct_VkPhysicalDeviceSparseProperties
+
+// SizeofPhysicalDeviceSparseProperties is the memory size of a PhysicalDeviceSparseProperties
+var SizeofPhysicalDeviceSparseProperties int = int(unsafe.Sizeof(PhysicalDeviceSparseProperties{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *PhysicalDeviceSparseProperties) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x PhysicalDeviceSparseProperties) AsCPtr() *PhysicalDeviceSparseProperties {
+	clone := (*PhysicalDeviceSparseProperties)(newCBlock(C.ulong(SizeofPhysicalDeviceSparseProperties)))
+	*clone = x
+	return clone
+}
+
+// PhysicalDeviceSparsePropertiesFreeCSlice releases the memory allocated by PhysicalDeviceSparsePropertiesMakeCSlice.
+// It does not free pointers stored inside the slice.
+func PhysicalDeviceSparsePropertiesFreeCSlice(x []PhysicalDeviceSparseProperties) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// PhysicalDeviceSparsePropertiesMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. PhysicalDeviceSparsePropertiesFreeCSlice must be called on the returned slice.
+func PhysicalDeviceSparsePropertiesMakeCSlice(x ...PhysicalDeviceSparseProperties) []PhysicalDeviceSparseProperties {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofPhysicalDeviceSparseProperties * len(x)
+	dst := unsafe.Slice((*PhysicalDeviceSparseProperties)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// ResidencyStandard2DBlockShape returns the value of residencyStandard2DBlockShape from VkPhysicalDeviceSparseProperties
+func (x PhysicalDeviceSparseProperties) ResidencyStandard2DBlockShape() Bool32 {
+	ptr := /* typedef */ (*Bool32)(&x.residencyStandard2DBlockShape)
+	return *ptr
+}
+
+// ResidencyStandard2DMultisampleBlockShape returns the value of residencyStandard2DMultisampleBlockShape from VkPhysicalDeviceSparseProperties
+func (x PhysicalDeviceSparseProperties) ResidencyStandard2DMultisampleBlockShape() Bool32 {
+	ptr := /* typedef */ (*Bool32)(&x.residencyStandard2DMultisampleBlockShape)
+	return *ptr
+}
+
+// ResidencyStandard3DBlockShape returns the value of residencyStandard3DBlockShape from VkPhysicalDeviceSparseProperties
+func (x PhysicalDeviceSparseProperties) ResidencyStandard3DBlockShape() Bool32 {
+	ptr := /* typedef */ (*Bool32)(&x.residencyStandard3DBlockShape)
+	return *ptr
+}
+
+// ResidencyAlignedMipSize returns the value of residencyAlignedMipSize from VkPhysicalDeviceSparseProperties
+func (x PhysicalDeviceSparseProperties) ResidencyAlignedMipSize() Bool32 {
+	ptr := /* typedef */ (*Bool32)(&x.residencyAlignedMipSize)
+	return *ptr
+}
+
+// ResidencyNonResidentStrict returns the value of residencyNonResidentStrict from VkPhysicalDeviceSparseProperties
+func (x PhysicalDeviceSparseProperties) ResidencyNonResidentStrict() Bool32 {
+	ptr := /* typedef */ (*Bool32)(&x.residencyNonResidentStrict)
+	return *ptr
+}
+
+// PhysicalDeviceLimits provides a go interface for VkPhysicalDeviceLimits.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceLimits.html
+type PhysicalDeviceLimits C.struct_VkPhysicalDeviceLimits
+
+// SizeofPhysicalDeviceLimits is the memory size of a PhysicalDeviceLimits
+var SizeofPhysicalDeviceLimits int = int(unsafe.Sizeof(PhysicalDeviceLimits{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *PhysicalDeviceLimits) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x PhysicalDeviceLimits) AsCPtr() *PhysicalDeviceLimits {
+	clone := (*PhysicalDeviceLimits)(newCBlock(C.ulong(SizeofPhysicalDeviceLimits)))
+	*clone = x
+	return clone
+}
+
+// PhysicalDeviceLimitsFreeCSlice releases the memory allocated by PhysicalDeviceLimitsMakeCSlice.
+// It does not free pointers stored inside the slice.
+func PhysicalDeviceLimitsFreeCSlice(x []PhysicalDeviceLimits) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// PhysicalDeviceLimitsMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. PhysicalDeviceLimitsFreeCSlice must be called on the returned slice.
+func PhysicalDeviceLimitsMakeCSlice(x ...PhysicalDeviceLimits) []PhysicalDeviceLimits {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofPhysicalDeviceLimits * len(x)
+	dst := unsafe.Slice((*PhysicalDeviceLimits)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// MaxImageDimension1D returns the value of maxImageDimension1D from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxImageDimension1D() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxImageDimension1D)
+	return *ptr
+}
+
+// MaxImageDimension2D returns the value of maxImageDimension2D from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxImageDimension2D() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxImageDimension2D)
+	return *ptr
+}
+
+// MaxImageDimension3D returns the value of maxImageDimension3D from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxImageDimension3D() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxImageDimension3D)
+	return *ptr
+}
+
+// MaxImageDimensionCube returns the value of maxImageDimensionCube from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxImageDimensionCube() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxImageDimensionCube)
+	return *ptr
+}
+
+// MaxImageArrayLayers returns the value of maxImageArrayLayers from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxImageArrayLayers() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxImageArrayLayers)
+	return *ptr
+}
+
+// MaxTexelBufferElements returns the value of maxTexelBufferElements from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxTexelBufferElements() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxTexelBufferElements)
+	return *ptr
+}
+
+// MaxUniformBufferRange returns the value of maxUniformBufferRange from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxUniformBufferRange() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxUniformBufferRange)
+	return *ptr
+}
+
+// MaxStorageBufferRange returns the value of maxStorageBufferRange from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxStorageBufferRange() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxStorageBufferRange)
+	return *ptr
+}
+
+// MaxPushConstantsSize returns the value of maxPushConstantsSize from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxPushConstantsSize() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxPushConstantsSize)
+	return *ptr
+}
+
+// MaxMemoryAllocationCount returns the value of maxMemoryAllocationCount from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxMemoryAllocationCount() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxMemoryAllocationCount)
+	return *ptr
+}
+
+// MaxSamplerAllocationCount returns the value of maxSamplerAllocationCount from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxSamplerAllocationCount() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxSamplerAllocationCount)
+	return *ptr
+}
+
+// BufferImageGranularity returns the value of bufferImageGranularity from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) BufferImageGranularity() DeviceSize {
+	ptr := /* typedef */ (*DeviceSize)(&x.bufferImageGranularity)
+	return *ptr
+}
+
+// SparseAddressSpaceSize returns the value of sparseAddressSpaceSize from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) SparseAddressSpaceSize() DeviceSize {
+	ptr := /* typedef */ (*DeviceSize)(&x.sparseAddressSpaceSize)
+	return *ptr
+}
+
+// MaxBoundDescriptorSets returns the value of maxBoundDescriptorSets from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxBoundDescriptorSets() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxBoundDescriptorSets)
+	return *ptr
+}
+
+// MaxPerStageDescriptorSamplers returns the value of maxPerStageDescriptorSamplers from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxPerStageDescriptorSamplers() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxPerStageDescriptorSamplers)
+	return *ptr
+}
+
+// MaxPerStageDescriptorUniformBuffers returns the value of maxPerStageDescriptorUniformBuffers from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxPerStageDescriptorUniformBuffers() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxPerStageDescriptorUniformBuffers)
+	return *ptr
+}
+
+// MaxPerStageDescriptorStorageBuffers returns the value of maxPerStageDescriptorStorageBuffers from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxPerStageDescriptorStorageBuffers() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxPerStageDescriptorStorageBuffers)
+	return *ptr
+}
+
+// MaxPerStageDescriptorSampledImages returns the value of maxPerStageDescriptorSampledImages from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxPerStageDescriptorSampledImages() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxPerStageDescriptorSampledImages)
+	return *ptr
+}
+
+// MaxPerStageDescriptorStorageImages returns the value of maxPerStageDescriptorStorageImages from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxPerStageDescriptorStorageImages() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxPerStageDescriptorStorageImages)
+	return *ptr
+}
+
+// MaxPerStageDescriptorInputAttachments returns the value of maxPerStageDescriptorInputAttachments from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxPerStageDescriptorInputAttachments() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxPerStageDescriptorInputAttachments)
+	return *ptr
+}
+
+// MaxPerStageResources returns the value of maxPerStageResources from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxPerStageResources() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxPerStageResources)
+	return *ptr
+}
+
+// MaxDescriptorSetSamplers returns the value of maxDescriptorSetSamplers from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxDescriptorSetSamplers() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxDescriptorSetSamplers)
+	return *ptr
+}
+
+// MaxDescriptorSetUniformBuffers returns the value of maxDescriptorSetUniformBuffers from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxDescriptorSetUniformBuffers() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxDescriptorSetUniformBuffers)
+	return *ptr
+}
+
+// MaxDescriptorSetUniformBuffersDynamic returns the value of maxDescriptorSetUniformBuffersDynamic from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxDescriptorSetUniformBuffersDynamic() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxDescriptorSetUniformBuffersDynamic)
+	return *ptr
+}
+
+// MaxDescriptorSetStorageBuffers returns the value of maxDescriptorSetStorageBuffers from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxDescriptorSetStorageBuffers() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxDescriptorSetStorageBuffers)
+	return *ptr
+}
+
+// MaxDescriptorSetStorageBuffersDynamic returns the value of maxDescriptorSetStorageBuffersDynamic from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxDescriptorSetStorageBuffersDynamic() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxDescriptorSetStorageBuffersDynamic)
+	return *ptr
+}
+
+// MaxDescriptorSetSampledImages returns the value of maxDescriptorSetSampledImages from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxDescriptorSetSampledImages() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxDescriptorSetSampledImages)
+	return *ptr
+}
+
+// MaxDescriptorSetStorageImages returns the value of maxDescriptorSetStorageImages from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxDescriptorSetStorageImages() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxDescriptorSetStorageImages)
+	return *ptr
+}
+
+// MaxDescriptorSetInputAttachments returns the value of maxDescriptorSetInputAttachments from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxDescriptorSetInputAttachments() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxDescriptorSetInputAttachments)
+	return *ptr
+}
+
+// MaxVertexInputAttributes returns the value of maxVertexInputAttributes from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxVertexInputAttributes() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxVertexInputAttributes)
+	return *ptr
+}
+
+// MaxVertexInputBindings returns the value of maxVertexInputBindings from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxVertexInputBindings() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxVertexInputBindings)
+	return *ptr
+}
+
+// MaxVertexInputAttributeOffset returns the value of maxVertexInputAttributeOffset from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxVertexInputAttributeOffset() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxVertexInputAttributeOffset)
+	return *ptr
+}
+
+// MaxVertexInputBindingStride returns the value of maxVertexInputBindingStride from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxVertexInputBindingStride() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxVertexInputBindingStride)
+	return *ptr
+}
+
+// MaxVertexOutputComponents returns the value of maxVertexOutputComponents from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxVertexOutputComponents() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxVertexOutputComponents)
+	return *ptr
+}
+
+// MaxTessellationGenerationLevel returns the value of maxTessellationGenerationLevel from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxTessellationGenerationLevel() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxTessellationGenerationLevel)
+	return *ptr
+}
+
+// MaxTessellationPatchSize returns the value of maxTessellationPatchSize from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxTessellationPatchSize() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxTessellationPatchSize)
+	return *ptr
+}
+
+// MaxTessellationControlPerVertexInputComponents returns the value of maxTessellationControlPerVertexInputComponents from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxTessellationControlPerVertexInputComponents() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxTessellationControlPerVertexInputComponents)
+	return *ptr
+}
+
+// MaxTessellationControlPerVertexOutputComponents returns the value of maxTessellationControlPerVertexOutputComponents from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxTessellationControlPerVertexOutputComponents() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxTessellationControlPerVertexOutputComponents)
+	return *ptr
+}
+
+// MaxTessellationControlPerPatchOutputComponents returns the value of maxTessellationControlPerPatchOutputComponents from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxTessellationControlPerPatchOutputComponents() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxTessellationControlPerPatchOutputComponents)
+	return *ptr
+}
+
+// MaxTessellationControlTotalOutputComponents returns the value of maxTessellationControlTotalOutputComponents from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxTessellationControlTotalOutputComponents() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxTessellationControlTotalOutputComponents)
+	return *ptr
+}
+
+// MaxTessellationEvaluationInputComponents returns the value of maxTessellationEvaluationInputComponents from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxTessellationEvaluationInputComponents() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxTessellationEvaluationInputComponents)
+	return *ptr
+}
+
+// MaxTessellationEvaluationOutputComponents returns the value of maxTessellationEvaluationOutputComponents from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxTessellationEvaluationOutputComponents() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxTessellationEvaluationOutputComponents)
+	return *ptr
+}
+
+// MaxGeometryShaderInvocations returns the value of maxGeometryShaderInvocations from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxGeometryShaderInvocations() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxGeometryShaderInvocations)
+	return *ptr
+}
+
+// MaxGeometryInputComponents returns the value of maxGeometryInputComponents from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxGeometryInputComponents() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxGeometryInputComponents)
+	return *ptr
+}
+
+// MaxGeometryOutputComponents returns the value of maxGeometryOutputComponents from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxGeometryOutputComponents() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxGeometryOutputComponents)
+	return *ptr
+}
+
+// MaxGeometryOutputVertices returns the value of maxGeometryOutputVertices from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxGeometryOutputVertices() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxGeometryOutputVertices)
+	return *ptr
+}
+
+// MaxGeometryTotalOutputComponents returns the value of maxGeometryTotalOutputComponents from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxGeometryTotalOutputComponents() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxGeometryTotalOutputComponents)
+	return *ptr
+}
+
+// MaxFragmentInputComponents returns the value of maxFragmentInputComponents from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxFragmentInputComponents() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxFragmentInputComponents)
+	return *ptr
+}
+
+// MaxFragmentOutputAttachments returns the value of maxFragmentOutputAttachments from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxFragmentOutputAttachments() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxFragmentOutputAttachments)
+	return *ptr
+}
+
+// MaxFragmentDualSrcAttachments returns the value of maxFragmentDualSrcAttachments from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxFragmentDualSrcAttachments() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxFragmentDualSrcAttachments)
+	return *ptr
+}
+
+// MaxFragmentCombinedOutputResources returns the value of maxFragmentCombinedOutputResources from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxFragmentCombinedOutputResources() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxFragmentCombinedOutputResources)
+	return *ptr
+}
+
+// MaxComputeSharedMemorySize returns the value of maxComputeSharedMemorySize from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxComputeSharedMemorySize() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxComputeSharedMemorySize)
+	return *ptr
+}
+
+// MaxComputeWorkGroupCount returns the value of maxComputeWorkGroupCount from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxComputeWorkGroupCount() []uint32 {
+	ptr := func(x *[3]C.uint32_t) *[]uint32 { /* Array */
+		slc := unsafe.Slice((*uint32)(unsafe.Pointer(x)), 3)
+		return &slc
+	}(&x.maxComputeWorkGroupCount)
+	return *ptr
+}
+
+// MaxComputeWorkGroupInvocations returns the value of maxComputeWorkGroupInvocations from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxComputeWorkGroupInvocations() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxComputeWorkGroupInvocations)
+	return *ptr
+}
+
+// MaxComputeWorkGroupSize returns the value of maxComputeWorkGroupSize from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxComputeWorkGroupSize() []uint32 {
+	ptr := func(x *[3]C.uint32_t) *[]uint32 { /* Array */
+		slc := unsafe.Slice((*uint32)(unsafe.Pointer(x)), 3)
+		return &slc
+	}(&x.maxComputeWorkGroupSize)
+	return *ptr
+}
+
+// SubPixelPrecisionBits returns the value of subPixelPrecisionBits from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) SubPixelPrecisionBits() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.subPixelPrecisionBits)
+	return *ptr
+}
+
+// SubTexelPrecisionBits returns the value of subTexelPrecisionBits from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) SubTexelPrecisionBits() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.subTexelPrecisionBits)
+	return *ptr
+}
+
+// MipmapPrecisionBits returns the value of mipmapPrecisionBits from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MipmapPrecisionBits() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.mipmapPrecisionBits)
+	return *ptr
+}
+
+// MaxDrawIndexedIndexValue returns the value of maxDrawIndexedIndexValue from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxDrawIndexedIndexValue() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxDrawIndexedIndexValue)
+	return *ptr
+}
+
+// MaxDrawIndirectCount returns the value of maxDrawIndirectCount from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxDrawIndirectCount() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxDrawIndirectCount)
+	return *ptr
+}
+
+// MaxSamplerLodBias returns the value of maxSamplerLodBias from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxSamplerLodBias() float32 {
+	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.maxSamplerLodBias)
+	return *ptr
+}
+
+// MaxSamplerAnisotropy returns the value of maxSamplerAnisotropy from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxSamplerAnisotropy() float32 {
+	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.maxSamplerAnisotropy)
+	return *ptr
+}
+
+// MaxViewports returns the value of maxViewports from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxViewports() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxViewports)
+	return *ptr
+}
+
+// MaxViewportDimensions returns the value of maxViewportDimensions from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxViewportDimensions() []uint32 {
+	ptr := func(x *[2]C.uint32_t) *[]uint32 { /* Array */
+		slc := unsafe.Slice((*uint32)(unsafe.Pointer(x)), 2)
+		return &slc
+	}(&x.maxViewportDimensions)
+	return *ptr
+}
+
+// ViewportBoundsRange returns the value of viewportBoundsRange from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) ViewportBoundsRange() []float32 {
+	ptr := func(x *[2]C.float) *[]float32 { /* Array */
+		slc := unsafe.Slice((*float32)(unsafe.Pointer(x)), 2)
+		return &slc
+	}(&x.viewportBoundsRange)
+	return *ptr
+}
+
+// ViewportSubPixelBits returns the value of viewportSubPixelBits from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) ViewportSubPixelBits() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.viewportSubPixelBits)
+	return *ptr
+}
+
+// MinMemoryMapAlignment returns the value of minMemoryMapAlignment from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MinMemoryMapAlignment() uint64 {
+	ptr := func(x *C.size_t) *uint64 { /* Scalar */ c2g := uint64(*x); return &c2g }(&x.minMemoryMapAlignment)
+	return *ptr
+}
+
+// MinTexelBufferOffsetAlignment returns the value of minTexelBufferOffsetAlignment from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MinTexelBufferOffsetAlignment() DeviceSize {
+	ptr := /* typedef */ (*DeviceSize)(&x.minTexelBufferOffsetAlignment)
+	return *ptr
+}
+
+// MinUniformBufferOffsetAlignment returns the value of minUniformBufferOffsetAlignment from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MinUniformBufferOffsetAlignment() DeviceSize {
+	ptr := /* typedef */ (*DeviceSize)(&x.minUniformBufferOffsetAlignment)
+	return *ptr
+}
+
+// MinStorageBufferOffsetAlignment returns the value of minStorageBufferOffsetAlignment from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MinStorageBufferOffsetAlignment() DeviceSize {
+	ptr := /* typedef */ (*DeviceSize)(&x.minStorageBufferOffsetAlignment)
+	return *ptr
+}
+
+// MinTexelOffset returns the value of minTexelOffset from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MinTexelOffset() int32 {
+	ptr := func(x *C.int32_t) *int32 { /* Scalar */ c2g := int32(*x); return &c2g }(&x.minTexelOffset)
+	return *ptr
+}
+
+// MaxTexelOffset returns the value of maxTexelOffset from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxTexelOffset() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxTexelOffset)
+	return *ptr
+}
+
+// MinTexelGatherOffset returns the value of minTexelGatherOffset from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MinTexelGatherOffset() int32 {
+	ptr := func(x *C.int32_t) *int32 { /* Scalar */ c2g := int32(*x); return &c2g }(&x.minTexelGatherOffset)
+	return *ptr
+}
+
+// MaxTexelGatherOffset returns the value of maxTexelGatherOffset from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxTexelGatherOffset() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxTexelGatherOffset)
+	return *ptr
+}
+
+// MinInterpolationOffset returns the value of minInterpolationOffset from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MinInterpolationOffset() float32 {
+	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.minInterpolationOffset)
+	return *ptr
+}
+
+// MaxInterpolationOffset returns the value of maxInterpolationOffset from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxInterpolationOffset() float32 {
+	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.maxInterpolationOffset)
+	return *ptr
+}
+
+// SubPixelInterpolationOffsetBits returns the value of subPixelInterpolationOffsetBits from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) SubPixelInterpolationOffsetBits() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.subPixelInterpolationOffsetBits)
+	return *ptr
+}
+
+// MaxFramebufferWidth returns the value of maxFramebufferWidth from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxFramebufferWidth() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxFramebufferWidth)
+	return *ptr
+}
+
+// MaxFramebufferHeight returns the value of maxFramebufferHeight from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxFramebufferHeight() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxFramebufferHeight)
+	return *ptr
+}
+
+// MaxFramebufferLayers returns the value of maxFramebufferLayers from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxFramebufferLayers() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxFramebufferLayers)
+	return *ptr
+}
+
+// FramebufferColorSampleCounts returns the value of framebufferColorSampleCounts from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) FramebufferColorSampleCounts() SampleCountFlags {
+	ptr := /* typedef */ (*SampleCountFlags)(&x.framebufferColorSampleCounts)
+	return *ptr
+}
+
+// FramebufferDepthSampleCounts returns the value of framebufferDepthSampleCounts from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) FramebufferDepthSampleCounts() SampleCountFlags {
+	ptr := /* typedef */ (*SampleCountFlags)(&x.framebufferDepthSampleCounts)
+	return *ptr
+}
+
+// FramebufferStencilSampleCounts returns the value of framebufferStencilSampleCounts from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) FramebufferStencilSampleCounts() SampleCountFlags {
+	ptr := /* typedef */ (*SampleCountFlags)(&x.framebufferStencilSampleCounts)
+	return *ptr
+}
+
+// FramebufferNoAttachmentsSampleCounts returns the value of framebufferNoAttachmentsSampleCounts from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) FramebufferNoAttachmentsSampleCounts() SampleCountFlags {
+	ptr := /* typedef */ (*SampleCountFlags)(&x.framebufferNoAttachmentsSampleCounts)
+	return *ptr
+}
+
+// MaxColorAttachments returns the value of maxColorAttachments from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxColorAttachments() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxColorAttachments)
+	return *ptr
+}
+
+// SampledImageColorSampleCounts returns the value of sampledImageColorSampleCounts from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) SampledImageColorSampleCounts() SampleCountFlags {
+	ptr := /* typedef */ (*SampleCountFlags)(&x.sampledImageColorSampleCounts)
+	return *ptr
+}
+
+// SampledImageIntegerSampleCounts returns the value of sampledImageIntegerSampleCounts from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) SampledImageIntegerSampleCounts() SampleCountFlags {
+	ptr := /* typedef */ (*SampleCountFlags)(&x.sampledImageIntegerSampleCounts)
+	return *ptr
+}
+
+// SampledImageDepthSampleCounts returns the value of sampledImageDepthSampleCounts from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) SampledImageDepthSampleCounts() SampleCountFlags {
+	ptr := /* typedef */ (*SampleCountFlags)(&x.sampledImageDepthSampleCounts)
+	return *ptr
+}
+
+// SampledImageStencilSampleCounts returns the value of sampledImageStencilSampleCounts from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) SampledImageStencilSampleCounts() SampleCountFlags {
+	ptr := /* typedef */ (*SampleCountFlags)(&x.sampledImageStencilSampleCounts)
+	return *ptr
+}
+
+// StorageImageSampleCounts returns the value of storageImageSampleCounts from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) StorageImageSampleCounts() SampleCountFlags {
+	ptr := /* typedef */ (*SampleCountFlags)(&x.storageImageSampleCounts)
+	return *ptr
+}
+
+// MaxSampleMaskWords returns the value of maxSampleMaskWords from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxSampleMaskWords() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxSampleMaskWords)
+	return *ptr
+}
+
+// TimestampComputeAndGraphics returns the value of timestampComputeAndGraphics from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) TimestampComputeAndGraphics() Bool32 {
+	ptr := /* typedef */ (*Bool32)(&x.timestampComputeAndGraphics)
+	return *ptr
+}
+
+// TimestampPeriod returns the value of timestampPeriod from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) TimestampPeriod() float32 {
+	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.timestampPeriod)
+	return *ptr
+}
+
+// MaxClipDistances returns the value of maxClipDistances from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxClipDistances() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxClipDistances)
+	return *ptr
+}
+
+// MaxCullDistances returns the value of maxCullDistances from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxCullDistances() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxCullDistances)
+	return *ptr
+}
+
+// MaxCombinedClipAndCullDistances returns the value of maxCombinedClipAndCullDistances from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) MaxCombinedClipAndCullDistances() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxCombinedClipAndCullDistances)
+	return *ptr
+}
+
+// DiscreteQueuePriorities returns the value of discreteQueuePriorities from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) DiscreteQueuePriorities() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.discreteQueuePriorities)
+	return *ptr
+}
+
+// PointSizeRange returns the value of pointSizeRange from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) PointSizeRange() []float32 {
+	ptr := func(x *[2]C.float) *[]float32 { /* Array */
+		slc := unsafe.Slice((*float32)(unsafe.Pointer(x)), 2)
+		return &slc
+	}(&x.pointSizeRange)
+	return *ptr
+}
+
+// LineWidthRange returns the value of lineWidthRange from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) LineWidthRange() []float32 {
+	ptr := func(x *[2]C.float) *[]float32 { /* Array */
+		slc := unsafe.Slice((*float32)(unsafe.Pointer(x)), 2)
+		return &slc
+	}(&x.lineWidthRange)
+	return *ptr
+}
+
+// PointSizeGranularity returns the value of pointSizeGranularity from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) PointSizeGranularity() float32 {
+	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.pointSizeGranularity)
+	return *ptr
+}
+
+// LineWidthGranularity returns the value of lineWidthGranularity from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) LineWidthGranularity() float32 {
+	ptr := func(x *C.float) *float32 { /* Scalar */ c2g := float32(*x); return &c2g }(&x.lineWidthGranularity)
+	return *ptr
+}
+
+// StrictLines returns the value of strictLines from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) StrictLines() Bool32 {
+	ptr := /* typedef */ (*Bool32)(&x.strictLines)
+	return *ptr
+}
+
+// StandardSampleLocations returns the value of standardSampleLocations from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) StandardSampleLocations() Bool32 {
+	ptr := /* typedef */ (*Bool32)(&x.standardSampleLocations)
+	return *ptr
+}
+
+// OptimalBufferCopyOffsetAlignment returns the value of optimalBufferCopyOffsetAlignment from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) OptimalBufferCopyOffsetAlignment() DeviceSize {
+	ptr := /* typedef */ (*DeviceSize)(&x.optimalBufferCopyOffsetAlignment)
+	return *ptr
+}
+
+// OptimalBufferCopyRowPitchAlignment returns the value of optimalBufferCopyRowPitchAlignment from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) OptimalBufferCopyRowPitchAlignment() DeviceSize {
+	ptr := /* typedef */ (*DeviceSize)(&x.optimalBufferCopyRowPitchAlignment)
+	return *ptr
+}
+
+// NonCoherentAtomSize returns the value of nonCoherentAtomSize from VkPhysicalDeviceLimits
+func (x PhysicalDeviceLimits) NonCoherentAtomSize() DeviceSize {
+	ptr := /* typedef */ (*DeviceSize)(&x.nonCoherentAtomSize)
+	return *ptr
+}
+
+// PhysicalDeviceProperties provides a go interface for VkPhysicalDeviceProperties.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceProperties.html
+type PhysicalDeviceProperties C.struct_VkPhysicalDeviceProperties
+
+// SizeofPhysicalDeviceProperties is the memory size of a PhysicalDeviceProperties
+var SizeofPhysicalDeviceProperties int = int(unsafe.Sizeof(PhysicalDeviceProperties{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *PhysicalDeviceProperties) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x PhysicalDeviceProperties) AsCPtr() *PhysicalDeviceProperties {
+	clone := (*PhysicalDeviceProperties)(newCBlock(C.ulong(SizeofPhysicalDeviceProperties)))
+	*clone = x
+	return clone
+}
+
+// PhysicalDevicePropertiesFreeCSlice releases the memory allocated by PhysicalDevicePropertiesMakeCSlice.
+// It does not free pointers stored inside the slice.
+func PhysicalDevicePropertiesFreeCSlice(x []PhysicalDeviceProperties) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// PhysicalDevicePropertiesMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. PhysicalDevicePropertiesFreeCSlice must be called on the returned slice.
+func PhysicalDevicePropertiesMakeCSlice(x ...PhysicalDeviceProperties) []PhysicalDeviceProperties {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofPhysicalDeviceProperties * len(x)
+	dst := unsafe.Slice((*PhysicalDeviceProperties)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// ApiVersion returns the value of apiVersion from VkPhysicalDeviceProperties
+func (x PhysicalDeviceProperties) ApiVersion() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.apiVersion)
+	return *ptr
+}
+
+// DriverVersion returns the value of driverVersion from VkPhysicalDeviceProperties
+func (x PhysicalDeviceProperties) DriverVersion() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.driverVersion)
+	return *ptr
+}
+
+// VendorID returns the value of vendorID from VkPhysicalDeviceProperties
+func (x PhysicalDeviceProperties) VendorID() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.vendorID)
+	return *ptr
+}
+
+// DeviceID returns the value of deviceID from VkPhysicalDeviceProperties
+func (x PhysicalDeviceProperties) DeviceID() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.deviceID)
+	return *ptr
+}
+
+// DeviceType returns the value of deviceType from VkPhysicalDeviceProperties
+func (x PhysicalDeviceProperties) DeviceType() PhysicalDeviceType {
+	ptr := /* typedef */ (*PhysicalDeviceType)(&x.deviceType)
+	return *ptr
+}
+
+// DeviceName returns the value of deviceName from VkPhysicalDeviceProperties
+func (x PhysicalDeviceProperties) DeviceName() []byte {
+	ptr := func(x *[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]C.char) *[]byte { /* Array */
+		slc := unsafe.Slice((*byte)(unsafe.Pointer(x)), VK_MAX_PHYSICAL_DEVICE_NAME_SIZE)
+		return &slc
+	}(&x.deviceName)
+	return *ptr
+}
+
+// PipelineCacheUUID returns the value of pipelineCacheUUID from VkPhysicalDeviceProperties
+func (x PhysicalDeviceProperties) PipelineCacheUUID() []byte {
+	ptr := func(x *[VK_UUID_SIZE]C.uint8_t) *[]byte { /* Array */
+		slc := unsafe.Slice((*byte)(unsafe.Pointer(x)), VK_UUID_SIZE)
+		return &slc
+	}(&x.pipelineCacheUUID)
+	return *ptr
+}
+
+// Limits returns the value of limits from VkPhysicalDeviceProperties
+func (x PhysicalDeviceProperties) Limits() PhysicalDeviceLimits {
+	ptr := /* typedef */ (*PhysicalDeviceLimits)(&x.limits)
+	return *ptr
+}
+
+// SparseProperties returns the value of sparseProperties from VkPhysicalDeviceProperties
+func (x PhysicalDeviceProperties) SparseProperties() PhysicalDeviceSparseProperties {
+	ptr := /* typedef */ (*PhysicalDeviceSparseProperties)(&x.sparseProperties)
+	return *ptr
+}
+
+// PhysicalDeviceMemoryProperties provides a go interface for VkPhysicalDeviceMemoryProperties.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceMemoryProperties.html
+type PhysicalDeviceMemoryProperties C.struct_VkPhysicalDeviceMemoryProperties
+
+// SizeofPhysicalDeviceMemoryProperties is the memory size of a PhysicalDeviceMemoryProperties
+var SizeofPhysicalDeviceMemoryProperties int = int(unsafe.Sizeof(PhysicalDeviceMemoryProperties{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *PhysicalDeviceMemoryProperties) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x PhysicalDeviceMemoryProperties) AsCPtr() *PhysicalDeviceMemoryProperties {
+	clone := (*PhysicalDeviceMemoryProperties)(newCBlock(C.ulong(SizeofPhysicalDeviceMemoryProperties)))
+	*clone = x
+	return clone
+}
+
+// PhysicalDeviceMemoryPropertiesFreeCSlice releases the memory allocated by PhysicalDeviceMemoryPropertiesMakeCSlice.
+// It does not free pointers stored inside the slice.
+func PhysicalDeviceMemoryPropertiesFreeCSlice(x []PhysicalDeviceMemoryProperties) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// PhysicalDeviceMemoryPropertiesMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. PhysicalDeviceMemoryPropertiesFreeCSlice must be called on the returned slice.
+func PhysicalDeviceMemoryPropertiesMakeCSlice(x ...PhysicalDeviceMemoryProperties) []PhysicalDeviceMemoryProperties {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofPhysicalDeviceMemoryProperties * len(x)
+	dst := unsafe.Slice((*PhysicalDeviceMemoryProperties)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// MemoryTypeCount returns the value of memoryTypeCount from VkPhysicalDeviceMemoryProperties
+func (x PhysicalDeviceMemoryProperties) MemoryTypeCount() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.memoryTypeCount)
+	return *ptr
+}
+
+// MemoryTypes returns the value of memoryTypes from VkPhysicalDeviceMemoryProperties
+func (x PhysicalDeviceMemoryProperties) MemoryTypes() []MemoryType {
+	ptr := func(x *[VK_MAX_MEMORY_TYPES]C.struct_VkMemoryType) *[]MemoryType { /* Array */
+		slc := unsafe.Slice((*MemoryType)(unsafe.Pointer(x)), VK_MAX_MEMORY_TYPES)
+		return &slc
+	}(&x.memoryTypes)
+	return *ptr
+}
+
+// MemoryHeapCount returns the value of memoryHeapCount from VkPhysicalDeviceMemoryProperties
+func (x PhysicalDeviceMemoryProperties) MemoryHeapCount() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.memoryHeapCount)
+	return *ptr
+}
+
+// MemoryHeaps returns the value of memoryHeaps from VkPhysicalDeviceMemoryProperties
+func (x PhysicalDeviceMemoryProperties) MemoryHeaps() []MemoryHeap {
+	ptr := func(x *[VK_MAX_MEMORY_HEAPS]C.struct_VkMemoryHeap) *[]MemoryHeap { /* Array */
+		slc := unsafe.Slice((*MemoryHeap)(unsafe.Pointer(x)), VK_MAX_MEMORY_HEAPS)
+		return &slc
+	}(&x.memoryHeaps)
+	return *ptr
+}
 
 // SetEvent command
 // https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/vkSetEvent.html
@@ -23544,6 +23544,87 @@ func (x DeviceGroupSubmitInfo) WithPSignalSemaphoreDeviceIndices(y []uint32) Dev
 	return x.WithSignalSemaphoreCount(uint32(len(y)))
 }
 
+// InputAttachmentAspectReference provides a go interface for VkInputAttachmentAspectReference.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkInputAttachmentAspectReference.html
+type InputAttachmentAspectReference C.struct_VkInputAttachmentAspectReference
+
+// SizeofInputAttachmentAspectReference is the memory size of a InputAttachmentAspectReference
+var SizeofInputAttachmentAspectReference int = int(unsafe.Sizeof(InputAttachmentAspectReference{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *InputAttachmentAspectReference) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x InputAttachmentAspectReference) AsCPtr() *InputAttachmentAspectReference {
+	clone := (*InputAttachmentAspectReference)(newCBlock(C.ulong(SizeofInputAttachmentAspectReference)))
+	*clone = x
+	return clone
+}
+
+// InputAttachmentAspectReferenceFreeCSlice releases the memory allocated by InputAttachmentAspectReferenceMakeCSlice.
+// It does not free pointers stored inside the slice.
+func InputAttachmentAspectReferenceFreeCSlice(x []InputAttachmentAspectReference) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// InputAttachmentAspectReferenceMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. InputAttachmentAspectReferenceFreeCSlice must be called on the returned slice.
+func InputAttachmentAspectReferenceMakeCSlice(x ...InputAttachmentAspectReference) []InputAttachmentAspectReference {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofInputAttachmentAspectReference * len(x)
+	dst := unsafe.Slice((*InputAttachmentAspectReference)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// Subpass returns the value of subpass from VkInputAttachmentAspectReference
+func (x InputAttachmentAspectReference) Subpass() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.subpass)
+	return *ptr
+}
+
+// WithSubpass sets the value for the Subpass on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x InputAttachmentAspectReference) WithSubpass(y uint32) InputAttachmentAspectReference {
+	x.subpass = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// InputAttachmentIndex returns the value of inputAttachmentIndex from VkInputAttachmentAspectReference
+func (x InputAttachmentAspectReference) InputAttachmentIndex() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.inputAttachmentIndex)
+	return *ptr
+}
+
+// WithInputAttachmentIndex sets the value for the InputAttachmentIndex on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x InputAttachmentAspectReference) WithInputAttachmentIndex(y uint32) InputAttachmentAspectReference {
+	x.inputAttachmentIndex = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// AspectMask returns the value of aspectMask from VkInputAttachmentAspectReference
+func (x InputAttachmentAspectReference) AspectMask() ImageAspectFlags {
+	ptr := /* typedef */ (*ImageAspectFlags)(&x.aspectMask)
+	return *ptr
+}
+
+// WithAspectMask sets the value for the AspectMask on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x InputAttachmentAspectReference) WithAspectMask(y ImageAspectFlags) InputAttachmentAspectReference {
+	x.aspectMask = *( /* typedef */ (*C.VkImageAspectFlags)(&y))
+	return x
+}
+
 // RenderPassInputAttachmentAspectCreateInfo provides a go interface for VkRenderPassInputAttachmentAspectCreateInfo.
 // https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkRenderPassInputAttachmentAspectCreateInfo.html
 type RenderPassInputAttachmentAspectCreateInfo C.struct_VkRenderPassInputAttachmentAspectCreateInfo
@@ -23655,87 +23736,6 @@ func (x RenderPassInputAttachmentAspectCreateInfo) WithPAspectReferences(y []Inp
 		return (**C.struct_VkInputAttachmentAspectReference)(unsafe.Pointer((&ptr)))
 	}(&y))
 	return x.WithAspectReferenceCount(uint32(len(y)))
-}
-
-// InputAttachmentAspectReference provides a go interface for VkInputAttachmentAspectReference.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkInputAttachmentAspectReference.html
-type InputAttachmentAspectReference C.struct_VkInputAttachmentAspectReference
-
-// SizeofInputAttachmentAspectReference is the memory size of a InputAttachmentAspectReference
-var SizeofInputAttachmentAspectReference int = int(unsafe.Sizeof(InputAttachmentAspectReference{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *InputAttachmentAspectReference) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x InputAttachmentAspectReference) AsCPtr() *InputAttachmentAspectReference {
-	clone := (*InputAttachmentAspectReference)(newCBlock(C.ulong(SizeofInputAttachmentAspectReference)))
-	*clone = x
-	return clone
-}
-
-// InputAttachmentAspectReferenceFreeCSlice releases the memory allocated by InputAttachmentAspectReferenceMakeCSlice.
-// It does not free pointers stored inside the slice.
-func InputAttachmentAspectReferenceFreeCSlice(x []InputAttachmentAspectReference) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// InputAttachmentAspectReferenceMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. InputAttachmentAspectReferenceFreeCSlice must be called on the returned slice.
-func InputAttachmentAspectReferenceMakeCSlice(x ...InputAttachmentAspectReference) []InputAttachmentAspectReference {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofInputAttachmentAspectReference * len(x)
-	dst := unsafe.Slice((*InputAttachmentAspectReference)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// Subpass returns the value of subpass from VkInputAttachmentAspectReference
-func (x InputAttachmentAspectReference) Subpass() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.subpass)
-	return *ptr
-}
-
-// WithSubpass sets the value for the Subpass on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x InputAttachmentAspectReference) WithSubpass(y uint32) InputAttachmentAspectReference {
-	x.subpass = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// InputAttachmentIndex returns the value of inputAttachmentIndex from VkInputAttachmentAspectReference
-func (x InputAttachmentAspectReference) InputAttachmentIndex() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.inputAttachmentIndex)
-	return *ptr
-}
-
-// WithInputAttachmentIndex sets the value for the InputAttachmentIndex on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x InputAttachmentAspectReference) WithInputAttachmentIndex(y uint32) InputAttachmentAspectReference {
-	x.inputAttachmentIndex = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// AspectMask returns the value of aspectMask from VkInputAttachmentAspectReference
-func (x InputAttachmentAspectReference) AspectMask() ImageAspectFlags {
-	ptr := /* typedef */ (*ImageAspectFlags)(&x.aspectMask)
-	return *ptr
-}
-
-// WithAspectMask sets the value for the AspectMask on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x InputAttachmentAspectReference) WithAspectMask(y ImageAspectFlags) InputAttachmentAspectReference {
-	x.aspectMask = *( /* typedef */ (*C.VkImageAspectFlags)(&y))
-	return x
 }
 
 // ImageViewUsageCreateInfo provides a go interface for VkImageViewUsageCreateInfo.
@@ -24387,6 +24387,106 @@ func (x PhysicalDeviceMultiviewProperties) MaxMultiviewViewCount() uint32 {
 func (x PhysicalDeviceMultiviewProperties) MaxMultiviewInstanceIndex() uint32 {
 	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.maxMultiviewInstanceIndex)
 	return *ptr
+}
+
+// PhysicalDeviceVariablePointersFeatures provides a go interface for VkPhysicalDeviceVariablePointersFeatures.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceVariablePointersFeatures.html
+type PhysicalDeviceVariablePointersFeatures C.struct_VkPhysicalDeviceVariablePointersFeatures
+
+// SizeofPhysicalDeviceVariablePointersFeatures is the memory size of a PhysicalDeviceVariablePointersFeatures
+var SizeofPhysicalDeviceVariablePointersFeatures int = int(unsafe.Sizeof(PhysicalDeviceVariablePointersFeatures{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *PhysicalDeviceVariablePointersFeatures) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x PhysicalDeviceVariablePointersFeatures) AsCPtr() *PhysicalDeviceVariablePointersFeatures {
+	clone := (*PhysicalDeviceVariablePointersFeatures)(newCBlock(C.ulong(SizeofPhysicalDeviceVariablePointersFeatures)))
+	*clone = x
+	return clone
+}
+
+// PhysicalDeviceVariablePointersFeaturesFreeCSlice releases the memory allocated by PhysicalDeviceVariablePointersFeaturesMakeCSlice.
+// It does not free pointers stored inside the slice.
+func PhysicalDeviceVariablePointersFeaturesFreeCSlice(x []PhysicalDeviceVariablePointersFeatures) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// PhysicalDeviceVariablePointersFeaturesMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. PhysicalDeviceVariablePointersFeaturesFreeCSlice must be called on the returned slice.
+func PhysicalDeviceVariablePointersFeaturesMakeCSlice(x ...PhysicalDeviceVariablePointersFeatures) []PhysicalDeviceVariablePointersFeatures {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofPhysicalDeviceVariablePointersFeatures * len(x)
+	dst := unsafe.Slice((*PhysicalDeviceVariablePointersFeatures)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// SType returns the value of sType from VkPhysicalDeviceVariablePointersFeatures
+func (x PhysicalDeviceVariablePointersFeatures) SType() StructureType {
+	ptr := /* typedef */ (*StructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification. This method only exists if there is a single value in the specification.
+func (x PhysicalDeviceVariablePointersFeatures) WithDefaultSType() PhysicalDeviceVariablePointersFeatures {
+	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES)
+}
+
+// WithSType sets the value for the SType on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PhysicalDeviceVariablePointersFeatures) WithSType(y StructureType) PhysicalDeviceVariablePointersFeatures {
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
+	return x
+}
+
+// PNext returns the value of pNext from VkPhysicalDeviceVariablePointersFeatures
+func (x PhysicalDeviceVariablePointersFeatures) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext sets the value for the PNext on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PhysicalDeviceVariablePointersFeatures) WithPNext(y unsafe.Pointer) PhysicalDeviceVariablePointersFeatures {
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
+	return x
+}
+
+// VariablePointersStorageBuffer returns the value of variablePointersStorageBuffer from VkPhysicalDeviceVariablePointersFeatures
+func (x PhysicalDeviceVariablePointersFeatures) VariablePointersStorageBuffer() Bool32 {
+	ptr := /* typedef */ (*Bool32)(&x.variablePointersStorageBuffer)
+	return *ptr
+}
+
+// WithVariablePointersStorageBuffer sets the value for the VariablePointersStorageBuffer on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PhysicalDeviceVariablePointersFeatures) WithVariablePointersStorageBuffer(y Bool32) PhysicalDeviceVariablePointersFeatures {
+	x.variablePointersStorageBuffer = *( /* typedef */ (*C.VkBool32)(&y))
+	return x
+}
+
+// VariablePointers returns the value of variablePointers from VkPhysicalDeviceVariablePointersFeatures
+func (x PhysicalDeviceVariablePointersFeatures) VariablePointers() Bool32 {
+	ptr := /* typedef */ (*Bool32)(&x.variablePointers)
+	return *ptr
+}
+
+// WithVariablePointers sets the value for the VariablePointers on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PhysicalDeviceVariablePointersFeatures) WithVariablePointers(y Bool32) PhysicalDeviceVariablePointersFeatures {
+	x.variablePointers = *( /* typedef */ (*C.VkBool32)(&y))
+	return x
 }
 
 //PhysicalDeviceVariablePointerFeatures is an alias to PhysicalDeviceVariablePointersFeatures.
@@ -25961,106 +26061,6 @@ func (x MemoryDedicatedAllocateInfo) WithBuffer(y Buffer) MemoryDedicatedAllocat
 	return x
 }
 
-// PhysicalDeviceVariablePointersFeatures provides a go interface for VkPhysicalDeviceVariablePointersFeatures.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceVariablePointersFeatures.html
-type PhysicalDeviceVariablePointersFeatures C.struct_VkPhysicalDeviceVariablePointersFeatures
-
-// SizeofPhysicalDeviceVariablePointersFeatures is the memory size of a PhysicalDeviceVariablePointersFeatures
-var SizeofPhysicalDeviceVariablePointersFeatures int = int(unsafe.Sizeof(PhysicalDeviceVariablePointersFeatures{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *PhysicalDeviceVariablePointersFeatures) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x PhysicalDeviceVariablePointersFeatures) AsCPtr() *PhysicalDeviceVariablePointersFeatures {
-	clone := (*PhysicalDeviceVariablePointersFeatures)(newCBlock(C.ulong(SizeofPhysicalDeviceVariablePointersFeatures)))
-	*clone = x
-	return clone
-}
-
-// PhysicalDeviceVariablePointersFeaturesFreeCSlice releases the memory allocated by PhysicalDeviceVariablePointersFeaturesMakeCSlice.
-// It does not free pointers stored inside the slice.
-func PhysicalDeviceVariablePointersFeaturesFreeCSlice(x []PhysicalDeviceVariablePointersFeatures) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// PhysicalDeviceVariablePointersFeaturesMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. PhysicalDeviceVariablePointersFeaturesFreeCSlice must be called on the returned slice.
-func PhysicalDeviceVariablePointersFeaturesMakeCSlice(x ...PhysicalDeviceVariablePointersFeatures) []PhysicalDeviceVariablePointersFeatures {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofPhysicalDeviceVariablePointersFeatures * len(x)
-	dst := unsafe.Slice((*PhysicalDeviceVariablePointersFeatures)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// SType returns the value of sType from VkPhysicalDeviceVariablePointersFeatures
-func (x PhysicalDeviceVariablePointersFeatures) SType() StructureType {
-	ptr := /* typedef */ (*StructureType)(&x.sType)
-	return *ptr
-}
-
-// WithDefaultSType sets the value of SType to the value provided in the
-// specification. This method only exists if there is a single value in the specification.
-func (x PhysicalDeviceVariablePointersFeatures) WithDefaultSType() PhysicalDeviceVariablePointersFeatures {
-	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES)
-}
-
-// WithSType sets the value for the SType on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PhysicalDeviceVariablePointersFeatures) WithSType(y StructureType) PhysicalDeviceVariablePointersFeatures {
-	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
-	return x
-}
-
-// PNext returns the value of pNext from VkPhysicalDeviceVariablePointersFeatures
-func (x PhysicalDeviceVariablePointersFeatures) PNext() unsafe.Pointer {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
-	return *ptr
-}
-
-// WithPNext sets the value for the PNext on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PhysicalDeviceVariablePointersFeatures) WithPNext(y unsafe.Pointer) PhysicalDeviceVariablePointersFeatures {
-	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
-	return x
-}
-
-// VariablePointersStorageBuffer returns the value of variablePointersStorageBuffer from VkPhysicalDeviceVariablePointersFeatures
-func (x PhysicalDeviceVariablePointersFeatures) VariablePointersStorageBuffer() Bool32 {
-	ptr := /* typedef */ (*Bool32)(&x.variablePointersStorageBuffer)
-	return *ptr
-}
-
-// WithVariablePointersStorageBuffer sets the value for the VariablePointersStorageBuffer on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PhysicalDeviceVariablePointersFeatures) WithVariablePointersStorageBuffer(y Bool32) PhysicalDeviceVariablePointersFeatures {
-	x.variablePointersStorageBuffer = *( /* typedef */ (*C.VkBool32)(&y))
-	return x
-}
-
-// VariablePointers returns the value of variablePointers from VkPhysicalDeviceVariablePointersFeatures
-func (x PhysicalDeviceVariablePointersFeatures) VariablePointers() Bool32 {
-	ptr := /* typedef */ (*Bool32)(&x.variablePointers)
-	return *ptr
-}
-
-// WithVariablePointers sets the value for the VariablePointers on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PhysicalDeviceVariablePointersFeatures) WithVariablePointers(y Bool32) PhysicalDeviceVariablePointersFeatures {
-	x.variablePointers = *( /* typedef */ (*C.VkBool32)(&y))
-	return x
-}
-
 // MemoryDedicatedRequirements provides a go interface for VkMemoryDedicatedRequirements.
 // https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkMemoryDedicatedRequirements.html
 type MemoryDedicatedRequirements C.struct_VkMemoryDedicatedRequirements
@@ -27097,6 +27097,66 @@ func (x DescriptorUpdateTemplateCreateInfo) WithSet(y uint32) DescriptorUpdateTe
 	return x
 }
 
+// ExternalMemoryProperties provides a go interface for VkExternalMemoryProperties.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkExternalMemoryProperties.html
+type ExternalMemoryProperties C.struct_VkExternalMemoryProperties
+
+// SizeofExternalMemoryProperties is the memory size of a ExternalMemoryProperties
+var SizeofExternalMemoryProperties int = int(unsafe.Sizeof(ExternalMemoryProperties{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *ExternalMemoryProperties) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x ExternalMemoryProperties) AsCPtr() *ExternalMemoryProperties {
+	clone := (*ExternalMemoryProperties)(newCBlock(C.ulong(SizeofExternalMemoryProperties)))
+	*clone = x
+	return clone
+}
+
+// ExternalMemoryPropertiesFreeCSlice releases the memory allocated by ExternalMemoryPropertiesMakeCSlice.
+// It does not free pointers stored inside the slice.
+func ExternalMemoryPropertiesFreeCSlice(x []ExternalMemoryProperties) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// ExternalMemoryPropertiesMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. ExternalMemoryPropertiesFreeCSlice must be called on the returned slice.
+func ExternalMemoryPropertiesMakeCSlice(x ...ExternalMemoryProperties) []ExternalMemoryProperties {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofExternalMemoryProperties * len(x)
+	dst := unsafe.Slice((*ExternalMemoryProperties)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// ExternalMemoryFeatures returns the value of externalMemoryFeatures from VkExternalMemoryProperties
+func (x ExternalMemoryProperties) ExternalMemoryFeatures() ExternalMemoryFeatureFlags {
+	ptr := /* typedef */ (*ExternalMemoryFeatureFlags)(&x.externalMemoryFeatures)
+	return *ptr
+}
+
+// ExportFromImportedHandleTypes returns the value of exportFromImportedHandleTypes from VkExternalMemoryProperties
+func (x ExternalMemoryProperties) ExportFromImportedHandleTypes() ExternalMemoryHandleTypeFlags {
+	ptr := /* typedef */ (*ExternalMemoryHandleTypeFlags)(&x.exportFromImportedHandleTypes)
+	return *ptr
+}
+
+// CompatibleHandleTypes returns the value of compatibleHandleTypes from VkExternalMemoryProperties
+func (x ExternalMemoryProperties) CompatibleHandleTypes() ExternalMemoryHandleTypeFlags {
+	ptr := /* typedef */ (*ExternalMemoryHandleTypeFlags)(&x.compatibleHandleTypes)
+	return *ptr
+}
+
 // ExternalBufferProperties provides a go interface for VkExternalBufferProperties.
 // https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkExternalBufferProperties.html
 type ExternalBufferProperties C.struct_VkExternalBufferProperties
@@ -27441,72 +27501,99 @@ func (x PhysicalDeviceSubgroupProperties) QuadOperationsInAllStages() Bool32 {
 	return *ptr
 }
 
+// PhysicalDeviceShaderDrawParametersFeatures provides a go interface for VkPhysicalDeviceShaderDrawParametersFeatures.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceShaderDrawParametersFeatures.html
+type PhysicalDeviceShaderDrawParametersFeatures C.struct_VkPhysicalDeviceShaderDrawParametersFeatures
+
+// SizeofPhysicalDeviceShaderDrawParametersFeatures is the memory size of a PhysicalDeviceShaderDrawParametersFeatures
+var SizeofPhysicalDeviceShaderDrawParametersFeatures int = int(unsafe.Sizeof(PhysicalDeviceShaderDrawParametersFeatures{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *PhysicalDeviceShaderDrawParametersFeatures) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x PhysicalDeviceShaderDrawParametersFeatures) AsCPtr() *PhysicalDeviceShaderDrawParametersFeatures {
+	clone := (*PhysicalDeviceShaderDrawParametersFeatures)(newCBlock(C.ulong(SizeofPhysicalDeviceShaderDrawParametersFeatures)))
+	*clone = x
+	return clone
+}
+
+// PhysicalDeviceShaderDrawParametersFeaturesFreeCSlice releases the memory allocated by PhysicalDeviceShaderDrawParametersFeaturesMakeCSlice.
+// It does not free pointers stored inside the slice.
+func PhysicalDeviceShaderDrawParametersFeaturesFreeCSlice(x []PhysicalDeviceShaderDrawParametersFeatures) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// PhysicalDeviceShaderDrawParametersFeaturesMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. PhysicalDeviceShaderDrawParametersFeaturesFreeCSlice must be called on the returned slice.
+func PhysicalDeviceShaderDrawParametersFeaturesMakeCSlice(x ...PhysicalDeviceShaderDrawParametersFeatures) []PhysicalDeviceShaderDrawParametersFeatures {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofPhysicalDeviceShaderDrawParametersFeatures * len(x)
+	dst := unsafe.Slice((*PhysicalDeviceShaderDrawParametersFeatures)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// SType returns the value of sType from VkPhysicalDeviceShaderDrawParametersFeatures
+func (x PhysicalDeviceShaderDrawParametersFeatures) SType() StructureType {
+	ptr := /* typedef */ (*StructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification. This method only exists if there is a single value in the specification.
+func (x PhysicalDeviceShaderDrawParametersFeatures) WithDefaultSType() PhysicalDeviceShaderDrawParametersFeatures {
+	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES)
+}
+
+// WithSType sets the value for the SType on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PhysicalDeviceShaderDrawParametersFeatures) WithSType(y StructureType) PhysicalDeviceShaderDrawParametersFeatures {
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
+	return x
+}
+
+// PNext returns the value of pNext from VkPhysicalDeviceShaderDrawParametersFeatures
+func (x PhysicalDeviceShaderDrawParametersFeatures) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext sets the value for the PNext on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PhysicalDeviceShaderDrawParametersFeatures) WithPNext(y unsafe.Pointer) PhysicalDeviceShaderDrawParametersFeatures {
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
+	return x
+}
+
+// ShaderDrawParameters returns the value of shaderDrawParameters from VkPhysicalDeviceShaderDrawParametersFeatures
+func (x PhysicalDeviceShaderDrawParametersFeatures) ShaderDrawParameters() Bool32 {
+	ptr := /* typedef */ (*Bool32)(&x.shaderDrawParameters)
+	return *ptr
+}
+
+// WithShaderDrawParameters sets the value for the ShaderDrawParameters on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x PhysicalDeviceShaderDrawParametersFeatures) WithShaderDrawParameters(y Bool32) PhysicalDeviceShaderDrawParametersFeatures {
+	x.shaderDrawParameters = *( /* typedef */ (*C.VkBool32)(&y))
+	return x
+}
+
 //PhysicalDeviceShaderDrawParameterFeatures is an alias to PhysicalDeviceShaderDrawParametersFeatures.
 // https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceShaderDrawParameterFeatures.html
 //
 // Deprecated: Most Aliases in the Vulkan spec are for compatibility purposes as extensions get
 // promoted to features. If possible, update code to use the promoted name: PhysicalDeviceShaderDrawParametersFeatures.
 type PhysicalDeviceShaderDrawParameterFeatures = PhysicalDeviceShaderDrawParametersFeatures
-
-// ExternalMemoryProperties provides a go interface for VkExternalMemoryProperties.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkExternalMemoryProperties.html
-type ExternalMemoryProperties C.struct_VkExternalMemoryProperties
-
-// SizeofExternalMemoryProperties is the memory size of a ExternalMemoryProperties
-var SizeofExternalMemoryProperties int = int(unsafe.Sizeof(ExternalMemoryProperties{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *ExternalMemoryProperties) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x ExternalMemoryProperties) AsCPtr() *ExternalMemoryProperties {
-	clone := (*ExternalMemoryProperties)(newCBlock(C.ulong(SizeofExternalMemoryProperties)))
-	*clone = x
-	return clone
-}
-
-// ExternalMemoryPropertiesFreeCSlice releases the memory allocated by ExternalMemoryPropertiesMakeCSlice.
-// It does not free pointers stored inside the slice.
-func ExternalMemoryPropertiesFreeCSlice(x []ExternalMemoryProperties) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// ExternalMemoryPropertiesMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. ExternalMemoryPropertiesFreeCSlice must be called on the returned slice.
-func ExternalMemoryPropertiesMakeCSlice(x ...ExternalMemoryProperties) []ExternalMemoryProperties {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofExternalMemoryProperties * len(x)
-	dst := unsafe.Slice((*ExternalMemoryProperties)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// ExternalMemoryFeatures returns the value of externalMemoryFeatures from VkExternalMemoryProperties
-func (x ExternalMemoryProperties) ExternalMemoryFeatures() ExternalMemoryFeatureFlags {
-	ptr := /* typedef */ (*ExternalMemoryFeatureFlags)(&x.externalMemoryFeatures)
-	return *ptr
-}
-
-// ExportFromImportedHandleTypes returns the value of exportFromImportedHandleTypes from VkExternalMemoryProperties
-func (x ExternalMemoryProperties) ExportFromImportedHandleTypes() ExternalMemoryHandleTypeFlags {
-	ptr := /* typedef */ (*ExternalMemoryHandleTypeFlags)(&x.exportFromImportedHandleTypes)
-	return *ptr
-}
-
-// CompatibleHandleTypes returns the value of compatibleHandleTypes from VkExternalMemoryProperties
-func (x ExternalMemoryProperties) CompatibleHandleTypes() ExternalMemoryHandleTypeFlags {
-	ptr := /* typedef */ (*ExternalMemoryHandleTypeFlags)(&x.compatibleHandleTypes)
-	return *ptr
-}
 
 // PhysicalDeviceExternalImageFormatInfo provides a go interface for VkPhysicalDeviceExternalImageFormatInfo.
 // https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceExternalImageFormatInfo.html
@@ -27785,93 +27872,6 @@ func (x PhysicalDeviceExternalBufferInfo) HandleType() ExternalMemoryHandleTypeF
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceExternalBufferInfo) WithHandleType(y ExternalMemoryHandleTypeFlagBits) PhysicalDeviceExternalBufferInfo {
 	x.handleType = *( /* typedef */ (*C.VkExternalMemoryHandleTypeFlagBits)(&y))
-	return x
-}
-
-// PhysicalDeviceShaderDrawParametersFeatures provides a go interface for VkPhysicalDeviceShaderDrawParametersFeatures.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkPhysicalDeviceShaderDrawParametersFeatures.html
-type PhysicalDeviceShaderDrawParametersFeatures C.struct_VkPhysicalDeviceShaderDrawParametersFeatures
-
-// SizeofPhysicalDeviceShaderDrawParametersFeatures is the memory size of a PhysicalDeviceShaderDrawParametersFeatures
-var SizeofPhysicalDeviceShaderDrawParametersFeatures int = int(unsafe.Sizeof(PhysicalDeviceShaderDrawParametersFeatures{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *PhysicalDeviceShaderDrawParametersFeatures) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x PhysicalDeviceShaderDrawParametersFeatures) AsCPtr() *PhysicalDeviceShaderDrawParametersFeatures {
-	clone := (*PhysicalDeviceShaderDrawParametersFeatures)(newCBlock(C.ulong(SizeofPhysicalDeviceShaderDrawParametersFeatures)))
-	*clone = x
-	return clone
-}
-
-// PhysicalDeviceShaderDrawParametersFeaturesFreeCSlice releases the memory allocated by PhysicalDeviceShaderDrawParametersFeaturesMakeCSlice.
-// It does not free pointers stored inside the slice.
-func PhysicalDeviceShaderDrawParametersFeaturesFreeCSlice(x []PhysicalDeviceShaderDrawParametersFeatures) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// PhysicalDeviceShaderDrawParametersFeaturesMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. PhysicalDeviceShaderDrawParametersFeaturesFreeCSlice must be called on the returned slice.
-func PhysicalDeviceShaderDrawParametersFeaturesMakeCSlice(x ...PhysicalDeviceShaderDrawParametersFeatures) []PhysicalDeviceShaderDrawParametersFeatures {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofPhysicalDeviceShaderDrawParametersFeatures * len(x)
-	dst := unsafe.Slice((*PhysicalDeviceShaderDrawParametersFeatures)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// SType returns the value of sType from VkPhysicalDeviceShaderDrawParametersFeatures
-func (x PhysicalDeviceShaderDrawParametersFeatures) SType() StructureType {
-	ptr := /* typedef */ (*StructureType)(&x.sType)
-	return *ptr
-}
-
-// WithDefaultSType sets the value of SType to the value provided in the
-// specification. This method only exists if there is a single value in the specification.
-func (x PhysicalDeviceShaderDrawParametersFeatures) WithDefaultSType() PhysicalDeviceShaderDrawParametersFeatures {
-	return x.WithSType(VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES)
-}
-
-// WithSType sets the value for the SType on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PhysicalDeviceShaderDrawParametersFeatures) WithSType(y StructureType) PhysicalDeviceShaderDrawParametersFeatures {
-	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
-	return x
-}
-
-// PNext returns the value of pNext from VkPhysicalDeviceShaderDrawParametersFeatures
-func (x PhysicalDeviceShaderDrawParametersFeatures) PNext() unsafe.Pointer {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
-	return *ptr
-}
-
-// WithPNext sets the value for the PNext on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PhysicalDeviceShaderDrawParametersFeatures) WithPNext(y unsafe.Pointer) PhysicalDeviceShaderDrawParametersFeatures {
-	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
-	return x
-}
-
-// ShaderDrawParameters returns the value of shaderDrawParameters from VkPhysicalDeviceShaderDrawParametersFeatures
-func (x PhysicalDeviceShaderDrawParametersFeatures) ShaderDrawParameters() Bool32 {
-	ptr := /* typedef */ (*Bool32)(&x.shaderDrawParameters)
-	return *ptr
-}
-
-// WithShaderDrawParameters sets the value for the ShaderDrawParameters on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x PhysicalDeviceShaderDrawParametersFeatures) WithShaderDrawParameters(y Bool32) PhysicalDeviceShaderDrawParametersFeatures {
-	x.shaderDrawParameters = *( /* typedef */ (*C.VkBool32)(&y))
 	return x
 }
 
@@ -28607,437 +28607,181 @@ func (x SubpassEndInfo) WithPNext(y unsafe.Pointer) SubpassEndInfo {
 	return x
 }
 
-// RenderPassCreateInfo2 provides a go interface for VkRenderPassCreateInfo2.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkRenderPassCreateInfo2.html
-type RenderPassCreateInfo2 C.struct_VkRenderPassCreateInfo2
+// SubpassDependency2 provides a go interface for VkSubpassDependency2.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkSubpassDependency2.html
+type SubpassDependency2 C.struct_VkSubpassDependency2
 
-// SizeofRenderPassCreateInfo2 is the memory size of a RenderPassCreateInfo2
-var SizeofRenderPassCreateInfo2 int = int(unsafe.Sizeof(RenderPassCreateInfo2{}))
+// SizeofSubpassDependency2 is the memory size of a SubpassDependency2
+var SizeofSubpassDependency2 int = int(unsafe.Sizeof(SubpassDependency2{}))
 
 // Free releases the memory allocated by AsCPtr.
 // It does not free pointers stored in the structure.
-func (x *RenderPassCreateInfo2) Free() {
+func (x *SubpassDependency2) Free() {
 	C.free(unsafe.Pointer(x))
 }
 
 // AsCPtr copies the object to the C heap and returns the pointer.
 // Free must be explicitly called on the returned pointer.
-func (x RenderPassCreateInfo2) AsCPtr() *RenderPassCreateInfo2 {
-	clone := (*RenderPassCreateInfo2)(newCBlock(C.ulong(SizeofRenderPassCreateInfo2)))
+func (x SubpassDependency2) AsCPtr() *SubpassDependency2 {
+	clone := (*SubpassDependency2)(newCBlock(C.ulong(SizeofSubpassDependency2)))
 	*clone = x
 	return clone
 }
 
-// RenderPassCreateInfo2FreeCSlice releases the memory allocated by RenderPassCreateInfo2MakeCSlice.
+// SubpassDependency2FreeCSlice releases the memory allocated by SubpassDependency2MakeCSlice.
 // It does not free pointers stored inside the slice.
-func RenderPassCreateInfo2FreeCSlice(x []RenderPassCreateInfo2) {
+func SubpassDependency2FreeCSlice(x []SubpassDependency2) {
 	if len(x) > 0 {
 		C.free(unsafe.Pointer(&x[0]))
 	}
 }
 
-// RenderPassCreateInfo2MakeCSlice allocates memory for the passed arguments on the C heap,
+// SubpassDependency2MakeCSlice allocates memory for the passed arguments on the C heap,
 // copies their values to the allocated memory, and creates a slice around the
-// C memory. RenderPassCreateInfo2FreeCSlice must be called on the returned slice.
-func RenderPassCreateInfo2MakeCSlice(x ...RenderPassCreateInfo2) []RenderPassCreateInfo2 {
+// C memory. SubpassDependency2FreeCSlice must be called on the returned slice.
+func SubpassDependency2MakeCSlice(x ...SubpassDependency2) []SubpassDependency2 {
 	if len(x) == 0 {
 		return nil
 	}
-	sz := SizeofRenderPassCreateInfo2 * len(x)
-	dst := unsafe.Slice((*RenderPassCreateInfo2)(newCBlock(C.ulong(sz))), len(x))
+	sz := SizeofSubpassDependency2 * len(x)
+	dst := unsafe.Slice((*SubpassDependency2)(newCBlock(C.ulong(sz))), len(x))
 	copy(dst, x)
 	return dst
 }
 
-// SType returns the value of sType from VkRenderPassCreateInfo2
-func (x RenderPassCreateInfo2) SType() StructureType {
+// SType returns the value of sType from VkSubpassDependency2
+func (x SubpassDependency2) SType() StructureType {
 	ptr := /* typedef */ (*StructureType)(&x.sType)
 	return *ptr
 }
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification. This method only exists if there is a single value in the specification.
-func (x RenderPassCreateInfo2) WithDefaultSType() RenderPassCreateInfo2 {
-	return x.WithSType(VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO_2)
+func (x SubpassDependency2) WithDefaultSType() SubpassDependency2 {
+	return x.WithSType(VK_STRUCTURE_TYPE_SUBPASS_DEPENDENCY_2)
 }
 
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x RenderPassCreateInfo2) WithSType(y StructureType) RenderPassCreateInfo2 {
+func (x SubpassDependency2) WithSType(y StructureType) SubpassDependency2 {
 	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
-// PNext returns the value of pNext from VkRenderPassCreateInfo2
-func (x RenderPassCreateInfo2) PNext() unsafe.Pointer {
+// PNext returns the value of pNext from VkSubpassDependency2
+func (x SubpassDependency2) PNext() unsafe.Pointer {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
 	return *ptr
 }
 
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x RenderPassCreateInfo2) WithPNext(y unsafe.Pointer) RenderPassCreateInfo2 {
+func (x SubpassDependency2) WithPNext(y unsafe.Pointer) SubpassDependency2 {
 	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
-// Flags returns the value of flags from VkRenderPassCreateInfo2
-func (x RenderPassCreateInfo2) Flags() RenderPassCreateFlags {
-	ptr := /* typedef */ (*RenderPassCreateFlags)(&x.flags)
+// SrcSubpass returns the value of srcSubpass from VkSubpassDependency2
+func (x SubpassDependency2) SrcSubpass() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.srcSubpass)
 	return *ptr
 }
 
-// WithFlags sets the value for the Flags on the underlying C structure.
+// WithSrcSubpass sets the value for the SrcSubpass on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x RenderPassCreateInfo2) WithFlags(y RenderPassCreateFlags) RenderPassCreateInfo2 {
-	x.flags = *( /* typedef */ (*C.VkRenderPassCreateFlags)(&y))
+func (x SubpassDependency2) WithSrcSubpass(y uint32) SubpassDependency2 {
+	x.srcSubpass = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
 	return x
 }
 
-// AttachmentCount returns the value of attachmentCount from VkRenderPassCreateInfo2
-func (x RenderPassCreateInfo2) AttachmentCount() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.attachmentCount)
+// DstSubpass returns the value of dstSubpass from VkSubpassDependency2
+func (x SubpassDependency2) DstSubpass() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.dstSubpass)
 	return *ptr
 }
 
-// WithAttachmentCount sets the value for the AttachmentCount on the underlying C structure.
+// WithDstSubpass sets the value for the DstSubpass on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x RenderPassCreateInfo2) WithAttachmentCount(y uint32) RenderPassCreateInfo2 {
-	x.attachmentCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+func (x SubpassDependency2) WithDstSubpass(y uint32) SubpassDependency2 {
+	x.dstSubpass = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
 	return x
 }
 
-// PAttachments returns the value of pAttachments from VkRenderPassCreateInfo2
-func (x RenderPassCreateInfo2) PAttachments() []AttachmentDescription2 {
-	ptr := func(x **C.struct_VkAttachmentDescription2) *[]AttachmentDescription2 { /* Slice */
-		slc := unsafe.Slice((*AttachmentDescription2)(unsafe.Pointer(x)), (1 << 31))
-		return &slc
-	}(&x.pAttachments)
+// SrcStageMask returns the value of srcStageMask from VkSubpassDependency2
+func (x SubpassDependency2) SrcStageMask() PipelineStageFlags {
+	ptr := /* typedef */ (*PipelineStageFlags)(&x.srcStageMask)
 	return *ptr
 }
 
-// WithPAttachments sets the value for the PAttachments on the underlying C structure.
+// WithSrcStageMask sets the value for the SrcStageMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-//
-// The specification defines AttachmentCount as the length of this field.
-// AttachmentCount is updated with the length of the new value.
-func (x RenderPassCreateInfo2) WithPAttachments(y []AttachmentDescription2) RenderPassCreateInfo2 {
-	x.pAttachments = *(func(x *[]AttachmentDescription2) **C.struct_VkAttachmentDescription2 { /* Slice */
-		if len(*x) > 0 {
-			slc := (*C.struct_VkAttachmentDescription2)(unsafe.Pointer(&((*x)[0])))
-			return &slc
-		}
-		var ptr unsafe.Pointer
-		return (**C.struct_VkAttachmentDescription2)(unsafe.Pointer((&ptr)))
-	}(&y))
-	return x.WithAttachmentCount(uint32(len(y)))
-}
-
-// SubpassCount returns the value of subpassCount from VkRenderPassCreateInfo2
-func (x RenderPassCreateInfo2) SubpassCount() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.subpassCount)
-	return *ptr
-}
-
-// WithSubpassCount sets the value for the SubpassCount on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x RenderPassCreateInfo2) WithSubpassCount(y uint32) RenderPassCreateInfo2 {
-	x.subpassCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+func (x SubpassDependency2) WithSrcStageMask(y PipelineStageFlags) SubpassDependency2 {
+	x.srcStageMask = *( /* typedef */ (*C.VkPipelineStageFlags)(&y))
 	return x
 }
 
-// PSubpasses returns the value of pSubpasses from VkRenderPassCreateInfo2
-func (x RenderPassCreateInfo2) PSubpasses() []SubpassDescription2 {
-	ptr := func(x **C.struct_VkSubpassDescription2) *[]SubpassDescription2 { /* Slice */
-		slc := unsafe.Slice((*SubpassDescription2)(unsafe.Pointer(x)), (1 << 31))
-		return &slc
-	}(&x.pSubpasses)
+// DstStageMask returns the value of dstStageMask from VkSubpassDependency2
+func (x SubpassDependency2) DstStageMask() PipelineStageFlags {
+	ptr := /* typedef */ (*PipelineStageFlags)(&x.dstStageMask)
 	return *ptr
 }
 
-// WithPSubpasses sets the value for the PSubpasses on the underlying C structure.
+// WithDstStageMask sets the value for the DstStageMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-//
-// The specification defines SubpassCount as the length of this field.
-// SubpassCount is updated with the length of the new value.
-func (x RenderPassCreateInfo2) WithPSubpasses(y []SubpassDescription2) RenderPassCreateInfo2 {
-	x.pSubpasses = *(func(x *[]SubpassDescription2) **C.struct_VkSubpassDescription2 { /* Slice */
-		if len(*x) > 0 {
-			slc := (*C.struct_VkSubpassDescription2)(unsafe.Pointer(&((*x)[0])))
-			return &slc
-		}
-		var ptr unsafe.Pointer
-		return (**C.struct_VkSubpassDescription2)(unsafe.Pointer((&ptr)))
-	}(&y))
-	return x.WithSubpassCount(uint32(len(y)))
-}
-
-// DependencyCount returns the value of dependencyCount from VkRenderPassCreateInfo2
-func (x RenderPassCreateInfo2) DependencyCount() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.dependencyCount)
-	return *ptr
-}
-
-// WithDependencyCount sets the value for the DependencyCount on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x RenderPassCreateInfo2) WithDependencyCount(y uint32) RenderPassCreateInfo2 {
-	x.dependencyCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+func (x SubpassDependency2) WithDstStageMask(y PipelineStageFlags) SubpassDependency2 {
+	x.dstStageMask = *( /* typedef */ (*C.VkPipelineStageFlags)(&y))
 	return x
 }
 
-// PDependencies returns the value of pDependencies from VkRenderPassCreateInfo2
-func (x RenderPassCreateInfo2) PDependencies() []SubpassDependency2 {
-	ptr := func(x **C.struct_VkSubpassDependency2) *[]SubpassDependency2 { /* Slice */
-		slc := unsafe.Slice((*SubpassDependency2)(unsafe.Pointer(x)), (1 << 31))
-		return &slc
-	}(&x.pDependencies)
+// SrcAccessMask returns the value of srcAccessMask from VkSubpassDependency2
+func (x SubpassDependency2) SrcAccessMask() AccessFlags {
+	ptr := /* typedef */ (*AccessFlags)(&x.srcAccessMask)
 	return *ptr
 }
 
-// WithPDependencies sets the value for the PDependencies on the underlying C structure.
+// WithSrcAccessMask sets the value for the SrcAccessMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-//
-// The specification defines DependencyCount as the length of this field.
-// DependencyCount is updated with the length of the new value.
-func (x RenderPassCreateInfo2) WithPDependencies(y []SubpassDependency2) RenderPassCreateInfo2 {
-	x.pDependencies = *(func(x *[]SubpassDependency2) **C.struct_VkSubpassDependency2 { /* Slice */
-		if len(*x) > 0 {
-			slc := (*C.struct_VkSubpassDependency2)(unsafe.Pointer(&((*x)[0])))
-			return &slc
-		}
-		var ptr unsafe.Pointer
-		return (**C.struct_VkSubpassDependency2)(unsafe.Pointer((&ptr)))
-	}(&y))
-	return x.WithDependencyCount(uint32(len(y)))
-}
-
-// CorrelatedViewMaskCount returns the value of correlatedViewMaskCount from VkRenderPassCreateInfo2
-func (x RenderPassCreateInfo2) CorrelatedViewMaskCount() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.correlatedViewMaskCount)
-	return *ptr
-}
-
-// WithCorrelatedViewMaskCount sets the value for the CorrelatedViewMaskCount on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x RenderPassCreateInfo2) WithCorrelatedViewMaskCount(y uint32) RenderPassCreateInfo2 {
-	x.correlatedViewMaskCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+func (x SubpassDependency2) WithSrcAccessMask(y AccessFlags) SubpassDependency2 {
+	x.srcAccessMask = *( /* typedef */ (*C.VkAccessFlags)(&y))
 	return x
 }
 
-// PCorrelatedViewMasks returns the value of pCorrelatedViewMasks from VkRenderPassCreateInfo2
-func (x RenderPassCreateInfo2) PCorrelatedViewMasks() []uint32 {
-	ptr := func(x **C.uint32_t) *[]uint32 { /* Slice */
-		slc := unsafe.Slice((*uint32)(unsafe.Pointer(x)), (1 << 31))
-		return &slc
-	}(&x.pCorrelatedViewMasks)
+// DstAccessMask returns the value of dstAccessMask from VkSubpassDependency2
+func (x SubpassDependency2) DstAccessMask() AccessFlags {
+	ptr := /* typedef */ (*AccessFlags)(&x.dstAccessMask)
 	return *ptr
 }
 
-// WithPCorrelatedViewMasks sets the value for the PCorrelatedViewMasks on the underlying C structure.
+// WithDstAccessMask sets the value for the DstAccessMask on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-//
-// The specification defines CorrelatedViewMaskCount as the length of this field.
-// CorrelatedViewMaskCount is updated with the length of the new value.
-func (x RenderPassCreateInfo2) WithPCorrelatedViewMasks(y []uint32) RenderPassCreateInfo2 {
-	x.pCorrelatedViewMasks = *(func(x *[]uint32) **C.uint32_t { /* Slice */
-		if len(*x) > 0 {
-			slc := (*C.uint32_t)(unsafe.Pointer(&((*x)[0])))
-			return &slc
-		}
-		var ptr unsafe.Pointer
-		return (**C.uint32_t)(unsafe.Pointer((&ptr)))
-	}(&y))
-	return x.WithCorrelatedViewMaskCount(uint32(len(y)))
-}
-
-// AttachmentDescription2 provides a go interface for VkAttachmentDescription2.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkAttachmentDescription2.html
-type AttachmentDescription2 C.struct_VkAttachmentDescription2
-
-// SizeofAttachmentDescription2 is the memory size of a AttachmentDescription2
-var SizeofAttachmentDescription2 int = int(unsafe.Sizeof(AttachmentDescription2{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *AttachmentDescription2) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x AttachmentDescription2) AsCPtr() *AttachmentDescription2 {
-	clone := (*AttachmentDescription2)(newCBlock(C.ulong(SizeofAttachmentDescription2)))
-	*clone = x
-	return clone
-}
-
-// AttachmentDescription2FreeCSlice releases the memory allocated by AttachmentDescription2MakeCSlice.
-// It does not free pointers stored inside the slice.
-func AttachmentDescription2FreeCSlice(x []AttachmentDescription2) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// AttachmentDescription2MakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. AttachmentDescription2FreeCSlice must be called on the returned slice.
-func AttachmentDescription2MakeCSlice(x ...AttachmentDescription2) []AttachmentDescription2 {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofAttachmentDescription2 * len(x)
-	dst := unsafe.Slice((*AttachmentDescription2)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// SType returns the value of sType from VkAttachmentDescription2
-func (x AttachmentDescription2) SType() StructureType {
-	ptr := /* typedef */ (*StructureType)(&x.sType)
-	return *ptr
-}
-
-// WithDefaultSType sets the value of SType to the value provided in the
-// specification. This method only exists if there is a single value in the specification.
-func (x AttachmentDescription2) WithDefaultSType() AttachmentDescription2 {
-	return x.WithSType(VK_STRUCTURE_TYPE_ATTACHMENT_DESCRIPTION_2)
-}
-
-// WithSType sets the value for the SType on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x AttachmentDescription2) WithSType(y StructureType) AttachmentDescription2 {
-	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
+func (x SubpassDependency2) WithDstAccessMask(y AccessFlags) SubpassDependency2 {
+	x.dstAccessMask = *( /* typedef */ (*C.VkAccessFlags)(&y))
 	return x
 }
 
-// PNext returns the value of pNext from VkAttachmentDescription2
-func (x AttachmentDescription2) PNext() unsafe.Pointer {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
+// DependencyFlags returns the value of dependencyFlags from VkSubpassDependency2
+func (x SubpassDependency2) DependencyFlags() DependencyFlags {
+	ptr := /* typedef */ (*DependencyFlags)(&x.dependencyFlags)
 	return *ptr
 }
 
-// WithPNext sets the value for the PNext on the underlying C structure.
+// WithDependencyFlags sets the value for the DependencyFlags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x AttachmentDescription2) WithPNext(y unsafe.Pointer) AttachmentDescription2 {
-	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
+func (x SubpassDependency2) WithDependencyFlags(y DependencyFlags) SubpassDependency2 {
+	x.dependencyFlags = *( /* typedef */ (*C.VkDependencyFlags)(&y))
 	return x
 }
 
-// Flags returns the value of flags from VkAttachmentDescription2
-func (x AttachmentDescription2) Flags() AttachmentDescriptionFlags {
-	ptr := /* typedef */ (*AttachmentDescriptionFlags)(&x.flags)
+// ViewOffset returns the value of viewOffset from VkSubpassDependency2
+func (x SubpassDependency2) ViewOffset() int32 {
+	ptr := func(x *C.int32_t) *int32 { /* Scalar */ c2g := int32(*x); return &c2g }(&x.viewOffset)
 	return *ptr
 }
 
-// WithFlags sets the value for the Flags on the underlying C structure.
+// WithViewOffset sets the value for the ViewOffset on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x AttachmentDescription2) WithFlags(y AttachmentDescriptionFlags) AttachmentDescription2 {
-	x.flags = *( /* typedef */ (*C.VkAttachmentDescriptionFlags)(&y))
-	return x
-}
-
-// Format returns the value of format from VkAttachmentDescription2
-func (x AttachmentDescription2) Format() Format {
-	ptr := /* typedef */ (*Format)(&x.format)
-	return *ptr
-}
-
-// WithFormat sets the value for the Format on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x AttachmentDescription2) WithFormat(y Format) AttachmentDescription2 {
-	x.format = *( /* typedef */ (*C.VkFormat)(&y))
-	return x
-}
-
-// Samples returns the value of samples from VkAttachmentDescription2
-func (x AttachmentDescription2) Samples() SampleCountFlagBits {
-	ptr := /* typedef */ (*SampleCountFlagBits)(&x.samples)
-	return *ptr
-}
-
-// WithSamples sets the value for the Samples on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x AttachmentDescription2) WithSamples(y SampleCountFlagBits) AttachmentDescription2 {
-	x.samples = *( /* typedef */ (*C.VkSampleCountFlagBits)(&y))
-	return x
-}
-
-// LoadOp returns the value of loadOp from VkAttachmentDescription2
-func (x AttachmentDescription2) LoadOp() AttachmentLoadOp {
-	ptr := /* typedef */ (*AttachmentLoadOp)(&x.loadOp)
-	return *ptr
-}
-
-// WithLoadOp sets the value for the LoadOp on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x AttachmentDescription2) WithLoadOp(y AttachmentLoadOp) AttachmentDescription2 {
-	x.loadOp = *( /* typedef */ (*C.VkAttachmentLoadOp)(&y))
-	return x
-}
-
-// StoreOp returns the value of storeOp from VkAttachmentDescription2
-func (x AttachmentDescription2) StoreOp() AttachmentStoreOp {
-	ptr := /* typedef */ (*AttachmentStoreOp)(&x.storeOp)
-	return *ptr
-}
-
-// WithStoreOp sets the value for the StoreOp on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x AttachmentDescription2) WithStoreOp(y AttachmentStoreOp) AttachmentDescription2 {
-	x.storeOp = *( /* typedef */ (*C.VkAttachmentStoreOp)(&y))
-	return x
-}
-
-// StencilLoadOp returns the value of stencilLoadOp from VkAttachmentDescription2
-func (x AttachmentDescription2) StencilLoadOp() AttachmentLoadOp {
-	ptr := /* typedef */ (*AttachmentLoadOp)(&x.stencilLoadOp)
-	return *ptr
-}
-
-// WithStencilLoadOp sets the value for the StencilLoadOp on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x AttachmentDescription2) WithStencilLoadOp(y AttachmentLoadOp) AttachmentDescription2 {
-	x.stencilLoadOp = *( /* typedef */ (*C.VkAttachmentLoadOp)(&y))
-	return x
-}
-
-// StencilStoreOp returns the value of stencilStoreOp from VkAttachmentDescription2
-func (x AttachmentDescription2) StencilStoreOp() AttachmentStoreOp {
-	ptr := /* typedef */ (*AttachmentStoreOp)(&x.stencilStoreOp)
-	return *ptr
-}
-
-// WithStencilStoreOp sets the value for the StencilStoreOp on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x AttachmentDescription2) WithStencilStoreOp(y AttachmentStoreOp) AttachmentDescription2 {
-	x.stencilStoreOp = *( /* typedef */ (*C.VkAttachmentStoreOp)(&y))
-	return x
-}
-
-// InitialLayout returns the value of initialLayout from VkAttachmentDescription2
-func (x AttachmentDescription2) InitialLayout() ImageLayout {
-	ptr := /* typedef */ (*ImageLayout)(&x.initialLayout)
-	return *ptr
-}
-
-// WithInitialLayout sets the value for the InitialLayout on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x AttachmentDescription2) WithInitialLayout(y ImageLayout) AttachmentDescription2 {
-	x.initialLayout = *( /* typedef */ (*C.VkImageLayout)(&y))
-	return x
-}
-
-// FinalLayout returns the value of finalLayout from VkAttachmentDescription2
-func (x AttachmentDescription2) FinalLayout() ImageLayout {
-	ptr := /* typedef */ (*ImageLayout)(&x.finalLayout)
-	return *ptr
-}
-
-// WithFinalLayout sets the value for the FinalLayout on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x AttachmentDescription2) WithFinalLayout(y ImageLayout) AttachmentDescription2 {
-	x.finalLayout = *( /* typedef */ (*C.VkImageLayout)(&y))
+func (x SubpassDependency2) WithViewOffset(y int32) SubpassDependency2 {
+	x.viewOffset = *(func(x *int32) *C.int32_t { /* Scalar */ g2c := C.int32_t(*x); return &g2c }(&y))
 	return x
 }
 
@@ -29429,182 +29173,438 @@ func (x SubpassDescription2) WithPPreserveAttachments(y []uint32) SubpassDescrip
 	return x.WithPreserveAttachmentCount(uint32(len(y)))
 }
 
-// SubpassDependency2 provides a go interface for VkSubpassDependency2.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkSubpassDependency2.html
-type SubpassDependency2 C.struct_VkSubpassDependency2
+// AttachmentDescription2 provides a go interface for VkAttachmentDescription2.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkAttachmentDescription2.html
+type AttachmentDescription2 C.struct_VkAttachmentDescription2
 
-// SizeofSubpassDependency2 is the memory size of a SubpassDependency2
-var SizeofSubpassDependency2 int = int(unsafe.Sizeof(SubpassDependency2{}))
+// SizeofAttachmentDescription2 is the memory size of a AttachmentDescription2
+var SizeofAttachmentDescription2 int = int(unsafe.Sizeof(AttachmentDescription2{}))
 
 // Free releases the memory allocated by AsCPtr.
 // It does not free pointers stored in the structure.
-func (x *SubpassDependency2) Free() {
+func (x *AttachmentDescription2) Free() {
 	C.free(unsafe.Pointer(x))
 }
 
 // AsCPtr copies the object to the C heap and returns the pointer.
 // Free must be explicitly called on the returned pointer.
-func (x SubpassDependency2) AsCPtr() *SubpassDependency2 {
-	clone := (*SubpassDependency2)(newCBlock(C.ulong(SizeofSubpassDependency2)))
+func (x AttachmentDescription2) AsCPtr() *AttachmentDescription2 {
+	clone := (*AttachmentDescription2)(newCBlock(C.ulong(SizeofAttachmentDescription2)))
 	*clone = x
 	return clone
 }
 
-// SubpassDependency2FreeCSlice releases the memory allocated by SubpassDependency2MakeCSlice.
+// AttachmentDescription2FreeCSlice releases the memory allocated by AttachmentDescription2MakeCSlice.
 // It does not free pointers stored inside the slice.
-func SubpassDependency2FreeCSlice(x []SubpassDependency2) {
+func AttachmentDescription2FreeCSlice(x []AttachmentDescription2) {
 	if len(x) > 0 {
 		C.free(unsafe.Pointer(&x[0]))
 	}
 }
 
-// SubpassDependency2MakeCSlice allocates memory for the passed arguments on the C heap,
+// AttachmentDescription2MakeCSlice allocates memory for the passed arguments on the C heap,
 // copies their values to the allocated memory, and creates a slice around the
-// C memory. SubpassDependency2FreeCSlice must be called on the returned slice.
-func SubpassDependency2MakeCSlice(x ...SubpassDependency2) []SubpassDependency2 {
+// C memory. AttachmentDescription2FreeCSlice must be called on the returned slice.
+func AttachmentDescription2MakeCSlice(x ...AttachmentDescription2) []AttachmentDescription2 {
 	if len(x) == 0 {
 		return nil
 	}
-	sz := SizeofSubpassDependency2 * len(x)
-	dst := unsafe.Slice((*SubpassDependency2)(newCBlock(C.ulong(sz))), len(x))
+	sz := SizeofAttachmentDescription2 * len(x)
+	dst := unsafe.Slice((*AttachmentDescription2)(newCBlock(C.ulong(sz))), len(x))
 	copy(dst, x)
 	return dst
 }
 
-// SType returns the value of sType from VkSubpassDependency2
-func (x SubpassDependency2) SType() StructureType {
+// SType returns the value of sType from VkAttachmentDescription2
+func (x AttachmentDescription2) SType() StructureType {
 	ptr := /* typedef */ (*StructureType)(&x.sType)
 	return *ptr
 }
 
 // WithDefaultSType sets the value of SType to the value provided in the
 // specification. This method only exists if there is a single value in the specification.
-func (x SubpassDependency2) WithDefaultSType() SubpassDependency2 {
-	return x.WithSType(VK_STRUCTURE_TYPE_SUBPASS_DEPENDENCY_2)
+func (x AttachmentDescription2) WithDefaultSType() AttachmentDescription2 {
+	return x.WithSType(VK_STRUCTURE_TYPE_ATTACHMENT_DESCRIPTION_2)
 }
 
 // WithSType sets the value for the SType on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x SubpassDependency2) WithSType(y StructureType) SubpassDependency2 {
+func (x AttachmentDescription2) WithSType(y StructureType) AttachmentDescription2 {
 	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
 	return x
 }
 
-// PNext returns the value of pNext from VkSubpassDependency2
-func (x SubpassDependency2) PNext() unsafe.Pointer {
+// PNext returns the value of pNext from VkAttachmentDescription2
+func (x AttachmentDescription2) PNext() unsafe.Pointer {
 	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
 	return *ptr
 }
 
 // WithPNext sets the value for the PNext on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x SubpassDependency2) WithPNext(y unsafe.Pointer) SubpassDependency2 {
+func (x AttachmentDescription2) WithPNext(y unsafe.Pointer) AttachmentDescription2 {
 	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
 	return x
 }
 
-// SrcSubpass returns the value of srcSubpass from VkSubpassDependency2
-func (x SubpassDependency2) SrcSubpass() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.srcSubpass)
+// Flags returns the value of flags from VkAttachmentDescription2
+func (x AttachmentDescription2) Flags() AttachmentDescriptionFlags {
+	ptr := /* typedef */ (*AttachmentDescriptionFlags)(&x.flags)
 	return *ptr
 }
 
-// WithSrcSubpass sets the value for the SrcSubpass on the underlying C structure.
+// WithFlags sets the value for the Flags on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x SubpassDependency2) WithSrcSubpass(y uint32) SubpassDependency2 {
-	x.srcSubpass = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+func (x AttachmentDescription2) WithFlags(y AttachmentDescriptionFlags) AttachmentDescription2 {
+	x.flags = *( /* typedef */ (*C.VkAttachmentDescriptionFlags)(&y))
 	return x
 }
 
-// DstSubpass returns the value of dstSubpass from VkSubpassDependency2
-func (x SubpassDependency2) DstSubpass() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.dstSubpass)
+// Format returns the value of format from VkAttachmentDescription2
+func (x AttachmentDescription2) Format() Format {
+	ptr := /* typedef */ (*Format)(&x.format)
 	return *ptr
 }
 
-// WithDstSubpass sets the value for the DstSubpass on the underlying C structure.
+// WithFormat sets the value for the Format on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x SubpassDependency2) WithDstSubpass(y uint32) SubpassDependency2 {
-	x.dstSubpass = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+func (x AttachmentDescription2) WithFormat(y Format) AttachmentDescription2 {
+	x.format = *( /* typedef */ (*C.VkFormat)(&y))
 	return x
 }
 
-// SrcStageMask returns the value of srcStageMask from VkSubpassDependency2
-func (x SubpassDependency2) SrcStageMask() PipelineStageFlags {
-	ptr := /* typedef */ (*PipelineStageFlags)(&x.srcStageMask)
+// Samples returns the value of samples from VkAttachmentDescription2
+func (x AttachmentDescription2) Samples() SampleCountFlagBits {
+	ptr := /* typedef */ (*SampleCountFlagBits)(&x.samples)
 	return *ptr
 }
 
-// WithSrcStageMask sets the value for the SrcStageMask on the underlying C structure.
+// WithSamples sets the value for the Samples on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x SubpassDependency2) WithSrcStageMask(y PipelineStageFlags) SubpassDependency2 {
-	x.srcStageMask = *( /* typedef */ (*C.VkPipelineStageFlags)(&y))
+func (x AttachmentDescription2) WithSamples(y SampleCountFlagBits) AttachmentDescription2 {
+	x.samples = *( /* typedef */ (*C.VkSampleCountFlagBits)(&y))
 	return x
 }
 
-// DstStageMask returns the value of dstStageMask from VkSubpassDependency2
-func (x SubpassDependency2) DstStageMask() PipelineStageFlags {
-	ptr := /* typedef */ (*PipelineStageFlags)(&x.dstStageMask)
+// LoadOp returns the value of loadOp from VkAttachmentDescription2
+func (x AttachmentDescription2) LoadOp() AttachmentLoadOp {
+	ptr := /* typedef */ (*AttachmentLoadOp)(&x.loadOp)
 	return *ptr
 }
 
-// WithDstStageMask sets the value for the DstStageMask on the underlying C structure.
+// WithLoadOp sets the value for the LoadOp on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x SubpassDependency2) WithDstStageMask(y PipelineStageFlags) SubpassDependency2 {
-	x.dstStageMask = *( /* typedef */ (*C.VkPipelineStageFlags)(&y))
+func (x AttachmentDescription2) WithLoadOp(y AttachmentLoadOp) AttachmentDescription2 {
+	x.loadOp = *( /* typedef */ (*C.VkAttachmentLoadOp)(&y))
 	return x
 }
 
-// SrcAccessMask returns the value of srcAccessMask from VkSubpassDependency2
-func (x SubpassDependency2) SrcAccessMask() AccessFlags {
-	ptr := /* typedef */ (*AccessFlags)(&x.srcAccessMask)
+// StoreOp returns the value of storeOp from VkAttachmentDescription2
+func (x AttachmentDescription2) StoreOp() AttachmentStoreOp {
+	ptr := /* typedef */ (*AttachmentStoreOp)(&x.storeOp)
 	return *ptr
 }
 
-// WithSrcAccessMask sets the value for the SrcAccessMask on the underlying C structure.
+// WithStoreOp sets the value for the StoreOp on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x SubpassDependency2) WithSrcAccessMask(y AccessFlags) SubpassDependency2 {
-	x.srcAccessMask = *( /* typedef */ (*C.VkAccessFlags)(&y))
+func (x AttachmentDescription2) WithStoreOp(y AttachmentStoreOp) AttachmentDescription2 {
+	x.storeOp = *( /* typedef */ (*C.VkAttachmentStoreOp)(&y))
 	return x
 }
 
-// DstAccessMask returns the value of dstAccessMask from VkSubpassDependency2
-func (x SubpassDependency2) DstAccessMask() AccessFlags {
-	ptr := /* typedef */ (*AccessFlags)(&x.dstAccessMask)
+// StencilLoadOp returns the value of stencilLoadOp from VkAttachmentDescription2
+func (x AttachmentDescription2) StencilLoadOp() AttachmentLoadOp {
+	ptr := /* typedef */ (*AttachmentLoadOp)(&x.stencilLoadOp)
 	return *ptr
 }
 
-// WithDstAccessMask sets the value for the DstAccessMask on the underlying C structure.
+// WithStencilLoadOp sets the value for the StencilLoadOp on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x SubpassDependency2) WithDstAccessMask(y AccessFlags) SubpassDependency2 {
-	x.dstAccessMask = *( /* typedef */ (*C.VkAccessFlags)(&y))
+func (x AttachmentDescription2) WithStencilLoadOp(y AttachmentLoadOp) AttachmentDescription2 {
+	x.stencilLoadOp = *( /* typedef */ (*C.VkAttachmentLoadOp)(&y))
 	return x
 }
 
-// DependencyFlags returns the value of dependencyFlags from VkSubpassDependency2
-func (x SubpassDependency2) DependencyFlags() DependencyFlags {
-	ptr := /* typedef */ (*DependencyFlags)(&x.dependencyFlags)
+// StencilStoreOp returns the value of stencilStoreOp from VkAttachmentDescription2
+func (x AttachmentDescription2) StencilStoreOp() AttachmentStoreOp {
+	ptr := /* typedef */ (*AttachmentStoreOp)(&x.stencilStoreOp)
 	return *ptr
 }
 
-// WithDependencyFlags sets the value for the DependencyFlags on the underlying C structure.
+// WithStencilStoreOp sets the value for the StencilStoreOp on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x SubpassDependency2) WithDependencyFlags(y DependencyFlags) SubpassDependency2 {
-	x.dependencyFlags = *( /* typedef */ (*C.VkDependencyFlags)(&y))
+func (x AttachmentDescription2) WithStencilStoreOp(y AttachmentStoreOp) AttachmentDescription2 {
+	x.stencilStoreOp = *( /* typedef */ (*C.VkAttachmentStoreOp)(&y))
 	return x
 }
 
-// ViewOffset returns the value of viewOffset from VkSubpassDependency2
-func (x SubpassDependency2) ViewOffset() int32 {
-	ptr := func(x *C.int32_t) *int32 { /* Scalar */ c2g := int32(*x); return &c2g }(&x.viewOffset)
+// InitialLayout returns the value of initialLayout from VkAttachmentDescription2
+func (x AttachmentDescription2) InitialLayout() ImageLayout {
+	ptr := /* typedef */ (*ImageLayout)(&x.initialLayout)
 	return *ptr
 }
 
-// WithViewOffset sets the value for the ViewOffset on the underlying C structure.
+// WithInitialLayout sets the value for the InitialLayout on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
-func (x SubpassDependency2) WithViewOffset(y int32) SubpassDependency2 {
-	x.viewOffset = *(func(x *int32) *C.int32_t { /* Scalar */ g2c := C.int32_t(*x); return &g2c }(&y))
+func (x AttachmentDescription2) WithInitialLayout(y ImageLayout) AttachmentDescription2 {
+	x.initialLayout = *( /* typedef */ (*C.VkImageLayout)(&y))
 	return x
+}
+
+// FinalLayout returns the value of finalLayout from VkAttachmentDescription2
+func (x AttachmentDescription2) FinalLayout() ImageLayout {
+	ptr := /* typedef */ (*ImageLayout)(&x.finalLayout)
+	return *ptr
+}
+
+// WithFinalLayout sets the value for the FinalLayout on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x AttachmentDescription2) WithFinalLayout(y ImageLayout) AttachmentDescription2 {
+	x.finalLayout = *( /* typedef */ (*C.VkImageLayout)(&y))
+	return x
+}
+
+// RenderPassCreateInfo2 provides a go interface for VkRenderPassCreateInfo2.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkRenderPassCreateInfo2.html
+type RenderPassCreateInfo2 C.struct_VkRenderPassCreateInfo2
+
+// SizeofRenderPassCreateInfo2 is the memory size of a RenderPassCreateInfo2
+var SizeofRenderPassCreateInfo2 int = int(unsafe.Sizeof(RenderPassCreateInfo2{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *RenderPassCreateInfo2) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x RenderPassCreateInfo2) AsCPtr() *RenderPassCreateInfo2 {
+	clone := (*RenderPassCreateInfo2)(newCBlock(C.ulong(SizeofRenderPassCreateInfo2)))
+	*clone = x
+	return clone
+}
+
+// RenderPassCreateInfo2FreeCSlice releases the memory allocated by RenderPassCreateInfo2MakeCSlice.
+// It does not free pointers stored inside the slice.
+func RenderPassCreateInfo2FreeCSlice(x []RenderPassCreateInfo2) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// RenderPassCreateInfo2MakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. RenderPassCreateInfo2FreeCSlice must be called on the returned slice.
+func RenderPassCreateInfo2MakeCSlice(x ...RenderPassCreateInfo2) []RenderPassCreateInfo2 {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofRenderPassCreateInfo2 * len(x)
+	dst := unsafe.Slice((*RenderPassCreateInfo2)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// SType returns the value of sType from VkRenderPassCreateInfo2
+func (x RenderPassCreateInfo2) SType() StructureType {
+	ptr := /* typedef */ (*StructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification. This method only exists if there is a single value in the specification.
+func (x RenderPassCreateInfo2) WithDefaultSType() RenderPassCreateInfo2 {
+	return x.WithSType(VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO_2)
+}
+
+// WithSType sets the value for the SType on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x RenderPassCreateInfo2) WithSType(y StructureType) RenderPassCreateInfo2 {
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
+	return x
+}
+
+// PNext returns the value of pNext from VkRenderPassCreateInfo2
+func (x RenderPassCreateInfo2) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext sets the value for the PNext on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x RenderPassCreateInfo2) WithPNext(y unsafe.Pointer) RenderPassCreateInfo2 {
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
+	return x
+}
+
+// Flags returns the value of flags from VkRenderPassCreateInfo2
+func (x RenderPassCreateInfo2) Flags() RenderPassCreateFlags {
+	ptr := /* typedef */ (*RenderPassCreateFlags)(&x.flags)
+	return *ptr
+}
+
+// WithFlags sets the value for the Flags on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x RenderPassCreateInfo2) WithFlags(y RenderPassCreateFlags) RenderPassCreateInfo2 {
+	x.flags = *( /* typedef */ (*C.VkRenderPassCreateFlags)(&y))
+	return x
+}
+
+// AttachmentCount returns the value of attachmentCount from VkRenderPassCreateInfo2
+func (x RenderPassCreateInfo2) AttachmentCount() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.attachmentCount)
+	return *ptr
+}
+
+// WithAttachmentCount sets the value for the AttachmentCount on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x RenderPassCreateInfo2) WithAttachmentCount(y uint32) RenderPassCreateInfo2 {
+	x.attachmentCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// PAttachments returns the value of pAttachments from VkRenderPassCreateInfo2
+func (x RenderPassCreateInfo2) PAttachments() []AttachmentDescription2 {
+	ptr := func(x **C.struct_VkAttachmentDescription2) *[]AttachmentDescription2 { /* Slice */
+		slc := unsafe.Slice((*AttachmentDescription2)(unsafe.Pointer(x)), (1 << 31))
+		return &slc
+	}(&x.pAttachments)
+	return *ptr
+}
+
+// WithPAttachments sets the value for the PAttachments on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+//
+// The specification defines AttachmentCount as the length of this field.
+// AttachmentCount is updated with the length of the new value.
+func (x RenderPassCreateInfo2) WithPAttachments(y []AttachmentDescription2) RenderPassCreateInfo2 {
+	x.pAttachments = *(func(x *[]AttachmentDescription2) **C.struct_VkAttachmentDescription2 { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.struct_VkAttachmentDescription2)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.struct_VkAttachmentDescription2)(unsafe.Pointer((&ptr)))
+	}(&y))
+	return x.WithAttachmentCount(uint32(len(y)))
+}
+
+// SubpassCount returns the value of subpassCount from VkRenderPassCreateInfo2
+func (x RenderPassCreateInfo2) SubpassCount() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.subpassCount)
+	return *ptr
+}
+
+// WithSubpassCount sets the value for the SubpassCount on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x RenderPassCreateInfo2) WithSubpassCount(y uint32) RenderPassCreateInfo2 {
+	x.subpassCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// PSubpasses returns the value of pSubpasses from VkRenderPassCreateInfo2
+func (x RenderPassCreateInfo2) PSubpasses() []SubpassDescription2 {
+	ptr := func(x **C.struct_VkSubpassDescription2) *[]SubpassDescription2 { /* Slice */
+		slc := unsafe.Slice((*SubpassDescription2)(unsafe.Pointer(x)), (1 << 31))
+		return &slc
+	}(&x.pSubpasses)
+	return *ptr
+}
+
+// WithPSubpasses sets the value for the PSubpasses on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+//
+// The specification defines SubpassCount as the length of this field.
+// SubpassCount is updated with the length of the new value.
+func (x RenderPassCreateInfo2) WithPSubpasses(y []SubpassDescription2) RenderPassCreateInfo2 {
+	x.pSubpasses = *(func(x *[]SubpassDescription2) **C.struct_VkSubpassDescription2 { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.struct_VkSubpassDescription2)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.struct_VkSubpassDescription2)(unsafe.Pointer((&ptr)))
+	}(&y))
+	return x.WithSubpassCount(uint32(len(y)))
+}
+
+// DependencyCount returns the value of dependencyCount from VkRenderPassCreateInfo2
+func (x RenderPassCreateInfo2) DependencyCount() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.dependencyCount)
+	return *ptr
+}
+
+// WithDependencyCount sets the value for the DependencyCount on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x RenderPassCreateInfo2) WithDependencyCount(y uint32) RenderPassCreateInfo2 {
+	x.dependencyCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// PDependencies returns the value of pDependencies from VkRenderPassCreateInfo2
+func (x RenderPassCreateInfo2) PDependencies() []SubpassDependency2 {
+	ptr := func(x **C.struct_VkSubpassDependency2) *[]SubpassDependency2 { /* Slice */
+		slc := unsafe.Slice((*SubpassDependency2)(unsafe.Pointer(x)), (1 << 31))
+		return &slc
+	}(&x.pDependencies)
+	return *ptr
+}
+
+// WithPDependencies sets the value for the PDependencies on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+//
+// The specification defines DependencyCount as the length of this field.
+// DependencyCount is updated with the length of the new value.
+func (x RenderPassCreateInfo2) WithPDependencies(y []SubpassDependency2) RenderPassCreateInfo2 {
+	x.pDependencies = *(func(x *[]SubpassDependency2) **C.struct_VkSubpassDependency2 { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.struct_VkSubpassDependency2)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.struct_VkSubpassDependency2)(unsafe.Pointer((&ptr)))
+	}(&y))
+	return x.WithDependencyCount(uint32(len(y)))
+}
+
+// CorrelatedViewMaskCount returns the value of correlatedViewMaskCount from VkRenderPassCreateInfo2
+func (x RenderPassCreateInfo2) CorrelatedViewMaskCount() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.correlatedViewMaskCount)
+	return *ptr
+}
+
+// WithCorrelatedViewMaskCount sets the value for the CorrelatedViewMaskCount on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x RenderPassCreateInfo2) WithCorrelatedViewMaskCount(y uint32) RenderPassCreateInfo2 {
+	x.correlatedViewMaskCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// PCorrelatedViewMasks returns the value of pCorrelatedViewMasks from VkRenderPassCreateInfo2
+func (x RenderPassCreateInfo2) PCorrelatedViewMasks() []uint32 {
+	ptr := func(x **C.uint32_t) *[]uint32 { /* Slice */
+		slc := unsafe.Slice((*uint32)(unsafe.Pointer(x)), (1 << 31))
+		return &slc
+	}(&x.pCorrelatedViewMasks)
+	return *ptr
+}
+
+// WithPCorrelatedViewMasks sets the value for the PCorrelatedViewMasks on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+//
+// The specification defines CorrelatedViewMaskCount as the length of this field.
+// CorrelatedViewMaskCount is updated with the length of the new value.
+func (x RenderPassCreateInfo2) WithPCorrelatedViewMasks(y []uint32) RenderPassCreateInfo2 {
+	x.pCorrelatedViewMasks = *(func(x *[]uint32) **C.uint32_t { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.uint32_t)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.uint32_t)(unsafe.Pointer((&ptr)))
+	}(&y))
+	return x.WithCorrelatedViewMaskCount(uint32(len(y)))
 }
 
 // SubpassBeginInfo provides a go interface for VkSubpassBeginInfo.
@@ -34103,119 +34103,6 @@ func (x PhysicalDeviceImagelessFramebufferFeatures) WithImagelessFramebuffer(y B
 	return x
 }
 
-// FramebufferAttachmentsCreateInfo provides a go interface for VkFramebufferAttachmentsCreateInfo.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkFramebufferAttachmentsCreateInfo.html
-type FramebufferAttachmentsCreateInfo C.struct_VkFramebufferAttachmentsCreateInfo
-
-// SizeofFramebufferAttachmentsCreateInfo is the memory size of a FramebufferAttachmentsCreateInfo
-var SizeofFramebufferAttachmentsCreateInfo int = int(unsafe.Sizeof(FramebufferAttachmentsCreateInfo{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *FramebufferAttachmentsCreateInfo) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x FramebufferAttachmentsCreateInfo) AsCPtr() *FramebufferAttachmentsCreateInfo {
-	clone := (*FramebufferAttachmentsCreateInfo)(newCBlock(C.ulong(SizeofFramebufferAttachmentsCreateInfo)))
-	*clone = x
-	return clone
-}
-
-// FramebufferAttachmentsCreateInfoFreeCSlice releases the memory allocated by FramebufferAttachmentsCreateInfoMakeCSlice.
-// It does not free pointers stored inside the slice.
-func FramebufferAttachmentsCreateInfoFreeCSlice(x []FramebufferAttachmentsCreateInfo) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// FramebufferAttachmentsCreateInfoMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. FramebufferAttachmentsCreateInfoFreeCSlice must be called on the returned slice.
-func FramebufferAttachmentsCreateInfoMakeCSlice(x ...FramebufferAttachmentsCreateInfo) []FramebufferAttachmentsCreateInfo {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofFramebufferAttachmentsCreateInfo * len(x)
-	dst := unsafe.Slice((*FramebufferAttachmentsCreateInfo)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// SType returns the value of sType from VkFramebufferAttachmentsCreateInfo
-func (x FramebufferAttachmentsCreateInfo) SType() StructureType {
-	ptr := /* typedef */ (*StructureType)(&x.sType)
-	return *ptr
-}
-
-// WithDefaultSType sets the value of SType to the value provided in the
-// specification. This method only exists if there is a single value in the specification.
-func (x FramebufferAttachmentsCreateInfo) WithDefaultSType() FramebufferAttachmentsCreateInfo {
-	return x.WithSType(VK_STRUCTURE_TYPE_FRAMEBUFFER_ATTACHMENTS_CREATE_INFO)
-}
-
-// WithSType sets the value for the SType on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x FramebufferAttachmentsCreateInfo) WithSType(y StructureType) FramebufferAttachmentsCreateInfo {
-	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
-	return x
-}
-
-// PNext returns the value of pNext from VkFramebufferAttachmentsCreateInfo
-func (x FramebufferAttachmentsCreateInfo) PNext() unsafe.Pointer {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
-	return *ptr
-}
-
-// WithPNext sets the value for the PNext on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x FramebufferAttachmentsCreateInfo) WithPNext(y unsafe.Pointer) FramebufferAttachmentsCreateInfo {
-	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
-	return x
-}
-
-// AttachmentImageInfoCount returns the value of attachmentImageInfoCount from VkFramebufferAttachmentsCreateInfo
-func (x FramebufferAttachmentsCreateInfo) AttachmentImageInfoCount() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.attachmentImageInfoCount)
-	return *ptr
-}
-
-// WithAttachmentImageInfoCount sets the value for the AttachmentImageInfoCount on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x FramebufferAttachmentsCreateInfo) WithAttachmentImageInfoCount(y uint32) FramebufferAttachmentsCreateInfo {
-	x.attachmentImageInfoCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// PAttachmentImageInfos returns the value of pAttachmentImageInfos from VkFramebufferAttachmentsCreateInfo
-func (x FramebufferAttachmentsCreateInfo) PAttachmentImageInfos() []FramebufferAttachmentImageInfo {
-	ptr := func(x **C.struct_VkFramebufferAttachmentImageInfo) *[]FramebufferAttachmentImageInfo { /* Slice */
-		slc := unsafe.Slice((*FramebufferAttachmentImageInfo)(unsafe.Pointer(x)), (1 << 31))
-		return &slc
-	}(&x.pAttachmentImageInfos)
-	return *ptr
-}
-
-// WithPAttachmentImageInfos sets the value for the PAttachmentImageInfos on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-//
-// The specification defines AttachmentImageInfoCount as the length of this field.
-// AttachmentImageInfoCount is updated with the length of the new value.
-func (x FramebufferAttachmentsCreateInfo) WithPAttachmentImageInfos(y []FramebufferAttachmentImageInfo) FramebufferAttachmentsCreateInfo {
-	x.pAttachmentImageInfos = *(func(x *[]FramebufferAttachmentImageInfo) **C.struct_VkFramebufferAttachmentImageInfo { /* Slice */
-		if len(*x) > 0 {
-			slc := (*C.struct_VkFramebufferAttachmentImageInfo)(unsafe.Pointer(&((*x)[0])))
-			return &slc
-		}
-		var ptr unsafe.Pointer
-		return (**C.struct_VkFramebufferAttachmentImageInfo)(unsafe.Pointer((&ptr)))
-	}(&y))
-	return x.WithAttachmentImageInfoCount(uint32(len(y)))
-}
-
 // FramebufferAttachmentImageInfo provides a go interface for VkFramebufferAttachmentImageInfo.
 // https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkFramebufferAttachmentImageInfo.html
 type FramebufferAttachmentImageInfo C.struct_VkFramebufferAttachmentImageInfo
@@ -34392,6 +34279,119 @@ func (x FramebufferAttachmentImageInfo) WithPViewFormats(y []Format) Framebuffer
 		return (**C.VkFormat)(unsafe.Pointer((&ptr)))
 	}(&y))
 	return x.WithViewFormatCount(uint32(len(y)))
+}
+
+// FramebufferAttachmentsCreateInfo provides a go interface for VkFramebufferAttachmentsCreateInfo.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkFramebufferAttachmentsCreateInfo.html
+type FramebufferAttachmentsCreateInfo C.struct_VkFramebufferAttachmentsCreateInfo
+
+// SizeofFramebufferAttachmentsCreateInfo is the memory size of a FramebufferAttachmentsCreateInfo
+var SizeofFramebufferAttachmentsCreateInfo int = int(unsafe.Sizeof(FramebufferAttachmentsCreateInfo{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *FramebufferAttachmentsCreateInfo) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x FramebufferAttachmentsCreateInfo) AsCPtr() *FramebufferAttachmentsCreateInfo {
+	clone := (*FramebufferAttachmentsCreateInfo)(newCBlock(C.ulong(SizeofFramebufferAttachmentsCreateInfo)))
+	*clone = x
+	return clone
+}
+
+// FramebufferAttachmentsCreateInfoFreeCSlice releases the memory allocated by FramebufferAttachmentsCreateInfoMakeCSlice.
+// It does not free pointers stored inside the slice.
+func FramebufferAttachmentsCreateInfoFreeCSlice(x []FramebufferAttachmentsCreateInfo) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// FramebufferAttachmentsCreateInfoMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. FramebufferAttachmentsCreateInfoFreeCSlice must be called on the returned slice.
+func FramebufferAttachmentsCreateInfoMakeCSlice(x ...FramebufferAttachmentsCreateInfo) []FramebufferAttachmentsCreateInfo {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofFramebufferAttachmentsCreateInfo * len(x)
+	dst := unsafe.Slice((*FramebufferAttachmentsCreateInfo)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// SType returns the value of sType from VkFramebufferAttachmentsCreateInfo
+func (x FramebufferAttachmentsCreateInfo) SType() StructureType {
+	ptr := /* typedef */ (*StructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification. This method only exists if there is a single value in the specification.
+func (x FramebufferAttachmentsCreateInfo) WithDefaultSType() FramebufferAttachmentsCreateInfo {
+	return x.WithSType(VK_STRUCTURE_TYPE_FRAMEBUFFER_ATTACHMENTS_CREATE_INFO)
+}
+
+// WithSType sets the value for the SType on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x FramebufferAttachmentsCreateInfo) WithSType(y StructureType) FramebufferAttachmentsCreateInfo {
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
+	return x
+}
+
+// PNext returns the value of pNext from VkFramebufferAttachmentsCreateInfo
+func (x FramebufferAttachmentsCreateInfo) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext sets the value for the PNext on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x FramebufferAttachmentsCreateInfo) WithPNext(y unsafe.Pointer) FramebufferAttachmentsCreateInfo {
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
+	return x
+}
+
+// AttachmentImageInfoCount returns the value of attachmentImageInfoCount from VkFramebufferAttachmentsCreateInfo
+func (x FramebufferAttachmentsCreateInfo) AttachmentImageInfoCount() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.attachmentImageInfoCount)
+	return *ptr
+}
+
+// WithAttachmentImageInfoCount sets the value for the AttachmentImageInfoCount on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x FramebufferAttachmentsCreateInfo) WithAttachmentImageInfoCount(y uint32) FramebufferAttachmentsCreateInfo {
+	x.attachmentImageInfoCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// PAttachmentImageInfos returns the value of pAttachmentImageInfos from VkFramebufferAttachmentsCreateInfo
+func (x FramebufferAttachmentsCreateInfo) PAttachmentImageInfos() []FramebufferAttachmentImageInfo {
+	ptr := func(x **C.struct_VkFramebufferAttachmentImageInfo) *[]FramebufferAttachmentImageInfo { /* Slice */
+		slc := unsafe.Slice((*FramebufferAttachmentImageInfo)(unsafe.Pointer(x)), (1 << 31))
+		return &slc
+	}(&x.pAttachmentImageInfos)
+	return *ptr
+}
+
+// WithPAttachmentImageInfos sets the value for the PAttachmentImageInfos on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+//
+// The specification defines AttachmentImageInfoCount as the length of this field.
+// AttachmentImageInfoCount is updated with the length of the new value.
+func (x FramebufferAttachmentsCreateInfo) WithPAttachmentImageInfos(y []FramebufferAttachmentImageInfo) FramebufferAttachmentsCreateInfo {
+	x.pAttachmentImageInfos = *(func(x *[]FramebufferAttachmentImageInfo) **C.struct_VkFramebufferAttachmentImageInfo { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.struct_VkFramebufferAttachmentImageInfo)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.struct_VkFramebufferAttachmentImageInfo)(unsafe.Pointer((&ptr)))
+	}(&y))
+	return x.WithAttachmentImageInfoCount(uint32(len(y)))
 }
 
 // RenderPassAttachmentBeginInfo provides a go interface for VkRenderPassAttachmentBeginInfo.
@@ -38635,6 +38635,132 @@ func (x ImageMemoryBarrier2) WithSubresourceRange(y ImageSubresourceRange) Image
 	return x
 }
 
+// MemoryBarrier2 provides a go interface for VkMemoryBarrier2.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkMemoryBarrier2.html
+type MemoryBarrier2 C.struct_VkMemoryBarrier2
+
+// SizeofMemoryBarrier2 is the memory size of a MemoryBarrier2
+var SizeofMemoryBarrier2 int = int(unsafe.Sizeof(MemoryBarrier2{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *MemoryBarrier2) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x MemoryBarrier2) AsCPtr() *MemoryBarrier2 {
+	clone := (*MemoryBarrier2)(newCBlock(C.ulong(SizeofMemoryBarrier2)))
+	*clone = x
+	return clone
+}
+
+// MemoryBarrier2FreeCSlice releases the memory allocated by MemoryBarrier2MakeCSlice.
+// It does not free pointers stored inside the slice.
+func MemoryBarrier2FreeCSlice(x []MemoryBarrier2) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// MemoryBarrier2MakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. MemoryBarrier2FreeCSlice must be called on the returned slice.
+func MemoryBarrier2MakeCSlice(x ...MemoryBarrier2) []MemoryBarrier2 {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofMemoryBarrier2 * len(x)
+	dst := unsafe.Slice((*MemoryBarrier2)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// SType returns the value of sType from VkMemoryBarrier2
+func (x MemoryBarrier2) SType() StructureType {
+	ptr := /* typedef */ (*StructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification. This method only exists if there is a single value in the specification.
+func (x MemoryBarrier2) WithDefaultSType() MemoryBarrier2 {
+	return x.WithSType(VK_STRUCTURE_TYPE_MEMORY_BARRIER_2)
+}
+
+// WithSType sets the value for the SType on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x MemoryBarrier2) WithSType(y StructureType) MemoryBarrier2 {
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
+	return x
+}
+
+// PNext returns the value of pNext from VkMemoryBarrier2
+func (x MemoryBarrier2) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext sets the value for the PNext on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x MemoryBarrier2) WithPNext(y unsafe.Pointer) MemoryBarrier2 {
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
+	return x
+}
+
+// SrcStageMask returns the value of srcStageMask from VkMemoryBarrier2
+func (x MemoryBarrier2) SrcStageMask() PipelineStageFlags2 {
+	ptr := /* typedef */ (*PipelineStageFlags2)(&x.srcStageMask)
+	return *ptr
+}
+
+// WithSrcStageMask sets the value for the SrcStageMask on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x MemoryBarrier2) WithSrcStageMask(y PipelineStageFlags2) MemoryBarrier2 {
+	x.srcStageMask = *( /* typedef */ (*C.VkPipelineStageFlags2)(&y))
+	return x
+}
+
+// SrcAccessMask returns the value of srcAccessMask from VkMemoryBarrier2
+func (x MemoryBarrier2) SrcAccessMask() AccessFlags2 {
+	ptr := /* typedef */ (*AccessFlags2)(&x.srcAccessMask)
+	return *ptr
+}
+
+// WithSrcAccessMask sets the value for the SrcAccessMask on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x MemoryBarrier2) WithSrcAccessMask(y AccessFlags2) MemoryBarrier2 {
+	x.srcAccessMask = *( /* typedef */ (*C.VkAccessFlags2)(&y))
+	return x
+}
+
+// DstStageMask returns the value of dstStageMask from VkMemoryBarrier2
+func (x MemoryBarrier2) DstStageMask() PipelineStageFlags2 {
+	ptr := /* typedef */ (*PipelineStageFlags2)(&x.dstStageMask)
+	return *ptr
+}
+
+// WithDstStageMask sets the value for the DstStageMask on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x MemoryBarrier2) WithDstStageMask(y PipelineStageFlags2) MemoryBarrier2 {
+	x.dstStageMask = *( /* typedef */ (*C.VkPipelineStageFlags2)(&y))
+	return x
+}
+
+// DstAccessMask returns the value of dstAccessMask from VkMemoryBarrier2
+func (x MemoryBarrier2) DstAccessMask() AccessFlags2 {
+	ptr := /* typedef */ (*AccessFlags2)(&x.dstAccessMask)
+	return *ptr
+}
+
+// WithDstAccessMask sets the value for the DstAccessMask on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x MemoryBarrier2) WithDstAccessMask(y AccessFlags2) MemoryBarrier2 {
+	x.dstAccessMask = *( /* typedef */ (*C.VkAccessFlags2)(&y))
+	return x
+}
+
 // DependencyInfo provides a go interface for VkDependencyInfo.
 // https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkDependencyInfo.html
 type DependencyInfo C.struct_VkDependencyInfo
@@ -38837,210 +38963,6 @@ func (x DependencyInfo) WithPImageMemoryBarriers(y []ImageMemoryBarrier2) Depend
 		return (**C.struct_VkImageMemoryBarrier2)(unsafe.Pointer((&ptr)))
 	}(&y))
 	return x.WithImageMemoryBarrierCount(uint32(len(y)))
-}
-
-// SubmitInfo2 provides a go interface for VkSubmitInfo2.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkSubmitInfo2.html
-type SubmitInfo2 C.struct_VkSubmitInfo2
-
-// SizeofSubmitInfo2 is the memory size of a SubmitInfo2
-var SizeofSubmitInfo2 int = int(unsafe.Sizeof(SubmitInfo2{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *SubmitInfo2) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x SubmitInfo2) AsCPtr() *SubmitInfo2 {
-	clone := (*SubmitInfo2)(newCBlock(C.ulong(SizeofSubmitInfo2)))
-	*clone = x
-	return clone
-}
-
-// SubmitInfo2FreeCSlice releases the memory allocated by SubmitInfo2MakeCSlice.
-// It does not free pointers stored inside the slice.
-func SubmitInfo2FreeCSlice(x []SubmitInfo2) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// SubmitInfo2MakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. SubmitInfo2FreeCSlice must be called on the returned slice.
-func SubmitInfo2MakeCSlice(x ...SubmitInfo2) []SubmitInfo2 {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofSubmitInfo2 * len(x)
-	dst := unsafe.Slice((*SubmitInfo2)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// SType returns the value of sType from VkSubmitInfo2
-func (x SubmitInfo2) SType() StructureType {
-	ptr := /* typedef */ (*StructureType)(&x.sType)
-	return *ptr
-}
-
-// WithDefaultSType sets the value of SType to the value provided in the
-// specification. This method only exists if there is a single value in the specification.
-func (x SubmitInfo2) WithDefaultSType() SubmitInfo2 {
-	return x.WithSType(VK_STRUCTURE_TYPE_SUBMIT_INFO_2)
-}
-
-// WithSType sets the value for the SType on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x SubmitInfo2) WithSType(y StructureType) SubmitInfo2 {
-	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
-	return x
-}
-
-// PNext returns the value of pNext from VkSubmitInfo2
-func (x SubmitInfo2) PNext() unsafe.Pointer {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
-	return *ptr
-}
-
-// WithPNext sets the value for the PNext on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x SubmitInfo2) WithPNext(y unsafe.Pointer) SubmitInfo2 {
-	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
-	return x
-}
-
-// Flags returns the value of flags from VkSubmitInfo2
-func (x SubmitInfo2) Flags() SubmitFlags {
-	ptr := /* typedef */ (*SubmitFlags)(&x.flags)
-	return *ptr
-}
-
-// WithFlags sets the value for the Flags on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x SubmitInfo2) WithFlags(y SubmitFlags) SubmitInfo2 {
-	x.flags = *( /* typedef */ (*C.VkSubmitFlags)(&y))
-	return x
-}
-
-// WaitSemaphoreInfoCount returns the value of waitSemaphoreInfoCount from VkSubmitInfo2
-func (x SubmitInfo2) WaitSemaphoreInfoCount() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.waitSemaphoreInfoCount)
-	return *ptr
-}
-
-// WithWaitSemaphoreInfoCount sets the value for the WaitSemaphoreInfoCount on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x SubmitInfo2) WithWaitSemaphoreInfoCount(y uint32) SubmitInfo2 {
-	x.waitSemaphoreInfoCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// PWaitSemaphoreInfos returns the value of pWaitSemaphoreInfos from VkSubmitInfo2
-func (x SubmitInfo2) PWaitSemaphoreInfos() []SemaphoreSubmitInfo {
-	ptr := func(x **C.struct_VkSemaphoreSubmitInfo) *[]SemaphoreSubmitInfo { /* Slice */
-		slc := unsafe.Slice((*SemaphoreSubmitInfo)(unsafe.Pointer(x)), (1 << 31))
-		return &slc
-	}(&x.pWaitSemaphoreInfos)
-	return *ptr
-}
-
-// WithPWaitSemaphoreInfos sets the value for the PWaitSemaphoreInfos on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-//
-// The specification defines WaitSemaphoreInfoCount as the length of this field.
-// WaitSemaphoreInfoCount is updated with the length of the new value.
-func (x SubmitInfo2) WithPWaitSemaphoreInfos(y []SemaphoreSubmitInfo) SubmitInfo2 {
-	x.pWaitSemaphoreInfos = *(func(x *[]SemaphoreSubmitInfo) **C.struct_VkSemaphoreSubmitInfo { /* Slice */
-		if len(*x) > 0 {
-			slc := (*C.struct_VkSemaphoreSubmitInfo)(unsafe.Pointer(&((*x)[0])))
-			return &slc
-		}
-		var ptr unsafe.Pointer
-		return (**C.struct_VkSemaphoreSubmitInfo)(unsafe.Pointer((&ptr)))
-	}(&y))
-	return x.WithWaitSemaphoreInfoCount(uint32(len(y)))
-}
-
-// CommandBufferInfoCount returns the value of commandBufferInfoCount from VkSubmitInfo2
-func (x SubmitInfo2) CommandBufferInfoCount() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.commandBufferInfoCount)
-	return *ptr
-}
-
-// WithCommandBufferInfoCount sets the value for the CommandBufferInfoCount on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x SubmitInfo2) WithCommandBufferInfoCount(y uint32) SubmitInfo2 {
-	x.commandBufferInfoCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// PCommandBufferInfos returns the value of pCommandBufferInfos from VkSubmitInfo2
-func (x SubmitInfo2) PCommandBufferInfos() []CommandBufferSubmitInfo {
-	ptr := func(x **C.struct_VkCommandBufferSubmitInfo) *[]CommandBufferSubmitInfo { /* Slice */
-		slc := unsafe.Slice((*CommandBufferSubmitInfo)(unsafe.Pointer(x)), (1 << 31))
-		return &slc
-	}(&x.pCommandBufferInfos)
-	return *ptr
-}
-
-// WithPCommandBufferInfos sets the value for the PCommandBufferInfos on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-//
-// The specification defines CommandBufferInfoCount as the length of this field.
-// CommandBufferInfoCount is updated with the length of the new value.
-func (x SubmitInfo2) WithPCommandBufferInfos(y []CommandBufferSubmitInfo) SubmitInfo2 {
-	x.pCommandBufferInfos = *(func(x *[]CommandBufferSubmitInfo) **C.struct_VkCommandBufferSubmitInfo { /* Slice */
-		if len(*x) > 0 {
-			slc := (*C.struct_VkCommandBufferSubmitInfo)(unsafe.Pointer(&((*x)[0])))
-			return &slc
-		}
-		var ptr unsafe.Pointer
-		return (**C.struct_VkCommandBufferSubmitInfo)(unsafe.Pointer((&ptr)))
-	}(&y))
-	return x.WithCommandBufferInfoCount(uint32(len(y)))
-}
-
-// SignalSemaphoreInfoCount returns the value of signalSemaphoreInfoCount from VkSubmitInfo2
-func (x SubmitInfo2) SignalSemaphoreInfoCount() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.signalSemaphoreInfoCount)
-	return *ptr
-}
-
-// WithSignalSemaphoreInfoCount sets the value for the SignalSemaphoreInfoCount on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x SubmitInfo2) WithSignalSemaphoreInfoCount(y uint32) SubmitInfo2 {
-	x.signalSemaphoreInfoCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// PSignalSemaphoreInfos returns the value of pSignalSemaphoreInfos from VkSubmitInfo2
-func (x SubmitInfo2) PSignalSemaphoreInfos() []SemaphoreSubmitInfo {
-	ptr := func(x **C.struct_VkSemaphoreSubmitInfo) *[]SemaphoreSubmitInfo { /* Slice */
-		slc := unsafe.Slice((*SemaphoreSubmitInfo)(unsafe.Pointer(x)), (1 << 31))
-		return &slc
-	}(&x.pSignalSemaphoreInfos)
-	return *ptr
-}
-
-// WithPSignalSemaphoreInfos sets the value for the PSignalSemaphoreInfos on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-//
-// The specification defines SignalSemaphoreInfoCount as the length of this field.
-// SignalSemaphoreInfoCount is updated with the length of the new value.
-func (x SubmitInfo2) WithPSignalSemaphoreInfos(y []SemaphoreSubmitInfo) SubmitInfo2 {
-	x.pSignalSemaphoreInfos = *(func(x *[]SemaphoreSubmitInfo) **C.struct_VkSemaphoreSubmitInfo { /* Slice */
-		if len(*x) > 0 {
-			slc := (*C.struct_VkSemaphoreSubmitInfo)(unsafe.Pointer(&((*x)[0])))
-			return &slc
-		}
-		var ptr unsafe.Pointer
-		return (**C.struct_VkSemaphoreSubmitInfo)(unsafe.Pointer((&ptr)))
-	}(&y))
-	return x.WithSignalSemaphoreInfoCount(uint32(len(y)))
 }
 
 // SemaphoreSubmitInfo provides a go interface for VkSemaphoreSubmitInfo.
@@ -39267,6 +39189,210 @@ func (x CommandBufferSubmitInfo) DeviceMask() uint32 {
 func (x CommandBufferSubmitInfo) WithDeviceMask(y uint32) CommandBufferSubmitInfo {
 	x.deviceMask = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
 	return x
+}
+
+// SubmitInfo2 provides a go interface for VkSubmitInfo2.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkSubmitInfo2.html
+type SubmitInfo2 C.struct_VkSubmitInfo2
+
+// SizeofSubmitInfo2 is the memory size of a SubmitInfo2
+var SizeofSubmitInfo2 int = int(unsafe.Sizeof(SubmitInfo2{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *SubmitInfo2) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x SubmitInfo2) AsCPtr() *SubmitInfo2 {
+	clone := (*SubmitInfo2)(newCBlock(C.ulong(SizeofSubmitInfo2)))
+	*clone = x
+	return clone
+}
+
+// SubmitInfo2FreeCSlice releases the memory allocated by SubmitInfo2MakeCSlice.
+// It does not free pointers stored inside the slice.
+func SubmitInfo2FreeCSlice(x []SubmitInfo2) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// SubmitInfo2MakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. SubmitInfo2FreeCSlice must be called on the returned slice.
+func SubmitInfo2MakeCSlice(x ...SubmitInfo2) []SubmitInfo2 {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofSubmitInfo2 * len(x)
+	dst := unsafe.Slice((*SubmitInfo2)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// SType returns the value of sType from VkSubmitInfo2
+func (x SubmitInfo2) SType() StructureType {
+	ptr := /* typedef */ (*StructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification. This method only exists if there is a single value in the specification.
+func (x SubmitInfo2) WithDefaultSType() SubmitInfo2 {
+	return x.WithSType(VK_STRUCTURE_TYPE_SUBMIT_INFO_2)
+}
+
+// WithSType sets the value for the SType on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x SubmitInfo2) WithSType(y StructureType) SubmitInfo2 {
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
+	return x
+}
+
+// PNext returns the value of pNext from VkSubmitInfo2
+func (x SubmitInfo2) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext sets the value for the PNext on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x SubmitInfo2) WithPNext(y unsafe.Pointer) SubmitInfo2 {
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
+	return x
+}
+
+// Flags returns the value of flags from VkSubmitInfo2
+func (x SubmitInfo2) Flags() SubmitFlags {
+	ptr := /* typedef */ (*SubmitFlags)(&x.flags)
+	return *ptr
+}
+
+// WithFlags sets the value for the Flags on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x SubmitInfo2) WithFlags(y SubmitFlags) SubmitInfo2 {
+	x.flags = *( /* typedef */ (*C.VkSubmitFlags)(&y))
+	return x
+}
+
+// WaitSemaphoreInfoCount returns the value of waitSemaphoreInfoCount from VkSubmitInfo2
+func (x SubmitInfo2) WaitSemaphoreInfoCount() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.waitSemaphoreInfoCount)
+	return *ptr
+}
+
+// WithWaitSemaphoreInfoCount sets the value for the WaitSemaphoreInfoCount on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x SubmitInfo2) WithWaitSemaphoreInfoCount(y uint32) SubmitInfo2 {
+	x.waitSemaphoreInfoCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// PWaitSemaphoreInfos returns the value of pWaitSemaphoreInfos from VkSubmitInfo2
+func (x SubmitInfo2) PWaitSemaphoreInfos() []SemaphoreSubmitInfo {
+	ptr := func(x **C.struct_VkSemaphoreSubmitInfo) *[]SemaphoreSubmitInfo { /* Slice */
+		slc := unsafe.Slice((*SemaphoreSubmitInfo)(unsafe.Pointer(x)), (1 << 31))
+		return &slc
+	}(&x.pWaitSemaphoreInfos)
+	return *ptr
+}
+
+// WithPWaitSemaphoreInfos sets the value for the PWaitSemaphoreInfos on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+//
+// The specification defines WaitSemaphoreInfoCount as the length of this field.
+// WaitSemaphoreInfoCount is updated with the length of the new value.
+func (x SubmitInfo2) WithPWaitSemaphoreInfos(y []SemaphoreSubmitInfo) SubmitInfo2 {
+	x.pWaitSemaphoreInfos = *(func(x *[]SemaphoreSubmitInfo) **C.struct_VkSemaphoreSubmitInfo { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.struct_VkSemaphoreSubmitInfo)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.struct_VkSemaphoreSubmitInfo)(unsafe.Pointer((&ptr)))
+	}(&y))
+	return x.WithWaitSemaphoreInfoCount(uint32(len(y)))
+}
+
+// CommandBufferInfoCount returns the value of commandBufferInfoCount from VkSubmitInfo2
+func (x SubmitInfo2) CommandBufferInfoCount() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.commandBufferInfoCount)
+	return *ptr
+}
+
+// WithCommandBufferInfoCount sets the value for the CommandBufferInfoCount on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x SubmitInfo2) WithCommandBufferInfoCount(y uint32) SubmitInfo2 {
+	x.commandBufferInfoCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// PCommandBufferInfos returns the value of pCommandBufferInfos from VkSubmitInfo2
+func (x SubmitInfo2) PCommandBufferInfos() []CommandBufferSubmitInfo {
+	ptr := func(x **C.struct_VkCommandBufferSubmitInfo) *[]CommandBufferSubmitInfo { /* Slice */
+		slc := unsafe.Slice((*CommandBufferSubmitInfo)(unsafe.Pointer(x)), (1 << 31))
+		return &slc
+	}(&x.pCommandBufferInfos)
+	return *ptr
+}
+
+// WithPCommandBufferInfos sets the value for the PCommandBufferInfos on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+//
+// The specification defines CommandBufferInfoCount as the length of this field.
+// CommandBufferInfoCount is updated with the length of the new value.
+func (x SubmitInfo2) WithPCommandBufferInfos(y []CommandBufferSubmitInfo) SubmitInfo2 {
+	x.pCommandBufferInfos = *(func(x *[]CommandBufferSubmitInfo) **C.struct_VkCommandBufferSubmitInfo { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.struct_VkCommandBufferSubmitInfo)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.struct_VkCommandBufferSubmitInfo)(unsafe.Pointer((&ptr)))
+	}(&y))
+	return x.WithCommandBufferInfoCount(uint32(len(y)))
+}
+
+// SignalSemaphoreInfoCount returns the value of signalSemaphoreInfoCount from VkSubmitInfo2
+func (x SubmitInfo2) SignalSemaphoreInfoCount() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.signalSemaphoreInfoCount)
+	return *ptr
+}
+
+// WithSignalSemaphoreInfoCount sets the value for the SignalSemaphoreInfoCount on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x SubmitInfo2) WithSignalSemaphoreInfoCount(y uint32) SubmitInfo2 {
+	x.signalSemaphoreInfoCount = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// PSignalSemaphoreInfos returns the value of pSignalSemaphoreInfos from VkSubmitInfo2
+func (x SubmitInfo2) PSignalSemaphoreInfos() []SemaphoreSubmitInfo {
+	ptr := func(x **C.struct_VkSemaphoreSubmitInfo) *[]SemaphoreSubmitInfo { /* Slice */
+		slc := unsafe.Slice((*SemaphoreSubmitInfo)(unsafe.Pointer(x)), (1 << 31))
+		return &slc
+	}(&x.pSignalSemaphoreInfos)
+	return *ptr
+}
+
+// WithPSignalSemaphoreInfos sets the value for the PSignalSemaphoreInfos on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+//
+// The specification defines SignalSemaphoreInfoCount as the length of this field.
+// SignalSemaphoreInfoCount is updated with the length of the new value.
+func (x SubmitInfo2) WithPSignalSemaphoreInfos(y []SemaphoreSubmitInfo) SubmitInfo2 {
+	x.pSignalSemaphoreInfos = *(func(x *[]SemaphoreSubmitInfo) **C.struct_VkSemaphoreSubmitInfo { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.struct_VkSemaphoreSubmitInfo)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.struct_VkSemaphoreSubmitInfo)(unsafe.Pointer((&ptr)))
+	}(&y))
+	return x.WithSignalSemaphoreInfoCount(uint32(len(y)))
 }
 
 // PhysicalDeviceVulkan13Features provides a go interface for VkPhysicalDeviceVulkan13Features.
@@ -39535,132 +39661,6 @@ func (x PhysicalDeviceVulkan13Features) Maintenance4() Bool32 {
 // It performs whatever conversions are necessary to match the C API.
 func (x PhysicalDeviceVulkan13Features) WithMaintenance4(y Bool32) PhysicalDeviceVulkan13Features {
 	x.maintenance4 = *( /* typedef */ (*C.VkBool32)(&y))
-	return x
-}
-
-// MemoryBarrier2 provides a go interface for VkMemoryBarrier2.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkMemoryBarrier2.html
-type MemoryBarrier2 C.struct_VkMemoryBarrier2
-
-// SizeofMemoryBarrier2 is the memory size of a MemoryBarrier2
-var SizeofMemoryBarrier2 int = int(unsafe.Sizeof(MemoryBarrier2{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *MemoryBarrier2) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x MemoryBarrier2) AsCPtr() *MemoryBarrier2 {
-	clone := (*MemoryBarrier2)(newCBlock(C.ulong(SizeofMemoryBarrier2)))
-	*clone = x
-	return clone
-}
-
-// MemoryBarrier2FreeCSlice releases the memory allocated by MemoryBarrier2MakeCSlice.
-// It does not free pointers stored inside the slice.
-func MemoryBarrier2FreeCSlice(x []MemoryBarrier2) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// MemoryBarrier2MakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. MemoryBarrier2FreeCSlice must be called on the returned slice.
-func MemoryBarrier2MakeCSlice(x ...MemoryBarrier2) []MemoryBarrier2 {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofMemoryBarrier2 * len(x)
-	dst := unsafe.Slice((*MemoryBarrier2)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// SType returns the value of sType from VkMemoryBarrier2
-func (x MemoryBarrier2) SType() StructureType {
-	ptr := /* typedef */ (*StructureType)(&x.sType)
-	return *ptr
-}
-
-// WithDefaultSType sets the value of SType to the value provided in the
-// specification. This method only exists if there is a single value in the specification.
-func (x MemoryBarrier2) WithDefaultSType() MemoryBarrier2 {
-	return x.WithSType(VK_STRUCTURE_TYPE_MEMORY_BARRIER_2)
-}
-
-// WithSType sets the value for the SType on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x MemoryBarrier2) WithSType(y StructureType) MemoryBarrier2 {
-	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
-	return x
-}
-
-// PNext returns the value of pNext from VkMemoryBarrier2
-func (x MemoryBarrier2) PNext() unsafe.Pointer {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
-	return *ptr
-}
-
-// WithPNext sets the value for the PNext on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x MemoryBarrier2) WithPNext(y unsafe.Pointer) MemoryBarrier2 {
-	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
-	return x
-}
-
-// SrcStageMask returns the value of srcStageMask from VkMemoryBarrier2
-func (x MemoryBarrier2) SrcStageMask() PipelineStageFlags2 {
-	ptr := /* typedef */ (*PipelineStageFlags2)(&x.srcStageMask)
-	return *ptr
-}
-
-// WithSrcStageMask sets the value for the SrcStageMask on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x MemoryBarrier2) WithSrcStageMask(y PipelineStageFlags2) MemoryBarrier2 {
-	x.srcStageMask = *( /* typedef */ (*C.VkPipelineStageFlags2)(&y))
-	return x
-}
-
-// SrcAccessMask returns the value of srcAccessMask from VkMemoryBarrier2
-func (x MemoryBarrier2) SrcAccessMask() AccessFlags2 {
-	ptr := /* typedef */ (*AccessFlags2)(&x.srcAccessMask)
-	return *ptr
-}
-
-// WithSrcAccessMask sets the value for the SrcAccessMask on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x MemoryBarrier2) WithSrcAccessMask(y AccessFlags2) MemoryBarrier2 {
-	x.srcAccessMask = *( /* typedef */ (*C.VkAccessFlags2)(&y))
-	return x
-}
-
-// DstStageMask returns the value of dstStageMask from VkMemoryBarrier2
-func (x MemoryBarrier2) DstStageMask() PipelineStageFlags2 {
-	ptr := /* typedef */ (*PipelineStageFlags2)(&x.dstStageMask)
-	return *ptr
-}
-
-// WithDstStageMask sets the value for the DstStageMask on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x MemoryBarrier2) WithDstStageMask(y PipelineStageFlags2) MemoryBarrier2 {
-	x.dstStageMask = *( /* typedef */ (*C.VkPipelineStageFlags2)(&y))
-	return x
-}
-
-// DstAccessMask returns the value of dstAccessMask from VkMemoryBarrier2
-func (x MemoryBarrier2) DstAccessMask() AccessFlags2 {
-	ptr := /* typedef */ (*AccessFlags2)(&x.dstAccessMask)
-	return *ptr
-}
-
-// WithDstAccessMask sets the value for the DstAccessMask on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x MemoryBarrier2) WithDstAccessMask(y AccessFlags2) MemoryBarrier2 {
-	x.dstAccessMask = *( /* typedef */ (*C.VkAccessFlags2)(&y))
 	return x
 }
 
@@ -40810,6 +40810,119 @@ func (x PhysicalDeviceTextureCompressionASTCHDRFeatures) WithTextureCompressionA
 	return x
 }
 
+// BufferCopy2 provides a go interface for VkBufferCopy2.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkBufferCopy2.html
+type BufferCopy2 C.struct_VkBufferCopy2
+
+// SizeofBufferCopy2 is the memory size of a BufferCopy2
+var SizeofBufferCopy2 int = int(unsafe.Sizeof(BufferCopy2{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *BufferCopy2) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x BufferCopy2) AsCPtr() *BufferCopy2 {
+	clone := (*BufferCopy2)(newCBlock(C.ulong(SizeofBufferCopy2)))
+	*clone = x
+	return clone
+}
+
+// BufferCopy2FreeCSlice releases the memory allocated by BufferCopy2MakeCSlice.
+// It does not free pointers stored inside the slice.
+func BufferCopy2FreeCSlice(x []BufferCopy2) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// BufferCopy2MakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. BufferCopy2FreeCSlice must be called on the returned slice.
+func BufferCopy2MakeCSlice(x ...BufferCopy2) []BufferCopy2 {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofBufferCopy2 * len(x)
+	dst := unsafe.Slice((*BufferCopy2)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// SType returns the value of sType from VkBufferCopy2
+func (x BufferCopy2) SType() StructureType {
+	ptr := /* typedef */ (*StructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification. This method only exists if there is a single value in the specification.
+func (x BufferCopy2) WithDefaultSType() BufferCopy2 {
+	return x.WithSType(VK_STRUCTURE_TYPE_BUFFER_COPY_2)
+}
+
+// WithSType sets the value for the SType on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x BufferCopy2) WithSType(y StructureType) BufferCopy2 {
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
+	return x
+}
+
+// PNext returns the value of pNext from VkBufferCopy2
+func (x BufferCopy2) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext sets the value for the PNext on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x BufferCopy2) WithPNext(y unsafe.Pointer) BufferCopy2 {
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
+	return x
+}
+
+// SrcOffset returns the value of srcOffset from VkBufferCopy2
+func (x BufferCopy2) SrcOffset() DeviceSize {
+	ptr := /* typedef */ (*DeviceSize)(&x.srcOffset)
+	return *ptr
+}
+
+// WithSrcOffset sets the value for the SrcOffset on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x BufferCopy2) WithSrcOffset(y DeviceSize) BufferCopy2 {
+	x.srcOffset = *( /* typedef */ (*C.VkDeviceSize)(&y))
+	return x
+}
+
+// DstOffset returns the value of dstOffset from VkBufferCopy2
+func (x BufferCopy2) DstOffset() DeviceSize {
+	ptr := /* typedef */ (*DeviceSize)(&x.dstOffset)
+	return *ptr
+}
+
+// WithDstOffset sets the value for the DstOffset on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x BufferCopy2) WithDstOffset(y DeviceSize) BufferCopy2 {
+	x.dstOffset = *( /* typedef */ (*C.VkDeviceSize)(&y))
+	return x
+}
+
+// Size returns the value of size from VkBufferCopy2
+func (x BufferCopy2) Size() DeviceSize {
+	ptr := /* typedef */ (*DeviceSize)(&x.size)
+	return *ptr
+}
+
+// WithSize sets the value for the Size on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x BufferCopy2) WithSize(y DeviceSize) BufferCopy2 {
+	x.size = *( /* typedef */ (*C.VkDeviceSize)(&y))
+	return x
+}
+
 // CopyBufferInfo2 provides a go interface for VkCopyBufferInfo2.
 // https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkCopyBufferInfo2.html
 type CopyBufferInfo2 C.struct_VkCopyBufferInfo2
@@ -40947,6 +41060,145 @@ func (x CopyBufferInfo2) WithPRegions(y []BufferCopy2) CopyBufferInfo2 {
 		return (**C.struct_VkBufferCopy2)(unsafe.Pointer((&ptr)))
 	}(&y))
 	return x.WithRegionCount(uint32(len(y)))
+}
+
+// ImageCopy2 provides a go interface for VkImageCopy2.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkImageCopy2.html
+type ImageCopy2 C.struct_VkImageCopy2
+
+// SizeofImageCopy2 is the memory size of a ImageCopy2
+var SizeofImageCopy2 int = int(unsafe.Sizeof(ImageCopy2{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *ImageCopy2) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x ImageCopy2) AsCPtr() *ImageCopy2 {
+	clone := (*ImageCopy2)(newCBlock(C.ulong(SizeofImageCopy2)))
+	*clone = x
+	return clone
+}
+
+// ImageCopy2FreeCSlice releases the memory allocated by ImageCopy2MakeCSlice.
+// It does not free pointers stored inside the slice.
+func ImageCopy2FreeCSlice(x []ImageCopy2) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// ImageCopy2MakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. ImageCopy2FreeCSlice must be called on the returned slice.
+func ImageCopy2MakeCSlice(x ...ImageCopy2) []ImageCopy2 {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofImageCopy2 * len(x)
+	dst := unsafe.Slice((*ImageCopy2)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// SType returns the value of sType from VkImageCopy2
+func (x ImageCopy2) SType() StructureType {
+	ptr := /* typedef */ (*StructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification. This method only exists if there is a single value in the specification.
+func (x ImageCopy2) WithDefaultSType() ImageCopy2 {
+	return x.WithSType(VK_STRUCTURE_TYPE_IMAGE_COPY_2)
+}
+
+// WithSType sets the value for the SType on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x ImageCopy2) WithSType(y StructureType) ImageCopy2 {
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
+	return x
+}
+
+// PNext returns the value of pNext from VkImageCopy2
+func (x ImageCopy2) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext sets the value for the PNext on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x ImageCopy2) WithPNext(y unsafe.Pointer) ImageCopy2 {
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
+	return x
+}
+
+// SrcSubresource returns the value of srcSubresource from VkImageCopy2
+func (x ImageCopy2) SrcSubresource() ImageSubresourceLayers {
+	ptr := /* typedef */ (*ImageSubresourceLayers)(&x.srcSubresource)
+	return *ptr
+}
+
+// WithSrcSubresource sets the value for the SrcSubresource on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x ImageCopy2) WithSrcSubresource(y ImageSubresourceLayers) ImageCopy2 {
+	x.srcSubresource = *( /* typedef */ (*C.struct_VkImageSubresourceLayers)(&y))
+	return x
+}
+
+// SrcOffset returns the value of srcOffset from VkImageCopy2
+func (x ImageCopy2) SrcOffset() Offset3D {
+	ptr := /* typedef */ (*Offset3D)(&x.srcOffset)
+	return *ptr
+}
+
+// WithSrcOffset sets the value for the SrcOffset on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x ImageCopy2) WithSrcOffset(y Offset3D) ImageCopy2 {
+	x.srcOffset = *( /* typedef */ (*C.struct_VkOffset3D)(&y))
+	return x
+}
+
+// DstSubresource returns the value of dstSubresource from VkImageCopy2
+func (x ImageCopy2) DstSubresource() ImageSubresourceLayers {
+	ptr := /* typedef */ (*ImageSubresourceLayers)(&x.dstSubresource)
+	return *ptr
+}
+
+// WithDstSubresource sets the value for the DstSubresource on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x ImageCopy2) WithDstSubresource(y ImageSubresourceLayers) ImageCopy2 {
+	x.dstSubresource = *( /* typedef */ (*C.struct_VkImageSubresourceLayers)(&y))
+	return x
+}
+
+// DstOffset returns the value of dstOffset from VkImageCopy2
+func (x ImageCopy2) DstOffset() Offset3D {
+	ptr := /* typedef */ (*Offset3D)(&x.dstOffset)
+	return *ptr
+}
+
+// WithDstOffset sets the value for the DstOffset on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x ImageCopy2) WithDstOffset(y Offset3D) ImageCopy2 {
+	x.dstOffset = *( /* typedef */ (*C.struct_VkOffset3D)(&y))
+	return x
+}
+
+// Extent returns the value of extent from VkImageCopy2
+func (x ImageCopy2) Extent() Extent3D {
+	ptr := /* typedef */ (*Extent3D)(&x.extent)
+	return *ptr
+}
+
+// WithExtent sets the value for the Extent on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x ImageCopy2) WithExtent(y Extent3D) ImageCopy2 {
+	x.extent = *( /* typedef */ (*C.struct_VkExtent3D)(&y))
+	return x
 }
 
 // CopyImageInfo2 provides a go interface for VkCopyImageInfo2.
@@ -41112,6 +41364,158 @@ func (x CopyImageInfo2) WithPRegions(y []ImageCopy2) CopyImageInfo2 {
 		return (**C.struct_VkImageCopy2)(unsafe.Pointer((&ptr)))
 	}(&y))
 	return x.WithRegionCount(uint32(len(y)))
+}
+
+// BufferImageCopy2 provides a go interface for VkBufferImageCopy2.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkBufferImageCopy2.html
+type BufferImageCopy2 C.struct_VkBufferImageCopy2
+
+// SizeofBufferImageCopy2 is the memory size of a BufferImageCopy2
+var SizeofBufferImageCopy2 int = int(unsafe.Sizeof(BufferImageCopy2{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *BufferImageCopy2) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x BufferImageCopy2) AsCPtr() *BufferImageCopy2 {
+	clone := (*BufferImageCopy2)(newCBlock(C.ulong(SizeofBufferImageCopy2)))
+	*clone = x
+	return clone
+}
+
+// BufferImageCopy2FreeCSlice releases the memory allocated by BufferImageCopy2MakeCSlice.
+// It does not free pointers stored inside the slice.
+func BufferImageCopy2FreeCSlice(x []BufferImageCopy2) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// BufferImageCopy2MakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. BufferImageCopy2FreeCSlice must be called on the returned slice.
+func BufferImageCopy2MakeCSlice(x ...BufferImageCopy2) []BufferImageCopy2 {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofBufferImageCopy2 * len(x)
+	dst := unsafe.Slice((*BufferImageCopy2)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// SType returns the value of sType from VkBufferImageCopy2
+func (x BufferImageCopy2) SType() StructureType {
+	ptr := /* typedef */ (*StructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification. This method only exists if there is a single value in the specification.
+func (x BufferImageCopy2) WithDefaultSType() BufferImageCopy2 {
+	return x.WithSType(VK_STRUCTURE_TYPE_BUFFER_IMAGE_COPY_2)
+}
+
+// WithSType sets the value for the SType on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x BufferImageCopy2) WithSType(y StructureType) BufferImageCopy2 {
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
+	return x
+}
+
+// PNext returns the value of pNext from VkBufferImageCopy2
+func (x BufferImageCopy2) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext sets the value for the PNext on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x BufferImageCopy2) WithPNext(y unsafe.Pointer) BufferImageCopy2 {
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
+	return x
+}
+
+// BufferOffset returns the value of bufferOffset from VkBufferImageCopy2
+func (x BufferImageCopy2) BufferOffset() DeviceSize {
+	ptr := /* typedef */ (*DeviceSize)(&x.bufferOffset)
+	return *ptr
+}
+
+// WithBufferOffset sets the value for the BufferOffset on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x BufferImageCopy2) WithBufferOffset(y DeviceSize) BufferImageCopy2 {
+	x.bufferOffset = *( /* typedef */ (*C.VkDeviceSize)(&y))
+	return x
+}
+
+// BufferRowLength returns the value of bufferRowLength from VkBufferImageCopy2
+func (x BufferImageCopy2) BufferRowLength() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.bufferRowLength)
+	return *ptr
+}
+
+// WithBufferRowLength sets the value for the BufferRowLength on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x BufferImageCopy2) WithBufferRowLength(y uint32) BufferImageCopy2 {
+	x.bufferRowLength = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// BufferImageHeight returns the value of bufferImageHeight from VkBufferImageCopy2
+func (x BufferImageCopy2) BufferImageHeight() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.bufferImageHeight)
+	return *ptr
+}
+
+// WithBufferImageHeight sets the value for the BufferImageHeight on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x BufferImageCopy2) WithBufferImageHeight(y uint32) BufferImageCopy2 {
+	x.bufferImageHeight = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
+// ImageSubresource returns the value of imageSubresource from VkBufferImageCopy2
+func (x BufferImageCopy2) ImageSubresource() ImageSubresourceLayers {
+	ptr := /* typedef */ (*ImageSubresourceLayers)(&x.imageSubresource)
+	return *ptr
+}
+
+// WithImageSubresource sets the value for the ImageSubresource on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x BufferImageCopy2) WithImageSubresource(y ImageSubresourceLayers) BufferImageCopy2 {
+	x.imageSubresource = *( /* typedef */ (*C.struct_VkImageSubresourceLayers)(&y))
+	return x
+}
+
+// ImageOffset returns the value of imageOffset from VkBufferImageCopy2
+func (x BufferImageCopy2) ImageOffset() Offset3D {
+	ptr := /* typedef */ (*Offset3D)(&x.imageOffset)
+	return *ptr
+}
+
+// WithImageOffset sets the value for the ImageOffset on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x BufferImageCopy2) WithImageOffset(y Offset3D) BufferImageCopy2 {
+	x.imageOffset = *( /* typedef */ (*C.struct_VkOffset3D)(&y))
+	return x
+}
+
+// ImageExtent returns the value of imageExtent from VkBufferImageCopy2
+func (x BufferImageCopy2) ImageExtent() Extent3D {
+	ptr := /* typedef */ (*Extent3D)(&x.imageExtent)
+	return *ptr
+}
+
+// WithImageExtent sets the value for the ImageExtent on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x BufferImageCopy2) WithImageExtent(y Extent3D) BufferImageCopy2 {
+	x.imageExtent = *( /* typedef */ (*C.struct_VkExtent3D)(&y))
+	return x
 }
 
 // CopyBufferToImageInfo2 provides a go interface for VkCopyBufferToImageInfo2.
@@ -41418,6 +41822,154 @@ func (x CopyImageToBufferInfo2) WithPRegions(y []BufferImageCopy2) CopyImageToBu
 	return x.WithRegionCount(uint32(len(y)))
 }
 
+// ImageBlit2 provides a go interface for VkImageBlit2.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkImageBlit2.html
+type ImageBlit2 C.struct_VkImageBlit2
+
+// SizeofImageBlit2 is the memory size of a ImageBlit2
+var SizeofImageBlit2 int = int(unsafe.Sizeof(ImageBlit2{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *ImageBlit2) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x ImageBlit2) AsCPtr() *ImageBlit2 {
+	clone := (*ImageBlit2)(newCBlock(C.ulong(SizeofImageBlit2)))
+	*clone = x
+	return clone
+}
+
+// ImageBlit2FreeCSlice releases the memory allocated by ImageBlit2MakeCSlice.
+// It does not free pointers stored inside the slice.
+func ImageBlit2FreeCSlice(x []ImageBlit2) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// ImageBlit2MakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. ImageBlit2FreeCSlice must be called on the returned slice.
+func ImageBlit2MakeCSlice(x ...ImageBlit2) []ImageBlit2 {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofImageBlit2 * len(x)
+	dst := unsafe.Slice((*ImageBlit2)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// SType returns the value of sType from VkImageBlit2
+func (x ImageBlit2) SType() StructureType {
+	ptr := /* typedef */ (*StructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification. This method only exists if there is a single value in the specification.
+func (x ImageBlit2) WithDefaultSType() ImageBlit2 {
+	return x.WithSType(VK_STRUCTURE_TYPE_IMAGE_BLIT_2)
+}
+
+// WithSType sets the value for the SType on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x ImageBlit2) WithSType(y StructureType) ImageBlit2 {
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
+	return x
+}
+
+// PNext returns the value of pNext from VkImageBlit2
+func (x ImageBlit2) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext sets the value for the PNext on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x ImageBlit2) WithPNext(y unsafe.Pointer) ImageBlit2 {
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
+	return x
+}
+
+// SrcSubresource returns the value of srcSubresource from VkImageBlit2
+func (x ImageBlit2) SrcSubresource() ImageSubresourceLayers {
+	ptr := /* typedef */ (*ImageSubresourceLayers)(&x.srcSubresource)
+	return *ptr
+}
+
+// WithSrcSubresource sets the value for the SrcSubresource on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x ImageBlit2) WithSrcSubresource(y ImageSubresourceLayers) ImageBlit2 {
+	x.srcSubresource = *( /* typedef */ (*C.struct_VkImageSubresourceLayers)(&y))
+	return x
+}
+
+// SrcOffsets returns the value of srcOffsets from VkImageBlit2
+func (x ImageBlit2) SrcOffsets() []Offset3D {
+	ptr := func(x *[2]C.struct_VkOffset3D) *[]Offset3D { /* Array */
+		slc := unsafe.Slice((*Offset3D)(unsafe.Pointer(x)), 2)
+		return &slc
+	}(&x.srcOffsets)
+	return *ptr
+}
+
+// WithSrcOffsets sets the value for the SrcOffsets on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x ImageBlit2) WithSrcOffsets(y []Offset3D) ImageBlit2 {
+	ptr := func(x *[]Offset3D) **C.struct_VkOffset3D { /* Array */
+		if len(*x) > 0 {
+			slc := (*C.struct_VkOffset3D)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.struct_VkOffset3D)(unsafe.Pointer((&ptr)))
+	}(&y)
+	copy(x.srcOffsets[:], unsafe.Slice(*ptr, len(y)))
+	return x
+}
+
+// DstSubresource returns the value of dstSubresource from VkImageBlit2
+func (x ImageBlit2) DstSubresource() ImageSubresourceLayers {
+	ptr := /* typedef */ (*ImageSubresourceLayers)(&x.dstSubresource)
+	return *ptr
+}
+
+// WithDstSubresource sets the value for the DstSubresource on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x ImageBlit2) WithDstSubresource(y ImageSubresourceLayers) ImageBlit2 {
+	x.dstSubresource = *( /* typedef */ (*C.struct_VkImageSubresourceLayers)(&y))
+	return x
+}
+
+// DstOffsets returns the value of dstOffsets from VkImageBlit2
+func (x ImageBlit2) DstOffsets() []Offset3D {
+	ptr := func(x *[2]C.struct_VkOffset3D) *[]Offset3D { /* Array */
+		slc := unsafe.Slice((*Offset3D)(unsafe.Pointer(x)), 2)
+		return &slc
+	}(&x.dstOffsets)
+	return *ptr
+}
+
+// WithDstOffsets sets the value for the DstOffsets on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x ImageBlit2) WithDstOffsets(y []Offset3D) ImageBlit2 {
+	ptr := func(x *[]Offset3D) **C.struct_VkOffset3D { /* Array */
+		if len(*x) > 0 {
+			slc := (*C.struct_VkOffset3D)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.struct_VkOffset3D)(unsafe.Pointer((&ptr)))
+	}(&y)
+	copy(x.dstOffsets[:], unsafe.Slice(*ptr, len(y)))
+	return x
+}
+
 // BlitImageInfo2 provides a go interface for VkBlitImageInfo2.
 // https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkBlitImageInfo2.html
 type BlitImageInfo2 C.struct_VkBlitImageInfo2
@@ -41596,6 +42148,145 @@ func (x BlitImageInfo2) WithFilter(y Filter) BlitImageInfo2 {
 	return x
 }
 
+// ImageResolve2 provides a go interface for VkImageResolve2.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkImageResolve2.html
+type ImageResolve2 C.struct_VkImageResolve2
+
+// SizeofImageResolve2 is the memory size of a ImageResolve2
+var SizeofImageResolve2 int = int(unsafe.Sizeof(ImageResolve2{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *ImageResolve2) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x ImageResolve2) AsCPtr() *ImageResolve2 {
+	clone := (*ImageResolve2)(newCBlock(C.ulong(SizeofImageResolve2)))
+	*clone = x
+	return clone
+}
+
+// ImageResolve2FreeCSlice releases the memory allocated by ImageResolve2MakeCSlice.
+// It does not free pointers stored inside the slice.
+func ImageResolve2FreeCSlice(x []ImageResolve2) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// ImageResolve2MakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. ImageResolve2FreeCSlice must be called on the returned slice.
+func ImageResolve2MakeCSlice(x ...ImageResolve2) []ImageResolve2 {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofImageResolve2 * len(x)
+	dst := unsafe.Slice((*ImageResolve2)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// SType returns the value of sType from VkImageResolve2
+func (x ImageResolve2) SType() StructureType {
+	ptr := /* typedef */ (*StructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification. This method only exists if there is a single value in the specification.
+func (x ImageResolve2) WithDefaultSType() ImageResolve2 {
+	return x.WithSType(VK_STRUCTURE_TYPE_IMAGE_RESOLVE_2)
+}
+
+// WithSType sets the value for the SType on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x ImageResolve2) WithSType(y StructureType) ImageResolve2 {
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
+	return x
+}
+
+// PNext returns the value of pNext from VkImageResolve2
+func (x ImageResolve2) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext sets the value for the PNext on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x ImageResolve2) WithPNext(y unsafe.Pointer) ImageResolve2 {
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
+	return x
+}
+
+// SrcSubresource returns the value of srcSubresource from VkImageResolve2
+func (x ImageResolve2) SrcSubresource() ImageSubresourceLayers {
+	ptr := /* typedef */ (*ImageSubresourceLayers)(&x.srcSubresource)
+	return *ptr
+}
+
+// WithSrcSubresource sets the value for the SrcSubresource on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x ImageResolve2) WithSrcSubresource(y ImageSubresourceLayers) ImageResolve2 {
+	x.srcSubresource = *( /* typedef */ (*C.struct_VkImageSubresourceLayers)(&y))
+	return x
+}
+
+// SrcOffset returns the value of srcOffset from VkImageResolve2
+func (x ImageResolve2) SrcOffset() Offset3D {
+	ptr := /* typedef */ (*Offset3D)(&x.srcOffset)
+	return *ptr
+}
+
+// WithSrcOffset sets the value for the SrcOffset on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x ImageResolve2) WithSrcOffset(y Offset3D) ImageResolve2 {
+	x.srcOffset = *( /* typedef */ (*C.struct_VkOffset3D)(&y))
+	return x
+}
+
+// DstSubresource returns the value of dstSubresource from VkImageResolve2
+func (x ImageResolve2) DstSubresource() ImageSubresourceLayers {
+	ptr := /* typedef */ (*ImageSubresourceLayers)(&x.dstSubresource)
+	return *ptr
+}
+
+// WithDstSubresource sets the value for the DstSubresource on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x ImageResolve2) WithDstSubresource(y ImageSubresourceLayers) ImageResolve2 {
+	x.dstSubresource = *( /* typedef */ (*C.struct_VkImageSubresourceLayers)(&y))
+	return x
+}
+
+// DstOffset returns the value of dstOffset from VkImageResolve2
+func (x ImageResolve2) DstOffset() Offset3D {
+	ptr := /* typedef */ (*Offset3D)(&x.dstOffset)
+	return *ptr
+}
+
+// WithDstOffset sets the value for the DstOffset on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x ImageResolve2) WithDstOffset(y Offset3D) ImageResolve2 {
+	x.dstOffset = *( /* typedef */ (*C.struct_VkOffset3D)(&y))
+	return x
+}
+
+// Extent returns the value of extent from VkImageResolve2
+func (x ImageResolve2) Extent() Extent3D {
+	ptr := /* typedef */ (*Extent3D)(&x.extent)
+	return *ptr
+}
+
+// WithExtent sets the value for the Extent on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x ImageResolve2) WithExtent(y Extent3D) ImageResolve2 {
+	x.extent = *( /* typedef */ (*C.struct_VkExtent3D)(&y))
+	return x
+}
+
 // ResolveImageInfo2 provides a go interface for VkResolveImageInfo2.
 // https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkResolveImageInfo2.html
 type ResolveImageInfo2 C.struct_VkResolveImageInfo2
@@ -41759,697 +42450,6 @@ func (x ResolveImageInfo2) WithPRegions(y []ImageResolve2) ResolveImageInfo2 {
 		return (**C.struct_VkImageResolve2)(unsafe.Pointer((&ptr)))
 	}(&y))
 	return x.WithRegionCount(uint32(len(y)))
-}
-
-// BufferCopy2 provides a go interface for VkBufferCopy2.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkBufferCopy2.html
-type BufferCopy2 C.struct_VkBufferCopy2
-
-// SizeofBufferCopy2 is the memory size of a BufferCopy2
-var SizeofBufferCopy2 int = int(unsafe.Sizeof(BufferCopy2{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *BufferCopy2) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x BufferCopy2) AsCPtr() *BufferCopy2 {
-	clone := (*BufferCopy2)(newCBlock(C.ulong(SizeofBufferCopy2)))
-	*clone = x
-	return clone
-}
-
-// BufferCopy2FreeCSlice releases the memory allocated by BufferCopy2MakeCSlice.
-// It does not free pointers stored inside the slice.
-func BufferCopy2FreeCSlice(x []BufferCopy2) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// BufferCopy2MakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. BufferCopy2FreeCSlice must be called on the returned slice.
-func BufferCopy2MakeCSlice(x ...BufferCopy2) []BufferCopy2 {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofBufferCopy2 * len(x)
-	dst := unsafe.Slice((*BufferCopy2)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// SType returns the value of sType from VkBufferCopy2
-func (x BufferCopy2) SType() StructureType {
-	ptr := /* typedef */ (*StructureType)(&x.sType)
-	return *ptr
-}
-
-// WithDefaultSType sets the value of SType to the value provided in the
-// specification. This method only exists if there is a single value in the specification.
-func (x BufferCopy2) WithDefaultSType() BufferCopy2 {
-	return x.WithSType(VK_STRUCTURE_TYPE_BUFFER_COPY_2)
-}
-
-// WithSType sets the value for the SType on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x BufferCopy2) WithSType(y StructureType) BufferCopy2 {
-	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
-	return x
-}
-
-// PNext returns the value of pNext from VkBufferCopy2
-func (x BufferCopy2) PNext() unsafe.Pointer {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
-	return *ptr
-}
-
-// WithPNext sets the value for the PNext on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x BufferCopy2) WithPNext(y unsafe.Pointer) BufferCopy2 {
-	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
-	return x
-}
-
-// SrcOffset returns the value of srcOffset from VkBufferCopy2
-func (x BufferCopy2) SrcOffset() DeviceSize {
-	ptr := /* typedef */ (*DeviceSize)(&x.srcOffset)
-	return *ptr
-}
-
-// WithSrcOffset sets the value for the SrcOffset on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x BufferCopy2) WithSrcOffset(y DeviceSize) BufferCopy2 {
-	x.srcOffset = *( /* typedef */ (*C.VkDeviceSize)(&y))
-	return x
-}
-
-// DstOffset returns the value of dstOffset from VkBufferCopy2
-func (x BufferCopy2) DstOffset() DeviceSize {
-	ptr := /* typedef */ (*DeviceSize)(&x.dstOffset)
-	return *ptr
-}
-
-// WithDstOffset sets the value for the DstOffset on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x BufferCopy2) WithDstOffset(y DeviceSize) BufferCopy2 {
-	x.dstOffset = *( /* typedef */ (*C.VkDeviceSize)(&y))
-	return x
-}
-
-// Size returns the value of size from VkBufferCopy2
-func (x BufferCopy2) Size() DeviceSize {
-	ptr := /* typedef */ (*DeviceSize)(&x.size)
-	return *ptr
-}
-
-// WithSize sets the value for the Size on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x BufferCopy2) WithSize(y DeviceSize) BufferCopy2 {
-	x.size = *( /* typedef */ (*C.VkDeviceSize)(&y))
-	return x
-}
-
-// ImageCopy2 provides a go interface for VkImageCopy2.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkImageCopy2.html
-type ImageCopy2 C.struct_VkImageCopy2
-
-// SizeofImageCopy2 is the memory size of a ImageCopy2
-var SizeofImageCopy2 int = int(unsafe.Sizeof(ImageCopy2{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *ImageCopy2) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x ImageCopy2) AsCPtr() *ImageCopy2 {
-	clone := (*ImageCopy2)(newCBlock(C.ulong(SizeofImageCopy2)))
-	*clone = x
-	return clone
-}
-
-// ImageCopy2FreeCSlice releases the memory allocated by ImageCopy2MakeCSlice.
-// It does not free pointers stored inside the slice.
-func ImageCopy2FreeCSlice(x []ImageCopy2) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// ImageCopy2MakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. ImageCopy2FreeCSlice must be called on the returned slice.
-func ImageCopy2MakeCSlice(x ...ImageCopy2) []ImageCopy2 {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofImageCopy2 * len(x)
-	dst := unsafe.Slice((*ImageCopy2)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// SType returns the value of sType from VkImageCopy2
-func (x ImageCopy2) SType() StructureType {
-	ptr := /* typedef */ (*StructureType)(&x.sType)
-	return *ptr
-}
-
-// WithDefaultSType sets the value of SType to the value provided in the
-// specification. This method only exists if there is a single value in the specification.
-func (x ImageCopy2) WithDefaultSType() ImageCopy2 {
-	return x.WithSType(VK_STRUCTURE_TYPE_IMAGE_COPY_2)
-}
-
-// WithSType sets the value for the SType on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x ImageCopy2) WithSType(y StructureType) ImageCopy2 {
-	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
-	return x
-}
-
-// PNext returns the value of pNext from VkImageCopy2
-func (x ImageCopy2) PNext() unsafe.Pointer {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
-	return *ptr
-}
-
-// WithPNext sets the value for the PNext on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x ImageCopy2) WithPNext(y unsafe.Pointer) ImageCopy2 {
-	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
-	return x
-}
-
-// SrcSubresource returns the value of srcSubresource from VkImageCopy2
-func (x ImageCopy2) SrcSubresource() ImageSubresourceLayers {
-	ptr := /* typedef */ (*ImageSubresourceLayers)(&x.srcSubresource)
-	return *ptr
-}
-
-// WithSrcSubresource sets the value for the SrcSubresource on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x ImageCopy2) WithSrcSubresource(y ImageSubresourceLayers) ImageCopy2 {
-	x.srcSubresource = *( /* typedef */ (*C.struct_VkImageSubresourceLayers)(&y))
-	return x
-}
-
-// SrcOffset returns the value of srcOffset from VkImageCopy2
-func (x ImageCopy2) SrcOffset() Offset3D {
-	ptr := /* typedef */ (*Offset3D)(&x.srcOffset)
-	return *ptr
-}
-
-// WithSrcOffset sets the value for the SrcOffset on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x ImageCopy2) WithSrcOffset(y Offset3D) ImageCopy2 {
-	x.srcOffset = *( /* typedef */ (*C.struct_VkOffset3D)(&y))
-	return x
-}
-
-// DstSubresource returns the value of dstSubresource from VkImageCopy2
-func (x ImageCopy2) DstSubresource() ImageSubresourceLayers {
-	ptr := /* typedef */ (*ImageSubresourceLayers)(&x.dstSubresource)
-	return *ptr
-}
-
-// WithDstSubresource sets the value for the DstSubresource on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x ImageCopy2) WithDstSubresource(y ImageSubresourceLayers) ImageCopy2 {
-	x.dstSubresource = *( /* typedef */ (*C.struct_VkImageSubresourceLayers)(&y))
-	return x
-}
-
-// DstOffset returns the value of dstOffset from VkImageCopy2
-func (x ImageCopy2) DstOffset() Offset3D {
-	ptr := /* typedef */ (*Offset3D)(&x.dstOffset)
-	return *ptr
-}
-
-// WithDstOffset sets the value for the DstOffset on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x ImageCopy2) WithDstOffset(y Offset3D) ImageCopy2 {
-	x.dstOffset = *( /* typedef */ (*C.struct_VkOffset3D)(&y))
-	return x
-}
-
-// Extent returns the value of extent from VkImageCopy2
-func (x ImageCopy2) Extent() Extent3D {
-	ptr := /* typedef */ (*Extent3D)(&x.extent)
-	return *ptr
-}
-
-// WithExtent sets the value for the Extent on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x ImageCopy2) WithExtent(y Extent3D) ImageCopy2 {
-	x.extent = *( /* typedef */ (*C.struct_VkExtent3D)(&y))
-	return x
-}
-
-// ImageBlit2 provides a go interface for VkImageBlit2.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkImageBlit2.html
-type ImageBlit2 C.struct_VkImageBlit2
-
-// SizeofImageBlit2 is the memory size of a ImageBlit2
-var SizeofImageBlit2 int = int(unsafe.Sizeof(ImageBlit2{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *ImageBlit2) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x ImageBlit2) AsCPtr() *ImageBlit2 {
-	clone := (*ImageBlit2)(newCBlock(C.ulong(SizeofImageBlit2)))
-	*clone = x
-	return clone
-}
-
-// ImageBlit2FreeCSlice releases the memory allocated by ImageBlit2MakeCSlice.
-// It does not free pointers stored inside the slice.
-func ImageBlit2FreeCSlice(x []ImageBlit2) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// ImageBlit2MakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. ImageBlit2FreeCSlice must be called on the returned slice.
-func ImageBlit2MakeCSlice(x ...ImageBlit2) []ImageBlit2 {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofImageBlit2 * len(x)
-	dst := unsafe.Slice((*ImageBlit2)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// SType returns the value of sType from VkImageBlit2
-func (x ImageBlit2) SType() StructureType {
-	ptr := /* typedef */ (*StructureType)(&x.sType)
-	return *ptr
-}
-
-// WithDefaultSType sets the value of SType to the value provided in the
-// specification. This method only exists if there is a single value in the specification.
-func (x ImageBlit2) WithDefaultSType() ImageBlit2 {
-	return x.WithSType(VK_STRUCTURE_TYPE_IMAGE_BLIT_2)
-}
-
-// WithSType sets the value for the SType on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x ImageBlit2) WithSType(y StructureType) ImageBlit2 {
-	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
-	return x
-}
-
-// PNext returns the value of pNext from VkImageBlit2
-func (x ImageBlit2) PNext() unsafe.Pointer {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
-	return *ptr
-}
-
-// WithPNext sets the value for the PNext on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x ImageBlit2) WithPNext(y unsafe.Pointer) ImageBlit2 {
-	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
-	return x
-}
-
-// SrcSubresource returns the value of srcSubresource from VkImageBlit2
-func (x ImageBlit2) SrcSubresource() ImageSubresourceLayers {
-	ptr := /* typedef */ (*ImageSubresourceLayers)(&x.srcSubresource)
-	return *ptr
-}
-
-// WithSrcSubresource sets the value for the SrcSubresource on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x ImageBlit2) WithSrcSubresource(y ImageSubresourceLayers) ImageBlit2 {
-	x.srcSubresource = *( /* typedef */ (*C.struct_VkImageSubresourceLayers)(&y))
-	return x
-}
-
-// SrcOffsets returns the value of srcOffsets from VkImageBlit2
-func (x ImageBlit2) SrcOffsets() []Offset3D {
-	ptr := func(x *[2]C.struct_VkOffset3D) *[]Offset3D { /* Array */
-		slc := unsafe.Slice((*Offset3D)(unsafe.Pointer(x)), 2)
-		return &slc
-	}(&x.srcOffsets)
-	return *ptr
-}
-
-// WithSrcOffsets sets the value for the SrcOffsets on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x ImageBlit2) WithSrcOffsets(y []Offset3D) ImageBlit2 {
-	ptr := func(x *[]Offset3D) **C.struct_VkOffset3D { /* Array */
-		if len(*x) > 0 {
-			slc := (*C.struct_VkOffset3D)(unsafe.Pointer(&((*x)[0])))
-			return &slc
-		}
-		var ptr unsafe.Pointer
-		return (**C.struct_VkOffset3D)(unsafe.Pointer((&ptr)))
-	}(&y)
-	copy(x.srcOffsets[:], unsafe.Slice(*ptr, len(y)))
-	return x
-}
-
-// DstSubresource returns the value of dstSubresource from VkImageBlit2
-func (x ImageBlit2) DstSubresource() ImageSubresourceLayers {
-	ptr := /* typedef */ (*ImageSubresourceLayers)(&x.dstSubresource)
-	return *ptr
-}
-
-// WithDstSubresource sets the value for the DstSubresource on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x ImageBlit2) WithDstSubresource(y ImageSubresourceLayers) ImageBlit2 {
-	x.dstSubresource = *( /* typedef */ (*C.struct_VkImageSubresourceLayers)(&y))
-	return x
-}
-
-// DstOffsets returns the value of dstOffsets from VkImageBlit2
-func (x ImageBlit2) DstOffsets() []Offset3D {
-	ptr := func(x *[2]C.struct_VkOffset3D) *[]Offset3D { /* Array */
-		slc := unsafe.Slice((*Offset3D)(unsafe.Pointer(x)), 2)
-		return &slc
-	}(&x.dstOffsets)
-	return *ptr
-}
-
-// WithDstOffsets sets the value for the DstOffsets on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x ImageBlit2) WithDstOffsets(y []Offset3D) ImageBlit2 {
-	ptr := func(x *[]Offset3D) **C.struct_VkOffset3D { /* Array */
-		if len(*x) > 0 {
-			slc := (*C.struct_VkOffset3D)(unsafe.Pointer(&((*x)[0])))
-			return &slc
-		}
-		var ptr unsafe.Pointer
-		return (**C.struct_VkOffset3D)(unsafe.Pointer((&ptr)))
-	}(&y)
-	copy(x.dstOffsets[:], unsafe.Slice(*ptr, len(y)))
-	return x
-}
-
-// BufferImageCopy2 provides a go interface for VkBufferImageCopy2.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkBufferImageCopy2.html
-type BufferImageCopy2 C.struct_VkBufferImageCopy2
-
-// SizeofBufferImageCopy2 is the memory size of a BufferImageCopy2
-var SizeofBufferImageCopy2 int = int(unsafe.Sizeof(BufferImageCopy2{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *BufferImageCopy2) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x BufferImageCopy2) AsCPtr() *BufferImageCopy2 {
-	clone := (*BufferImageCopy2)(newCBlock(C.ulong(SizeofBufferImageCopy2)))
-	*clone = x
-	return clone
-}
-
-// BufferImageCopy2FreeCSlice releases the memory allocated by BufferImageCopy2MakeCSlice.
-// It does not free pointers stored inside the slice.
-func BufferImageCopy2FreeCSlice(x []BufferImageCopy2) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// BufferImageCopy2MakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. BufferImageCopy2FreeCSlice must be called on the returned slice.
-func BufferImageCopy2MakeCSlice(x ...BufferImageCopy2) []BufferImageCopy2 {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofBufferImageCopy2 * len(x)
-	dst := unsafe.Slice((*BufferImageCopy2)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// SType returns the value of sType from VkBufferImageCopy2
-func (x BufferImageCopy2) SType() StructureType {
-	ptr := /* typedef */ (*StructureType)(&x.sType)
-	return *ptr
-}
-
-// WithDefaultSType sets the value of SType to the value provided in the
-// specification. This method only exists if there is a single value in the specification.
-func (x BufferImageCopy2) WithDefaultSType() BufferImageCopy2 {
-	return x.WithSType(VK_STRUCTURE_TYPE_BUFFER_IMAGE_COPY_2)
-}
-
-// WithSType sets the value for the SType on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x BufferImageCopy2) WithSType(y StructureType) BufferImageCopy2 {
-	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
-	return x
-}
-
-// PNext returns the value of pNext from VkBufferImageCopy2
-func (x BufferImageCopy2) PNext() unsafe.Pointer {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
-	return *ptr
-}
-
-// WithPNext sets the value for the PNext on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x BufferImageCopy2) WithPNext(y unsafe.Pointer) BufferImageCopy2 {
-	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
-	return x
-}
-
-// BufferOffset returns the value of bufferOffset from VkBufferImageCopy2
-func (x BufferImageCopy2) BufferOffset() DeviceSize {
-	ptr := /* typedef */ (*DeviceSize)(&x.bufferOffset)
-	return *ptr
-}
-
-// WithBufferOffset sets the value for the BufferOffset on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x BufferImageCopy2) WithBufferOffset(y DeviceSize) BufferImageCopy2 {
-	x.bufferOffset = *( /* typedef */ (*C.VkDeviceSize)(&y))
-	return x
-}
-
-// BufferRowLength returns the value of bufferRowLength from VkBufferImageCopy2
-func (x BufferImageCopy2) BufferRowLength() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.bufferRowLength)
-	return *ptr
-}
-
-// WithBufferRowLength sets the value for the BufferRowLength on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x BufferImageCopy2) WithBufferRowLength(y uint32) BufferImageCopy2 {
-	x.bufferRowLength = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// BufferImageHeight returns the value of bufferImageHeight from VkBufferImageCopy2
-func (x BufferImageCopy2) BufferImageHeight() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.bufferImageHeight)
-	return *ptr
-}
-
-// WithBufferImageHeight sets the value for the BufferImageHeight on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x BufferImageCopy2) WithBufferImageHeight(y uint32) BufferImageCopy2 {
-	x.bufferImageHeight = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
-}
-
-// ImageSubresource returns the value of imageSubresource from VkBufferImageCopy2
-func (x BufferImageCopy2) ImageSubresource() ImageSubresourceLayers {
-	ptr := /* typedef */ (*ImageSubresourceLayers)(&x.imageSubresource)
-	return *ptr
-}
-
-// WithImageSubresource sets the value for the ImageSubresource on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x BufferImageCopy2) WithImageSubresource(y ImageSubresourceLayers) BufferImageCopy2 {
-	x.imageSubresource = *( /* typedef */ (*C.struct_VkImageSubresourceLayers)(&y))
-	return x
-}
-
-// ImageOffset returns the value of imageOffset from VkBufferImageCopy2
-func (x BufferImageCopy2) ImageOffset() Offset3D {
-	ptr := /* typedef */ (*Offset3D)(&x.imageOffset)
-	return *ptr
-}
-
-// WithImageOffset sets the value for the ImageOffset on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x BufferImageCopy2) WithImageOffset(y Offset3D) BufferImageCopy2 {
-	x.imageOffset = *( /* typedef */ (*C.struct_VkOffset3D)(&y))
-	return x
-}
-
-// ImageExtent returns the value of imageExtent from VkBufferImageCopy2
-func (x BufferImageCopy2) ImageExtent() Extent3D {
-	ptr := /* typedef */ (*Extent3D)(&x.imageExtent)
-	return *ptr
-}
-
-// WithImageExtent sets the value for the ImageExtent on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x BufferImageCopy2) WithImageExtent(y Extent3D) BufferImageCopy2 {
-	x.imageExtent = *( /* typedef */ (*C.struct_VkExtent3D)(&y))
-	return x
-}
-
-// ImageResolve2 provides a go interface for VkImageResolve2.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkImageResolve2.html
-type ImageResolve2 C.struct_VkImageResolve2
-
-// SizeofImageResolve2 is the memory size of a ImageResolve2
-var SizeofImageResolve2 int = int(unsafe.Sizeof(ImageResolve2{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *ImageResolve2) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x ImageResolve2) AsCPtr() *ImageResolve2 {
-	clone := (*ImageResolve2)(newCBlock(C.ulong(SizeofImageResolve2)))
-	*clone = x
-	return clone
-}
-
-// ImageResolve2FreeCSlice releases the memory allocated by ImageResolve2MakeCSlice.
-// It does not free pointers stored inside the slice.
-func ImageResolve2FreeCSlice(x []ImageResolve2) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// ImageResolve2MakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. ImageResolve2FreeCSlice must be called on the returned slice.
-func ImageResolve2MakeCSlice(x ...ImageResolve2) []ImageResolve2 {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofImageResolve2 * len(x)
-	dst := unsafe.Slice((*ImageResolve2)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// SType returns the value of sType from VkImageResolve2
-func (x ImageResolve2) SType() StructureType {
-	ptr := /* typedef */ (*StructureType)(&x.sType)
-	return *ptr
-}
-
-// WithDefaultSType sets the value of SType to the value provided in the
-// specification. This method only exists if there is a single value in the specification.
-func (x ImageResolve2) WithDefaultSType() ImageResolve2 {
-	return x.WithSType(VK_STRUCTURE_TYPE_IMAGE_RESOLVE_2)
-}
-
-// WithSType sets the value for the SType on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x ImageResolve2) WithSType(y StructureType) ImageResolve2 {
-	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
-	return x
-}
-
-// PNext returns the value of pNext from VkImageResolve2
-func (x ImageResolve2) PNext() unsafe.Pointer {
-	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
-	return *ptr
-}
-
-// WithPNext sets the value for the PNext on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x ImageResolve2) WithPNext(y unsafe.Pointer) ImageResolve2 {
-	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
-	return x
-}
-
-// SrcSubresource returns the value of srcSubresource from VkImageResolve2
-func (x ImageResolve2) SrcSubresource() ImageSubresourceLayers {
-	ptr := /* typedef */ (*ImageSubresourceLayers)(&x.srcSubresource)
-	return *ptr
-}
-
-// WithSrcSubresource sets the value for the SrcSubresource on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x ImageResolve2) WithSrcSubresource(y ImageSubresourceLayers) ImageResolve2 {
-	x.srcSubresource = *( /* typedef */ (*C.struct_VkImageSubresourceLayers)(&y))
-	return x
-}
-
-// SrcOffset returns the value of srcOffset from VkImageResolve2
-func (x ImageResolve2) SrcOffset() Offset3D {
-	ptr := /* typedef */ (*Offset3D)(&x.srcOffset)
-	return *ptr
-}
-
-// WithSrcOffset sets the value for the SrcOffset on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x ImageResolve2) WithSrcOffset(y Offset3D) ImageResolve2 {
-	x.srcOffset = *( /* typedef */ (*C.struct_VkOffset3D)(&y))
-	return x
-}
-
-// DstSubresource returns the value of dstSubresource from VkImageResolve2
-func (x ImageResolve2) DstSubresource() ImageSubresourceLayers {
-	ptr := /* typedef */ (*ImageSubresourceLayers)(&x.dstSubresource)
-	return *ptr
-}
-
-// WithDstSubresource sets the value for the DstSubresource on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x ImageResolve2) WithDstSubresource(y ImageSubresourceLayers) ImageResolve2 {
-	x.dstSubresource = *( /* typedef */ (*C.struct_VkImageSubresourceLayers)(&y))
-	return x
-}
-
-// DstOffset returns the value of dstOffset from VkImageResolve2
-func (x ImageResolve2) DstOffset() Offset3D {
-	ptr := /* typedef */ (*Offset3D)(&x.dstOffset)
-	return *ptr
-}
-
-// WithDstOffset sets the value for the DstOffset on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x ImageResolve2) WithDstOffset(y Offset3D) ImageResolve2 {
-	x.dstOffset = *( /* typedef */ (*C.struct_VkOffset3D)(&y))
-	return x
-}
-
-// Extent returns the value of extent from VkImageResolve2
-func (x ImageResolve2) Extent() Extent3D {
-	ptr := /* typedef */ (*Extent3D)(&x.extent)
-	return *ptr
-}
-
-// WithExtent sets the value for the Extent on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x ImageResolve2) WithExtent(y Extent3D) ImageResolve2 {
-	x.extent = *( /* typedef */ (*C.struct_VkExtent3D)(&y))
-	return x
 }
 
 // PhysicalDeviceSubgroupSizeControlFeatures provides a go interface for VkPhysicalDeviceSubgroupSizeControlFeatures.
@@ -44305,43 +44305,22 @@ func (x PresentModeKHR) String() string {
 	return fmt.Sprintf("PresentModeKHR=%d", x)
 }
 
-// DestroySurfaceKHR command
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/vkDestroySurfaceKHR.html
-func (x InstanceFacade) DestroySurfaceKHR(surface SurfaceKHR, pAllocator *AllocationCallbacks) {
-	addrs := x.procs
-	p0 := /* handle */ (*C.VkInstance)(&x.H)
-	p1 := /* handle */ (*C.VkSurfaceKHR)(&surface)
-	p2 := func(x **AllocationCallbacks) **C.struct_VkAllocationCallbacks { /* Pointer */
-		g2c := (*C.struct_VkAllocationCallbacks)(*x)
-		return &g2c
-	}(&pAllocator)
-	C.vkDestroySurfaceKHR(addrs, *p0, *p1, *p2)
-}
-
-// GetPhysicalDeviceSurfaceSupportKHR command
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceSurfaceSupportKHR.html
-func (x PhysicalDeviceFacade) GetPhysicalDeviceSurfaceSupportKHR(queueFamilyIndex uint32, surface SurfaceKHR, pSupported *Bool32) Result {
-	addrs := x.procs
-	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
-	p1 := func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&queueFamilyIndex)
-	p2 := /* handle */ (*C.VkSurfaceKHR)(&surface)
-	p3 := func(x **Bool32) **C.VkBool32 { /* Pointer */ g2c := (*C.VkBool32)(*x); return &g2c }(&pSupported)
-	ret := C.vkGetPhysicalDeviceSurfaceSupportKHR(addrs, *p0, *p1, *p2, *p3)
-	retPtr := /* typedef */ (*Result)(&ret)
-	return *retPtr
-}
-
-// GetPhysicalDeviceSurfaceCapabilitiesKHR command
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceSurfaceCapabilitiesKHR.html
-func (x PhysicalDeviceFacade) GetPhysicalDeviceSurfaceCapabilitiesKHR(surface SurfaceKHR, pSurfaceCapabilities *SurfaceCapabilitiesKHR) Result {
+// GetPhysicalDeviceSurfacePresentModesKHR command
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceSurfacePresentModesKHR.html
+func (x PhysicalDeviceFacade) GetPhysicalDeviceSurfacePresentModesKHR(surface SurfaceKHR, pPresentModeCount *uint32, pPresentModes []PresentModeKHR) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
 	p1 := /* handle */ (*C.VkSurfaceKHR)(&surface)
-	p2 := func(x **SurfaceCapabilitiesKHR) **C.struct_VkSurfaceCapabilitiesKHR { /* Pointer */
-		g2c := (*C.struct_VkSurfaceCapabilitiesKHR)(*x)
-		return &g2c
-	}(&pSurfaceCapabilities)
-	ret := C.vkGetPhysicalDeviceSurfaceCapabilitiesKHR(addrs, *p0, *p1, *p2)
+	p2 := func(x **uint32) **C.uint32_t { /* Pointer */ g2c := (*C.uint32_t)(*x); return &g2c }(&pPresentModeCount)
+	p3 := func(x *[]PresentModeKHR) **C.VkPresentModeKHR { /* Slice */
+		if len(*x) > 0 {
+			slc := (*C.VkPresentModeKHR)(unsafe.Pointer(&((*x)[0])))
+			return &slc
+		}
+		var ptr unsafe.Pointer
+		return (**C.VkPresentModeKHR)(unsafe.Pointer((&ptr)))
+	}(&pPresentModes)
+	ret := C.vkGetPhysicalDeviceSurfacePresentModesKHR(addrs, *p0, *p1, *p2, *p3)
 	retPtr := /* typedef */ (*Result)(&ret)
 	return *retPtr
 }
@@ -44366,24 +44345,45 @@ func (x PhysicalDeviceFacade) GetPhysicalDeviceSurfaceFormatsKHR(surface Surface
 	return *retPtr
 }
 
-// GetPhysicalDeviceSurfacePresentModesKHR command
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceSurfacePresentModesKHR.html
-func (x PhysicalDeviceFacade) GetPhysicalDeviceSurfacePresentModesKHR(surface SurfaceKHR, pPresentModeCount *uint32, pPresentModes []PresentModeKHR) Result {
+// GetPhysicalDeviceSurfaceCapabilitiesKHR command
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceSurfaceCapabilitiesKHR.html
+func (x PhysicalDeviceFacade) GetPhysicalDeviceSurfaceCapabilitiesKHR(surface SurfaceKHR, pSurfaceCapabilities *SurfaceCapabilitiesKHR) Result {
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
 	p1 := /* handle */ (*C.VkSurfaceKHR)(&surface)
-	p2 := func(x **uint32) **C.uint32_t { /* Pointer */ g2c := (*C.uint32_t)(*x); return &g2c }(&pPresentModeCount)
-	p3 := func(x *[]PresentModeKHR) **C.VkPresentModeKHR { /* Slice */
-		if len(*x) > 0 {
-			slc := (*C.VkPresentModeKHR)(unsafe.Pointer(&((*x)[0])))
-			return &slc
-		}
-		var ptr unsafe.Pointer
-		return (**C.VkPresentModeKHR)(unsafe.Pointer((&ptr)))
-	}(&pPresentModes)
-	ret := C.vkGetPhysicalDeviceSurfacePresentModesKHR(addrs, *p0, *p1, *p2, *p3)
+	p2 := func(x **SurfaceCapabilitiesKHR) **C.struct_VkSurfaceCapabilitiesKHR { /* Pointer */
+		g2c := (*C.struct_VkSurfaceCapabilitiesKHR)(*x)
+		return &g2c
+	}(&pSurfaceCapabilities)
+	ret := C.vkGetPhysicalDeviceSurfaceCapabilitiesKHR(addrs, *p0, *p1, *p2)
 	retPtr := /* typedef */ (*Result)(&ret)
 	return *retPtr
+}
+
+// GetPhysicalDeviceSurfaceSupportKHR command
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/vkGetPhysicalDeviceSurfaceSupportKHR.html
+func (x PhysicalDeviceFacade) GetPhysicalDeviceSurfaceSupportKHR(queueFamilyIndex uint32, surface SurfaceKHR, pSupported *Bool32) Result {
+	addrs := x.procs
+	p0 := /* handle */ (*C.VkPhysicalDevice)(&x.H)
+	p1 := func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&queueFamilyIndex)
+	p2 := /* handle */ (*C.VkSurfaceKHR)(&surface)
+	p3 := func(x **Bool32) **C.VkBool32 { /* Pointer */ g2c := (*C.VkBool32)(*x); return &g2c }(&pSupported)
+	ret := C.vkGetPhysicalDeviceSurfaceSupportKHR(addrs, *p0, *p1, *p2, *p3)
+	retPtr := /* typedef */ (*Result)(&ret)
+	return *retPtr
+}
+
+// DestroySurfaceKHR command
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/vkDestroySurfaceKHR.html
+func (x InstanceFacade) DestroySurfaceKHR(surface SurfaceKHR, pAllocator *AllocationCallbacks) {
+	addrs := x.procs
+	p0 := /* handle */ (*C.VkInstance)(&x.H)
+	p1 := /* handle */ (*C.VkSurfaceKHR)(&surface)
+	p2 := func(x **AllocationCallbacks) **C.struct_VkAllocationCallbacks { /* Pointer */
+		g2c := (*C.struct_VkAllocationCallbacks)(*x)
+		return &g2c
+	}(&pAllocator)
+	C.vkDestroySurfaceKHR(addrs, *p0, *p1, *p2)
 }
 
 //PhysicalDeviceProperties2KHR is an alias to PhysicalDeviceProperties2.
@@ -45986,6 +45986,74 @@ func (x DisplayPlanePropertiesKHR) CurrentStackIndex() uint32 {
 	return *ptr
 }
 
+// DisplayModeParametersKHR provides a go interface for VkDisplayModeParametersKHR.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkDisplayModeParametersKHR.html
+type DisplayModeParametersKHR C.struct_VkDisplayModeParametersKHR
+
+// SizeofDisplayModeParametersKHR is the memory size of a DisplayModeParametersKHR
+var SizeofDisplayModeParametersKHR int = int(unsafe.Sizeof(DisplayModeParametersKHR{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *DisplayModeParametersKHR) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x DisplayModeParametersKHR) AsCPtr() *DisplayModeParametersKHR {
+	clone := (*DisplayModeParametersKHR)(newCBlock(C.ulong(SizeofDisplayModeParametersKHR)))
+	*clone = x
+	return clone
+}
+
+// DisplayModeParametersKHRFreeCSlice releases the memory allocated by DisplayModeParametersKHRMakeCSlice.
+// It does not free pointers stored inside the slice.
+func DisplayModeParametersKHRFreeCSlice(x []DisplayModeParametersKHR) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// DisplayModeParametersKHRMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. DisplayModeParametersKHRFreeCSlice must be called on the returned slice.
+func DisplayModeParametersKHRMakeCSlice(x ...DisplayModeParametersKHR) []DisplayModeParametersKHR {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofDisplayModeParametersKHR * len(x)
+	dst := unsafe.Slice((*DisplayModeParametersKHR)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// VisibleRegion returns the value of visibleRegion from VkDisplayModeParametersKHR
+func (x DisplayModeParametersKHR) VisibleRegion() Extent2D {
+	ptr := /* typedef */ (*Extent2D)(&x.visibleRegion)
+	return *ptr
+}
+
+// WithVisibleRegion sets the value for the VisibleRegion on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x DisplayModeParametersKHR) WithVisibleRegion(y Extent2D) DisplayModeParametersKHR {
+	x.visibleRegion = *( /* typedef */ (*C.struct_VkExtent2D)(&y))
+	return x
+}
+
+// RefreshRate returns the value of refreshRate from VkDisplayModeParametersKHR
+func (x DisplayModeParametersKHR) RefreshRate() uint32 {
+	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.refreshRate)
+	return *ptr
+}
+
+// WithRefreshRate sets the value for the RefreshRate on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x DisplayModeParametersKHR) WithRefreshRate(y uint32) DisplayModeParametersKHR {
+	x.refreshRate = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
+	return x
+}
+
 // DisplayModePropertiesKHR provides a go interface for VkDisplayModePropertiesKHR.
 // https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkDisplayModePropertiesKHR.html
 type DisplayModePropertiesKHR C.struct_VkDisplayModePropertiesKHR
@@ -46318,74 +46386,6 @@ func (x DisplayPlaneCapabilitiesKHR) MinDstExtent() Extent2D {
 func (x DisplayPlaneCapabilitiesKHR) MaxDstExtent() Extent2D {
 	ptr := /* typedef */ (*Extent2D)(&x.maxDstExtent)
 	return *ptr
-}
-
-// DisplayModeParametersKHR provides a go interface for VkDisplayModeParametersKHR.
-// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkDisplayModeParametersKHR.html
-type DisplayModeParametersKHR C.struct_VkDisplayModeParametersKHR
-
-// SizeofDisplayModeParametersKHR is the memory size of a DisplayModeParametersKHR
-var SizeofDisplayModeParametersKHR int = int(unsafe.Sizeof(DisplayModeParametersKHR{}))
-
-// Free releases the memory allocated by AsCPtr.
-// It does not free pointers stored in the structure.
-func (x *DisplayModeParametersKHR) Free() {
-	C.free(unsafe.Pointer(x))
-}
-
-// AsCPtr copies the object to the C heap and returns the pointer.
-// Free must be explicitly called on the returned pointer.
-func (x DisplayModeParametersKHR) AsCPtr() *DisplayModeParametersKHR {
-	clone := (*DisplayModeParametersKHR)(newCBlock(C.ulong(SizeofDisplayModeParametersKHR)))
-	*clone = x
-	return clone
-}
-
-// DisplayModeParametersKHRFreeCSlice releases the memory allocated by DisplayModeParametersKHRMakeCSlice.
-// It does not free pointers stored inside the slice.
-func DisplayModeParametersKHRFreeCSlice(x []DisplayModeParametersKHR) {
-	if len(x) > 0 {
-		C.free(unsafe.Pointer(&x[0]))
-	}
-}
-
-// DisplayModeParametersKHRMakeCSlice allocates memory for the passed arguments on the C heap,
-// copies their values to the allocated memory, and creates a slice around the
-// C memory. DisplayModeParametersKHRFreeCSlice must be called on the returned slice.
-func DisplayModeParametersKHRMakeCSlice(x ...DisplayModeParametersKHR) []DisplayModeParametersKHR {
-	if len(x) == 0 {
-		return nil
-	}
-	sz := SizeofDisplayModeParametersKHR * len(x)
-	dst := unsafe.Slice((*DisplayModeParametersKHR)(newCBlock(C.ulong(sz))), len(x))
-	copy(dst, x)
-	return dst
-}
-
-// VisibleRegion returns the value of visibleRegion from VkDisplayModeParametersKHR
-func (x DisplayModeParametersKHR) VisibleRegion() Extent2D {
-	ptr := /* typedef */ (*Extent2D)(&x.visibleRegion)
-	return *ptr
-}
-
-// WithVisibleRegion sets the value for the VisibleRegion on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x DisplayModeParametersKHR) WithVisibleRegion(y Extent2D) DisplayModeParametersKHR {
-	x.visibleRegion = *( /* typedef */ (*C.struct_VkExtent2D)(&y))
-	return x
-}
-
-// RefreshRate returns the value of refreshRate from VkDisplayModeParametersKHR
-func (x DisplayModeParametersKHR) RefreshRate() uint32 {
-	ptr := func(x *C.uint32_t) *uint32 { /* Scalar */ c2g := uint32(*x); return &c2g }(&x.refreshRate)
-	return *ptr
-}
-
-// WithRefreshRate sets the value for the RefreshRate on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x DisplayModeParametersKHR) WithRefreshRate(y uint32) DisplayModeParametersKHR {
-	x.refreshRate = *(func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&y))
-	return x
 }
 
 // DisplaySurfaceCreateInfoKHR provides a go interface for VkDisplaySurfaceCreateInfoKHR.
