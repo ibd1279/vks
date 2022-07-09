@@ -213,7 +213,7 @@ type TypeMemberElement struct {
 	Selector string `xml:"selector,attr,omitempty"`
 	// Selection is optional. For a member of a union, selection identifies a
 	// value of the selector that indicates this member is valid.
-	Selection string `xml:selection,attr,omitempty"`
+	Selection string `xml:"selection,attr,omitempty"`
 	// NoAutoValidity prevents automatic validity language being generated for
 	// the tagged item.
 	NoAutoValidity string `xml:"noautovalidity,attr,omitempty"`
