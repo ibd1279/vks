@@ -623,6 +623,7 @@ var (
 		"VK_API_VERSION_1_0":                true, // in the version template.
 		"VK_API_VERSION_1_1":                true, // in the version template.
 		"VK_API_VERSION_1_2":                true, // in the version template.
+		"VK_API_VERSION_1_3":                true, // in the version template.
 		"VK_MAKE_API_VERSION":               true, // in the version template.
 	}
 	headerVersionRegexp *regexp.Regexp = regexp.MustCompile("(\\d+)$")

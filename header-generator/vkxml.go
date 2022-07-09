@@ -1064,7 +1064,7 @@ type RegistryGraph map[string]*RegistryNode
 
 // ApplyFeatureExtensions processes the require and remove blocks for features in the XML.
 // The format for calculating enum extension values is defined in
-// https://www.khronos.org/registry/vulkan/specs/1.2/styleguide.html#_assigning_extension_token_values
+// https://www.khronos.org/registry/vulkan/specs/1.3/styleguide.html#_assigning_extension_token_values
 // The edges in the graph are updated by this method, but the graph map itself is not.
 func (graph RegistryGraph) ApplyFeatureExtensions(name string, constants *RegistryNode) {
 	node := graph[name]
@@ -1080,7 +1080,7 @@ func (graph RegistryGraph) ApplyFeatureExtensions(name string, constants *Regist
 
 // ApplyExtensionExtensions processes the require and remove blocks for features in the XML.
 // The format for calculating enum extension values is defined in
-// https://www.khronos.org/registry/vulkan/specs/1.2/styleguide.html#_assigning_extension_token_values
+// https://www.khronos.org/registry/vulkan/specs/1.3/styleguide.html#_assigning_extension_token_values
 // The edges in the graph are updated by this method, but the graph map itself is not.
 // The included map is used to check if a feature or extension required by the feature block
 // is included.

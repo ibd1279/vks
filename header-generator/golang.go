@@ -111,7 +111,7 @@ func determineFacades(config *Config, graph RegistryGraph) map[string]bool {
 	return needsFacade
 }
 
-const goSubTemplates = `{{define "docurl"}}https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/{{.}}.html{{end}}{{define "const"}}// These are API constants.
+const goSubTemplates = `{{define "docurl"}}https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/{{.}}.html{{end}}{{define "const"}}// These are API constants.
 const ({{range .}}
 	{{.Name.Go}} = {{.Value.Go}}{{end}}
 )
@@ -138,6 +138,7 @@ var (
 	VK_API_VERSION_1_0         {{.Name.Go}} = Make{{.Name.Go}}(0, 1, 0, 0)
 	VK_API_VERSION_1_1         {{.Name.Go}} = Make{{.Name.Go}}(0, 1, 1, 0)
 	VK_API_VERSION_1_2         {{.Name.Go}} = Make{{.Name.Go}}(0, 1, 2, 0)
+	VK_API_VERSION_1_3         {{.Name.Go}} = Make{{.Name.Go}}(0, 1, 3, 0)
 	VK_HEADER_VERSION_COMPLETE {{.Name.Go}} = Make{{.Name.Go}}({{.Value.Go}}, {{.HeaderVersionName.Go}})
 )
 {{end}}{{define "headerversion"}}// {{.HeaderVersionName.Go}} is the version of the vk specification used to generate this.

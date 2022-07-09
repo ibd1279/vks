@@ -11,14 +11,14 @@ func (result Result) IsSuccess() bool {
 }
 
 // IsWarn checks if the VkResult is a positive value. See
-// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkResult.html#_description
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkResult.html#_description
 // for more details on success (not an error) codes.
 func (result Result) IsWarn() bool {
 	return result > 0
 }
 
 // IsError checks if the VkResult is a negative value. see
-// https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkResult.html#_description
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkResult.html#_description
 // for more details on error codes.
 func (result Result) IsError() bool {
 	return result < 0
