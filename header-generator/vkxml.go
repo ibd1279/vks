@@ -1031,25 +1031,18 @@ func (nodeType RegistryNodeElementType) String() string {
 	switch nodeType {
 	case RegistryNodePlatform:
 		return "platform"
-		break
 	case RegistryNodeType:
 		return "type"
-		break
 	case RegistryNodeEnums:
 		return "enums"
-		break
 	case RegistryNodeEnum:
 		return "enum"
-		break
 	case RegistryNodeCommand:
 		return "command"
-		break
 	case RegistryNodeFeature:
 		return "feature"
-		break
 	case RegistryNodeExtension:
 		return "extension"
-		break
 	case RegistryNodeVirtual:
 		return "virtual"
 	}

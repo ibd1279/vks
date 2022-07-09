@@ -571,7 +571,6 @@ func CommandToData(node *RegistryNode, command CommandElement) (bool, interface{
 			Data     CommandData
 		}{"command", data}
 	}
-	return false, nil
 }
 
 func TypeToData(node *RegistryNode, tiepuh TypeElement) (bool, interface{}) {
