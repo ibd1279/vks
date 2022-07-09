@@ -213,7 +213,7 @@ type TypeMemberElement struct {
 	Selector string `xml:"selector,attr,omitempty"`
 	// Selection is optional. For a member of a union, selection identifies a
 	// value of the selector that indicates this member is valid.
-	Selection string `xml:selection,attr,omitempty"`
+	Selection string `xml:"selection,attr,omitempty"`
 	// NoAutoValidity prevents automatic validity language being generated for
 	// the tagged item.
 	NoAutoValidity string `xml:"noautovalidity,attr,omitempty"`
@@ -1031,25 +1031,18 @@ func (nodeType RegistryNodeElementType) String() string {
 	switch nodeType {
 	case RegistryNodePlatform:
 		return "platform"
-		break
 	case RegistryNodeType:
 		return "type"
-		break
 	case RegistryNodeEnums:
 		return "enums"
-		break
 	case RegistryNodeEnum:
 		return "enum"
-		break
 	case RegistryNodeCommand:
 		return "command"
-		break
 	case RegistryNodeFeature:
 		return "feature"
-		break
 	case RegistryNodeExtension:
 		return "extension"
-		break
 	case RegistryNodeVirtual:
 		return "virtual"
 	}
@@ -1071,7 +1064,7 @@ type RegistryGraph map[string]*RegistryNode
 
 // ApplyFeatureExtensions processes the require and remove blocks for features in the XML.
 // The format for calculating enum extension values is defined in
-// https://www.khronos.org/registry/vulkan/specs/1.2/styleguide.html#_assigning_extension_token_values
+// https://www.khronos.org/registry/vulkan/specs/1.3/styleguide.html#_assigning_extension_token_values
 // The edges in the graph are updated by this method, but the graph map itself is not.
 func (graph RegistryGraph) ApplyFeatureExtensions(name string, constants *RegistryNode) {
 	node := graph[name]
@@ -1087,7 +1080,7 @@ func (graph RegistryGraph) ApplyFeatureExtensions(name string, constants *Regist
 
 // ApplyExtensionExtensions processes the require and remove blocks for features in the XML.
 // The format for calculating enum extension values is defined in
-// https://www.khronos.org/registry/vulkan/specs/1.2/styleguide.html#_assigning_extension_token_values
+// https://www.khronos.org/registry/vulkan/specs/1.3/styleguide.html#_assigning_extension_token_values
 // The edges in the graph are updated by this method, but the graph map itself is not.
 // The included map is used to check if a feature or extension required by the feature block
 // is included.
