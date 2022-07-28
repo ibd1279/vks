@@ -9091,14 +9091,14 @@ func (x ShaderModuleCreateInfo) WithFlags(y ShaderModuleCreateFlags) ShaderModul
 
 // CodeSize returns the value of codeSize from VkShaderModuleCreateInfo
 func (x ShaderModuleCreateInfo) CodeSize() uint64 {
-	ptr := func(x *C.uint64_t) *uint64 { /* Scalar */ c2g := uint64(*x); return &c2g }(&x.codeSize) 
+	ptr := func(x *C.size_t) *uint64 { /* Scalar */ c2g := uint64(*x); return &c2g }(&x.codeSize) 
 	return *ptr
 }
 
 // WithCodeSize sets the value for the CodeSize on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x ShaderModuleCreateInfo) WithCodeSize(y uint64) ShaderModuleCreateInfo {
-	x.codeSize = *(func(x *uint64) *C.uint64_t { /* Scalar */ g2c := C.uint64_t(*x); return &g2c }(&y))
+	x.codeSize = *(func(x *uint64) *C.size_t { /* Scalar */ g2c := C.size_t(*x); return &g2c }(&y))
 	return x
 }
 
@@ -9733,14 +9733,14 @@ func (x PipelineCacheCreateInfo) WithFlags(y PipelineCacheCreateFlags) PipelineC
 
 // InitialDataSize returns the value of initialDataSize from VkPipelineCacheCreateInfo
 func (x PipelineCacheCreateInfo) InitialDataSize() uint64 {
-	ptr := func(x *C.uint64_t) *uint64 { /* Scalar */ c2g := uint64(*x); return &c2g }(&x.initialDataSize) 
+	ptr := func(x *C.size_t) *uint64 { /* Scalar */ c2g := uint64(*x); return &c2g }(&x.initialDataSize) 
 	return *ptr
 }
 
 // WithInitialDataSize sets the value for the InitialDataSize on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x PipelineCacheCreateInfo) WithInitialDataSize(y uint64) PipelineCacheCreateInfo {
-	x.initialDataSize = *(func(x *uint64) *C.uint64_t { /* Scalar */ g2c := C.uint64_t(*x); return &g2c }(&y))
+	x.initialDataSize = *(func(x *uint64) *C.size_t { /* Scalar */ g2c := C.size_t(*x); return &g2c }(&y))
 	return x
 }
 
@@ -15891,7 +15891,7 @@ func (x PhysicalDeviceLimits) ViewportSubPixelBits() uint32 {
 
 // MinMemoryMapAlignment returns the value of minMemoryMapAlignment from VkPhysicalDeviceLimits
 func (x PhysicalDeviceLimits) MinMemoryMapAlignment() uint64 {
-	ptr := func(x *C.uint64_t) *uint64 { /* Scalar */ c2g := uint64(*x); return &c2g }(&x.minMemoryMapAlignment) 
+	ptr := func(x *C.size_t) *uint64 { /* Scalar */ c2g := uint64(*x); return &c2g }(&x.minMemoryMapAlignment) 
 	return *ptr
 }
 
@@ -16202,14 +16202,14 @@ func (x SpecializationInfo) WithPMapEntries(y []SpecializationMapEntry) Speciali
 
 // DataSize returns the value of dataSize from VkSpecializationInfo
 func (x SpecializationInfo) DataSize() uint64 {
-	ptr := func(x *C.uint64_t) *uint64 { /* Scalar */ c2g := uint64(*x); return &c2g }(&x.dataSize) 
+	ptr := func(x *C.size_t) *uint64 { /* Scalar */ c2g := uint64(*x); return &c2g }(&x.dataSize) 
 	return *ptr
 }
 
 // WithDataSize sets the value for the DataSize on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SpecializationInfo) WithDataSize(y uint64) SpecializationInfo {
-	x.dataSize = *(func(x *uint64) *C.uint64_t { /* Scalar */ g2c := C.uint64_t(*x); return &g2c }(&y))
+	x.dataSize = *(func(x *uint64) *C.size_t { /* Scalar */ g2c := C.size_t(*x); return &g2c }(&y))
 	return x
 }
 
@@ -16296,14 +16296,14 @@ func (x SpecializationMapEntry) WithOffset(y uint32) SpecializationMapEntry {
 
 // Size returns the value of size from VkSpecializationMapEntry
 func (x SpecializationMapEntry) Size() uint64 {
-	ptr := func(x *C.uint64_t) *uint64 { /* Scalar */ c2g := uint64(*x); return &c2g }(&x.size) 
+	ptr := func(x *C.size_t) *uint64 { /* Scalar */ c2g := uint64(*x); return &c2g }(&x.size) 
 	return *ptr
 }
 
 // WithSize sets the value for the Size on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x SpecializationMapEntry) WithSize(y uint64) SpecializationMapEntry {
-	x.size = *(func(x *uint64) *C.uint64_t { /* Scalar */ g2c := C.uint64_t(*x); return &g2c }(&y))
+	x.size = *(func(x *uint64) *C.size_t { /* Scalar */ g2c := C.size_t(*x); return &g2c }(&y))
 	return x
 }
 
@@ -18301,7 +18301,7 @@ func (x DeviceFacade)GetPipelineCacheData(pipelineCache PipelineCache, pDataSize
 	addrs := x.procs
 	p0 := /* handle */ (*C.VkDevice)(&x.H)
 	p1 := /* handle */ (*C.VkPipelineCache)(&pipelineCache)
-	p2 := func(x **uint64) **C.uint64_t { /* Pointer */ g2c := (*C.uint64_t)(*x); return &g2c }(&pDataSize)
+	p2 := func(x **uint64) **C.size_t { /* Pointer */ g2c := (*C.size_t)(*x); return &g2c }(&pDataSize)
 	p3 := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&pData)
 	ret := C.vkGetPipelineCacheData(addrs, *p0, *p1, *p2, *p3)
 	retPtr := /* typedef */ (*Result)(&ret)
@@ -19163,7 +19163,7 @@ func (x DeviceFacade)GetQueryPoolResults(queryPool QueryPool, firstQuery uint32,
 	p1 := /* handle */ (*C.VkQueryPool)(&queryPool)
 	p2 := func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&firstQuery)
 	p3 := func(x *uint32) *C.uint32_t { /* Scalar */ g2c := C.uint32_t(*x); return &g2c }(&queryCount)
-	p4 := func(x *uint64) *C.uint64_t { /* Scalar */ g2c := C.uint64_t(*x); return &g2c }(&dataSize)
+	p4 := func(x *uint64) *C.size_t { /* Scalar */ g2c := C.size_t(*x); return &g2c }(&dataSize)
 	p5 := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&pData)
 	p6 := /* typedef */ (*C.VkDeviceSize)(&stride)
 	p7 := /* typedef */ (*C.VkQueryResultFlags)(&flags)
@@ -25408,27 +25408,27 @@ func (x DescriptorUpdateTemplateEntry) WithDescriptorType(y DescriptorType) Desc
 
 // Offset returns the value of offset from VkDescriptorUpdateTemplateEntry
 func (x DescriptorUpdateTemplateEntry) Offset() uint64 {
-	ptr := func(x *C.uint64_t) *uint64 { /* Scalar */ c2g := uint64(*x); return &c2g }(&x.offset) 
+	ptr := func(x *C.size_t) *uint64 { /* Scalar */ c2g := uint64(*x); return &c2g }(&x.offset) 
 	return *ptr
 }
 
 // WithOffset sets the value for the Offset on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorUpdateTemplateEntry) WithOffset(y uint64) DescriptorUpdateTemplateEntry {
-	x.offset = *(func(x *uint64) *C.uint64_t { /* Scalar */ g2c := C.uint64_t(*x); return &g2c }(&y))
+	x.offset = *(func(x *uint64) *C.size_t { /* Scalar */ g2c := C.size_t(*x); return &g2c }(&y))
 	return x
 }
 
 // Stride returns the value of stride from VkDescriptorUpdateTemplateEntry
 func (x DescriptorUpdateTemplateEntry) Stride() uint64 {
-	ptr := func(x *C.uint64_t) *uint64 { /* Scalar */ c2g := uint64(*x); return &c2g }(&x.stride) 
+	ptr := func(x *C.size_t) *uint64 { /* Scalar */ c2g := uint64(*x); return &c2g }(&x.stride) 
 	return *ptr
 }
 
 // WithStride sets the value for the Stride on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.
 func (x DescriptorUpdateTemplateEntry) WithStride(y uint64) DescriptorUpdateTemplateEntry {
-	x.stride = *(func(x *uint64) *C.uint64_t { /* Scalar */ g2c := C.uint64_t(*x); return &g2c }(&y))
+	x.stride = *(func(x *uint64) *C.size_t { /* Scalar */ g2c := C.size_t(*x); return &g2c }(&y))
 	return x
 }
 
