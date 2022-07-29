@@ -185,15 +185,15 @@ func (xl8r *ScalarConverter) GoToC() string {
 }
 
 var (
-	Int8Translator          *ScalarConverter = &ScalarConverter{"int8_t", "C.schar", "int8"}
-	Int16Translator                          = &ScalarConverter{"int16_t", "C.short", "int16"}
-	Int32Translator                          = &ScalarConverter{"int32_t", "C.int", "int32"}
-	Int64Translator                          = &ScalarConverter{"int64_t", "C.longlong", "int64"}
-	Uint8Translator                          = &ScalarConverter{"uint8_t", "C.uchar", "byte"}
-	Uint16Translator                         = &ScalarConverter{"uint16_t", "C.ushort", "uint16"}
-	Uint32Translator                         = &ScalarConverter{"uint32_t", "C.uint", "uint32"}
-	Uint64Translator                         = &ScalarConverter{"uint64_t", "C.ulonglong", "uint64"}
-	SizeTranslator                           = &ScalarConverter{"size_t", "C.ulong", "uint64"}
+	Int8Translator          *ScalarConverter = &ScalarConverter{"int8_t", "C.int8_t", "int8"}
+	Int16Translator                          = &ScalarConverter{"int16_t", "C.int16_t", "int16"}
+	Int32Translator                          = &ScalarConverter{"int32_t", "C.int32_t", "int32"}
+	Int64Translator                          = &ScalarConverter{"int64_t", "C.int64_t", "int64"}
+	Uint8Translator                          = &ScalarConverter{"uint8_t", "C.uint8_t", "byte"}
+	Uint16Translator                         = &ScalarConverter{"uint16_t", "C.uint16_t", "uint16"}
+	Uint32Translator                         = &ScalarConverter{"uint32_t", "C.uint32_t", "uint32"}
+	Uint64Translator                         = &ScalarConverter{"uint64_t", "C.uint64_t", "uint64"}
+	SizeTranslator                           = &ScalarConverter{"size_t", "C.size_t", "uint64"}
 	Float32Translator                        = &ScalarConverter{"float", "C.float", "float32"}
 	Float64Translator                        = &ScalarConverter{"double", "C.double", "float64"}
 	StringTranslator                         = &ScalarConverter{"char", "C.char", "byte"}
@@ -571,7 +571,6 @@ func CommandToData(node *RegistryNode, command CommandElement) (bool, interface{
 			Data     CommandData
 		}{"command", data}
 	}
-	return false, nil
 }
 
 func TypeToData(node *RegistryNode, tiepuh TypeElement) (bool, interface{}) {
@@ -624,6 +623,7 @@ var (
 		"VK_API_VERSION_1_0":                true, // in the version template.
 		"VK_API_VERSION_1_1":                true, // in the version template.
 		"VK_API_VERSION_1_2":                true, // in the version template.
+		"VK_API_VERSION_1_3":                true, // in the version template.
 		"VK_MAKE_API_VERSION":               true, // in the version template.
 	}
 	headerVersionRegexp *regexp.Regexp = regexp.MustCompile("(\\d+)$")

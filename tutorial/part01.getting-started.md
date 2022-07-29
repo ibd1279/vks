@@ -560,7 +560,7 @@ You had added this field to the application when you added the GLFW window, and 
 
 ## Non-physical Device
 
-Once you have selected the physical device, you can create a logical device onto of it. I highly recommend that you read the [Vulkan specifications Devices introduction](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-devices) for a better understanding of how the "VkDevice" fits into the Vulkan ecosystem. Then you can jump down to [Device Creation](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/vkspec.html#devsandqueues-device-creation) to get an understanding of the API.
+Once you have selected the physical device, you can create a logical device onto of it. I highly recommend that you read the [Vulkan specifications Devices introduction](https://www.khronos.org/registry/vulkan/specs/1.3-extensions/html/vkspec.html#devsandqueues-devices) for a better understanding of how the "VkDevice" fits into the Vulkan ecosystem. Then you can jump down to [Device Creation](https://www.khronos.org/registry/vulkan/specs/1.3-extensions/html/vkspec.html#devsandqueues-device-creation) to get an understanding of the API.
 
 Start by adding the device field to App. We also add a RequiredDeviceExtensions field, for any device specific extensions we want to enable.
 

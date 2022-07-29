@@ -65,10 +65,18 @@ const cImplementPrimaryTemplate = `#include <dlfcn.h>
 vksProcAddr vksProcAddresses;
 void *vulkanHandle = NULL;
 
+#if defined(_WIN64) || defined(_WIN32)
+    #define LIB_NAME "vulkan.dll"
+#elif defined(__linux__) || defined(__FreeBSD__) || defined (__NetBSD__) || defined(__OpenBSD__) || defined(__DragonFly__)
+    #define LIB_NAME "libvulkan.so"
+#elif defined(__APPLE__) || defined(__MACH__)
+    #define LIB_NAME "libvulkan.dylib"
+#endif
+
 // default dynamic loader?
 VkResult vksDynamicLoad() {
 	// TODO Start: Abstract this block to be specialized as needed.
-	vulkanHandle = dlopen("libvulkan.dylib", RTLD_NOW | RTLD_LOCAL);
+	vulkanHandle = dlopen(LIB_NAME, RTLD_NOW | RTLD_LOCAL);
 	if (vulkanHandle == NULL) {
 		return VK_ERROR_UNKNOWN;
 	}
