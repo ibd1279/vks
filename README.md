@@ -51,8 +51,9 @@ func main() {
 	createInfo := vks.InstanceCreateInfo{}.
 		WithDefaultSType().
 		WithPApplicationInfo(appInfo).
+		WithFlags(vks.InstanceCreateFlags(vks.VK_INSTANCE_CREATE_ENUMERATE_PORTABILITY_BIT_KHR)).
 		WithLayers([]string{"VK_LAYER_KHRONOS_validation"}).
-		WithExtensions([]string{"VK_KHR_surface"}).
+		WithExtensions([]string{"VK_KHR_surface", "VK_KHR_portability_enumeration", "VK_KHR_get_physical_device_properties2"}).
 		AsCPtr()
 	defer func() { createInfo.Free(); appInfo.Free() }()
 

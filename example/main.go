@@ -16,19 +16,46 @@ func main() {
 	if result := vks.EnumerateInstanceVersion(&version); result.IsSuccess() {
 		log.Printf("%v", vks.ApiVersion(version))
 		log.Printf("%v", vks.VK_HEADER_VERSION_COMPLETE)
+		log.Printf("%v", vks.VK_API_VERSION_1_3)
+	}
+
+	var count uint32
+	if result := vks.EnumerateInstanceExtensionProperties(nil, &count, nil); !result.IsSuccess() {
+		panic(result.AsErr())
+	}
+	instanceExtensions := make([]vks.ExtensionProperties, count)
+	if result := vks.EnumerateInstanceExtensionProperties(nil, &count, instanceExtensions); !result.IsSuccess() {
+		panic(result.AsErr())
+	}
+	for k, instExt := range instanceExtensions {
+		name := vks.ToString(instExt.ExtensionName())
+		log.Printf("Extension%02d %v (%v)", k, name, instExt.SpecVersion())
+	}
+
+	if result := vks.EnumerateInstanceLayerProperties(&count, nil); !result.IsSuccess() {
+		panic(result.AsErr())
+	}
+	instanceLayers := make([]vks.LayerProperties, count)
+	if result := vks.EnumerateInstanceLayerProperties(&count, instanceLayers); !result.IsSuccess() {
+		panic(result.AsErr())
+	}
+	for k, instLay := range instanceLayers {
+		name := vks.ToString(instLay.LayerName())
+		log.Printf("Layer%02d %v (%v / %v)", k, name, instLay.ImplementationVersion(), instLay.SpecVersion())
 	}
 
 	appInfo := vks.ApplicationInfo{}.
 		WithDefaultSType().
 		WithApplication("Test", vks.MakeApiVersion(0, 1, 0, 0)).
 		WithEngine("NoEngine", vks.MakeApiVersion(0, 1, 0, 0)).
-		WithApiVersion(uint32(vks.VK_API_VERSION_1_3)).
+		WithApiVersion(uint32(vks.VK_API_VERSION_1_0)).
 		AsCPtr()
 	createInfo := vks.InstanceCreateInfo{}.
 		WithDefaultSType().
 		WithPApplicationInfo(appInfo).
+		WithFlags(vks.InstanceCreateFlags(vks.VK_INSTANCE_CREATE_ENUMERATE_PORTABILITY_BIT_KHR)).
 		WithLayers([]string{"VK_LAYER_KHRONOS_validation"}).
-		WithExtensions([]string{"VK_KHR_surface"}).
+		WithExtensions([]string{"VK_KHR_surface", "VK_KHR_portability_enumeration", "VK_KHR_get_physical_device_properties2"}).
 		AsCPtr()
 	defer func() { createInfo.Free(); appInfo.Free() }()
 
@@ -38,7 +65,6 @@ func main() {
 	}
 	instance := vks.MakeInstanceFacade(vkInstance)
 
-	var count uint32
 	if result := instance.EnumeratePhysicalDevices(&count, nil); !result.IsSuccess() {
 		panic(result.AsErr())
 	}
