@@ -352,6 +352,32 @@ func FreeCString(ptr *byte) {
 	}
 }
 
+// CopyToMemory copies data to device memory from the provided slice. See MapMemory for possible errors.
+// Returns the number of bytes copied.
+func (device DeviceFacade) CopyToMemory(memory DeviceMemory, offset, size DeviceSize, flags MemoryMapFlags, src []byte) (int, error) {
+	var pData unsafe.Pointer
+	if err := device.MapMemory(memory, offset, size, flags, &pData).AsErr(); err != nil {
+		return 0, err
+	}
+	dst := unsafe.Slice((*byte)(pData), size)
+	n := copy(dst, src)
+	device.UnmapMemory(memory)
+	return n, nil
+}
+
+// CopyFromMemory copies data from device memory into the provided slice. See MapMemory for possible errors.
+// Returns the number of bytes copied.
+func (device DeviceFacade) CopyFromMemory(memory DeviceMemory, offset, size DeviceSize, flags MemoryMapFlags, dst []byte) (int, error) {
+	var pData unsafe.Pointer
+	if err := device.MapMemory(memory, offset, size, flags, &pData).AsErr(); err != nil {
+		return 0, err
+	}
+	src := unsafe.Slice((*byte)(pData), size)
+	n := copy(dst, src)
+	device.UnmapMemory(memory)
+	return n, nil
+}
+
 {{range .Data}}{{if eq .Template "const"}}{{block "const" .Data}}{{.}}{{end}}
 {{else if eq .Template "version"}}{{block "version" .Data}}{{.}}{{end}}
 {{else if eq .Template "headerversion"}}{{block "headerversion" .Data}}{{.}}{{end}}
