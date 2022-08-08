@@ -258,6 +258,9 @@ void vksLoadInstanceProcAddrs(VkInstance hndl, vksProcAddr* addrs) {
 	addrs->pvkGetPhysicalDeviceSurfaceCapabilitiesKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceSurfaceCapabilitiesKHR");
 	addrs->pvkGetPhysicalDeviceSurfaceSupportKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceSurfaceSupportKHR");
 	addrs->pvkDestroySurfaceKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroySurfaceKHR");
+	addrs->pvkCreateDebugReportCallbackEXT = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateDebugReportCallbackEXT");
+	addrs->pvkDestroyDebugReportCallbackEXT = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyDebugReportCallbackEXT");
+	addrs->pvkDebugReportMessageEXT = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDebugReportMessageEXT");
 	addrs->pvkGetPhysicalDevicePresentRectanglesKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDevicePresentRectanglesKHR");
 	addrs->pvkAcquireNextImage2KHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkAcquireNextImage2KHR");
 	addrs->pvkGetDeviceGroupSurfacePresentModesKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetDeviceGroupSurfacePresentModesKHR");
@@ -505,6 +508,9 @@ void vksLoadDeviceProcAddrs(VkDevice hndl, vksProcAddr* addrs, vksProcAddr* pare
 	addrs->pvkGetPhysicalDeviceSurfaceCapabilitiesKHR = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceSurfaceCapabilitiesKHR");
 	addrs->pvkGetPhysicalDeviceSurfaceSupportKHR = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceSurfaceSupportKHR");
 	addrs->pvkDestroySurfaceKHR = vkGetDeviceProcAddr(parent, hndl, "vkDestroySurfaceKHR");
+	addrs->pvkCreateDebugReportCallbackEXT = vkGetDeviceProcAddr(parent, hndl, "vkCreateDebugReportCallbackEXT");
+	addrs->pvkDestroyDebugReportCallbackEXT = vkGetDeviceProcAddr(parent, hndl, "vkDestroyDebugReportCallbackEXT");
+	addrs->pvkDebugReportMessageEXT = vkGetDeviceProcAddr(parent, hndl, "vkDebugReportMessageEXT");
 	addrs->pvkGetPhysicalDevicePresentRectanglesKHR = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDevicePresentRectanglesKHR");
 	addrs->pvkAcquireNextImage2KHR = vkGetDeviceProcAddr(parent, hndl, "vkAcquireNextImage2KHR");
 	addrs->pvkGetDeviceGroupSurfacePresentModesKHR = vkGetDeviceProcAddr(parent, hndl, "vkGetDeviceGroupSurfacePresentModesKHR");
@@ -1273,6 +1279,16 @@ VkResult vkGetPhysicalDeviceSurfaceSupportKHR(vksProcAddr* addrs, VkPhysicalDevi
 }
 void vkDestroySurfaceKHR(vksProcAddr* addrs, VkInstance instance, VkSurfaceKHR surface, VkAllocationCallbacks* pAllocator) {
 	(((PFN_vkDestroySurfaceKHR)addrs->pvkDestroySurfaceKHR)(instance, surface, pAllocator));
+}
+VkResult vkCreateDebugReportCallbackEXT(vksProcAddr* addrs, VkInstance instance, VkDebugReportCallbackCreateInfoEXT* pCreateInfo, VkAllocationCallbacks* pAllocator, VkDebugReportCallbackEXT* pCallback) {
+	VkResult ret = (((PFN_vkCreateDebugReportCallbackEXT)addrs->pvkCreateDebugReportCallbackEXT)(instance, pCreateInfo, pAllocator, pCallback));
+	return ret;
+}
+void vkDestroyDebugReportCallbackEXT(vksProcAddr* addrs, VkInstance instance, VkDebugReportCallbackEXT callback, VkAllocationCallbacks* pAllocator) {
+	(((PFN_vkDestroyDebugReportCallbackEXT)addrs->pvkDestroyDebugReportCallbackEXT)(instance, callback, pAllocator));
+}
+void vkDebugReportMessageEXT(vksProcAddr* addrs, VkInstance instance, VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objectType, uint64_t object, size_t location, int32_t messageCode, char* pLayerPrefix, char* pMessage) {
+	(((PFN_vkDebugReportMessageEXT)addrs->pvkDebugReportMessageEXT)(instance, flags, objectType, object, location, messageCode, pLayerPrefix, pMessage));
 }
 VkResult vkGetPhysicalDevicePresentRectanglesKHR(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint32_t* pRectCount, VkRect2D* pRects) {
 	VkResult ret = (((PFN_vkGetPhysicalDevicePresentRectanglesKHR)addrs->pvkGetPhysicalDevicePresentRectanglesKHR)(physicalDevice, surface, pRectCount, pRects));

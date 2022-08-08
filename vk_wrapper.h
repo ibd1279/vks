@@ -229,6 +229,9 @@ typedef struct vksProcAddr {
 	void* pvkGetPhysicalDeviceSurfaceCapabilitiesKHR;
 	void* pvkGetPhysicalDeviceSurfaceSupportKHR;
 	void* pvkDestroySurfaceKHR;
+	void* pvkCreateDebugReportCallbackEXT;
+	void* pvkDestroyDebugReportCallbackEXT;
+	void* pvkDebugReportMessageEXT;
 	void* pvkGetPhysicalDevicePresentRectanglesKHR;
 	void* pvkAcquireNextImage2KHR;
 	void* pvkGetDeviceGroupSurfacePresentModesKHR;
@@ -479,6 +482,9 @@ VkResult vkGetPhysicalDeviceSurfaceFormatsKHR(vksProcAddr* addrs, VkPhysicalDevi
 VkResult vkGetPhysicalDeviceSurfaceCapabilitiesKHR(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, VkSurfaceCapabilitiesKHR* pSurfaceCapabilities);
 VkResult vkGetPhysicalDeviceSurfaceSupportKHR(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex, VkSurfaceKHR surface, VkBool32* pSupported);
 void vkDestroySurfaceKHR(vksProcAddr* addrs, VkInstance instance, VkSurfaceKHR surface, VkAllocationCallbacks* pAllocator);
+VkResult vkCreateDebugReportCallbackEXT(vksProcAddr* addrs, VkInstance instance, VkDebugReportCallbackCreateInfoEXT* pCreateInfo, VkAllocationCallbacks* pAllocator, VkDebugReportCallbackEXT* pCallback);
+void vkDestroyDebugReportCallbackEXT(vksProcAddr* addrs, VkInstance instance, VkDebugReportCallbackEXT callback, VkAllocationCallbacks* pAllocator);
+void vkDebugReportMessageEXT(vksProcAddr* addrs, VkInstance instance, VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objectType, uint64_t object, size_t location, int32_t messageCode, char* pLayerPrefix, char* pMessage);
 VkResult vkGetPhysicalDevicePresentRectanglesKHR(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint32_t* pRectCount, VkRect2D* pRects);
 VkResult vkAcquireNextImage2KHR(vksProcAddr* addrs, VkDevice device, VkAcquireNextImageInfoKHR* pAcquireInfo, uint32_t* pImageIndex);
 VkResult vkGetDeviceGroupSurfacePresentModesKHR(vksProcAddr* addrs, VkDevice device, VkSurfaceKHR surface, VkDeviceGroupPresentModeFlagsKHR* pModes);

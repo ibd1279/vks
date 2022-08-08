@@ -7,6 +7,7 @@ features:
   - VK_VERSION_1_2
   - VK_VERSION_1_3
 extensions:
+  - VK_EXT_debug_report
   - VK_KHR_get_physical_device_properties2
   - VK_KHR_portability_enumeration
   - VK_KHR_surface

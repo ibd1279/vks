@@ -39,6 +39,32 @@ func FreeCString(ptr *byte) {
 	}
 }
 
+// CopyToMemory copies data to device memory from the provided slice. See MapMemory for possible errors.
+// Returns the number of bytes copied.
+func (device DeviceFacade) CopyToMemory(memory DeviceMemory, offset, size DeviceSize, flags MemoryMapFlags, src []byte) (int, error) {
+	var pData unsafe.Pointer
+	if err := device.MapMemory(memory, offset, size, flags, &pData).AsErr(); err != nil {
+		return 0, err
+	}
+	dst := unsafe.Slice((*byte)(pData), size)
+	n := copy(dst, src)
+	device.UnmapMemory(memory)
+	return n, nil
+}
+
+// CopyFromMemory copies data from device memory into the provided slice. See MapMemory for possible errors.
+// Returns the number of bytes copied.
+func (device DeviceFacade) CopyFromMemory(memory DeviceMemory, offset, size DeviceSize, flags MemoryMapFlags, dst []byte) (int, error) {
+	var pData unsafe.Pointer
+	if err := device.MapMemory(memory, offset, size, flags, &pData).AsErr(); err != nil {
+		return 0, err
+	}
+	src := unsafe.Slice((*byte)(pData), size)
+	n := copy(dst, src)
+	device.UnmapMemory(memory)
+	return n, nil
+}
+
 // These are API constants.
 const (
 	VK_MAX_PHYSICAL_DEVICE_NAME_SIZE                       = 256
@@ -72,6 +98,8 @@ const (
 	VK_MAX_GLOBAL_PRIORITY_SIZE_KHR                        = 16
 	VK_MAX_GLOBAL_PRIORITY_SIZE_EXT                        = VK_MAX_GLOBAL_PRIORITY_SIZE_KHR
 	VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT               = 32
+	VK_EXT_DEBUG_REPORT_SPEC_VERSION                       = 10
+	VK_EXT_DEBUG_REPORT_EXTENSION_NAME                     = "VK_EXT_debug_report"
 	VK_KHR_GET_PHYSICAL_DEVICE_PROPERTIES_2_SPEC_VERSION   = 2
 	VK_KHR_GET_PHYSICAL_DEVICE_PROPERTIES_2_EXTENSION_NAME = "VK_KHR_get_physical_device_properties2"
 	VK_KHR_PORTABILITY_ENUMERATION_SPEC_VERSION            = 1
@@ -646,6 +674,7 @@ const (
 	VK_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION   ObjectType = 1000156000
 	VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE ObjectType = 1000085000
 	VK_OBJECT_TYPE_PRIVATE_DATA_SLOT          ObjectType = 1000295000
+	VK_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT  ObjectType = 1000011000
 	VK_OBJECT_TYPE_SURFACE_KHR                ObjectType = 1000000000
 	VK_OBJECT_TYPE_SWAPCHAIN_KHR              ObjectType = 1000001000
 	VK_OBJECT_TYPE_DISPLAY_KHR                ObjectType = 1000002000
@@ -683,6 +712,7 @@ var (
 		VK_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION:   "VK_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION",
 		VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE: "VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE",
 		VK_OBJECT_TYPE_PRIVATE_DATA_SLOT:          "VK_OBJECT_TYPE_PRIVATE_DATA_SLOT",
+		VK_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT:  "VK_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT",
 		VK_OBJECT_TYPE_SURFACE_KHR:                "VK_OBJECT_TYPE_SURFACE_KHR",
 		VK_OBJECT_TYPE_SWAPCHAIN_KHR:              "VK_OBJECT_TYPE_SWAPCHAIN_KHR",
 		VK_OBJECT_TYPE_DISPLAY_KHR:                "VK_OBJECT_TYPE_DISPLAY_KHR",
@@ -2569,6 +2599,8 @@ const (
 	VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_4_PROPERTIES                    StructureType = 1000413001
 	VK_STRUCTURE_TYPE_DEVICE_BUFFER_MEMORY_REQUIREMENTS                           StructureType = 1000413002
 	VK_STRUCTURE_TYPE_DEVICE_IMAGE_MEMORY_REQUIREMENTS                            StructureType = 1000413003
+	VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT                       StructureType = 1000011000
+	VK_STRUCTURE_TYPE_DEBUG_REPORT_CREATE_INFO_EXT                                StructureType = VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT
 	VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2_KHR                              StructureType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2
 	VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROPERTIES_2_KHR                            StructureType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROPERTIES_2
 	VK_STRUCTURE_TYPE_FORMAT_PROPERTIES_2_KHR                                     StructureType = VK_STRUCTURE_TYPE_FORMAT_PROPERTIES_2
@@ -2821,6 +2853,7 @@ var (
 		VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_4_PROPERTIES:                    "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_4_PROPERTIES",
 		VK_STRUCTURE_TYPE_DEVICE_BUFFER_MEMORY_REQUIREMENTS:                           "VK_STRUCTURE_TYPE_DEVICE_BUFFER_MEMORY_REQUIREMENTS",
 		VK_STRUCTURE_TYPE_DEVICE_IMAGE_MEMORY_REQUIREMENTS:                            "VK_STRUCTURE_TYPE_DEVICE_IMAGE_MEMORY_REQUIREMENTS",
+		VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT:                       "VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT",
 		VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SURFACE_INFO_2_KHR:                          "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SURFACE_INFO_2_KHR",
 		VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_KHR:                                  "VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_2_KHR",
 		VK_STRUCTURE_TYPE_SURFACE_FORMAT_2_KHR:                                        "VK_STRUCTURE_TYPE_SURFACE_FORMAT_2_KHR",
@@ -2956,6 +2989,7 @@ const (
 	VK_ERROR_FRAGMENTATION                  Result = 1000161000
 	VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS Result = 1000257000
 	VK_PIPELINE_COMPILE_REQUIRED            Result = 1000297000
+	VK_ERROR_VALIDATION_FAILED_EXT          Result = 1000011001
 	VK_ERROR_SURFACE_LOST_KHR               Result = 1000000000
 	VK_ERROR_NATIVE_WINDOW_IN_USE_KHR       Result = 1000000001
 	VK_SUBOPTIMAL_KHR                       Result = 1000001003
@@ -2989,6 +3023,7 @@ var (
 		VK_ERROR_FRAGMENTATION:                  "VK_ERROR_FRAGMENTATION",
 		VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS: "VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS",
 		VK_PIPELINE_COMPILE_REQUIRED:            "VK_PIPELINE_COMPILE_REQUIRED",
+		VK_ERROR_VALIDATION_FAILED_EXT:          "VK_ERROR_VALIDATION_FAILED_EXT",
 		VK_ERROR_SURFACE_LOST_KHR:               "VK_ERROR_SURFACE_LOST_KHR",
 		VK_ERROR_NATIVE_WINDOW_IN_USE_KHR:       "VK_ERROR_NATIVE_WINDOW_IN_USE_KHR",
 		VK_SUBOPTIMAL_KHR:                       "VK_SUBOPTIMAL_KHR",
@@ -44448,6 +44483,304 @@ type PhysicalDeviceFeatures2KHR = PhysicalDeviceFeatures2
 // Deprecated: Most Aliases in the Vulkan spec are for compatibility purposes as extensions get
 // promoted to features. If possible, update code to use the promoted name: PhysicalDeviceSparseImageFormatInfo2.
 type PhysicalDeviceSparseImageFormatInfo2KHR = PhysicalDeviceSparseImageFormatInfo2
+
+// DebugReportCallbackEXT is a Handle to a vulkan resource.
+// DebugReportCallbackEXT is a child of Instance.
+//
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkDebugReportCallbackEXT.html
+type DebugReportCallbackEXT C.VkDebugReportCallbackEXT
+
+// NullDebugReportCallbackEXT is a typed Null value for the DebugReportCallbackEXT type.
+var NullDebugReportCallbackEXT DebugReportCallbackEXT
+
+// DebugReportObjectTypeEXT enum/enums
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkDebugReportObjectTypeEXT.html
+type DebugReportObjectTypeEXT uint32
+
+const (
+	VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT                    DebugReportObjectTypeEXT = 0
+	VK_DEBUG_REPORT_OBJECT_TYPE_INSTANCE_EXT                   DebugReportObjectTypeEXT = 1
+	VK_DEBUG_REPORT_OBJECT_TYPE_PHYSICAL_DEVICE_EXT            DebugReportObjectTypeEXT = 2
+	VK_DEBUG_REPORT_OBJECT_TYPE_DEVICE_EXT                     DebugReportObjectTypeEXT = 3
+	VK_DEBUG_REPORT_OBJECT_TYPE_QUEUE_EXT                      DebugReportObjectTypeEXT = 4
+	VK_DEBUG_REPORT_OBJECT_TYPE_SEMAPHORE_EXT                  DebugReportObjectTypeEXT = 5
+	VK_DEBUG_REPORT_OBJECT_TYPE_COMMAND_BUFFER_EXT             DebugReportObjectTypeEXT = 6
+	VK_DEBUG_REPORT_OBJECT_TYPE_FENCE_EXT                      DebugReportObjectTypeEXT = 7
+	VK_DEBUG_REPORT_OBJECT_TYPE_DEVICE_MEMORY_EXT              DebugReportObjectTypeEXT = 8
+	VK_DEBUG_REPORT_OBJECT_TYPE_BUFFER_EXT                     DebugReportObjectTypeEXT = 9
+	VK_DEBUG_REPORT_OBJECT_TYPE_IMAGE_EXT                      DebugReportObjectTypeEXT = 10
+	VK_DEBUG_REPORT_OBJECT_TYPE_EVENT_EXT                      DebugReportObjectTypeEXT = 11
+	VK_DEBUG_REPORT_OBJECT_TYPE_QUERY_POOL_EXT                 DebugReportObjectTypeEXT = 12
+	VK_DEBUG_REPORT_OBJECT_TYPE_BUFFER_VIEW_EXT                DebugReportObjectTypeEXT = 13
+	VK_DEBUG_REPORT_OBJECT_TYPE_IMAGE_VIEW_EXT                 DebugReportObjectTypeEXT = 14
+	VK_DEBUG_REPORT_OBJECT_TYPE_SHADER_MODULE_EXT              DebugReportObjectTypeEXT = 15
+	VK_DEBUG_REPORT_OBJECT_TYPE_PIPELINE_CACHE_EXT             DebugReportObjectTypeEXT = 16
+	VK_DEBUG_REPORT_OBJECT_TYPE_PIPELINE_LAYOUT_EXT            DebugReportObjectTypeEXT = 17
+	VK_DEBUG_REPORT_OBJECT_TYPE_RENDER_PASS_EXT                DebugReportObjectTypeEXT = 18
+	VK_DEBUG_REPORT_OBJECT_TYPE_PIPELINE_EXT                   DebugReportObjectTypeEXT = 19
+	VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_SET_LAYOUT_EXT      DebugReportObjectTypeEXT = 20
+	VK_DEBUG_REPORT_OBJECT_TYPE_SAMPLER_EXT                    DebugReportObjectTypeEXT = 21
+	VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_POOL_EXT            DebugReportObjectTypeEXT = 22
+	VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_SET_EXT             DebugReportObjectTypeEXT = 23
+	VK_DEBUG_REPORT_OBJECT_TYPE_FRAMEBUFFER_EXT                DebugReportObjectTypeEXT = 24
+	VK_DEBUG_REPORT_OBJECT_TYPE_COMMAND_POOL_EXT               DebugReportObjectTypeEXT = 25
+	VK_DEBUG_REPORT_OBJECT_TYPE_SURFACE_KHR_EXT                DebugReportObjectTypeEXT = 26
+	VK_DEBUG_REPORT_OBJECT_TYPE_SWAPCHAIN_KHR_EXT              DebugReportObjectTypeEXT = 27
+	VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT_EXT  DebugReportObjectTypeEXT = 28
+	VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_EXT               DebugReportObjectTypeEXT = VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT_EXT
+	VK_DEBUG_REPORT_OBJECT_TYPE_DISPLAY_KHR_EXT                DebugReportObjectTypeEXT = 29
+	VK_DEBUG_REPORT_OBJECT_TYPE_DISPLAY_MODE_KHR_EXT           DebugReportObjectTypeEXT = 30
+	VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT_EXT       DebugReportObjectTypeEXT = 33
+	VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT           DebugReportObjectTypeEXT = VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT_EXT
+	VK_DEBUG_REPORT_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION_EXT   DebugReportObjectTypeEXT = 1000156000
+	VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_EXT DebugReportObjectTypeEXT = 1000085000
+)
+
+var (
+	reverseDebugReportObjectTypeEXT map[DebugReportObjectTypeEXT]string = map[DebugReportObjectTypeEXT]string{
+		VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT:                    "VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT",
+		VK_DEBUG_REPORT_OBJECT_TYPE_INSTANCE_EXT:                   "VK_DEBUG_REPORT_OBJECT_TYPE_INSTANCE_EXT",
+		VK_DEBUG_REPORT_OBJECT_TYPE_PHYSICAL_DEVICE_EXT:            "VK_DEBUG_REPORT_OBJECT_TYPE_PHYSICAL_DEVICE_EXT",
+		VK_DEBUG_REPORT_OBJECT_TYPE_DEVICE_EXT:                     "VK_DEBUG_REPORT_OBJECT_TYPE_DEVICE_EXT",
+		VK_DEBUG_REPORT_OBJECT_TYPE_QUEUE_EXT:                      "VK_DEBUG_REPORT_OBJECT_TYPE_QUEUE_EXT",
+		VK_DEBUG_REPORT_OBJECT_TYPE_SEMAPHORE_EXT:                  "VK_DEBUG_REPORT_OBJECT_TYPE_SEMAPHORE_EXT",
+		VK_DEBUG_REPORT_OBJECT_TYPE_COMMAND_BUFFER_EXT:             "VK_DEBUG_REPORT_OBJECT_TYPE_COMMAND_BUFFER_EXT",
+		VK_DEBUG_REPORT_OBJECT_TYPE_FENCE_EXT:                      "VK_DEBUG_REPORT_OBJECT_TYPE_FENCE_EXT",
+		VK_DEBUG_REPORT_OBJECT_TYPE_DEVICE_MEMORY_EXT:              "VK_DEBUG_REPORT_OBJECT_TYPE_DEVICE_MEMORY_EXT",
+		VK_DEBUG_REPORT_OBJECT_TYPE_BUFFER_EXT:                     "VK_DEBUG_REPORT_OBJECT_TYPE_BUFFER_EXT",
+		VK_DEBUG_REPORT_OBJECT_TYPE_IMAGE_EXT:                      "VK_DEBUG_REPORT_OBJECT_TYPE_IMAGE_EXT",
+		VK_DEBUG_REPORT_OBJECT_TYPE_EVENT_EXT:                      "VK_DEBUG_REPORT_OBJECT_TYPE_EVENT_EXT",
+		VK_DEBUG_REPORT_OBJECT_TYPE_QUERY_POOL_EXT:                 "VK_DEBUG_REPORT_OBJECT_TYPE_QUERY_POOL_EXT",
+		VK_DEBUG_REPORT_OBJECT_TYPE_BUFFER_VIEW_EXT:                "VK_DEBUG_REPORT_OBJECT_TYPE_BUFFER_VIEW_EXT",
+		VK_DEBUG_REPORT_OBJECT_TYPE_IMAGE_VIEW_EXT:                 "VK_DEBUG_REPORT_OBJECT_TYPE_IMAGE_VIEW_EXT",
+		VK_DEBUG_REPORT_OBJECT_TYPE_SHADER_MODULE_EXT:              "VK_DEBUG_REPORT_OBJECT_TYPE_SHADER_MODULE_EXT",
+		VK_DEBUG_REPORT_OBJECT_TYPE_PIPELINE_CACHE_EXT:             "VK_DEBUG_REPORT_OBJECT_TYPE_PIPELINE_CACHE_EXT",
+		VK_DEBUG_REPORT_OBJECT_TYPE_PIPELINE_LAYOUT_EXT:            "VK_DEBUG_REPORT_OBJECT_TYPE_PIPELINE_LAYOUT_EXT",
+		VK_DEBUG_REPORT_OBJECT_TYPE_RENDER_PASS_EXT:                "VK_DEBUG_REPORT_OBJECT_TYPE_RENDER_PASS_EXT",
+		VK_DEBUG_REPORT_OBJECT_TYPE_PIPELINE_EXT:                   "VK_DEBUG_REPORT_OBJECT_TYPE_PIPELINE_EXT",
+		VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_SET_LAYOUT_EXT:      "VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_SET_LAYOUT_EXT",
+		VK_DEBUG_REPORT_OBJECT_TYPE_SAMPLER_EXT:                    "VK_DEBUG_REPORT_OBJECT_TYPE_SAMPLER_EXT",
+		VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_POOL_EXT:            "VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_POOL_EXT",
+		VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_SET_EXT:             "VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_SET_EXT",
+		VK_DEBUG_REPORT_OBJECT_TYPE_FRAMEBUFFER_EXT:                "VK_DEBUG_REPORT_OBJECT_TYPE_FRAMEBUFFER_EXT",
+		VK_DEBUG_REPORT_OBJECT_TYPE_COMMAND_POOL_EXT:               "VK_DEBUG_REPORT_OBJECT_TYPE_COMMAND_POOL_EXT",
+		VK_DEBUG_REPORT_OBJECT_TYPE_SURFACE_KHR_EXT:                "VK_DEBUG_REPORT_OBJECT_TYPE_SURFACE_KHR_EXT",
+		VK_DEBUG_REPORT_OBJECT_TYPE_SWAPCHAIN_KHR_EXT:              "VK_DEBUG_REPORT_OBJECT_TYPE_SWAPCHAIN_KHR_EXT",
+		VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT_EXT:  "VK_DEBUG_REPORT_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT_EXT",
+		VK_DEBUG_REPORT_OBJECT_TYPE_DISPLAY_KHR_EXT:                "VK_DEBUG_REPORT_OBJECT_TYPE_DISPLAY_KHR_EXT",
+		VK_DEBUG_REPORT_OBJECT_TYPE_DISPLAY_MODE_KHR_EXT:           "VK_DEBUG_REPORT_OBJECT_TYPE_DISPLAY_MODE_KHR_EXT",
+		VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT_EXT:       "VK_DEBUG_REPORT_OBJECT_TYPE_VALIDATION_CACHE_EXT_EXT",
+		VK_DEBUG_REPORT_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION_EXT:   "VK_DEBUG_REPORT_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION_EXT",
+		VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_EXT: "VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_EXT",
+	}
+)
+
+func (x DebugReportObjectTypeEXT) String() string {
+	if s, ok := reverseDebugReportObjectTypeEXT[x]; ok {
+		return s
+	}
+	return fmt.Sprintf("DebugReportObjectTypeEXT=%d", x)
+}
+
+// DebugReportFlagBitsEXT enum/enums
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkDebugReportFlagBitsEXT.html
+type DebugReportFlagBitsEXT uint32
+
+const (
+	VK_DEBUG_REPORT_INFORMATION_BIT_EXT         DebugReportFlagBitsEXT = (1 << 0)
+	VK_DEBUG_REPORT_WARNING_BIT_EXT             DebugReportFlagBitsEXT = (1 << 1)
+	VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT DebugReportFlagBitsEXT = (1 << 2)
+	VK_DEBUG_REPORT_ERROR_BIT_EXT               DebugReportFlagBitsEXT = (1 << 3)
+	VK_DEBUG_REPORT_DEBUG_BIT_EXT               DebugReportFlagBitsEXT = (1 << 4)
+)
+
+var (
+	reverseDebugReportFlagBitsEXT map[DebugReportFlagBitsEXT]string = map[DebugReportFlagBitsEXT]string{
+		VK_DEBUG_REPORT_INFORMATION_BIT_EXT:         "VK_DEBUG_REPORT_INFORMATION_BIT_EXT",
+		VK_DEBUG_REPORT_WARNING_BIT_EXT:             "VK_DEBUG_REPORT_WARNING_BIT_EXT",
+		VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT: "VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT",
+		VK_DEBUG_REPORT_ERROR_BIT_EXT:               "VK_DEBUG_REPORT_ERROR_BIT_EXT",
+		VK_DEBUG_REPORT_DEBUG_BIT_EXT:               "VK_DEBUG_REPORT_DEBUG_BIT_EXT",
+	}
+)
+
+func (x DebugReportFlagBitsEXT) String() string {
+	if s, ok := reverseDebugReportFlagBitsEXT[x]; ok {
+		return s
+	}
+	return fmt.Sprintf("DebugReportFlagBitsEXT=%d", x)
+}
+
+// DebugReportFlagsEXT bitmask
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkDebugReportFlagsEXT.html
+type DebugReportFlagsEXT Flags
+
+// PFN_vkDebugReportCallbackEXT function pointer
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/PFN_vkDebugReportCallbackEXT.html
+type PFN_vkDebugReportCallbackEXT C.PFN_vkDebugReportCallbackEXT
+
+// DebugReportCallbackCreateInfoEXT provides a go interface for VkDebugReportCallbackCreateInfoEXT.
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkDebugReportCallbackCreateInfoEXT.html
+type DebugReportCallbackCreateInfoEXT C.struct_VkDebugReportCallbackCreateInfoEXT
+
+// SizeofDebugReportCallbackCreateInfoEXT is the memory size of a DebugReportCallbackCreateInfoEXT
+var SizeofDebugReportCallbackCreateInfoEXT int = int(unsafe.Sizeof(DebugReportCallbackCreateInfoEXT{}))
+
+// Free releases the memory allocated by AsCPtr.
+// It does not free pointers stored in the structure.
+func (x *DebugReportCallbackCreateInfoEXT) Free() {
+	C.free(unsafe.Pointer(x))
+}
+
+// AsCPtr copies the object to the C heap and returns the pointer.
+// Free must be explicitly called on the returned pointer.
+func (x DebugReportCallbackCreateInfoEXT) AsCPtr() *DebugReportCallbackCreateInfoEXT {
+	clone := (*DebugReportCallbackCreateInfoEXT)(newCBlock(C.ulong(SizeofDebugReportCallbackCreateInfoEXT)))
+	*clone = x
+	return clone
+}
+
+// DebugReportCallbackCreateInfoEXTFreeCSlice releases the memory allocated by DebugReportCallbackCreateInfoEXTMakeCSlice.
+// It does not free pointers stored inside the slice.
+func DebugReportCallbackCreateInfoEXTFreeCSlice(x []DebugReportCallbackCreateInfoEXT) {
+	if len(x) > 0 {
+		C.free(unsafe.Pointer(&x[0]))
+	}
+}
+
+// DebugReportCallbackCreateInfoEXTMakeCSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. DebugReportCallbackCreateInfoEXTFreeCSlice must be called on the returned slice.
+func DebugReportCallbackCreateInfoEXTMakeCSlice(x ...DebugReportCallbackCreateInfoEXT) []DebugReportCallbackCreateInfoEXT {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := SizeofDebugReportCallbackCreateInfoEXT * len(x)
+	dst := unsafe.Slice((*DebugReportCallbackCreateInfoEXT)(newCBlock(C.ulong(sz))), len(x))
+	copy(dst, x)
+	return dst
+}
+
+// SType returns the value of sType from VkDebugReportCallbackCreateInfoEXT
+func (x DebugReportCallbackCreateInfoEXT) SType() StructureType {
+	ptr := /* typedef */ (*StructureType)(&x.sType)
+	return *ptr
+}
+
+// WithDefaultSType sets the value of SType to the value provided in the
+// specification. This method only exists if there is a single value in the specification.
+func (x DebugReportCallbackCreateInfoEXT) WithDefaultSType() DebugReportCallbackCreateInfoEXT {
+	return x.WithSType(VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT)
+}
+
+// WithSType sets the value for the SType on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x DebugReportCallbackCreateInfoEXT) WithSType(y StructureType) DebugReportCallbackCreateInfoEXT {
+	x.sType = *( /* typedef */ (*C.VkStructureType)(&y))
+	return x
+}
+
+// PNext returns the value of pNext from VkDebugReportCallbackCreateInfoEXT
+func (x DebugReportCallbackCreateInfoEXT) PNext() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pNext)
+	return *ptr
+}
+
+// WithPNext sets the value for the PNext on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x DebugReportCallbackCreateInfoEXT) WithPNext(y unsafe.Pointer) DebugReportCallbackCreateInfoEXT {
+	x.pNext = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
+	return x
+}
+
+// Flags returns the value of flags from VkDebugReportCallbackCreateInfoEXT
+func (x DebugReportCallbackCreateInfoEXT) Flags() DebugReportFlagsEXT {
+	ptr := /* typedef */ (*DebugReportFlagsEXT)(&x.flags)
+	return *ptr
+}
+
+// WithFlags sets the value for the Flags on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x DebugReportCallbackCreateInfoEXT) WithFlags(y DebugReportFlagsEXT) DebugReportCallbackCreateInfoEXT {
+	x.flags = *( /* typedef */ (*C.VkDebugReportFlagsEXT)(&y))
+	return x
+}
+
+// PfnCallback returns the value of pfnCallback from VkDebugReportCallbackCreateInfoEXT
+func (x DebugReportCallbackCreateInfoEXT) PfnCallback() PFN_vkDebugReportCallbackEXT {
+	ptr := /* typedef */ (*PFN_vkDebugReportCallbackEXT)(&x.pfnCallback)
+	return *ptr
+}
+
+// WithPfnCallback sets the value for the PfnCallback on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x DebugReportCallbackCreateInfoEXT) WithPfnCallback(y PFN_vkDebugReportCallbackEXT) DebugReportCallbackCreateInfoEXT {
+	x.pfnCallback = *( /* typedef */ (*C.PFN_vkDebugReportCallbackEXT)(&y))
+	return x
+}
+
+// PUserData returns the value of pUserData from VkDebugReportCallbackCreateInfoEXT
+func (x DebugReportCallbackCreateInfoEXT) PUserData() unsafe.Pointer {
+	ptr := func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ c2g := unsafe.Pointer(*x); return &c2g }(&x.pUserData)
+	return *ptr
+}
+
+// WithPUserData sets the value for the PUserData on the underlying C structure.
+// It performs whatever conversions are necessary to match the C API.
+func (x DebugReportCallbackCreateInfoEXT) WithPUserData(y unsafe.Pointer) DebugReportCallbackCreateInfoEXT {
+	x.pUserData = *(func(x *unsafe.Pointer) *unsafe.Pointer { /* Scalar */ g2c := unsafe.Pointer(*x); return &g2c }(&y))
+	return x
+}
+
+// CreateDebugReportCallbackEXT command
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/vkCreateDebugReportCallbackEXT.html
+func (x InstanceFacade) CreateDebugReportCallbackEXT(pCreateInfo *DebugReportCallbackCreateInfoEXT, pAllocator *AllocationCallbacks, pCallback *DebugReportCallbackEXT) Result {
+	addrs := x.procs
+	p0 := /* handle */ (*C.VkInstance)(&x.H)
+	p1 := func(x **DebugReportCallbackCreateInfoEXT) **C.struct_VkDebugReportCallbackCreateInfoEXT { /* Pointer */
+		g2c := (*C.struct_VkDebugReportCallbackCreateInfoEXT)(*x)
+		return &g2c
+	}(&pCreateInfo)
+	p2 := func(x **AllocationCallbacks) **C.struct_VkAllocationCallbacks { /* Pointer */
+		g2c := (*C.struct_VkAllocationCallbacks)(*x)
+		return &g2c
+	}(&pAllocator)
+	p3 := func(x **DebugReportCallbackEXT) **C.VkDebugReportCallbackEXT { /* Pointer */
+		g2c := (*C.VkDebugReportCallbackEXT)(*x)
+		return &g2c
+	}(&pCallback)
+	ret := C.vkCreateDebugReportCallbackEXT(addrs, *p0, *p1, *p2, *p3)
+	retPtr := /* typedef */ (*Result)(&ret)
+	return *retPtr
+}
+
+// DestroyDebugReportCallbackEXT command
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/vkDestroyDebugReportCallbackEXT.html
+func (x InstanceFacade) DestroyDebugReportCallbackEXT(callback DebugReportCallbackEXT, pAllocator *AllocationCallbacks) {
+	addrs := x.procs
+	p0 := /* handle */ (*C.VkInstance)(&x.H)
+	p1 := /* handle */ (*C.VkDebugReportCallbackEXT)(&callback)
+	p2 := func(x **AllocationCallbacks) **C.struct_VkAllocationCallbacks { /* Pointer */
+		g2c := (*C.struct_VkAllocationCallbacks)(*x)
+		return &g2c
+	}(&pAllocator)
+	C.vkDestroyDebugReportCallbackEXT(addrs, *p0, *p1, *p2)
+}
+
+// DebugReportMessageEXT command
+// https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/vkDebugReportMessageEXT.html
+func (x InstanceFacade) DebugReportMessageEXT(flags DebugReportFlagsEXT, objectType DebugReportObjectTypeEXT, object uint64, location uint64, messageCode int32, pLayerPrefix *byte, pMessage *byte) {
+	addrs := x.procs
+	p0 := /* handle */ (*C.VkInstance)(&x.H)
+	p1 := /* typedef */ (*C.VkDebugReportFlagsEXT)(&flags)
+	p2 := /* typedef */ (*C.VkDebugReportObjectTypeEXT)(&objectType)
+	p3 := func(x *uint64) *C.uint64_t { /* Scalar */ g2c := C.uint64_t(*x); return &g2c }(&object)
+	p4 := func(x *uint64) *C.size_t { /* Scalar */ g2c := C.size_t(*x); return &g2c }(&location)
+	p5 := func(x *int32) *C.int32_t { /* Scalar */ g2c := C.int32_t(*x); return &g2c }(&messageCode)
+	p6 := func(x **byte) **C.char { /* Pointer */ return (**C.char)(unsafe.Pointer(x)) }(&pLayerPrefix)
+	p7 := func(x **byte) **C.char { /* Pointer */ return (**C.char)(unsafe.Pointer(x)) }(&pMessage)
+	C.vkDebugReportMessageEXT(addrs, *p0, *p1, *p2, *p3, *p4, *p5, *p6, *p7)
+}
 
 // SurfaceProtectedCapabilitiesKHR provides a go interface for VkSurfaceProtectedCapabilitiesKHR.
 // https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VkSurfaceProtectedCapabilitiesKHR.html
