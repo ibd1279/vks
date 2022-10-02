@@ -118,7 +118,7 @@ const (
 	VK_KHR_GET_DISPLAY_PROPERTIES_2_EXTENSION_NAME         = "VK_KHR_get_display_properties2"
 	VK_KHR_DISPLAY_SWAPCHAIN_SPEC_VERSION                  = 10
 	VK_KHR_DISPLAY_SWAPCHAIN_EXTENSION_NAME                = "VK_KHR_display_swapchain"
-	VK_KHR_FORMAT_FEATURE_FLAGS_2_SPEC_VERSION             = 1
+	VK_KHR_FORMAT_FEATURE_FLAGS_2_SPEC_VERSION             = 2
 	VK_KHR_FORMAT_FEATURE_FLAGS_2_EXTENSION_NAME           = "VK_KHR_format_feature_flags2"
 	VK_KHR_PORTABILITY_SUBSET_SPEC_VERSION                 = 1
 	VK_KHR_PORTABILITY_SUBSET_EXTENSION_NAME               = "VK_KHR_portability_subset"
@@ -126,7 +126,7 @@ const (
 
 // HeaderVersion is the version of the vk specification used to generate this.
 // https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VK_API_VERSION.html
-const HeaderVersion = 224
+const HeaderVersion = 230
 
 // ApiVersion is an implementation of the Vulkan Make Api Version
 // defines. See

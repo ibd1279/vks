@@ -3,6 +3,9 @@ package vks
 import "C"
 import "unsafe"
 
+// WithLayers is a helper function that converts to the layer names
+// into C strings before adding the count and bytes to the
+// DeviceCreateInfo.
 func (x DeviceCreateInfo) WithLayers(names []string) DeviceCreateInfo {
 	var cNames []*byte
 	for h := range names {
@@ -14,6 +17,9 @@ func (x DeviceCreateInfo) WithLayers(names []string) DeviceCreateInfo {
 		WithEnabledLayerCount(uint32(len(cNames)))
 }
 
+// WithExtensions is a helper function that converts to the extension names
+// into C strings before adding the count and bytes to the
+// DeviceCreateInfo.
 func (x DeviceCreateInfo) WithExtensions(names []string) DeviceCreateInfo {
 	var cNames []*byte
 	for h := range names {
@@ -48,6 +54,14 @@ func MakeClearColorValueInt32(r, g, b, a int32) ClearColorValue {
 	orig := []int32{r, g, b, a}
 	src := unsafe.Slice((*byte)(unsafe.Pointer(&orig[0])), bsz)
 	var dst ClearColorValue
+	copy(dst[:], src)
+	return dst
+}
+
+func (x ClearColorValue) AsClearValue() ClearValue {
+	bsz := unsafe.Sizeof(int32(0)) * 4
+	src := unsafe.Slice((*byte)(unsafe.Pointer(&x[0])), bsz)
+	var dst ClearValue
 	copy(dst[:], src)
 	return dst
 }
