@@ -36,87 +36,87 @@ void vksDynamicUnload() {
 
 // call getProcAddress for all the commands.
 void vksLoadInstanceProcAddrs(VkInstance hndl, vksProcAddr* addrs) { 
-	addrs->pvkSetEvent = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkSetEvent");
-	addrs->pvkDestroyDescriptorPool = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyDescriptorPool");
+	addrs->pvkCreateShaderModule = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateShaderModule");
+	addrs->pvkGetDeviceProcAddr = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetDeviceProcAddr");
 	addrs->pvkResetDescriptorPool = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkResetDescriptorPool");
-	addrs->pvkCreateDescriptorPool = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateDescriptorPool");
+	addrs->pvkAllocateDescriptorSets = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkAllocateDescriptorSets");
 	addrs->pvkFreeDescriptorSets = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkFreeDescriptorSets");
 	addrs->pvkUpdateDescriptorSets = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkUpdateDescriptorSets");
-	addrs->pvkDestroyDescriptorSetLayout = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyDescriptorSetLayout");
-	addrs->pvkCreateDescriptorSetLayout = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateDescriptorSetLayout");
-	addrs->pvkDestroySampler = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroySampler");
-	addrs->pvkCreateSampler = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateSampler");
-	addrs->pvkDestroyPipelineLayout = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyPipelineLayout");
-	addrs->pvkCreatePipelineLayout = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreatePipelineLayout");
-	addrs->pvkWaitForFences = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkWaitForFences");
-	addrs->pvkCreateDevice = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateDevice");
-	addrs->pvkDestroyDevice = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyDevice");
-	addrs->pvkGetDeviceProcAddr = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetDeviceProcAddr");
-	addrs->pvkCreateInstance = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateInstance");
-	addrs->pvkGetInstanceProcAddr = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetInstanceProcAddr");
-	addrs->pvkEnumerateInstanceExtensionProperties = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkEnumerateInstanceExtensionProperties");
 	addrs->pvkGetPhysicalDeviceMemoryProperties = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceMemoryProperties");
-	addrs->pvkGetPhysicalDeviceQueueFamilyProperties = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceQueueFamilyProperties");
-	addrs->pvkEnumerateDeviceExtensionProperties = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkEnumerateDeviceExtensionProperties");
-	addrs->pvkGetPhysicalDeviceProperties = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceProperties");
+	addrs->pvkDestroyQueryPool = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyQueryPool");
+	addrs->pvkGetInstanceProcAddr = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetInstanceProcAddr");
+	addrs->pvkCreateImageView = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateImageView");
+	addrs->pvkGetImageSparseMemoryRequirements = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetImageSparseMemoryRequirements");
+	addrs->pvkBindImageMemory = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkBindImageMemory");
+	addrs->pvkGetPhysicalDeviceSparseImageFormatProperties = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceSparseImageFormatProperties");
+	addrs->pvkBindBufferMemory = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkBindBufferMemory");
+	addrs->pvkQueueBindSparse = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkQueueBindSparse");
+	addrs->pvkEnumerateDeviceLayerProperties = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkEnumerateDeviceLayerProperties");
 	addrs->pvkEnumerateInstanceLayerProperties = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkEnumerateInstanceLayerProperties");
+	addrs->pvkGetPhysicalDeviceQueueFamilyProperties = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceQueueFamilyProperties");
+	addrs->pvkDestroyFence = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyFence");
+	addrs->pvkResetFences = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkResetFences");
+	addrs->pvkGetFenceStatus = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetFenceStatus");
+	addrs->pvkWaitForFences = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkWaitForFences");
+	addrs->pvkDestroyPipeline = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyPipeline");
+	addrs->pvkCreateComputePipelines = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateComputePipelines");
 	addrs->pvkCreateFramebuffer = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateFramebuffer");
 	addrs->pvkDestroyFramebuffer = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyFramebuffer");
 	addrs->pvkCreateRenderPass = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateRenderPass");
 	addrs->pvkDestroyRenderPass = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyRenderPass");
 	addrs->pvkGetRenderAreaGranularity = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetRenderAreaGranularity");
-	addrs->pvkGetPhysicalDeviceImageFormatProperties = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceImageFormatProperties");
-	addrs->pvkGetPhysicalDeviceFormatProperties = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceFormatProperties");
-	addrs->pvkEnumerateDeviceLayerProperties = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkEnumerateDeviceLayerProperties");
-	addrs->pvkGetPhysicalDeviceFeatures = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceFeatures");
-	addrs->pvkEnumeratePhysicalDevices = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkEnumeratePhysicalDevices");
-	addrs->pvkDestroyInstance = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyInstance");
-	addrs->pvkGetDeviceQueue = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetDeviceQueue");
-	addrs->pvkAllocateDescriptorSets = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkAllocateDescriptorSets");
-	addrs->pvkQueueSubmit = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkQueueSubmit");
-	addrs->pvkQueueWaitIdle = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkQueueWaitIdle");
-	addrs->pvkDeviceWaitIdle = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDeviceWaitIdle");
-	addrs->pvkAllocateMemory = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkAllocateMemory");
-	addrs->pvkFreeMemory = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkFreeMemory");
-	addrs->pvkMapMemory = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkMapMemory");
-	addrs->pvkUnmapMemory = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkUnmapMemory");
-	addrs->pvkFlushMappedMemoryRanges = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkFlushMappedMemoryRanges");
-	addrs->pvkInvalidateMappedMemoryRanges = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkInvalidateMappedMemoryRanges");
-	addrs->pvkGetDeviceMemoryCommitment = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetDeviceMemoryCommitment");
-	addrs->pvkDestroyPipeline = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyPipeline");
-	addrs->pvkCreateComputePipelines = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateComputePipelines");
 	addrs->pvkCreateGraphicsPipelines = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateGraphicsPipelines");
-	addrs->pvkBindBufferMemory = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkBindBufferMemory");
+	addrs->pvkEnumerateDeviceExtensionProperties = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkEnumerateDeviceExtensionProperties");
+	addrs->pvkEnumerateInstanceExtensionProperties = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkEnumerateInstanceExtensionProperties");
 	addrs->pvkMergePipelineCaches = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkMergePipelineCaches");
+	addrs->pvkGetDeviceMemoryCommitment = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetDeviceMemoryCommitment");
+	addrs->pvkCreateDescriptorPool = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateDescriptorPool");
+	addrs->pvkGetPipelineCacheData = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPipelineCacheData");
+	addrs->pvkDestroyDescriptorSetLayout = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyDescriptorSetLayout");
+	addrs->pvkCreateDescriptorSetLayout = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateDescriptorSetLayout");
+	addrs->pvkInvalidateMappedMemoryRanges = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkInvalidateMappedMemoryRanges");
+	addrs->pvkGetImageMemoryRequirements = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetImageMemoryRequirements");
+	addrs->pvkQueueWaitIdle = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkQueueWaitIdle");
+	addrs->pvkFlushMappedMemoryRanges = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkFlushMappedMemoryRanges");
+	addrs->pvkDestroyPipelineCache = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyPipelineCache");
+	addrs->pvkGetBufferMemoryRequirements = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetBufferMemoryRequirements");
+	addrs->pvkCreateInstance = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateInstance");
+	addrs->pvkDestroyInstance = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyInstance");
+	addrs->pvkUnmapMemory = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkUnmapMemory");
+	addrs->pvkCreatePipelineCache = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreatePipelineCache");
+	addrs->pvkCreateSemaphore = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateSemaphore");
+	addrs->pvkDestroyShaderModule = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyShaderModule");
+	addrs->pvkEnumeratePhysicalDevices = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkEnumeratePhysicalDevices");
+	addrs->pvkMapMemory = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkMapMemory");
 	addrs->pvkCreateCommandPool = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateCommandPool");
 	addrs->pvkDestroyCommandPool = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyCommandPool");
 	addrs->pvkResetCommandPool = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkResetCommandPool");
-	addrs->pvkGetPipelineCacheData = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPipelineCacheData");
-	addrs->pvkDestroyPipelineCache = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyPipelineCache");
-	addrs->pvkCreatePipelineCache = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreatePipelineCache");
-	addrs->pvkBindImageMemory = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkBindImageMemory");
-	addrs->pvkGetBufferMemoryRequirements = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetBufferMemoryRequirements");
-	addrs->pvkDestroyShaderModule = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyShaderModule");
+	addrs->pvkGetPhysicalDeviceFeatures = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceFeatures");
+	addrs->pvkGetPhysicalDeviceFormatProperties = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceFormatProperties");
+	addrs->pvkFreeMemory = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkFreeMemory");
+	addrs->pvkCreatePipelineLayout = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreatePipelineLayout");
+	addrs->pvkDestroySampler = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroySampler");
+	addrs->pvkAllocateMemory = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkAllocateMemory");
 	addrs->pvkAllocateCommandBuffers = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkAllocateCommandBuffers");
 	addrs->pvkFreeCommandBuffers = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkFreeCommandBuffers");
 	addrs->pvkBeginCommandBuffer = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkBeginCommandBuffer");
 	addrs->pvkEndCommandBuffer = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkEndCommandBuffer");
 	addrs->pvkResetCommandBuffer = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkResetCommandBuffer");
-	addrs->pvkCreateShaderModule = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateShaderModule");
-	addrs->pvkGetImageMemoryRequirements = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetImageMemoryRequirements");
-	addrs->pvkGetImageSparseMemoryRequirements = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetImageSparseMemoryRequirements");
-	addrs->pvkGetPhysicalDeviceSparseImageFormatProperties = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceSparseImageFormatProperties");
-	addrs->pvkCmdSetLineWidth = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdSetLineWidth");
-	addrs->pvkQueueBindSparse = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkQueueBindSparse");
-	addrs->pvkDestroyImageView = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyImageView");
-	addrs->pvkCreateImageView = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateImageView");
+	addrs->pvkCreateSampler = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateSampler");
+	addrs->pvkDestroySemaphore = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroySemaphore");
+	addrs->pvkCreateBuffer = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateBuffer");
+	addrs->pvkDestroyDescriptorPool = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyDescriptorPool");
+	addrs->pvkCreateFence = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateFence");
+	addrs->pvkGetPhysicalDeviceProperties = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceProperties");
 	addrs->pvkGetImageSubresourceLayout = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetImageSubresourceLayout");
 	addrs->pvkDestroyImage = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyImage");
+	addrs->pvkGetDeviceQueue = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetDeviceQueue");
 	addrs->pvkCreateImage = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateImage");
+	addrs->pvkQueueSubmit = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkQueueSubmit");
 	addrs->pvkCmdBindPipeline = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdBindPipeline");
 	addrs->pvkCmdSetViewport = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdSetViewport");
 	addrs->pvkCmdSetScissor = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdSetScissor");
-	addrs->pvkDestroyBufferView = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyBufferView");
+	addrs->pvkCmdSetLineWidth = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdSetLineWidth");
 	addrs->pvkCmdSetDepthBias = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdSetDepthBias");
 	addrs->pvkCmdSetBlendConstants = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdSetBlendConstants");
 	addrs->pvkCmdSetDepthBounds = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdSetDepthBounds");
@@ -139,7 +139,7 @@ void vksLoadInstanceProcAddrs(VkInstance hndl, vksProcAddr* addrs) {
 	addrs->pvkCmdCopyImageToBuffer = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdCopyImageToBuffer");
 	addrs->pvkCmdUpdateBuffer = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdUpdateBuffer");
 	addrs->pvkCmdFillBuffer = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdFillBuffer");
-	addrs->pvkCreateBufferView = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateBufferView");
+	addrs->pvkCmdClearColorImage = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdClearColorImage");
 	addrs->pvkCmdClearDepthStencilImage = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdClearDepthStencilImage");
 	addrs->pvkCmdClearAttachments = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdClearAttachments");
 	addrs->pvkCmdResolveImage = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdResolveImage");
@@ -157,72 +157,72 @@ void vksLoadInstanceProcAddrs(VkInstance hndl, vksProcAddr* addrs) {
 	addrs->pvkCmdNextSubpass = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdNextSubpass");
 	addrs->pvkCmdEndRenderPass = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdEndRenderPass");
 	addrs->pvkCmdExecuteCommands = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdExecuteCommands");
-	addrs->pvkCreateFence = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateFence");
-	addrs->pvkDestroyBuffer = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyBuffer");
-	addrs->pvkCreateBuffer = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateBuffer");
-	addrs->pvkDestroyFence = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyFence");
-	addrs->pvkResetFences = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkResetFences");
-	addrs->pvkGetFenceStatus = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetFenceStatus");
-	addrs->pvkCreateSemaphore = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateSemaphore");
-	addrs->pvkDestroySemaphore = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroySemaphore");
-	addrs->pvkGetQueryPoolResults = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetQueryPoolResults");
-	addrs->pvkDestroyQueryPool = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyQueryPool");
-	addrs->pvkCreateQueryPool = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateQueryPool");
 	addrs->pvkCreateEvent = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateEvent");
+	addrs->pvkDestroyBufferView = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyBufferView");
+	addrs->pvkCreateBufferView = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateBufferView");
+	addrs->pvkGetPhysicalDeviceImageFormatProperties = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceImageFormatProperties");
 	addrs->pvkDestroyEvent = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyEvent");
 	addrs->pvkGetEventStatus = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetEventStatus");
+	addrs->pvkDestroyPipelineLayout = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyPipelineLayout");
+	addrs->pvkDestroyBuffer = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyBuffer");
+	addrs->pvkDestroyImageView = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyImageView");
+	addrs->pvkSetEvent = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkSetEvent");
 	addrs->pvkResetEvent = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkResetEvent");
-	addrs->pvkCmdClearColorImage = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdClearColorImage");
+	addrs->pvkCreateDevice = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateDevice");
+	addrs->pvkCreateQueryPool = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateQueryPool");
+	addrs->pvkDestroyDevice = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyDevice");
+	addrs->pvkDeviceWaitIdle = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDeviceWaitIdle");
+	addrs->pvkGetQueryPoolResults = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetQueryPoolResults");
+	addrs->pvkEnumeratePhysicalDeviceGroups = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkEnumeratePhysicalDeviceGroups");
+	addrs->pvkGetPhysicalDeviceExternalBufferProperties = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceExternalBufferProperties");
 	addrs->pvkUpdateDescriptorSetWithTemplate = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkUpdateDescriptorSetWithTemplate");
-	addrs->pvkDestroySamplerYcbcrConversion = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroySamplerYcbcrConversion");
-	addrs->pvkCreateDescriptorUpdateTemplate = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateDescriptorUpdateTemplate");
 	addrs->pvkGetPhysicalDeviceExternalFenceProperties = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceExternalFenceProperties");
+	addrs->pvkCmdDispatchBase = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdDispatchBase");
+	addrs->pvkCmdSetDeviceMask = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdSetDeviceMask");
+	addrs->pvkGetDeviceGroupPeerMemoryFeatures = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetDeviceGroupPeerMemoryFeatures");
+	addrs->pvkDestroyDescriptorUpdateTemplate = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyDescriptorUpdateTemplate");
+	addrs->pvkCreateDescriptorUpdateTemplate = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateDescriptorUpdateTemplate");
+	addrs->pvkDestroySamplerYcbcrConversion = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroySamplerYcbcrConversion");
 	addrs->pvkCreateSamplerYcbcrConversion = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateSamplerYcbcrConversion");
 	addrs->pvkGetDeviceQueue2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetDeviceQueue2");
+	addrs->pvkGetImageMemoryRequirements2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetImageMemoryRequirements2");
+	addrs->pvkGetBufferMemoryRequirements2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetBufferMemoryRequirements2");
+	addrs->pvkGetImageSparseMemoryRequirements2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetImageSparseMemoryRequirements2");
 	addrs->pvkTrimCommandPool = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkTrimCommandPool");
+	addrs->pvkGetPhysicalDeviceExternalSemaphoreProperties = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceExternalSemaphoreProperties");
+	addrs->pvkBindImageMemory2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkBindImageMemory2");
+	addrs->pvkBindBufferMemory2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkBindBufferMemory2");
 	addrs->pvkGetPhysicalDeviceSparseImageFormatProperties2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceSparseImageFormatProperties2");
+	addrs->pvkEnumerateInstanceVersion = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkEnumerateInstanceVersion");
 	addrs->pvkGetPhysicalDeviceMemoryProperties2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceMemoryProperties2");
 	addrs->pvkGetPhysicalDeviceQueueFamilyProperties2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceQueueFamilyProperties2");
+	addrs->pvkGetDescriptorSetLayoutSupport = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetDescriptorSetLayoutSupport");
 	addrs->pvkGetPhysicalDeviceImageFormatProperties2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceImageFormatProperties2");
 	addrs->pvkGetPhysicalDeviceFormatProperties2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceFormatProperties2");
 	addrs->pvkGetPhysicalDeviceProperties2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceProperties2");
 	addrs->pvkGetPhysicalDeviceFeatures2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceFeatures2");
-	addrs->pvkGetImageSparseMemoryRequirements2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetImageSparseMemoryRequirements2");
-	addrs->pvkGetBufferMemoryRequirements2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetBufferMemoryRequirements2");
-	addrs->pvkGetPhysicalDeviceExternalSemaphoreProperties = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceExternalSemaphoreProperties");
-	addrs->pvkGetImageMemoryRequirements2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetImageMemoryRequirements2");
-	addrs->pvkDestroyDescriptorUpdateTemplate = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyDescriptorUpdateTemplate");
-	addrs->pvkEnumeratePhysicalDeviceGroups = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkEnumeratePhysicalDeviceGroups");
-	addrs->pvkCmdDispatchBase = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdDispatchBase");
-	addrs->pvkCmdSetDeviceMask = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdSetDeviceMask");
-	addrs->pvkGetDeviceGroupPeerMemoryFeatures = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetDeviceGroupPeerMemoryFeatures");
-	addrs->pvkGetDescriptorSetLayoutSupport = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetDescriptorSetLayoutSupport");
-	addrs->pvkBindImageMemory2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkBindImageMemory2");
-	addrs->pvkBindBufferMemory2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkBindBufferMemory2");
-	addrs->pvkEnumerateInstanceVersion = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkEnumerateInstanceVersion");
-	addrs->pvkGetPhysicalDeviceExternalBufferProperties = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceExternalBufferProperties");
-	addrs->pvkWaitSemaphores = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkWaitSemaphores");
+	addrs->pvkCreateRenderPass2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateRenderPass2");
 	addrs->pvkResetQueryPool = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkResetQueryPool");
-	addrs->pvkGetSemaphoreCounterValue = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetSemaphoreCounterValue");
-	addrs->pvkCmdBeginRenderPass2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdBeginRenderPass2");
-	addrs->pvkCmdEndRenderPass2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdEndRenderPass2");
+	addrs->pvkCmdDrawIndirectCount = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdDrawIndirectCount");
+	addrs->pvkCmdDrawIndexedIndirectCount = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdDrawIndexedIndirectCount");
+	addrs->pvkSignalSemaphore = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkSignalSemaphore");
 	addrs->pvkGetBufferDeviceAddress = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetBufferDeviceAddress");
 	addrs->pvkGetBufferOpaqueCaptureAddress = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetBufferOpaqueCaptureAddress");
 	addrs->pvkGetDeviceMemoryOpaqueCaptureAddress = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetDeviceMemoryOpaqueCaptureAddress");
+	addrs->pvkCmdBeginRenderPass2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdBeginRenderPass2");
+	addrs->pvkGetSemaphoreCounterValue = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetSemaphoreCounterValue");
+	addrs->pvkWaitSemaphores = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkWaitSemaphores");
 	addrs->pvkCmdNextSubpass2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdNextSubpass2");
-	addrs->pvkCreateRenderPass2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateRenderPass2");
-	addrs->pvkCmdDrawIndexedIndirectCount = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdDrawIndexedIndirectCount");
-	addrs->pvkCmdDrawIndirectCount = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdDrawIndirectCount");
-	addrs->pvkSignalSemaphore = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkSignalSemaphore");
-	addrs->pvkCmdSetDepthBoundsTestEnable = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdSetDepthBoundsTestEnable");
+	addrs->pvkCmdEndRenderPass2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdEndRenderPass2");
+	addrs->pvkCmdPipelineBarrier2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdPipelineBarrier2");
 	addrs->pvkCmdEndRendering = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdEndRendering");
+	addrs->pvkCmdBeginRendering = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdBeginRendering");
+	addrs->pvkCmdResolveImage2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdResolveImage2");
 	addrs->pvkCmdBlitImage2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdBlitImage2");
 	addrs->pvkCmdCopyImageToBuffer2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdCopyImageToBuffer2");
 	addrs->pvkCmdCopyBufferToImage2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdCopyBufferToImage2");
 	addrs->pvkCmdCopyImage2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdCopyImage2");
 	addrs->pvkCmdCopyBuffer2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdCopyBuffer2");
-	addrs->pvkQueueSubmit2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkQueueSubmit2");
-	addrs->pvkCmdWriteTimestamp2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdWriteTimestamp2");
 	addrs->pvkCmdSetCullMode = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdSetCullMode");
 	addrs->pvkCmdSetFrontFace = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdSetFrontFace");
 	addrs->pvkCmdSetPrimitiveTopology = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdSetPrimitiveTopology");
@@ -232,141 +232,141 @@ void vksLoadInstanceProcAddrs(VkInstance hndl, vksProcAddr* addrs) {
 	addrs->pvkCmdSetDepthTestEnable = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdSetDepthTestEnable");
 	addrs->pvkCmdSetDepthWriteEnable = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdSetDepthWriteEnable");
 	addrs->pvkCmdSetDepthCompareOp = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdSetDepthCompareOp");
-	addrs->pvkCmdBeginRendering = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdBeginRendering");
+	addrs->pvkCmdSetDepthBoundsTestEnable = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdSetDepthBoundsTestEnable");
 	addrs->pvkCmdSetStencilTestEnable = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdSetStencilTestEnable");
 	addrs->pvkCmdSetStencilOp = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdSetStencilOp");
-	addrs->pvkCmdPipelineBarrier2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdPipelineBarrier2");
+	addrs->pvkQueueSubmit2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkQueueSubmit2");
+	addrs->pvkCmdWriteTimestamp2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdWriteTimestamp2");
 	addrs->pvkCmdWaitEvents2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdWaitEvents2");
 	addrs->pvkCmdResetEvent2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdResetEvent2");
 	addrs->pvkCmdSetEvent2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdSetEvent2");
 	addrs->pvkGetPrivateData = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPrivateData");
-	addrs->pvkSetPrivateData = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkSetPrivateData");
 	addrs->pvkCmdSetRasterizerDiscardEnable = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdSetRasterizerDiscardEnable");
 	addrs->pvkCmdSetDepthBiasEnable = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdSetDepthBiasEnable");
 	addrs->pvkCmdSetPrimitiveRestartEnable = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdSetPrimitiveRestartEnable");
 	addrs->pvkGetDeviceBufferMemoryRequirements = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetDeviceBufferMemoryRequirements");
 	addrs->pvkGetDeviceImageMemoryRequirements = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetDeviceImageMemoryRequirements");
 	addrs->pvkGetDeviceImageSparseMemoryRequirements = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetDeviceImageSparseMemoryRequirements");
+	addrs->pvkSetPrivateData = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkSetPrivateData");
 	addrs->pvkDestroyPrivateDataSlot = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyPrivateDataSlot");
 	addrs->pvkCreatePrivateDataSlot = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreatePrivateDataSlot");
 	addrs->pvkGetPhysicalDeviceToolProperties = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceToolProperties");
-	addrs->pvkCmdResolveImage2 = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCmdResolveImage2");
-	addrs->pvkGetPhysicalDeviceSurfaceCapabilities2KHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceSurfaceCapabilities2KHR");
-	addrs->pvkGetPhysicalDeviceSurfaceFormats2KHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceSurfaceFormats2KHR");
-	addrs->pvkGetPhysicalDeviceSurfacePresentModesKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceSurfacePresentModesKHR");
-	addrs->pvkGetPhysicalDeviceSurfaceFormatsKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceSurfaceFormatsKHR");
-	addrs->pvkGetPhysicalDeviceSurfaceCapabilitiesKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceSurfaceCapabilitiesKHR");
-	addrs->pvkGetPhysicalDeviceSurfaceSupportKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceSurfaceSupportKHR");
-	addrs->pvkDestroySurfaceKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroySurfaceKHR");
 	addrs->pvkCreateDebugReportCallbackEXT = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateDebugReportCallbackEXT");
 	addrs->pvkDestroyDebugReportCallbackEXT = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroyDebugReportCallbackEXT");
 	addrs->pvkDebugReportMessageEXT = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDebugReportMessageEXT");
-	addrs->pvkGetPhysicalDevicePresentRectanglesKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDevicePresentRectanglesKHR");
-	addrs->pvkAcquireNextImage2KHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkAcquireNextImage2KHR");
-	addrs->pvkGetDeviceGroupSurfacePresentModesKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetDeviceGroupSurfacePresentModesKHR");
+	addrs->pvkGetPhysicalDeviceSurfaceCapabilitiesKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceSurfaceCapabilitiesKHR");
+	addrs->pvkGetPhysicalDeviceSurfaceFormatsKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceSurfaceFormatsKHR");
+	addrs->pvkGetPhysicalDeviceSurfacePresentModesKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceSurfacePresentModesKHR");
+	addrs->pvkGetPhysicalDeviceSurfaceSupportKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceSurfaceSupportKHR");
+	addrs->pvkDestroySurfaceKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroySurfaceKHR");
+	addrs->pvkGetPhysicalDeviceSurfaceCapabilities2KHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceSurfaceCapabilities2KHR");
+	addrs->pvkGetPhysicalDeviceSurfaceFormats2KHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceSurfaceFormats2KHR");
 	addrs->pvkGetDeviceGroupPresentCapabilitiesKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetDeviceGroupPresentCapabilitiesKHR");
-	addrs->pvkQueuePresentKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkQueuePresentKHR");
+	addrs->pvkAcquireNextImage2KHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkAcquireNextImage2KHR");
 	addrs->pvkAcquireNextImageKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkAcquireNextImageKHR");
+	addrs->pvkCreateSwapchainKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateSwapchainKHR");
+	addrs->pvkGetPhysicalDevicePresentRectanglesKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDevicePresentRectanglesKHR");
+	addrs->pvkGetDeviceGroupSurfacePresentModesKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetDeviceGroupSurfacePresentModesKHR");
+	addrs->pvkQueuePresentKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkQueuePresentKHR");
 	addrs->pvkGetSwapchainImagesKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetSwapchainImagesKHR");
 	addrs->pvkDestroySwapchainKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkDestroySwapchainKHR");
-	addrs->pvkCreateSwapchainKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateSwapchainKHR");
-	addrs->pvkCreateDisplayPlaneSurfaceKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateDisplayPlaneSurfaceKHR");
-	addrs->pvkGetDisplayPlaneCapabilitiesKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetDisplayPlaneCapabilitiesKHR");
 	addrs->pvkCreateDisplayModeKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateDisplayModeKHR");
-	addrs->pvkGetDisplayModePropertiesKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetDisplayModePropertiesKHR");
 	addrs->pvkGetDisplayPlaneSupportedDisplaysKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetDisplayPlaneSupportedDisplaysKHR");
-	addrs->pvkGetPhysicalDeviceDisplayPlanePropertiesKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceDisplayPlanePropertiesKHR");
 	addrs->pvkGetPhysicalDeviceDisplayPropertiesKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceDisplayPropertiesKHR");
-	addrs->pvkGetDisplayPlaneCapabilities2KHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetDisplayPlaneCapabilities2KHR");
+	addrs->pvkGetDisplayModePropertiesKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetDisplayModePropertiesKHR");
+	addrs->pvkCreateDisplayPlaneSurfaceKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateDisplayPlaneSurfaceKHR");
+	addrs->pvkGetPhysicalDeviceDisplayPlanePropertiesKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceDisplayPlanePropertiesKHR");
+	addrs->pvkGetDisplayPlaneCapabilitiesKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetDisplayPlaneCapabilitiesKHR");
 	addrs->pvkGetPhysicalDeviceDisplayProperties2KHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceDisplayProperties2KHR");
 	addrs->pvkGetPhysicalDeviceDisplayPlaneProperties2KHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetPhysicalDeviceDisplayPlaneProperties2KHR");
 	addrs->pvkGetDisplayModeProperties2KHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetDisplayModeProperties2KHR");
+	addrs->pvkGetDisplayPlaneCapabilities2KHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkGetDisplayPlaneCapabilities2KHR");
 	addrs->pvkCreateSharedSwapchainsKHR = vkGetInstanceProcAddr(&vksProcAddresses, hndl, "vkCreateSharedSwapchainsKHR");
 }
 
 // call getProcAddress for all the commands.
 void vksLoadDeviceProcAddrs(VkDevice hndl, vksProcAddr* addrs, vksProcAddr* parent) { 
-	addrs->pvkSetEvent = vkGetDeviceProcAddr(parent, hndl, "vkSetEvent");
-	addrs->pvkDestroyDescriptorPool = vkGetDeviceProcAddr(parent, hndl, "vkDestroyDescriptorPool");
+	addrs->pvkCreateShaderModule = vkGetDeviceProcAddr(parent, hndl, "vkCreateShaderModule");
+	addrs->pvkGetDeviceProcAddr = vkGetDeviceProcAddr(parent, hndl, "vkGetDeviceProcAddr");
 	addrs->pvkResetDescriptorPool = vkGetDeviceProcAddr(parent, hndl, "vkResetDescriptorPool");
-	addrs->pvkCreateDescriptorPool = vkGetDeviceProcAddr(parent, hndl, "vkCreateDescriptorPool");
+	addrs->pvkAllocateDescriptorSets = vkGetDeviceProcAddr(parent, hndl, "vkAllocateDescriptorSets");
 	addrs->pvkFreeDescriptorSets = vkGetDeviceProcAddr(parent, hndl, "vkFreeDescriptorSets");
 	addrs->pvkUpdateDescriptorSets = vkGetDeviceProcAddr(parent, hndl, "vkUpdateDescriptorSets");
-	addrs->pvkDestroyDescriptorSetLayout = vkGetDeviceProcAddr(parent, hndl, "vkDestroyDescriptorSetLayout");
-	addrs->pvkCreateDescriptorSetLayout = vkGetDeviceProcAddr(parent, hndl, "vkCreateDescriptorSetLayout");
-	addrs->pvkDestroySampler = vkGetDeviceProcAddr(parent, hndl, "vkDestroySampler");
-	addrs->pvkCreateSampler = vkGetDeviceProcAddr(parent, hndl, "vkCreateSampler");
-	addrs->pvkDestroyPipelineLayout = vkGetDeviceProcAddr(parent, hndl, "vkDestroyPipelineLayout");
-	addrs->pvkCreatePipelineLayout = vkGetDeviceProcAddr(parent, hndl, "vkCreatePipelineLayout");
-	addrs->pvkWaitForFences = vkGetDeviceProcAddr(parent, hndl, "vkWaitForFences");
-	addrs->pvkCreateDevice = vkGetDeviceProcAddr(parent, hndl, "vkCreateDevice");
-	addrs->pvkDestroyDevice = vkGetDeviceProcAddr(parent, hndl, "vkDestroyDevice");
-	addrs->pvkGetDeviceProcAddr = vkGetDeviceProcAddr(parent, hndl, "vkGetDeviceProcAddr");
-	addrs->pvkCreateInstance = vkGetDeviceProcAddr(parent, hndl, "vkCreateInstance");
-	addrs->pvkGetInstanceProcAddr = vkGetDeviceProcAddr(parent, hndl, "vkGetInstanceProcAddr");
-	addrs->pvkEnumerateInstanceExtensionProperties = vkGetDeviceProcAddr(parent, hndl, "vkEnumerateInstanceExtensionProperties");
 	addrs->pvkGetPhysicalDeviceMemoryProperties = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceMemoryProperties");
-	addrs->pvkGetPhysicalDeviceQueueFamilyProperties = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceQueueFamilyProperties");
-	addrs->pvkEnumerateDeviceExtensionProperties = vkGetDeviceProcAddr(parent, hndl, "vkEnumerateDeviceExtensionProperties");
-	addrs->pvkGetPhysicalDeviceProperties = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceProperties");
+	addrs->pvkDestroyQueryPool = vkGetDeviceProcAddr(parent, hndl, "vkDestroyQueryPool");
+	addrs->pvkGetInstanceProcAddr = vkGetDeviceProcAddr(parent, hndl, "vkGetInstanceProcAddr");
+	addrs->pvkCreateImageView = vkGetDeviceProcAddr(parent, hndl, "vkCreateImageView");
+	addrs->pvkGetImageSparseMemoryRequirements = vkGetDeviceProcAddr(parent, hndl, "vkGetImageSparseMemoryRequirements");
+	addrs->pvkBindImageMemory = vkGetDeviceProcAddr(parent, hndl, "vkBindImageMemory");
+	addrs->pvkGetPhysicalDeviceSparseImageFormatProperties = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceSparseImageFormatProperties");
+	addrs->pvkBindBufferMemory = vkGetDeviceProcAddr(parent, hndl, "vkBindBufferMemory");
+	addrs->pvkQueueBindSparse = vkGetDeviceProcAddr(parent, hndl, "vkQueueBindSparse");
+	addrs->pvkEnumerateDeviceLayerProperties = vkGetDeviceProcAddr(parent, hndl, "vkEnumerateDeviceLayerProperties");
 	addrs->pvkEnumerateInstanceLayerProperties = vkGetDeviceProcAddr(parent, hndl, "vkEnumerateInstanceLayerProperties");
+	addrs->pvkGetPhysicalDeviceQueueFamilyProperties = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceQueueFamilyProperties");
+	addrs->pvkDestroyFence = vkGetDeviceProcAddr(parent, hndl, "vkDestroyFence");
+	addrs->pvkResetFences = vkGetDeviceProcAddr(parent, hndl, "vkResetFences");
+	addrs->pvkGetFenceStatus = vkGetDeviceProcAddr(parent, hndl, "vkGetFenceStatus");
+	addrs->pvkWaitForFences = vkGetDeviceProcAddr(parent, hndl, "vkWaitForFences");
+	addrs->pvkDestroyPipeline = vkGetDeviceProcAddr(parent, hndl, "vkDestroyPipeline");
+	addrs->pvkCreateComputePipelines = vkGetDeviceProcAddr(parent, hndl, "vkCreateComputePipelines");
 	addrs->pvkCreateFramebuffer = vkGetDeviceProcAddr(parent, hndl, "vkCreateFramebuffer");
 	addrs->pvkDestroyFramebuffer = vkGetDeviceProcAddr(parent, hndl, "vkDestroyFramebuffer");
 	addrs->pvkCreateRenderPass = vkGetDeviceProcAddr(parent, hndl, "vkCreateRenderPass");
 	addrs->pvkDestroyRenderPass = vkGetDeviceProcAddr(parent, hndl, "vkDestroyRenderPass");
 	addrs->pvkGetRenderAreaGranularity = vkGetDeviceProcAddr(parent, hndl, "vkGetRenderAreaGranularity");
-	addrs->pvkGetPhysicalDeviceImageFormatProperties = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceImageFormatProperties");
-	addrs->pvkGetPhysicalDeviceFormatProperties = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceFormatProperties");
-	addrs->pvkEnumerateDeviceLayerProperties = vkGetDeviceProcAddr(parent, hndl, "vkEnumerateDeviceLayerProperties");
-	addrs->pvkGetPhysicalDeviceFeatures = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceFeatures");
-	addrs->pvkEnumeratePhysicalDevices = vkGetDeviceProcAddr(parent, hndl, "vkEnumeratePhysicalDevices");
-	addrs->pvkDestroyInstance = vkGetDeviceProcAddr(parent, hndl, "vkDestroyInstance");
-	addrs->pvkGetDeviceQueue = vkGetDeviceProcAddr(parent, hndl, "vkGetDeviceQueue");
-	addrs->pvkAllocateDescriptorSets = vkGetDeviceProcAddr(parent, hndl, "vkAllocateDescriptorSets");
-	addrs->pvkQueueSubmit = vkGetDeviceProcAddr(parent, hndl, "vkQueueSubmit");
-	addrs->pvkQueueWaitIdle = vkGetDeviceProcAddr(parent, hndl, "vkQueueWaitIdle");
-	addrs->pvkDeviceWaitIdle = vkGetDeviceProcAddr(parent, hndl, "vkDeviceWaitIdle");
-	addrs->pvkAllocateMemory = vkGetDeviceProcAddr(parent, hndl, "vkAllocateMemory");
-	addrs->pvkFreeMemory = vkGetDeviceProcAddr(parent, hndl, "vkFreeMemory");
-	addrs->pvkMapMemory = vkGetDeviceProcAddr(parent, hndl, "vkMapMemory");
-	addrs->pvkUnmapMemory = vkGetDeviceProcAddr(parent, hndl, "vkUnmapMemory");
-	addrs->pvkFlushMappedMemoryRanges = vkGetDeviceProcAddr(parent, hndl, "vkFlushMappedMemoryRanges");
-	addrs->pvkInvalidateMappedMemoryRanges = vkGetDeviceProcAddr(parent, hndl, "vkInvalidateMappedMemoryRanges");
-	addrs->pvkGetDeviceMemoryCommitment = vkGetDeviceProcAddr(parent, hndl, "vkGetDeviceMemoryCommitment");
-	addrs->pvkDestroyPipeline = vkGetDeviceProcAddr(parent, hndl, "vkDestroyPipeline");
-	addrs->pvkCreateComputePipelines = vkGetDeviceProcAddr(parent, hndl, "vkCreateComputePipelines");
 	addrs->pvkCreateGraphicsPipelines = vkGetDeviceProcAddr(parent, hndl, "vkCreateGraphicsPipelines");
-	addrs->pvkBindBufferMemory = vkGetDeviceProcAddr(parent, hndl, "vkBindBufferMemory");
+	addrs->pvkEnumerateDeviceExtensionProperties = vkGetDeviceProcAddr(parent, hndl, "vkEnumerateDeviceExtensionProperties");
+	addrs->pvkEnumerateInstanceExtensionProperties = vkGetDeviceProcAddr(parent, hndl, "vkEnumerateInstanceExtensionProperties");
 	addrs->pvkMergePipelineCaches = vkGetDeviceProcAddr(parent, hndl, "vkMergePipelineCaches");
+	addrs->pvkGetDeviceMemoryCommitment = vkGetDeviceProcAddr(parent, hndl, "vkGetDeviceMemoryCommitment");
+	addrs->pvkCreateDescriptorPool = vkGetDeviceProcAddr(parent, hndl, "vkCreateDescriptorPool");
+	addrs->pvkGetPipelineCacheData = vkGetDeviceProcAddr(parent, hndl, "vkGetPipelineCacheData");
+	addrs->pvkDestroyDescriptorSetLayout = vkGetDeviceProcAddr(parent, hndl, "vkDestroyDescriptorSetLayout");
+	addrs->pvkCreateDescriptorSetLayout = vkGetDeviceProcAddr(parent, hndl, "vkCreateDescriptorSetLayout");
+	addrs->pvkInvalidateMappedMemoryRanges = vkGetDeviceProcAddr(parent, hndl, "vkInvalidateMappedMemoryRanges");
+	addrs->pvkGetImageMemoryRequirements = vkGetDeviceProcAddr(parent, hndl, "vkGetImageMemoryRequirements");
+	addrs->pvkQueueWaitIdle = vkGetDeviceProcAddr(parent, hndl, "vkQueueWaitIdle");
+	addrs->pvkFlushMappedMemoryRanges = vkGetDeviceProcAddr(parent, hndl, "vkFlushMappedMemoryRanges");
+	addrs->pvkDestroyPipelineCache = vkGetDeviceProcAddr(parent, hndl, "vkDestroyPipelineCache");
+	addrs->pvkGetBufferMemoryRequirements = vkGetDeviceProcAddr(parent, hndl, "vkGetBufferMemoryRequirements");
+	addrs->pvkCreateInstance = vkGetDeviceProcAddr(parent, hndl, "vkCreateInstance");
+	addrs->pvkDestroyInstance = vkGetDeviceProcAddr(parent, hndl, "vkDestroyInstance");
+	addrs->pvkUnmapMemory = vkGetDeviceProcAddr(parent, hndl, "vkUnmapMemory");
+	addrs->pvkCreatePipelineCache = vkGetDeviceProcAddr(parent, hndl, "vkCreatePipelineCache");
+	addrs->pvkCreateSemaphore = vkGetDeviceProcAddr(parent, hndl, "vkCreateSemaphore");
+	addrs->pvkDestroyShaderModule = vkGetDeviceProcAddr(parent, hndl, "vkDestroyShaderModule");
+	addrs->pvkEnumeratePhysicalDevices = vkGetDeviceProcAddr(parent, hndl, "vkEnumeratePhysicalDevices");
+	addrs->pvkMapMemory = vkGetDeviceProcAddr(parent, hndl, "vkMapMemory");
 	addrs->pvkCreateCommandPool = vkGetDeviceProcAddr(parent, hndl, "vkCreateCommandPool");
 	addrs->pvkDestroyCommandPool = vkGetDeviceProcAddr(parent, hndl, "vkDestroyCommandPool");
 	addrs->pvkResetCommandPool = vkGetDeviceProcAddr(parent, hndl, "vkResetCommandPool");
-	addrs->pvkGetPipelineCacheData = vkGetDeviceProcAddr(parent, hndl, "vkGetPipelineCacheData");
-	addrs->pvkDestroyPipelineCache = vkGetDeviceProcAddr(parent, hndl, "vkDestroyPipelineCache");
-	addrs->pvkCreatePipelineCache = vkGetDeviceProcAddr(parent, hndl, "vkCreatePipelineCache");
-	addrs->pvkBindImageMemory = vkGetDeviceProcAddr(parent, hndl, "vkBindImageMemory");
-	addrs->pvkGetBufferMemoryRequirements = vkGetDeviceProcAddr(parent, hndl, "vkGetBufferMemoryRequirements");
-	addrs->pvkDestroyShaderModule = vkGetDeviceProcAddr(parent, hndl, "vkDestroyShaderModule");
+	addrs->pvkGetPhysicalDeviceFeatures = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceFeatures");
+	addrs->pvkGetPhysicalDeviceFormatProperties = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceFormatProperties");
+	addrs->pvkFreeMemory = vkGetDeviceProcAddr(parent, hndl, "vkFreeMemory");
+	addrs->pvkCreatePipelineLayout = vkGetDeviceProcAddr(parent, hndl, "vkCreatePipelineLayout");
+	addrs->pvkDestroySampler = vkGetDeviceProcAddr(parent, hndl, "vkDestroySampler");
+	addrs->pvkAllocateMemory = vkGetDeviceProcAddr(parent, hndl, "vkAllocateMemory");
 	addrs->pvkAllocateCommandBuffers = vkGetDeviceProcAddr(parent, hndl, "vkAllocateCommandBuffers");
 	addrs->pvkFreeCommandBuffers = vkGetDeviceProcAddr(parent, hndl, "vkFreeCommandBuffers");
 	addrs->pvkBeginCommandBuffer = vkGetDeviceProcAddr(parent, hndl, "vkBeginCommandBuffer");
 	addrs->pvkEndCommandBuffer = vkGetDeviceProcAddr(parent, hndl, "vkEndCommandBuffer");
 	addrs->pvkResetCommandBuffer = vkGetDeviceProcAddr(parent, hndl, "vkResetCommandBuffer");
-	addrs->pvkCreateShaderModule = vkGetDeviceProcAddr(parent, hndl, "vkCreateShaderModule");
-	addrs->pvkGetImageMemoryRequirements = vkGetDeviceProcAddr(parent, hndl, "vkGetImageMemoryRequirements");
-	addrs->pvkGetImageSparseMemoryRequirements = vkGetDeviceProcAddr(parent, hndl, "vkGetImageSparseMemoryRequirements");
-	addrs->pvkGetPhysicalDeviceSparseImageFormatProperties = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceSparseImageFormatProperties");
-	addrs->pvkCmdSetLineWidth = vkGetDeviceProcAddr(parent, hndl, "vkCmdSetLineWidth");
-	addrs->pvkQueueBindSparse = vkGetDeviceProcAddr(parent, hndl, "vkQueueBindSparse");
-	addrs->pvkDestroyImageView = vkGetDeviceProcAddr(parent, hndl, "vkDestroyImageView");
-	addrs->pvkCreateImageView = vkGetDeviceProcAddr(parent, hndl, "vkCreateImageView");
+	addrs->pvkCreateSampler = vkGetDeviceProcAddr(parent, hndl, "vkCreateSampler");
+	addrs->pvkDestroySemaphore = vkGetDeviceProcAddr(parent, hndl, "vkDestroySemaphore");
+	addrs->pvkCreateBuffer = vkGetDeviceProcAddr(parent, hndl, "vkCreateBuffer");
+	addrs->pvkDestroyDescriptorPool = vkGetDeviceProcAddr(parent, hndl, "vkDestroyDescriptorPool");
+	addrs->pvkCreateFence = vkGetDeviceProcAddr(parent, hndl, "vkCreateFence");
+	addrs->pvkGetPhysicalDeviceProperties = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceProperties");
 	addrs->pvkGetImageSubresourceLayout = vkGetDeviceProcAddr(parent, hndl, "vkGetImageSubresourceLayout");
 	addrs->pvkDestroyImage = vkGetDeviceProcAddr(parent, hndl, "vkDestroyImage");
+	addrs->pvkGetDeviceQueue = vkGetDeviceProcAddr(parent, hndl, "vkGetDeviceQueue");
 	addrs->pvkCreateImage = vkGetDeviceProcAddr(parent, hndl, "vkCreateImage");
+	addrs->pvkQueueSubmit = vkGetDeviceProcAddr(parent, hndl, "vkQueueSubmit");
 	addrs->pvkCmdBindPipeline = vkGetDeviceProcAddr(parent, hndl, "vkCmdBindPipeline");
 	addrs->pvkCmdSetViewport = vkGetDeviceProcAddr(parent, hndl, "vkCmdSetViewport");
 	addrs->pvkCmdSetScissor = vkGetDeviceProcAddr(parent, hndl, "vkCmdSetScissor");
-	addrs->pvkDestroyBufferView = vkGetDeviceProcAddr(parent, hndl, "vkDestroyBufferView");
+	addrs->pvkCmdSetLineWidth = vkGetDeviceProcAddr(parent, hndl, "vkCmdSetLineWidth");
 	addrs->pvkCmdSetDepthBias = vkGetDeviceProcAddr(parent, hndl, "vkCmdSetDepthBias");
 	addrs->pvkCmdSetBlendConstants = vkGetDeviceProcAddr(parent, hndl, "vkCmdSetBlendConstants");
 	addrs->pvkCmdSetDepthBounds = vkGetDeviceProcAddr(parent, hndl, "vkCmdSetDepthBounds");
@@ -389,7 +389,7 @@ void vksLoadDeviceProcAddrs(VkDevice hndl, vksProcAddr* addrs, vksProcAddr* pare
 	addrs->pvkCmdCopyImageToBuffer = vkGetDeviceProcAddr(parent, hndl, "vkCmdCopyImageToBuffer");
 	addrs->pvkCmdUpdateBuffer = vkGetDeviceProcAddr(parent, hndl, "vkCmdUpdateBuffer");
 	addrs->pvkCmdFillBuffer = vkGetDeviceProcAddr(parent, hndl, "vkCmdFillBuffer");
-	addrs->pvkCreateBufferView = vkGetDeviceProcAddr(parent, hndl, "vkCreateBufferView");
+	addrs->pvkCmdClearColorImage = vkGetDeviceProcAddr(parent, hndl, "vkCmdClearColorImage");
 	addrs->pvkCmdClearDepthStencilImage = vkGetDeviceProcAddr(parent, hndl, "vkCmdClearDepthStencilImage");
 	addrs->pvkCmdClearAttachments = vkGetDeviceProcAddr(parent, hndl, "vkCmdClearAttachments");
 	addrs->pvkCmdResolveImage = vkGetDeviceProcAddr(parent, hndl, "vkCmdResolveImage");
@@ -407,72 +407,72 @@ void vksLoadDeviceProcAddrs(VkDevice hndl, vksProcAddr* addrs, vksProcAddr* pare
 	addrs->pvkCmdNextSubpass = vkGetDeviceProcAddr(parent, hndl, "vkCmdNextSubpass");
 	addrs->pvkCmdEndRenderPass = vkGetDeviceProcAddr(parent, hndl, "vkCmdEndRenderPass");
 	addrs->pvkCmdExecuteCommands = vkGetDeviceProcAddr(parent, hndl, "vkCmdExecuteCommands");
-	addrs->pvkCreateFence = vkGetDeviceProcAddr(parent, hndl, "vkCreateFence");
-	addrs->pvkDestroyBuffer = vkGetDeviceProcAddr(parent, hndl, "vkDestroyBuffer");
-	addrs->pvkCreateBuffer = vkGetDeviceProcAddr(parent, hndl, "vkCreateBuffer");
-	addrs->pvkDestroyFence = vkGetDeviceProcAddr(parent, hndl, "vkDestroyFence");
-	addrs->pvkResetFences = vkGetDeviceProcAddr(parent, hndl, "vkResetFences");
-	addrs->pvkGetFenceStatus = vkGetDeviceProcAddr(parent, hndl, "vkGetFenceStatus");
-	addrs->pvkCreateSemaphore = vkGetDeviceProcAddr(parent, hndl, "vkCreateSemaphore");
-	addrs->pvkDestroySemaphore = vkGetDeviceProcAddr(parent, hndl, "vkDestroySemaphore");
-	addrs->pvkGetQueryPoolResults = vkGetDeviceProcAddr(parent, hndl, "vkGetQueryPoolResults");
-	addrs->pvkDestroyQueryPool = vkGetDeviceProcAddr(parent, hndl, "vkDestroyQueryPool");
-	addrs->pvkCreateQueryPool = vkGetDeviceProcAddr(parent, hndl, "vkCreateQueryPool");
 	addrs->pvkCreateEvent = vkGetDeviceProcAddr(parent, hndl, "vkCreateEvent");
+	addrs->pvkDestroyBufferView = vkGetDeviceProcAddr(parent, hndl, "vkDestroyBufferView");
+	addrs->pvkCreateBufferView = vkGetDeviceProcAddr(parent, hndl, "vkCreateBufferView");
+	addrs->pvkGetPhysicalDeviceImageFormatProperties = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceImageFormatProperties");
 	addrs->pvkDestroyEvent = vkGetDeviceProcAddr(parent, hndl, "vkDestroyEvent");
 	addrs->pvkGetEventStatus = vkGetDeviceProcAddr(parent, hndl, "vkGetEventStatus");
+	addrs->pvkDestroyPipelineLayout = vkGetDeviceProcAddr(parent, hndl, "vkDestroyPipelineLayout");
+	addrs->pvkDestroyBuffer = vkGetDeviceProcAddr(parent, hndl, "vkDestroyBuffer");
+	addrs->pvkDestroyImageView = vkGetDeviceProcAddr(parent, hndl, "vkDestroyImageView");
+	addrs->pvkSetEvent = vkGetDeviceProcAddr(parent, hndl, "vkSetEvent");
 	addrs->pvkResetEvent = vkGetDeviceProcAddr(parent, hndl, "vkResetEvent");
-	addrs->pvkCmdClearColorImage = vkGetDeviceProcAddr(parent, hndl, "vkCmdClearColorImage");
+	addrs->pvkCreateDevice = vkGetDeviceProcAddr(parent, hndl, "vkCreateDevice");
+	addrs->pvkCreateQueryPool = vkGetDeviceProcAddr(parent, hndl, "vkCreateQueryPool");
+	addrs->pvkDestroyDevice = vkGetDeviceProcAddr(parent, hndl, "vkDestroyDevice");
+	addrs->pvkDeviceWaitIdle = vkGetDeviceProcAddr(parent, hndl, "vkDeviceWaitIdle");
+	addrs->pvkGetQueryPoolResults = vkGetDeviceProcAddr(parent, hndl, "vkGetQueryPoolResults");
+	addrs->pvkEnumeratePhysicalDeviceGroups = vkGetDeviceProcAddr(parent, hndl, "vkEnumeratePhysicalDeviceGroups");
+	addrs->pvkGetPhysicalDeviceExternalBufferProperties = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceExternalBufferProperties");
 	addrs->pvkUpdateDescriptorSetWithTemplate = vkGetDeviceProcAddr(parent, hndl, "vkUpdateDescriptorSetWithTemplate");
-	addrs->pvkDestroySamplerYcbcrConversion = vkGetDeviceProcAddr(parent, hndl, "vkDestroySamplerYcbcrConversion");
-	addrs->pvkCreateDescriptorUpdateTemplate = vkGetDeviceProcAddr(parent, hndl, "vkCreateDescriptorUpdateTemplate");
 	addrs->pvkGetPhysicalDeviceExternalFenceProperties = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceExternalFenceProperties");
+	addrs->pvkCmdDispatchBase = vkGetDeviceProcAddr(parent, hndl, "vkCmdDispatchBase");
+	addrs->pvkCmdSetDeviceMask = vkGetDeviceProcAddr(parent, hndl, "vkCmdSetDeviceMask");
+	addrs->pvkGetDeviceGroupPeerMemoryFeatures = vkGetDeviceProcAddr(parent, hndl, "vkGetDeviceGroupPeerMemoryFeatures");
+	addrs->pvkDestroyDescriptorUpdateTemplate = vkGetDeviceProcAddr(parent, hndl, "vkDestroyDescriptorUpdateTemplate");
+	addrs->pvkCreateDescriptorUpdateTemplate = vkGetDeviceProcAddr(parent, hndl, "vkCreateDescriptorUpdateTemplate");
+	addrs->pvkDestroySamplerYcbcrConversion = vkGetDeviceProcAddr(parent, hndl, "vkDestroySamplerYcbcrConversion");
 	addrs->pvkCreateSamplerYcbcrConversion = vkGetDeviceProcAddr(parent, hndl, "vkCreateSamplerYcbcrConversion");
 	addrs->pvkGetDeviceQueue2 = vkGetDeviceProcAddr(parent, hndl, "vkGetDeviceQueue2");
+	addrs->pvkGetImageMemoryRequirements2 = vkGetDeviceProcAddr(parent, hndl, "vkGetImageMemoryRequirements2");
+	addrs->pvkGetBufferMemoryRequirements2 = vkGetDeviceProcAddr(parent, hndl, "vkGetBufferMemoryRequirements2");
+	addrs->pvkGetImageSparseMemoryRequirements2 = vkGetDeviceProcAddr(parent, hndl, "vkGetImageSparseMemoryRequirements2");
 	addrs->pvkTrimCommandPool = vkGetDeviceProcAddr(parent, hndl, "vkTrimCommandPool");
+	addrs->pvkGetPhysicalDeviceExternalSemaphoreProperties = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceExternalSemaphoreProperties");
+	addrs->pvkBindImageMemory2 = vkGetDeviceProcAddr(parent, hndl, "vkBindImageMemory2");
+	addrs->pvkBindBufferMemory2 = vkGetDeviceProcAddr(parent, hndl, "vkBindBufferMemory2");
 	addrs->pvkGetPhysicalDeviceSparseImageFormatProperties2 = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceSparseImageFormatProperties2");
+	addrs->pvkEnumerateInstanceVersion = vkGetDeviceProcAddr(parent, hndl, "vkEnumerateInstanceVersion");
 	addrs->pvkGetPhysicalDeviceMemoryProperties2 = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceMemoryProperties2");
 	addrs->pvkGetPhysicalDeviceQueueFamilyProperties2 = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceQueueFamilyProperties2");
+	addrs->pvkGetDescriptorSetLayoutSupport = vkGetDeviceProcAddr(parent, hndl, "vkGetDescriptorSetLayoutSupport");
 	addrs->pvkGetPhysicalDeviceImageFormatProperties2 = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceImageFormatProperties2");
 	addrs->pvkGetPhysicalDeviceFormatProperties2 = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceFormatProperties2");
 	addrs->pvkGetPhysicalDeviceProperties2 = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceProperties2");
 	addrs->pvkGetPhysicalDeviceFeatures2 = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceFeatures2");
-	addrs->pvkGetImageSparseMemoryRequirements2 = vkGetDeviceProcAddr(parent, hndl, "vkGetImageSparseMemoryRequirements2");
-	addrs->pvkGetBufferMemoryRequirements2 = vkGetDeviceProcAddr(parent, hndl, "vkGetBufferMemoryRequirements2");
-	addrs->pvkGetPhysicalDeviceExternalSemaphoreProperties = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceExternalSemaphoreProperties");
-	addrs->pvkGetImageMemoryRequirements2 = vkGetDeviceProcAddr(parent, hndl, "vkGetImageMemoryRequirements2");
-	addrs->pvkDestroyDescriptorUpdateTemplate = vkGetDeviceProcAddr(parent, hndl, "vkDestroyDescriptorUpdateTemplate");
-	addrs->pvkEnumeratePhysicalDeviceGroups = vkGetDeviceProcAddr(parent, hndl, "vkEnumeratePhysicalDeviceGroups");
-	addrs->pvkCmdDispatchBase = vkGetDeviceProcAddr(parent, hndl, "vkCmdDispatchBase");
-	addrs->pvkCmdSetDeviceMask = vkGetDeviceProcAddr(parent, hndl, "vkCmdSetDeviceMask");
-	addrs->pvkGetDeviceGroupPeerMemoryFeatures = vkGetDeviceProcAddr(parent, hndl, "vkGetDeviceGroupPeerMemoryFeatures");
-	addrs->pvkGetDescriptorSetLayoutSupport = vkGetDeviceProcAddr(parent, hndl, "vkGetDescriptorSetLayoutSupport");
-	addrs->pvkBindImageMemory2 = vkGetDeviceProcAddr(parent, hndl, "vkBindImageMemory2");
-	addrs->pvkBindBufferMemory2 = vkGetDeviceProcAddr(parent, hndl, "vkBindBufferMemory2");
-	addrs->pvkEnumerateInstanceVersion = vkGetDeviceProcAddr(parent, hndl, "vkEnumerateInstanceVersion");
-	addrs->pvkGetPhysicalDeviceExternalBufferProperties = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceExternalBufferProperties");
-	addrs->pvkWaitSemaphores = vkGetDeviceProcAddr(parent, hndl, "vkWaitSemaphores");
+	addrs->pvkCreateRenderPass2 = vkGetDeviceProcAddr(parent, hndl, "vkCreateRenderPass2");
 	addrs->pvkResetQueryPool = vkGetDeviceProcAddr(parent, hndl, "vkResetQueryPool");
-	addrs->pvkGetSemaphoreCounterValue = vkGetDeviceProcAddr(parent, hndl, "vkGetSemaphoreCounterValue");
-	addrs->pvkCmdBeginRenderPass2 = vkGetDeviceProcAddr(parent, hndl, "vkCmdBeginRenderPass2");
-	addrs->pvkCmdEndRenderPass2 = vkGetDeviceProcAddr(parent, hndl, "vkCmdEndRenderPass2");
+	addrs->pvkCmdDrawIndirectCount = vkGetDeviceProcAddr(parent, hndl, "vkCmdDrawIndirectCount");
+	addrs->pvkCmdDrawIndexedIndirectCount = vkGetDeviceProcAddr(parent, hndl, "vkCmdDrawIndexedIndirectCount");
+	addrs->pvkSignalSemaphore = vkGetDeviceProcAddr(parent, hndl, "vkSignalSemaphore");
 	addrs->pvkGetBufferDeviceAddress = vkGetDeviceProcAddr(parent, hndl, "vkGetBufferDeviceAddress");
 	addrs->pvkGetBufferOpaqueCaptureAddress = vkGetDeviceProcAddr(parent, hndl, "vkGetBufferOpaqueCaptureAddress");
 	addrs->pvkGetDeviceMemoryOpaqueCaptureAddress = vkGetDeviceProcAddr(parent, hndl, "vkGetDeviceMemoryOpaqueCaptureAddress");
+	addrs->pvkCmdBeginRenderPass2 = vkGetDeviceProcAddr(parent, hndl, "vkCmdBeginRenderPass2");
+	addrs->pvkGetSemaphoreCounterValue = vkGetDeviceProcAddr(parent, hndl, "vkGetSemaphoreCounterValue");
+	addrs->pvkWaitSemaphores = vkGetDeviceProcAddr(parent, hndl, "vkWaitSemaphores");
 	addrs->pvkCmdNextSubpass2 = vkGetDeviceProcAddr(parent, hndl, "vkCmdNextSubpass2");
-	addrs->pvkCreateRenderPass2 = vkGetDeviceProcAddr(parent, hndl, "vkCreateRenderPass2");
-	addrs->pvkCmdDrawIndexedIndirectCount = vkGetDeviceProcAddr(parent, hndl, "vkCmdDrawIndexedIndirectCount");
-	addrs->pvkCmdDrawIndirectCount = vkGetDeviceProcAddr(parent, hndl, "vkCmdDrawIndirectCount");
-	addrs->pvkSignalSemaphore = vkGetDeviceProcAddr(parent, hndl, "vkSignalSemaphore");
-	addrs->pvkCmdSetDepthBoundsTestEnable = vkGetDeviceProcAddr(parent, hndl, "vkCmdSetDepthBoundsTestEnable");
+	addrs->pvkCmdEndRenderPass2 = vkGetDeviceProcAddr(parent, hndl, "vkCmdEndRenderPass2");
+	addrs->pvkCmdPipelineBarrier2 = vkGetDeviceProcAddr(parent, hndl, "vkCmdPipelineBarrier2");
 	addrs->pvkCmdEndRendering = vkGetDeviceProcAddr(parent, hndl, "vkCmdEndRendering");
+	addrs->pvkCmdBeginRendering = vkGetDeviceProcAddr(parent, hndl, "vkCmdBeginRendering");
+	addrs->pvkCmdResolveImage2 = vkGetDeviceProcAddr(parent, hndl, "vkCmdResolveImage2");
 	addrs->pvkCmdBlitImage2 = vkGetDeviceProcAddr(parent, hndl, "vkCmdBlitImage2");
 	addrs->pvkCmdCopyImageToBuffer2 = vkGetDeviceProcAddr(parent, hndl, "vkCmdCopyImageToBuffer2");
 	addrs->pvkCmdCopyBufferToImage2 = vkGetDeviceProcAddr(parent, hndl, "vkCmdCopyBufferToImage2");
 	addrs->pvkCmdCopyImage2 = vkGetDeviceProcAddr(parent, hndl, "vkCmdCopyImage2");
 	addrs->pvkCmdCopyBuffer2 = vkGetDeviceProcAddr(parent, hndl, "vkCmdCopyBuffer2");
-	addrs->pvkQueueSubmit2 = vkGetDeviceProcAddr(parent, hndl, "vkQueueSubmit2");
-	addrs->pvkCmdWriteTimestamp2 = vkGetDeviceProcAddr(parent, hndl, "vkCmdWriteTimestamp2");
 	addrs->pvkCmdSetCullMode = vkGetDeviceProcAddr(parent, hndl, "vkCmdSetCullMode");
 	addrs->pvkCmdSetFrontFace = vkGetDeviceProcAddr(parent, hndl, "vkCmdSetFrontFace");
 	addrs->pvkCmdSetPrimitiveTopology = vkGetDeviceProcAddr(parent, hndl, "vkCmdSetPrimitiveTopology");
@@ -482,71 +482,72 @@ void vksLoadDeviceProcAddrs(VkDevice hndl, vksProcAddr* addrs, vksProcAddr* pare
 	addrs->pvkCmdSetDepthTestEnable = vkGetDeviceProcAddr(parent, hndl, "vkCmdSetDepthTestEnable");
 	addrs->pvkCmdSetDepthWriteEnable = vkGetDeviceProcAddr(parent, hndl, "vkCmdSetDepthWriteEnable");
 	addrs->pvkCmdSetDepthCompareOp = vkGetDeviceProcAddr(parent, hndl, "vkCmdSetDepthCompareOp");
-	addrs->pvkCmdBeginRendering = vkGetDeviceProcAddr(parent, hndl, "vkCmdBeginRendering");
+	addrs->pvkCmdSetDepthBoundsTestEnable = vkGetDeviceProcAddr(parent, hndl, "vkCmdSetDepthBoundsTestEnable");
 	addrs->pvkCmdSetStencilTestEnable = vkGetDeviceProcAddr(parent, hndl, "vkCmdSetStencilTestEnable");
 	addrs->pvkCmdSetStencilOp = vkGetDeviceProcAddr(parent, hndl, "vkCmdSetStencilOp");
-	addrs->pvkCmdPipelineBarrier2 = vkGetDeviceProcAddr(parent, hndl, "vkCmdPipelineBarrier2");
+	addrs->pvkQueueSubmit2 = vkGetDeviceProcAddr(parent, hndl, "vkQueueSubmit2");
+	addrs->pvkCmdWriteTimestamp2 = vkGetDeviceProcAddr(parent, hndl, "vkCmdWriteTimestamp2");
 	addrs->pvkCmdWaitEvents2 = vkGetDeviceProcAddr(parent, hndl, "vkCmdWaitEvents2");
 	addrs->pvkCmdResetEvent2 = vkGetDeviceProcAddr(parent, hndl, "vkCmdResetEvent2");
 	addrs->pvkCmdSetEvent2 = vkGetDeviceProcAddr(parent, hndl, "vkCmdSetEvent2");
 	addrs->pvkGetPrivateData = vkGetDeviceProcAddr(parent, hndl, "vkGetPrivateData");
-	addrs->pvkSetPrivateData = vkGetDeviceProcAddr(parent, hndl, "vkSetPrivateData");
 	addrs->pvkCmdSetRasterizerDiscardEnable = vkGetDeviceProcAddr(parent, hndl, "vkCmdSetRasterizerDiscardEnable");
 	addrs->pvkCmdSetDepthBiasEnable = vkGetDeviceProcAddr(parent, hndl, "vkCmdSetDepthBiasEnable");
 	addrs->pvkCmdSetPrimitiveRestartEnable = vkGetDeviceProcAddr(parent, hndl, "vkCmdSetPrimitiveRestartEnable");
 	addrs->pvkGetDeviceBufferMemoryRequirements = vkGetDeviceProcAddr(parent, hndl, "vkGetDeviceBufferMemoryRequirements");
 	addrs->pvkGetDeviceImageMemoryRequirements = vkGetDeviceProcAddr(parent, hndl, "vkGetDeviceImageMemoryRequirements");
 	addrs->pvkGetDeviceImageSparseMemoryRequirements = vkGetDeviceProcAddr(parent, hndl, "vkGetDeviceImageSparseMemoryRequirements");
+	addrs->pvkSetPrivateData = vkGetDeviceProcAddr(parent, hndl, "vkSetPrivateData");
 	addrs->pvkDestroyPrivateDataSlot = vkGetDeviceProcAddr(parent, hndl, "vkDestroyPrivateDataSlot");
 	addrs->pvkCreatePrivateDataSlot = vkGetDeviceProcAddr(parent, hndl, "vkCreatePrivateDataSlot");
 	addrs->pvkGetPhysicalDeviceToolProperties = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceToolProperties");
-	addrs->pvkCmdResolveImage2 = vkGetDeviceProcAddr(parent, hndl, "vkCmdResolveImage2");
-	addrs->pvkGetPhysicalDeviceSurfaceCapabilities2KHR = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceSurfaceCapabilities2KHR");
-	addrs->pvkGetPhysicalDeviceSurfaceFormats2KHR = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceSurfaceFormats2KHR");
-	addrs->pvkGetPhysicalDeviceSurfacePresentModesKHR = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceSurfacePresentModesKHR");
-	addrs->pvkGetPhysicalDeviceSurfaceFormatsKHR = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceSurfaceFormatsKHR");
-	addrs->pvkGetPhysicalDeviceSurfaceCapabilitiesKHR = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceSurfaceCapabilitiesKHR");
-	addrs->pvkGetPhysicalDeviceSurfaceSupportKHR = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceSurfaceSupportKHR");
-	addrs->pvkDestroySurfaceKHR = vkGetDeviceProcAddr(parent, hndl, "vkDestroySurfaceKHR");
 	addrs->pvkCreateDebugReportCallbackEXT = vkGetDeviceProcAddr(parent, hndl, "vkCreateDebugReportCallbackEXT");
 	addrs->pvkDestroyDebugReportCallbackEXT = vkGetDeviceProcAddr(parent, hndl, "vkDestroyDebugReportCallbackEXT");
 	addrs->pvkDebugReportMessageEXT = vkGetDeviceProcAddr(parent, hndl, "vkDebugReportMessageEXT");
-	addrs->pvkGetPhysicalDevicePresentRectanglesKHR = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDevicePresentRectanglesKHR");
-	addrs->pvkAcquireNextImage2KHR = vkGetDeviceProcAddr(parent, hndl, "vkAcquireNextImage2KHR");
-	addrs->pvkGetDeviceGroupSurfacePresentModesKHR = vkGetDeviceProcAddr(parent, hndl, "vkGetDeviceGroupSurfacePresentModesKHR");
+	addrs->pvkGetPhysicalDeviceSurfaceCapabilitiesKHR = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceSurfaceCapabilitiesKHR");
+	addrs->pvkGetPhysicalDeviceSurfaceFormatsKHR = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceSurfaceFormatsKHR");
+	addrs->pvkGetPhysicalDeviceSurfacePresentModesKHR = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceSurfacePresentModesKHR");
+	addrs->pvkGetPhysicalDeviceSurfaceSupportKHR = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceSurfaceSupportKHR");
+	addrs->pvkDestroySurfaceKHR = vkGetDeviceProcAddr(parent, hndl, "vkDestroySurfaceKHR");
+	addrs->pvkGetPhysicalDeviceSurfaceCapabilities2KHR = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceSurfaceCapabilities2KHR");
+	addrs->pvkGetPhysicalDeviceSurfaceFormats2KHR = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceSurfaceFormats2KHR");
 	addrs->pvkGetDeviceGroupPresentCapabilitiesKHR = vkGetDeviceProcAddr(parent, hndl, "vkGetDeviceGroupPresentCapabilitiesKHR");
-	addrs->pvkQueuePresentKHR = vkGetDeviceProcAddr(parent, hndl, "vkQueuePresentKHR");
+	addrs->pvkAcquireNextImage2KHR = vkGetDeviceProcAddr(parent, hndl, "vkAcquireNextImage2KHR");
 	addrs->pvkAcquireNextImageKHR = vkGetDeviceProcAddr(parent, hndl, "vkAcquireNextImageKHR");
+	addrs->pvkCreateSwapchainKHR = vkGetDeviceProcAddr(parent, hndl, "vkCreateSwapchainKHR");
+	addrs->pvkGetPhysicalDevicePresentRectanglesKHR = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDevicePresentRectanglesKHR");
+	addrs->pvkGetDeviceGroupSurfacePresentModesKHR = vkGetDeviceProcAddr(parent, hndl, "vkGetDeviceGroupSurfacePresentModesKHR");
+	addrs->pvkQueuePresentKHR = vkGetDeviceProcAddr(parent, hndl, "vkQueuePresentKHR");
 	addrs->pvkGetSwapchainImagesKHR = vkGetDeviceProcAddr(parent, hndl, "vkGetSwapchainImagesKHR");
 	addrs->pvkDestroySwapchainKHR = vkGetDeviceProcAddr(parent, hndl, "vkDestroySwapchainKHR");
-	addrs->pvkCreateSwapchainKHR = vkGetDeviceProcAddr(parent, hndl, "vkCreateSwapchainKHR");
-	addrs->pvkCreateDisplayPlaneSurfaceKHR = vkGetDeviceProcAddr(parent, hndl, "vkCreateDisplayPlaneSurfaceKHR");
-	addrs->pvkGetDisplayPlaneCapabilitiesKHR = vkGetDeviceProcAddr(parent, hndl, "vkGetDisplayPlaneCapabilitiesKHR");
 	addrs->pvkCreateDisplayModeKHR = vkGetDeviceProcAddr(parent, hndl, "vkCreateDisplayModeKHR");
-	addrs->pvkGetDisplayModePropertiesKHR = vkGetDeviceProcAddr(parent, hndl, "vkGetDisplayModePropertiesKHR");
 	addrs->pvkGetDisplayPlaneSupportedDisplaysKHR = vkGetDeviceProcAddr(parent, hndl, "vkGetDisplayPlaneSupportedDisplaysKHR");
-	addrs->pvkGetPhysicalDeviceDisplayPlanePropertiesKHR = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceDisplayPlanePropertiesKHR");
 	addrs->pvkGetPhysicalDeviceDisplayPropertiesKHR = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceDisplayPropertiesKHR");
-	addrs->pvkGetDisplayPlaneCapabilities2KHR = vkGetDeviceProcAddr(parent, hndl, "vkGetDisplayPlaneCapabilities2KHR");
+	addrs->pvkGetDisplayModePropertiesKHR = vkGetDeviceProcAddr(parent, hndl, "vkGetDisplayModePropertiesKHR");
+	addrs->pvkCreateDisplayPlaneSurfaceKHR = vkGetDeviceProcAddr(parent, hndl, "vkCreateDisplayPlaneSurfaceKHR");
+	addrs->pvkGetPhysicalDeviceDisplayPlanePropertiesKHR = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceDisplayPlanePropertiesKHR");
+	addrs->pvkGetDisplayPlaneCapabilitiesKHR = vkGetDeviceProcAddr(parent, hndl, "vkGetDisplayPlaneCapabilitiesKHR");
 	addrs->pvkGetPhysicalDeviceDisplayProperties2KHR = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceDisplayProperties2KHR");
 	addrs->pvkGetPhysicalDeviceDisplayPlaneProperties2KHR = vkGetDeviceProcAddr(parent, hndl, "vkGetPhysicalDeviceDisplayPlaneProperties2KHR");
 	addrs->pvkGetDisplayModeProperties2KHR = vkGetDeviceProcAddr(parent, hndl, "vkGetDisplayModeProperties2KHR");
+	addrs->pvkGetDisplayPlaneCapabilities2KHR = vkGetDeviceProcAddr(parent, hndl, "vkGetDisplayPlaneCapabilities2KHR");
 	addrs->pvkCreateSharedSwapchainsKHR = vkGetDeviceProcAddr(parent, hndl, "vkCreateSharedSwapchainsKHR");
 }
 
-VkResult vkSetEvent(vksProcAddr* addrs, VkDevice device, VkEvent event) {
-	VkResult ret = (((PFN_vkSetEvent)addrs->pvkSetEvent)(device, event));
+VkResult vkCreateShaderModule(vksProcAddr* addrs, VkDevice device, VkShaderModuleCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkShaderModule* pShaderModule) {
+	VkResult ret = (((PFN_vkCreateShaderModule)addrs->pvkCreateShaderModule)(device, pCreateInfo, pAllocator, pShaderModule));
 	return ret;
 }
-void vkDestroyDescriptorPool(vksProcAddr* addrs, VkDevice device, VkDescriptorPool descriptorPool, VkAllocationCallbacks* pAllocator) {
-	(((PFN_vkDestroyDescriptorPool)addrs->pvkDestroyDescriptorPool)(device, descriptorPool, pAllocator));
+PFN_vkVoidFunction vkGetDeviceProcAddr(vksProcAddr* addrs, VkDevice device, char* pName) {
+	PFN_vkVoidFunction ret = (((PFN_vkGetDeviceProcAddr)addrs->pvkGetDeviceProcAddr)(device, pName));
+	return ret;
 }
 VkResult vkResetDescriptorPool(vksProcAddr* addrs, VkDevice device, VkDescriptorPool descriptorPool, VkDescriptorPoolResetFlags flags) {
 	VkResult ret = (((PFN_vkResetDescriptorPool)addrs->pvkResetDescriptorPool)(device, descriptorPool, flags));
 	return ret;
 }
-VkResult vkCreateDescriptorPool(vksProcAddr* addrs, VkDevice device, VkDescriptorPoolCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkDescriptorPool* pDescriptorPool) {
-	VkResult ret = (((PFN_vkCreateDescriptorPool)addrs->pvkCreateDescriptorPool)(device, pCreateInfo, pAllocator, pDescriptorPool));
+VkResult vkAllocateDescriptorSets(vksProcAddr* addrs, VkDevice device, VkDescriptorSetAllocateInfo* pAllocateInfo, VkDescriptorSet* pDescriptorSets) {
+	VkResult ret = (((PFN_vkAllocateDescriptorSets)addrs->pvkAllocateDescriptorSets)(device, pAllocateInfo, pDescriptorSets));
 	return ret;
 }
 VkResult vkFreeDescriptorSets(vksProcAddr* addrs, VkDevice device, VkDescriptorPool descriptorPool, uint32_t descriptorSetCount, VkDescriptorSet* pDescriptorSets) {
@@ -556,69 +557,69 @@ VkResult vkFreeDescriptorSets(vksProcAddr* addrs, VkDevice device, VkDescriptorP
 void vkUpdateDescriptorSets(vksProcAddr* addrs, VkDevice device, uint32_t descriptorWriteCount, VkWriteDescriptorSet* pDescriptorWrites, uint32_t descriptorCopyCount, VkCopyDescriptorSet* pDescriptorCopies) {
 	(((PFN_vkUpdateDescriptorSets)addrs->pvkUpdateDescriptorSets)(device, descriptorWriteCount, pDescriptorWrites, descriptorCopyCount, pDescriptorCopies));
 }
-void vkDestroyDescriptorSetLayout(vksProcAddr* addrs, VkDevice device, VkDescriptorSetLayout descriptorSetLayout, VkAllocationCallbacks* pAllocator) {
-	(((PFN_vkDestroyDescriptorSetLayout)addrs->pvkDestroyDescriptorSetLayout)(device, descriptorSetLayout, pAllocator));
+void vkGetPhysicalDeviceMemoryProperties(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkPhysicalDeviceMemoryProperties* pMemoryProperties) {
+	(((PFN_vkGetPhysicalDeviceMemoryProperties)addrs->pvkGetPhysicalDeviceMemoryProperties)(physicalDevice, pMemoryProperties));
 }
-VkResult vkCreateDescriptorSetLayout(vksProcAddr* addrs, VkDevice device, VkDescriptorSetLayoutCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkDescriptorSetLayout* pSetLayout) {
-	VkResult ret = (((PFN_vkCreateDescriptorSetLayout)addrs->pvkCreateDescriptorSetLayout)(device, pCreateInfo, pAllocator, pSetLayout));
+void vkDestroyQueryPool(vksProcAddr* addrs, VkDevice device, VkQueryPool queryPool, VkAllocationCallbacks* pAllocator) {
+	(((PFN_vkDestroyQueryPool)addrs->pvkDestroyQueryPool)(device, queryPool, pAllocator));
+}
+PFN_vkVoidFunction vkGetInstanceProcAddr(vksProcAddr* addrs, VkInstance instance, char* pName) {
+	PFN_vkVoidFunction ret = (((PFN_vkGetInstanceProcAddr)addrs->pvkGetInstanceProcAddr)(instance, pName));
 	return ret;
 }
-void vkDestroySampler(vksProcAddr* addrs, VkDevice device, VkSampler sampler, VkAllocationCallbacks* pAllocator) {
-	(((PFN_vkDestroySampler)addrs->pvkDestroySampler)(device, sampler, pAllocator));
-}
-VkResult vkCreateSampler(vksProcAddr* addrs, VkDevice device, VkSamplerCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSampler* pSampler) {
-	VkResult ret = (((PFN_vkCreateSampler)addrs->pvkCreateSampler)(device, pCreateInfo, pAllocator, pSampler));
+VkResult vkCreateImageView(vksProcAddr* addrs, VkDevice device, VkImageViewCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkImageView* pView) {
+	VkResult ret = (((PFN_vkCreateImageView)addrs->pvkCreateImageView)(device, pCreateInfo, pAllocator, pView));
 	return ret;
 }
-void vkDestroyPipelineLayout(vksProcAddr* addrs, VkDevice device, VkPipelineLayout pipelineLayout, VkAllocationCallbacks* pAllocator) {
-	(((PFN_vkDestroyPipelineLayout)addrs->pvkDestroyPipelineLayout)(device, pipelineLayout, pAllocator));
+void vkGetImageSparseMemoryRequirements(vksProcAddr* addrs, VkDevice device, VkImage image, uint32_t* pSparseMemoryRequirementCount, VkSparseImageMemoryRequirements* pSparseMemoryRequirements) {
+	(((PFN_vkGetImageSparseMemoryRequirements)addrs->pvkGetImageSparseMemoryRequirements)(device, image, pSparseMemoryRequirementCount, pSparseMemoryRequirements));
 }
-VkResult vkCreatePipelineLayout(vksProcAddr* addrs, VkDevice device, VkPipelineLayoutCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkPipelineLayout* pPipelineLayout) {
-	VkResult ret = (((PFN_vkCreatePipelineLayout)addrs->pvkCreatePipelineLayout)(device, pCreateInfo, pAllocator, pPipelineLayout));
+VkResult vkBindImageMemory(vksProcAddr* addrs, VkDevice device, VkImage image, VkDeviceMemory memory, VkDeviceSize memoryOffset) {
+	VkResult ret = (((PFN_vkBindImageMemory)addrs->pvkBindImageMemory)(device, image, memory, memoryOffset));
+	return ret;
+}
+void vkGetPhysicalDeviceSparseImageFormatProperties(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkSampleCountFlagBits samples, VkImageUsageFlags usage, VkImageTiling tiling, uint32_t* pPropertyCount, VkSparseImageFormatProperties* pProperties) {
+	(((PFN_vkGetPhysicalDeviceSparseImageFormatProperties)addrs->pvkGetPhysicalDeviceSparseImageFormatProperties)(physicalDevice, format, type, samples, usage, tiling, pPropertyCount, pProperties));
+}
+VkResult vkBindBufferMemory(vksProcAddr* addrs, VkDevice device, VkBuffer buffer, VkDeviceMemory memory, VkDeviceSize memoryOffset) {
+	VkResult ret = (((PFN_vkBindBufferMemory)addrs->pvkBindBufferMemory)(device, buffer, memory, memoryOffset));
+	return ret;
+}
+VkResult vkQueueBindSparse(vksProcAddr* addrs, VkQueue queue, uint32_t bindInfoCount, VkBindSparseInfo* pBindInfo, VkFence fence) {
+	VkResult ret = (((PFN_vkQueueBindSparse)addrs->pvkQueueBindSparse)(queue, bindInfoCount, pBindInfo, fence));
+	return ret;
+}
+VkResult vkEnumerateDeviceLayerProperties(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, uint32_t* pPropertyCount, VkLayerProperties* pProperties) {
+	VkResult ret = (((PFN_vkEnumerateDeviceLayerProperties)addrs->pvkEnumerateDeviceLayerProperties)(physicalDevice, pPropertyCount, pProperties));
+	return ret;
+}
+VkResult vkEnumerateInstanceLayerProperties(vksProcAddr* addrs, uint32_t* pPropertyCount, VkLayerProperties* pProperties) {
+	VkResult ret = (((PFN_vkEnumerateInstanceLayerProperties)addrs->pvkEnumerateInstanceLayerProperties)(pPropertyCount, pProperties));
+	return ret;
+}
+void vkGetPhysicalDeviceQueueFamilyProperties(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, uint32_t* pQueueFamilyPropertyCount, VkQueueFamilyProperties* pQueueFamilyProperties) {
+	(((PFN_vkGetPhysicalDeviceQueueFamilyProperties)addrs->pvkGetPhysicalDeviceQueueFamilyProperties)(physicalDevice, pQueueFamilyPropertyCount, pQueueFamilyProperties));
+}
+void vkDestroyFence(vksProcAddr* addrs, VkDevice device, VkFence fence, VkAllocationCallbacks* pAllocator) {
+	(((PFN_vkDestroyFence)addrs->pvkDestroyFence)(device, fence, pAllocator));
+}
+VkResult vkResetFences(vksProcAddr* addrs, VkDevice device, uint32_t fenceCount, VkFence* pFences) {
+	VkResult ret = (((PFN_vkResetFences)addrs->pvkResetFences)(device, fenceCount, pFences));
+	return ret;
+}
+VkResult vkGetFenceStatus(vksProcAddr* addrs, VkDevice device, VkFence fence) {
+	VkResult ret = (((PFN_vkGetFenceStatus)addrs->pvkGetFenceStatus)(device, fence));
 	return ret;
 }
 VkResult vkWaitForFences(vksProcAddr* addrs, VkDevice device, uint32_t fenceCount, VkFence* pFences, VkBool32 waitAll, uint64_t timeout) {
 	VkResult ret = (((PFN_vkWaitForFences)addrs->pvkWaitForFences)(device, fenceCount, pFences, waitAll, timeout));
 	return ret;
 }
-VkResult vkCreateDevice(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkDeviceCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkDevice* pDevice) {
-	VkResult ret = (((PFN_vkCreateDevice)addrs->pvkCreateDevice)(physicalDevice, pCreateInfo, pAllocator, pDevice));
-	return ret;
+void vkDestroyPipeline(vksProcAddr* addrs, VkDevice device, VkPipeline pipeline, VkAllocationCallbacks* pAllocator) {
+	(((PFN_vkDestroyPipeline)addrs->pvkDestroyPipeline)(device, pipeline, pAllocator));
 }
-void vkDestroyDevice(vksProcAddr* addrs, VkDevice device, VkAllocationCallbacks* pAllocator) {
-	(((PFN_vkDestroyDevice)addrs->pvkDestroyDevice)(device, pAllocator));
-}
-PFN_vkVoidFunction vkGetDeviceProcAddr(vksProcAddr* addrs, VkDevice device, char* pName) {
-	PFN_vkVoidFunction ret = (((PFN_vkGetDeviceProcAddr)addrs->pvkGetDeviceProcAddr)(device, pName));
-	return ret;
-}
-VkResult vkCreateInstance(vksProcAddr* addrs, VkInstanceCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkInstance* pInstance) {
-	VkResult ret = (((PFN_vkCreateInstance)addrs->pvkCreateInstance)(pCreateInfo, pAllocator, pInstance));
-	return ret;
-}
-PFN_vkVoidFunction vkGetInstanceProcAddr(vksProcAddr* addrs, VkInstance instance, char* pName) {
-	PFN_vkVoidFunction ret = (((PFN_vkGetInstanceProcAddr)addrs->pvkGetInstanceProcAddr)(instance, pName));
-	return ret;
-}
-VkResult vkEnumerateInstanceExtensionProperties(vksProcAddr* addrs, char* pLayerName, uint32_t* pPropertyCount, VkExtensionProperties* pProperties) {
-	VkResult ret = (((PFN_vkEnumerateInstanceExtensionProperties)addrs->pvkEnumerateInstanceExtensionProperties)(pLayerName, pPropertyCount, pProperties));
-	return ret;
-}
-void vkGetPhysicalDeviceMemoryProperties(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkPhysicalDeviceMemoryProperties* pMemoryProperties) {
-	(((PFN_vkGetPhysicalDeviceMemoryProperties)addrs->pvkGetPhysicalDeviceMemoryProperties)(physicalDevice, pMemoryProperties));
-}
-void vkGetPhysicalDeviceQueueFamilyProperties(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, uint32_t* pQueueFamilyPropertyCount, VkQueueFamilyProperties* pQueueFamilyProperties) {
-	(((PFN_vkGetPhysicalDeviceQueueFamilyProperties)addrs->pvkGetPhysicalDeviceQueueFamilyProperties)(physicalDevice, pQueueFamilyPropertyCount, pQueueFamilyProperties));
-}
-VkResult vkEnumerateDeviceExtensionProperties(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, char* pLayerName, uint32_t* pPropertyCount, VkExtensionProperties* pProperties) {
-	VkResult ret = (((PFN_vkEnumerateDeviceExtensionProperties)addrs->pvkEnumerateDeviceExtensionProperties)(physicalDevice, pLayerName, pPropertyCount, pProperties));
-	return ret;
-}
-void vkGetPhysicalDeviceProperties(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkPhysicalDeviceProperties* pProperties) {
-	(((PFN_vkGetPhysicalDeviceProperties)addrs->pvkGetPhysicalDeviceProperties)(physicalDevice, pProperties));
-}
-VkResult vkEnumerateInstanceLayerProperties(vksProcAddr* addrs, uint32_t* pPropertyCount, VkLayerProperties* pProperties) {
-	VkResult ret = (((PFN_vkEnumerateInstanceLayerProperties)addrs->pvkEnumerateInstanceLayerProperties)(pPropertyCount, pProperties));
+VkResult vkCreateComputePipelines(vksProcAddr* addrs, VkDevice device, VkPipelineCache pipelineCache, uint32_t createInfoCount, VkComputePipelineCreateInfo* pCreateInfos, VkAllocationCallbacks* pAllocator, VkPipeline* pPipelines) {
+	VkResult ret = (((PFN_vkCreateComputePipelines)addrs->pvkCreateComputePipelines)(device, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines));
 	return ret;
 }
 VkResult vkCreateFramebuffer(vksProcAddr* addrs, VkDevice device, VkFramebufferCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkFramebuffer* pFramebuffer) {
@@ -638,88 +639,88 @@ void vkDestroyRenderPass(vksProcAddr* addrs, VkDevice device, VkRenderPass rende
 void vkGetRenderAreaGranularity(vksProcAddr* addrs, VkDevice device, VkRenderPass renderPass, VkExtent2D* pGranularity) {
 	(((PFN_vkGetRenderAreaGranularity)addrs->pvkGetRenderAreaGranularity)(device, renderPass, pGranularity));
 }
-VkResult vkGetPhysicalDeviceImageFormatProperties(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkImageTiling tiling, VkImageUsageFlags usage, VkImageCreateFlags flags, VkImageFormatProperties* pImageFormatProperties) {
-	VkResult ret = (((PFN_vkGetPhysicalDeviceImageFormatProperties)addrs->pvkGetPhysicalDeviceImageFormatProperties)(physicalDevice, format, type, tiling, usage, flags, pImageFormatProperties));
+VkResult vkCreateGraphicsPipelines(vksProcAddr* addrs, VkDevice device, VkPipelineCache pipelineCache, uint32_t createInfoCount, VkGraphicsPipelineCreateInfo* pCreateInfos, VkAllocationCallbacks* pAllocator, VkPipeline* pPipelines) {
+	VkResult ret = (((PFN_vkCreateGraphicsPipelines)addrs->pvkCreateGraphicsPipelines)(device, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines));
 	return ret;
 }
-void vkGetPhysicalDeviceFormatProperties(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkFormat format, VkFormatProperties* pFormatProperties) {
-	(((PFN_vkGetPhysicalDeviceFormatProperties)addrs->pvkGetPhysicalDeviceFormatProperties)(physicalDevice, format, pFormatProperties));
-}
-VkResult vkEnumerateDeviceLayerProperties(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, uint32_t* pPropertyCount, VkLayerProperties* pProperties) {
-	VkResult ret = (((PFN_vkEnumerateDeviceLayerProperties)addrs->pvkEnumerateDeviceLayerProperties)(physicalDevice, pPropertyCount, pProperties));
+VkResult vkEnumerateDeviceExtensionProperties(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, char* pLayerName, uint32_t* pPropertyCount, VkExtensionProperties* pProperties) {
+	VkResult ret = (((PFN_vkEnumerateDeviceExtensionProperties)addrs->pvkEnumerateDeviceExtensionProperties)(physicalDevice, pLayerName, pPropertyCount, pProperties));
 	return ret;
 }
-void vkGetPhysicalDeviceFeatures(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkPhysicalDeviceFeatures* pFeatures) {
-	(((PFN_vkGetPhysicalDeviceFeatures)addrs->pvkGetPhysicalDeviceFeatures)(physicalDevice, pFeatures));
-}
-VkResult vkEnumeratePhysicalDevices(vksProcAddr* addrs, VkInstance instance, uint32_t* pPhysicalDeviceCount, VkPhysicalDevice* pPhysicalDevices) {
-	VkResult ret = (((PFN_vkEnumeratePhysicalDevices)addrs->pvkEnumeratePhysicalDevices)(instance, pPhysicalDeviceCount, pPhysicalDevices));
+VkResult vkEnumerateInstanceExtensionProperties(vksProcAddr* addrs, char* pLayerName, uint32_t* pPropertyCount, VkExtensionProperties* pProperties) {
+	VkResult ret = (((PFN_vkEnumerateInstanceExtensionProperties)addrs->pvkEnumerateInstanceExtensionProperties)(pLayerName, pPropertyCount, pProperties));
 	return ret;
 }
-void vkDestroyInstance(vksProcAddr* addrs, VkInstance instance, VkAllocationCallbacks* pAllocator) {
-	(((PFN_vkDestroyInstance)addrs->pvkDestroyInstance)(instance, pAllocator));
-}
-void vkGetDeviceQueue(vksProcAddr* addrs, VkDevice device, uint32_t queueFamilyIndex, uint32_t queueIndex, VkQueue* pQueue) {
-	(((PFN_vkGetDeviceQueue)addrs->pvkGetDeviceQueue)(device, queueFamilyIndex, queueIndex, pQueue));
-}
-VkResult vkAllocateDescriptorSets(vksProcAddr* addrs, VkDevice device, VkDescriptorSetAllocateInfo* pAllocateInfo, VkDescriptorSet* pDescriptorSets) {
-	VkResult ret = (((PFN_vkAllocateDescriptorSets)addrs->pvkAllocateDescriptorSets)(device, pAllocateInfo, pDescriptorSets));
+VkResult vkMergePipelineCaches(vksProcAddr* addrs, VkDevice device, VkPipelineCache dstCache, uint32_t srcCacheCount, VkPipelineCache* pSrcCaches) {
+	VkResult ret = (((PFN_vkMergePipelineCaches)addrs->pvkMergePipelineCaches)(device, dstCache, srcCacheCount, pSrcCaches));
 	return ret;
 }
-VkResult vkQueueSubmit(vksProcAddr* addrs, VkQueue queue, uint32_t submitCount, VkSubmitInfo* pSubmits, VkFence fence) {
-	VkResult ret = (((PFN_vkQueueSubmit)addrs->pvkQueueSubmit)(queue, submitCount, pSubmits, fence));
+void vkGetDeviceMemoryCommitment(vksProcAddr* addrs, VkDevice device, VkDeviceMemory memory, VkDeviceSize* pCommittedMemoryInBytes) {
+	(((PFN_vkGetDeviceMemoryCommitment)addrs->pvkGetDeviceMemoryCommitment)(device, memory, pCommittedMemoryInBytes));
+}
+VkResult vkCreateDescriptorPool(vksProcAddr* addrs, VkDevice device, VkDescriptorPoolCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkDescriptorPool* pDescriptorPool) {
+	VkResult ret = (((PFN_vkCreateDescriptorPool)addrs->pvkCreateDescriptorPool)(device, pCreateInfo, pAllocator, pDescriptorPool));
 	return ret;
 }
-VkResult vkQueueWaitIdle(vksProcAddr* addrs, VkQueue queue) {
-	VkResult ret = (((PFN_vkQueueWaitIdle)addrs->pvkQueueWaitIdle)(queue));
+VkResult vkGetPipelineCacheData(vksProcAddr* addrs, VkDevice device, VkPipelineCache pipelineCache, size_t* pDataSize, void* pData) {
+	VkResult ret = (((PFN_vkGetPipelineCacheData)addrs->pvkGetPipelineCacheData)(device, pipelineCache, pDataSize, pData));
 	return ret;
 }
-VkResult vkDeviceWaitIdle(vksProcAddr* addrs, VkDevice device) {
-	VkResult ret = (((PFN_vkDeviceWaitIdle)addrs->pvkDeviceWaitIdle)(device));
-	return ret;
+void vkDestroyDescriptorSetLayout(vksProcAddr* addrs, VkDevice device, VkDescriptorSetLayout descriptorSetLayout, VkAllocationCallbacks* pAllocator) {
+	(((PFN_vkDestroyDescriptorSetLayout)addrs->pvkDestroyDescriptorSetLayout)(device, descriptorSetLayout, pAllocator));
 }
-VkResult vkAllocateMemory(vksProcAddr* addrs, VkDevice device, VkMemoryAllocateInfo* pAllocateInfo, VkAllocationCallbacks* pAllocator, VkDeviceMemory* pMemory) {
-	VkResult ret = (((PFN_vkAllocateMemory)addrs->pvkAllocateMemory)(device, pAllocateInfo, pAllocator, pMemory));
-	return ret;
-}
-void vkFreeMemory(vksProcAddr* addrs, VkDevice device, VkDeviceMemory memory, VkAllocationCallbacks* pAllocator) {
-	(((PFN_vkFreeMemory)addrs->pvkFreeMemory)(device, memory, pAllocator));
-}
-VkResult vkMapMemory(vksProcAddr* addrs, VkDevice device, VkDeviceMemory memory, VkDeviceSize offset, VkDeviceSize size, VkMemoryMapFlags flags, void** ppData) {
-	VkResult ret = (((PFN_vkMapMemory)addrs->pvkMapMemory)(device, memory, offset, size, flags, ppData));
-	return ret;
-}
-void vkUnmapMemory(vksProcAddr* addrs, VkDevice device, VkDeviceMemory memory) {
-	(((PFN_vkUnmapMemory)addrs->pvkUnmapMemory)(device, memory));
-}
-VkResult vkFlushMappedMemoryRanges(vksProcAddr* addrs, VkDevice device, uint32_t memoryRangeCount, VkMappedMemoryRange* pMemoryRanges) {
-	VkResult ret = (((PFN_vkFlushMappedMemoryRanges)addrs->pvkFlushMappedMemoryRanges)(device, memoryRangeCount, pMemoryRanges));
+VkResult vkCreateDescriptorSetLayout(vksProcAddr* addrs, VkDevice device, VkDescriptorSetLayoutCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkDescriptorSetLayout* pSetLayout) {
+	VkResult ret = (((PFN_vkCreateDescriptorSetLayout)addrs->pvkCreateDescriptorSetLayout)(device, pCreateInfo, pAllocator, pSetLayout));
 	return ret;
 }
 VkResult vkInvalidateMappedMemoryRanges(vksProcAddr* addrs, VkDevice device, uint32_t memoryRangeCount, VkMappedMemoryRange* pMemoryRanges) {
 	VkResult ret = (((PFN_vkInvalidateMappedMemoryRanges)addrs->pvkInvalidateMappedMemoryRanges)(device, memoryRangeCount, pMemoryRanges));
 	return ret;
 }
-void vkGetDeviceMemoryCommitment(vksProcAddr* addrs, VkDevice device, VkDeviceMemory memory, VkDeviceSize* pCommittedMemoryInBytes) {
-	(((PFN_vkGetDeviceMemoryCommitment)addrs->pvkGetDeviceMemoryCommitment)(device, memory, pCommittedMemoryInBytes));
+void vkGetImageMemoryRequirements(vksProcAddr* addrs, VkDevice device, VkImage image, VkMemoryRequirements* pMemoryRequirements) {
+	(((PFN_vkGetImageMemoryRequirements)addrs->pvkGetImageMemoryRequirements)(device, image, pMemoryRequirements));
 }
-void vkDestroyPipeline(vksProcAddr* addrs, VkDevice device, VkPipeline pipeline, VkAllocationCallbacks* pAllocator) {
-	(((PFN_vkDestroyPipeline)addrs->pvkDestroyPipeline)(device, pipeline, pAllocator));
-}
-VkResult vkCreateComputePipelines(vksProcAddr* addrs, VkDevice device, VkPipelineCache pipelineCache, uint32_t createInfoCount, VkComputePipelineCreateInfo* pCreateInfos, VkAllocationCallbacks* pAllocator, VkPipeline* pPipelines) {
-	VkResult ret = (((PFN_vkCreateComputePipelines)addrs->pvkCreateComputePipelines)(device, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines));
+VkResult vkQueueWaitIdle(vksProcAddr* addrs, VkQueue queue) {
+	VkResult ret = (((PFN_vkQueueWaitIdle)addrs->pvkQueueWaitIdle)(queue));
 	return ret;
 }
-VkResult vkCreateGraphicsPipelines(vksProcAddr* addrs, VkDevice device, VkPipelineCache pipelineCache, uint32_t createInfoCount, VkGraphicsPipelineCreateInfo* pCreateInfos, VkAllocationCallbacks* pAllocator, VkPipeline* pPipelines) {
-	VkResult ret = (((PFN_vkCreateGraphicsPipelines)addrs->pvkCreateGraphicsPipelines)(device, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines));
+VkResult vkFlushMappedMemoryRanges(vksProcAddr* addrs, VkDevice device, uint32_t memoryRangeCount, VkMappedMemoryRange* pMemoryRanges) {
+	VkResult ret = (((PFN_vkFlushMappedMemoryRanges)addrs->pvkFlushMappedMemoryRanges)(device, memoryRangeCount, pMemoryRanges));
 	return ret;
 }
-VkResult vkBindBufferMemory(vksProcAddr* addrs, VkDevice device, VkBuffer buffer, VkDeviceMemory memory, VkDeviceSize memoryOffset) {
-	VkResult ret = (((PFN_vkBindBufferMemory)addrs->pvkBindBufferMemory)(device, buffer, memory, memoryOffset));
+void vkDestroyPipelineCache(vksProcAddr* addrs, VkDevice device, VkPipelineCache pipelineCache, VkAllocationCallbacks* pAllocator) {
+	(((PFN_vkDestroyPipelineCache)addrs->pvkDestroyPipelineCache)(device, pipelineCache, pAllocator));
+}
+void vkGetBufferMemoryRequirements(vksProcAddr* addrs, VkDevice device, VkBuffer buffer, VkMemoryRequirements* pMemoryRequirements) {
+	(((PFN_vkGetBufferMemoryRequirements)addrs->pvkGetBufferMemoryRequirements)(device, buffer, pMemoryRequirements));
+}
+VkResult vkCreateInstance(vksProcAddr* addrs, VkInstanceCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkInstance* pInstance) {
+	VkResult ret = (((PFN_vkCreateInstance)addrs->pvkCreateInstance)(pCreateInfo, pAllocator, pInstance));
 	return ret;
 }
-VkResult vkMergePipelineCaches(vksProcAddr* addrs, VkDevice device, VkPipelineCache dstCache, uint32_t srcCacheCount, VkPipelineCache* pSrcCaches) {
-	VkResult ret = (((PFN_vkMergePipelineCaches)addrs->pvkMergePipelineCaches)(device, dstCache, srcCacheCount, pSrcCaches));
+void vkDestroyInstance(vksProcAddr* addrs, VkInstance instance, VkAllocationCallbacks* pAllocator) {
+	(((PFN_vkDestroyInstance)addrs->pvkDestroyInstance)(instance, pAllocator));
+}
+void vkUnmapMemory(vksProcAddr* addrs, VkDevice device, VkDeviceMemory memory) {
+	(((PFN_vkUnmapMemory)addrs->pvkUnmapMemory)(device, memory));
+}
+VkResult vkCreatePipelineCache(vksProcAddr* addrs, VkDevice device, VkPipelineCacheCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkPipelineCache* pPipelineCache) {
+	VkResult ret = (((PFN_vkCreatePipelineCache)addrs->pvkCreatePipelineCache)(device, pCreateInfo, pAllocator, pPipelineCache));
+	return ret;
+}
+VkResult vkCreateSemaphore(vksProcAddr* addrs, VkDevice device, VkSemaphoreCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSemaphore* pSemaphore) {
+	VkResult ret = (((PFN_vkCreateSemaphore)addrs->pvkCreateSemaphore)(device, pCreateInfo, pAllocator, pSemaphore));
+	return ret;
+}
+void vkDestroyShaderModule(vksProcAddr* addrs, VkDevice device, VkShaderModule shaderModule, VkAllocationCallbacks* pAllocator) {
+	(((PFN_vkDestroyShaderModule)addrs->pvkDestroyShaderModule)(device, shaderModule, pAllocator));
+}
+VkResult vkEnumeratePhysicalDevices(vksProcAddr* addrs, VkInstance instance, uint32_t* pPhysicalDeviceCount, VkPhysicalDevice* pPhysicalDevices) {
+	VkResult ret = (((PFN_vkEnumeratePhysicalDevices)addrs->pvkEnumeratePhysicalDevices)(instance, pPhysicalDeviceCount, pPhysicalDevices));
+	return ret;
+}
+VkResult vkMapMemory(vksProcAddr* addrs, VkDevice device, VkDeviceMemory memory, VkDeviceSize offset, VkDeviceSize size, VkMemoryMapFlags flags, void** ppData) {
+	VkResult ret = (((PFN_vkMapMemory)addrs->pvkMapMemory)(device, memory, offset, size, flags, ppData));
 	return ret;
 }
 VkResult vkCreateCommandPool(vksProcAddr* addrs, VkDevice device, VkCommandPoolCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkCommandPool* pCommandPool) {
@@ -733,26 +734,25 @@ VkResult vkResetCommandPool(vksProcAddr* addrs, VkDevice device, VkCommandPool c
 	VkResult ret = (((PFN_vkResetCommandPool)addrs->pvkResetCommandPool)(device, commandPool, flags));
 	return ret;
 }
-VkResult vkGetPipelineCacheData(vksProcAddr* addrs, VkDevice device, VkPipelineCache pipelineCache, size_t* pDataSize, void* pData) {
-	VkResult ret = (((PFN_vkGetPipelineCacheData)addrs->pvkGetPipelineCacheData)(device, pipelineCache, pDataSize, pData));
+void vkGetPhysicalDeviceFeatures(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkPhysicalDeviceFeatures* pFeatures) {
+	(((PFN_vkGetPhysicalDeviceFeatures)addrs->pvkGetPhysicalDeviceFeatures)(physicalDevice, pFeatures));
+}
+void vkGetPhysicalDeviceFormatProperties(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkFormat format, VkFormatProperties* pFormatProperties) {
+	(((PFN_vkGetPhysicalDeviceFormatProperties)addrs->pvkGetPhysicalDeviceFormatProperties)(physicalDevice, format, pFormatProperties));
+}
+void vkFreeMemory(vksProcAddr* addrs, VkDevice device, VkDeviceMemory memory, VkAllocationCallbacks* pAllocator) {
+	(((PFN_vkFreeMemory)addrs->pvkFreeMemory)(device, memory, pAllocator));
+}
+VkResult vkCreatePipelineLayout(vksProcAddr* addrs, VkDevice device, VkPipelineLayoutCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkPipelineLayout* pPipelineLayout) {
+	VkResult ret = (((PFN_vkCreatePipelineLayout)addrs->pvkCreatePipelineLayout)(device, pCreateInfo, pAllocator, pPipelineLayout));
 	return ret;
 }
-void vkDestroyPipelineCache(vksProcAddr* addrs, VkDevice device, VkPipelineCache pipelineCache, VkAllocationCallbacks* pAllocator) {
-	(((PFN_vkDestroyPipelineCache)addrs->pvkDestroyPipelineCache)(device, pipelineCache, pAllocator));
+void vkDestroySampler(vksProcAddr* addrs, VkDevice device, VkSampler sampler, VkAllocationCallbacks* pAllocator) {
+	(((PFN_vkDestroySampler)addrs->pvkDestroySampler)(device, sampler, pAllocator));
 }
-VkResult vkCreatePipelineCache(vksProcAddr* addrs, VkDevice device, VkPipelineCacheCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkPipelineCache* pPipelineCache) {
-	VkResult ret = (((PFN_vkCreatePipelineCache)addrs->pvkCreatePipelineCache)(device, pCreateInfo, pAllocator, pPipelineCache));
+VkResult vkAllocateMemory(vksProcAddr* addrs, VkDevice device, VkMemoryAllocateInfo* pAllocateInfo, VkAllocationCallbacks* pAllocator, VkDeviceMemory* pMemory) {
+	VkResult ret = (((PFN_vkAllocateMemory)addrs->pvkAllocateMemory)(device, pAllocateInfo, pAllocator, pMemory));
 	return ret;
-}
-VkResult vkBindImageMemory(vksProcAddr* addrs, VkDevice device, VkImage image, VkDeviceMemory memory, VkDeviceSize memoryOffset) {
-	VkResult ret = (((PFN_vkBindImageMemory)addrs->pvkBindImageMemory)(device, image, memory, memoryOffset));
-	return ret;
-}
-void vkGetBufferMemoryRequirements(vksProcAddr* addrs, VkDevice device, VkBuffer buffer, VkMemoryRequirements* pMemoryRequirements) {
-	(((PFN_vkGetBufferMemoryRequirements)addrs->pvkGetBufferMemoryRequirements)(device, buffer, pMemoryRequirements));
-}
-void vkDestroyShaderModule(vksProcAddr* addrs, VkDevice device, VkShaderModule shaderModule, VkAllocationCallbacks* pAllocator) {
-	(((PFN_vkDestroyShaderModule)addrs->pvkDestroyShaderModule)(device, shaderModule, pAllocator));
 }
 VkResult vkAllocateCommandBuffers(vksProcAddr* addrs, VkDevice device, VkCommandBufferAllocateInfo* pAllocateInfo, VkCommandBuffer* pCommandBuffers) {
 	VkResult ret = (((PFN_vkAllocateCommandBuffers)addrs->pvkAllocateCommandBuffers)(device, pAllocateInfo, pCommandBuffers));
@@ -773,32 +773,26 @@ VkResult vkResetCommandBuffer(vksProcAddr* addrs, VkCommandBuffer commandBuffer,
 	VkResult ret = (((PFN_vkResetCommandBuffer)addrs->pvkResetCommandBuffer)(commandBuffer, flags));
 	return ret;
 }
-VkResult vkCreateShaderModule(vksProcAddr* addrs, VkDevice device, VkShaderModuleCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkShaderModule* pShaderModule) {
-	VkResult ret = (((PFN_vkCreateShaderModule)addrs->pvkCreateShaderModule)(device, pCreateInfo, pAllocator, pShaderModule));
+VkResult vkCreateSampler(vksProcAddr* addrs, VkDevice device, VkSamplerCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSampler* pSampler) {
+	VkResult ret = (((PFN_vkCreateSampler)addrs->pvkCreateSampler)(device, pCreateInfo, pAllocator, pSampler));
 	return ret;
 }
-void vkGetImageMemoryRequirements(vksProcAddr* addrs, VkDevice device, VkImage image, VkMemoryRequirements* pMemoryRequirements) {
-	(((PFN_vkGetImageMemoryRequirements)addrs->pvkGetImageMemoryRequirements)(device, image, pMemoryRequirements));
+void vkDestroySemaphore(vksProcAddr* addrs, VkDevice device, VkSemaphore semaphore, VkAllocationCallbacks* pAllocator) {
+	(((PFN_vkDestroySemaphore)addrs->pvkDestroySemaphore)(device, semaphore, pAllocator));
 }
-void vkGetImageSparseMemoryRequirements(vksProcAddr* addrs, VkDevice device, VkImage image, uint32_t* pSparseMemoryRequirementCount, VkSparseImageMemoryRequirements* pSparseMemoryRequirements) {
-	(((PFN_vkGetImageSparseMemoryRequirements)addrs->pvkGetImageSparseMemoryRequirements)(device, image, pSparseMemoryRequirementCount, pSparseMemoryRequirements));
-}
-void vkGetPhysicalDeviceSparseImageFormatProperties(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkSampleCountFlagBits samples, VkImageUsageFlags usage, VkImageTiling tiling, uint32_t* pPropertyCount, VkSparseImageFormatProperties* pProperties) {
-	(((PFN_vkGetPhysicalDeviceSparseImageFormatProperties)addrs->pvkGetPhysicalDeviceSparseImageFormatProperties)(physicalDevice, format, type, samples, usage, tiling, pPropertyCount, pProperties));
-}
-void vkCmdSetLineWidth(vksProcAddr* addrs, VkCommandBuffer commandBuffer, float lineWidth) {
-	(((PFN_vkCmdSetLineWidth)addrs->pvkCmdSetLineWidth)(commandBuffer, lineWidth));
-}
-VkResult vkQueueBindSparse(vksProcAddr* addrs, VkQueue queue, uint32_t bindInfoCount, VkBindSparseInfo* pBindInfo, VkFence fence) {
-	VkResult ret = (((PFN_vkQueueBindSparse)addrs->pvkQueueBindSparse)(queue, bindInfoCount, pBindInfo, fence));
+VkResult vkCreateBuffer(vksProcAddr* addrs, VkDevice device, VkBufferCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkBuffer* pBuffer) {
+	VkResult ret = (((PFN_vkCreateBuffer)addrs->pvkCreateBuffer)(device, pCreateInfo, pAllocator, pBuffer));
 	return ret;
 }
-void vkDestroyImageView(vksProcAddr* addrs, VkDevice device, VkImageView imageView, VkAllocationCallbacks* pAllocator) {
-	(((PFN_vkDestroyImageView)addrs->pvkDestroyImageView)(device, imageView, pAllocator));
+void vkDestroyDescriptorPool(vksProcAddr* addrs, VkDevice device, VkDescriptorPool descriptorPool, VkAllocationCallbacks* pAllocator) {
+	(((PFN_vkDestroyDescriptorPool)addrs->pvkDestroyDescriptorPool)(device, descriptorPool, pAllocator));
 }
-VkResult vkCreateImageView(vksProcAddr* addrs, VkDevice device, VkImageViewCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkImageView* pView) {
-	VkResult ret = (((PFN_vkCreateImageView)addrs->pvkCreateImageView)(device, pCreateInfo, pAllocator, pView));
+VkResult vkCreateFence(vksProcAddr* addrs, VkDevice device, VkFenceCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkFence* pFence) {
+	VkResult ret = (((PFN_vkCreateFence)addrs->pvkCreateFence)(device, pCreateInfo, pAllocator, pFence));
 	return ret;
+}
+void vkGetPhysicalDeviceProperties(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkPhysicalDeviceProperties* pProperties) {
+	(((PFN_vkGetPhysicalDeviceProperties)addrs->pvkGetPhysicalDeviceProperties)(physicalDevice, pProperties));
 }
 void vkGetImageSubresourceLayout(vksProcAddr* addrs, VkDevice device, VkImage image, VkImageSubresource* pSubresource, VkSubresourceLayout* pLayout) {
 	(((PFN_vkGetImageSubresourceLayout)addrs->pvkGetImageSubresourceLayout)(device, image, pSubresource, pLayout));
@@ -806,8 +800,15 @@ void vkGetImageSubresourceLayout(vksProcAddr* addrs, VkDevice device, VkImage im
 void vkDestroyImage(vksProcAddr* addrs, VkDevice device, VkImage image, VkAllocationCallbacks* pAllocator) {
 	(((PFN_vkDestroyImage)addrs->pvkDestroyImage)(device, image, pAllocator));
 }
+void vkGetDeviceQueue(vksProcAddr* addrs, VkDevice device, uint32_t queueFamilyIndex, uint32_t queueIndex, VkQueue* pQueue) {
+	(((PFN_vkGetDeviceQueue)addrs->pvkGetDeviceQueue)(device, queueFamilyIndex, queueIndex, pQueue));
+}
 VkResult vkCreateImage(vksProcAddr* addrs, VkDevice device, VkImageCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkImage* pImage) {
 	VkResult ret = (((PFN_vkCreateImage)addrs->pvkCreateImage)(device, pCreateInfo, pAllocator, pImage));
+	return ret;
+}
+VkResult vkQueueSubmit(vksProcAddr* addrs, VkQueue queue, uint32_t submitCount, VkSubmitInfo* pSubmits, VkFence fence) {
+	VkResult ret = (((PFN_vkQueueSubmit)addrs->pvkQueueSubmit)(queue, submitCount, pSubmits, fence));
 	return ret;
 }
 void vkCmdBindPipeline(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkPipelineBindPoint pipelineBindPoint, VkPipeline pipeline) {
@@ -819,8 +820,8 @@ void vkCmdSetViewport(vksProcAddr* addrs, VkCommandBuffer commandBuffer, uint32_
 void vkCmdSetScissor(vksProcAddr* addrs, VkCommandBuffer commandBuffer, uint32_t firstScissor, uint32_t scissorCount, VkRect2D* pScissors) {
 	(((PFN_vkCmdSetScissor)addrs->pvkCmdSetScissor)(commandBuffer, firstScissor, scissorCount, pScissors));
 }
-void vkDestroyBufferView(vksProcAddr* addrs, VkDevice device, VkBufferView bufferView, VkAllocationCallbacks* pAllocator) {
-	(((PFN_vkDestroyBufferView)addrs->pvkDestroyBufferView)(device, bufferView, pAllocator));
+void vkCmdSetLineWidth(vksProcAddr* addrs, VkCommandBuffer commandBuffer, float lineWidth) {
+	(((PFN_vkCmdSetLineWidth)addrs->pvkCmdSetLineWidth)(commandBuffer, lineWidth));
 }
 void vkCmdSetDepthBias(vksProcAddr* addrs, VkCommandBuffer commandBuffer, float depthBiasConstantFactor, float depthBiasClamp, float depthBiasSlopeFactor) {
 	(((PFN_vkCmdSetDepthBias)addrs->pvkCmdSetDepthBias)(commandBuffer, depthBiasConstantFactor, depthBiasClamp, depthBiasSlopeFactor));
@@ -888,9 +889,8 @@ void vkCmdUpdateBuffer(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkBuff
 void vkCmdFillBuffer(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkBuffer dstBuffer, VkDeviceSize dstOffset, VkDeviceSize size, uint32_t data) {
 	(((PFN_vkCmdFillBuffer)addrs->pvkCmdFillBuffer)(commandBuffer, dstBuffer, dstOffset, size, data));
 }
-VkResult vkCreateBufferView(vksProcAddr* addrs, VkDevice device, VkBufferViewCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkBufferView* pView) {
-	VkResult ret = (((PFN_vkCreateBufferView)addrs->pvkCreateBufferView)(device, pCreateInfo, pAllocator, pView));
-	return ret;
+void vkCmdClearColorImage(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, VkClearColorValue* pColor, uint32_t rangeCount, VkImageSubresourceRange* pRanges) {
+	(((PFN_vkCmdClearColorImage)addrs->pvkCmdClearColorImage)(commandBuffer, image, imageLayout, pColor, rangeCount, pRanges));
 }
 void vkCmdClearDepthStencilImage(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, VkClearDepthStencilValue* pDepthStencil, uint32_t rangeCount, VkImageSubresourceRange* pRanges) {
 	(((PFN_vkCmdClearDepthStencilImage)addrs->pvkCmdClearDepthStencilImage)(commandBuffer, image, imageLayout, pDepthStencil, rangeCount, pRanges));
@@ -943,48 +943,19 @@ void vkCmdEndRenderPass(vksProcAddr* addrs, VkCommandBuffer commandBuffer) {
 void vkCmdExecuteCommands(vksProcAddr* addrs, VkCommandBuffer commandBuffer, uint32_t commandBufferCount, VkCommandBuffer* pCommandBuffers) {
 	(((PFN_vkCmdExecuteCommands)addrs->pvkCmdExecuteCommands)(commandBuffer, commandBufferCount, pCommandBuffers));
 }
-VkResult vkCreateFence(vksProcAddr* addrs, VkDevice device, VkFenceCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkFence* pFence) {
-	VkResult ret = (((PFN_vkCreateFence)addrs->pvkCreateFence)(device, pCreateInfo, pAllocator, pFence));
-	return ret;
-}
-void vkDestroyBuffer(vksProcAddr* addrs, VkDevice device, VkBuffer buffer, VkAllocationCallbacks* pAllocator) {
-	(((PFN_vkDestroyBuffer)addrs->pvkDestroyBuffer)(device, buffer, pAllocator));
-}
-VkResult vkCreateBuffer(vksProcAddr* addrs, VkDevice device, VkBufferCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkBuffer* pBuffer) {
-	VkResult ret = (((PFN_vkCreateBuffer)addrs->pvkCreateBuffer)(device, pCreateInfo, pAllocator, pBuffer));
-	return ret;
-}
-void vkDestroyFence(vksProcAddr* addrs, VkDevice device, VkFence fence, VkAllocationCallbacks* pAllocator) {
-	(((PFN_vkDestroyFence)addrs->pvkDestroyFence)(device, fence, pAllocator));
-}
-VkResult vkResetFences(vksProcAddr* addrs, VkDevice device, uint32_t fenceCount, VkFence* pFences) {
-	VkResult ret = (((PFN_vkResetFences)addrs->pvkResetFences)(device, fenceCount, pFences));
-	return ret;
-}
-VkResult vkGetFenceStatus(vksProcAddr* addrs, VkDevice device, VkFence fence) {
-	VkResult ret = (((PFN_vkGetFenceStatus)addrs->pvkGetFenceStatus)(device, fence));
-	return ret;
-}
-VkResult vkCreateSemaphore(vksProcAddr* addrs, VkDevice device, VkSemaphoreCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSemaphore* pSemaphore) {
-	VkResult ret = (((PFN_vkCreateSemaphore)addrs->pvkCreateSemaphore)(device, pCreateInfo, pAllocator, pSemaphore));
-	return ret;
-}
-void vkDestroySemaphore(vksProcAddr* addrs, VkDevice device, VkSemaphore semaphore, VkAllocationCallbacks* pAllocator) {
-	(((PFN_vkDestroySemaphore)addrs->pvkDestroySemaphore)(device, semaphore, pAllocator));
-}
-VkResult vkGetQueryPoolResults(vksProcAddr* addrs, VkDevice device, VkQueryPool queryPool, uint32_t firstQuery, uint32_t queryCount, size_t dataSize, void* pData, VkDeviceSize stride, VkQueryResultFlags flags) {
-	VkResult ret = (((PFN_vkGetQueryPoolResults)addrs->pvkGetQueryPoolResults)(device, queryPool, firstQuery, queryCount, dataSize, pData, stride, flags));
-	return ret;
-}
-void vkDestroyQueryPool(vksProcAddr* addrs, VkDevice device, VkQueryPool queryPool, VkAllocationCallbacks* pAllocator) {
-	(((PFN_vkDestroyQueryPool)addrs->pvkDestroyQueryPool)(device, queryPool, pAllocator));
-}
-VkResult vkCreateQueryPool(vksProcAddr* addrs, VkDevice device, VkQueryPoolCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkQueryPool* pQueryPool) {
-	VkResult ret = (((PFN_vkCreateQueryPool)addrs->pvkCreateQueryPool)(device, pCreateInfo, pAllocator, pQueryPool));
-	return ret;
-}
 VkResult vkCreateEvent(vksProcAddr* addrs, VkDevice device, VkEventCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkEvent* pEvent) {
 	VkResult ret = (((PFN_vkCreateEvent)addrs->pvkCreateEvent)(device, pCreateInfo, pAllocator, pEvent));
+	return ret;
+}
+void vkDestroyBufferView(vksProcAddr* addrs, VkDevice device, VkBufferView bufferView, VkAllocationCallbacks* pAllocator) {
+	(((PFN_vkDestroyBufferView)addrs->pvkDestroyBufferView)(device, bufferView, pAllocator));
+}
+VkResult vkCreateBufferView(vksProcAddr* addrs, VkDevice device, VkBufferViewCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkBufferView* pView) {
+	VkResult ret = (((PFN_vkCreateBufferView)addrs->pvkCreateBufferView)(device, pCreateInfo, pAllocator, pView));
+	return ret;
+}
+VkResult vkGetPhysicalDeviceImageFormatProperties(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkFormat format, VkImageType type, VkImageTiling tiling, VkImageUsageFlags usage, VkImageCreateFlags flags, VkImageFormatProperties* pImageFormatProperties) {
+	VkResult ret = (((PFN_vkGetPhysicalDeviceImageFormatProperties)addrs->pvkGetPhysicalDeviceImageFormatProperties)(physicalDevice, format, type, tiling, usage, flags, pImageFormatProperties));
 	return ret;
 }
 void vkDestroyEvent(vksProcAddr* addrs, VkDevice device, VkEvent event, VkAllocationCallbacks* pAllocator) {
@@ -994,25 +965,73 @@ VkResult vkGetEventStatus(vksProcAddr* addrs, VkDevice device, VkEvent event) {
 	VkResult ret = (((PFN_vkGetEventStatus)addrs->pvkGetEventStatus)(device, event));
 	return ret;
 }
+void vkDestroyPipelineLayout(vksProcAddr* addrs, VkDevice device, VkPipelineLayout pipelineLayout, VkAllocationCallbacks* pAllocator) {
+	(((PFN_vkDestroyPipelineLayout)addrs->pvkDestroyPipelineLayout)(device, pipelineLayout, pAllocator));
+}
+void vkDestroyBuffer(vksProcAddr* addrs, VkDevice device, VkBuffer buffer, VkAllocationCallbacks* pAllocator) {
+	(((PFN_vkDestroyBuffer)addrs->pvkDestroyBuffer)(device, buffer, pAllocator));
+}
+void vkDestroyImageView(vksProcAddr* addrs, VkDevice device, VkImageView imageView, VkAllocationCallbacks* pAllocator) {
+	(((PFN_vkDestroyImageView)addrs->pvkDestroyImageView)(device, imageView, pAllocator));
+}
+VkResult vkSetEvent(vksProcAddr* addrs, VkDevice device, VkEvent event) {
+	VkResult ret = (((PFN_vkSetEvent)addrs->pvkSetEvent)(device, event));
+	return ret;
+}
 VkResult vkResetEvent(vksProcAddr* addrs, VkDevice device, VkEvent event) {
 	VkResult ret = (((PFN_vkResetEvent)addrs->pvkResetEvent)(device, event));
 	return ret;
 }
-void vkCmdClearColorImage(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkImage image, VkImageLayout imageLayout, VkClearColorValue* pColor, uint32_t rangeCount, VkImageSubresourceRange* pRanges) {
-	(((PFN_vkCmdClearColorImage)addrs->pvkCmdClearColorImage)(commandBuffer, image, imageLayout, pColor, rangeCount, pRanges));
+VkResult vkCreateDevice(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkDeviceCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkDevice* pDevice) {
+	VkResult ret = (((PFN_vkCreateDevice)addrs->pvkCreateDevice)(physicalDevice, pCreateInfo, pAllocator, pDevice));
+	return ret;
+}
+VkResult vkCreateQueryPool(vksProcAddr* addrs, VkDevice device, VkQueryPoolCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkQueryPool* pQueryPool) {
+	VkResult ret = (((PFN_vkCreateQueryPool)addrs->pvkCreateQueryPool)(device, pCreateInfo, pAllocator, pQueryPool));
+	return ret;
+}
+void vkDestroyDevice(vksProcAddr* addrs, VkDevice device, VkAllocationCallbacks* pAllocator) {
+	(((PFN_vkDestroyDevice)addrs->pvkDestroyDevice)(device, pAllocator));
+}
+VkResult vkDeviceWaitIdle(vksProcAddr* addrs, VkDevice device) {
+	VkResult ret = (((PFN_vkDeviceWaitIdle)addrs->pvkDeviceWaitIdle)(device));
+	return ret;
+}
+VkResult vkGetQueryPoolResults(vksProcAddr* addrs, VkDevice device, VkQueryPool queryPool, uint32_t firstQuery, uint32_t queryCount, size_t dataSize, void* pData, VkDeviceSize stride, VkQueryResultFlags flags) {
+	VkResult ret = (((PFN_vkGetQueryPoolResults)addrs->pvkGetQueryPoolResults)(device, queryPool, firstQuery, queryCount, dataSize, pData, stride, flags));
+	return ret;
+}
+VkResult vkEnumeratePhysicalDeviceGroups(vksProcAddr* addrs, VkInstance instance, uint32_t* pPhysicalDeviceGroupCount, VkPhysicalDeviceGroupProperties* pPhysicalDeviceGroupProperties) {
+	VkResult ret = (((PFN_vkEnumeratePhysicalDeviceGroups)addrs->pvkEnumeratePhysicalDeviceGroups)(instance, pPhysicalDeviceGroupCount, pPhysicalDeviceGroupProperties));
+	return ret;
+}
+void vkGetPhysicalDeviceExternalBufferProperties(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalBufferInfo* pExternalBufferInfo, VkExternalBufferProperties* pExternalBufferProperties) {
+	(((PFN_vkGetPhysicalDeviceExternalBufferProperties)addrs->pvkGetPhysicalDeviceExternalBufferProperties)(physicalDevice, pExternalBufferInfo, pExternalBufferProperties));
 }
 void vkUpdateDescriptorSetWithTemplate(vksProcAddr* addrs, VkDevice device, VkDescriptorSet descriptorSet, VkDescriptorUpdateTemplate descriptorUpdateTemplate, void* pData) {
 	(((PFN_vkUpdateDescriptorSetWithTemplate)addrs->pvkUpdateDescriptorSetWithTemplate)(device, descriptorSet, descriptorUpdateTemplate, pData));
 }
-void vkDestroySamplerYcbcrConversion(vksProcAddr* addrs, VkDevice device, VkSamplerYcbcrConversion ycbcrConversion, VkAllocationCallbacks* pAllocator) {
-	(((PFN_vkDestroySamplerYcbcrConversion)addrs->pvkDestroySamplerYcbcrConversion)(device, ycbcrConversion, pAllocator));
+void vkGetPhysicalDeviceExternalFenceProperties(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalFenceInfo* pExternalFenceInfo, VkExternalFenceProperties* pExternalFenceProperties) {
+	(((PFN_vkGetPhysicalDeviceExternalFenceProperties)addrs->pvkGetPhysicalDeviceExternalFenceProperties)(physicalDevice, pExternalFenceInfo, pExternalFenceProperties));
+}
+void vkCmdDispatchBase(vksProcAddr* addrs, VkCommandBuffer commandBuffer, uint32_t baseGroupX, uint32_t baseGroupY, uint32_t baseGroupZ, uint32_t groupCountX, uint32_t groupCountY, uint32_t groupCountZ) {
+	(((PFN_vkCmdDispatchBase)addrs->pvkCmdDispatchBase)(commandBuffer, baseGroupX, baseGroupY, baseGroupZ, groupCountX, groupCountY, groupCountZ));
+}
+void vkCmdSetDeviceMask(vksProcAddr* addrs, VkCommandBuffer commandBuffer, uint32_t deviceMask) {
+	(((PFN_vkCmdSetDeviceMask)addrs->pvkCmdSetDeviceMask)(commandBuffer, deviceMask));
+}
+void vkGetDeviceGroupPeerMemoryFeatures(vksProcAddr* addrs, VkDevice device, uint32_t heapIndex, uint32_t localDeviceIndex, uint32_t remoteDeviceIndex, VkPeerMemoryFeatureFlags* pPeerMemoryFeatures) {
+	(((PFN_vkGetDeviceGroupPeerMemoryFeatures)addrs->pvkGetDeviceGroupPeerMemoryFeatures)(device, heapIndex, localDeviceIndex, remoteDeviceIndex, pPeerMemoryFeatures));
+}
+void vkDestroyDescriptorUpdateTemplate(vksProcAddr* addrs, VkDevice device, VkDescriptorUpdateTemplate descriptorUpdateTemplate, VkAllocationCallbacks* pAllocator) {
+	(((PFN_vkDestroyDescriptorUpdateTemplate)addrs->pvkDestroyDescriptorUpdateTemplate)(device, descriptorUpdateTemplate, pAllocator));
 }
 VkResult vkCreateDescriptorUpdateTemplate(vksProcAddr* addrs, VkDevice device, VkDescriptorUpdateTemplateCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkDescriptorUpdateTemplate* pDescriptorUpdateTemplate) {
 	VkResult ret = (((PFN_vkCreateDescriptorUpdateTemplate)addrs->pvkCreateDescriptorUpdateTemplate)(device, pCreateInfo, pAllocator, pDescriptorUpdateTemplate));
 	return ret;
 }
-void vkGetPhysicalDeviceExternalFenceProperties(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalFenceInfo* pExternalFenceInfo, VkExternalFenceProperties* pExternalFenceProperties) {
-	(((PFN_vkGetPhysicalDeviceExternalFenceProperties)addrs->pvkGetPhysicalDeviceExternalFenceProperties)(physicalDevice, pExternalFenceInfo, pExternalFenceProperties));
+void vkDestroySamplerYcbcrConversion(vksProcAddr* addrs, VkDevice device, VkSamplerYcbcrConversion ycbcrConversion, VkAllocationCallbacks* pAllocator) {
+	(((PFN_vkDestroySamplerYcbcrConversion)addrs->pvkDestroySamplerYcbcrConversion)(device, ycbcrConversion, pAllocator));
 }
 VkResult vkCreateSamplerYcbcrConversion(vksProcAddr* addrs, VkDevice device, VkSamplerYcbcrConversionCreateInfo* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSamplerYcbcrConversion* pYcbcrConversion) {
 	VkResult ret = (((PFN_vkCreateSamplerYcbcrConversion)addrs->pvkCreateSamplerYcbcrConversion)(device, pCreateInfo, pAllocator, pYcbcrConversion));
@@ -1021,17 +1040,44 @@ VkResult vkCreateSamplerYcbcrConversion(vksProcAddr* addrs, VkDevice device, VkS
 void vkGetDeviceQueue2(vksProcAddr* addrs, VkDevice device, VkDeviceQueueInfo2* pQueueInfo, VkQueue* pQueue) {
 	(((PFN_vkGetDeviceQueue2)addrs->pvkGetDeviceQueue2)(device, pQueueInfo, pQueue));
 }
+void vkGetImageMemoryRequirements2(vksProcAddr* addrs, VkDevice device, VkImageMemoryRequirementsInfo2* pInfo, VkMemoryRequirements2* pMemoryRequirements) {
+	(((PFN_vkGetImageMemoryRequirements2)addrs->pvkGetImageMemoryRequirements2)(device, pInfo, pMemoryRequirements));
+}
+void vkGetBufferMemoryRequirements2(vksProcAddr* addrs, VkDevice device, VkBufferMemoryRequirementsInfo2* pInfo, VkMemoryRequirements2* pMemoryRequirements) {
+	(((PFN_vkGetBufferMemoryRequirements2)addrs->pvkGetBufferMemoryRequirements2)(device, pInfo, pMemoryRequirements));
+}
+void vkGetImageSparseMemoryRequirements2(vksProcAddr* addrs, VkDevice device, VkImageSparseMemoryRequirementsInfo2* pInfo, uint32_t* pSparseMemoryRequirementCount, VkSparseImageMemoryRequirements2* pSparseMemoryRequirements) {
+	(((PFN_vkGetImageSparseMemoryRequirements2)addrs->pvkGetImageSparseMemoryRequirements2)(device, pInfo, pSparseMemoryRequirementCount, pSparseMemoryRequirements));
+}
 void vkTrimCommandPool(vksProcAddr* addrs, VkDevice device, VkCommandPool commandPool, VkCommandPoolTrimFlags flags) {
 	(((PFN_vkTrimCommandPool)addrs->pvkTrimCommandPool)(device, commandPool, flags));
 }
+void vkGetPhysicalDeviceExternalSemaphoreProperties(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalSemaphoreInfo* pExternalSemaphoreInfo, VkExternalSemaphoreProperties* pExternalSemaphoreProperties) {
+	(((PFN_vkGetPhysicalDeviceExternalSemaphoreProperties)addrs->pvkGetPhysicalDeviceExternalSemaphoreProperties)(physicalDevice, pExternalSemaphoreInfo, pExternalSemaphoreProperties));
+}
+VkResult vkBindImageMemory2(vksProcAddr* addrs, VkDevice device, uint32_t bindInfoCount, VkBindImageMemoryInfo* pBindInfos) {
+	VkResult ret = (((PFN_vkBindImageMemory2)addrs->pvkBindImageMemory2)(device, bindInfoCount, pBindInfos));
+	return ret;
+}
+VkResult vkBindBufferMemory2(vksProcAddr* addrs, VkDevice device, uint32_t bindInfoCount, VkBindBufferMemoryInfo* pBindInfos) {
+	VkResult ret = (((PFN_vkBindBufferMemory2)addrs->pvkBindBufferMemory2)(device, bindInfoCount, pBindInfos));
+	return ret;
+}
 void vkGetPhysicalDeviceSparseImageFormatProperties2(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkPhysicalDeviceSparseImageFormatInfo2* pFormatInfo, uint32_t* pPropertyCount, VkSparseImageFormatProperties2* pProperties) {
 	(((PFN_vkGetPhysicalDeviceSparseImageFormatProperties2)addrs->pvkGetPhysicalDeviceSparseImageFormatProperties2)(physicalDevice, pFormatInfo, pPropertyCount, pProperties));
+}
+VkResult vkEnumerateInstanceVersion(vksProcAddr* addrs, uint32_t* pApiVersion) {
+	VkResult ret = (((PFN_vkEnumerateInstanceVersion)addrs->pvkEnumerateInstanceVersion)(pApiVersion));
+	return ret;
 }
 void vkGetPhysicalDeviceMemoryProperties2(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkPhysicalDeviceMemoryProperties2* pMemoryProperties) {
 	(((PFN_vkGetPhysicalDeviceMemoryProperties2)addrs->pvkGetPhysicalDeviceMemoryProperties2)(physicalDevice, pMemoryProperties));
 }
 void vkGetPhysicalDeviceQueueFamilyProperties2(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, uint32_t* pQueueFamilyPropertyCount, VkQueueFamilyProperties2* pQueueFamilyProperties) {
 	(((PFN_vkGetPhysicalDeviceQueueFamilyProperties2)addrs->pvkGetPhysicalDeviceQueueFamilyProperties2)(physicalDevice, pQueueFamilyPropertyCount, pQueueFamilyProperties));
+}
+void vkGetDescriptorSetLayoutSupport(vksProcAddr* addrs, VkDevice device, VkDescriptorSetLayoutCreateInfo* pCreateInfo, VkDescriptorSetLayoutSupport* pSupport) {
+	(((PFN_vkGetDescriptorSetLayoutSupport)addrs->pvkGetDescriptorSetLayoutSupport)(device, pCreateInfo, pSupport));
 }
 VkResult vkGetPhysicalDeviceImageFormatProperties2(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkPhysicalDeviceImageFormatInfo2* pImageFormatInfo, VkImageFormatProperties2* pImageFormatProperties) {
 	VkResult ret = (((PFN_vkGetPhysicalDeviceImageFormatProperties2)addrs->pvkGetPhysicalDeviceImageFormatProperties2)(physicalDevice, pImageFormatInfo, pImageFormatProperties));
@@ -1046,68 +1092,22 @@ void vkGetPhysicalDeviceProperties2(vksProcAddr* addrs, VkPhysicalDevice physica
 void vkGetPhysicalDeviceFeatures2(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkPhysicalDeviceFeatures2* pFeatures) {
 	(((PFN_vkGetPhysicalDeviceFeatures2)addrs->pvkGetPhysicalDeviceFeatures2)(physicalDevice, pFeatures));
 }
-void vkGetImageSparseMemoryRequirements2(vksProcAddr* addrs, VkDevice device, VkImageSparseMemoryRequirementsInfo2* pInfo, uint32_t* pSparseMemoryRequirementCount, VkSparseImageMemoryRequirements2* pSparseMemoryRequirements) {
-	(((PFN_vkGetImageSparseMemoryRequirements2)addrs->pvkGetImageSparseMemoryRequirements2)(device, pInfo, pSparseMemoryRequirementCount, pSparseMemoryRequirements));
-}
-void vkGetBufferMemoryRequirements2(vksProcAddr* addrs, VkDevice device, VkBufferMemoryRequirementsInfo2* pInfo, VkMemoryRequirements2* pMemoryRequirements) {
-	(((PFN_vkGetBufferMemoryRequirements2)addrs->pvkGetBufferMemoryRequirements2)(device, pInfo, pMemoryRequirements));
-}
-void vkGetPhysicalDeviceExternalSemaphoreProperties(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalSemaphoreInfo* pExternalSemaphoreInfo, VkExternalSemaphoreProperties* pExternalSemaphoreProperties) {
-	(((PFN_vkGetPhysicalDeviceExternalSemaphoreProperties)addrs->pvkGetPhysicalDeviceExternalSemaphoreProperties)(physicalDevice, pExternalSemaphoreInfo, pExternalSemaphoreProperties));
-}
-void vkGetImageMemoryRequirements2(vksProcAddr* addrs, VkDevice device, VkImageMemoryRequirementsInfo2* pInfo, VkMemoryRequirements2* pMemoryRequirements) {
-	(((PFN_vkGetImageMemoryRequirements2)addrs->pvkGetImageMemoryRequirements2)(device, pInfo, pMemoryRequirements));
-}
-void vkDestroyDescriptorUpdateTemplate(vksProcAddr* addrs, VkDevice device, VkDescriptorUpdateTemplate descriptorUpdateTemplate, VkAllocationCallbacks* pAllocator) {
-	(((PFN_vkDestroyDescriptorUpdateTemplate)addrs->pvkDestroyDescriptorUpdateTemplate)(device, descriptorUpdateTemplate, pAllocator));
-}
-VkResult vkEnumeratePhysicalDeviceGroups(vksProcAddr* addrs, VkInstance instance, uint32_t* pPhysicalDeviceGroupCount, VkPhysicalDeviceGroupProperties* pPhysicalDeviceGroupProperties) {
-	VkResult ret = (((PFN_vkEnumeratePhysicalDeviceGroups)addrs->pvkEnumeratePhysicalDeviceGroups)(instance, pPhysicalDeviceGroupCount, pPhysicalDeviceGroupProperties));
-	return ret;
-}
-void vkCmdDispatchBase(vksProcAddr* addrs, VkCommandBuffer commandBuffer, uint32_t baseGroupX, uint32_t baseGroupY, uint32_t baseGroupZ, uint32_t groupCountX, uint32_t groupCountY, uint32_t groupCountZ) {
-	(((PFN_vkCmdDispatchBase)addrs->pvkCmdDispatchBase)(commandBuffer, baseGroupX, baseGroupY, baseGroupZ, groupCountX, groupCountY, groupCountZ));
-}
-void vkCmdSetDeviceMask(vksProcAddr* addrs, VkCommandBuffer commandBuffer, uint32_t deviceMask) {
-	(((PFN_vkCmdSetDeviceMask)addrs->pvkCmdSetDeviceMask)(commandBuffer, deviceMask));
-}
-void vkGetDeviceGroupPeerMemoryFeatures(vksProcAddr* addrs, VkDevice device, uint32_t heapIndex, uint32_t localDeviceIndex, uint32_t remoteDeviceIndex, VkPeerMemoryFeatureFlags* pPeerMemoryFeatures) {
-	(((PFN_vkGetDeviceGroupPeerMemoryFeatures)addrs->pvkGetDeviceGroupPeerMemoryFeatures)(device, heapIndex, localDeviceIndex, remoteDeviceIndex, pPeerMemoryFeatures));
-}
-void vkGetDescriptorSetLayoutSupport(vksProcAddr* addrs, VkDevice device, VkDescriptorSetLayoutCreateInfo* pCreateInfo, VkDescriptorSetLayoutSupport* pSupport) {
-	(((PFN_vkGetDescriptorSetLayoutSupport)addrs->pvkGetDescriptorSetLayoutSupport)(device, pCreateInfo, pSupport));
-}
-VkResult vkBindImageMemory2(vksProcAddr* addrs, VkDevice device, uint32_t bindInfoCount, VkBindImageMemoryInfo* pBindInfos) {
-	VkResult ret = (((PFN_vkBindImageMemory2)addrs->pvkBindImageMemory2)(device, bindInfoCount, pBindInfos));
-	return ret;
-}
-VkResult vkBindBufferMemory2(vksProcAddr* addrs, VkDevice device, uint32_t bindInfoCount, VkBindBufferMemoryInfo* pBindInfos) {
-	VkResult ret = (((PFN_vkBindBufferMemory2)addrs->pvkBindBufferMemory2)(device, bindInfoCount, pBindInfos));
-	return ret;
-}
-VkResult vkEnumerateInstanceVersion(vksProcAddr* addrs, uint32_t* pApiVersion) {
-	VkResult ret = (((PFN_vkEnumerateInstanceVersion)addrs->pvkEnumerateInstanceVersion)(pApiVersion));
-	return ret;
-}
-void vkGetPhysicalDeviceExternalBufferProperties(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkPhysicalDeviceExternalBufferInfo* pExternalBufferInfo, VkExternalBufferProperties* pExternalBufferProperties) {
-	(((PFN_vkGetPhysicalDeviceExternalBufferProperties)addrs->pvkGetPhysicalDeviceExternalBufferProperties)(physicalDevice, pExternalBufferInfo, pExternalBufferProperties));
-}
-VkResult vkWaitSemaphores(vksProcAddr* addrs, VkDevice device, VkSemaphoreWaitInfo* pWaitInfo, uint64_t timeout) {
-	VkResult ret = (((PFN_vkWaitSemaphores)addrs->pvkWaitSemaphores)(device, pWaitInfo, timeout));
+VkResult vkCreateRenderPass2(vksProcAddr* addrs, VkDevice device, VkRenderPassCreateInfo2* pCreateInfo, VkAllocationCallbacks* pAllocator, VkRenderPass* pRenderPass) {
+	VkResult ret = (((PFN_vkCreateRenderPass2)addrs->pvkCreateRenderPass2)(device, pCreateInfo, pAllocator, pRenderPass));
 	return ret;
 }
 void vkResetQueryPool(vksProcAddr* addrs, VkDevice device, VkQueryPool queryPool, uint32_t firstQuery, uint32_t queryCount) {
 	(((PFN_vkResetQueryPool)addrs->pvkResetQueryPool)(device, queryPool, firstQuery, queryCount));
 }
-VkResult vkGetSemaphoreCounterValue(vksProcAddr* addrs, VkDevice device, VkSemaphore semaphore, uint64_t* pValue) {
-	VkResult ret = (((PFN_vkGetSemaphoreCounterValue)addrs->pvkGetSemaphoreCounterValue)(device, semaphore, pValue));
+void vkCmdDrawIndirectCount(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, VkBuffer countBuffer, VkDeviceSize countBufferOffset, uint32_t maxDrawCount, uint32_t stride) {
+	(((PFN_vkCmdDrawIndirectCount)addrs->pvkCmdDrawIndirectCount)(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride));
+}
+void vkCmdDrawIndexedIndirectCount(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, VkBuffer countBuffer, VkDeviceSize countBufferOffset, uint32_t maxDrawCount, uint32_t stride) {
+	(((PFN_vkCmdDrawIndexedIndirectCount)addrs->pvkCmdDrawIndexedIndirectCount)(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride));
+}
+VkResult vkSignalSemaphore(vksProcAddr* addrs, VkDevice device, VkSemaphoreSignalInfo* pSignalInfo) {
+	VkResult ret = (((PFN_vkSignalSemaphore)addrs->pvkSignalSemaphore)(device, pSignalInfo));
 	return ret;
-}
-void vkCmdBeginRenderPass2(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkRenderPassBeginInfo* pRenderPassBegin, VkSubpassBeginInfo* pSubpassBeginInfo) {
-	(((PFN_vkCmdBeginRenderPass2)addrs->pvkCmdBeginRenderPass2)(commandBuffer, pRenderPassBegin, pSubpassBeginInfo));
-}
-void vkCmdEndRenderPass2(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkSubpassEndInfo* pSubpassEndInfo) {
-	(((PFN_vkCmdEndRenderPass2)addrs->pvkCmdEndRenderPass2)(commandBuffer, pSubpassEndInfo));
 }
 VkDeviceAddress vkGetBufferDeviceAddress(vksProcAddr* addrs, VkDevice device, VkBufferDeviceAddressInfo* pInfo) {
 	VkDeviceAddress ret = (((PFN_vkGetBufferDeviceAddress)addrs->pvkGetBufferDeviceAddress)(device, pInfo));
@@ -1121,28 +1121,34 @@ uint64_t vkGetDeviceMemoryOpaqueCaptureAddress(vksProcAddr* addrs, VkDevice devi
 	uint64_t ret = (((PFN_vkGetDeviceMemoryOpaqueCaptureAddress)addrs->pvkGetDeviceMemoryOpaqueCaptureAddress)(device, pInfo));
 	return ret;
 }
+void vkCmdBeginRenderPass2(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkRenderPassBeginInfo* pRenderPassBegin, VkSubpassBeginInfo* pSubpassBeginInfo) {
+	(((PFN_vkCmdBeginRenderPass2)addrs->pvkCmdBeginRenderPass2)(commandBuffer, pRenderPassBegin, pSubpassBeginInfo));
+}
+VkResult vkGetSemaphoreCounterValue(vksProcAddr* addrs, VkDevice device, VkSemaphore semaphore, uint64_t* pValue) {
+	VkResult ret = (((PFN_vkGetSemaphoreCounterValue)addrs->pvkGetSemaphoreCounterValue)(device, semaphore, pValue));
+	return ret;
+}
+VkResult vkWaitSemaphores(vksProcAddr* addrs, VkDevice device, VkSemaphoreWaitInfo* pWaitInfo, uint64_t timeout) {
+	VkResult ret = (((PFN_vkWaitSemaphores)addrs->pvkWaitSemaphores)(device, pWaitInfo, timeout));
+	return ret;
+}
 void vkCmdNextSubpass2(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkSubpassBeginInfo* pSubpassBeginInfo, VkSubpassEndInfo* pSubpassEndInfo) {
 	(((PFN_vkCmdNextSubpass2)addrs->pvkCmdNextSubpass2)(commandBuffer, pSubpassBeginInfo, pSubpassEndInfo));
 }
-VkResult vkCreateRenderPass2(vksProcAddr* addrs, VkDevice device, VkRenderPassCreateInfo2* pCreateInfo, VkAllocationCallbacks* pAllocator, VkRenderPass* pRenderPass) {
-	VkResult ret = (((PFN_vkCreateRenderPass2)addrs->pvkCreateRenderPass2)(device, pCreateInfo, pAllocator, pRenderPass));
-	return ret;
+void vkCmdEndRenderPass2(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkSubpassEndInfo* pSubpassEndInfo) {
+	(((PFN_vkCmdEndRenderPass2)addrs->pvkCmdEndRenderPass2)(commandBuffer, pSubpassEndInfo));
 }
-void vkCmdDrawIndexedIndirectCount(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, VkBuffer countBuffer, VkDeviceSize countBufferOffset, uint32_t maxDrawCount, uint32_t stride) {
-	(((PFN_vkCmdDrawIndexedIndirectCount)addrs->pvkCmdDrawIndexedIndirectCount)(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride));
-}
-void vkCmdDrawIndirectCount(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkBuffer buffer, VkDeviceSize offset, VkBuffer countBuffer, VkDeviceSize countBufferOffset, uint32_t maxDrawCount, uint32_t stride) {
-	(((PFN_vkCmdDrawIndirectCount)addrs->pvkCmdDrawIndirectCount)(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride));
-}
-VkResult vkSignalSemaphore(vksProcAddr* addrs, VkDevice device, VkSemaphoreSignalInfo* pSignalInfo) {
-	VkResult ret = (((PFN_vkSignalSemaphore)addrs->pvkSignalSemaphore)(device, pSignalInfo));
-	return ret;
-}
-void vkCmdSetDepthBoundsTestEnable(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkBool32 depthBoundsTestEnable) {
-	(((PFN_vkCmdSetDepthBoundsTestEnable)addrs->pvkCmdSetDepthBoundsTestEnable)(commandBuffer, depthBoundsTestEnable));
+void vkCmdPipelineBarrier2(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkDependencyInfo* pDependencyInfo) {
+	(((PFN_vkCmdPipelineBarrier2)addrs->pvkCmdPipelineBarrier2)(commandBuffer, pDependencyInfo));
 }
 void vkCmdEndRendering(vksProcAddr* addrs, VkCommandBuffer commandBuffer) {
 	(((PFN_vkCmdEndRendering)addrs->pvkCmdEndRendering)(commandBuffer));
+}
+void vkCmdBeginRendering(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkRenderingInfo* pRenderingInfo) {
+	(((PFN_vkCmdBeginRendering)addrs->pvkCmdBeginRendering)(commandBuffer, pRenderingInfo));
+}
+void vkCmdResolveImage2(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkResolveImageInfo2* pResolveImageInfo) {
+	(((PFN_vkCmdResolveImage2)addrs->pvkCmdResolveImage2)(commandBuffer, pResolveImageInfo));
 }
 void vkCmdBlitImage2(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkBlitImageInfo2* pBlitImageInfo) {
 	(((PFN_vkCmdBlitImage2)addrs->pvkCmdBlitImage2)(commandBuffer, pBlitImageInfo));
@@ -1158,13 +1164,6 @@ void vkCmdCopyImage2(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkCopyIm
 }
 void vkCmdCopyBuffer2(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkCopyBufferInfo2* pCopyBufferInfo) {
 	(((PFN_vkCmdCopyBuffer2)addrs->pvkCmdCopyBuffer2)(commandBuffer, pCopyBufferInfo));
-}
-VkResult vkQueueSubmit2(vksProcAddr* addrs, VkQueue queue, uint32_t submitCount, VkSubmitInfo2* pSubmits, VkFence fence) {
-	VkResult ret = (((PFN_vkQueueSubmit2)addrs->pvkQueueSubmit2)(queue, submitCount, pSubmits, fence));
-	return ret;
-}
-void vkCmdWriteTimestamp2(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkPipelineStageFlags2 stage, VkQueryPool queryPool, uint32_t query) {
-	(((PFN_vkCmdWriteTimestamp2)addrs->pvkCmdWriteTimestamp2)(commandBuffer, stage, queryPool, query));
 }
 void vkCmdSetCullMode(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkCullModeFlags cullMode) {
 	(((PFN_vkCmdSetCullMode)addrs->pvkCmdSetCullMode)(commandBuffer, cullMode));
@@ -1193,8 +1192,8 @@ void vkCmdSetDepthWriteEnable(vksProcAddr* addrs, VkCommandBuffer commandBuffer,
 void vkCmdSetDepthCompareOp(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkCompareOp depthCompareOp) {
 	(((PFN_vkCmdSetDepthCompareOp)addrs->pvkCmdSetDepthCompareOp)(commandBuffer, depthCompareOp));
 }
-void vkCmdBeginRendering(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkRenderingInfo* pRenderingInfo) {
-	(((PFN_vkCmdBeginRendering)addrs->pvkCmdBeginRendering)(commandBuffer, pRenderingInfo));
+void vkCmdSetDepthBoundsTestEnable(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkBool32 depthBoundsTestEnable) {
+	(((PFN_vkCmdSetDepthBoundsTestEnable)addrs->pvkCmdSetDepthBoundsTestEnable)(commandBuffer, depthBoundsTestEnable));
 }
 void vkCmdSetStencilTestEnable(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkBool32 stencilTestEnable) {
 	(((PFN_vkCmdSetStencilTestEnable)addrs->pvkCmdSetStencilTestEnable)(commandBuffer, stencilTestEnable));
@@ -1202,8 +1201,12 @@ void vkCmdSetStencilTestEnable(vksProcAddr* addrs, VkCommandBuffer commandBuffer
 void vkCmdSetStencilOp(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkStencilFaceFlags faceMask, VkStencilOp failOp, VkStencilOp passOp, VkStencilOp depthFailOp, VkCompareOp compareOp) {
 	(((PFN_vkCmdSetStencilOp)addrs->pvkCmdSetStencilOp)(commandBuffer, faceMask, failOp, passOp, depthFailOp, compareOp));
 }
-void vkCmdPipelineBarrier2(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkDependencyInfo* pDependencyInfo) {
-	(((PFN_vkCmdPipelineBarrier2)addrs->pvkCmdPipelineBarrier2)(commandBuffer, pDependencyInfo));
+VkResult vkQueueSubmit2(vksProcAddr* addrs, VkQueue queue, uint32_t submitCount, VkSubmitInfo2* pSubmits, VkFence fence) {
+	VkResult ret = (((PFN_vkQueueSubmit2)addrs->pvkQueueSubmit2)(queue, submitCount, pSubmits, fence));
+	return ret;
+}
+void vkCmdWriteTimestamp2(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkPipelineStageFlags2 stage, VkQueryPool queryPool, uint32_t query) {
+	(((PFN_vkCmdWriteTimestamp2)addrs->pvkCmdWriteTimestamp2)(commandBuffer, stage, queryPool, query));
 }
 void vkCmdWaitEvents2(vksProcAddr* addrs, VkCommandBuffer commandBuffer, uint32_t eventCount, VkEvent* pEvents, VkDependencyInfo* pDependencyInfos) {
 	(((PFN_vkCmdWaitEvents2)addrs->pvkCmdWaitEvents2)(commandBuffer, eventCount, pEvents, pDependencyInfos));
@@ -1216,10 +1219,6 @@ void vkCmdSetEvent2(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkEvent e
 }
 void vkGetPrivateData(vksProcAddr* addrs, VkDevice device, VkObjectType objectType, uint64_t objectHandle, VkPrivateDataSlot privateDataSlot, uint64_t* pData) {
 	(((PFN_vkGetPrivateData)addrs->pvkGetPrivateData)(device, objectType, objectHandle, privateDataSlot, pData));
-}
-VkResult vkSetPrivateData(vksProcAddr* addrs, VkDevice device, VkObjectType objectType, uint64_t objectHandle, VkPrivateDataSlot privateDataSlot, uint64_t data) {
-	VkResult ret = (((PFN_vkSetPrivateData)addrs->pvkSetPrivateData)(device, objectType, objectHandle, privateDataSlot, data));
-	return ret;
 }
 void vkCmdSetRasterizerDiscardEnable(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkBool32 rasterizerDiscardEnable) {
 	(((PFN_vkCmdSetRasterizerDiscardEnable)addrs->pvkCmdSetRasterizerDiscardEnable)(commandBuffer, rasterizerDiscardEnable));
@@ -1239,6 +1238,10 @@ void vkGetDeviceImageMemoryRequirements(vksProcAddr* addrs, VkDevice device, VkD
 void vkGetDeviceImageSparseMemoryRequirements(vksProcAddr* addrs, VkDevice device, VkDeviceImageMemoryRequirements* pInfo, uint32_t* pSparseMemoryRequirementCount, VkSparseImageMemoryRequirements2* pSparseMemoryRequirements) {
 	(((PFN_vkGetDeviceImageSparseMemoryRequirements)addrs->pvkGetDeviceImageSparseMemoryRequirements)(device, pInfo, pSparseMemoryRequirementCount, pSparseMemoryRequirements));
 }
+VkResult vkSetPrivateData(vksProcAddr* addrs, VkDevice device, VkObjectType objectType, uint64_t objectHandle, VkPrivateDataSlot privateDataSlot, uint64_t data) {
+	VkResult ret = (((PFN_vkSetPrivateData)addrs->pvkSetPrivateData)(device, objectType, objectHandle, privateDataSlot, data));
+	return ret;
+}
 void vkDestroyPrivateDataSlot(vksProcAddr* addrs, VkDevice device, VkPrivateDataSlot privateDataSlot, VkAllocationCallbacks* pAllocator) {
 	(((PFN_vkDestroyPrivateDataSlot)addrs->pvkDestroyPrivateDataSlot)(device, privateDataSlot, pAllocator));
 }
@@ -1250,36 +1253,6 @@ VkResult vkGetPhysicalDeviceToolProperties(vksProcAddr* addrs, VkPhysicalDevice 
 	VkResult ret = (((PFN_vkGetPhysicalDeviceToolProperties)addrs->pvkGetPhysicalDeviceToolProperties)(physicalDevice, pToolCount, pToolProperties));
 	return ret;
 }
-void vkCmdResolveImage2(vksProcAddr* addrs, VkCommandBuffer commandBuffer, VkResolveImageInfo2* pResolveImageInfo) {
-	(((PFN_vkCmdResolveImage2)addrs->pvkCmdResolveImage2)(commandBuffer, pResolveImageInfo));
-}
-VkResult vkGetPhysicalDeviceSurfaceCapabilities2KHR(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* pSurfaceInfo, VkSurfaceCapabilities2KHR* pSurfaceCapabilities) {
-	VkResult ret = (((PFN_vkGetPhysicalDeviceSurfaceCapabilities2KHR)addrs->pvkGetPhysicalDeviceSurfaceCapabilities2KHR)(physicalDevice, pSurfaceInfo, pSurfaceCapabilities));
-	return ret;
-}
-VkResult vkGetPhysicalDeviceSurfaceFormats2KHR(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* pSurfaceInfo, uint32_t* pSurfaceFormatCount, VkSurfaceFormat2KHR* pSurfaceFormats) {
-	VkResult ret = (((PFN_vkGetPhysicalDeviceSurfaceFormats2KHR)addrs->pvkGetPhysicalDeviceSurfaceFormats2KHR)(physicalDevice, pSurfaceInfo, pSurfaceFormatCount, pSurfaceFormats));
-	return ret;
-}
-VkResult vkGetPhysicalDeviceSurfacePresentModesKHR(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint32_t* pPresentModeCount, VkPresentModeKHR* pPresentModes) {
-	VkResult ret = (((PFN_vkGetPhysicalDeviceSurfacePresentModesKHR)addrs->pvkGetPhysicalDeviceSurfacePresentModesKHR)(physicalDevice, surface, pPresentModeCount, pPresentModes));
-	return ret;
-}
-VkResult vkGetPhysicalDeviceSurfaceFormatsKHR(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint32_t* pSurfaceFormatCount, VkSurfaceFormatKHR* pSurfaceFormats) {
-	VkResult ret = (((PFN_vkGetPhysicalDeviceSurfaceFormatsKHR)addrs->pvkGetPhysicalDeviceSurfaceFormatsKHR)(physicalDevice, surface, pSurfaceFormatCount, pSurfaceFormats));
-	return ret;
-}
-VkResult vkGetPhysicalDeviceSurfaceCapabilitiesKHR(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, VkSurfaceCapabilitiesKHR* pSurfaceCapabilities) {
-	VkResult ret = (((PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR)addrs->pvkGetPhysicalDeviceSurfaceCapabilitiesKHR)(physicalDevice, surface, pSurfaceCapabilities));
-	return ret;
-}
-VkResult vkGetPhysicalDeviceSurfaceSupportKHR(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex, VkSurfaceKHR surface, VkBool32* pSupported) {
-	VkResult ret = (((PFN_vkGetPhysicalDeviceSurfaceSupportKHR)addrs->pvkGetPhysicalDeviceSurfaceSupportKHR)(physicalDevice, queueFamilyIndex, surface, pSupported));
-	return ret;
-}
-void vkDestroySurfaceKHR(vksProcAddr* addrs, VkInstance instance, VkSurfaceKHR surface, VkAllocationCallbacks* pAllocator) {
-	(((PFN_vkDestroySurfaceKHR)addrs->pvkDestroySurfaceKHR)(instance, surface, pAllocator));
-}
 VkResult vkCreateDebugReportCallbackEXT(vksProcAddr* addrs, VkInstance instance, VkDebugReportCallbackCreateInfoEXT* pCreateInfo, VkAllocationCallbacks* pAllocator, VkDebugReportCallbackEXT* pCallback) {
 	VkResult ret = (((PFN_vkCreateDebugReportCallbackEXT)addrs->pvkCreateDebugReportCallbackEXT)(instance, pCreateInfo, pAllocator, pCallback));
 	return ret;
@@ -1290,28 +1263,59 @@ void vkDestroyDebugReportCallbackEXT(vksProcAddr* addrs, VkInstance instance, Vk
 void vkDebugReportMessageEXT(vksProcAddr* addrs, VkInstance instance, VkDebugReportFlagsEXT flags, VkDebugReportObjectTypeEXT objectType, uint64_t object, size_t location, int32_t messageCode, char* pLayerPrefix, char* pMessage) {
 	(((PFN_vkDebugReportMessageEXT)addrs->pvkDebugReportMessageEXT)(instance, flags, objectType, object, location, messageCode, pLayerPrefix, pMessage));
 }
-VkResult vkGetPhysicalDevicePresentRectanglesKHR(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint32_t* pRectCount, VkRect2D* pRects) {
-	VkResult ret = (((PFN_vkGetPhysicalDevicePresentRectanglesKHR)addrs->pvkGetPhysicalDevicePresentRectanglesKHR)(physicalDevice, surface, pRectCount, pRects));
+VkResult vkGetPhysicalDeviceSurfaceCapabilitiesKHR(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, VkSurfaceCapabilitiesKHR* pSurfaceCapabilities) {
+	VkResult ret = (((PFN_vkGetPhysicalDeviceSurfaceCapabilitiesKHR)addrs->pvkGetPhysicalDeviceSurfaceCapabilitiesKHR)(physicalDevice, surface, pSurfaceCapabilities));
 	return ret;
 }
-VkResult vkAcquireNextImage2KHR(vksProcAddr* addrs, VkDevice device, VkAcquireNextImageInfoKHR* pAcquireInfo, uint32_t* pImageIndex) {
-	VkResult ret = (((PFN_vkAcquireNextImage2KHR)addrs->pvkAcquireNextImage2KHR)(device, pAcquireInfo, pImageIndex));
+VkResult vkGetPhysicalDeviceSurfaceFormatsKHR(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint32_t* pSurfaceFormatCount, VkSurfaceFormatKHR* pSurfaceFormats) {
+	VkResult ret = (((PFN_vkGetPhysicalDeviceSurfaceFormatsKHR)addrs->pvkGetPhysicalDeviceSurfaceFormatsKHR)(physicalDevice, surface, pSurfaceFormatCount, pSurfaceFormats));
 	return ret;
 }
-VkResult vkGetDeviceGroupSurfacePresentModesKHR(vksProcAddr* addrs, VkDevice device, VkSurfaceKHR surface, VkDeviceGroupPresentModeFlagsKHR* pModes) {
-	VkResult ret = (((PFN_vkGetDeviceGroupSurfacePresentModesKHR)addrs->pvkGetDeviceGroupSurfacePresentModesKHR)(device, surface, pModes));
+VkResult vkGetPhysicalDeviceSurfacePresentModesKHR(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint32_t* pPresentModeCount, VkPresentModeKHR* pPresentModes) {
+	VkResult ret = (((PFN_vkGetPhysicalDeviceSurfacePresentModesKHR)addrs->pvkGetPhysicalDeviceSurfacePresentModesKHR)(physicalDevice, surface, pPresentModeCount, pPresentModes));
+	return ret;
+}
+VkResult vkGetPhysicalDeviceSurfaceSupportKHR(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex, VkSurfaceKHR surface, VkBool32* pSupported) {
+	VkResult ret = (((PFN_vkGetPhysicalDeviceSurfaceSupportKHR)addrs->pvkGetPhysicalDeviceSurfaceSupportKHR)(physicalDevice, queueFamilyIndex, surface, pSupported));
+	return ret;
+}
+void vkDestroySurfaceKHR(vksProcAddr* addrs, VkInstance instance, VkSurfaceKHR surface, VkAllocationCallbacks* pAllocator) {
+	(((PFN_vkDestroySurfaceKHR)addrs->pvkDestroySurfaceKHR)(instance, surface, pAllocator));
+}
+VkResult vkGetPhysicalDeviceSurfaceCapabilities2KHR(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* pSurfaceInfo, VkSurfaceCapabilities2KHR* pSurfaceCapabilities) {
+	VkResult ret = (((PFN_vkGetPhysicalDeviceSurfaceCapabilities2KHR)addrs->pvkGetPhysicalDeviceSurfaceCapabilities2KHR)(physicalDevice, pSurfaceInfo, pSurfaceCapabilities));
+	return ret;
+}
+VkResult vkGetPhysicalDeviceSurfaceFormats2KHR(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkPhysicalDeviceSurfaceInfo2KHR* pSurfaceInfo, uint32_t* pSurfaceFormatCount, VkSurfaceFormat2KHR* pSurfaceFormats) {
+	VkResult ret = (((PFN_vkGetPhysicalDeviceSurfaceFormats2KHR)addrs->pvkGetPhysicalDeviceSurfaceFormats2KHR)(physicalDevice, pSurfaceInfo, pSurfaceFormatCount, pSurfaceFormats));
 	return ret;
 }
 VkResult vkGetDeviceGroupPresentCapabilitiesKHR(vksProcAddr* addrs, VkDevice device, VkDeviceGroupPresentCapabilitiesKHR* pDeviceGroupPresentCapabilities) {
 	VkResult ret = (((PFN_vkGetDeviceGroupPresentCapabilitiesKHR)addrs->pvkGetDeviceGroupPresentCapabilitiesKHR)(device, pDeviceGroupPresentCapabilities));
 	return ret;
 }
-VkResult vkQueuePresentKHR(vksProcAddr* addrs, VkQueue queue, VkPresentInfoKHR* pPresentInfo) {
-	VkResult ret = (((PFN_vkQueuePresentKHR)addrs->pvkQueuePresentKHR)(queue, pPresentInfo));
+VkResult vkAcquireNextImage2KHR(vksProcAddr* addrs, VkDevice device, VkAcquireNextImageInfoKHR* pAcquireInfo, uint32_t* pImageIndex) {
+	VkResult ret = (((PFN_vkAcquireNextImage2KHR)addrs->pvkAcquireNextImage2KHR)(device, pAcquireInfo, pImageIndex));
 	return ret;
 }
 VkResult vkAcquireNextImageKHR(vksProcAddr* addrs, VkDevice device, VkSwapchainKHR swapchain, uint64_t timeout, VkSemaphore semaphore, VkFence fence, uint32_t* pImageIndex) {
 	VkResult ret = (((PFN_vkAcquireNextImageKHR)addrs->pvkAcquireNextImageKHR)(device, swapchain, timeout, semaphore, fence, pImageIndex));
+	return ret;
+}
+VkResult vkCreateSwapchainKHR(vksProcAddr* addrs, VkDevice device, VkSwapchainCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSwapchainKHR* pSwapchain) {
+	VkResult ret = (((PFN_vkCreateSwapchainKHR)addrs->pvkCreateSwapchainKHR)(device, pCreateInfo, pAllocator, pSwapchain));
+	return ret;
+}
+VkResult vkGetPhysicalDevicePresentRectanglesKHR(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkSurfaceKHR surface, uint32_t* pRectCount, VkRect2D* pRects) {
+	VkResult ret = (((PFN_vkGetPhysicalDevicePresentRectanglesKHR)addrs->pvkGetPhysicalDevicePresentRectanglesKHR)(physicalDevice, surface, pRectCount, pRects));
+	return ret;
+}
+VkResult vkGetDeviceGroupSurfacePresentModesKHR(vksProcAddr* addrs, VkDevice device, VkSurfaceKHR surface, VkDeviceGroupPresentModeFlagsKHR* pModes) {
+	VkResult ret = (((PFN_vkGetDeviceGroupSurfacePresentModesKHR)addrs->pvkGetDeviceGroupSurfacePresentModesKHR)(device, surface, pModes));
+	return ret;
+}
+VkResult vkQueuePresentKHR(vksProcAddr* addrs, VkQueue queue, VkPresentInfoKHR* pPresentInfo) {
+	VkResult ret = (((PFN_vkQueuePresentKHR)addrs->pvkQueuePresentKHR)(queue, pPresentInfo));
 	return ret;
 }
 VkResult vkGetSwapchainImagesKHR(vksProcAddr* addrs, VkDevice device, VkSwapchainKHR swapchain, uint32_t* pSwapchainImageCount, VkImage* pSwapchainImages) {
@@ -1321,40 +1325,32 @@ VkResult vkGetSwapchainImagesKHR(vksProcAddr* addrs, VkDevice device, VkSwapchai
 void vkDestroySwapchainKHR(vksProcAddr* addrs, VkDevice device, VkSwapchainKHR swapchain, VkAllocationCallbacks* pAllocator) {
 	(((PFN_vkDestroySwapchainKHR)addrs->pvkDestroySwapchainKHR)(device, swapchain, pAllocator));
 }
-VkResult vkCreateSwapchainKHR(vksProcAddr* addrs, VkDevice device, VkSwapchainCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSwapchainKHR* pSwapchain) {
-	VkResult ret = (((PFN_vkCreateSwapchainKHR)addrs->pvkCreateSwapchainKHR)(device, pCreateInfo, pAllocator, pSwapchain));
-	return ret;
-}
-VkResult vkCreateDisplayPlaneSurfaceKHR(vksProcAddr* addrs, VkInstance instance, VkDisplaySurfaceCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface) {
-	VkResult ret = (((PFN_vkCreateDisplayPlaneSurfaceKHR)addrs->pvkCreateDisplayPlaneSurfaceKHR)(instance, pCreateInfo, pAllocator, pSurface));
-	return ret;
-}
-VkResult vkGetDisplayPlaneCapabilitiesKHR(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkDisplayModeKHR mode, uint32_t planeIndex, VkDisplayPlaneCapabilitiesKHR* pCapabilities) {
-	VkResult ret = (((PFN_vkGetDisplayPlaneCapabilitiesKHR)addrs->pvkGetDisplayPlaneCapabilitiesKHR)(physicalDevice, mode, planeIndex, pCapabilities));
-	return ret;
-}
 VkResult vkCreateDisplayModeKHR(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkDisplayKHR display, VkDisplayModeCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, VkDisplayModeKHR* pMode) {
 	VkResult ret = (((PFN_vkCreateDisplayModeKHR)addrs->pvkCreateDisplayModeKHR)(physicalDevice, display, pCreateInfo, pAllocator, pMode));
-	return ret;
-}
-VkResult vkGetDisplayModePropertiesKHR(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkDisplayKHR display, uint32_t* pPropertyCount, VkDisplayModePropertiesKHR* pProperties) {
-	VkResult ret = (((PFN_vkGetDisplayModePropertiesKHR)addrs->pvkGetDisplayModePropertiesKHR)(physicalDevice, display, pPropertyCount, pProperties));
 	return ret;
 }
 VkResult vkGetDisplayPlaneSupportedDisplaysKHR(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, uint32_t planeIndex, uint32_t* pDisplayCount, VkDisplayKHR* pDisplays) {
 	VkResult ret = (((PFN_vkGetDisplayPlaneSupportedDisplaysKHR)addrs->pvkGetDisplayPlaneSupportedDisplaysKHR)(physicalDevice, planeIndex, pDisplayCount, pDisplays));
 	return ret;
 }
-VkResult vkGetPhysicalDeviceDisplayPlanePropertiesKHR(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, uint32_t* pPropertyCount, VkDisplayPlanePropertiesKHR* pProperties) {
-	VkResult ret = (((PFN_vkGetPhysicalDeviceDisplayPlanePropertiesKHR)addrs->pvkGetPhysicalDeviceDisplayPlanePropertiesKHR)(physicalDevice, pPropertyCount, pProperties));
-	return ret;
-}
 VkResult vkGetPhysicalDeviceDisplayPropertiesKHR(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, uint32_t* pPropertyCount, VkDisplayPropertiesKHR* pProperties) {
 	VkResult ret = (((PFN_vkGetPhysicalDeviceDisplayPropertiesKHR)addrs->pvkGetPhysicalDeviceDisplayPropertiesKHR)(physicalDevice, pPropertyCount, pProperties));
 	return ret;
 }
-VkResult vkGetDisplayPlaneCapabilities2KHR(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkDisplayPlaneInfo2KHR* pDisplayPlaneInfo, VkDisplayPlaneCapabilities2KHR* pCapabilities) {
-	VkResult ret = (((PFN_vkGetDisplayPlaneCapabilities2KHR)addrs->pvkGetDisplayPlaneCapabilities2KHR)(physicalDevice, pDisplayPlaneInfo, pCapabilities));
+VkResult vkGetDisplayModePropertiesKHR(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkDisplayKHR display, uint32_t* pPropertyCount, VkDisplayModePropertiesKHR* pProperties) {
+	VkResult ret = (((PFN_vkGetDisplayModePropertiesKHR)addrs->pvkGetDisplayModePropertiesKHR)(physicalDevice, display, pPropertyCount, pProperties));
+	return ret;
+}
+VkResult vkCreateDisplayPlaneSurfaceKHR(vksProcAddr* addrs, VkInstance instance, VkDisplaySurfaceCreateInfoKHR* pCreateInfo, VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface) {
+	VkResult ret = (((PFN_vkCreateDisplayPlaneSurfaceKHR)addrs->pvkCreateDisplayPlaneSurfaceKHR)(instance, pCreateInfo, pAllocator, pSurface));
+	return ret;
+}
+VkResult vkGetPhysicalDeviceDisplayPlanePropertiesKHR(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, uint32_t* pPropertyCount, VkDisplayPlanePropertiesKHR* pProperties) {
+	VkResult ret = (((PFN_vkGetPhysicalDeviceDisplayPlanePropertiesKHR)addrs->pvkGetPhysicalDeviceDisplayPlanePropertiesKHR)(physicalDevice, pPropertyCount, pProperties));
+	return ret;
+}
+VkResult vkGetDisplayPlaneCapabilitiesKHR(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkDisplayModeKHR mode, uint32_t planeIndex, VkDisplayPlaneCapabilitiesKHR* pCapabilities) {
+	VkResult ret = (((PFN_vkGetDisplayPlaneCapabilitiesKHR)addrs->pvkGetDisplayPlaneCapabilitiesKHR)(physicalDevice, mode, planeIndex, pCapabilities));
 	return ret;
 }
 VkResult vkGetPhysicalDeviceDisplayProperties2KHR(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, uint32_t* pPropertyCount, VkDisplayProperties2KHR* pProperties) {
@@ -1367,6 +1363,10 @@ VkResult vkGetPhysicalDeviceDisplayPlaneProperties2KHR(vksProcAddr* addrs, VkPhy
 }
 VkResult vkGetDisplayModeProperties2KHR(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkDisplayKHR display, uint32_t* pPropertyCount, VkDisplayModeProperties2KHR* pProperties) {
 	VkResult ret = (((PFN_vkGetDisplayModeProperties2KHR)addrs->pvkGetDisplayModeProperties2KHR)(physicalDevice, display, pPropertyCount, pProperties));
+	return ret;
+}
+VkResult vkGetDisplayPlaneCapabilities2KHR(vksProcAddr* addrs, VkPhysicalDevice physicalDevice, VkDisplayPlaneInfo2KHR* pDisplayPlaneInfo, VkDisplayPlaneCapabilities2KHR* pCapabilities) {
+	VkResult ret = (((PFN_vkGetDisplayPlaneCapabilities2KHR)addrs->pvkGetDisplayPlaneCapabilities2KHR)(physicalDevice, pDisplayPlaneInfo, pCapabilities));
 	return ret;
 }
 VkResult vkCreateSharedSwapchainsKHR(vksProcAddr* addrs, VkDevice device, uint32_t swapchainCount, VkSwapchainCreateInfoKHR* pCreateInfos, VkAllocationCallbacks* pAllocator, VkSwapchainKHR* pSwapchains) {

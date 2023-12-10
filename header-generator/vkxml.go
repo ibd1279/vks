@@ -4,6 +4,7 @@ import (
 	"encoding/xml"
 	"fmt"
 	"io"
+	"log"
 	"sort"
 	"strings"
 )
@@ -140,9 +141,9 @@ func (typeElement TypeElement) Name() string {
 	return typeElement.NameAttr
 }
 
-func (typeElement TypeElement) SpecializedName() string {
+func (typeElement TypeElement) SpecializedName(apiName string) string {
 	parts := []string{typeElement.Name()}
-	if len(typeElement.Api) > 0 {
+	if len(typeElement.Api) > 0 && strings.Compare(apiName, typeElement.Api) != 0 {
 		parts = append(parts, typeElement.Api)
 	}
 	return strings.Join(parts, "::")
@@ -182,6 +183,11 @@ var (
 )
 
 type TypeMemberElement struct {
+	// Api is optional API names for which this definition is specialized,
+	// so that different APIs may have different definitions for the same
+	// type. This definition is only used if the requested API name matches
+	// the attribute. May be used to address subtle incompatibilities.
+	Api string `xml:"api,attr,omitempty"`
 	// Values is only valid on the sType member of a struct. This is a
 	// comma-separated list of enumerant values that are valid for the
 	// structure type.
@@ -198,14 +204,23 @@ type TypeMemberElement struct {
 	// allowed for len. It must be a valid C99 expression whose result is equal
 	// to len for all possible inputs.
 	AltLength string `xml:"altlen,attr,omitempty"`
+	// Deprecated is optional. Indicates that this member has been
+	// deprecated. Possible values are:
+	//   * "true" - deprecated, but no explanation given.
+	//   * "ignored" - functionality described by this member no longer operates.
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 	// ExternSync denotes that the member should be externally synchronized
 	// when accessed by Vulkan.
 	ExternSync string `xml:"externsync,attr,omitempty"`
-	// Optional is optional. This attribute determines whether this member can
-	// be omitted by providing NULL (for pointers), VK_NULL_HANDLE
-	// (for handles), or 0 (for other scalar types). If the member is a pointer
-	// to one of those types, multiple values may be provided, separated by
-	// commas - one for each pointer indirection.
+	// Optional is optional. A value of "true" specifies that this member
+	// can be omitted by providing NULL (for pointers), VK_NULL_HANDLE (for
+	// handles), or 0 (for other scalar types). If not present, the value
+	// is assumed to be "false" (the member must not be omitted). If the
+	// member is a pointer to one of those types, multiple values may be
+	// provided, separated by commas - one for each pointer indirection.
+	// Structure members with name pNext must always be specified with
+	// optional="true", since there is no requirement that any member of a
+	// pNext chain have a following member in the chain.
 	Optional string `xml:"optional,attr,omitempty"`
 	// Selector is optional. If the member is a union, selector identifies
 	// another member of the struct that is used to select which of that
@@ -226,6 +241,11 @@ type TypeMemberElement struct {
 	// which must be a VkObjectType or VkDebugReportObjectTypeEXT value
 	// specifying the type of object the handle refers to.
 	ObjectType string `xml:"objecttype,attr,omitempty"`
+	// Stride is optional. if the member is an array, stride specifies the
+	// name of another member containing the byte stride between
+	// consecutive elements in the array. Is assumed tightly packed if
+	// omitted.
+	Stride string `xml:"stride,attr,omitempty"`
 	// Type is optional. It contains text which is a valid type name found in
 	// another type tag, and indicates that this type must be previously
 	// defined for the definition of the command to succeed. Builtin C types
@@ -268,19 +288,6 @@ type EnumsElement struct {
 	// group of enums. At present the only accepted categories are enum and
 	// bitmask
 	Type EnumsElementType `xml:"type,attr,omitempty"`
-	// Start is optional and defines the start of a reserved range of enumerants
-	// for a particular vendor or purpose. start must be less than or equal to
-	// end. These fields define formal enumerant allocations, and are made by
-	// the Khronos Registrar on request from implementors following the enum
-	// allocation policy
-	Start int `xml:"start,attr,omitempty"`
-	// end is optional and defines the end of a reserved range of enumerants
-	// for a particular vendor or purpose. start must be less than or equal to
-	// end.
-	End int `xml:"end,attr,omitempty"`
-	// Vendor is optional. String describing the vendor or purpose to whom a
-	// reserved range of enumerants is allocated.
-	Vendor string `xml:"vendor,attr,omitempty"`
 	// Comment is optional. Arbitrary string.
 	Comment string `xml:"comment,attr,omitempty"`
 	// BitWidth is optional. Bit width required for the generated enum value
@@ -311,6 +318,14 @@ type EnumElement struct {
 	// Api is optional API names for which this definition is specialized, so
 	// that different APIs may have different values for the same token.
 	Api string `xml:"api,attr,omitempty"`
+	// Deprecated is optional. Indicates that this enum has been
+	// deprecated. Possible values are:
+	//   * "true" - deprecated, but no explanation given.
+	//   * "ignored" - functionality described by this enum no longer operates.
+	//   * "aliased" - an old name not following Vulkan conventions. The
+	//     equivalent alias following Vulkan conventions should be used
+	//     instead.
+	Deprecated EnumDeprecatedType `xml:"deprecated,attr,omitempty"`
 	// Type may be used only when value is specified. If present the attribute
 	// must be a C scalar type corresponding to the type of value, although only
 	// uint32_t, uint64_t, and float are currently meaningful.
@@ -322,11 +337,21 @@ type EnumElement struct {
 	// Protect is optional. An additional preprocessor token used to protect an
 	// enum definition.
 	Protect string `xml:"protect,attr,omitempty"`
+
+	// Intentionally ignoring comment and unused tags at this time.
 }
 
-func (enumElement EnumElement) SpecializedName() string {
+type EnumDeprecatedType string
+
+var (
+	EnumDepreactedTrue    EnumDeprecatedType = "true"
+	EnumDeprecatedIgnored EnumDeprecatedType = "ignored"
+	EnumDeprecatedAliased EnumDeprecatedType = "aliased"
+)
+
+func (enumElement EnumElement) SpecializedName(apiName string) string {
 	parts := []string{enumElement.Name}
-	if len(enumElement.Api) > 0 {
+	if len(enumElement.Api) > 0 && strings.Compare(apiName, enumElement.Api) != 0 {
 		parts = append(parts, enumElement.Api)
 	}
 	return strings.Join(parts, "::")
@@ -342,10 +367,17 @@ func (enumElement EnumElement) Type() string {
 // CommandElement contains definitions of each of the functions (commands) used in
 // the API.
 type CommandElement struct {
-	// Queues is optional. A string identifying the command queues this command
-	// can be placed on. The format of the string is one or more of the terms
-	// "compute", "transfer", and "graphics", with multiple terms separated by
-	// commas (",").
+	// Tasks is optional. A string identifying the tasks this command
+	// performs, as described in the “Queue Operation” section of the
+	// Vulkan API Specification. The format of the string is one or more of
+	// the terms "action", "synchronization", "state", and "indirection",
+	// with multiple terms separated by commas (",").
+	Tasks string `xml:"tasks,attr,omitempty"`
+	// Queues is optional. A string identifying the command queues this
+	// command can be placed on. The format of the string is one or more of
+	// the terms "compute", "decode", "encode", "graphics", "transfer",
+	// "sparse_binding", and "opticalflow", with multiple terms separated
+	// by commas (",").
 	Queues string `xml:"queues,attr,omitempty"`
 	// SuccessCodes is optional. A string describing possible successful return
 	// codes from the command, as a comma-separated list of Vulkan result code
@@ -358,6 +390,11 @@ type CommandElement struct {
 	// issued only inside a render pass ("inside"), only outside a render pass
 	// ("outside"), or both ("both").
 	RenderPass string `xml:"renderpass,attr,omitempty"`
+	// VideoCoding is optional. A string identifying whether the command
+	// can be issued only inside a video coding scope ("inside"), only
+	// outside a video coding scope ("outside"), or both ("both"); the
+	// default is "outside" for commands that do not specify it.
+	VideoCoding string `xml:"videocoding,attr,omitempty"`
 	// CmdBufferLevel is optional. A string identifying the command buffer
 	// levels that this command can be called by. The format of the string is
 	// one or more of the terms "primary" and "secondary", with multiple terms
@@ -371,6 +408,11 @@ type CommandElement struct {
 	// Alias is required for Alias commands. A string naming the command that
 	// name is an alias of.
 	AliasAttr string `xml:"alias,attr,omitempty"`
+	// Apis is optional API names for which this definition is specialized,
+	// so that different APIs may have different values for the same token.
+	// This definition is only used if the requested API name matches the
+	// attribute. May be used to address subtle incompatibilities.
+	Api string `xml:"api,attr,omitempty"`
 	// Proto is required. It is a tag defining the C function prototype of a
 	// command, up to the function name and return type but not including
 	// function parameters.
@@ -401,6 +443,14 @@ func (commandElement CommandElement) Name() string {
 		return commandElement.NameAttr
 	}
 	return commandElement.Proto.Name
+}
+
+func (commandElement CommandElement) SpecializedName(apiName string) string {
+	parts := []string{commandElement.Name()}
+	if len(commandElement.Api) > 0 && strings.Compare(apiName, commandElement.Api) != 0 {
+		parts = append(parts, commandElement.Api)
+	}
+	return strings.Join(parts, "::")
 }
 
 type CommandQueueType string
@@ -442,6 +492,11 @@ type CommandProtoElement struct {
 }
 
 type CommandParamElement struct {
+	// Api is optional. API names for which this definition is specialized,
+	// so that different APIs may have different definitions for the same
+	// type. This definition is only used if the requested API name matches
+	// the attribute. May be used to address subtle incompatibilities.
+	Api string `xml:"api,attr,omitempty"`
 	// Length is for array parameters. Length may be one or more of the following
 	// things, separated by commas (one for each array indirection): another
 	// parameter of that command; "null-terminated" for a string; "1" to indicate
@@ -475,6 +530,12 @@ type CommandParamElement struct {
 	// which must be a VkObjectType or VkDebugReportObjectTypeEXT value
 	// specifying the type of object the handle refers to.
 	ObjectType string `xml:"objecttype,attr,omitempty"`
+	// ValidStructs is optional. Allowed only when the parameter type is a
+	// pointer to an abstract VkBaseInStructure or VkBaseOutStructure type.
+	// This is a comma-separated list of structures which can either be
+	// passed as the parameter, or can appear anywhere in the pNext chain
+	// of the parameter.
+	ValidStructs string `xml:"validstructs,attr,omitempty"`
 	// Type is optional, and contains text which is a valid type name found in
 	// a type tag. It indicates that this type must be previously defined for
 	// the definition of the command to succeed. Builtin C types, and any
@@ -518,10 +579,7 @@ type FeatureElement struct {
 }
 
 func (featureElement FeatureElement) SpecializedName() string {
-	parts := []string{featureElement.Name}
-	if len(featureElement.Api) > 0 {
-		parts = append(parts, featureElement.Api)
-	}
+	parts := []string{featureElement.Name, featureElement.Api}
 	return strings.Join(parts, "::")
 }
 
@@ -553,13 +611,18 @@ type ExtensionElement struct {
 	// Type is required if the supported attribute is not 'disabled'. Must be
 	// either 'device' or 'instance', if present.
 	Type string `xml:"type,attr,omitempty"`
-	// RequiresAttr is optional. Comma-separated list of extension names this
-	// extension requires to be supported. Extensions whose type is 'instance'
-	// must not require extensions whose type is 'device'.
-	RequiresAttr string `xml:"requires,attr,omitempty"`
-	// RequiresCore is optional. Core version of Vulkan required by the
-	// extension. Defaults to 1.0
-	RequiresCore string `xml:"requiresCore,attr,omitempty"`
+	// depends is optional. String containing a boolean expression of one
+	// or more API core version and extension names. The extension requires
+	// the expression in the string to be satisfied to use any
+	// functionality it defines (for instance extensions), or to use any
+	// device-level functionality it provides (for device extensions).
+	// Supported operators include , for logical OR, + for logical AND, and
+	// ( ) for grouping. , and + are of equal precedence, and lower than (
+	// ). Expressions must be evaluated left-to-right for operators of the
+	// same precedence. Terms which are core version names are true if the
+	// corresponding API version is supported. Terms which are extension
+	// names are true if the corresponding extension is enabled.
+	Depends string `xml:"depends,attr,omitempty"`
 	// Protect is optional. An additional preprocessor token used to protect a
 	// feature definition. Usually another feature or extension name.
 	Protect string `xml:"protect,attr,omitempty"`
@@ -573,8 +636,17 @@ type ExtensionElement struct {
 	// extension tag is just reserving an extension number, use
 	// supported="disabled" to indicate this extension should never be processed.
 	Supported string `xml:"supported,attr,omitempty"`
-	// PromotedTo is optional. A Vulkan version or a name of an extension that
-	// this extension was promoted to.
+	// Ratified is optional. A comma-separated list of API names for which
+	// this extension has been ratified by the Khronos Board of Promoters.
+	// Defaults to the empty string if not specified.
+	Ratified string `xml:"ratified,attr,omitempty"`
+	// PromotedTo is  optional. A Vulkan version or a name of an extension
+	// that this extension was promoted to. E.g. "VK_VERSION_1_1", or
+	// "VK_KHR_draw_indirect_count". As discussed in the “Extending Vulkan”
+	// chapter of the Vulkan API Specification, the promotedto relationship
+	// is not a promise of exact API-level compatibility, and replacing use
+	// of one interface with the other must not be done purely
+	// mechanically.
 	PromotedTo string `xml:"promotedto,attr,omitempty"`
 	// DeprecatedBy is optional. A Vulkan version or a name of an extension that
 	// deprecates this extension. It may be an empty string.
@@ -621,12 +693,12 @@ type RequireElement struct {
 	// API name matches the attribute. If not specified, interfaces are required
 	// (or removed) for all APIs.
 	Api string `xml:"api,attr,omitempty"`
-	// Extension is optional, and only for require tags. String containing an
-	// API extension name.
-	Extension string `xml:"extension,attr,omitempty"`
-	// Feature is optional, and only for require tags. String containing an API
-	// feature name.
-	Feature string `xml:"feature,attr,omitempty"`
+	// Depends is optional, and only for require tags. String containing a
+	// boolean expression of one or more API core version and extension
+	// names. The syntax of this string is identical to that of the
+	// extension depends attribute. Interfaces in the tag are only required
+	// if the expression is satisfied.
+	Depends string `xml:"depends,attr,omitempty"`
 	// Commands is the referenced commands.
 	Commands []RequireReferenceElement `xml:"command,omitempty"`
 	// Enums is the referenced or extended enums
@@ -676,34 +748,137 @@ func DecodeRegistry(r io.Reader) (*Registry, error) {
 	return &registry, nil
 }
 
+// ForApi filters the registry only returns the items matching the given apiName and requested
+// extensions.
+func (registry *Registry) ForApi(apiName string) *Registry {
+	partOfApi := func(apiAttr string) bool {
+		if len(apiAttr) == 0 {
+			return true
+		}
+		apiList := strings.Split(apiAttr, ",")
+		for _, v := range apiList {
+			if strings.Compare(v, apiName) == 0 {
+				return true
+			}
+		}
+		return false
+	}
+
+	reg2 := &Registry{
+		Platforms:  registry.Platforms,
+		Tags:       registry.Tags,
+		Types:      make([]TypeElement, 0, len(registry.Types)),
+		Enums:      make([]EnumsElement, 0, len(registry.Enums)),
+		Commands:   make([]CommandElement, 0, len(registry.Commands)),
+		Features:   make([]FeatureElement, 0, len(registry.Features)),
+		Extensions: make([]ExtensionElement, 0, len(registry.Extensions)),
+	}
+
+	for _, v := range registry.Types {
+		if partOfApi(v.Api) {
+			ct := v
+			ct.StructMembers = make([]TypeMemberElement, 0, len(v.StructMembers))
+			for _, member := range v.StructMembers {
+				if partOfApi(member.Api) {
+					ct.StructMembers = append(ct.StructMembers, member)
+				}
+			}
+			reg2.Types = append(reg2.Types, ct)
+		}
+	}
+	for _, v := range registry.Enums {
+		ce := v
+		ce.Enums = make([]EnumElement, 0, len(v.Enums))
+		for _, enum := range v.Enums {
+			if partOfApi(enum.Api) {
+				ce.Enums = append(ce.Enums, enum)
+			}
+		}
+		reg2.Enums = append(reg2.Enums, ce)
+	}
+	for _, v := range registry.Commands {
+		if partOfApi(v.Api) {
+			cc := v
+			cc.Params = make([]CommandParamElement, 0, len(v.Params))
+			for _, param := range v.Params {
+				if partOfApi(param.Api) {
+					cc.Params = append(cc.Params, param)
+				}
+			}
+			reg2.Commands = append(reg2.Commands, cc)
+		}
+	}
+	for _, v := range registry.Features {
+		if partOfApi(v.Api) {
+			cf := v
+			cf.Requires = make([]RequireElement, 0, len(v.Requires))
+			for _, req := range v.Requires {
+				if partOfApi(req.Api) {
+					cr := req
+					cr.Enums = make([]RequireEnumElement, 0, len(req.Enums))
+					for _, enum := range req.Enums {
+						if partOfApi(enum.Api) {
+							cr.Enums = append(cr.Enums, enum)
+						}
+					}
+					cf.Requires = append(cf.Requires, cr)
+				}
+			}
+			reg2.Features = append(reg2.Features, cf)
+		}
+	}
+	for _, v := range registry.Extensions {
+		if partOfApi(v.Supported) {
+			ce := v
+			ce.Requires = make([]RequireElement, 0, len(v.Requires))
+			for _, req := range v.Requires {
+				if partOfApi(req.Api) {
+					cr := req
+					cr.Enums = make([]RequireEnumElement, 0, len(req.Enums))
+					for _, enum := range req.Enums {
+						if partOfApi(enum.Api) {
+							cr.Enums = append(cr.Enums, enum)
+						}
+					}
+					ce.Requires = append(ce.Requires, cr)
+				}
+			}
+			reg2.Extensions = append(reg2.Extensions, ce)
+		}
+	}
+	return reg2
+}
+
 // Graph generates a dependency graph based on the Vulkan XML.
-func (registry *Registry) Graph() (RegistryGraph, *RegistryNode) {
+func (registry *Registry) Graph(apiName string) (RegistryGraph, *RegistryNode) {
+	registry = registry.ForApi(apiName)
 	dictionary := make(RegistryGraph, len(registry.Types))
 	constants := NewVirtualNode()
 
 	// Define the dictionary of nodes.
 	define := func(name string, nodeType RegistryNodeElementType, element interface{}) {
 		if _, ok := dictionary[name]; ok {
-			panic("name reused.")
+			panic(fmt.Errorf("name '%v' reused.", name))
 		}
 		dictionary[name] = &RegistryNode{NodeType: nodeType, Element: element}
 	}
+	// Filter API centric elements by the API we are generating.
 	for _, v := range registry.Platforms {
 		define(v.Name, RegistryNodePlatform, v)
 	}
 	for _, v := range registry.Types {
-		define(v.SpecializedName(), RegistryNodeType, v)
+		define(v.Name(), RegistryNodeType, v)
 	}
 	for _, v := range registry.Enums {
 		for _, enum := range v.Enums {
-			define(enum.SpecializedName(), RegistryNodeEnum, enum)
+			define(enum.Name, RegistryNodeEnum, enum)
 		}
 	}
 	for _, v := range registry.Commands {
 		define(v.Name(), RegistryNodeCommand, v)
 	}
 	for _, v := range registry.Features {
-		define(v.SpecializedName(), RegistryNodeFeature, v)
+		define(v.Name, RegistryNodeFeature, v)
 	}
 	for _, v := range registry.Extensions {
 		define(v.Name, RegistryNodeExtension, v)
@@ -716,7 +891,7 @@ func (registry *Registry) Graph() (RegistryGraph, *RegistryNode) {
 		}
 	}
 	for _, v := range registry.Types {
-		self := dictionary[v.SpecializedName()]
+		self := dictionary[v.Name()]
 		link(self, v.Requires)
 		link(self, v.Alias)
 		link(self, v.Parent)
@@ -738,8 +913,8 @@ func (registry *Registry) Graph() (RegistryGraph, *RegistryNode) {
 		}
 		child.AddParent(self)
 		for _, enum := range v.Enums {
-			value := dictionary[enum.SpecializedName()]
-			link(self, enum.SpecializedName())
+			value := dictionary[enum.Name]
+			link(self, enum.Name)
 			link(value, enum.Alias)
 		}
 	}
@@ -754,7 +929,7 @@ func (registry *Registry) Graph() (RegistryGraph, *RegistryNode) {
 
 	// Link the high level features.
 	for _, v := range registry.Features {
-		self := dictionary[v.SpecializedName()]
+		self := dictionary[v.Name]
 		for _, require := range v.Requires {
 			for _, command := range require.Commands {
 				link(self, command.Name)
@@ -766,7 +941,7 @@ func (registry *Registry) Graph() (RegistryGraph, *RegistryNode) {
 				if len(enum.Extends) > 0 {
 					link(self, enum.Extends)
 				}
-				link(self, enum.EnumElement.SpecializedName())
+				link(self, enum.EnumElement.Name)
 			}
 		}
 		// TODO Removes to go here.
@@ -784,26 +959,25 @@ func (registry *Registry) Graph() (RegistryGraph, *RegistryNode) {
 				if len(enum.Extends) > 0 {
 					link(self, enum.Extends)
 				}
-				link(self, enum.EnumElement.SpecializedName())
+				link(self, enum.EnumElement.Name)
 			}
 		}
 		// TODO Removes to go here.
-		for _, require := range strings.Split(v.RequiresAttr, ",") {
-			link(self, strings.TrimSpace(require))
-		}
+
 		link(self, v.Platform)
-		requiresCore := "1.0"
-		if len(v.RequiresCore) > 0 {
-			requiresCore = v.RequiresCore
+		if strings.IndexAny(v.Depends, ",()") > -1 {
+			log.Printf("Not auto-resolving dependency for %s: complex depends attribute", v.Name)
+			continue
 		}
-		supported := "vulkan"
-		if len(v.Supported) > 0 {
-			supported = v.Supported
-		}
-		for _, feature := range registry.Features {
-			if feature.Api == supported && feature.Number == requiresCore {
-				link(self, feature.SpecializedName())
+
+		requirements := strings.FieldsFunc(v.Depends, func(c rune) bool {
+			if c == '+' {
+				return true
 			}
+			return false
+		})
+		for _, require := range requirements {
+			link(self, strings.TrimSpace(require))
 		}
 	}
 	return dictionary, constants
@@ -972,7 +1146,7 @@ func (registryNode RegistryNode) Name() string {
 		break
 	case RegistryNodeType:
 		if tiepuh := registryNode.TypeElement(); tiepuh != nil {
-			name = strings.TrimSpace(fmt.Sprintf("%s %s", tiepuh.Category, tiepuh.SpecializedName()))
+			name = strings.TrimSpace(fmt.Sprintf("%s %s", tiepuh.Category, tiepuh.Name))
 		}
 		break
 	case RegistryNodeEnums:
@@ -981,7 +1155,7 @@ func (registryNode RegistryNode) Name() string {
 		}
 	case RegistryNodeEnum:
 		if enum := registryNode.EnumElement(); enum != nil {
-			name = enum.SpecializedName()
+			name = enum.Name
 		}
 		break
 	case RegistryNodeCommand:
@@ -1069,6 +1243,7 @@ type RegistryGraph map[string]*RegistryNode
 func (graph RegistryGraph) ApplyFeatureExtensions(name string, constants *RegistryNode) {
 	node := graph[name]
 	if node == nil {
+		log.Printf("Unknown feature %s", name)
 		return
 	}
 	feature := node.FeatureElement()
@@ -1092,9 +1267,7 @@ func (graph RegistryGraph) ApplyExtensionExtensions(name string, included map[st
 	extension := node.ExtensionElement()
 
 	for _, req := range extension.Requires {
-		if len(req.Feature) == 0 || included[req.Feature] {
-			graph.applyRequiresElement(req, extension.Number, constants)
-		}
+		graph.applyRequiresElement(req, extension.Number, constants)
 	}
 }
 

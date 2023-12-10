@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"os"
 
 	"gopkg.in/yaml.v3"
@@ -27,11 +26,10 @@ func main() {
 	}
 
 	registry := LoadRegistry(config.VkxmlPath)
-	graph, constants := registry.Graph()
+	graph, constants := registry.Graph(config.Api)
 
 	for _, v := range config.Features {
-		n := fmt.Sprintf("%s::vulkan", v)
-		graph.ApplyFeatureExtensions(n, constants)
+		graph.ApplyFeatureExtensions(v, constants)
 	}
 	for _, v := range config.Extensions {
 		graph.ApplyExtensionExtensions(v, enabledMap, constants)
@@ -77,6 +75,7 @@ type Config struct {
 	PackageName      string
 	VkxmlPath        string
 	OutputName       string
+	Api              string
 	Features         []string
 	Extensions       []string
 	GlobalProcs      []string
@@ -88,8 +87,7 @@ type Config struct {
 func (config *Config) Enabled() []string {
 	enabled := make([]string, 0, len(config.Features)+len(config.Extensions))
 	for _, v := range config.Features {
-		n := fmt.Sprintf("%s::vulkan", v)
-		enabled = append(enabled, n)
+		enabled = append(enabled, v)
 	}
 	for _, v := range config.Extensions {
 		enabled = append(enabled, v)

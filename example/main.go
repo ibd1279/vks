@@ -14,9 +14,9 @@ func main() {
 	defer vks.Destroy()
 	var version uint32
 	if result := vks.EnumerateInstanceVersion(&version); result.IsSuccess() {
-		log.Printf("%v", vks.ApiVersion(version))
-		log.Printf("%v", vks.VK_HEADER_VERSION_COMPLETE)
-		log.Printf("%v", vks.VK_API_VERSION_1_3)
+		log.Printf("%v - API version", vks.ApiVersion(version))
+		log.Printf("%v - vk.xml version", vks.VK_HEADER_VERSION_COMPLETE)
+		log.Printf("%v - Vulkan Major Version", vks.VK_API_VERSION_1_3)
 	}
 
 	var count uint32

@@ -1,6 +1,7 @@
 packagename: vks
 vkxmlpath: ./vk.xml
 outputname: vk_wrapper
+api: vulkan
 features:
   - VK_VERSION_1_0
   - VK_VERSION_1_1
