@@ -96,6 +96,13 @@ type TypeElement struct {
 	Category TypeCategory `xml:"category,attr,omitempty"`
 	// Comment is optional. Arbitrary string.
 	Comment string `xml:"comment,omitempty"`
+	// Deprecated is optional. Indicates that this type has been
+	// deprecated. Possible values are:
+	// * `true` - deprecated, but no explanation given.
+	// * `aliased` - an old name not following Vulkan conventions. The
+	//   equivalent alias following Vulkan conventions should be used
+	//   instead.
+	Deprecated TypeDeprecatedType `xml:"deprecated",attr,omitempty"`
 	// Parent is only applicable if "category" is handle. Notes another type
 	// with the handle category that acts as a parent object for this type.
 	Parent string `xml:"parent,attr,omitempty"`
@@ -182,6 +189,13 @@ var (
 	}
 )
 
+type TypeDeprecatedType string
+
+var (
+	TypeDepreactedTrue    TypeDeprecatedType = "true"
+	TypeDeprecatedAliased TypeDeprecatedType = "aliased"
+)
+
 type TypeMemberElement struct {
 	// Api is optional API names for which this definition is specialized,
 	// so that different APIs may have different definitions for the same
@@ -208,7 +222,7 @@ type TypeMemberElement struct {
 	// deprecated. Possible values are:
 	//   * "true" - deprecated, but no explanation given.
 	//   * "ignored" - functionality described by this member no longer operates.
-	Deprecated string `xml:"deprecated,attr,omitempty"`
+	Deprecated TypeMemberDeprecatedType `xml:"deprecated,attr,omitempty"`
 	// ExternSync denotes that the member should be externally synchronized
 	// when accessed by Vulkan.
 	ExternSync string `xml:"externsync,attr,omitempty"`
@@ -276,6 +290,13 @@ var (
 	TypeMemberLimitTypeNoAuto  TypeMemberLimitType = "noauto"
 )
 
+type TypeMemberDeprecatedType string
+
+var (
+	TypeMemberDepreactedTrue    TypeMemberDeprecatedType = "true"
+	TypeMemberDeprecatedIgnored TypeMemberDeprecatedType = "ignored"
+)
+
 // EnumsElement contains individual enum tags describing each of the token names
 // used in the API. In some cases these correspond to a C enum, and in some cases
 // they are simply compile time constants (e.g. #define).
@@ -312,7 +333,7 @@ type EnumElement struct {
 	Value string `xml:"value,attr,omitempty"`
 	// BitPos is a literal integer bit position in a bitmask. Exactly one of
 	// value and bitpos must be present in an enum tag.
-	BitPos int `xml:"bitpos,attr,omitempty"`
+	BitPos *int `xml:"bitpos,attr,omitempty"`
 	// Name is required. Enumerant name, a legal C preprocessor token name.
 	Name string `xml:"name,attr"`
 	// Api is optional API names for which this definition is specialized, so
@@ -730,12 +751,23 @@ type RequireEnumElement struct {
 	// Offset is the offset within an extension block. If extnumber is not
 	// present, the extension number defining that block is given by the number
 	// attribute of the surrounding extension tag.
-	Offset int `xml:"offset,attr,omitempty"`
+	Offset *int `xml:"offset,attr,omitempty"`
 	// Direction, if present, is the calculated enumerant value will be
 	// negative, instead of positive. Negative enumerant values are normally
 	// used only for Vulkan error codes. The attribute value must be specified
 	// as dir="-".
 	Direction string `xml:"dir,attr,omitempty"`
+}
+
+// IsReference returns true if the enum lacks anything to define its own value.
+func (enumElement RequireEnumElement) IsReference() bool {
+	if len(enumElement.Value) > 0 ||
+		enumElement.BitPos != nil ||
+		enumElement.Offset != nil ||
+		len(enumElement.Alias) > 0 {
+		return false
+	}
+	return true
 }
 
 // DecodeRegistry Unmarshals a Registry from a reader.
@@ -748,8 +780,10 @@ func DecodeRegistry(r io.Reader) (*Registry, error) {
 	return &registry, nil
 }
 
-// ForApi filters the registry only returns the items matching the given apiName and requested
-// extensions.
+// ForApi filters the registry only returns the items matching the given
+// apiName. For example, `vulkan` and `vulkansc` are both different API names.
+// Features that don't match the given API name are not in the returned
+// registry.
 func (registry *Registry) ForApi(apiName string) *Registry {
 	partOfApi := func(apiAttr string) bool {
 		if len(apiAttr) == 0 {
@@ -849,19 +883,23 @@ func (registry *Registry) ForApi(apiName string) *Registry {
 	return reg2
 }
 
-// Graph generates a dependency graph based on the Vulkan XML.
-func (registry *Registry) Graph(apiName string) (RegistryGraph, *RegistryNode) {
-	registry = registry.ForApi(apiName)
-	dictionary := make(RegistryGraph, len(registry.Types))
-	constants := NewVirtualNode()
+// GenerateNodes generates a registry map with just the nodes. No parenting and
+// linkage has been added to them yet. This is stage catches anything that
+// reuses the names and resolves entries that are references from entries that
+// are declarations.
+func (registry *Registry) GenerateNodes() RegistryGraph {
+	graph := make(RegistryGraph, len(registry.Types))
 
-	// Define the dictionary of nodes.
 	define := func(name string, nodeType RegistryNodeElementType, element interface{}) {
-		if _, ok := dictionary[name]; ok {
-			panic(fmt.Errorf("name '%v' reused.", name))
+		newNode := RegistryNode{NodeType: nodeType, Element: element}
+		if oldNode, ok := graph[name]; ok {
+			if !newNode.Equals(*oldNode) {
+				panic(fmt.Errorf("name '%v' reused.\n%#v\n%#v", name, oldNode, &newNode))
+			}
 		}
-		dictionary[name] = &RegistryNode{NodeType: nodeType, Element: element}
+		graph[name] = &newNode
 	}
+
 	// Filter API centric elements by the API we are generating.
 	for _, v := range registry.Platforms {
 		define(v.Name, RegistryNodePlatform, v)
@@ -879,17 +917,47 @@ func (registry *Registry) Graph(apiName string) (RegistryGraph, *RegistryNode) {
 	}
 	for _, v := range registry.Features {
 		define(v.Name, RegistryNodeFeature, v)
+		for _, requires := range v.Requires {
+			for _, enum := range requires.Enums {
+				if !enum.IsReference() {
+					define(enum.Name, RegistryNodeEnum, enum)
+				}
+			}
+		}
 	}
 	for _, v := range registry.Extensions {
 		define(v.Name, RegistryNodeExtension, v)
+		for _, requires := range v.Requires {
+			for _, enum := range requires.Enums {
+				if !enum.IsReference() {
+					define(enum.Name, RegistryNodeEnum, enum)
+				}
+			}
+		}
 	}
+
+	return graph
+}
+
+// Graph generates a dependency graph based on the Vulkan XML. The enabled map allows for resolving
+// some of the extension dependencies around features
+func (registry *Registry) Graph(enabledMap map[string]bool) (RegistryGraph, *RegistryNode) {
+	dictionary := registry.GenerateNodes()
+	constants := NewVirtualNode()
 
 	// Link the nodes together.
 	link := func(self *RegistryNode, parent string) {
+		if len(parent) == 0 {
+			return
+		}
+
 		if node, ok := dictionary[parent]; ok {
 			self.AddParent(node)
+		} else {
+			self.AddMissingParent(parent)
 		}
 	}
+
 	for _, v := range registry.Types {
 		self := dictionary[v.Name()]
 		link(self, v.Requires)
@@ -965,19 +1033,40 @@ func (registry *Registry) Graph(apiName string) (RegistryGraph, *RegistryNode) {
 		// TODO Removes to go here.
 
 		link(self, v.Platform)
-		if strings.IndexAny(v.Depends, ",()") > -1 {
-			log.Printf("Not auto-resolving dependency for %s: complex depends attribute", v.Name)
-			continue
-		}
 
-		requirements := strings.FieldsFunc(v.Depends, func(c rune) bool {
-			if c == '+' {
-				return true
+		if strings.IndexAny(v.Depends, "+") > -1 && strings.IndexAny(v.Depends, ",") > -1 {
+			log.Printf("Not auto-resolving dependency for %s: complex depends attribute '%s'", v.Name, v.Depends)
+			continue
+		} else if strings.IndexAny(v.Depends, "()") > -1 {
+			log.Printf("Not auto-resolving dependency for %s: complex depends attribute '%s'", v.Name, v.Depends)
+			continue
+		} else if strings.IndexAny(v.Depends, "+") < 0 && strings.IndexAny(v.Depends, ",") > -1 {
+			requirements := strings.FieldsFunc(v.Depends, func(c rune) bool {
+				if c == ',' {
+					return true
+				}
+				return false
+			})
+			var chosen string
+			for h := len(requirements) - 1; h >= 0; h-- {
+				if enabledMap[requirements[h]] {
+					chosen = strings.TrimSpace(requirements[h])
+					break
+				}
 			}
-			return false
-		})
-		for _, require := range requirements {
-			link(self, strings.TrimSpace(require))
+			if len(chosen) > 0 {
+				link(self, chosen)
+			}
+		} else if strings.IndexAny(v.Depends, "+") > -1 && strings.IndexAny(v.Depends, ",") < 0 {
+			requirements := strings.FieldsFunc(v.Depends, func(c rune) bool {
+				if c == '+' {
+					return true
+				}
+				return false
+			})
+			for _, require := range requirements {
+				link(self, strings.TrimSpace(require))
+			}
 		}
 	}
 	return dictionary, constants
@@ -996,6 +1085,9 @@ type RegistryNode struct {
 	// VkResult type would have a parent of the VkResult enum. The VkResult enum
 	// would have parents on the enum value of VK_SUCCESS, etc.
 	Parents RegistryNodeParents
+	// List of parent names that couldn't be found in the dictionary for
+	// the feature being build.
+	MissingParents []string
 }
 
 // RegistryNodeParents is a slice type that implements the interfaces required by
@@ -1026,6 +1118,13 @@ func NewVirtualNode() *RegistryNode {
 // in the graph.
 func (registryNode *RegistryNode) AddParent(node *RegistryNode) {
 	registryNode.Parents = append(registryNode.Parents, node)
+}
+
+// AddMissingParent adds the name of a missing parent to the object. It record
+// that something was missing to enable trimming "incomplete" parts of the API
+// out.
+func (registryNode *RegistryNode) AddMissingParent(parent string) {
+	registryNode.MissingParents = append(registryNode.MissingParents, parent)
 }
 
 // PlatformElement returns the Element as a Registry PlatformElement or nil.
@@ -1081,6 +1180,17 @@ func (registryNode RegistryNode) EnumsParents() (parents []struct {
 func (registryNode RegistryNode) EnumElement() *EnumElement {
 	if registryNode.NodeType == RegistryNodeEnum {
 		if obj, ok := registryNode.Element.(EnumElement); ok {
+			return &obj
+		}
+	}
+	return nil
+}
+
+// RequireEnumElement returns the Element as a Registry RequireEnumElement or
+// nil.
+func (registryNode RegistryNode) RequireEnumElement() *RequireEnumElement {
+	if registryNode.NodeType == RegistryNodeEnum {
+		if obj, ok := registryNode.Element.(RequireEnumElement); ok {
 			return &obj
 		}
 	}
@@ -1193,6 +1303,82 @@ func (registryNode RegistryNode) Terminal() bool {
 	return false
 }
 
+// Equals compares two needs and tests that they are equal in type and value.
+func (registryNode RegistryNode) Equals(other RegistryNode) bool {
+	if registryNode.NodeType != other.NodeType {
+		return false
+	}
+	var result bool
+	switch registryNode.NodeType {
+	case RegistryNodePlatform:
+		a, b := registryNode.PlatformElement(), other.PlatformElement()
+		result = *a == *b
+	case RegistryNodeType:
+		a, b := registryNode.TypeElement(), other.TypeElement()
+		result = (a.Requires == b.Requires &&
+			a.Name() == b.Name() &&
+			a.Alias == b.Alias &&
+			a.Api == b.Api &&
+			a.Category == b.Category &&
+			a.Parent == b.Parent &&
+			a.ReturnedOnly == b.ReturnedOnly &&
+			a.StructExtends == b.StructExtends &&
+			a.AllowDuplicate == b.AllowDuplicate &&
+			a.ObjTypeEnum == b.ObjTypeEnum &&
+			a.TypeTag == b.TypeTag &&
+			a.ApiEntry == b.ApiEntry &&
+			a.BitValues == b.BitValues &&
+			a.Raw == b.Raw)
+	case RegistryNodeEnums:
+		a, b := registryNode.EnumsElement(), other.EnumsElement()
+		result = (a.Name == b.Name &&
+			a.Type == b.Type &&
+			a.BitWidth == b.BitWidth)
+	case RegistryNodeEnum:
+		a, b := registryNode.EnumElement(), other.EnumElement()
+		if a == nil && b == nil {
+			a, b := registryNode.RequireEnumElement(), other.RequireEnumElement()
+			bitPos := a.BitPos == b.BitPos
+			if a.BitPos != nil && b.BitPos != nil {
+				bitPos = *a.BitPos == *b.BitPos
+			}
+			result = (a.Value == b.Value &&
+				bitPos &&
+				a.Name == b.Name &&
+				a.Api == b.Api &&
+				a.Deprecated == b.Deprecated &&
+				a.Type() == b.Type() &&
+				a.Alias == b.Alias &&
+				a.Protect == b.Protect)
+		} else {
+			bitPos := a.BitPos == b.BitPos
+			if a.BitPos != nil && b.BitPos != nil {
+				bitPos = *a.BitPos == *b.BitPos
+			}
+			result = (a.Value == b.Value &&
+				bitPos &&
+				a.Name == b.Name &&
+				a.Api == b.Api &&
+				a.Deprecated == b.Deprecated &&
+				a.Type() == b.Type() &&
+				a.Alias == b.Alias &&
+				a.Protect == b.Protect)
+		}
+	case RegistryNodeCommand:
+		//a, b := registryNode.CommandElement(), other.CommandElement()
+		result = false
+	case RegistryNodeFeature:
+		//a, b := registryNode.FeatureElement(), other.FeatureElement()
+		result = false
+	case RegistryNodeExtension:
+		//a, b := registryNode.ExtensionElement(), other.ExtensionElement()
+		result = false
+	case RegistryNodeVirtual:
+		result = false
+	}
+	return result
+}
+
 // String exists to implement Stringer.
 func (registryNode RegistryNode) String() string {
 	return fmt.Sprintf("%s(%v)", registryNode.Name(), registryNode.NodeType)
@@ -1290,7 +1476,7 @@ func (graph RegistryGraph) applyRequiresElement(element RequireElement, extensio
 					if enum.ExtensionNumber > 0 {
 						extNumber = enum.ExtensionNumber
 					}
-					value := enumValue(extNumber, enum.Offset)
+					value := enumValue(extNumber, *enum.Offset)
 					enum.EnumElement.Value = fmt.Sprintf("%d", value)
 				}
 			}

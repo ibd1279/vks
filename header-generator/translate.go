@@ -615,7 +615,7 @@ var (
 		"VK_DEFINE_HANDLE":                  true, // doesn't apply to go.
 		"VK_USE_64_BIT_PTR_DEFINES":         true, // doesn't apply to go.
 		"VK_NULL_HANDLE":                    true, // in the handle template.
-		"VK_DEFINE_NON_DISPATCHABLE_HANDLE": true, // doesn't apply to go?
+		"VK_DEFINE_NON_DISPATCHABLE_HANDLE": true, // doesn't apply to go.
 		"VK_API_VERSION_VARIANT":            true, // in the version template.
 		"VK_API_VERSION_MAJOR":              true, // in the version template.
 		"VK_API_VERSION_MINOR":              true, // in the version template.
@@ -745,15 +745,19 @@ func enumTypeToData(node *RegistryNode, tiepuh TypeElement) *struct {
 					valueTranslator = &LiteralTranslator{v.E.Alias}
 				}
 			} else if bitmask {
-				if v.E.BitPos == 0 && len(v.E.Value) > 0 {
+				if v.E.BitPos == nil && len(v.E.Value) > 0 {
 					valueTranslator = &LiteralTranslator{v.E.Value}
 				} else {
-					if float64(uint64(1)<<v.E.BitPos) > largestValue {
-						largestValue = float64(uint64(1) << v.E.BitPos)
-					} else if float64(uint64(1)<<v.E.BitPos) < smallestValue {
-						smallestValue = float64(uint64(1) << v.E.BitPos)
+					bitPos := 0
+					if v.E.BitPos != nil {
+						bitPos = *v.E.BitPos
 					}
-					valueTranslator = &BitValueTranslator{v.E.BitPos}
+					if float64(uint64(1)<<bitPos) > largestValue {
+						largestValue = float64(uint64(1) << bitPos)
+					} else if float64(uint64(1)<<bitPos) < smallestValue {
+						smallestValue = float64(uint64(1) << bitPos)
+					}
+					valueTranslator = &BitValueTranslator{bitPos}
 				}
 			} else {
 				valueTranslator = &LiteralTranslator{v.E.Value}

@@ -28,17 +28,20 @@ func GenerateGoFile(config *Config, constants *RegistryNode, graph RegistryGraph
 			return needsFacade[name.C()]
 		},
 	})
-	if t, err = t.Parse(goPrimaryTemplate); err != nil {
-		return err
+	templates := []string{
+		goPrimaryTemplate,
+		goDocURLTemplate,
+		goConstTemplate,
+		goVersionTemplate,
+		goSubTemplates,
+		goHandleTemplate,
+		goCommandTemplate,
+		goStructTemplate,
 	}
-	if t, err = t.Parse(goSubTemplates); err != nil {
-		return err
-	}
-	if t, err = t.Parse(goCommandTemplate); err != nil {
-		return err
-	}
-	if t, err = t.Parse(goStructTemplate); err != nil {
-		return err
+	for _, template := range templates {
+		if t, err = t.Parse(template); err != nil {
+			return err
+		}
 	}
 
 	data := append([]interface{}{}, ConstToData(constants))
@@ -111,16 +114,18 @@ func determineFacades(config *Config, graph RegistryGraph) map[string]bool {
 	return needsFacade
 }
 
-const goSubTemplates = `{{define "docurl"}}https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/{{.}}.html{{end}}{{define "const"}}// These are API constants.
+const goDocURLTemplate = `{{define "docurl"}}https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/{{.}}.html{{end}}`
+const goConstTemplate = `{{define "const"}}// These are API constants.
 const ({{range .}}
 	{{.Name.Go}} = {{.Value.Go}}{{end}}
 )
-{{end}}{{define "version"}}// {{.Name.Go}} is an implementation of the Vulkan Make Api Version
+{{end}}`
+const goVersionTemplate = `{{define "version"}}// {{.Name.Go}} is an implementation of the Vulkan Make Api Version
 // defines. See
 // {{template "docurl" "VK_MAKE_API_VERSION"}}
 type {{.Name.Go}} uint32
 
-// MakeApiVersion creates a Version based on the provided Variant, maJor, miNor,
+// Make{{.Name.Go}} creates a {{.Name.Go}} based on the provided Variant, maJor, miNor,
 // and Patch.
 func Make{{.Name.Go}}(v, j, n, p int) {{.Name.Go}} {
 	return {{.Name.Go}}((uint32(v) << 29) | (uint32(j) << 22) | (uint32(n) << 12) | (uint32(p)))
@@ -141,17 +146,47 @@ var (
 	VK_API_VERSION_1_3         {{.Name.Go}} = Make{{.Name.Go}}(0, 1, 3, 0)
 	VK_HEADER_VERSION_COMPLETE {{.Name.Go}} = Make{{.Name.Go}}({{.Value.Go}}, {{.HeaderVersionName.Go}})
 )
-{{end}}{{define "headerversion"}}// {{.HeaderVersionName.Go}} is the version of the vk specification used to generate this.
+{{end}}`
+const goSubTemplates = `{{define "headerversion"}}// {{.HeaderVersionName.Go}} is the version of the vk specification used to generate this.
 // {{template "docurl" .Name.C}}
 const {{.HeaderVersionName.Go}} = {{.Value.Go}}
 {{end}}{{define "base"}}// {{.Name.Go}} basetype
 // {{template "docurl" .Name.C}}
 type {{.Name.Go}} {{.Type.Go}}
-{{end}}{{define "handle"}}// {{.Name.Go}} is a Handle to a vulkan resource.{{if .HasParent}}
+{{end}}{{define "enum"}}// {{.Name.Go}} enum/enums
+// {{template "docurl" .Name.C}}
+type {{.Name.Go}} {{.Type.Go}}{{if gt (len .Values) 0}}
+
+const ({{range .Values}}
+	{{.Name.Go}} {{.Type.Go}} = {{.Value.Go}}{{end}}
+)
+
+var (
+	reverse{{.Name.Go}} map[{{.Name.Go}}]string = map[{{.Name.Go}}]string{ {{range .Values}}{{if not .Alias}}
+		{{.Name.Go}}: "{{.Name.Go}}",{{end}}{{end}}
+	}
+)
+func (x {{.Name.Go}}) String() string {
+	if s, ok := reverse{{.Name.Go}}[x]; ok {
+		return s
+	}
+	return fmt.Sprintf("{{.Name.Go}}=%d", x)
+}{{end}}
+{{end}}{{define "bitmask"}}// {{.Name.Go}} bitmask
+// {{template "docurl" .Name.C}}
+type {{.Name.Go}} {{.Type.Go}}
+{{end}}{{define "func"}}// {{.Name.Go}} function pointer
+// {{template "docurl" .Name.C}}
+type {{.Name.Go}} {{.Name.CGo}}
+{{end}}{{define "union"}}// {{.Name.Go}} union
+// {{template "docurl" .Name.C}}
+type {{.Name.Go}} {{.Name.CGo}}
+{{end}}`
+const goHandleTemplate = `{{define "handle"}}// {{.Name.Go}} is a Handle to a vulkan resource.{{if .HasParent}}
 // {{.Name.Go}} is a child of {{.ParentName.Go}}.{{end}}{{if needsFacade .Name}}
 //
 // Use {{if .HasParent}}{{.ParentName.GoFacade}}.{{end}}Make{{.Name.GoFacade}} to create a facade around this object to invoke methods.{{end}}
-// 
+//
 // {{template "docurl" .Name.C}}
 type {{.Name.Go}} {{.Name.CGo}}
 
@@ -199,34 +234,6 @@ type {{.Name.GoFacade}} struct {
 	procs *C.vksProcAddr // The addresses for commands.
 }{{end}}
 
-{{end}}{{define "enum"}}// {{.Name.Go}} enum/enums
-// {{template "docurl" .Name.C}}
-type {{.Name.Go}} {{.Type.Go}}{{if gt (len .Values) 0}}
-
-const ({{range .Values}}
-	{{.Name.Go}} {{.Type.Go}} = {{.Value.Go}}{{end}}
-)
-
-var (
-	reverse{{.Name.Go}} map[{{.Name.Go}}]string = map[{{.Name.Go}}]string{ {{range .Values}}{{if not .Alias}}
-		{{.Name.Go}}: "{{.Name.Go}}",{{end}}{{end}}
-	}
-)
-func (x {{.Name.Go}}) String() string {
-	if s, ok := reverse{{.Name.Go}}[x]; ok {
-		return s
-	}
-	return fmt.Sprintf("{{.Name.Go}}=%d", x)
-}{{end}}
-{{end}}{{define "bitmask"}}// {{.Name.Go}} bitmask
-// {{template "docurl" .Name.C}}
-type {{.Name.Go}} {{.Type.Go}}
-{{end}}{{define "func"}}// {{.Name.Go}} function pointer
-// {{template "docurl" .Name.C}}
-type {{.Name.Go}} {{.Name.CGo}}
-{{end}}{{define "union"}}// {{.Name.Go}} union
-// {{template "docurl" .Name.C}}
-type {{.Name.Go}} {{.Name.CGo}}
 {{end}}`
 const goCommandTemplate = `{{define "command"}}// {{.Name.Go}} command
 // {{template "docurl" .Name.C}}
@@ -245,6 +252,18 @@ type {{.Name.Go}} {{.Name.CGo}}
 // Sizeof{{.Name.Go}} is the memory size of a {{.Name.Go}}
 var Sizeof{{.Name.Go}} int = int(unsafe.Sizeof({{.Name.Go}}{}))
 
+// ArpPtr copies the object to the C heap and returns the pointer.  The
+// AutoReleasePool is responsible for releasing the C memory.
+func (x {{.Name.Go}}) ArpPtr(arp *AutoReleasePool) *{{.Name.Go}} {
+	ptr := newCBlock(cULong(Sizeof{{.Name.Go}}))
+	if arp != nil {
+		arp.Add(cFreer(uintptr(ptr)))
+	}
+	clone := (*{{.Name.Go}})(ptr)
+	*clone = x
+	return clone
+}
+
 // Free releases the memory allocated by AsCPtr.
 // It does not free pointers stored in the structure.
 func (x *{{.Name.Go}}) Free() {
@@ -254,9 +273,26 @@ func (x *{{.Name.Go}}) Free() {
 // AsCPtr copies the object to the C heap and returns the pointer.
 // Free must be explicitly called on the returned pointer.
 func (x {{.Name.Go}}) AsCPtr() *{{.Name.Go}} {
-	clone := (*{{.Name.Go}})(newCBlock(C.ulong(Sizeof{{.Name.Go}})))
+	clone := (*{{.Name.Go}})(newCBlock(cULong(Sizeof{{.Name.Go}})))
 	*clone = x
 	return clone
+}
+
+// {{.Name.Go}}CSlice allocates memory for the passed arguments on the C heap,
+// copies their values to the allocated memory, and creates a slice around the
+// C memory. The AutoReleasePool is responsible for releasing the C memory.
+func {{.Name.Go}}CSlice(arp *AutoReleasePool, x ...{{.Name.Go}}) []{{.Name.Go}} {
+	if len(x) == 0 {
+		return nil
+	}
+	sz := Sizeof{{.Name.Go}} * len(x)
+	ptr := newCBlock(cULong(sz))
+	if arp != nil {
+		arp.Add(cFreer(uintptr(ptr)))
+	}
+	dst := unsafe.Slice((*{{.Name.Go}})(ptr), len(x))
+	copy(dst, x)
+	return dst
 }
 
 // {{.Name.Go}}FreeCSlice releases the memory allocated by {{.Name.Go}}MakeCSlice.
@@ -275,26 +311,33 @@ func {{.Name.Go}}MakeCSlice(x ...{{.Name.Go}}) []{{.Name.Go}} {
 		return nil
 	}
 	sz := Sizeof{{.Name.Go}} * len(x)
-	dst := unsafe.Slice((*{{.Name.Go}})(newCBlock(C.ulong(sz))), len(x))
+	dst := unsafe.Slice((*{{.Name.Go}})(newCBlock(cULong(sz))), len(x))
 	copy(dst, x)
 	return dst
 }{{with $struct := .}}{{range .Members}}
 
 // {{.Name.Go}} returns the value of {{.Name.C}} from {{$struct.Name.C}}
 func (x {{$struct.Name.Go}}) {{.Name.Go}}() {{.Type.Go}} {
-	ptr := {{.Type.CToGo}}(&x.{{.Name.CGo}}) 
+	ptr := {{.Type.CToGo}}(&x.{{.Name.CGo}})
 	return *ptr
 }{{if ne .Value nil}}
 
-// WithDefault{{.Name.Go}} sets the value of {{.Name.Go}} to the value provided in the
-// specification. This method only exists if there is a single value in the specification.
+// WithDefault{{.Name.Go}} clones a new {{$struct.Name.Go}} with the value of
+// {{.Name.Go}} to the value provided in the specification.
 func (x {{$struct.Name.Go}}) WithDefault{{.Name.Go}}() {{$struct.Name.Go}} {
 	return x.With{{.Name.Go}}({{.Value.Go}})
+}
+
+// SetDefault{{.Name.Go}} sets the value of {{.Name.Go}} to the value provided in the
+// specification.
+func (x *{{$struct.Name.Go}}) SetDefault{{.Name.Go}}() {
+	x.Set{{.Name.Go}}({{.Value.Go}})
 }{{end}}{{if or (eq $struct.ReadOnly false) (or (eq .Name.Go "PNext") (eq .Name.Go "SType"))}}
 
-// With{{.Name.Go}} sets the value for the {{.Name.Go}} on the underlying C structure.
+// With{{.Name.Go}} clones a new {{$struct.Name.Go}} with the value of
+// {{.Name.Go}} updated on the underlying C structure.
 // It performs whatever conversions are necessary to match the C API.{{if ne .Length nil}}
-// 
+//
 // The specification defines {{.Length.Name.Go}} as the length of this field.
 // {{.Length.Name.Go}} is updated with the length of the new value.{{end}}
 func (x {{$struct.Name.Go}}) With{{.Name.Go}}(y {{.Type.Go}}) {{$struct.Name.Go}} { {{- if .Copy}}
@@ -302,6 +345,12 @@ func (x {{$struct.Name.Go}}) With{{.Name.Go}}(y {{.Type.Go}}) {{$struct.Name.Go}
 	copy(x.{{.Name.CGo}}[:], unsafe.Slice(*ptr, len(y))){{else}}
 	x.{{.Name.CGo}} = *({{.Type.GoToC}}(&y)){{end}}
 	return x{{if ne .Length nil}}.With{{.Length.Name.Go}}({{.Length.Type.Go}}(len(y))){{end}}
+}
+func (x *{{$struct.Name.Go}}) Set{{.Name.Go}}(y {{.Type.Go}}) { {{- if .Copy}}
+	ptr := {{.Type.GoToC}}(&y)
+	copy(x.{{.Name.CGo}}[:], unsafe.Slice(*ptr, len(y))){{else}}
+	x.{{.Name.CGo}} = *({{.Type.GoToC}}(&y)){{end}}{{if ne .Length nil}}
+	x.Set{{.Length.Name.Go}}({{.Length.Type.Go}}(len(y))){{end}}
 }{{end}}{{end}}
 {{end}}{{end}}
 {{define "structalias"}}//{{.Name.Go}} is an alias to {{.Alias.Go}}.
@@ -336,6 +385,54 @@ func Destroy() {
 	C.vksDynamicUnload()
 }
 
+// Freer represents types that can Free resources
+type Freer interface {
+	Free()
+}
+
+// CCloner represents types that can clone themselves into the C heap.
+type CCloner[OUT any] interface {
+	ArpPtr(*AutoReleasePool) OUT
+}
+
+// AutoReleasePool is a collection of pointers that will all be released at
+// once.
+type AutoReleasePool struct {
+	ptrs []Freer
+}
+
+// NewAutoReleaser creates a new AutoReleasePool. This is normally followed by
+// a deferred call to AutoReleasePool.Release.
+func NewAutoReleaser() *AutoReleasePool {
+	return &AutoReleasePool{}
+}
+
+// Release releases all the pointers attached to the pool. This is normally
+// invoked in a defer to release all the pointers when the scope exits.
+func (arp *AutoReleasePool) Release() {
+	for _, v := range arp.ptrs {
+		v.Free()
+	}
+	arp.ptrs = nil
+}
+
+// Add adds pointers to the AutoReleasePool.
+func (arp *AutoReleasePool) Add(ptr ...Freer) {
+	arp.ptrs = append(arp.ptrs, ptr...)
+}
+
+// NewCStr allocates the provided string on the C heap. The AutoReleasePool is responsible for
+// releasing the memory.
+func NewCStr(arp *AutoReleasePool, s string) *byte {
+	b := nullTerminatedBuffer(s).Bytes()
+	ptr := C.malloc(C.ulong(len(b)))
+	if arp != nil {
+		arp.Add(cFreer(uintptr(ptr)))
+	}
+	C.memcpy(ptr, unsafe.Pointer(&b[0]), C.ulong(len(b)))
+	return (*byte)(ptr)
+}
+
 // NewCString allocates the provided string on the C heap. FreeCString must be
 // called when the string is no longer needed.
 func NewCString(s string) *byte {
@@ -350,32 +447,6 @@ func FreeCString(ptr *byte) {
 	if ptr != nil {
 		C.free(unsafe.Pointer(ptr))
 	}
-}
-
-// CopyToMemory copies data to device memory from the provided slice. See MapMemory for possible errors.
-// Returns the number of bytes copied.
-func (device DeviceFacade) CopyToMemory(memory DeviceMemory, offset, size DeviceSize, flags MemoryMapFlags, src []byte) (int, error) {
-	var pData unsafe.Pointer
-	if err := device.MapMemory(memory, offset, size, flags, &pData).AsErr(); err != nil {
-		return 0, err
-	}
-	dst := unsafe.Slice((*byte)(pData), size)
-	n := copy(dst, src)
-	device.UnmapMemory(memory)
-	return n, nil
-}
-
-// CopyFromMemory copies data from device memory into the provided slice. See MapMemory for possible errors.
-// Returns the number of bytes copied.
-func (device DeviceFacade) CopyFromMemory(memory DeviceMemory, offset, size DeviceSize, flags MemoryMapFlags, dst []byte) (int, error) {
-	var pData unsafe.Pointer
-	if err := device.MapMemory(memory, offset, size, flags, &pData).AsErr(); err != nil {
-		return 0, err
-	}
-	src := unsafe.Slice((*byte)(pData), size)
-	n := copy(dst, src)
-	device.UnmapMemory(memory)
-	return n, nil
 }
 
 {{range .Data}}{{if eq .Template "const"}}{{block "const" .Data}}{{.}}{{end}}
@@ -393,7 +464,18 @@ func (device DeviceFacade) CopyFromMemory(memory DeviceMemory, offset, size Devi
 {{else if eq .Template "command"}}{{block "command" .Data}}{{.}}{{end}}
 {{end}}{{end}}
 
-func newCBlock(sz C.ulong) unsafe.Pointer {
+type cULong C.ulong
+
+type cFreer uintptr
+
+func (ptr cFreer) Free() {
+	if unsafe.Pointer(ptr) != nil {
+		C.free(unsafe.Pointer(ptr))
+	}
+}
+
+func newCBlock(s cULong) unsafe.Pointer {
+	sz := C.ulong(s)
 	ptr := C.malloc(sz)
 	C.memset(ptr, 0, sz)
 	return ptr

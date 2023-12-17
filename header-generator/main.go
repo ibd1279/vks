@@ -25,8 +25,13 @@ func main() {
 		enabledMap[v] = true
 	}
 
+	// Load up the XML data.
 	registry := LoadRegistry(config.VkxmlPath)
-	graph, constants := registry.Graph(config.Api)
+
+	// Trim the registry to the specified API.
+	registry = registry.ForApi(config.Api)
+
+	graph, constants := registry.Graph(enabledMap)
 
 	for _, v := range config.Features {
 		graph.ApplyFeatureExtensions(v, constants)

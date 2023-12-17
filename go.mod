@@ -1,3 +1,3 @@
 module github.com/ibd1279/vks
 
-go 1.17
+go 1.21

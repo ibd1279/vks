@@ -3,6 +3,7 @@ package vks
 import (
 	"bytes"
 	"fmt"
+	"unsafe"
 )
 
 // IsSuccess checks if the VkResult is equal to the VK_SUCCESS value.
@@ -66,4 +67,26 @@ func ToString(b []byte) string {
 		str.WriteByte(c)
 	}
 	return str.String()
+}
+
+func CPtr[OUT any, IN CCloner[OUT]](arp *AutoReleasePool, in IN, opts ...ConfigFunction[IN]) OUT {
+	var out OUT
+	for _, fn := range opts {
+		fn(in)
+	}
+	out = in.ArpPtr(arp)
+	return out
+}
+
+type ConfigFunction[T any] func(in T)
+
+func SetDefaultSType[T interface{ SetDefaultSType() }](in T) {
+	in.SetDefaultSType()
+}
+
+func SetPNext[T interface{ SetPNext(unsafe.Pointer) }, S any](next *S) ConfigFunction[T] {
+	ptr := unsafe.Pointer(next)
+	return func(in T) {
+		in.SetPNext(ptr)
+	}
 }
