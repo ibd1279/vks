@@ -123,6 +123,25 @@ func main() {
 		log.Printf("physical device %d %s %s - %s - %d %s %s %s", k, name, devType,
 			apiVersion,
 			vendorId, driverName, driverVersion, driverInfo)
+
+		memProps := vks.CPtr(arp, &vks.PhysicalDeviceMemoryProperties2{},
+			vks.SetDefaultSType,
+		)
+
+		phyDev.GetPhysicalDeviceMemoryProperties2(memProps)
+
+		log.Printf("\tmemory: typeCount %d", memProps.MemoryProperties().MemoryTypeCount())
+		for j := uint32(0); j < memProps.MemoryProperties().MemoryTypeCount(); j++ {
+			mt := memProps.MemoryProperties().MemoryTypes()[j]
+			log.Printf("\t\ttypeIndex: %d; propFlags: %d; heapIndex: %d", j,
+				mt.PropertyFlags(), mt.HeapIndex())
+		}
+		log.Printf("\tmemory: heapCount %d", memProps.MemoryProperties().MemoryHeapCount())
+		for j := uint32(0); j < memProps.MemoryProperties().MemoryHeapCount(); j++ {
+			mh := memProps.MemoryProperties().MemoryHeaps()[j]
+			log.Printf("\t\theapIndex: %d; flags: %d; size: %d", j,
+				mh.Flags(), mh.Size())
+		}
 	}
 
 }

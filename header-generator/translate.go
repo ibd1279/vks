@@ -291,7 +291,7 @@ func (xl8r *ArrayConverter) Go() string {
 	return fmt.Sprintf("[]%s", xl8r.orig.Go())
 }
 func (xl8r *ArrayConverter) CToGo() string {
-	return fmt.Sprintf("func(x *%s) *%s { /* Array */ slc := unsafe.Slice((*%s)(unsafe.Pointer(x)), %s); return &slc }", xl8r.CGo(), xl8r.Go(), xl8r.orig.Go(), xl8r.size.Go())
+	return fmt.Sprintf("func(x *%s) *%s { /* Array for %s */ slc := unsafe.Slice((*%s)(unsafe.Pointer(x)), %s); return &slc }", xl8r.CGo(), xl8r.Go(), xl8r.orig.Go(), xl8r.orig.Go(), xl8r.size.Go())
 }
 func (xl8r *ArrayConverter) GoToC() string {
 	return fmt.Sprintf("func(x *%s) **%s { /* Array */ if len(*x) > 0 { slc := (*%s)(unsafe.Pointer(&((*x)[0]))); return &slc }; var ptr unsafe.Pointer; return (**%s)(unsafe.Pointer((&ptr))) }", xl8r.Go(), xl8r.orig.CGo(), xl8r.orig.CGo(), xl8r.orig.CGo())
@@ -883,7 +883,7 @@ func helperMemberTypeTranslator(specType, length, raw, comment string) Translato
 		specType = "void*"
 	}
 	sliceCount := 0
-	if len(length) > 0 {
+	if len(length) > 0 && pointerCount > 0 {
 		lengthValues := strings.Split(length, ",")
 		sliceCount = len(lengthValues)
 		for _, v := range lengthValues {
