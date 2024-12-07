@@ -121,6 +121,7 @@ const (
 	VK_MAX_GLOBAL_PRIORITY_SIZE_KHR                        = 16
 	VK_MAX_GLOBAL_PRIORITY_SIZE_EXT                        = VK_MAX_GLOBAL_PRIORITY_SIZE_KHR
 	VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT               = 32
+	VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR                    = 32
 	VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR              = 7
 	VK_SHADER_INDEX_UNUSED_AMDX                            = ^uint32(0)
 	VK_EXT_DEBUG_REPORT_SPEC_VERSION                       = 10
@@ -151,7 +152,7 @@ const (
 
 // HeaderVersion is the version of the vk specification used to generate this.
 // https://www.khronos.org/registry/vulkan/specs/1.3-extensions/man/html/VK_API_VERSION.html
-const HeaderVersion = 278
+const HeaderVersion = 296
 
 // ApiVersion is an implementation of the Vulkan Make Api Version
 // defines. See
@@ -3637,6 +3638,7 @@ func (x FrontFace) String() string {
 type VendorId uint32
 
 const (
+	VK_VENDOR_ID_KHRONOS  VendorId = 0x10000
 	VK_VENDOR_ID_VIV      VendorId = 0x10001
 	VK_VENDOR_ID_VSI      VendorId = 0x10002
 	VK_VENDOR_ID_KAZAN    VendorId = 0x10003
@@ -3648,6 +3650,7 @@ const (
 
 var (
 	reverseVendorId map[VendorId]string = map[VendorId]string{
+		VK_VENDOR_ID_KHRONOS:  "VK_VENDOR_ID_KHRONOS",
 		VK_VENDOR_ID_VIV:      "VK_VENDOR_ID_VIV",
 		VK_VENDOR_ID_VSI:      "VK_VENDOR_ID_VSI",
 		VK_VENDOR_ID_KAZAN:    "VK_VENDOR_ID_KAZAN",
@@ -38241,7 +38244,8 @@ const (
 	VK_DRIVER_ID_MESA_DOZEN                   DriverId = 23
 	VK_DRIVER_ID_MESA_NVK                     DriverId = 24
 	VK_DRIVER_ID_IMAGINATION_OPEN_SOURCE_MESA DriverId = 25
-	VK_DRIVER_ID_MESA_AGXV                    DriverId = 26
+	VK_DRIVER_ID_MESA_HONEYKRISP              DriverId = 26
+	VK_DRIVER_ID_RESERVED_27                  DriverId = 27
 )
 
 var (
@@ -38271,7 +38275,8 @@ var (
 		VK_DRIVER_ID_MESA_DOZEN:                   "VK_DRIVER_ID_MESA_DOZEN",
 		VK_DRIVER_ID_MESA_NVK:                     "VK_DRIVER_ID_MESA_NVK",
 		VK_DRIVER_ID_IMAGINATION_OPEN_SOURCE_MESA: "VK_DRIVER_ID_IMAGINATION_OPEN_SOURCE_MESA",
-		VK_DRIVER_ID_MESA_AGXV:                    "VK_DRIVER_ID_MESA_AGXV",
+		VK_DRIVER_ID_MESA_HONEYKRISP:              "VK_DRIVER_ID_MESA_HONEYKRISP",
+		VK_DRIVER_ID_RESERVED_27:                  "VK_DRIVER_ID_RESERVED_27",
 	}
 )
 
@@ -61084,17 +61089,6 @@ func (x *SurfaceProtectedCapabilitiesKHR) SetPNext(y unsafe.Pointer) {
 func (x SurfaceProtectedCapabilitiesKHR) SupportsProtected() Bool32 {
 	ptr := /* typedef */ (*Bool32)(&x.supportsProtected)
 	return *ptr
-}
-
-// WithSupportsProtected clones a new SurfaceProtectedCapabilitiesKHR with the value of
-// SupportsProtected updated on the underlying C structure.
-// It performs whatever conversions are necessary to match the C API.
-func (x SurfaceProtectedCapabilitiesKHR) WithSupportsProtected(y Bool32) SurfaceProtectedCapabilitiesKHR {
-	x.supportsProtected = *( /* typedef */ (*C.VkBool32)(&y))
-	return x
-}
-func (x *SurfaceProtectedCapabilitiesKHR) SetSupportsProtected(y Bool32) {
-	x.supportsProtected = *( /* typedef */ (*C.VkBool32)(&y))
 }
 
 // SwapchainKHR is a Handle to a vulkan resource.
